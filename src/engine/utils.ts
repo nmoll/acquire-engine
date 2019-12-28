@@ -2,8 +2,11 @@ import { BoardSquareState } from "../model/board-square-state";
 import { HotelChainType } from "../model/hotel-chain-type";
 import { IPlayerTurn } from "../model/player-turn";
 
-export const getIndex = (positionX: number, positionY: number) =>
-  positionX + positionY * 12;
+export const isInBounds = (x: number, y: number) =>
+  x >= 0 && x <= 11 && y >= 0 && y <= 9;
+
+export const getIndex = (x: number, y: number) =>
+  isInBounds(x, y) ? x + y * 12 : -1;
 
 export const getPositionX = (index: number) => index % 12;
 export const getPositionY = (index: number) => Math.floor(index / 12);
@@ -13,10 +16,10 @@ export const getAdjacentPositions = (
   index: number
 ): number[] =>
   [
-    getIndex(getPositionX(index) - 1, getPositionY(index)),
-    getIndex(getPositionX(index) + 1, getPositionY(index)),
-    getIndex(getPositionX(index), getPositionY(index) - 1),
-    getIndex(getPositionX(index), getPositionY(index) + 1)
+    getIndex(getPositionX(index), getPositionY(index) - 1), // top
+    getIndex(getPositionX(index) - 1, getPositionY(index)), // left
+    getIndex(getPositionX(index) + 1, getPositionY(index)), // right
+    getIndex(getPositionX(index), getPositionY(index) + 1) // bottom
   ].filter(i => i >= 0 && i < boardStates.length);
 
 export const getAdjacentStates = (

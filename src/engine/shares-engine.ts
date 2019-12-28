@@ -1,5 +1,6 @@
-import { HotelChainType, IPlayerTurn } from "../model";
+import { BoardSquareState, HotelChainType, IPlayerTurn } from "../model";
 import { ISharesState } from "../model/shares-state";
+import { starterTilePlayed } from "./utils";
 
 const HOTELS = [
   HotelChainType.AMERICAN,
@@ -11,29 +12,29 @@ const HOTELS = [
   HotelChainType.WORLDWIDE
 ];
 
-const computeCash = (playerId: number, turns: IPlayerTurn[]): number => {
-  return 6000;
-};
-
 const computeState = (
   playerTurn: IPlayerTurn,
-  sharesState: ISharesState
+  sharesState: ISharesState,
+  boardState: BoardSquareState[]
 ): ISharesState =>
   HOTELS.reduce((state, hotel) => {
     state[playerTurn.playerId] = state[playerTurn.playerId] || {};
     state[playerTurn.playerId][hotel] = state[playerTurn.playerId][hotel] || 0;
 
-    // if (playerTurn.boardSquareSelectedState.type === "Confirmed") {
-    //   if (
-    //     starterTilePlayed(
-    //       playerTurn,
-    //       playerTurn.boardSquareSelectedState.boardSquareId,
-    //       boardState
-    //     )
-    //   ) {
-    //     state[playerTurn.playerId][hotel] += 1;
-    //   }
-    // }
+    if (
+      playerTurn.selectedHotelChain === hotel &&
+      playerTurn.boardSquareSelectedState.type === "Confirmed"
+    ) {
+      if (
+        starterTilePlayed(
+          playerTurn,
+          playerTurn.boardSquareSelectedState.boardSquareId,
+          boardState
+        )
+      ) {
+        state[playerTurn.playerId][hotel] += 1;
+      }
+    }
 
     if (playerTurn.purchasedShares) {
       const share = playerTurn.purchasedShares.find(s => s.hotel === hotel);
@@ -44,20 +45,6 @@ const computeState = (
     return state;
   }, sharesState);
 
-const computeSharesState = (
-  playerTurns: IPlayerTurn[],
-  sharesState: ISharesState = {}
-): ISharesState => {
-  if (!playerTurns.length) {
-    return sharesState;
-  }
-  const turns = [...playerTurns];
-
-  return computeSharesState(turns, computeState(turns.shift(), sharesState));
-};
-
 export const SharesEngine = {
-  computeCash,
-  computeSharesState,
   computeState
 };

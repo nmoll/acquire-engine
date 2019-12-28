@@ -17,6 +17,21 @@ const expectStateWithTurn = (diagram: string, turn: Partial<IPlayerTurn>) =>
 
 const state = (diagram: string) => BoardStateFactory.createBoardState(diagram);
 
+/**
+ *  ------ LEGEND ------
+ *  - : Empty square
+ *  o : Square available for selection
+ *  O : Square selected
+ *  0 : Square has tile
+ *  * : New hotel pending player decision
+ *  A : American hotel
+ *  C : Continental hotel
+ *  F : Festival hotel
+ *  I : Imperial hotel
+ *  L : Luxor hotel
+ *  T : Tower hotel
+ *  W : Worldwide hotel
+ */
 describe("BoardStateEngine", () => {
   it("should return empty state if nothing provided", () => {
     expectStateWithTurn("", null).toEqual(
@@ -258,10 +273,10 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should mark pending hotels as AMERICAN if AMERICAN is selected", () => {
+  it("should start AMERICAN if AMERICAN is selected with starter tile", () => {
     expectStateWithTurn(
       `
-          - - * * - - - - - - - -
+          - - o 0 - - - - - - - -
           - - - - - - - - - - - -
           - - - - - - - - - - - -
           - - - - - - - - - - - -
@@ -290,7 +305,7 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should mark pending hotels as CONTINTENTAL if CONTINTENTAL is selected", () => {
+  it("should start CONTINTENTAL if CONTINTENTAL is selected with starter tile", () => {
     expectStateWithTurn(
       `
           - - A A - - - - - - - -
@@ -322,12 +337,12 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should mark pending hotels as FESTIVAL if FESTIVAL is selected", () => {
+  it("should start FESTIVAL if FESTIVAL is selected with starter tile", () => {
     expectStateWithTurn(
       `
           - - A A - - - - - - - -
           - - - - - - - - - - - -
-          C - * * - - - - - - - -
+          C - o 0 - - - - - - - -
           C - - - - - - - - - - -
           C - - - - - - - - - - -
           - - - - - - - - - - - -
@@ -354,7 +369,7 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should mark pending hotels as IMERIAL if IMERIAL is selected", () => {
+  it("should start IMERIAL if IMERIAL is selected with starter tile", () => {
     expectStateWithTurn(
       `
             - - A A - - - - - - - -
@@ -362,8 +377,8 @@ describe("BoardStateEngine", () => {
             C - F F - - - - - - - -
             C - - - - - - - - - - -
             C - - - - - - - - - - -
-            - - - - - - - - - * - -
-            - - - - - - - - * * - -
+            - - - - - - - - - 0 - -
+            - - - - - - - - 0 o - -
             - - - - - - - - - - - -
             - - - - - - - - - - - -
           `,
@@ -386,10 +401,10 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should mark pending hotels as LUXOR if LUXOR is selected", () => {
+  it("should start LUXOR if LUXOR is selected with starter tile", () => {
     expectStateWithTurn(
       `
-            - - A A - - - - - - * *
+            - - A A - - - - - - 0 o
             - - - - - - - - - - - -
             C - F F - - - - - - - -
             C - - - - - - - - - - -
@@ -418,7 +433,7 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should mark pending hotels as TOWER if TOWER is selected", () => {
+  it("should start TOWER if TOWER is selected with starter tile", () => {
     expectStateWithTurn(
       `
       - - A A - - - - - - L L
@@ -450,7 +465,7 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should mark pending hotels as WORLDWIDE if WORLDWIDE is selected", () => {
+  it("should start WORLDWIDE if WORLDWIDE is selected with starter tile", () => {
     expectStateWithTurn(
       `
       - - A A - - - - - - L L
@@ -460,11 +475,11 @@ describe("BoardStateEngine", () => {
       C - - - - - - - - - - -
       - - - - - - - - - I - -
       - - - - - - - - I I - -
-      * - - - - - - - - - - T
-      * * - - - - - - - - - T
+      0 - - - - - - - - - - T
+      o 0 - - - - - - - - - T
     `,
       {
-        boardSquareSelectedState: BoardSquareSelectedStateType.Confirmed(95),
+        boardSquareSelectedState: BoardSquareSelectedStateType.Confirmed(96),
         selectedHotelChain: HotelChainType.WORLDWIDE
       }
     ).toEqual(
@@ -543,40 +558,4 @@ describe("BoardStateEngine", () => {
   `)
     );
   });
-
-  // it("should do multiple merges given a list of merge actions", () => {
-  //   expectStateWithTurns(
-  //     `
-  //     - - A A - - - - - - L L
-  //     - - - - - - - - - - - -
-  //     C - F F - - - - - - - -
-  //     C - - - - - - - - - - -
-  //     C - - - - - - - - - - -
-  //     - - - - - - - - - I - -
-  //     - - - - - - - - I I - -
-  //     W - - - - - - - - - - T
-  //     W W - - - - - - - - - T
-  //   `,
-  //     [
-  //       {
-  //         boardSquareSelectedState: BoardSquareSelectedStateType.Confirmed(25)
-  //       },
-  //       {
-  //         boardSquareSelectedState: BoardSquareSelectedStateType.Confirmed(15)
-  //       }
-  //     ]
-  //   ).toEqual(
-  //     state(`
-  //     - - C C - - - - - - L L
-  //     - - - C - - - - - - - -
-  //     C C C C - - - - - - - -
-  //     C - - - - - - - - - - -
-  //     C - - - - - - - - - - -
-  //     - - - - - - - - - I - -
-  //     - - - - - - - - I I - -
-  //     W - - - - - - - - - - T
-  //     W W - - - - - - - - - T
-  //   `)
-  //   );
-  // });
 });
