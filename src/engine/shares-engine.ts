@@ -1,62 +1,84 @@
-import { BoardSquareState, HotelChainType, IPlayerTurn } from "../model";
+import {
+  ALL_HOTELS,
+  BoardSquareState,
+  HotelChainType,
+  IPlayerTurn
+} from "../model";
 import { ISharesState } from "../model/shares-state";
 import { starterTilePlayed } from "./utils";
 
-const HOTELS = [
-  HotelChainType.AMERICAN,
-  HotelChainType.CONTINENTAL,
-  HotelChainType.FESTIVAL,
-  HotelChainType.IMPERIAL,
-  HotelChainType.LUXOR,
-  HotelChainType.TOWER,
-  HotelChainType.WORLDWIDE
-];
+const intitialState: ISharesState = {};
+
+const getExistingShares = (
+  playerTurn: IPlayerTurn,
+  hotel: HotelChainType,
+  state: ISharesState
+): number =>
+  state[playerTurn.playerId] && state[playerTurn.playerId][hotel]
+    ? state[playerTurn.playerId][hotel]
+    : 0;
+
+const getStarterBonuses = (
+  playerTurn: IPlayerTurn,
+  hotel: HotelChainType,
+  boardState: BoardSquareState[]
+): number =>
+  playerTurn.selectedHotelChain === hotel &&
+  playerTurn.boardSquareSelectedState.type === "Confirmed" &&
+  starterTilePlayed(
+    playerTurn,
+    playerTurn.boardSquareSelectedState.boardSquareId,
+    boardState
+  )
+    ? 1
+    : 0;
+
+const getPurchasedShares = (
+  playerTurn: IPlayerTurn,
+  hotel: HotelChainType
+): number => {
+  if (!playerTurn.sharesPurchased) {
+    return 0;
+  }
+  const share = playerTurn.sharesPurchased.find(s => s.hotel === hotel);
+  return share ? share.quantity : 0;
+};
+
+const getSoldShares = (
+  playerTurn: IPlayerTurn,
+  hotel: HotelChainType
+): number => {
+  if (!playerTurn.sharesSold) {
+    return 0;
+  }
+  const share = playerTurn.sharesSold.find(s => s.hotel === hotel);
+  return share ? share.quantity : 0;
+};
 
 const computeState = (
   playerTurn: IPlayerTurn,
-  sharesState: ISharesState,
-  boardState: BoardSquareState[]
+  sharesState: ISharesState = intitialState,
+  boardState: BoardSquareState[] = []
 ): ISharesState => {
-  if (!sharesState) {
-    sharesState = {};
-  }
   if (!playerTurn) {
     return sharesState;
   }
-  return HOTELS.reduce((state, hotel) => {
-    state[playerTurn.playerId] = state[playerTurn.playerId] || {};
-    state[playerTurn.playerId][hotel] = state[playerTurn.playerId][hotel] || 0;
 
-    if (
-      playerTurn.selectedHotelChain === hotel &&
-      playerTurn.boardSquareSelectedState.type === "Confirmed"
-    ) {
-      if (
-        starterTilePlayed(
-          playerTurn,
-          playerTurn.boardSquareSelectedState.boardSquareId,
-          boardState
-        )
-      ) {
-        state[playerTurn.playerId][hotel] += 1;
-      }
-    }
+  return ALL_HOTELS.reduce(
+    (state, hotel) => ({
+      ...state,
 
-    if (playerTurn.sharesPurchased) {
-      const share = playerTurn.sharesPurchased.find(s => s.hotel === hotel);
-      if (share) {
-        state[playerTurn.playerId][hotel] += share.quantity;
+      [playerTurn.playerId]: {
+        ...state[playerTurn.playerId],
+        [hotel]:
+          getExistingShares(playerTurn, hotel, state) +
+          getStarterBonuses(playerTurn, hotel, boardState) +
+          getPurchasedShares(playerTurn, hotel) -
+          getSoldShares(playerTurn, hotel)
       }
-    }
-
-    if (playerTurn.sharesSold) {
-      const share = playerTurn.sharesSold.find(s => s.hotel === hotel);
-      if (share) {
-        state[playerTurn.playerId][hotel] -= share.quantity;
-      }
-    }
-    return state;
-  }, sharesState);
+    }),
+    sharesState
+  );
 };
 
 export const SharesEngine = {

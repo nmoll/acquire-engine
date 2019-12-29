@@ -1,5 +1,6 @@
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
 import { PlayerTurnFactory } from "../../test/factory/player-turn.factory";
+import { tilePlacedAt, tileSelectedAt } from "../../test/helpers";
 import {
   BoardSquareSelectedStateType,
   HotelChainType,
@@ -94,7 +95,7 @@ describe("BoardStateEngine", () => {
           - - - - - - - - - - - -
         `,
       {
-        boardSquareSelectedState: BoardSquareSelectedStateType.Unconfirmed(200)
+        boardSquareSelectedState: tileSelectedAt("13A")
       }
     ).toEqual(
       state(`
@@ -175,7 +176,7 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should select the unconfirmed selected square", () => {
+  it("should select the player selected square", () => {
     expectStateWithTurn(
       `
       - o - O o - - - - - - -
@@ -190,7 +191,7 @@ describe("BoardStateEngine", () => {
     `,
       {
         boardSquareOptionIds: [1, 3, 4],
-        boardSquareSelectedState: BoardSquareSelectedStateType.Unconfirmed(1)
+        boardSquareSelectedState: tileSelectedAt("2A")
       }
     ).toEqual(
       state(
@@ -223,7 +224,7 @@ describe("BoardStateEngine", () => {
         - - - - - - - - - - - -
         `,
       {
-        boardSquareSelectedState: BoardSquareSelectedStateType.Confirmed(7)
+        boardSquareSelectedState: tilePlacedAt("8A")
       }
     ).toEqual(
       state(`
@@ -254,7 +255,7 @@ describe("BoardStateEngine", () => {
       - - - - - - - - - - - -
     `,
       {
-        boardSquareSelectedState: BoardSquareSelectedStateType.Confirmed(40)
+        boardSquareSelectedState: tilePlacedAt("5D")
       }
     ).toEqual(
       state(
@@ -287,7 +288,7 @@ describe("BoardStateEngine", () => {
           - - - - - - - - - - - -
         `,
       {
-        boardSquareSelectedState: BoardSquareSelectedStateType.Confirmed(2),
+        boardSquareSelectedState: tilePlacedAt("3A"),
         selectedHotelChain: HotelChainType.AMERICAN
       }
     ).toEqual(
@@ -310,16 +311,16 @@ describe("BoardStateEngine", () => {
       `
           - - A A - - - - - - - -
           - - - - - - - - - - - -
-          * - - - - - - - - - - -
-          * - - - - - - - - - - -
-          * - - - - - - - - - - -
+          0 - - - - - - - - - - -
+          o - - - - - - - - - - -
+          0 - - - - - - - - - - -
           - - - - - - - - - - - -
           - - - - - - - - - - - -
           - - - - - - - - - - - -
           - - - - - - - - - - - -
         `,
       {
-        boardSquareSelectedState: BoardSquareSelectedStateType.Confirmed(36),
+        boardSquareSelectedState: tilePlacedAt("1D"),
         selectedHotelChain: HotelChainType.CONTINENTAL
       }
     ).toEqual(
@@ -351,7 +352,7 @@ describe("BoardStateEngine", () => {
           - - - - - - - - - - - -
         `,
       {
-        boardSquareSelectedState: BoardSquareSelectedStateType.Confirmed(26),
+        boardSquareSelectedState: tilePlacedAt("3C"),
         selectedHotelChain: HotelChainType.FESTIVAL
       }
     ).toEqual(
@@ -383,7 +384,7 @@ describe("BoardStateEngine", () => {
             - - - - - - - - - - - -
           `,
       {
-        boardSquareSelectedState: BoardSquareSelectedStateType.Confirmed(81),
+        boardSquareSelectedState: tilePlacedAt("10G"),
         selectedHotelChain: HotelChainType.IMPERIAL
       }
     ).toEqual(
@@ -415,7 +416,7 @@ describe("BoardStateEngine", () => {
             - - - - - - - - - - - -
           `,
       {
-        boardSquareSelectedState: BoardSquareSelectedStateType.Confirmed(11),
+        boardSquareSelectedState: tilePlacedAt("12A"),
         selectedHotelChain: HotelChainType.LUXOR
       }
     ).toEqual(
@@ -443,11 +444,11 @@ describe("BoardStateEngine", () => {
       C - - - - - - - - - - -
       - - - - - - - - - I - -
       - - - - - - - - I I - -
-      - - - - - - - - - - - *
-      - - - - - - - - - - - *
+      - - - - - - - - - - - 0
+      - - - - - - - - - - - o
     `,
       {
-        boardSquareSelectedState: BoardSquareSelectedStateType.Confirmed(107),
+        boardSquareSelectedState: tilePlacedAt("12I"),
         selectedHotelChain: HotelChainType.TOWER
       }
     ).toEqual(
@@ -479,7 +480,7 @@ describe("BoardStateEngine", () => {
       o 0 - - - - - - - - - T
     `,
       {
-        boardSquareSelectedState: BoardSquareSelectedStateType.Confirmed(96),
+        boardSquareSelectedState: tilePlacedAt("1I"),
         selectedHotelChain: HotelChainType.WORLDWIDE
       }
     ).toEqual(
@@ -511,7 +512,7 @@ describe("BoardStateEngine", () => {
           - - - - - - - - - - - -
         `,
       {
-        boardSquareSelectedState: BoardSquareSelectedStateType.Confirmed(14)
+        boardSquareSelectedState: tilePlacedAt("3B")
       }
     ).toEqual(
       state(`
@@ -542,7 +543,7 @@ describe("BoardStateEngine", () => {
         - - - - - - - - - - - -
       `,
       {
-        boardSquareSelectedState: BoardSquareSelectedStateType.Confirmed(3)
+        boardSquareSelectedState: tilePlacedAt("4A")
       }
     ).toEqual(
       state(`

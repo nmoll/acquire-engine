@@ -4,7 +4,7 @@ import { SharesEngine } from "./shares-engine";
 
 const initialState: IGameState = {
   boardState: BoardStateEngine.computeState([], null),
-  sharesState: SharesEngine.computeState(null, null, [])
+  sharesState: SharesEngine.computeState(null)
 };
 
 const computeGameState = (

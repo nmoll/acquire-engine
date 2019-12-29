@@ -32,21 +32,6 @@ const computeState = (
       )
     : defaultState;
 
-// const computeStateWithTurns = (
-//   playerTurns: IPlayerTurn[],
-//   boardState: BoardSquareState[] = []
-// ): BoardSquareState[] => {
-//   if (!playerTurns.length) {
-//     return boardState;
-//   }
-
-//   const turns = [...playerTurns];
-//   return computeStateWithTurns(
-//     turns,
-//     computeStateWithTurn(boardState, turns.shift())
-//   );
-// };
-
 export const BoardStateEngine = {
   computeState
 };

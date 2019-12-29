@@ -1,46 +1,16 @@
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
-import { PlayerTurnFactory } from "../../test/factory/player-turn.factory";
 import { SharesStateFactory } from "../../test/factory/shares-state.factory";
 import {
-  BoardSquareSelectedState,
-  HotelChainType,
-  IGameState,
-  IPlayerTurn
-} from "../model";
-import { IShares } from "../model/shares";
+  america,
+  buys,
+  imererial,
+  player,
+  plays,
+  starts,
+  turn
+} from "../../test/helpers";
+import { HotelChainType, IGameState, IPlayerTurn } from "../model";
 import { GameEngine } from "./game-engine";
-
-const turn = (
-  playerId: number,
-  selection: BoardSquareSelectedState,
-  sharesPurchased: IShares[] = [],
-  selectedHotelChain?: HotelChainType
-) =>
-  PlayerTurnFactory.createPlayerTurn({
-    boardSquareSelectedState: selection,
-    playerId,
-    selectedHotelChain,
-    sharesPurchased
-  });
-
-const player = (playerId: number) => playerId;
-
-const starts = (hotel: HotelChainType) => hotel;
-
-const plays = (tilePosition: string) =>
-  BoardStateFactory.tilePlacedAt(tilePosition);
-
-const buys = (shares: IShares[]) => shares;
-
-const america = (quantity: number): IShares => ({
-  hotel: HotelChainType.AMERICAN,
-  quantity
-});
-
-const imererial = (quantity: number): IShares => ({
-  hotel: HotelChainType.IMPERIAL,
-  quantity
-});
 
 describe("GameEngine", () => {
   it("should compute initial game state with no turns", () => {
