@@ -8,5 +8,6 @@ export interface IPlayerTurn {
   boardSquareOptionIds: number[];
   boardSquareSelectedState: BoardSquareSelectedState;
   selectedHotelChain?: HotelChainType;
-  purchasedShares?: IShares[];
+  sharesPurchased?: IShares[];
+  sharesSold?: IShares[];
 }

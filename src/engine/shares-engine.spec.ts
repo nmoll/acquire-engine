@@ -52,7 +52,7 @@ describe("SharesEngine", () => {
       );
     });
 
-    it("should update player shares if shares were purchased", () => {
+    it("should add shares to player for all shares purchased", () => {
       expectStateWithTurn(
         `
              A C F I L T W
@@ -62,7 +62,7 @@ describe("SharesEngine", () => {
         "",
         {
           playerId: 1,
-          purchasedShares: [
+          sharesPurchased: [
             {
               hotel: HotelChainType.AMERICAN,
               quantity: 1
@@ -80,6 +80,38 @@ describe("SharesEngine", () => {
            P1 3 3 0 0 0 0 0 
            P2 0 6 0 0 0 0 0
           `
+        )
+      );
+    });
+
+    it("should remove shares from player for all shares sold", () => {
+      expectStateWithTurn(
+        `
+               A C F I L T W
+            P1 6 6 0 0 0 0 0 
+            P2 0 6 2 0 0 0 0
+          `,
+        "",
+        {
+          playerId: 2,
+          sharesSold: [
+            {
+              hotel: HotelChainType.CONTINENTAL,
+              quantity: 1
+            },
+            {
+              hotel: HotelChainType.FESTIVAL,
+              quantity: 2
+            }
+          ]
+        }
+      ).toEqual(
+        SharesStateFactory.createSharesState(
+          `
+                A C F I L T W
+             P1 6 6 0 0 0 0 0 
+             P2 0 5 0 0 0 0 0
+            `
         )
       );
     });

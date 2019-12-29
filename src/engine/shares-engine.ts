@@ -16,8 +16,14 @@ const computeState = (
   playerTurn: IPlayerTurn,
   sharesState: ISharesState,
   boardState: BoardSquareState[]
-): ISharesState =>
-  HOTELS.reduce((state, hotel) => {
+): ISharesState => {
+  if (!sharesState) {
+    sharesState = {};
+  }
+  if (!playerTurn) {
+    return sharesState;
+  }
+  return HOTELS.reduce((state, hotel) => {
     state[playerTurn.playerId] = state[playerTurn.playerId] || {};
     state[playerTurn.playerId][hotel] = state[playerTurn.playerId][hotel] || 0;
 
@@ -36,14 +42,22 @@ const computeState = (
       }
     }
 
-    if (playerTurn.purchasedShares) {
-      const share = playerTurn.purchasedShares.find(s => s.hotel === hotel);
+    if (playerTurn.sharesPurchased) {
+      const share = playerTurn.sharesPurchased.find(s => s.hotel === hotel);
       if (share) {
         state[playerTurn.playerId][hotel] += share.quantity;
       }
     }
+
+    if (playerTurn.sharesSold) {
+      const share = playerTurn.sharesSold.find(s => s.hotel === hotel);
+      if (share) {
+        state[playerTurn.playerId][hotel] -= share.quantity;
+      }
+    }
     return state;
   }, sharesState);
+};
 
 export const SharesEngine = {
   computeState
