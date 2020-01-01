@@ -42,6 +42,11 @@ export const imererial = (quantity: number): IShares => ({
   quantity
 });
 
+export const continental = (quantity: number): IShares => ({
+  hotel: HotelChainType.CONTINENTAL,
+  quantity
+});
+
 export const getTilePosition = (tileLabel: string): number => {
   const letter = tileLabel.charAt(tileLabel.length - 1);
   const num = tileLabel.replace(letter, "");

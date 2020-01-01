@@ -29,6 +29,7 @@ describe("GameEngine", () => {
           - - - - - - - - - - - -
           - - - - - - - - - - - -`
       ),
+      cashState: {},
       sharesState: {}
     };
 
@@ -51,7 +52,7 @@ describe("GameEngine", () => {
       turn(
         player(3),
         plays("5F"),
-        [america(1), imererial(2)],
+        buys([america(1), imererial(2)]),
         starts(HotelChainType.IMPERIAL)
       ),
       turn(player(4), plays("3F"), [america(3)]),
@@ -69,6 +70,12 @@ describe("GameEngine", () => {
         - - - - I - - - - - - -
         - - - - - - - - - - - -
         - - - - - - - - - - - -`),
+      cashState: {
+        1: 6000,
+        2: 5100,
+        3: 4200,
+        4: 4500
+      },
       sharesState: SharesStateFactory.createSharesState(`
            A C F I L T W
         P1 0 0 0 0 0 0 0
