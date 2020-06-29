@@ -4,7 +4,7 @@ import { tilePlacedAt, tileSelectedAt } from "../../test/helpers";
 import {
   BoardSquareSelectedStateType,
   HotelChainType,
-  IPlayerTurn
+  IPlayerTurn,
 } from "../model";
 import { BoardStateEngine } from "./board-state-engine";
 
@@ -95,7 +95,7 @@ describe("BoardStateEngine", () => {
           - - - - - - - - - - - -
         `,
       {
-        boardSquareSelectedState: tileSelectedAt("13A")
+        boardSquareSelectedState: tileSelectedAt("13A"),
       }
     ).toEqual(
       state(`
@@ -126,7 +126,7 @@ describe("BoardStateEngine", () => {
           - - - - - - - - - - - -
         `,
       {
-        boardSquareSelectedState: BoardSquareSelectedStateType.None()
+        boardSquareSelectedState: BoardSquareSelectedStateType.None(),
       }
     ).toEqual(
       state(`
@@ -157,7 +157,7 @@ describe("BoardStateEngine", () => {
       - - - - - - - - - - - -
     `,
       {
-        boardSquareOptionIds: [2, 6, 32, 40, 58, 59, 73]
+        boardSquareOptionIds: [2, 6, 32, 40, 58, 59, 73],
       }
     ).toEqual(
       state(
@@ -191,7 +191,7 @@ describe("BoardStateEngine", () => {
     `,
       {
         boardSquareOptionIds: [1, 3, 4],
-        boardSquareSelectedState: tileSelectedAt("2A")
+        boardSquareSelectedState: tileSelectedAt("2A"),
       }
     ).toEqual(
       state(
@@ -224,7 +224,8 @@ describe("BoardStateEngine", () => {
         - - - - - - - - - - - -
         `,
       {
-        boardSquareSelectedState: tilePlacedAt("8A")
+        boardSquareOptionIds: [1, 3, 7],
+        boardSquareSelectedState: tilePlacedAt("8A"),
       }
     ).toEqual(
       state(`
@@ -255,7 +256,7 @@ describe("BoardStateEngine", () => {
       - - - - - - - - - - - -
     `,
       {
-        boardSquareSelectedState: tilePlacedAt("5D")
+        boardSquareSelectedState: tilePlacedAt("5D"),
       }
     ).toEqual(
       state(
@@ -289,7 +290,7 @@ describe("BoardStateEngine", () => {
         `,
       {
         boardSquareSelectedState: tilePlacedAt("3A"),
-        selectedHotelChain: HotelChainType.AMERICAN
+        selectedHotelChain: HotelChainType.AMERICAN,
       }
     ).toEqual(
       state(`
@@ -321,7 +322,7 @@ describe("BoardStateEngine", () => {
         `,
       {
         boardSquareSelectedState: tilePlacedAt("1D"),
-        selectedHotelChain: HotelChainType.CONTINENTAL
+        selectedHotelChain: HotelChainType.CONTINENTAL,
       }
     ).toEqual(
       state(`
@@ -353,7 +354,7 @@ describe("BoardStateEngine", () => {
         `,
       {
         boardSquareSelectedState: tilePlacedAt("3C"),
-        selectedHotelChain: HotelChainType.FESTIVAL
+        selectedHotelChain: HotelChainType.FESTIVAL,
       }
     ).toEqual(
       state(`
@@ -385,7 +386,7 @@ describe("BoardStateEngine", () => {
           `,
       {
         boardSquareSelectedState: tilePlacedAt("10G"),
-        selectedHotelChain: HotelChainType.IMPERIAL
+        selectedHotelChain: HotelChainType.IMPERIAL,
       }
     ).toEqual(
       state(`
@@ -417,7 +418,7 @@ describe("BoardStateEngine", () => {
           `,
       {
         boardSquareSelectedState: tilePlacedAt("12A"),
-        selectedHotelChain: HotelChainType.LUXOR
+        selectedHotelChain: HotelChainType.LUXOR,
       }
     ).toEqual(
       state(`
@@ -449,7 +450,7 @@ describe("BoardStateEngine", () => {
     `,
       {
         boardSquareSelectedState: tilePlacedAt("12I"),
-        selectedHotelChain: HotelChainType.TOWER
+        selectedHotelChain: HotelChainType.TOWER,
       }
     ).toEqual(
       state(`
@@ -481,7 +482,7 @@ describe("BoardStateEngine", () => {
     `,
       {
         boardSquareSelectedState: tilePlacedAt("1I"),
-        selectedHotelChain: HotelChainType.WORLDWIDE
+        selectedHotelChain: HotelChainType.WORLDWIDE,
       }
     ).toEqual(
       state(`
@@ -512,7 +513,7 @@ describe("BoardStateEngine", () => {
           - - - - - - - - - - - -
         `,
       {
-        boardSquareSelectedState: tilePlacedAt("3B")
+        boardSquareSelectedState: tilePlacedAt("3B"),
       }
     ).toEqual(
       state(`
@@ -543,7 +544,7 @@ describe("BoardStateEngine", () => {
         - - - - - - - - - - - -
       `,
       {
-        boardSquareSelectedState: tilePlacedAt("4A")
+        boardSquareSelectedState: tilePlacedAt("4A"),
       }
     ).toEqual(
       state(`

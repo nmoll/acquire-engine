@@ -34,24 +34,24 @@ export type BoardSquareState =
   | HasHotelChain;
 
 export const BoardSquareStateType = {
-  None: (): None => ({
-    type: "None"
-  }),
   AvailableForSelection: (): AvailableForSelection => ({
     type: "AvailableForSelection"
   }),
-  Selected: (): Selected => ({
-    type: "Selected"
+  HasHotelChain: (hotelChainType: HotelChainType): HasHotelChain => ({
+    hotelChainType,
+    type: "HasHotelChain"
   }),
   HasTile: (): HasTile => ({
     type: "HasTile"
   }),
+  None: (): None => ({
+    type: "None"
+  }),
   PendingHotel: (): PendingHotel => ({
     type: "PendingHotel"
   }),
-  HasHotelChain: (hotelChainType: HotelChainType): HasHotelChain => ({
-    type: "HasHotelChain",
-    hotelChainType
+  Selected: (): Selected => ({
+    type: "Selected"
   })
 };
 

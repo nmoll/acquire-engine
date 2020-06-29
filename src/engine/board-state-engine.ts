@@ -1,6 +1,6 @@
 import {
   BoardSquareState,
-  BoardSquareStateType
+  BoardSquareStateType,
 } from "../model/board-square-state";
 import { IPlayerTurn } from "../model/player-turn";
 import { Scenarios } from "./scenarios";
@@ -17,9 +17,9 @@ const getBoardSquareState = (
 ): BoardSquareState =>
   Scenarios.getHasHotelChainState(boardState, playerTurn, index) ||
   Scenarios.getPendingHotelState(boardState, playerTurn, index) ||
+  Scenarios.getHasTileState(boardState, playerTurn, index) ||
   Scenarios.getSelectedState(boardState, playerTurn, index) ||
   Scenarios.getAvailableForSelectionState(boardState, playerTurn, index) ||
-  Scenarios.getHasTileState(boardState, playerTurn, index) ||
   Scenarios.getCurrentState(boardState, playerTurn, index);
 
 const computeState = (
@@ -33,5 +33,5 @@ const computeState = (
     : defaultState;
 
 export const BoardStateEngine = {
-  computeState
+  computeState,
 };

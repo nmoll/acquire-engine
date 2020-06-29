@@ -1,6 +1,6 @@
 import {
   BoardSquareState,
-  BoardSquareStateType
+  BoardSquareStateType,
 } from "../model/board-square-state";
 import { IPlayerTurn } from "../model/player-turn";
 import {
@@ -13,7 +13,7 @@ import {
   isTileAdjacentToConfirmedSelection,
   isUnconfirmedSelection,
   playerHasSelectedHotel,
-  starterTilePlayed
+  starterTilePlayed,
 } from "./utils";
 
 export const Scenarios = {
@@ -22,6 +22,7 @@ export const Scenarios = {
     playerTurn: IPlayerTurn,
     index: number
   ): BoardSquareState | false =>
+    playerTurn.boardSquareSelectedState.type !== "Confirmed" &&
     playerTurn.boardSquareOptionIds.includes(index)
       ? BoardSquareStateType.AvailableForSelection()
       : false,
@@ -91,5 +92,5 @@ export const Scenarios = {
     boardState: BoardSquareState[],
     playerTurn: IPlayerTurn,
     index: number
-  ): BoardSquareState => boardState[index]
+  ): BoardSquareState => boardState[index],
 };
