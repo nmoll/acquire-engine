@@ -1,10 +1,14 @@
 import {
   BoardSquareState,
-  BoardSquareStateType
+  BoardSquareStateType,
 } from "../../src/model/board-square-state";
 import { HotelChainType } from "../../src/model/hotel-chain-type";
 
-const squareStates = {
+interface SquareState {
+  [key: string]: BoardSquareState;
+}
+
+const squareStates: SquareState = {
   "-": BoardSquareStateType.None(),
   o: BoardSquareStateType.AvailableForSelection(),
   O: BoardSquareStateType.Selected(),
@@ -16,14 +20,14 @@ const squareStates = {
   I: BoardSquareStateType.HasHotelChain(HotelChainType.IMPERIAL),
   L: BoardSquareStateType.HasHotelChain(HotelChainType.LUXOR),
   T: BoardSquareStateType.HasHotelChain(HotelChainType.TOWER),
-  W: BoardSquareStateType.HasHotelChain(HotelChainType.WORLDWIDE)
+  W: BoardSquareStateType.HasHotelChain(HotelChainType.WORLDWIDE),
 };
 
 const createBoardState = (diagram: string): BoardSquareState[] => {
   const squares = diagram.trim().split(/\s*/);
-  return squares.map(square => squareStates[square]);
+  return squares.map((square) => squareStates[square as keyof SquareState]);
 };
 
 export const BoardStateFactory = {
-  createBoardState
+  createBoardState,
 };

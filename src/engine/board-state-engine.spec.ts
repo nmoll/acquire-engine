@@ -35,7 +35,7 @@ const state = (diagram: string) => BoardStateFactory.createBoardState(diagram);
  */
 describe("BoardStateEngine", () => {
   it("should return empty state if nothing provided", () => {
-    expectStateWithTurn("", null).toEqual(
+    expectStateWithTurn("", {}).toEqual(
       state(
         `
         - - - - - - - - - - - -
@@ -65,7 +65,7 @@ describe("BoardStateEngine", () => {
           - - - - - - - - - - - -
           - - - - - - - - - - - -
         `,
-      null
+      {}
     ).toEqual(
       state(`
         - - T T - - - - - - - -

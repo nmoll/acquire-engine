@@ -8,21 +8,22 @@ const HOTELS_BY_CODE = {
   I: HotelChainType.IMPERIAL,
   L: HotelChainType.LUXOR,
   T: HotelChainType.TOWER,
-  W: HotelChainType.WORLDWIDE
+  W: HotelChainType.WORLDWIDE,
 };
 
 const createSharesState = (diagram: string): ISharesState => {
   const rows = diagram.trim().split(/\n/);
-  const hotelCodes = rows
-    .shift()
-    .trim()
-    .split(/\s/);
+  const hotelCodes: string[] =
+    rows
+      .shift()
+      ?.trim()
+      ?.split(/\s/) || [];
 
   const result: ISharesState = {};
 
-  rows.forEach(row => {
+  rows.forEach((row) => {
     const cols = row.trim().split(/\s/);
-    const playerId = Number.parseInt(cols.shift().replace("P", ""), 10);
+    const playerId = Number(cols.shift()?.replace("P", ""));
 
     result[playerId] = {
       AMERICAN: 0,
@@ -31,11 +32,12 @@ const createSharesState = (diagram: string): ISharesState => {
       IMPERIAL: 0,
       LUXOR: 0,
       TOWER: 0,
-      WORLDWIDE: 0
+      WORLDWIDE: 0,
     };
 
     cols.forEach((col, idx) => {
-      const hotel: HotelChainType = HOTELS_BY_CODE[hotelCodes[idx]];
+      const hotel: HotelChainType =
+        HOTELS_BY_CODE[hotelCodes[idx] as keyof typeof HOTELS_BY_CODE];
       result[playerId][hotel] = Number.parseInt(col, 10);
     });
   });
@@ -44,5 +46,5 @@ const createSharesState = (diagram: string): ISharesState => {
 };
 
 export const SharesStateFactory = {
-  createSharesState
+  createSharesState,
 };
