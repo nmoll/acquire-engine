@@ -1,8 +1,8 @@
 import {
   BoardSquareState,
   BoardSquareStateType,
-} from "../model/board-square-state";
-import { IPlayerTurn } from "../model/player-turn";
+} from "../../../model/board-square-state";
+import { IPlayerTurn } from "../../../model/player-turn";
 import {
   getAdjacentHotelChains,
   getLargestHotelChain,
@@ -14,7 +14,7 @@ import {
   isUnconfirmedSelection,
   playerHasSelectedHotel,
   starterTilePlayed,
-} from "./utils";
+} from "../../../utils/utils";
 
 export const Scenarios = {
   getAvailableForSelectionState: (

@@ -1,9 +1,9 @@
 import {
   BoardSquareState,
   BoardSquareStateType,
-} from "../model/board-square-state";
-import { IPlayerTurn } from "../model/player-turn";
-import { Scenarios } from "./scenarios";
+} from "../../model/board-square-state";
+import { IPlayerTurn } from "../../model/player-turn";
+import { Scenarios } from "./scenarios/scenarios";
 
 const defaultState: BoardSquareState[] = [];
 for (let i = 0; i < 108; i++) {

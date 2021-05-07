@@ -1,12 +1,12 @@
-import { getIndex } from "../src/engine/utils";
 import {
   BoardSquareSelectedState,
   BoardSquareSelectedStateType,
   Confirmed,
-  Unconfirmed
+  Unconfirmed,
 } from "../src/model/board-square-state";
 import { HotelChainType } from "../src/model/hotel-chain-type";
 import { IShares } from "../src/model/shares";
+import { getIndex } from "../src/utils/utils";
 import { PlayerTurnFactory } from "./factory/player-turn.factory";
 
 const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I"];
@@ -21,7 +21,7 @@ export const turn = (
     boardSquareSelectedState: selection,
     playerId,
     selectedHotelChain,
-    sharesPurchased
+    sharesPurchased,
   });
 
 export const player = (playerId: number) => playerId;
@@ -34,17 +34,17 @@ export const buys = (shares: IShares[]) => shares;
 
 export const america = (quantity: number): IShares => ({
   hotel: HotelChainType.AMERICAN,
-  quantity
+  quantity,
 });
 
 export const imererial = (quantity: number): IShares => ({
   hotel: HotelChainType.IMPERIAL,
-  quantity
+  quantity,
 });
 
 export const continental = (quantity: number): IShares => ({
   hotel: HotelChainType.CONTINENTAL,
-  quantity
+  quantity,
 });
 
 export const getTilePosition = (tileLabel: string): number => {

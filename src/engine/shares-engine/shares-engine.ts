@@ -3,9 +3,9 @@ import {
   BoardSquareState,
   HotelChainType,
   IPlayerTurn,
-} from "../model";
-import { ISharesState } from "../model/shares-state";
-import { starterTilePlayed } from "./utils";
+} from "../../model";
+import { ISharesState } from "../../model/shares-state";
+import { starterTilePlayed } from "../../utils/utils";
 
 const intitialState: ISharesState = {};
 

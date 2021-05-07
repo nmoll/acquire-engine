@@ -1,6 +1,6 @@
-import { HotelChainType, IPlayerTurn } from "../model";
-import { ICashState } from "../model/cash-state";
-import { IShares } from "../model/shares";
+import { HotelChainType, IPlayerTurn } from "../../model";
+import { ICashState } from "../../model/cash-state";
+import { IShares } from "../../model/shares";
 
 const initialState: ICashState = {};
 

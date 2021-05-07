@@ -1,5 +1,5 @@
-import { BoardStateFactory } from "../../test/factory/board-state.factory";
-import { SharesStateFactory } from "../../test/factory/shares-state.factory";
+import { BoardStateFactory } from "../../../test/factory/board-state.factory";
+import { SharesStateFactory } from "../../../test/factory/shares-state.factory";
 import {
   america,
   buys,
@@ -7,9 +7,9 @@ import {
   player,
   plays,
   starts,
-  turn
-} from "../../test/helpers";
-import { HotelChainType, IGameState, IPlayerTurn } from "../model";
+  turn,
+} from "../../../test/helpers";
+import { HotelChainType, IGameState, IPlayerTurn } from "../../model";
 import { GameEngine } from "./game-engine";
 
 describe("GameEngine", () => {
@@ -30,7 +30,7 @@ describe("GameEngine", () => {
           - - - - - - - - - - - -`
       ),
       cashState: {},
-      sharesState: {}
+      sharesState: {},
     };
 
     expect(GameEngine.computeGameState(turns)).toEqual(expectedState);
@@ -56,7 +56,7 @@ describe("GameEngine", () => {
         starts(HotelChainType.IMPERIAL)
       ),
       turn(player(4), plays("3F"), [america(3)]),
-      turn(player(1), plays("3E"))
+      turn(player(1), plays("3E")),
     ];
 
     const expectedState: IGameState = {
@@ -74,7 +74,7 @@ describe("GameEngine", () => {
         1: 6000,
         2: 5100,
         3: 4200,
-        4: 4500
+        4: 4500,
       },
       sharesState: SharesStateFactory.createSharesState(`
            A C F I L T W
@@ -82,7 +82,7 @@ describe("GameEngine", () => {
         P2 3 0 0 0 0 0 0
         P3 5 0 0 3 0 0 0
         P4 5 0 0 0 0 0 0
-        `)
+        `),
     };
 
     expect(GameEngine.computeGameState(turns)).toEqual(expectedState);

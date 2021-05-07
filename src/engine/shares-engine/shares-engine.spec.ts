@@ -1,11 +1,11 @@
-import { BoardStateFactory } from "../../test/factory/board-state.factory";
-import { PlayerTurnFactory } from "../../test/factory/player-turn.factory";
-import { SharesStateFactory } from "../../test/factory/shares-state.factory";
+import { BoardStateFactory } from "../../../test/factory/board-state.factory";
+import { PlayerTurnFactory } from "../../../test/factory/player-turn.factory";
+import { SharesStateFactory } from "../../../test/factory/shares-state.factory";
 import {
   BoardSquareSelectedStateType,
   HotelChainType,
-  IPlayerTurn
-} from "../model";
+  IPlayerTurn,
+} from "../../model";
 import { SharesEngine } from "./shares-engine";
 
 const expectStateWithTurn = (
@@ -41,7 +41,7 @@ describe("SharesEngine", () => {
     it("should return 0 shares for each hotel if no shares have been purchased", () => {
       expectStateWithTurn("", "", {
         playerId: 1,
-        seq: 0
+        seq: 0,
       }).toEqual(
         SharesStateFactory.createSharesState(
           `
@@ -65,13 +65,13 @@ describe("SharesEngine", () => {
           sharesPurchased: [
             {
               hotel: HotelChainType.AMERICAN,
-              quantity: 1
+              quantity: 1,
             },
             {
               hotel: HotelChainType.CONTINENTAL,
-              quantity: 2
-            }
-          ]
+              quantity: 2,
+            },
+          ],
         }
       ).toEqual(
         SharesStateFactory.createSharesState(
@@ -97,13 +97,13 @@ describe("SharesEngine", () => {
           sharesSold: [
             {
               hotel: HotelChainType.CONTINENTAL,
-              quantity: 1
+              quantity: 1,
             },
             {
               hotel: HotelChainType.FESTIVAL,
-              quantity: 2
-            }
-          ]
+              quantity: 2,
+            },
+          ],
         }
       ).toEqual(
         SharesStateFactory.createSharesState(
@@ -136,7 +136,7 @@ describe("SharesEngine", () => {
         {
           boardSquareSelectedState: BoardSquareSelectedStateType.Confirmed(3),
           playerId: 2,
-          selectedHotelChain: HotelChainType.IMPERIAL
+          selectedHotelChain: HotelChainType.IMPERIAL,
         }
       ).toEqual(
         SharesStateFactory.createSharesState(`

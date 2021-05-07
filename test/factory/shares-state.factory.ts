@@ -1,4 +1,4 @@
-import { HotelChainType } from "../../src";
+import { HotelChainType } from "../../src/model/hotel-chain-type";
 import { ISharesState } from "../../src/model/shares-state";
 
 const HOTELS_BY_CODE = {

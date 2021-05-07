@@ -1,11 +1,11 @@
-import { BoardStateFactory } from "../../test/factory/board-state.factory";
-import { PlayerTurnFactory } from "../../test/factory/player-turn.factory";
-import { tilePlacedAt, tileSelectedAt } from "../../test/helpers";
+import { BoardStateFactory } from "../../../test/factory/board-state.factory";
+import { PlayerTurnFactory } from "../../../test/factory/player-turn.factory";
+import { tilePlacedAt, tileSelectedAt } from "../../../test/helpers";
 import {
   BoardSquareSelectedStateType,
   HotelChainType,
   IPlayerTurn,
-} from "../model";
+} from "../../model";
 import { BoardStateEngine } from "./board-state-engine";
 
 const expectStateWithTurn = (diagram: string, turn: Partial<IPlayerTurn>) =>

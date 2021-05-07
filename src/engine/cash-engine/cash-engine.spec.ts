@@ -1,4 +1,4 @@
-import { PlayerTurnFactory } from "../../test/factory/player-turn.factory";
+import { PlayerTurnFactory } from "../../../test/factory/player-turn.factory";
 import {
   america,
   continental,
@@ -6,8 +6,8 @@ import {
   player,
   plays,
   turn,
-} from "../../test/helpers";
-import { ICashState } from "../model/cash-state";
+} from "../../../test/helpers";
+import { ICashState } from "../../model/cash-state";
 import { CashEngine } from "./cash-engine";
 
 describe("CashEngine", () => {
