@@ -2,8 +2,13 @@ import {
   BoardSquareState,
   BoardSquareStateType,
 } from "../../model/board-square-state";
+import { IBoardSquareStateContext } from "../../model/board-square-state-context";
 import { IPlayerTurn } from "../../model/player-turn";
-import { Scenarios } from "./scenarios/scenarios";
+import { ScenarioAvailableForSelection } from "./scenarios/scenario-available-for-selection";
+import { ScenarioHasHotelChain } from "./scenarios/scenario-has-hotel-chain";
+import { ScenarioHasTile } from "./scenarios/scenario-has-tile";
+import { ScenarioIsPendingHotel } from "./scenarios/scenario-is-pending-hotel";
+import { ScenarioIsSelected } from "./scenarios/scenario-is-selected";
 
 const defaultState: BoardSquareState[] = [];
 for (let i = 0; i < 108; i++) {
@@ -11,16 +16,14 @@ for (let i = 0; i < 108; i++) {
 }
 
 const getBoardSquareState = (
-  boardState: BoardSquareState[],
-  playerTurn: IPlayerTurn,
-  index: number
+  context: IBoardSquareStateContext
 ): BoardSquareState =>
-  Scenarios.getHasHotelChainState(boardState, playerTurn, index) ||
-  Scenarios.getPendingHotelState(boardState, playerTurn, index) ||
-  Scenarios.getHasTileState(boardState, playerTurn, index) ||
-  Scenarios.getSelectedState(boardState, playerTurn, index) ||
-  Scenarios.getAvailableForSelectionState(boardState, playerTurn, index) ||
-  Scenarios.getCurrentState(boardState, playerTurn, index);
+  new ScenarioHasHotelChain().resolve(context) ||
+  new ScenarioIsPendingHotel().resolve(context) ||
+  new ScenarioHasTile().resolve(context) ||
+  new ScenarioIsSelected().resolve(context) ||
+  new ScenarioAvailableForSelection().resolve(context) ||
+  context.boardState[context.index];
 
 const computeState = (
   boardState: BoardSquareState[],
@@ -28,7 +31,7 @@ const computeState = (
 ): BoardSquareState[] =>
   boardState && boardState.length && playerTurn
     ? boardState.map((_, index) =>
-        getBoardSquareState(boardState, playerTurn, index)
+        getBoardSquareState({ boardState, playerTurn, index })
       )
     : defaultState;
 
