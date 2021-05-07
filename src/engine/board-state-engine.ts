@@ -5,7 +5,7 @@ import {
 import { IPlayerTurn } from "../model/player-turn";
 import { Scenarios } from "./scenarios";
 
-const defaultState = [];
+const defaultState: BoardSquareState[] = [];
 for (let i = 0; i < 108; i++) {
   defaultState.push(BoardSquareStateType.None());
 }
@@ -24,7 +24,7 @@ const getBoardSquareState = (
 
 const computeState = (
   boardState: BoardSquareState[],
-  playerTurn: IPlayerTurn
+  playerTurn: IPlayerTurn | null
 ): BoardSquareState[] =>
   boardState && boardState.length && playerTurn
     ? boardState.map((_, index) =>

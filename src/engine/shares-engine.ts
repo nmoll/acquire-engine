@@ -2,7 +2,7 @@ import {
   ALL_HOTELS,
   BoardSquareState,
   HotelChainType,
-  IPlayerTurn
+  IPlayerTurn,
 } from "../model";
 import { ISharesState } from "../model/shares-state";
 import { starterTilePlayed } from "./utils";
@@ -15,7 +15,7 @@ const getExistingShares = (
   state: ISharesState
 ): number =>
   state[playerTurn.playerId] && state[playerTurn.playerId][hotel]
-    ? state[playerTurn.playerId][hotel]
+    ? state[playerTurn.playerId][hotel] || 0
     : 0;
 
 const getStarterBonuses = (
@@ -40,7 +40,7 @@ const getPurchasedShares = (
   if (!playerTurn.sharesPurchased) {
     return 0;
   }
-  const share = playerTurn.sharesPurchased.find(s => s.hotel === hotel);
+  const share = playerTurn.sharesPurchased.find((s) => s.hotel === hotel);
   return share ? share.quantity : 0;
 };
 
@@ -51,12 +51,12 @@ const getSoldShares = (
   if (!playerTurn.sharesSold) {
     return 0;
   }
-  const share = playerTurn.sharesSold.find(s => s.hotel === hotel);
+  const share = playerTurn.sharesSold.find((s) => s.hotel === hotel);
   return share ? share.quantity : 0;
 };
 
 const computeState = (
-  playerTurn: IPlayerTurn,
+  playerTurn: IPlayerTurn | null,
   sharesState: ISharesState = intitialState,
   boardState: BoardSquareState[] = []
 ): ISharesState => {
@@ -74,13 +74,13 @@ const computeState = (
           getExistingShares(playerTurn, hotel, state) +
           getStarterBonuses(playerTurn, hotel, boardState) +
           getPurchasedShares(playerTurn, hotel) -
-          getSoldShares(playerTurn, hotel)
-      }
+          getSoldShares(playerTurn, hotel),
+      },
     }),
     sharesState
   );
 };
 
 export const SharesEngine = {
-  computeState
+  computeState,
 };

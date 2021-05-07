@@ -74,16 +74,20 @@ export const Scenarios = {
         )
       : false) ||
     // Starter tile played
-    (starterTilePlayed(playerTurn, index, boardState)
+    (playerTurn.selectedHotelChain &&
+    starterTilePlayed(playerTurn, index, boardState)
       ? BoardSquareStateType.HasHotelChain(playerTurn.selectedHotelChain)
       : false) ||
     // Next to starter tile
-    (isTileAdjacentToConfirmedSelection(boardState, playerTurn, index) &&
+    (playerTurn.selectedHotelChain &&
+    isTileAdjacentToConfirmedSelection(boardState, playerTurn, index) &&
     playerHasSelectedHotel(playerTurn)
       ? BoardSquareStateType.HasHotelChain(playerTurn.selectedHotelChain)
       : false) ||
     // Hotel chosen
-    (isPendingHotel(boardState, index) && playerHasSelectedHotel(playerTurn)
+    (playerTurn.selectedHotelChain &&
+    isPendingHotel(boardState, index) &&
+    playerHasSelectedHotel(playerTurn)
       ? BoardSquareStateType.HasHotelChain(playerTurn.selectedHotelChain)
       : false) ||
     false,

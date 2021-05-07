@@ -35,7 +35,7 @@ const getTotalSharesPrice = (shares: IShares[]): number =>
     : 0;
 
 const computeState = (
-  playerTurn: IPlayerTurn,
+  playerTurn: IPlayerTurn | null,
   state: ICashState = initialState
 ): ICashState => {
   if (!playerTurn) {
@@ -48,11 +48,11 @@ const computeState = (
       (!isNaN(state[playerTurn.playerId])
         ? state[playerTurn.playerId]
         : startingAmount) -
-      getTotalSharesPrice(playerTurn.sharesPurchased) +
-      getTotalSharesPrice(playerTurn.sharesSold)
+      getTotalSharesPrice(playerTurn.sharesPurchased || []) +
+      getTotalSharesPrice(playerTurn.sharesSold || []),
   };
 };
 
 export const CashEngine = {
-  computeState
+  computeState,
 };
