@@ -7,8 +7,8 @@ import { BoardStateEngine } from "./board-state-engine";
 const expectStateWithAction = (diagram: string, action: PlayerAction | null) =>
   expect(
     BoardStateEngine.computeState(
-      BoardStateFactory.createBoardState(diagram),
-      action
+      action,
+      BoardStateFactory.createBoardState(diagram)
     )
   );
 

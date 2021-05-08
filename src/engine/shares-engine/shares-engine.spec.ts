@@ -3,9 +3,14 @@ import { HotelChainType } from "../../model";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
 import { SharesEngine } from "./shares-engine";
 
-const expectStateWithAction = (sharesDiagram: string, action: PlayerAction) =>
+const expectStateWithAction = (
+  sharesDiagram: string,
+  playerIds: number[],
+  action: PlayerAction | null
+) =>
   expect(
     SharesEngine.computeState(
+      playerIds,
       action,
       SharesStateFactory.createSharesState(sharesDiagram)
     )
@@ -27,13 +32,22 @@ const expectStateWithAction = (sharesDiagram: string, action: PlayerAction) =>
  *  P4 : Player 4
  */
 describe("SharesEngine", () => {
+  let playerIds: number[];
+
+  beforeEach(() => {
+    playerIds = [1, 2, 3, 4];
+  });
+
   describe("computeShares", () => {
-    it("should return 0 shares for each hotel if no shares have been purchased", () => {
-      expectStateWithAction("", PlayerActionType.PlaceTile(1, 0)).toEqual(
+    it("should return 0 shares for each hotel if no action has been played", () => {
+      expectStateWithAction("", playerIds, null).toEqual(
         SharesStateFactory.createSharesState(
           `
               A C F I L T W
            P1 0 0 0 0 0 0 0 
+           P2 0 0 0 0 0 0 0 
+           P3 0 0 0 0 0 0 0 
+           P4 0 0 0 0 0 0 0 
           `
         )
       );
@@ -45,7 +59,10 @@ describe("SharesEngine", () => {
              A C F I L T W
           P1 2 1 0 0 0 0 0
           P2 0 6 0 0 0 0 0
+          P3 0 0 0 0 0 0 0
+          P4 0 0 0 0 0 0 0
         `,
+        playerIds,
         PlayerActionType.PurchaseShares(1, [
           {
             hotel: HotelChainType.AMERICAN,
@@ -62,6 +79,8 @@ describe("SharesEngine", () => {
               A C F I L T W
            P1 3 3 0 0 0 0 0
            P2 0 6 0 0 0 0 0
+           P3 0 0 0 0 0 0 0
+           P4 0 0 0 0 0 0 0
           `
         )
       );
@@ -74,7 +93,9 @@ describe("SharesEngine", () => {
         P1 0 0 0 0 0 0 0
         P2 0 0 0 0 0 0 0
         P3 0 0 0 0 0 0 0
-        P4 0 0 0 0 0 0 0`,
+        P4 0 0 0 0 0 0 0
+        `,
+        playerIds,
         PlayerActionType.StartHotelChain(2, HotelChainType.IMPERIAL)
       ).toEqual(
         SharesStateFactory.createSharesState(`
@@ -82,7 +103,8 @@ describe("SharesEngine", () => {
            P1 0 0 0 0 0 0 0
            P2 0 0 0 1 0 0 0
            P3 0 0 0 0 0 0 0
-           P4 0 0 0 0 0 0 0`)
+           P4 0 0 0 0 0 0 0
+           `)
       );
     });
 
@@ -93,7 +115,9 @@ describe("SharesEngine", () => {
         P1 0 0 0 0 0 0 0
         P2 0 0 0 1 0 0 0
         P3 0 0 0 0 0 0 0
-        P4 0 0 0 0 0 0 0`,
+        P4 0 0 0 0 0 0 0
+        `,
+        playerIds,
         PlayerActionType.StartHotelChain(2, HotelChainType.IMPERIAL)
       ).toEqual(
         SharesStateFactory.createSharesState(`
@@ -101,7 +125,8 @@ describe("SharesEngine", () => {
            P1 0 0 0 0 0 0 0
            P2 0 0 0 2 0 0 0
            P3 0 0 0 0 0 0 0
-           P4 0 0 0 0 0 0 0`)
+           P4 0 0 0 0 0 0 0
+           `)
       );
     });
   });

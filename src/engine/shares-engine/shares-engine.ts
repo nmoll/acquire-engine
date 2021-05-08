@@ -2,7 +2,23 @@ import { ALL_HOTELS, HotelChainType } from "../../model";
 import { PlayerAction } from "../../model/player-action";
 import { ISharesState } from "../../model/shares-state";
 
-const intitialState: ISharesState = {};
+const fillEmptyStates = (
+  playerIds: number[],
+  shareState: ISharesState
+): ISharesState =>
+  playerIds.reduce(
+    (state, playerId) => ({
+      ...state,
+      [playerId]: ALL_HOTELS.reduce(
+        (hotelState, hotel) => ({
+          ...hotelState,
+          [hotel]: (state[playerId] && state[playerId][hotel]) || 0,
+        }),
+        {}
+      ),
+    }),
+    shareState || {}
+  );
 
 const getExistingShares = (
   playerAction: PlayerAction,
@@ -33,9 +49,12 @@ const getPurchasedShares = (
 };
 
 const computeState = (
-  playerAction: PlayerAction | null,
-  sharesState: ISharesState = intitialState
+  playerIds: number[],
+  playerAction: PlayerAction | null = null,
+  sharesState: ISharesState = {}
 ): ISharesState => {
+  sharesState = fillEmptyStates(playerIds, sharesState);
+
   if (!playerAction) {
     return sharesState;
   }

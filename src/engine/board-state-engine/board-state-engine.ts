@@ -20,8 +20,8 @@ const getBoardSquareState = (context: PlayerActionContext): BoardSquareState =>
   context.boardState[context.index];
 
 const computeState = (
-  boardState: BoardSquareState[],
-  playerAction: PlayerAction | null
+  playerAction: PlayerAction | null = null,
+  boardState: BoardSquareState[] = []
 ): BoardSquareState[] => {
   if (!boardState || !boardState.length) {
     return defaultState;

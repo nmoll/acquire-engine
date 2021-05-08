@@ -3,9 +3,20 @@ import { ICashState } from "../../model/cash-state";
 import { PlayerAction } from "../../model/player-action";
 import { IShares } from "../../model/shares";
 
-const initialState: ICashState = {};
-
 const startingAmount = 6000;
+
+const fillEmptyStates = (
+  playerIds: number[],
+  cashState: ICashState
+): ICashState =>
+  playerIds.reduce(
+    (state, playerId) => ({
+      ...state,
+      [playerId]:
+        state[playerId] === undefined ? startingAmount : state[playerId],
+    }),
+    cashState
+  );
 
 const getStockBasePrice = (hotel: HotelChainType): number => {
   let basePrice;
@@ -37,22 +48,23 @@ const getTotalSharesPrice = (shares: IShares[]): number =>
     : 0;
 
 const computeState = (
-  playerAction: PlayerAction | null,
-  state: ICashState = initialState
+  playerIds: number[],
+  playerAction: PlayerAction | null = null,
+  state: ICashState = {}
 ): ICashState => {
+  state = fillEmptyStates(playerIds, state);
+
   if (!playerAction) {
     return state;
   }
 
-  const playerCash = !isNaN(state[playerAction.playerId])
-    ? state[playerAction.playerId]
-    : startingAmount;
-  const purchasedShares =
-    playerAction.type === "PurchaseShares" ? playerAction.shares : [];
-
   return {
     ...state,
-    [playerAction.playerId]: playerCash - getTotalSharesPrice(purchasedShares),
+    [playerAction.playerId]:
+      state[playerAction.playerId] -
+      getTotalSharesPrice(
+        playerAction.type === "PurchaseShares" ? playerAction.shares : []
+      ),
   };
 };
 

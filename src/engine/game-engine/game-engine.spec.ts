@@ -7,6 +7,7 @@ import { GameEngine } from "./game-engine";
 
 describe("GameEngine", () => {
   it("should compute initial game state with no actions", () => {
+    const playerIds = [1, 2, 3, 4];
     const actions: PlayerAction[] = [];
 
     const expectedState: IGameState = {
@@ -24,12 +25,16 @@ describe("GameEngine", () => {
       ),
       cashState: {},
       sharesState: {},
+      currentPlayerId: null,
     };
 
-    expect(GameEngine.computeGameState(actions)).toEqual(expectedState);
+    expect(GameEngine.computeGameState(playerIds, actions)).toEqual(
+      expectedState
+    );
   });
 
   it("should compute game state with multiple actions", () => {
+    const playerIds = [1, 2, 3, 4];
     const actions: PlayerAction[] = [
       PlayerActionType.PlaceTile(1, getTilePosition("5A")),
 
@@ -81,8 +86,11 @@ describe("GameEngine", () => {
           P3 5 0 0 3 0 0 0
           P4 5 0 0 0 0 0 0
           `),
+      currentPlayerId: 1,
     };
 
-    expect(GameEngine.computeGameState(actions)).toEqual(expectedState);
+    expect(GameEngine.computeGameState(playerIds, actions)).toEqual(
+      expectedState
+    );
   });
 });

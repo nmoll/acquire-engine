@@ -25,11 +25,17 @@ export interface ChooseMergeDirection {
   hotelChainToKeep: HotelChainType;
 }
 
+export interface EndTurn {
+  type: "EndTurn";
+  playerId: number;
+}
+
 export type PlayerAction =
   | PlaceTile
   | StartHotelChain
   | PurchaseShares
-  | ChooseMergeDirection;
+  | ChooseMergeDirection
+  | EndTurn;
 
 export const PlayerActionType = {
   PlaceTile: (playerId: number, boardSquareId: number): PlaceTile => ({
@@ -59,5 +65,10 @@ export const PlayerActionType = {
     type: "ChooseMergeDirection",
     playerId,
     hotelChainToKeep,
+  }),
+
+  EndTurn: (playerId: number): EndTurn => ({
+    type: "EndTurn",
+    playerId,
   }),
 };
