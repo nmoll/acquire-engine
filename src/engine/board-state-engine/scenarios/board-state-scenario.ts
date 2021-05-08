@@ -1,6 +1,6 @@
 import { BoardSquareState } from "../../../model";
-import { IBoardSquareStateContext } from "../../../model/board-square-state-context";
+import { PlayerActionContext } from "../../../model/player-action-context";
 
 export interface IBoardStateScenario {
-  resolve(context: IBoardSquareStateContext): BoardSquareState | false;
+  resolve(context: PlayerActionContext): BoardSquareState | false;
 }

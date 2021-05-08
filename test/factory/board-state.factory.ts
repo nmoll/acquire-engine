@@ -9,11 +9,9 @@ interface SquareState {
 }
 
 const squareStates: SquareState = {
-  "-": BoardSquareStateType.None(),
+  "-": BoardSquareStateType.Default(),
   o: BoardSquareStateType.AvailableForSelection(),
-  O: BoardSquareStateType.Selected(),
   "0": BoardSquareStateType.HasTile(),
-  "*": BoardSquareStateType.PendingHotel(),
   A: BoardSquareStateType.HasHotelChain(HotelChainType.AMERICAN),
   C: BoardSquareStateType.HasHotelChain(HotelChainType.CONTINENTAL),
   F: BoardSquareStateType.HasHotelChain(HotelChainType.FESTIVAL),

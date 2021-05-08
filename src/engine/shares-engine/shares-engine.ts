@@ -1,88 +1,10 @@
-import {
-  ALL_HOTELS,
-  BoardSquareState,
-  HotelChainType,
-  IPlayerTurn,
-} from "../../model";
+import { ALL_HOTELS, HotelChainType } from "../../model";
 import { PlayerAction } from "../../model/player-action";
 import { ISharesState } from "../../model/shares-state";
-import { starterTilePlayed } from "../../utils/utils";
 
 const intitialState: ISharesState = {};
 
 const getExistingShares = (
-  playerTurn: IPlayerTurn,
-  hotel: HotelChainType,
-  state: ISharesState
-): number =>
-  state[playerTurn.playerId] && state[playerTurn.playerId][hotel]
-    ? state[playerTurn.playerId][hotel] || 0
-    : 0;
-
-const getStarterBonuses = (
-  playerTurn: IPlayerTurn,
-  hotel: HotelChainType,
-  boardState: BoardSquareState[]
-): number =>
-  playerTurn.selectedHotelChain === hotel &&
-  playerTurn.boardSquareSelectedState.type === "Confirmed" &&
-  starterTilePlayed(
-    playerTurn,
-    playerTurn.boardSquareSelectedState.boardSquareId,
-    boardState
-  )
-    ? 1
-    : 0;
-
-const getPurchasedShares = (
-  playerTurn: IPlayerTurn,
-  hotel: HotelChainType
-): number => {
-  if (!playerTurn.sharesPurchased) {
-    return 0;
-  }
-  const share = playerTurn.sharesPurchased.find((s) => s.hotel === hotel);
-  return share ? share.quantity : 0;
-};
-
-const getSoldShares = (
-  playerTurn: IPlayerTurn,
-  hotel: HotelChainType
-): number => {
-  if (!playerTurn.sharesSold) {
-    return 0;
-  }
-  const share = playerTurn.sharesSold.find((s) => s.hotel === hotel);
-  return share ? share.quantity : 0;
-};
-
-const computeState = (
-  playerTurn: IPlayerTurn | null,
-  sharesState: ISharesState = intitialState,
-  boardState: BoardSquareState[] = []
-): ISharesState => {
-  if (!playerTurn) {
-    return sharesState;
-  }
-
-  return ALL_HOTELS.reduce(
-    (state, hotel) => ({
-      ...state,
-
-      [playerTurn.playerId]: {
-        ...state[playerTurn.playerId],
-        [hotel]:
-          getExistingShares(playerTurn, hotel, state) +
-          getStarterBonuses(playerTurn, hotel, boardState) +
-          getPurchasedShares(playerTurn, hotel) -
-          getSoldShares(playerTurn, hotel),
-      },
-    }),
-    sharesState
-  );
-};
-
-const getExistingSharesWithAction = (
   playerAction: PlayerAction,
   hotel: HotelChainType,
   state: ISharesState
@@ -91,7 +13,7 @@ const getExistingSharesWithAction = (
     ? state[playerAction.playerId][hotel] || 0
     : 0;
 
-const getStarterBonusesWithAction = (
+const getStarterBonuses = (
   playerAction: PlayerAction,
   hotel: HotelChainType
 ): number =>
@@ -99,7 +21,7 @@ const getStarterBonusesWithAction = (
     ? 1
     : 0;
 
-const getPurchasedSharesWithAction = (
+const getPurchasedShares = (
   playerAction: PlayerAction,
   hotel: HotelChainType
 ): number => {
@@ -110,7 +32,7 @@ const getPurchasedSharesWithAction = (
   return share ? share.quantity : 0;
 };
 
-const computeStateWithAction = (
+const computeState = (
   playerAction: PlayerAction | null,
   sharesState: ISharesState = intitialState
 ): ISharesState => {
@@ -125,9 +47,9 @@ const computeStateWithAction = (
       [playerAction.playerId]: {
         ...state[playerAction.playerId],
         [hotel]:
-          getExistingSharesWithAction(playerAction, hotel, state) +
-          getStarterBonusesWithAction(playerAction, hotel) +
-          getPurchasedSharesWithAction(playerAction, hotel),
+          getExistingShares(playerAction, hotel, state) +
+          getStarterBonuses(playerAction, hotel) +
+          getPurchasedShares(playerAction, hotel),
       },
     }),
     sharesState
@@ -136,5 +58,4 @@ const computeStateWithAction = (
 
 export const SharesEngine = {
   computeState,
-  computeStateWithAction,
 };

@@ -3,42 +3,12 @@ import {
   BoardSquareStateType,
   HasHotelChain,
 } from "../../../model";
-import {
-  IBoardSquareStateContext,
-  PlayerActionContext,
-  PlayerTurnContext,
-} from "../../../model/board-square-state-context";
-import {
-  getAdjacentHotelChains,
-  getLargestHotelChain,
-  getMinorityHotelChain,
-  hasAdjacentTiles,
-  isPartOfMinorityHotelInMerge,
-  isPendingHotel,
-  isPlacedThisTurn,
-  isTileAdjacentToConfirmedSelection,
-  playerHasSelectedHotel,
-  starterTilePlayed,
-} from "../../../utils/utils";
+import { PlayerActionContext } from "../../../model/player-action-context";
+import { Utils } from "../../../utils/utils";
 import { IBoardStateScenario } from "./board-state-scenario";
 
 export class ScenarioHasHotelChain implements IBoardStateScenario {
-  resolve(context: IBoardSquareStateContext): BoardSquareState | false {
-    return context.type === "turn"
-      ? this.resolveTurn(context)
-      : this.resolveAction(context);
-  }
-
-  private resolveTurn(context: PlayerTurnContext): BoardSquareState | false {
-    return (
-      this.mergeIntoLargerHotel(context) ||
-      this.starterTile(context) ||
-      this.tileAjacentToStarter(context) ||
-      this.selectedHotel(context)
-    );
-  }
-
-  private resolveAction(context: PlayerActionContext): HasHotelChain | false {
+  resolve(context: PlayerActionContext): BoardSquareState | false {
     return (
       this.mergerTile(context) ||
       this.minorityMergedIntoMajority(context) ||
@@ -50,7 +20,7 @@ export class ScenarioHasHotelChain implements IBoardStateScenario {
   private newHotelStarted(context: PlayerActionContext): HasHotelChain | false {
     return context.playerAction.type === "StartHotelChain" &&
       context.boardState[context.index].type === "HasTile" &&
-      hasAdjacentTiles(context.boardState, context.index)
+      Utils.hasAdjacentTiles(context.boardState, context.index)
       ? BoardSquareStateType.HasHotelChain(context.playerAction.hotelChain)
       : false;
   }
@@ -67,7 +37,7 @@ export class ScenarioHasHotelChain implements IBoardStateScenario {
       return false;
     }
 
-    const adjacentHotelChains = getAdjacentHotelChains(
+    const adjacentHotelChains = Utils.getAdjacentHotelChains(
       context.boardState,
       context.playerAction.boardSquareId
     );
@@ -77,8 +47,14 @@ export class ScenarioHasHotelChain implements IBoardStateScenario {
     }
 
     return {
-      minority: getMinorityHotelChain(context.boardState, adjacentHotelChains),
-      majority: getLargestHotelChain(context.boardState, adjacentHotelChains),
+      minority: Utils.getMinorityHotelChain(
+        context.boardState,
+        adjacentHotelChains
+      ),
+      majority: Utils.getLargestHotelChain(
+        context.boardState,
+        adjacentHotelChains
+      ),
     };
   }
 
@@ -123,7 +99,7 @@ export class ScenarioHasHotelChain implements IBoardStateScenario {
       return false;
     }
 
-    const adjacentHotelChains = getAdjacentHotelChains(
+    const adjacentHotelChains = Utils.getAdjacentHotelChains(
       context.boardState,
       context.playerAction.boardSquareId
     );
@@ -135,60 +111,5 @@ export class ScenarioHasHotelChain implements IBoardStateScenario {
     return BoardSquareStateType.HasHotelChain(
       adjacentHotelChains[0].hotelChainType
     );
-  }
-
-  private mergeIntoLargerHotel(
-    context: PlayerTurnContext
-  ): BoardSquareState | false {
-    return context.playerTurn.boardSquareSelectedState.type === "Confirmed" &&
-      (isPlacedThisTurn(context.playerTurn, context.index) ||
-        isPartOfMinorityHotelInMerge(
-          context.boardState,
-          context.playerTurn,
-          context.index
-        ))
-      ? getLargestHotelChain(
-          context.boardState,
-          getAdjacentHotelChains(
-            context.boardState,
-            context.playerTurn.boardSquareSelectedState.boardSquareId
-          )
-        )
-      : false;
-  }
-
-  private starterTile(context: PlayerTurnContext): HasHotelChain | false {
-    return context.playerTurn.selectedHotelChain &&
-      starterTilePlayed(context.playerTurn, context.index, context.boardState)
-      ? BoardSquareStateType.HasHotelChain(
-          context.playerTurn.selectedHotelChain
-        )
-      : false;
-  }
-
-  private tileAjacentToStarter(
-    context: PlayerTurnContext
-  ): HasHotelChain | false {
-    return context.playerTurn.selectedHotelChain &&
-      isTileAdjacentToConfirmedSelection(
-        context.boardState,
-        context.playerTurn,
-        context.index
-      ) &&
-      playerHasSelectedHotel(context.playerTurn)
-      ? BoardSquareStateType.HasHotelChain(
-          context.playerTurn.selectedHotelChain
-        )
-      : false;
-  }
-
-  private selectedHotel(context: PlayerTurnContext): HasHotelChain | false {
-    return context.playerTurn.selectedHotelChain &&
-      isPendingHotel(context.boardState, context.index) &&
-      playerHasSelectedHotel(context.playerTurn)
-      ? BoardSquareStateType.HasHotelChain(
-          context.playerTurn.selectedHotelChain
-        )
-      : false;
   }
 }

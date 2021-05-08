@@ -1,20 +1,19 @@
 import { BoardStateFactory } from "../../../test/factory/board-state.factory";
-import { PlayerTurnFactory } from "../../../test/factory/player-turn.factory";
-import { tilePlacedAt, tileSelectedAt } from "../../../test/helpers";
-import {
-  BoardSquareSelectedStateType,
-  HotelChainType,
-  IPlayerTurn,
-} from "../../model";
+import { getTilePosition } from "../../../test/helpers";
+import { HotelChainType } from "../../model";
+import { PlayerAction, PlayerActionType } from "../../model/player-action";
 import { BoardStateEngine } from "./board-state-engine";
 
-const expectStateWithTurn = (diagram: string, turn: Partial<IPlayerTurn>) =>
+const expectStateWithAction = (diagram: string, action: PlayerAction | null) =>
   expect(
     BoardStateEngine.computeState(
       BoardStateFactory.createBoardState(diagram),
-      PlayerTurnFactory.createPlayerTurn(turn)
+      action
     )
   );
+
+const placeTile = (tileLabel: string) =>
+  PlayerActionType.PlaceTile(1, getTilePosition(tileLabel));
 
 const state = (diagram: string) => BoardStateFactory.createBoardState(diagram);
 
@@ -35,7 +34,7 @@ const state = (diagram: string) => BoardStateFactory.createBoardState(diagram);
  */
 describe("BoardStateEngine", () => {
   it("should return empty state if nothing provided", () => {
-    expectStateWithTurn("", {}).toEqual(
+    expectStateWithAction("", null).toEqual(
       state(
         `
         - - - - - - - - - - - -
@@ -52,8 +51,8 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should return the current state if no player turn", () => {
-    expectStateWithTurn(
+  it("should return the current state if no player action", () => {
+    expectStateWithAction(
       `
           - - T T - - - - - - - -
           - - - - - - - - - - - -
@@ -65,7 +64,7 @@ describe("BoardStateEngine", () => {
           - - - - - - - - - - - -
           - - - - - - - - - - - -
         `,
-      {}
+      null
     ).toEqual(
       state(`
         - - T T - - - - - - - -
@@ -82,7 +81,7 @@ describe("BoardStateEngine", () => {
   });
 
   it("should return the current state if selected square is outside the board", () => {
-    expectStateWithTurn(
+    expectStateWithAction(
       `
           - - T T - - - - - - - -
           - - - - - - - - - - - -
@@ -94,9 +93,7 @@ describe("BoardStateEngine", () => {
           - - - - - - - - - - - -
           - - - - - - - - - - - -
         `,
-      {
-        boardSquareSelectedState: tileSelectedAt("13A"),
-      }
+      placeTile("13A")
     ).toEqual(
       state(`
         - - T T - - - - - - - -
@@ -112,39 +109,8 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should have no selected squares if player has no selection", () => {
-    expectStateWithTurn(
-      `
-          - - T T - - - - - - - -
-          - - - - - - - - - - - -
-          - - - - - - - - - - - -
-          - - - - W W - - - - - -
-          - - - - - W - - - - - -
-          - - - - - - - - - - - -
-          - - - - - - - - - - - -
-          - - - - - - - - - - - -
-          - - - - - - - - - - - -
-        `,
-      {
-        boardSquareSelectedState: BoardSquareSelectedStateType.None(),
-      }
-    ).toEqual(
-      state(`
-        - - T T - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - W W - - - - - -
-        - - - - - W - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        `)
-    );
-  });
-
-  it("should set available for selection state for all player tiles", () => {
-    expectStateWithTurn(
+  it("should place tile on the correct position", () => {
+    expectStateWithAction(
       `
       - - - - - - - - - - - -
       - - - - - - - - - - - -
@@ -156,47 +122,11 @@ describe("BoardStateEngine", () => {
       - - - - - - - - - - - -
       - - - - - - - - - - - -
     `,
-      {
-        boardSquareOptionIds: [2, 6, 32, 40, 58, 59, 73],
-      }
+      placeTile("2A")
     ).toEqual(
       state(
         `
-      - - o - - - o - - - - -
-      - - - - - - - - - - - -
-      - - - - - - - - o - - -
-      - - - - o - - - - - - -
-      - - - - - - - - - - o o
-      - - - - - - - - - - - -
-      - o - - - - - - - - - -
-      - - - - - - - - - - - -
-      - - - - - - - - - - - -
-    `
-      )
-    );
-  });
-
-  it("should select the player selected square", () => {
-    expectStateWithTurn(
-      `
-      - o - O o - - - - - - -
-      - - - - - - - - - - - -
-      - - - - - - - - - - - -
-      - - - - - - - - - - - -
-      - - - - - - - - - - - -
-      - - - - - - - - - - - -
-      - - - - - - - - - - - -
-      - - - - - - - - - - - -
-      - - - - - - - - - - - -
-    `,
-      {
-        boardSquareOptionIds: [1, 3, 4],
-        boardSquareSelectedState: tileSelectedAt("2A"),
-      }
-    ).toEqual(
-      state(
-        `
-        - O - o o - - - - - - -
+        - 0 - - - - - - - - - -
         - - - - - - - - - - - -
         - - - - - - - - - - - -
         - - - - - - - - - - - -
@@ -210,120 +140,80 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should set a tile on the confirmed selected square", () => {
-    expectStateWithTurn(
-      `
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        `,
-      {
-        boardSquareOptionIds: [1, 3, 7],
-        boardSquareSelectedState: tilePlacedAt("8A"),
-      }
-    ).toEqual(
-      state(`
-        - - - - - - - 0 - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        `)
-    );
-  });
-
-  it("should mark the squares as pending hotel if a starter tile is played", () => {
-    expectStateWithTurn(
-      `
-      - - - - - - - - - - - -
-      - - - - - - - - - - - -
-      - - - - 0 - - - - - - -
-      - - - - - - - - - - - -
-      - - - - 0 - - - - - - -
-      - - - - - - - - - - - -
-      - - - - - - - - - - - -
-      - - - - - - - - - - - -
-      - - - - - - - - - - - -
-    `,
-      {
-        boardSquareSelectedState: tilePlacedAt("5D"),
-      }
-    ).toEqual(
-      state(
-        `
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - * - - - - - - -
-        - - - - * - - - - - - -
-        - - - - * - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-      `
-      )
-    );
-  });
+  // it("should mark the squares as pending hotel if a starter tile is played", () => {
+  //   expectStateWithAction(
+  //     `
+  //     - - - - - - - - - - - -
+  //     - - - - - - - - - - - -
+  //     - - - - 0 - - - - - - -
+  //     - - - - - - - - - - - -
+  //     - - - - 0 - - - - - - -
+  //     - - - - - - - - - - - -
+  //     - - - - - - - - - - - -
+  //     - - - - - - - - - - - -
+  //     - - - - - - - - - - - -
+  //   `,
+  //     placeTile("5D")
+  //   ).toEqual(
+  //     state(
+  //       `
+  //       - - - - - - - - - - - -
+  //       - - - - - - - - - - - -
+  //       - - - - 0 - - - - - - -
+  //       - - - - 0 - - - - - - -
+  //       - - - - 0 - - - - - - -
+  //       - - - - - - - - - - - -
+  //       - - - - - - - - - - - -
+  //       - - - - - - - - - - - -
+  //       - - - - - - - - - - - -
+  //     `
+  //     )
+  //   );
+  // });
 
   it("should start AMERICAN if AMERICAN is selected with starter tile", () => {
-    expectStateWithTurn(
+    expectStateWithAction(
       `
-          - - o 0 - - - - - - - -
-          - - - - - - - - - - - -
-          - - - - - - - - - - - -
-          - - - - - - - - - - - -
-          - - - - - - - - - - - -
-          - - - - - - - - - - - -
-          - - - - - - - - - - - -
-          - - - - - - - - - - - -
-          - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - 0 - - - - - - -
+      - - - - 0 - - - - - - -
+      - - - - 0 - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
         `,
-      {
-        boardSquareSelectedState: tilePlacedAt("3A"),
-        selectedHotelChain: HotelChainType.AMERICAN,
-      }
+      PlayerActionType.StartHotelChain(1, HotelChainType.AMERICAN)
     ).toEqual(
       state(`
-            - - A A - - - - - - - -
-            - - - - - - - - - - - -
-            - - - - - - - - - - - -
-            - - - - - - - - - - - -
-            - - - - - - - - - - - -
-            - - - - - - - - - - - -
-            - - - - - - - - - - - -
-            - - - - - - - - - - - -
-            - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - A - - - - - - -
+      - - - - A - - - - - - -
+      - - - - A - - - - - - - 
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
           `)
     );
   });
 
   it("should start CONTINTENTAL if CONTINTENTAL is selected with starter tile", () => {
-    expectStateWithTurn(
+    expectStateWithAction(
       `
           - - A A - - - - - - - -
           - - - - - - - - - - - -
           0 - - - - - - - - - - -
-          o - - - - - - - - - - -
+          0 - - - - - - - - - - -
           0 - - - - - - - - - - -
           - - - - - - - - - - - -
           - - - - - - - - - - - -
           - - - - - - - - - - - -
           - - - - - - - - - - - -
         `,
-      {
-        boardSquareSelectedState: tilePlacedAt("1D"),
-        selectedHotelChain: HotelChainType.CONTINENTAL,
-      }
+      PlayerActionType.StartHotelChain(1, HotelChainType.CONTINENTAL)
     ).toEqual(
       state(`
             - - A A - - - - - - - -
@@ -340,11 +230,11 @@ describe("BoardStateEngine", () => {
   });
 
   it("should start FESTIVAL if FESTIVAL is selected with starter tile", () => {
-    expectStateWithTurn(
+    expectStateWithAction(
       `
           - - A A - - - - - - - -
           - - - - - - - - - - - -
-          C - o 0 - - - - - - - -
+          C - 0 0 - - - - - - - -
           C - - - - - - - - - - -
           C - - - - - - - - - - -
           - - - - - - - - - - - -
@@ -352,10 +242,7 @@ describe("BoardStateEngine", () => {
           - - - - - - - - - - - -
           - - - - - - - - - - - -
         `,
-      {
-        boardSquareSelectedState: tilePlacedAt("3C"),
-        selectedHotelChain: HotelChainType.FESTIVAL,
-      }
+      PlayerActionType.StartHotelChain(1, HotelChainType.FESTIVAL)
     ).toEqual(
       state(`
             - - A A - - - - - - - -
@@ -372,7 +259,7 @@ describe("BoardStateEngine", () => {
   });
 
   it("should start IMERIAL if IMERIAL is selected with starter tile", () => {
-    expectStateWithTurn(
+    expectStateWithAction(
       `
             - - A A - - - - - - - -
             - - - - - - - - - - - -
@@ -380,14 +267,11 @@ describe("BoardStateEngine", () => {
             C - - - - - - - - - - -
             C - - - - - - - - - - -
             - - - - - - - - - 0 - -
-            - - - - - - - - 0 o - -
+            - - - - - - - - 0 0 - -
             - - - - - - - - - - - -
             - - - - - - - - - - - -
           `,
-      {
-        boardSquareSelectedState: tilePlacedAt("10G"),
-        selectedHotelChain: HotelChainType.IMPERIAL,
-      }
+      PlayerActionType.StartHotelChain(1, HotelChainType.IMPERIAL)
     ).toEqual(
       state(`
             - - A A - - - - - - - -
@@ -404,9 +288,9 @@ describe("BoardStateEngine", () => {
   });
 
   it("should start LUXOR if LUXOR is selected with starter tile", () => {
-    expectStateWithTurn(
+    expectStateWithAction(
       `
-            - - A A - - - - - - 0 o
+            - - A A - - - - - - 0 0
             - - - - - - - - - - - -
             C - F F - - - - - - - -
             C - - - - - - - - - - -
@@ -416,10 +300,7 @@ describe("BoardStateEngine", () => {
             - - - - - - - - - - - -
             - - - - - - - - - - - -
           `,
-      {
-        boardSquareSelectedState: tilePlacedAt("12A"),
-        selectedHotelChain: HotelChainType.LUXOR,
-      }
+      PlayerActionType.StartHotelChain(1, HotelChainType.LUXOR)
     ).toEqual(
       state(`
       - - A A - - - - - - L L
@@ -436,7 +317,7 @@ describe("BoardStateEngine", () => {
   });
 
   it("should start TOWER if TOWER is selected with starter tile", () => {
-    expectStateWithTurn(
+    expectStateWithAction(
       `
       - - A A - - - - - - L L
       - - - - - - - - - - - -
@@ -446,12 +327,9 @@ describe("BoardStateEngine", () => {
       - - - - - - - - - I - -
       - - - - - - - - I I - -
       - - - - - - - - - - - 0
-      - - - - - - - - - - - o
+      - - - - - - - - - - - 0
     `,
-      {
-        boardSquareSelectedState: tilePlacedAt("12I"),
-        selectedHotelChain: HotelChainType.TOWER,
-      }
+      PlayerActionType.StartHotelChain(1, HotelChainType.TOWER)
     ).toEqual(
       state(`
       - - A A - - - - - - L L
@@ -468,7 +346,7 @@ describe("BoardStateEngine", () => {
   });
 
   it("should start WORLDWIDE if WORLDWIDE is selected with starter tile", () => {
-    expectStateWithTurn(
+    expectStateWithAction(
       `
       - - A A - - - - - - L L
       - - - - - - - - - - - -
@@ -478,12 +356,9 @@ describe("BoardStateEngine", () => {
       - - - - - - - - - I - -
       - - - - - - - - I I - -
       0 - - - - - - - - - - T
-      o 0 - - - - - - - - - T
+      0 0 - - - - - - - - - T
     `,
-      {
-        boardSquareSelectedState: tilePlacedAt("1I"),
-        selectedHotelChain: HotelChainType.WORLDWIDE,
-      }
+      PlayerActionType.StartHotelChain(1, HotelChainType.WORLDWIDE)
     ).toEqual(
       state(`
       - - A A - - - - - - L L
@@ -500,7 +375,7 @@ describe("BoardStateEngine", () => {
   });
 
   it("should merge a smaller hotel into a bigger hotel", () => {
-    expectStateWithTurn(
+    expectStateWithAction(
       `
           - - W W W - - - - - - -
           - - - - - - - - - - - -
@@ -512,9 +387,7 @@ describe("BoardStateEngine", () => {
           - - - - - - - - - - - -
           - - - - - - - - - - - -
         `,
-      {
-        boardSquareSelectedState: tilePlacedAt("3B"),
-      }
+      placeTile("3B")
     ).toEqual(
       state(`
             - - L L L - - - - - - -
@@ -531,9 +404,9 @@ describe("BoardStateEngine", () => {
   });
 
   it("should grow a hotel if tile placed adjacent to it", () => {
-    expectStateWithTurn(
+    expectStateWithAction(
       `
-        - - - O - - - - - - - -
+        - - - - - - - - - - - -
         - - - T T - - - - - - -
         - - - - T - - - - - - -
         - - - - - - - - - - - -
@@ -543,9 +416,7 @@ describe("BoardStateEngine", () => {
         - - - - - - - - - - - -
         - - - - - - - - - - - -
       `,
-      {
-        boardSquareSelectedState: tilePlacedAt("4A"),
-      }
+      placeTile("4A")
     ).toEqual(
       state(`
     - - - T - - - - - - - -

@@ -1,4 +1,4 @@
-import { HotelChainType, IPlayerTurn } from "../../model";
+import { HotelChainType } from "../../model";
 import { ICashState } from "../../model/cash-state";
 import { PlayerAction } from "../../model/player-action";
 import { IShares } from "../../model/shares";
@@ -37,28 +37,9 @@ const getTotalSharesPrice = (shares: IShares[]): number =>
     : 0;
 
 const computeState = (
-  playerTurn: IPlayerTurn | null,
-  state: ICashState = initialState
-): ICashState => {
-  if (!playerTurn) {
-    return state;
-  }
-
-  return {
-    ...state,
-    [playerTurn.playerId]:
-      (!isNaN(state[playerTurn.playerId])
-        ? state[playerTurn.playerId]
-        : startingAmount) -
-      getTotalSharesPrice(playerTurn.sharesPurchased || []) +
-      getTotalSharesPrice(playerTurn.sharesSold || []),
-  };
-};
-
-const computeStateWithAction = (
   playerAction: PlayerAction | null,
   state: ICashState = initialState
-) => {
+): ICashState => {
   if (!playerAction) {
     return state;
   }
@@ -77,5 +58,4 @@ const computeStateWithAction = (
 
 export const CashEngine = {
   computeState,
-  computeStateWithAction,
 };
