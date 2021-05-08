@@ -2,7 +2,7 @@ import { PlayerTurnFactory } from "../../../test/factory/player-turn.factory";
 import {
   america,
   continental,
-  imererial,
+  imperial,
   player,
   plays,
   turn,
@@ -68,7 +68,7 @@ describe("CashEngine", () => {
 
     const playerTurn = PlayerTurnFactory.createPlayerTurn({
       playerId: 2,
-      sharesSold: [imererial(3)],
+      sharesSold: [imperial(3)],
     });
 
     expect(CashEngine.computeState(playerTurn, existingState)).toEqual({

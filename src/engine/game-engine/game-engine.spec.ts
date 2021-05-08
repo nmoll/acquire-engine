@@ -3,7 +3,7 @@ import { SharesStateFactory } from "../../../test/factory/shares-state.factory";
 import {
   america,
   buys,
-  imererial,
+  imperial,
   player,
   plays,
   starts,
@@ -52,7 +52,7 @@ describe("GameEngine", () => {
       turn(
         player(3),
         plays("5F"),
-        buys([america(1), imererial(2)]),
+        buys([america(1), imperial(2)]),
         starts(HotelChainType.IMPERIAL)
       ),
       turn(player(4), plays("3F"), [america(3)]),

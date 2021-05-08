@@ -37,7 +37,7 @@ export const america = (quantity: number): IShares => ({
   quantity,
 });
 
-export const imererial = (quantity: number): IShares => ({
+export const imperial = (quantity: number): IShares => ({
   hotel: HotelChainType.IMPERIAL,
   quantity,
 });
