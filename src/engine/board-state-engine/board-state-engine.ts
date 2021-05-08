@@ -3,6 +3,7 @@ import {
   BoardSquareStateType,
 } from "../../model/board-square-state";
 import { IBoardSquareStateContext } from "../../model/board-square-state-context";
+import { PlayerAction } from "../../model/player-action";
 import { IPlayerTurn } from "../../model/player-turn";
 import { ScenarioAvailableForSelection } from "./scenarios/scenario-available-for-selection";
 import { ScenarioHasHotelChain } from "./scenarios/scenario-has-hotel-chain";
@@ -31,10 +32,36 @@ const computeState = (
 ): BoardSquareState[] =>
   boardState && boardState.length && playerTurn
     ? boardState.map((_, index) =>
-        getBoardSquareState({ boardState, playerTurn, index })
+        getBoardSquareState({
+          type: "turn",
+          boardState,
+          playerTurn,
+          index,
+        })
       )
     : defaultState;
 
+const computeStateWithAction = (
+  boardState: BoardSquareState[],
+  playerAction: PlayerAction | null
+): BoardSquareState[] => {
+  if (!boardState || !boardState.length) {
+    return defaultState;
+  }
+  if (!playerAction) {
+    return boardState;
+  }
+  return boardState.map((_, index) =>
+    getBoardSquareState({
+      type: "action",
+      boardState,
+      playerAction,
+      index,
+    })
+  );
+};
+
 export const BoardStateEngine = {
   computeState,
+  computeStateWithAction,
 };

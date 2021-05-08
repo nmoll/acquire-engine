@@ -5,8 +5,10 @@ import { IBoardStateScenario } from "./board-state-scenario";
 
 export class ScenarioIsSelected implements IBoardStateScenario {
   resolve(context: IBoardSquareStateContext): BoardSquareState | false {
-    return isUnconfirmedSelection(context.playerTurn, context.index)
-      ? BoardSquareStateType.Selected()
+    return context.type === "turn"
+      ? isUnconfirmedSelection(context.playerTurn, context.index)
+        ? BoardSquareStateType.Selected()
+        : false
       : false;
   }
 }

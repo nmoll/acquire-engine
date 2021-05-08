@@ -1,4 +1,4 @@
-import { BoardSquareState } from "../model/board-square-state";
+import { BoardSquareState, HasHotelChain } from "../model/board-square-state";
 import { HotelChainType } from "../model/hotel-chain-type";
 import { IPlayerTurn } from "../model/player-turn";
 
@@ -19,29 +19,29 @@ export const getAdjacentPositions = (
     getIndex(getPositionX(index), getPositionY(index) - 1), // top
     getIndex(getPositionX(index) - 1, getPositionY(index)), // left
     getIndex(getPositionX(index) + 1, getPositionY(index)), // right
-    getIndex(getPositionX(index), getPositionY(index) + 1) // bottom
-  ].filter(i => i >= 0 && i < boardStates.length);
+    getIndex(getPositionX(index), getPositionY(index) + 1), // bottom
+  ].filter((i) => i >= 0 && i < boardStates.length);
 
 export const getAdjacentStates = (
   boardStates: BoardSquareState[],
   index: number
 ): BoardSquareState[] =>
-  getAdjacentPositions(boardStates, index).map(i => boardStates[i]);
+  getAdjacentPositions(boardStates, index).map((i) => boardStates[i]);
 
 export const getAdjacentHotelChains = (
   boardState: BoardSquareState[],
   index: number
-): BoardSquareState[] =>
+): HasHotelChain[] =>
   getAdjacentStates(boardState, index).filter(
-    state => state.type === "HasHotelChain"
-  );
+    (state) => state.type === "HasHotelChain"
+  ) as HasHotelChain[];
 
 export const getAdjacentTiles = (
   boardState: BoardSquareState[],
   index: number
 ): BoardSquareState[] =>
   getAdjacentStates(boardState, index).filter(
-    state => state.type === "HasTile"
+    (state) => state.type === "HasTile"
   );
 
 export const hasAdjacentTiles = (
@@ -102,8 +102,8 @@ export const isPendingHotel = (
 
 export const getLargestHotelChain = (
   boardState: BoardSquareState[],
-  hotelChains: BoardSquareState[]
-): BoardSquareState =>
+  hotelChains: HasHotelChain[]
+): HasHotelChain =>
   hotelChains.sort(
     (a, b) =>
       findAllMatchingHotelChains(boardState, b).length -
@@ -112,8 +112,8 @@ export const getLargestHotelChain = (
 
 export const getMinorityHotelChain = (
   boardState: BoardSquareState[],
-  hotelChains: BoardSquareState[]
-): BoardSquareState =>
+  hotelChains: HasHotelChain[]
+): HasHotelChain =>
   hotelChains.sort(
     (a, b) =>
       findAllMatchingHotelChains(boardState, b).length -
@@ -138,7 +138,7 @@ export const isSameHotelChain = (
 export const findAllMatchingHotelChains = (
   boardState: BoardSquareState[],
   squareState: BoardSquareState
-) => boardState.filter(state => isSameHotelChain(state, squareState));
+) => boardState.filter((state) => isSameHotelChain(state, squareState));
 
 export const isPartOfMinorityHotelInMerge = (
   boardState: BoardSquareState[],
