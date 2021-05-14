@@ -68,6 +68,6 @@ const computeState = (
   };
 };
 
-export const CashEngine = {
+export const CashStateEngine = {
   computeState,
 };

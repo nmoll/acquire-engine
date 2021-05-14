@@ -13,8 +13,8 @@ const getNextPlayerId = (playerIds: number[], playerId: number) =>
     : playerIds[getPlayerIdx(playerIds, playerId) + 1];
 
 const computeState = (
-  playerIds: number[],
-  playerAction: PlayerAction | null
+  playerIds: number[] = [],
+  playerAction: PlayerAction | null = null
 ): CurrentPlayerIdState => {
   if (!playerIds?.length) {
     return null;
@@ -28,6 +28,6 @@ const computeState = (
     : playerAction.playerId;
 };
 
-export const CurrentPlayerEngine = {
+export const CurrentPlayerIdStateEngine = {
   computeState,
 };

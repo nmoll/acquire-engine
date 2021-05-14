@@ -75,6 +75,6 @@ const computeState = (
   );
 };
 
-export const SharesEngine = {
+export const SharesStateEngine = {
   computeState,
 };

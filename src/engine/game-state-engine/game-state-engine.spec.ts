@@ -3,9 +3,9 @@ import { SharesStateFactory } from "../../../test/factory/shares-state.factory";
 import { america, getTilePosition, imperial } from "../../../test/helpers";
 import { HotelChainType, IGameState } from "../../model";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
-import { GameEngine } from "./game-engine";
+import { GameStateEngine } from "./game-state-engine";
 
-describe("GameEngine", () => {
+describe("GameStateEngine", () => {
   it("should compute initial game state with no actions", () => {
     const playerIds = [1, 2, 3, 4];
     const actions: PlayerAction[] = [];
@@ -25,10 +25,10 @@ describe("GameEngine", () => {
       ),
       cashState: {},
       sharesState: {},
-      currentPlayerId: null,
+      currentPlayerIdState: null,
     };
 
-    expect(GameEngine.computeGameState(playerIds, actions)).toEqual(
+    expect(GameStateEngine.computeGameState(playerIds, actions)).toEqual(
       expectedState
     );
   });
@@ -70,7 +70,7 @@ describe("GameEngine", () => {
           - I I - - - - - - 0 - -
           - - I - - - - - - - - -
           - - I I I - - - - - - -
-          - - - - I - - - - - - -
+          - - - - I - - - - - - - 
           - - - - - - - - - - - -
           - - - - - - - - - - - -`),
       cashState: {
@@ -86,10 +86,10 @@ describe("GameEngine", () => {
           P3 5 0 0 3 0 0 0
           P4 5 0 0 0 0 0 0
           `),
-      currentPlayerId: 1,
+      currentPlayerIdState: 1,
     };
 
-    expect(GameEngine.computeGameState(playerIds, actions)).toEqual(
+    expect(GameStateEngine.computeGameState(playerIds, actions)).toEqual(
       expectedState
     );
   });

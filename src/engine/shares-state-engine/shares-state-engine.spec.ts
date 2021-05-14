@@ -1,7 +1,7 @@
 import { SharesStateFactory } from "../../../test/factory/shares-state.factory";
 import { HotelChainType } from "../../model";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
-import { SharesEngine } from "./shares-engine";
+import { SharesStateEngine } from "./shares-state-engine";
 
 const expectStateWithAction = (
   sharesDiagram: string,
@@ -9,7 +9,7 @@ const expectStateWithAction = (
   action: PlayerAction | null
 ) =>
   expect(
-    SharesEngine.computeState(
+    SharesStateEngine.computeState(
       playerIds,
       action,
       SharesStateFactory.createSharesState(sharesDiagram)

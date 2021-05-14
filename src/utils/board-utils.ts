@@ -88,7 +88,7 @@ const findAllMatchingHotelChains = (
     isSameHotelChain(state, squareState)
   ) as HasHotelChain[];
 
-export const Utils = {
+export const BoardUtils = {
   getIndex,
   getAdjacentPositions,
   getAdjacentHotelChains,

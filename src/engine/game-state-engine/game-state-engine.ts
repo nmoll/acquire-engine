@@ -1,15 +1,15 @@
 import { IGameState } from "../../model";
 import { PlayerAction } from "../../model/player-action";
 import { BoardStateEngine } from "../board-state-engine/board-state-engine";
-import { CashEngine } from "../cash-engine/cash-engine";
-import { CurrentPlayerEngine } from "../current-player-engine/curent-player-engine";
-import { SharesEngine } from "../shares-engine/shares-engine";
+import { CashStateEngine } from "../cash-state-engine/cash-state-engine";
+import { CurrentPlayerIdStateEngine } from "../current-player-id-state-engine/current-player-id-state-engine";
+import { SharesStateEngine } from "../shares-state-engine/shares-state-engine";
 
 const initialState: IGameState = {
   boardState: BoardStateEngine.computeState(),
-  cashState: CashEngine.computeState([]),
-  sharesState: SharesEngine.computeState([]),
-  currentPlayerId: null,
+  cashState: CashStateEngine.computeState([]),
+  sharesState: SharesStateEngine.computeState([]),
+  currentPlayerIdState: CurrentPlayerIdStateEngine.computeState([]),
 };
 
 const computeGameState = (
@@ -26,23 +26,23 @@ const computeGameState = (
       playerActions[0],
       state.boardState
     ),
-    cashState: CashEngine.computeState(
+    cashState: CashStateEngine.computeState(
       playerIds,
       playerActions[0],
       state.cashState
     ),
-    sharesState: SharesEngine.computeState(
+    sharesState: SharesStateEngine.computeState(
       playerIds,
       playerActions[0],
       state.sharesState
     ),
-    currentPlayerId: CurrentPlayerEngine.computeState(
+    currentPlayerIdState: CurrentPlayerIdStateEngine.computeState(
       playerIds,
       playerActions[0]
     ),
   });
 };
 
-export const GameEngine = {
+export const GameStateEngine = {
   computeGameState,
 };

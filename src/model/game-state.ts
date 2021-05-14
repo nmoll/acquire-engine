@@ -7,5 +7,5 @@ export interface IGameState {
   boardState: BoardSquareState[];
   sharesState: ISharesState;
   cashState: ICashState;
-  currentPlayerId: CurrentPlayerIdState;
+  currentPlayerIdState: CurrentPlayerIdState;
 }

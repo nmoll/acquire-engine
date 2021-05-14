@@ -4,7 +4,7 @@ import {
   HasHotelChain,
 } from "../../../model";
 import { PlayerActionContext } from "../../../model/player-action-context";
-import { Utils } from "../../../utils/utils";
+import { BoardUtils } from "../../../utils/board-utils";
 import { IBoardStateScenario } from "./board-state-scenario";
 
 export class ScenarioHasHotelChain implements IBoardStateScenario {
@@ -20,7 +20,7 @@ export class ScenarioHasHotelChain implements IBoardStateScenario {
   private newHotelStarted(context: PlayerActionContext): HasHotelChain | false {
     return context.playerAction.type === "StartHotelChain" &&
       context.boardState[context.index].type === "HasTile" &&
-      Utils.hasAdjacentTiles(context.boardState, context.index)
+      BoardUtils.hasAdjacentTiles(context.boardState, context.index)
       ? BoardSquareStateType.HasHotelChain(context.playerAction.hotelChain)
       : false;
   }
@@ -37,7 +37,7 @@ export class ScenarioHasHotelChain implements IBoardStateScenario {
       return false;
     }
 
-    const adjacentHotelChains = Utils.getAdjacentHotelChains(
+    const adjacentHotelChains = BoardUtils.getAdjacentHotelChains(
       context.boardState,
       context.playerAction.boardSquareId
     );
@@ -47,11 +47,11 @@ export class ScenarioHasHotelChain implements IBoardStateScenario {
     }
 
     return {
-      minority: Utils.getMinorityHotelChain(
+      minority: BoardUtils.getMinorityHotelChain(
         context.boardState,
         adjacentHotelChains
       ),
-      majority: Utils.getLargestHotelChain(
+      majority: BoardUtils.getLargestHotelChain(
         context.boardState,
         adjacentHotelChains
       ),
@@ -99,7 +99,7 @@ export class ScenarioHasHotelChain implements IBoardStateScenario {
       return false;
     }
 
-    const adjacentHotelChains = Utils.getAdjacentHotelChains(
+    const adjacentHotelChains = BoardUtils.getAdjacentHotelChains(
       context.boardState,
       context.playerAction.boardSquareId
     );
