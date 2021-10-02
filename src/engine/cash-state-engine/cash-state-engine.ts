@@ -1,4 +1,5 @@
 import { HotelChainType } from "../../model";
+import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { ICashState } from "../../model/cash-state";
 import { PlayerAction } from "../../model/player-action";
 import { IShares } from "../../model/shares";
@@ -48,11 +49,11 @@ const getTotalSharesPrice = (shares: IShares[]): number =>
     : 0;
 
 const computeState = (
-  playerIds: number[],
+  gameInstance: IAcquireGameInstance,
   playerAction: PlayerAction | null = null,
   state: ICashState = {}
 ): ICashState => {
-  state = fillEmptyStates(playerIds, state);
+  state = fillEmptyStates(gameInstance.playerIds, state);
 
   if (!playerAction) {
     return state;

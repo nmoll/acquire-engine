@@ -1,17 +1,21 @@
 import { america, continental, getTilePosition } from "../../../test/helpers";
+import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { ICashState } from "../../model/cash-state";
 import { PlayerActionType } from "../../model/player-action";
 import { CashStateEngine } from "./cash-state-engine";
 
 describe("CashEngine", () => {
-  let playerIds: number[];
+  let gameInstance: IAcquireGameInstance;
 
   beforeEach(() => {
-    playerIds = [1, 2, 3, 4];
+    gameInstance = {
+      randomSeed: 1,
+      playerIds: [1, 2, 3, 4],
+    };
   });
 
   it("should give player 6000 to start with", () => {
-    expect(CashStateEngine.computeState(playerIds)).toEqual({
+    expect(CashStateEngine.computeState(gameInstance)).toEqual({
       1: 6000,
       2: 6000,
       3: 6000,
@@ -22,7 +26,7 @@ describe("CashEngine", () => {
   it("should not give player 6000 cash on subsequent action if they have 0 cash", () => {
     expect(
       CashStateEngine.computeState(
-        playerIds,
+        gameInstance,
         PlayerActionType.PlaceTile(1, getTilePosition("1A")),
         {
           1: 0,
@@ -42,7 +46,7 @@ describe("CashEngine", () => {
   it("should return existing cash state if no shares bought or sold", () => {
     expect(
       CashStateEngine.computeState(
-        playerIds,
+        gameInstance,
         PlayerActionType.PlaceTile(1, getTilePosition("1A")),
         {
           1: 6000,
@@ -73,7 +77,7 @@ describe("CashEngine", () => {
     ]);
 
     expect(
-      CashStateEngine.computeState(playerIds, playerAction, existingState)
+      CashStateEngine.computeState(gameInstance, playerAction, existingState)
     ).toEqual({
       1: 6000,
       2: 4900,

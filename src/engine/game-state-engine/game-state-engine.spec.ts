@@ -2,12 +2,16 @@ import { BoardStateFactory } from "../../../test/factory/board-state.factory";
 import { SharesStateFactory } from "../../../test/factory/shares-state.factory";
 import { america, getTilePosition, imperial } from "../../../test/helpers";
 import { HotelChainType, IGameState } from "../../model";
+import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
 import { GameStateEngine } from "./game-state-engine";
 
 describe("GameStateEngine", () => {
   it("should compute initial game state with no actions", () => {
-    const playerIds = [1, 2, 3, 4];
+    const gameInstance: IAcquireGameInstance = {
+      randomSeed: 1,
+      playerIds: [1, 2, 3, 4],
+    };
     const actions: PlayerAction[] = [];
 
     const expectedState: IGameState = {
@@ -23,18 +27,26 @@ describe("GameStateEngine", () => {
           - - - - - - - - - - - -
           - - - - - - - - - - - -`
       ),
-      cashState: {},
+      cashState: {
+        1: 6000,
+        2: 6000,
+        3: 6000,
+        4: 6000,
+      },
       sharesState: {},
       currentPlayerIdState: null,
     };
 
-    expect(GameStateEngine.computeGameState(playerIds, actions)).toEqual(
+    expect(GameStateEngine.computeGameState(gameInstance, actions)).toEqual(
       expectedState
     );
   });
 
   it("should compute game state with multiple actions", () => {
-    const playerIds = [1, 2, 3, 4];
+    const gameInstance: IAcquireGameInstance = {
+      randomSeed: 1,
+      playerIds: [1, 2, 3, 4],
+    };
     const actions: PlayerAction[] = [
       PlayerActionType.PlaceTile(1, getTilePosition("5A")),
 
@@ -89,7 +101,7 @@ describe("GameStateEngine", () => {
       currentPlayerIdState: 1,
     };
 
-    expect(GameStateEngine.computeGameState(playerIds, actions)).toEqual(
+    expect(GameStateEngine.computeGameState(gameInstance, actions)).toEqual(
       expectedState
     );
   });

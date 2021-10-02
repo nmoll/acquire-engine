@@ -2,8 +2,8 @@ import {
   BoardSquareState,
   BoardSquareStateType,
 } from "../../model/board-square-state";
-import { PlayerActionContext } from "../../model/player-action-context";
 import { PlayerAction } from "../../model/player-action";
+import { PlayerActionContext } from "../../model/player-action-context";
 import { ScenarioAvailableForSelection } from "./scenarios/scenario-available-for-selection";
 import { ScenarioHasHotelChain } from "./scenarios/scenario-has-hotel-chain";
 import { ScenarioHasTile } from "./scenarios/scenario-has-tile";
