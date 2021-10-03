@@ -1,12 +1,31 @@
 import { BoardStateFactory } from "../../../test/factory/board-state.factory";
 import { SharesStateFactory } from "../../../test/factory/shares-state.factory";
-import { america, getTilePosition, imperial } from "../../../test/helpers";
+import { america, getTilePosition } from "../../../test/helpers";
 import { HotelChainType, IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
+import { ArrayUtils } from "../../utils/array-utils";
 import { GameStateEngine } from "./game-state-engine";
 
 describe("GameStateEngine", () => {
+  it("should create tile map", () => {
+    const toPos = (index: number): string => {
+      const x = index % 12;
+      const y = Math.floor(index / 12);
+      return `${x + 1}${["A", "B", "C", "D", "E", "F", "G", "H", "I"][y]}`;
+    };
+
+    const result = ArrayUtils.makeNumArray(108).reduce(
+      (res, idx) => ({
+        ...res,
+        [idx]: toPos(idx),
+      }),
+      {}
+    );
+
+    expect(result).toMatchSnapshot();
+  });
+
   it("should compute initial game state with no actions", () => {
     const gameInstance: IAcquireGameInstance = {
       randomSeed: 1,
@@ -33,8 +52,44 @@ describe("GameStateEngine", () => {
         3: 6000,
         4: 6000,
       },
-      sharesState: {},
-      currentPlayerIdState: null,
+      tileState: {
+        1: [
+          getTilePosition("10A"),
+          getTilePosition("11H"),
+          getTilePosition("8H"),
+          getTilePosition("7A"),
+          getTilePosition("4A"),
+        ],
+        2: [
+          getTilePosition("5D"),
+          getTilePosition("11F"),
+          getTilePosition("4H"),
+          getTilePosition("8D"),
+          getTilePosition("3G"),
+        ],
+        3: [
+          getTilePosition("6E"),
+          getTilePosition("6B"),
+          getTilePosition("4B"),
+          getTilePosition("5C"),
+          getTilePosition("7I"),
+        ],
+        4: [
+          getTilePosition("1H"),
+          getTilePosition("8I"),
+          getTilePosition("9H"),
+          getTilePosition("5F"),
+          getTilePosition("1F"),
+        ],
+      },
+      sharesState: SharesStateFactory.createSharesState(`
+            A C F I L T W
+        P1 0 0 0 0 0 0 0
+        P2 0 0 0 0 0 0 0
+        P3 0 0 0 0 0 0 0
+        P4 0 0 0 0 0 0 0
+      `),
+      currentPlayerIdState: 1,
     };
 
     expect(GameStateEngine.computeGameState(gameInstance, actions)).toEqual(
@@ -48,57 +103,76 @@ describe("GameStateEngine", () => {
       playerIds: [1, 2, 3, 4],
     };
     const actions: PlayerAction[] = [
-      PlayerActionType.PlaceTile(1, getTilePosition("5A")),
+      PlayerActionType.PlaceTile(1, getTilePosition("8H")),
+      PlayerActionType.EndTurn(1),
 
-      PlayerActionType.PlaceTile(2, getTilePosition("2D")),
+      PlayerActionType.PlaceTile(2, getTilePosition("8D")),
+      PlayerActionType.EndTurn(2),
 
-      PlayerActionType.PlaceTile(3, getTilePosition("3D")),
-      PlayerActionType.StartHotelChain(3, HotelChainType.AMERICAN),
-      PlayerActionType.PurchaseShares(3, [america(3)]),
+      PlayerActionType.PlaceTile(3, getTilePosition("4B")),
+      PlayerActionType.EndTurn(3),
 
-      PlayerActionType.PlaceTile(4, getTilePosition("4F")),
-      PlayerActionType.PurchaseShares(4, [america(2)]),
-
-      PlayerActionType.PlaceTile(1, getTilePosition("10D")),
-
-      PlayerActionType.PlaceTile(2, getTilePosition("5G")),
-      PlayerActionType.PurchaseShares(2, [america(3)]),
-
-      PlayerActionType.PlaceTile(3, getTilePosition("5F")),
-      PlayerActionType.StartHotelChain(3, HotelChainType.IMPERIAL),
-      PlayerActionType.PurchaseShares(3, [america(1), imperial(2)]),
-
-      PlayerActionType.PlaceTile(4, getTilePosition("3F")),
+      PlayerActionType.PlaceTile(4, getTilePosition("9H")),
+      PlayerActionType.StartHotelChain(4, HotelChainType.AMERICAN),
       PlayerActionType.PurchaseShares(4, [america(3)]),
-
-      PlayerActionType.PlaceTile(1, getTilePosition("3E")),
     ];
 
     const expectedState: IGameState = {
       boardState: BoardStateFactory.createBoardState(` 
-          - - - - 0 - - - - - - -
+          - - - - - - - - - - - -
+          - - - 0 - - - - - - - -
+          - - - - - - - - - - - -
+          - - - - - - - 0 - - - -
           - - - - - - - - - - - -
           - - - - - - - - - - - -
-          - I I - - - - - - 0 - -
-          - - I - - - - - - - - -
-          - - I I I - - - - - - -
-          - - - - I - - - - - - - 
-          - - - - - - - - - - - -
+          - - - - - - - - - - - - 
+          - - - - - - - A A - - -
           - - - - - - - - - - - -`),
       cashState: {
         1: 6000,
-        2: 5100,
-        3: 4200,
-        4: 4500,
+        2: 6000,
+        3: 6000,
+        4: 5100,
       },
-      sharesState: SharesStateFactory.createSharesState(`
+      tileState: {
+        1: [
+          getTilePosition("10A"),
+          getTilePosition("11H"),
+          getTilePosition("7A"),
+          getTilePosition("4A"),
+          getTilePosition("10E"),
+        ],
+        2: [
+          getTilePosition("5D"),
+          getTilePosition("11F"),
+          getTilePosition("4H"),
+          getTilePosition("3G"),
+          getTilePosition("9G"),
+        ],
+        3: [
+          getTilePosition("6E"),
+          getTilePosition("6B"),
+          getTilePosition("5C"),
+          getTilePosition("7I"),
+          getTilePosition("3D"),
+        ],
+        4: [
+          getTilePosition("1H"),
+          getTilePosition("8I"),
+          getTilePosition("5F"),
+          getTilePosition("1F"),
+        ],
+      },
+      sharesState: SharesStateFactory.createSharesState(
+        `
              A C F I L T W
           P1 0 0 0 0 0 0 0
-          P2 3 0 0 0 0 0 0
-          P3 5 0 0 3 0 0 0
-          P4 5 0 0 0 0 0 0
-          `),
-      currentPlayerIdState: 1,
+          P2 0 0 0 0 0 0 0
+          P3 0 0 0 0 0 0 0
+          P4 4 0 0 0 0 0 0
+          `
+      ),
+      currentPlayerIdState: 4,
     };
 
     expect(GameStateEngine.computeGameState(gameInstance, actions)).toEqual(

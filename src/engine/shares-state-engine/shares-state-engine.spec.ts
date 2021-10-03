@@ -10,7 +10,10 @@ const expectStateWithAction = (
 ) =>
   expect(
     SharesStateEngine.computeState(
-      playerIds,
+      {
+        randomSeed: 1,
+        playerIds,
+      },
       action,
       SharesStateFactory.createSharesState(sharesDiagram)
     )

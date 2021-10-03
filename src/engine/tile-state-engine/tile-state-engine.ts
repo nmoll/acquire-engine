@@ -1,39 +1,86 @@
+import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerAction } from "../../model/player-action";
 import { ITileState } from "../../model/tile-state";
-import { RandomUtils } from "../../utils/random-utils";
+import { TileUtils } from "../../utils/tile-utils";
 
-const NUM_OF_TILES = 108;
+const TILE_RACK_SIZE = 5;
 
-// const fillPlayerTiles =
+const addPlayerTile = (
+  playerId: number,
+  tileBag: number[],
+  tileState: ITileState
+): ITileState => {
+  const nextTile = TileUtils.getNextTile(tileBag, tileState);
 
-const getInitialState = (playerIds: number[]): ITileState => {
-  const availableTiles = new Array(NUM_OF_TILES).map((_, idx) => idx);
-
-  const randomGenerator = RandomUtils.randomGenerator(1);
+  if (!nextTile) {
+    return tileState;
+  }
 
   return {
-    availableTiles,
+    ...tileState,
+    [playerId]: [...(tileState[playerId] ?? []), nextTile],
   };
 };
 
+const addPlayerTiles = (
+  amount: number,
+  playerId: number,
+  tileBag: number[],
+  tileState: ITileState
+): ITileState => {
+  if (amount >= 1) {
+    const stateAfterAdd = addPlayerTile(playerId, tileBag, tileState);
+    return addPlayerTiles(amount - 1, playerId, tileBag, stateAfterAdd);
+  } else {
+    return tileState;
+  }
+};
+
+const discardPlayerTile = (
+  playerId: number,
+  tileId: number,
+  tileState: ITileState
+): ITileState => ({
+  ...tileState,
+  [playerId]: tileState[playerId].filter(
+    (playerTileId) => playerTileId !== tileId
+  ),
+});
+
+const getInitialState = (
+  gameInstance: IAcquireGameInstance,
+  tileBag: number[]
+): ITileState => {
+  return gameInstance.playerIds.reduce<ITileState>(
+    (res, playerId) => addPlayerTiles(TILE_RACK_SIZE, playerId, tileBag, res),
+    {}
+  );
+};
+
 export const computeState = (
-  playerIds: number[] = [],
+  gameInstance: IAcquireGameInstance,
   playerAction: PlayerAction | null = null,
   tileState: ITileState | null = null
 ): ITileState => {
+  const tileBag = TileUtils.getSortedBag(gameInstance.randomSeed);
   if (!tileState) {
-    return {
-      availableTiles: [],
-    };
+    return getInitialState(gameInstance, tileBag);
+  }
+  if (!playerAction) {
+    return tileState;
   }
 
-  return playerIds.reduce(
-    (state, playerId) => ({
-      ...state,
-      [playerId]: [],
-    }),
-    tileState
-  );
+  if (playerAction.type === "PlaceTile") {
+    return discardPlayerTile(
+      playerAction.playerId,
+      playerAction.boardSquareId,
+      tileState
+    );
+  } else if (playerAction.type === "EndTurn") {
+    return addPlayerTile(playerAction.playerId, tileBag, tileState);
+  } else {
+    return tileState;
+  }
 };
 
 export const TileStateEngine = {

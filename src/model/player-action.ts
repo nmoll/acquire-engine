@@ -19,8 +19,8 @@ export interface PurchaseShares {
   shares: IShares[];
 }
 
-export interface ChooseMergeDirection {
-  type: "ChooseMergeDirection";
+export interface Merge {
+  type: "Merge";
   playerId: number;
   hotelChainToKeep: HotelChainType;
 }
@@ -34,7 +34,7 @@ export type PlayerAction =
   | PlaceTile
   | StartHotelChain
   | PurchaseShares
-  | ChooseMergeDirection
+  | Merge
   | EndTurn;
 
 export const PlayerActionType = {
@@ -58,11 +58,8 @@ export const PlayerActionType = {
     shares,
   }),
 
-  ChooseMergeDirection: (
-    playerId: number,
-    hotelChainToKeep: HotelChainType
-  ): ChooseMergeDirection => ({
-    type: "ChooseMergeDirection",
+  Merge: (playerId: number, hotelChainToKeep: HotelChainType): Merge => ({
+    type: "Merge",
     playerId,
     hotelChainToKeep,
   }),

@@ -1,3 +1,4 @@
+import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { CurrentPlayerIdState } from "../../model/current-player-id-state";
 import { PlayerAction } from "../../model/player-action";
 
@@ -13,18 +14,18 @@ const getNextPlayerId = (playerIds: number[], playerId: number) =>
     : playerIds[getPlayerIdx(playerIds, playerId) + 1];
 
 const computeState = (
-  playerIds: number[] = [],
+  gameInstance: IAcquireGameInstance,
   playerAction: PlayerAction | null = null
 ): CurrentPlayerIdState => {
-  if (!playerIds?.length) {
+  if (!gameInstance.playerIds?.length) {
     return null;
   }
   if (!playerAction) {
-    return null;
+    return gameInstance.playerIds[0];
   }
 
   return playerAction.type === "EndTurn"
-    ? getNextPlayerId(playerIds, playerAction.playerId)
+    ? getNextPlayerId(gameInstance.playerIds, playerAction.playerId)
     : playerAction.playerId;
 };
 

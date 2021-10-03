@@ -5,12 +5,14 @@ import { BoardStateEngine } from "../board-state-engine/board-state-engine";
 import { CashStateEngine } from "../cash-state-engine/cash-state-engine";
 import { CurrentPlayerIdStateEngine } from "../current-player-id-state-engine/current-player-id-state-engine";
 import { SharesStateEngine } from "../shares-state-engine/shares-state-engine";
+import { TileStateEngine } from "../tile-state-engine/tile-state-engine";
 
 const getInitialState = (gameInstance: IAcquireGameInstance): IGameState => ({
   boardState: BoardStateEngine.computeState(),
   cashState: CashStateEngine.computeState(gameInstance),
-  sharesState: SharesStateEngine.computeState([]),
-  currentPlayerIdState: CurrentPlayerIdStateEngine.computeState([]),
+  tileState: TileStateEngine.computeState(gameInstance),
+  sharesState: SharesStateEngine.computeState(gameInstance),
+  currentPlayerIdState: CurrentPlayerIdStateEngine.computeState(gameInstance),
 });
 
 const computeGameState = (
@@ -32,13 +34,18 @@ const computeGameState = (
       playerActions[0],
       state.cashState
     ),
+    tileState: TileStateEngine.computeState(
+      gameInstance,
+      playerActions[0],
+      state.tileState
+    ),
     sharesState: SharesStateEngine.computeState(
-      gameInstance.playerIds,
+      gameInstance,
       playerActions[0],
       state.sharesState
     ),
     currentPlayerIdState: CurrentPlayerIdStateEngine.computeState(
-      gameInstance.playerIds,
+      gameInstance,
       playerActions[0]
     ),
   });
