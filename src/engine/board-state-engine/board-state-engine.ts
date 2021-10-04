@@ -4,26 +4,26 @@ import {
 } from "../../model/board-square-state";
 import { PlayerAction } from "../../model/player-action";
 import { PlayerActionContext } from "../../model/player-action-context";
+import { ArrayUtils } from "../../utils/array-utils";
 import { ScenarioAvailableForSelection } from "./scenarios/scenario-available-for-selection";
 import { ScenarioHasHotelChain } from "./scenarios/scenario-has-hotel-chain";
 import { ScenarioHasTile } from "./scenarios/scenario-has-tile";
 
-const defaultState: BoardSquareState[] = [];
-for (let i = 0; i < 108; i++) {
-  defaultState.push(BoardSquareStateType.Default());
-}
+const defaultState: BoardSquareState[] = ArrayUtils.makeNumArray(108).map(() =>
+  BoardSquareStateType.Default()
+);
 
 const getBoardSquareState = (context: PlayerActionContext): BoardSquareState =>
-  new ScenarioHasHotelChain().resolve(context) ||
-  new ScenarioHasTile().resolve(context) ||
-  new ScenarioAvailableForSelection().resolve(context) ||
+  ScenarioHasHotelChain.resolve(context) ||
+  ScenarioHasTile.resolve(context) ||
+  ScenarioAvailableForSelection.resolve(context) ||
   context.boardState[context.index];
 
 const computeState = (
   playerAction: PlayerAction | null = null,
   boardState: BoardSquareState[] = []
 ): BoardSquareState[] => {
-  if (!boardState || !boardState.length) {
+  if (!boardState?.length) {
     return defaultState;
   }
   if (!playerAction) {
