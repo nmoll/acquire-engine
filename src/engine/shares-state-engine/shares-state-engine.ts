@@ -25,10 +25,7 @@ const getExistingShares = (
   playerAction: PlayerAction,
   hotel: HotelChainType,
   state: ISharesState
-): number =>
-  state[playerAction.playerId] && state[playerAction.playerId][hotel]
-    ? state[playerAction.playerId][hotel] || 0
-    : 0;
+): number => state[playerAction.playerId]?.[hotel] ?? 0;
 
 const getStarterBonuses = (
   playerAction: PlayerAction,
@@ -46,7 +43,7 @@ const getPurchasedShares = (
     return 0;
   }
   const share = playerAction.shares.find((s) => s.hotel === hotel);
-  return share ? share.quantity : 0;
+  return share?.quantity ?? 0;
 };
 
 const computeState = (

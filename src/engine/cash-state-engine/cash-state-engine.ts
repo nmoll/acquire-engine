@@ -40,13 +40,10 @@ const getStockBasePrice = (hotel: HotelChainType): number => {
 };
 
 const getTotalSharesPrice = (shares: IShares[]): number =>
-  shares
-    ? shares.reduce(
-        (total, share) =>
-          total + getStockBasePrice(share.hotel) * share.quantity,
-        0
-      )
-    : 0;
+  shares.reduce(
+    (total, share) => total + getStockBasePrice(share.hotel) * share.quantity,
+    0
+  );
 
 const computeState = (
   gameInstance: IAcquireGameInstance,
