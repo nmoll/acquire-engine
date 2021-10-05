@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
     "declaration": true,
     "outDir": "./lib",
     "strict": true,
-    "lib": ["es2018"]
+    "lib": ["es5", "es6", "dom"],
+    "module": "ES6",
+    "moduleResolution": "node"
   },
-  "include": ["index.ts", "src"],
+  "include": ["index.ts", "src/**/*.ts"],
   "exclude": ["node_modules", "**/__tests__/*"]
 }

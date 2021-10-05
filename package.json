@@ -5,7 +5,7 @@
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp src/ui/index.html dist",
     "test": "jest --config jestconfig.json --watchAll",
     "testCoverage": "jest --config jestconfig.json --coverage",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
@@ -27,5 +27,8 @@
     "prettier": "^2.2.1",
     "ts-jest": "^26.5.5",
     "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "lit-html": "^2.0.0"
   }
 }
