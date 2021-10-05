@@ -1,9 +1,9 @@
-import { BoardStateFactory } from "../../../test/factory/board-state.factory";
-import { SharesStateFactory } from "../../../test/factory/shares-state.factory";
-import { america, getTilePosition } from "../../../test/helpers";
 import { HotelChainType, IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
+import { BoardStateFactory } from "../../test/factory/board-state.factory";
+import { SharesStateFactory } from "../../test/factory/shares-state.factory";
+import { america, getTilePosition } from "../../test/helpers";
 import { ArrayUtils } from "../../utils/array-utils";
 import { GameStateEngine } from "./game-state-engine";
 

@@ -1,7 +1,7 @@
-import { america, continental, getTilePosition } from "../../../test/helpers";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { ICashState } from "../../model/cash-state";
 import { PlayerActionType } from "../../model/player-action";
+import { america, continental, getTilePosition } from "../../test/helpers";
 import { CashStateEngine } from "./cash-state-engine";
 
 describe("CashEngine", () => {

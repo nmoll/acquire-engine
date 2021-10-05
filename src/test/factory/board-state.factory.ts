@@ -1,8 +1,8 @@
 import {
   BoardSquareState,
   BoardSquareStateType,
-} from "../../src/model/board-square-state";
-import { HotelChainType } from "../../src/model/hotel-chain-type";
+  HotelChainType,
+} from "../../model";
 
 interface SquareState {
   [key: string]: BoardSquareState;

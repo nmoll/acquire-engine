@@ -1,7 +1,7 @@
-import { BoardStateFactory } from "../../../test/factory/board-state.factory";
-import { getTilePosition } from "../../../test/helpers";
 import { HotelChainType } from "../../model";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
+import { BoardStateFactory } from "../../test/factory/board-state.factory";
+import { getTilePosition } from "../../test/helpers";
 import { BoardStateEngine } from "./board-state-engine";
 
 const expectStateWithAction = (diagram: string, action: PlayerAction | null) =>

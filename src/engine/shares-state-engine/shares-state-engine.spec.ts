@@ -1,6 +1,6 @@
-import { SharesStateFactory } from "../../../test/factory/shares-state.factory";
 import { HotelChainType } from "../../model";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
+import { SharesStateFactory } from "../../test/factory/shares-state.factory";
 import { SharesStateEngine } from "./shares-state-engine";
 
 const expectStateWithAction = (

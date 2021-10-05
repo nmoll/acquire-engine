@@ -1,11 +1,21 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Acquire</title>
+    <script type="module" src="/src/ui/acquire-board.ts"></script>
 
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-
+    <style>
+      html, body {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+      }
+    </style>
   </head>
   <body>
-    <script type="module" src="lib/src/ui/ui.js"></script>
+    <acquire-board></acquire-board>
   </body>
 </html>

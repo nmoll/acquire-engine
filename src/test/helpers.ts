@@ -1,6 +1,6 @@
-import { HotelChainType } from "../src/model/hotel-chain-type";
-import { IShares } from "../src/model/shares";
-import { BoardUtils } from "../src/utils/board-utils";
+import { HotelChainType } from "../model";
+import { IShares } from "../model/shares";
+import { BoardUtils } from "../utils/board-utils";
 
 const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I"];
 

@@ -1,13 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "module": "esnext",
+    "lib": ["es2017", "dom", "dom.iterable"],
     "declaration": true,
-    "outDir": "./lib",
+    "emitDeclarationOnly": true,
+    "outDir": "./types",
+    "rootDir": "./src",
     "strict": true,
-    "lib": ["es5", "es6", "dom"],
-    "module": "ES6",
-    "moduleResolution": "node"
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": false
   },
-  "include": ["index.ts", "src/**/*.ts"],
-  "exclude": ["node_modules", "**/__tests__/*"]
+  "include": ["src/**/*.ts"],
+  "exclude": []
 }

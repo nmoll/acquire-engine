@@ -1,4 +1,4 @@
-import { BoardStateFactory } from "../../test/factory/board-state.factory";
+import { BoardStateFactory } from "../test/factory/board-state.factory";
 import { BoardUtils } from "./board-utils";
 
 describe("BoardBoardUtils", () => {
@@ -18,22 +18,16 @@ describe("BoardBoardUtils", () => {
       );
       expect(BoardUtils.getAdjacentPositions(boardStates, 0)).toEqual([1, 12]);
       expect(BoardUtils.getAdjacentPositions(boardStates, 11)).toEqual([
-        10,
-        23,
+        10, 23,
       ]);
       expect(BoardUtils.getAdjacentPositions(boardStates, 13)).toEqual([
-        1,
-        12,
-        14,
-        25,
+        1, 12, 14, 25,
       ]);
       expect(BoardUtils.getAdjacentPositions(boardStates, 96)).toEqual([
-        84,
-        97,
+        84, 97,
       ]);
       expect(BoardUtils.getAdjacentPositions(boardStates, 107)).toEqual([
-        95,
-        106,
+        95, 106,
       ]);
     });
   });

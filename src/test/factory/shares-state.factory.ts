@@ -1,5 +1,4 @@
-import { HotelChainType } from "../../src/model/hotel-chain-type";
-import { ISharesState } from "../../src/model/shares-state";
+import { HotelChainType, ISharesState } from "../../model";
 
 const HOTELS_BY_CODE = {
   A: HotelChainType.AMERICAN,
@@ -13,11 +12,7 @@ const HOTELS_BY_CODE = {
 
 const createSharesState = (diagram: string): ISharesState => {
   const rows = diagram.trim().split(/\n/);
-  const hotelCodes: string[] =
-    rows
-      .shift()
-      ?.trim()
-      ?.split(/\s/) || [];
+  const hotelCodes: string[] = rows.shift()?.trim()?.split(/\s/) || [];
 
   const result: ISharesState = {};
 
