@@ -6,6 +6,7 @@
   "types": "lib/src/index.d.ts",
   "scripts": {
     "build": "tsc && cp src/ui/index.html lib/",
+    "start": "web-dev-server --node-resolve --watch",
     "test": "jest --config jestconfig.json --watchAll",
     "testCoverage": "jest --config jestconfig.json --coverage",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
@@ -20,6 +21,7 @@
     "@types/jest": "^26.0.23",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
+    "@web/dev-server": "^0.1.24",
     "eslint": "^7.25.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
