@@ -1,32 +1,14 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { GameStateEngine } from "../engine/game-state-engine/game-state-engine";
-import { BoardSquareState, IGameState } from "../model";
-import { IAcquireGameInstance } from "../model/acquire-game-instance";
+import { BoardSquareState } from "../model";
 import { PlayerAction } from "../model/player-action";
-import { Client } from "./client";
-import { parseQueryParams } from "./query-params";
 
-const INSTANCE: IAcquireGameInstance = {
-  randomSeed: 1,
-  playerIds: [1, 2, 3, 4],
-};
-
-const PLAYER_ID = 1;
-
-const params = parseQueryParams(window.location.href);
-const gameId = params["game-id"];
-if (gameId) {
-  Client.connect(gameId);
-} else {
-  Client.startConnection("acquire-game-1");
+export interface TileSelectEvent {
+  index: number;
 }
 
-/**
- * Acquire Game Board
- */
 @customElement("acquire-board")
-export class AcquireBoard extends LitElement {
+export class AcquireBoardElement extends LitElement {
   static styles = css`
     :host {
       height: 100%;
@@ -61,19 +43,16 @@ export class AcquireBoard extends LitElement {
     }
   `;
 
-  @property()
   actions: PlayerAction[] = [];
 
-  private state: IGameState;
+  @property()
+  boardState!: BoardSquareState[] | undefined;
 
-  constructor() {
-    super();
-    this.state = GameStateEngine.computeGameState(INSTANCE, this.actions);
-  }
+  @property()
+  availableForSelection!: number[] | undefined;
 
   render() {
-    console.log("render", this.state);
-    return this.state.boardState.map((squareState, idx) =>
+    return this.boardState?.map((squareState, idx) =>
       this.renderSquare(squareState, idx)
     );
   }
@@ -85,30 +64,20 @@ export class AcquireBoard extends LitElement {
     ></div>`;
   }
 
-  private onClick(idx: number): void {
-    if (this.isSelectable(idx)) {
-      this.actions = [
-        ...this.actions,
-        {
-          type: "PlaceTile",
-          playerId: PLAYER_ID,
-          boardSquareId: idx,
-        },
-        {
-          type: "EndTurn",
-          playerId: PLAYER_ID,
-        },
-      ];
-      this.state = GameStateEngine.computeGameState(INSTANCE, this.actions);
+  private onClick(index: number): void {
+    if (this.isSelectable(index)) {
+      this.dispatchEvent(
+        new CustomEvent<TileSelectEvent>("tile-select", {
+          detail: {
+            index,
+          },
+        })
+      );
     }
   }
 
   private isSelectable(idx: number): boolean {
-    if (this.state.currentPlayerIdState !== PLAYER_ID) {
-      return false;
-    }
-
-    return this.state.tileState[this.state.currentPlayerIdState].includes(idx);
+    return this.availableForSelection?.includes(idx) || false;
   }
 
   private getSquareClass(state: BoardSquareState, idx: number): string {
@@ -129,6 +98,6 @@ export class AcquireBoard extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "acquire-board": AcquireBoard;
+    "acquire-board": AcquireBoardElement;
   }
 }
