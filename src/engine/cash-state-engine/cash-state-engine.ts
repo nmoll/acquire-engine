@@ -19,29 +19,19 @@ const fillEmptyStates = (
     cashState
   );
 
-const getStockBasePrice = (hotel: HotelChainType): number => {
-  let basePrice;
-  switch (hotel) {
-    case HotelChainType.WORLDWIDE:
-    case HotelChainType.LUXOR:
-      basePrice = 200;
-      break;
-    case HotelChainType.FESTIVAL:
-    case HotelChainType.IMPERIAL:
-    case HotelChainType.AMERICAN:
-      basePrice = 300;
-      break;
-    case HotelChainType.CONTINENTAL:
-    case HotelChainType.TOWER:
-      basePrice = 400;
-      break;
-  }
-  return basePrice;
+const basePriceByHotel: Record<HotelChainType, number> = {
+  WORLDWIDE: 200,
+  LUXOR: 200,
+  FESTIVAL: 300,
+  IMPERIAL: 300,
+  AMERICAN: 300,
+  CONTINENTAL: 400,
+  TOWER: 400,
 };
 
 const getTotalSharesPrice = (shares: IShares[]): number =>
   shares.reduce(
-    (total, share) => total + getStockBasePrice(share.hotel) * share.quantity,
+    (total, share) => total + basePriceByHotel[share.hotel] * share.quantity,
     0
   );
 

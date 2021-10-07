@@ -1,6 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { HotelChainType } from "../model";
+import { ALL_HOTELS, HotelChainType } from "../model";
 import { PlayerAction } from "../model/player-action";
 
 export interface ActionRequestEvent {
@@ -51,12 +51,13 @@ export class AcquireActionsElement extends LitElement {
 
   render() {
     return html`
-      <button @click="${() => this.onStartHotelChain(HotelChainType.AMERICAN)}">
-        American
-      </button>
-      <button @click="${() => this.onStartHotelChain(HotelChainType.LUXOR)}">
-        Luxor
-      </button>
+      ${ALL_HOTELS.map(
+        (type) => html`
+          <button @click="${() => this.onStartHotelChain(type)}">
+            ${type}
+          </button>
+        `
+      )}
       <button @click="${() => this.onEndTurn()}">End Turn</button>
     `;
   }

@@ -96,7 +96,7 @@ const growHotelChain = (
 ): HasHotelChain | false => {
   if (
     context.playerAction.type !== "PlaceTile" ||
-    context.playerAction.boardSquareId !== context.index
+    !(isPlayedTile(context) || isTileAdjacentToPlayedTile(context))
   ) {
     return false;
   }
@@ -106,11 +106,20 @@ const growHotelChain = (
     context.playerAction.boardSquareId
   );
 
-  if (!adjacentHotelChains.length) {
-    return false;
-  }
-
-  return BoardSquareStateType.HasHotelChain(
-    adjacentHotelChains[0].hotelChainType
-  );
+  return adjacentHotelChains.length
+    ? BoardSquareStateType.HasHotelChain(adjacentHotelChains[0].hotelChainType)
+    : false;
 };
+
+const isPlayedTile = (context: PlayerActionContext): boolean =>
+  context.playerAction.type === "PlaceTile" &&
+  context.playerAction.boardSquareId === context.index;
+
+const isTileAdjacentToPlayedTile = (context: PlayerActionContext): boolean =>
+  context.playerAction.type === "PlaceTile" &&
+  context.boardState[context.index].type === "HasTile" &&
+  BoardUtils.isAdjacent(
+    context.boardState,
+    context.index,
+    context.playerAction.boardSquareId
+  );

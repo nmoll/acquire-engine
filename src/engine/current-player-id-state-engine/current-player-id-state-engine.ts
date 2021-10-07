@@ -17,7 +17,7 @@ const computeState = (
   gameInstance: IAcquireGameInstance,
   playerAction: PlayerAction | null = null
 ): CurrentPlayerIdState => {
-  if (!gameInstance.playerIds?.length) {
+  if (!gameInstance.playerIds.length) {
     return null;
   }
   if (!playerAction) {

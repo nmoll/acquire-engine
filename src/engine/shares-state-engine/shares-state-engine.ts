@@ -18,14 +18,14 @@ const fillEmptyStates = (
         {}
       ),
     }),
-    shareState || {}
+    shareState
   );
 
 const getExistingShares = (
   playerAction: PlayerAction,
   hotel: HotelChainType,
   state: ISharesState
-): number => state[playerAction.playerId]?.[hotel] ?? 0;
+): number => state[playerAction.playerId][hotel] ?? 0;
 
 const getStarterBonuses = (
   playerAction: PlayerAction,

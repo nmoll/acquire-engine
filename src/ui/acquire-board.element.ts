@@ -1,6 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { BoardSquareState } from "../model";
+import { BoardSquareState, HotelChainType } from "../model";
 import { PlayerAction } from "../model/player-action";
 
 export interface TileSelectEvent {
@@ -11,12 +11,8 @@ export interface TileSelectEvent {
 export class AcquireBoardElement extends LitElement {
   static styles = css`
     :host {
-      height: 100%;
       display: grid;
       grid-template-columns: repeat(12, minmax(0, 1fr));
-    }
-
-    .board {
     }
 
     .cell {
@@ -31,10 +27,60 @@ export class AcquireBoardElement extends LitElement {
       box-shadow: none;
     }
 
-    .cell.has-hotel {
+    .bg-sky-600 {
       background-color: #0284c7;
+    }
+
+    .border-sky-600 {
       border-color: #0284c7;
-      box-shadow: none;
+    }
+
+    .bg-green-600 {
+      background-color: #16a34a;
+    }
+
+    .border-green-600 {
+      border-color: #16a34a;
+    }
+
+    .bg-amber-600 {
+      background-color: #d97706;
+    }
+
+    .border-amber-600 {
+      border-color: #d97706;
+    }
+
+    .bg-red-600 {
+      background-color: #dc2626;
+    }
+
+    .border-red-600 {
+      border-color: #dc2626;
+    }
+
+    .bg-purple-600 {
+      background-color: #9333ea;
+    }
+
+    .border-purple-600 {
+      border-color: #9333ea;
+    }
+
+    .bg-pink-600 {
+      background-color: #db2777;
+    }
+
+    .border-pink-600 {
+      border-color: #db2777;
+    }
+
+    .bg-orange-600 {
+      background-color: #ea580c;
+    }
+
+    .border-orange-600 {
+      border-color: #ea580c;
     }
 
     .cell.selectable {
@@ -89,7 +135,28 @@ export class AcquireBoardElement extends LitElement {
       case "HasTile":
         return "has-tile";
       case "HasHotelChain":
-        return "has-hotel";
+        return this.getHotelClass(state.hotelChainType);
+      default:
+        return "";
+    }
+  }
+
+  getHotelClass(type: HotelChainType): string {
+    switch (type) {
+      case "WORLDWIDE":
+        return "bg-amber-600 border-amber-600";
+      case "LUXOR":
+        return "bg-orange-600 border-orange-600";
+      case "FESTIVAL":
+        return "bg-green-600 border-green-600";
+      case "IMPERIAL":
+        return "bg-pink-600 border-pink-600";
+      case "AMERICAN":
+        return "bg-sky-600 border-sky-600";
+      case "CONTINENTAL":
+        return "bg-red-600 border-red-600";
+      case "TOWER":
+        return "bg-purple-600 border-purple-600";
       default:
         return "";
     }

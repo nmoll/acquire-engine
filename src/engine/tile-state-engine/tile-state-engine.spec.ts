@@ -17,6 +17,16 @@ describe("TileStateEngine", () => {
     expect(TileStateEngine.computeState(gameInstance)).toMatchSnapshot();
   });
 
+  it("should return given tile state if no action", () => {
+    const tileState: ITileState = {
+      1: [5, 2, 8, 7],
+    };
+
+    expect(TileStateEngine.computeState(gameInstance, null, tileState)).toEqual(
+      tileState
+    );
+  });
+
   it("should return the same initial state for the same game instance", () => {
     expect(TileStateEngine.computeState(gameInstance)).toEqual(
       TileStateEngine.computeState(gameInstance)
@@ -61,5 +71,24 @@ describe("TileStateEngine", () => {
     );
 
     expect(resultState[1]).toEqual([9, 94, 91, 6, 3, 57]);
+  });
+
+  it("should do nothing if there are no tiles left", () => {
+    const tileState: ITileState = {
+      // The last tiles in the bag for this game seed
+      1: [41, 76],
+    };
+    const action: PlayerAction = {
+      type: "EndTurn",
+      playerId: 1,
+    };
+
+    const resultState = TileStateEngine.computeState(
+      gameInstance,
+      action,
+      tileState
+    );
+
+    expect(resultState).toEqual(tileState);
   });
 });

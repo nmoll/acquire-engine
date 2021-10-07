@@ -23,7 +23,7 @@ const computeState = (
   playerAction: PlayerAction | null = null,
   boardState: BoardSquareState[] = []
 ): BoardSquareState[] => {
-  if (!boardState?.length) {
+  if (!boardState.length) {
     return defaultState;
   }
   if (!playerAction) {

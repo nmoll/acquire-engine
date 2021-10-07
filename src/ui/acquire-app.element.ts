@@ -4,8 +4,11 @@ import { GameStateEngine } from "../engine/game-state-engine/game-state-engine";
 import { IGameState } from "../model";
 import { IAcquireGameInstance } from "../model/acquire-game-instance";
 import { PlayerAction } from "../model/player-action";
+import "./acquire-actions.element";
 import { ActionRequestEvent } from "./acquire-actions.element";
+import "./acquire-board.element";
 import { TileSelectEvent } from "./acquire-board.element";
+import "./acquire-players.element";
 
 const INSTANCE: IAcquireGameInstance = {
   randomSeed: Math.random() * 1000,
@@ -25,6 +28,10 @@ export class AcquireAppElement extends LitElement {
 
     .flex-1 {
       flex: 1 1 0%;
+    }
+
+    .flex-col {
+      flex-direction: column;
     }
 
     .h-full {
@@ -52,17 +59,19 @@ export class AcquireAppElement extends LitElement {
 
   onPlayerAction(action: PlayerAction) {
     this.actions = [...this.actions, action];
+    console.log(this.actions);
     this.state = GameStateEngine.computeGameState(INSTANCE, this.actions);
   }
 
   render() {
     return html` <div class="flex h-full">
-      <div class="flex-1">
+      <div class="flex-1 flex flex-col">
         <acquire-players
           .players="${INSTANCE.playerIds}"
           .currentPlayer="${this.getCurrentPlayerId()}"
         ></acquire-players>
         <acquire-board
+          class="flex-1"
           .boardState="${this.state.boardState}"
           .availableForSelection="${this.state.tileState[
             this.getCurrentPlayerId()

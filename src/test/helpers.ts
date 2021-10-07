@@ -9,11 +9,6 @@ export const america = (quantity: number): IShares => ({
   quantity,
 });
 
-export const imperial = (quantity: number): IShares => ({
-  hotel: HotelChainType.IMPERIAL,
-  quantity,
-});
-
 export const continental = (quantity: number): IShares => ({
   hotel: HotelChainType.CONTINENTAL,
   quantity,

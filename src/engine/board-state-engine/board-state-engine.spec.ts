@@ -406,7 +406,7 @@ describe("BoardStateEngine", () => {
   it("should grow a hotel if tile placed adjacent to it", () => {
     expectStateWithAction(
       `
-        - - - - - - - - - - - -
+        - - 0 - - - - - - - - -
         - - - T T - - - - - - -
         - - - - T - - - - - - -
         - - - - - - - - - - - -
@@ -419,7 +419,7 @@ describe("BoardStateEngine", () => {
       placeTile("4A")
     ).toEqual(
       state(`
-    - - - T - - - - - - - -
+    - - T T - - - - - - - -
     - - - T T - - - - - - -
     - - - - T - - - - - - -
     - - - - - - - - - - - -

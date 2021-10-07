@@ -1,5 +1,4 @@
 import { BoardSquareState, HasHotelChain } from "../model/board-square-state";
-import { HotelChainType } from "../model/hotel-chain-type";
 
 const isInBounds = (x: number, y: number): boolean =>
   x >= 0 && x <= 11 && y >= 0 && y <= 9;
@@ -43,6 +42,12 @@ const getAdjacentTiles = (
     (state) => state.type === "HasTile"
   );
 
+const isAdjacent = (
+  boardState: BoardSquareState[],
+  indexA: number,
+  indexB: number
+): boolean => getAdjacentPositions(boardState, indexA).includes(indexB);
+
 const hasAdjacentTiles = (
   boardState: BoardSquareState[],
   index: number
@@ -68,17 +73,12 @@ const getMinorityHotelChain = (
       findAllMatchingHotelChains(boardState, a).length
   )[1];
 
-const getHotelChainType = (
-  boardState: BoardSquareState
-): HotelChainType | null =>
-  boardState.type === "HasHotelChain" ? boardState.hotelChainType : null;
-
 const isSameHotelChain = (a: BoardSquareState, b: BoardSquareState): boolean =>
   a &&
   b &&
   a.type === "HasHotelChain" &&
   b.type === "HasHotelChain" &&
-  getHotelChainType(a) === getHotelChainType(b);
+  a.hotelChainType === b.hotelChainType;
 
 const findAllMatchingHotelChains = (
   boardState: BoardSquareState[],
@@ -91,6 +91,7 @@ const findAllMatchingHotelChains = (
 export const BoardUtils = {
   getIndex,
   getAdjacentPositions,
+  isAdjacent,
   getAdjacentHotelChains,
   hasAdjacentTiles,
   getLargestHotelChain,
