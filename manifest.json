@@ -1,0 +1,8 @@
+{
+  "name": "Acquire",
+  "short_name": "Acquire",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#000",
+  "description": "The classic real estate investing game"
+}
