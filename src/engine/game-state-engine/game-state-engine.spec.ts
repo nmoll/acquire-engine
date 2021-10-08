@@ -90,6 +90,7 @@ describe("GameStateEngine", () => {
         P4 0 0 0 0 0 0 0
       `),
       currentPlayerIdState: 1,
+      availableActionsState: [{ type: "ChooseTile" }],
     };
 
     expect(GameStateEngine.computeGameState(gameInstance, actions)).toEqual(
@@ -173,6 +174,7 @@ describe("GameStateEngine", () => {
           `
       ),
       currentPlayerIdState: 4,
+      availableActionsState: [{ type: "ChooseEndTurn" }],
     };
 
     expect(GameStateEngine.computeGameState(gameInstance, actions)).toEqual(
