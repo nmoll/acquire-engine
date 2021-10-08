@@ -28,10 +28,17 @@ export class AcquireActionsElement extends LitElement {
   availableActionState: IAvailableActionState | undefined;
 
   toggleFullScreen() {
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
-    } else {
-      document.documentElement.requestFullscreen();
+    const element = document.body;
+
+    const requestMethod =
+      element.requestFullscreen ||
+      (element as any).webkitRequestFullscreen ||
+      (element as any).webkitRequestFullScreen ||
+      (element as any).mozRequestFullScreen ||
+      (element as any).msRequestFullscreen;
+
+    if (requestMethod) {
+      requestMethod.apply(element);
     }
   }
 
