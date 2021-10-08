@@ -1,4 +1,5 @@
 import { BoardSquareState } from ".";
+import { IAvailableActionState } from "./available-action-state";
 import { ICashState } from "./cash-state";
 import { CurrentPlayerIdState } from "./current-player-id-state";
 import { ISharesState } from "./shares-state";
@@ -10,4 +11,5 @@ export interface IGameState {
   cashState: ICashState;
   tileState: ITileState;
   currentPlayerIdState: CurrentPlayerIdState;
+  availableActionsState: IAvailableActionState;
 }

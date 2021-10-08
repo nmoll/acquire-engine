@@ -1,5 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { AvailableActionsStateEngine } from "../engine/available-actions-state-engine/available-actions-state-engine";
 import { GameStateEngine } from "../engine/game-state-engine/game-state-engine";
 import { IGameState } from "../model";
 import { IAcquireGameInstance } from "../model/acquire-game-instance";
@@ -58,9 +59,16 @@ export class AcquireAppElement extends LitElement {
   }
 
   onPlayerAction(action: PlayerAction) {
-    this.actions = [...this.actions, action];
-    console.log(this.actions);
-    this.state = GameStateEngine.computeGameState(INSTANCE, this.actions);
+    if (
+      AvailableActionsStateEngine.validateAction(
+        action,
+        this.state.availableActionsState,
+        this.state.currentPlayerIdState
+      )
+    ) {
+      this.actions = [...this.actions, action];
+      this.state = GameStateEngine.computeGameState(INSTANCE, this.actions);
+    }
   }
 
   render() {
@@ -82,7 +90,9 @@ export class AcquireAppElement extends LitElement {
         </acquire-board>
       </div>
       <acquire-actions
+        style="width: 100px;"
         .playerId="${this.getCurrentPlayerId()}"
+        .availableActionState="${this.state.availableActionsState}"
         @action-request="${(e: CustomEvent<ActionRequestEvent>) =>
           this.onPlayerAction(e.detail.action)}"
       ></acquire-actions>

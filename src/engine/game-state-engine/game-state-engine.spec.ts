@@ -90,6 +90,7 @@ describe("GameStateEngine", () => {
         P4 0 0 0 0 0 0 0
       `),
       currentPlayerIdState: 1,
+      availableActionsState: [{ type: "ChooseTile" }],
     };
 
     expect(GameStateEngine.computeGameState(gameInstance, actions)).toEqual(
@@ -173,10 +174,240 @@ describe("GameStateEngine", () => {
           `
       ),
       currentPlayerIdState: 4,
+      availableActionsState: [{ type: "ChooseEndTurn" }],
     };
 
     expect(GameStateEngine.computeGameState(gameInstance, actions)).toEqual(
       expectedState
     );
+  });
+});
+
+describe("DEBUG", () => {
+  it("should return expected state", () => {
+    const gameInstance: IAcquireGameInstance = {
+      randomSeed: 31.01745681275392,
+      playerIds: [1, 2, 3, 4],
+    };
+    const actions: PlayerAction[] = [
+      {
+        type: "PlaceTile",
+        playerId: 1,
+        boardSquareId: 42,
+      },
+      {
+        type: "EndTurn",
+        playerId: 1,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 2,
+        boardSquareId: 51,
+      },
+      {
+        type: "EndTurn",
+        playerId: 2,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 3,
+        boardSquareId: 66,
+      },
+      {
+        type: "EndTurn",
+        playerId: 3,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 4,
+        boardSquareId: 64,
+      },
+      {
+        type: "EndTurn",
+        playerId: 4,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 1,
+        boardSquareId: 39,
+      },
+      {
+        type: "StartHotelChain",
+        playerId: 1,
+        hotelChain: HotelChainType.AMERICAN,
+      },
+      {
+        type: "EndTurn",
+        playerId: 1,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 2,
+        boardSquareId: 99,
+      },
+      {
+        type: "EndTurn",
+        playerId: 2,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 3,
+        boardSquareId: 65,
+      },
+      {
+        type: "StartHotelChain",
+        playerId: 3,
+        hotelChain: HotelChainType.TOWER,
+      },
+      {
+        type: "EndTurn",
+        playerId: 3,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 4,
+        boardSquareId: 57,
+      },
+      {
+        type: "EndTurn",
+        playerId: 4,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 1,
+        boardSquareId: 43,
+      },
+      {
+        type: "StartHotelChain",
+        playerId: 1,
+        hotelChain: HotelChainType.FESTIVAL,
+      },
+      {
+        type: "EndTurn",
+        playerId: 1,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 2,
+        boardSquareId: 94,
+      },
+      {
+        type: "EndTurn",
+        playerId: 2,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 3,
+        boardSquareId: 32,
+      },
+      {
+        type: "EndTurn",
+        playerId: 3,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 4,
+        boardSquareId: 95,
+      },
+      {
+        type: "StartHotelChain",
+        playerId: 4,
+        hotelChain: HotelChainType.WORLDWIDE,
+      },
+      {
+        type: "EndTurn",
+        playerId: 4,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 1,
+        boardSquareId: 100,
+      },
+      {
+        type: "StartHotelChain",
+        playerId: 1,
+        hotelChain: HotelChainType.LUXOR,
+      },
+      {
+        type: "EndTurn",
+        playerId: 1,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 2,
+        boardSquareId: 106,
+      },
+      {
+        type: "EndTurn",
+        playerId: 2,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 3,
+        boardSquareId: 40,
+      },
+      {
+        type: "EndTurn",
+        playerId: 3,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 4,
+        boardSquareId: 45,
+      },
+      {
+        type: "StartHotelChain",
+        playerId: 4,
+        hotelChain: HotelChainType.AMERICAN,
+      },
+      {
+        type: "EndTurn",
+        playerId: 4,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 1,
+        boardSquareId: 88,
+      },
+      {
+        type: "EndTurn",
+        playerId: 1,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 2,
+        boardSquareId: 38,
+      },
+      {
+        type: "EndTurn",
+        playerId: 2,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 3,
+        boardSquareId: 37,
+      },
+      {
+        type: "EndTurn",
+        playerId: 3,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 4,
+        boardSquareId: 101,
+      },
+      {
+        type: "EndTurn",
+        playerId: 4,
+      },
+      {
+        type: "PlaceTile",
+        playerId: 1,
+        boardSquareId: 52,
+      },
+    ];
+    expect(
+      GameStateEngine.computeGameState(gameInstance, actions)
+    ).toMatchSnapshot();
   });
 });

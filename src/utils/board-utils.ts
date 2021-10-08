@@ -1,3 +1,4 @@
+import { ALL_HOTELS, HotelChainType } from "../model";
 import { BoardSquareState, HasHotelChain } from "../model/board-square-state";
 
 const isInBounds = (x: number, y: number): boolean =>
@@ -26,13 +27,17 @@ const getAdjacentStates = (
 ): BoardSquareState[] =>
   getAdjacentPositions(boardStates, index).map((i) => boardStates[i]);
 
+const isTypeHotelChain = (
+  boardSquareState: BoardSquareState
+): boardSquareState is HasHotelChain =>
+  boardSquareState.type === "HasHotelChain" &&
+  !!boardSquareState.hotelChainType;
+
 const getAdjacentHotelChains = (
   boardState: BoardSquareState[],
   index: number
 ): HasHotelChain[] =>
-  getAdjacentStates(boardState, index).filter(
-    (state) => state.type === "HasHotelChain"
-  ) as HasHotelChain[];
+  getAdjacentStates(boardState, index).filter(isTypeHotelChain);
 
 const getAdjacentTiles = (
   boardState: BoardSquareState[],
@@ -63,6 +68,22 @@ const getLargestHotelChain = (
       findAllMatchingHotelChains(boardState, a).length
   )[0];
 
+const getActiveHotelChains = (
+  boardState: BoardSquareState[]
+): HotelChainType[] =>
+  Array.from(
+    new Set(
+      boardState.filter(isTypeHotelChain).map((state) => state.hotelChainType)
+    )
+  );
+
+const getInactiveHotelChains = (
+  boardState: BoardSquareState[]
+): HotelChainType[] => {
+  const active = getActiveHotelChains(boardState);
+  return ALL_HOTELS.filter((hotel) => !active.includes(hotel));
+};
+
 const getMinorityHotelChain = (
   boardState: BoardSquareState[],
   hotelChains: HasHotelChain[]
@@ -88,12 +109,22 @@ const findAllMatchingHotelChains = (
     isSameHotelChain(state, squareState)
   ) as HasHotelChain[];
 
+const isHotelStarter = (
+  boardState: BoardSquareState[],
+  index: number
+): boolean =>
+  hasAdjacentTiles(boardState, index) &&
+  !getAdjacentHotelChains(boardState, index).length;
+
 export const BoardUtils = {
   getIndex,
   getAdjacentPositions,
   isAdjacent,
   getAdjacentHotelChains,
   hasAdjacentTiles,
+  getActiveHotelChains,
+  getInactiveHotelChains,
   getLargestHotelChain,
   getMinorityHotelChain,
+  isHotelStarter,
 };

@@ -1,5 +1,432 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DEBUG should return expected state 1`] = `
+Object {
+  "availableActionsState": Array [
+    Object {
+      "hotelChains": Array [
+        "CONTINENTAL",
+        "IMPERIAL",
+      ],
+      "type": "ChooseHotelChain",
+    },
+  ],
+  "boardState": Array [
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "HasTile",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "hotelChainType": "AMERICAN",
+      "type": "HasHotelChain",
+    },
+    Object {
+      "hotelChainType": "AMERICAN",
+      "type": "HasHotelChain",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "hotelChainType": "FESTIVAL",
+      "type": "HasHotelChain",
+    },
+    Object {
+      "hotelChainType": "FESTIVAL",
+      "type": "HasHotelChain",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "HasTile",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "hotelChainType": "AMERICAN",
+      "type": "HasHotelChain",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "HasTile",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "hotelChainType": "TOWER",
+      "type": "HasHotelChain",
+    },
+    Object {
+      "hotelChainType": "TOWER",
+      "type": "HasHotelChain",
+    },
+    Object {
+      "hotelChainType": "TOWER",
+      "type": "HasHotelChain",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "hotelChainType": "WORLDWIDE",
+      "type": "HasHotelChain",
+    },
+    Object {
+      "hotelChainType": "WORLDWIDE",
+      "type": "HasHotelChain",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "hotelChainType": "LUXOR",
+      "type": "HasHotelChain",
+    },
+    Object {
+      "hotelChainType": "LUXOR",
+      "type": "HasHotelChain",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "type": "Default",
+    },
+    Object {
+      "hotelChainType": "WORLDWIDE",
+      "type": "HasHotelChain",
+    },
+    Object {
+      "type": "Default",
+    },
+  ],
+  "cashState": Object {
+    "1": 6000,
+    "2": 6000,
+    "3": 6000,
+    "4": 6000,
+  },
+  "currentPlayerIdState": 4,
+  "sharesState": Object {
+    "1": Object {
+      "AMERICAN": 1,
+      "CONTINENTAL": 0,
+      "FESTIVAL": 1,
+      "IMPERIAL": 0,
+      "LUXOR": 1,
+      "TOWER": 0,
+      "WORLDWIDE": 0,
+    },
+    "2": Object {
+      "AMERICAN": 0,
+      "CONTINENTAL": 0,
+      "FESTIVAL": 0,
+      "IMPERIAL": 0,
+      "LUXOR": 0,
+      "TOWER": 0,
+      "WORLDWIDE": 0,
+    },
+    "3": Object {
+      "AMERICAN": 0,
+      "CONTINENTAL": 0,
+      "FESTIVAL": 0,
+      "IMPERIAL": 0,
+      "LUXOR": 0,
+      "TOWER": 1,
+      "WORLDWIDE": 0,
+    },
+    "4": Object {
+      "AMERICAN": 0,
+      "CONTINENTAL": 0,
+      "FESTIVAL": 0,
+      "IMPERIAL": 0,
+      "LUXOR": 0,
+      "TOWER": 0,
+      "WORLDWIDE": 1,
+    },
+  },
+  "tileState": Object {
+    "1": Array [
+      88,
+      36,
+      5,
+      15,
+      11,
+    ],
+    "2": Array [
+      96,
+      72,
+      60,
+      38,
+      47,
+    ],
+    "3": Array [
+      37,
+      12,
+      22,
+      91,
+      86,
+    ],
+    "4": Array [
+      103,
+      73,
+      25,
+      101,
+    ],
+  },
+}
+`;
+
 exports[`GameStateEngine should create tile map 1`] = `
 Object {
   "0": "1A",

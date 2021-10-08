@@ -1,29 +1,14 @@
-import { IGameState } from "../../model";
-import { AvailableAction } from "../../model/available-action";
+import { BoardSquareState } from "../../model";
 import { IAvailableActionState } from "../../model/available-action-state";
+import { CurrentPlayerIdState } from "../../model/current-player-id-state";
 import { PlayerAction } from "../../model/player-action";
+import { BoardUtils } from "../../utils/board-utils";
 
-// const isPlayerTurnEnd = (playerId: number, action: PlayerAction): boolean =>
-//   action.type === "EndTurn" && action.playerId === playerId
-
-const getPreviousAction = (
-  playerId: number,
-  actions: PlayerAction[]
-): PlayerAction | undefined => {
-  const lastAction = actions[actions.length - 1];
-  if (!lastAction || lastAction.playerId === playerId) {
-    return lastAction;
-  }
-
-  return getPreviousAction(playerId, actions.slice(0, -2));
-};
-
-const getAvailableActions = (
-  playerId: number,
-  actions: PlayerAction[]
-): AvailableAction[] => {
-  const previousAction = getPreviousAction(playerId, actions);
-  if (!previousAction || previousAction?.type === "EndTurn") {
+const computeState = (
+  boardState: BoardSquareState[],
+  action: PlayerAction | null = null
+): IAvailableActionState => {
+  if (!action || action?.type === "EndTurn") {
     return [
       {
         type: "ChooseTile",
@@ -31,14 +16,15 @@ const getAvailableActions = (
     ];
   }
 
-  // if (previousAction.type === "PlaceTile") {
-  //   return [
-  //     {
-  //       type: "ChooseHotelChain",
-  //       hotelChains: [],
-  //     },
-  //   ];
-  // }
+  if (action.type === "PlaceTile") {
+    if (BoardUtils.isHotelStarter(boardState, action.boardSquareId))
+      return [
+        {
+          type: "ChooseHotelChain",
+          hotelChains: BoardUtils.getInactiveHotelChains(boardState),
+        },
+      ];
+  }
 
   return [
     {
@@ -47,22 +33,33 @@ const getAvailableActions = (
   ];
 };
 
-const computeState = (
-  actions: PlayerAction[],
-  gameState: IGameState
-): IAvailableActionState => {
-  if (!gameState.currentPlayerIdState) {
-    return {};
+const validateAction = (
+  action: PlayerAction,
+  availableActions: IAvailableActionState,
+  currentPlayerIdState: CurrentPlayerIdState
+): boolean => {
+  if (action.playerId !== currentPlayerIdState) {
+    return false;
   }
 
-  return {
-    [gameState.currentPlayerIdState]: getAvailableActions(
-      gameState.currentPlayerIdState,
-      actions
-    ),
-  };
+  switch (action.type) {
+    case "PlaceTile":
+      return !!availableActions.find((action) => action.type === "ChooseTile");
+    case "StartHotelChain":
+      return !!availableActions.find(
+        (a) =>
+          a.type === "ChooseHotelChain" &&
+          a.hotelChains.includes(action.hotelChain)
+      );
+    case "EndTurn":
+      return !!availableActions.find(
+        (action) => action.type === "ChooseEndTurn"
+      );
+  }
+  return true;
 };
 
 export const AvailableActionsStateEngine = {
   computeState,
+  validateAction,
 };
