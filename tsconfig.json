@@ -16,8 +16,13 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": false,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "paths": { "virtual:pwa-register": ["node_modules/vite-plugin-pwa"] }
   },
-  "include": ["src/**/*.ts"],
+  "include": [
+    "src/**/*.ts",   
+    "node_modules/vite-plugin-pwa/client.d.ts" 
+  ],
   "exclude": []
 }

@@ -1,5 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { registerSW } from "virtual:pwa-register";
 import { AvailableActionsStateEngine } from "../engine/available-actions-state-engine/available-actions-state-engine";
 import { GameStateEngine } from "../engine/game-state-engine/game-state-engine";
 import { IGameState } from "../model";
@@ -15,6 +16,16 @@ const INSTANCE: IAcquireGameInstance = {
   randomSeed: Math.random() * 1000,
   playerIds: [1, 2, 3, 4],
 };
+
+console.log("registerSW");
+registerSW({
+  onNeedRefresh() {
+    console.log("onNeedRefresh");
+  },
+  onOfflineReady() {
+    console.log("onNeedRefresh");
+  },
+});
 
 @customElement("acquire-app")
 export class AcquireAppElement extends LitElement {
