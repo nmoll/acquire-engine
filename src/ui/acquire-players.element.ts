@@ -1,5 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { ICashState } from "../model/cash-state";
 
 @customElement("acquire-players")
 export class AcquirePlayersElement extends LitElement {
@@ -22,6 +23,9 @@ export class AcquirePlayersElement extends LitElement {
   players: number[] | undefined = [];
 
   @property()
+  cashState: ICashState = {};
+
+  @property()
   currentPlayer: number | undefined;
 
   render() {
@@ -30,7 +34,8 @@ export class AcquirePlayersElement extends LitElement {
         html`<div
           class="player ${playerId === this.currentPlayer ? "current" : ""}"
         >
-          Player ${playerId}
+          <div>Player ${playerId}</div>
+          <div>$${this.cashState[playerId] ?? 0}</div>
         </div>`
     );
   }

@@ -15,8 +15,10 @@ const getInitialState = (gameInstance: IAcquireGameInstance): IGameState => {
   const sharesState = SharesStateEngine.computeState(gameInstance);
   const currentPlayerIdState =
     CurrentPlayerIdStateEngine.computeState(gameInstance);
-  const availableActionsState =
-    AvailableActionsStateEngine.computeState(boardState);
+  const availableActionsState = AvailableActionsStateEngine.computeState(
+    boardState,
+    sharesState
+  );
 
   return {
     boardState,
@@ -36,13 +38,7 @@ const computeGameState = (
   if (!playerActions || playerActions.length === 0) {
     return state;
   }
-  if (
-    !AvailableActionsStateEngine.validateAction(
-      playerActions[0],
-      state.availableActionsState,
-      state.currentPlayerIdState
-    )
-  ) {
+  if (!AvailableActionsStateEngine.validateAction(playerActions[0], state)) {
     // Throw out the action and resume
     return computeGameState(gameInstance, playerActions.slice(1), state);
   }
@@ -77,6 +73,7 @@ const computeGameState = (
 
   const availableActionsState = AvailableActionsStateEngine.computeState(
     boardState,
+    sharesState,
     playerActions[0]
   );
 

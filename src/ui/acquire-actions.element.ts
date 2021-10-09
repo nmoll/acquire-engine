@@ -3,6 +3,7 @@ import { customElement, property } from "lit/decorators.js";
 import { HotelChainType } from "../model";
 import { AvailableAction } from "../model/available-action";
 import { IAvailableActionState } from "../model/available-action-state";
+import { AvailableShares } from "../model/available-shares.type";
 import { PlayerAction } from "../model/player-action";
 
 export interface ActionRequestEvent {
@@ -26,21 +27,6 @@ export class AcquireActionsElement extends LitElement {
 
   @property()
   availableActionState: IAvailableActionState | undefined;
-
-  toggleFullScreen() {
-    const element = document.body;
-
-    const requestMethod =
-      element.requestFullscreen ||
-      (element as any).webkitRequestFullscreen ||
-      (element as any).webkitRequestFullScreen ||
-      (element as any).mozRequestFullScreen ||
-      (element as any).msRequestFullscreen;
-
-    if (requestMethod) {
-      requestMethod.apply(element);
-    }
-  }
 
   onEndTurn() {
     this.dispatchEvent(
@@ -69,33 +55,74 @@ export class AcquireActionsElement extends LitElement {
     );
   }
 
+  onPurchaseShare(hotel: HotelChainType) {
+    this.dispatchEvent(
+      new CustomEvent<ActionRequestEvent>("action-request", {
+        detail: {
+          action: {
+            type: "PurchaseShares",
+            playerId: this.playerId,
+            shares: [
+              {
+                hotel,
+                quantity: 1,
+              },
+            ],
+          },
+        },
+      })
+    );
+  }
+
+  renderChooseTile() {
+    return html`<span>Choose a tile</span>`;
+  }
+
+  renderChooseHotelChain(hotelChains: HotelChainType[]) {
+    return hotelChains.map(
+      (hotelChain) =>
+        html`<button @click="${() =>
+          this.onStartHotelChain(hotelChain)}"">${hotelChain}</button>`
+    );
+  }
+
+  renderChooseMergeDirection() {
+    return html`<span>Choose merge direction (not implemented)</span>`;
+  }
+
+  renderChooseShares(availableShares: AvailableShares) {
+    const hotelChains = Object.keys(availableShares) as HotelChainType[];
+    return hotelChains.map(
+      (hotelChain) =>
+        html`<button @click="${() => this.onPurchaseShare(hotelChain)}">
+          Purchase ${hotelChain}
+        </button>`
+    );
+  }
+
+  renderChooseEndTurn() {
+    return html`<button @click="${() => this.onEndTurn()}">End Turn</button>`;
+  }
+
   renderAction(action: AvailableAction) {
     switch (action.type) {
       case "ChooseTile":
-        return html`<span>Choose a tile</span>`;
+        return this.renderChooseTile();
       case "ChooseHotelChain":
-        return action.hotelChains.map(
-          (hotelChain) =>
-            html`<button @click="${() =>
-              this.onStartHotelChain(hotelChain)}"">${hotelChain}</button>`
-        );
+        return this.renderChooseHotelChain(action.hotelChains);
       case "ChooseMergeDirection":
-        return html`<span>Choose merge direction (not implemented)</span>`;
+        return this.renderChooseMergeDirection();
       case "ChooseShares":
-        return html`<span>Choose shares (not implemented)</span>`;
+        return this.renderChooseShares(action.availableShares);
       case "ChooseEndTurn":
-        return html`<button @click="${() => this.onEndTurn()}">
-          End Turn
-        </button>`;
+        return this.renderChooseEndTurn();
     }
   }
 
   render() {
-    return html`<button @click="${() => this.toggleFullScreen()}">
-        Fullscreen</button
-      >${this.availableActionState?.map((action) =>
-        this.renderAction(action)
-      )}`;
+    return this.availableActionState?.map((action) =>
+      this.renderAction(action)
+    );
   }
 }
 

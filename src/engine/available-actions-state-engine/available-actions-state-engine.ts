@@ -1,58 +1,105 @@
-import { BoardSquareState } from "../../model";
+import {
+  BoardSquareState,
+  HotelChainType,
+  IGameState,
+  ISharesState,
+} from "../../model";
+import {
+  ChooseEndTurn,
+  ChooseShares,
+  ChooseTile,
+} from "../../model/available-action";
 import { IAvailableActionState } from "../../model/available-action-state";
-import { CurrentPlayerIdState } from "../../model/current-player-id-state";
 import { PlayerAction } from "../../model/player-action";
 import { BoardUtils } from "../../utils/board-utils";
+import { SharesUtils } from "../../utils/shares-utils";
+
+const chooseTile = (): ChooseTile => ({
+  type: "ChooseTile",
+});
+
+const chooseEndTurn = (): ChooseEndTurn => ({
+  type: "ChooseEndTurn",
+});
+
+const chooseShares = (
+  hotelChains: HotelChainType[],
+  sharesState: ISharesState
+): ChooseShares => ({
+  type: "ChooseShares",
+  availableShares: hotelChains.reduce(
+    (result, hotelChain) => ({
+      ...result,
+      [hotelChain]: Math.min(
+        SharesUtils.getAvailableSharesForHotel(sharesState, hotelChain),
+        3
+      ),
+    }),
+    {}
+  ),
+});
 
 const computeState = (
   boardState: BoardSquareState[],
+  sharesState: ISharesState,
   action: PlayerAction | null = null
 ): IAvailableActionState => {
-  if (!action || action?.type === "EndTurn") {
-    return [
-      {
-        type: "ChooseTile",
-      },
-    ];
+  if (!action) {
+    return [chooseTile()];
   }
 
-  if (action.type === "PlaceTile") {
-    if (BoardUtils.isHotelStarter(boardState, action.boardSquareId))
-      return [
-        {
-          type: "ChooseHotelChain",
-          hotelChains: BoardUtils.getInactiveHotelChains(boardState),
-        },
-      ];
-  }
+  const activeHotelChains = BoardUtils.getActiveHotelChains(boardState);
 
-  return [
-    {
-      type: "ChooseEndTurn",
-    },
-  ];
+  switch (action.type) {
+    case "PlaceTile":
+      if (BoardUtils.isHotelStarter(boardState, action.boardSquareId)) {
+        return [
+          {
+            type: "ChooseHotelChain",
+            hotelChains: BoardUtils.getInactiveHotelChains(boardState),
+          },
+        ];
+      }
+      if (activeHotelChains.length) {
+        return [chooseShares(activeHotelChains, sharesState), chooseEndTurn()];
+      }
+      return [chooseEndTurn()];
+
+    case "StartHotelChain":
+      return [chooseShares(activeHotelChains, sharesState), chooseEndTurn()];
+
+    case "Merge":
+      return [chooseEndTurn()];
+
+    case "PurchaseShares":
+      return [chooseEndTurn()];
+
+    case "EndTurn":
+      return [chooseTile()];
+  }
 };
 
 const validateAction = (
   action: PlayerAction,
-  availableActions: IAvailableActionState,
-  currentPlayerIdState: CurrentPlayerIdState
+  gameState: IGameState
 ): boolean => {
-  if (action.playerId !== currentPlayerIdState) {
+  if (action.playerId !== gameState.currentPlayerIdState) {
     return false;
   }
 
   switch (action.type) {
     case "PlaceTile":
-      return !!availableActions.find((action) => action.type === "ChooseTile");
+      return !!gameState.availableActionsState.find(
+        (action) => action.type === "ChooseTile"
+      );
     case "StartHotelChain":
-      return !!availableActions.find(
+      return !!gameState.availableActionsState.find(
         (a) =>
           a.type === "ChooseHotelChain" &&
           a.hotelChains.includes(action.hotelChain)
       );
     case "EndTurn":
-      return !!availableActions.find(
+      return !!gameState.availableActionsState.find(
         (action) => action.type === "ChooseEndTurn"
       );
   }

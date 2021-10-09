@@ -1,4 +1,5 @@
-import { HotelChainType, ISharesState } from ".";
+import { HotelChainType } from ".";
+import { AvailableShares } from "./available-shares.type";
 
 export interface ChooseTile {
   type: "ChooseTile";
@@ -11,7 +12,7 @@ export interface ChooseHotelChain {
 
 export interface ChooseShares {
   type: "ChooseShares";
-  availableShares: ISharesState;
+  availableShares: AvailableShares;
 }
 
 export interface ChooseMergeDirection {

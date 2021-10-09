@@ -59,13 +59,7 @@ export class AcquireAppElement extends LitElement {
   }
 
   onPlayerAction(action: PlayerAction) {
-    if (
-      AvailableActionsStateEngine.validateAction(
-        action,
-        this.state.availableActionsState,
-        this.state.currentPlayerIdState
-      )
-    ) {
+    if (AvailableActionsStateEngine.validateAction(action, this.state)) {
       this.actions = [...this.actions, action];
       this.state = GameStateEngine.computeGameState(INSTANCE, this.actions);
     }
@@ -76,6 +70,7 @@ export class AcquireAppElement extends LitElement {
       <div class="flex-1 flex flex-col">
         <acquire-players
           .players="${INSTANCE.playerIds}"
+          .cashState="${this.state.cashState}"
           .currentPlayer="${this.getCurrentPlayerId()}"
         ></acquire-players>
         <acquire-board
