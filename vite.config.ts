@@ -5,7 +5,12 @@ import { VitePWA } from "vite-plugin-pwa";
 export default defineConfig({
   plugins: [
     VitePWA({
-      includeAssets: ["src/favicon.svg", "robots.txt"],
+      includeAssets: [
+        "src/favicon.svg",
+        "logo_60x60.svg",
+        "logo_144x144.svg",
+        "robots.txt",
+      ],
       manifest: {
         name: "Acquire",
         short_name: "Acquire",
@@ -17,12 +22,12 @@ export default defineConfig({
         orientation: "landscape",
         icons: [
           {
-            src: "src/logo_60x60.svg",
+            src: "logo_60x60.svg",
             sizes: "60x60",
             purpose: "any",
           },
           {
-            src: "src/logo_144x144.svg",
+            src: "logo_144x144.svg",
             sizes: "144x144",
             purpose: "any",
           },

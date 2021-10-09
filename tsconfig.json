@@ -17,12 +17,9 @@
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": false,
     "esModuleInterop": true,
-    "baseUrl": "./",
-    "paths": { "virtual:pwa-register": ["node_modules/vite-plugin-pwa"] }
   },
   "include": [
-    "src/**/*.ts",   
-    "node_modules/vite-plugin-pwa/client.d.ts" 
+    "src/**/*.ts"
   ],
   "exclude": []
 }
