@@ -17,6 +17,7 @@ export class AcquireActionsElement extends LitElement {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       gap: 1rem;
       padding: 1rem;
     }
@@ -55,7 +56,7 @@ export class AcquireActionsElement extends LitElement {
     );
   }
 
-  onPurchaseShare(hotel: HotelChainType) {
+  onPurchaseShare(hotel: HotelChainType, quantity: number) {
     this.dispatchEvent(
       new CustomEvent<ActionRequestEvent>("action-request", {
         detail: {
@@ -65,7 +66,7 @@ export class AcquireActionsElement extends LitElement {
             shares: [
               {
                 hotel,
-                quantity: 1,
+                quantity,
               },
             ],
           },
@@ -94,8 +95,12 @@ export class AcquireActionsElement extends LitElement {
     const hotelChains = Object.keys(availableShares) as HotelChainType[];
     return hotelChains.map(
       (hotelChain) =>
-        html`<button @click="${() => this.onPurchaseShare(hotelChain)}">
-          Purchase ${hotelChain}
+        html`<button
+          ?disabled="${!availableShares[hotelChain]}"
+          @click="${() =>
+            this.onPurchaseShare(hotelChain, availableShares[hotelChain] ?? 0)}"
+        >
+          Purchase ${availableShares[hotelChain] ?? 0} ${hotelChain}
         </button>`
     );
   }
@@ -120,9 +125,9 @@ export class AcquireActionsElement extends LitElement {
   }
 
   render() {
-    return this.availableActionState?.map((action) =>
-      this.renderAction(action)
-    );
+    return html`<div>
+      ${this.availableActionState?.map((action) => this.renderAction(action))}
+    </div>`;
   }
 }
 

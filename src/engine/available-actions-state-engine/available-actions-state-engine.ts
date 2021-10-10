@@ -6,6 +6,7 @@ import {
 } from "../../model";
 import {
   ChooseEndTurn,
+  ChooseHotelChain,
   ChooseShares,
   ChooseTile,
 } from "../../model/available-action";
@@ -20,6 +21,11 @@ const chooseTile = (): ChooseTile => ({
 
 const chooseEndTurn = (): ChooseEndTurn => ({
   type: "ChooseEndTurn",
+});
+
+const chooseHotelChain = (hotelChains: HotelChainType[]): ChooseHotelChain => ({
+  type: "ChooseHotelChain",
+  hotelChains,
 });
 
 const chooseShares = (
@@ -54,10 +60,7 @@ const computeState = (
     case "PlaceTile":
       if (BoardUtils.isHotelStarter(boardState, action.boardSquareId)) {
         return [
-          {
-            type: "ChooseHotelChain",
-            hotelChains: BoardUtils.getInactiveHotelChains(boardState),
-          },
+          chooseHotelChain(BoardUtils.getInactiveHotelChains(boardState)),
         ];
       }
       if (activeHotelChains.length) {

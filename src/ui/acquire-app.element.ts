@@ -21,6 +21,7 @@ export class AcquireAppElement extends LitElement {
   static styles = css`
     :host {
       height: 100%;
+      background-color: #111827;
     }
 
     .flex {
@@ -43,11 +44,21 @@ export class AcquireAppElement extends LitElement {
   @property()
   actions: PlayerAction[] = [];
 
+  @property()
+  orientation: "landscape" | "portrait";
+
   private state: IGameState;
 
   constructor() {
     super();
     this.state = GameStateEngine.computeGameState(INSTANCE, this.actions);
+
+    window.addEventListener("resize", () => {
+      this.orientation =
+        window.innerHeight > window.innerWidth ? "portrait" : "landscape";
+    });
+    this.orientation =
+      window.innerHeight > window.innerWidth ? "portrait" : "landscape";
   }
 
   onTileSelect(event: CustomEvent<TileSelectEvent>) {
@@ -66,7 +77,12 @@ export class AcquireAppElement extends LitElement {
   }
 
   render() {
-    return html` <div class="flex h-full">
+    return html`<div
+      style="background: #18181B; color: #F3F4F6;"
+      class="flex h-full ${this.orientation === "portrait"
+        ? "flex-col"
+        : "flex-row"}"
+    >
       <div class="flex-1 flex flex-col">
         <acquire-players
           .players="${INSTANCE.playerIds}"
@@ -75,6 +91,9 @@ export class AcquireAppElement extends LitElement {
         ></acquire-players>
         <acquire-board
           class="flex-1"
+          style="${this.orientation === "portrait"
+            ? `height:${window.innerWidth * (9 / 12)}px`
+            : ""}"
           .boardState="${this.state.boardState}"
           .availableForSelection="${this.state.tileState[
             this.getCurrentPlayerId()
@@ -85,7 +104,8 @@ export class AcquireAppElement extends LitElement {
         </acquire-board>
       </div>
       <acquire-actions
-        style="width: 100px;"
+        class="${this.orientation === "portrait" ? "flex-1" : ""}"
+        style="${this.orientation === "landscape" ? "width: 150px" : ""}"
         .playerId="${this.getCurrentPlayerId()}"
         .availableActionState="${this.state.availableActionsState}"
         @action-request="${(e: CustomEvent<ActionRequestEvent>) =>

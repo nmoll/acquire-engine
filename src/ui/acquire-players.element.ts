@@ -15,7 +15,7 @@ export class AcquirePlayersElement extends LitElement {
     }
 
     .current {
-      color: green;
+      color: #34d399;
     }
   `;
 
