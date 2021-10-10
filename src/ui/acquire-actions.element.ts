@@ -82,8 +82,8 @@ export class AcquireActionsElement extends LitElement {
   renderChooseHotelChain(hotelChains: HotelChainType[]) {
     return hotelChains.map(
       (hotelChain) =>
-        html`<button @click="${() =>
-          this.onStartHotelChain(hotelChain)}"">${hotelChain}</button>`
+        html`<acquire-button .color="${`var(--colors-${hotelChain})`}"  @click="${() =>
+          this.onStartHotelChain(hotelChain)}"">${hotelChain}</acquire-button>`
     );
   }
 
@@ -95,18 +95,21 @@ export class AcquireActionsElement extends LitElement {
     const hotelChains = Object.keys(availableShares) as HotelChainType[];
     return hotelChains.map(
       (hotelChain) =>
-        html`<button
+        html`<acquire-button
+          .color="${`var(--colors-${hotelChain})`}"
           ?disabled="${!availableShares[hotelChain]}"
           @click="${() =>
             this.onPurchaseShare(hotelChain, availableShares[hotelChain] ?? 0)}"
         >
           Purchase ${availableShares[hotelChain] ?? 0} ${hotelChain}
-        </button>`
+        </acquire-button>`
     );
   }
 
   renderChooseEndTurn() {
-    return html`<button @click="${() => this.onEndTurn()}">End Turn</button>`;
+    return html`<acquire-button @click="${() => this.onEndTurn()}"
+      >End Turn</acquire-button
+    >`;
   }
 
   renderAction(action: AvailableAction) {

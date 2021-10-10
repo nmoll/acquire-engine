@@ -1,0 +1,26 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  font-family: "Inter", sans-serif;
+}
+
+body,
+body * {
+  all: "unset";
+  box-sizing: "border-box";
+}
+
+:root {
+  --colors-gray-100: #f3f4f6;
+  --colors-gray-900: #18181b;
+
+  --colors-WORLDWIDE: #d97706;
+  --colors-LUXOR: #ea580c;
+  --colors-FESTIVAL: #16a34a;
+  --colors-IMPERIAL: #db2777;
+  --colors-AMERICAN: #0284c7;
+  --colors-CONTINENTAL: #dc2626;
+  --colors-TOWER: #9333ea;
+}
