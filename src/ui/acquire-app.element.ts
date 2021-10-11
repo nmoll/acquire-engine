@@ -30,46 +30,25 @@ export class AcquireAppElement extends LitElement {
       color: var(--colors-gray-100);
       height: 100%;
       display: grid;
+    }
+
+    .app.landscape {
       grid-template-columns: 4fr 1fr;
       grid-template-rows: min-content auto;
     }
 
-    .board-container {
-      position: relative;
-      grid-row: 2;
-    }
-
-    acquire-board {
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-    }
-
-    acquire-actions {
-      grid-row: 2;
-      grid-column: 2;
-    }
-
     .app.portrait {
       grid-template-columns: auto;
-      grid-template-rows: min-content min-content auto;
+      grid-template-rows: min-content 1fr 1fr;
     }
 
-    .app.portrait .board-container {
+    .app.landscape acquire-board {
       grid-row: 2;
     }
 
-    .app.portrait acquire-actions {
-      grid-row: 3;
-      grid-column: 1;
-    }
-
-    .app.portrait .board-container {
-      width: 100%;
-      height: 0;
-      padding-top: 75%;
+    .app.landscape acquire-actions {
+      grid-row: 2;
+      grid-column: 2;
     }
   `;
 
@@ -123,17 +102,15 @@ export class AcquireAppElement extends LitElement {
         .currentPlayer="${this.getCurrentPlayerId()}"
       ></acquire-players>
 
-      <div class="board-container">
-        <acquire-board
-          .boardState="${this.state.boardState}"
-          .availableForSelection="${this.state.tileState[
-            this.getCurrentPlayerId()
-          ]}"
-          @tile-select="${(e: CustomEvent<TileSelectEvent>) =>
-            this.onTileSelect(e)}"
-        >
-        </acquire-board>
-      </div>
+      <acquire-board
+        .boardState="${this.state.boardState}"
+        .availableForSelection="${this.state.tileState[
+          this.getCurrentPlayerId()
+        ]}"
+        @tile-select="${(e: CustomEvent<TileSelectEvent>) =>
+          this.onTileSelect(e)}"
+      >
+      </acquire-board>
 
       <acquire-actions
         .playerId="${this.getCurrentPlayerId()}"
