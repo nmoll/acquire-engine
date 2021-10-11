@@ -11,9 +11,10 @@ import "./acquire-board.element";
 import { TileSelectEvent } from "./acquire-board.element";
 import "./acquire-button.element";
 import "./acquire-players.element";
+import { FirebaseService } from "./firebase.service";
 
 const INSTANCE: IAcquireGameInstance = {
-  randomSeed: Math.random() * 1000,
+  randomSeed: 1,
   playerIds: [1, 2, 3, 4],
 };
 
@@ -79,10 +80,18 @@ export class AcquireAppElement extends LitElement {
   orientation: "landscape" | "portrait";
 
   private state: IGameState;
+  private service: FirebaseService;
 
   constructor() {
     super();
     this.state = GameStateEngine.computeGameState(INSTANCE, this.actions);
+
+    this.service = new FirebaseService();
+
+    this.service.onActionsChanged((actions) => {
+      this.actions = actions;
+      this.state = GameStateEngine.computeGameState(INSTANCE, this.actions);
+    });
 
     this.orientation =
       window.innerHeight > window.innerWidth ? "portrait" : "landscape";
@@ -102,8 +111,7 @@ export class AcquireAppElement extends LitElement {
 
   onPlayerAction(action: PlayerAction) {
     if (AvailableActionsStateEngine.validateAction(action, this.state)) {
-      this.actions = [...this.actions, action];
-      this.state = GameStateEngine.computeGameState(INSTANCE, this.actions);
+      this.service.updateActions([...this.actions, action]);
     }
   }
 
