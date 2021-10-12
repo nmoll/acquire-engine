@@ -11,31 +11,31 @@ describe("ArrayUtils", () => {
     it("should shuffle array based on seed", () => {
       expect(ArrayUtils.shuffle(array, 1)).toMatchInlineSnapshot(`
         Array [
-          5,
-          3,
-          10,
-          9,
-          7,
-          1,
-          6,
-          2,
-          4,
           8,
+          9,
+          4,
+          3,
+          2,
+          6,
+          10,
+          5,
+          1,
+          7,
         ]
       `);
 
       expect(ArrayUtils.shuffle(array, 5)).toMatchInlineSnapshot(`
         Array [
-          5,
           6,
-          2,
-          10,
+          4,
+          8,
           9,
           3,
-          4,
-          7,
           1,
-          8,
+          5,
+          2,
+          10,
+          7,
         ]
       `);
     });

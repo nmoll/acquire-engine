@@ -70,13 +70,13 @@ describe("TileStateEngine", () => {
       initialState
     );
 
-    expect(resultState[1]).toEqual([9, 94, 91, 6, 3, 57]);
+    expect(resultState[1]).toEqual([11, 7, 63, 76, 46, 30]);
   });
 
   it("should do nothing if there are no tiles left", () => {
     const tileState: ITileState = {
       // The last tiles in the bag for this game seed
-      1: [41, 76],
+      1: [0, 67],
     };
     const action: PlayerAction = {
       type: "EndTurn",
