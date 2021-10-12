@@ -4,7 +4,7 @@ import { PlayerAction } from "../../model/player-action";
 import { ISharesState } from "../../model/shares-state";
 
 const fillEmptyStates = (
-  playerIds: number[],
+  playerIds: string[],
   shareState: ISharesState
 ): ISharesState =>
   playerIds.reduce(

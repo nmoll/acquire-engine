@@ -5,7 +5,7 @@ import { SharesStateEngine } from "./shares-state-engine";
 
 const expectStateWithAction = (
   sharesDiagram: string,
-  playerIds: number[],
+  playerIds: string[],
   action: PlayerAction | null
 ) =>
   expect(
@@ -35,10 +35,10 @@ const expectStateWithAction = (
  *  P4 : Player 4
  */
 describe("SharesEngine", () => {
-  let playerIds: number[];
+  let playerIds: string[];
 
   beforeEach(() => {
-    playerIds = [1, 2, 3, 4];
+    playerIds = ["1", "2", "3", "4"];
   });
 
   describe("computeShares", () => {
@@ -66,7 +66,7 @@ describe("SharesEngine", () => {
           P4 0 0 0 0 0 0 0
         `,
         playerIds,
-        PlayerActionType.PurchaseShares(1, [
+        PlayerActionType.PurchaseShares("1", [
           {
             hotel: HotelChainType.AMERICAN,
             quantity: 1,
@@ -99,7 +99,7 @@ describe("SharesEngine", () => {
         P4 0 0 0 0 0 0 0
         `,
         playerIds,
-        PlayerActionType.StartHotelChain(2, HotelChainType.IMPERIAL)
+        PlayerActionType.StartHotelChain("2", HotelChainType.IMPERIAL)
       ).toEqual(
         SharesStateFactory.createSharesState(`
               A C F I L T W
@@ -121,7 +121,7 @@ describe("SharesEngine", () => {
         P4 0 0 0 0 0 0 0
         `,
         playerIds,
-        PlayerActionType.StartHotelChain(2, HotelChainType.IMPERIAL)
+        PlayerActionType.StartHotelChain("2", HotelChainType.IMPERIAL)
       ).toEqual(
         SharesStateFactory.createSharesState(`
               A C F I L T W

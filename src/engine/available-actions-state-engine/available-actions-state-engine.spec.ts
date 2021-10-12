@@ -32,7 +32,7 @@ describe("AvailableActionsStateEngine", () => {
 
       const action: PlayerAction = {
         type: "EndTurn",
-        playerId: 2,
+        playerId: "2",
       };
 
       const expected: IAvailableActionState = [
@@ -60,7 +60,7 @@ describe("AvailableActionsStateEngine", () => {
 
       const action: PlayerAction = {
         type: "PlaceTile",
-        playerId: 1,
+        playerId: "1",
         boardSquareId: 0,
       };
 
@@ -112,7 +112,7 @@ describe("AvailableActionsStateEngine", () => {
       it("should be available after PlaceTile action", () => {
         const action: PlayerAction = {
           type: "PlaceTile",
-          playerId: 1,
+          playerId: "1",
           boardSquareId: 6,
         };
 
@@ -140,7 +140,7 @@ describe("AvailableActionsStateEngine", () => {
       it("should be available after StartHotelChain action", () => {
         const action: PlayerAction = {
           type: "StartHotelChain",
-          playerId: 1,
+          playerId: "1",
           hotelChain: HotelChainType.FESTIVAL,
         };
 
@@ -168,7 +168,7 @@ describe("AvailableActionsStateEngine", () => {
       it("should not be available after PurchaseShares action", () => {
         const action: PlayerAction = {
           type: "PurchaseShares",
-          playerId: 1,
+          playerId: "1",
           shares: [
             {
               hotel: HotelChainType.FESTIVAL,
@@ -193,7 +193,7 @@ describe("AvailableActionsStateEngine", () => {
       it("should not be available after EndTurn", () => {
         const action: PlayerAction = {
           type: "EndTurn",
-          playerId: 1,
+          playerId: "1",
         };
 
         expect(
@@ -216,7 +216,7 @@ describe("AvailableActionsStateEngine", () => {
 
       const action: PlayerAction = {
         type: "PlaceTile",
-        playerId: 1,
+        playerId: "1",
         boardSquareId: 2,
       };
 
@@ -237,7 +237,7 @@ describe("AvailableActionsStateEngine", () => {
   });
 
   describe(AvailableActionsStateEngine.validateAction.name, () => {
-    const currentPlayerIdState: CurrentPlayerIdState = 1;
+    const currentPlayerIdState: CurrentPlayerIdState = "1";
 
     describe(PlayerActionType.PlaceTile, () => {
       it("should return true if action is available", () => {
@@ -251,7 +251,7 @@ describe("AvailableActionsStateEngine", () => {
         });
         const action: PlayerAction = {
           type: "PlaceTile",
-          playerId: 1,
+          playerId: "1",
           boardSquareId: 1,
         };
 
@@ -271,7 +271,7 @@ describe("AvailableActionsStateEngine", () => {
         });
         const action: PlayerAction = {
           type: "PlaceTile",
-          playerId: 2,
+          playerId: "2",
           boardSquareId: 1,
         };
 
@@ -291,7 +291,7 @@ describe("AvailableActionsStateEngine", () => {
         });
         const action: PlayerAction = {
           type: "PlaceTile",
-          playerId: 1,
+          playerId: "1",
           boardSquareId: 1,
         };
 
@@ -318,7 +318,7 @@ describe("AvailableActionsStateEngine", () => {
         });
         const action: PlayerAction = {
           type: "StartHotelChain",
-          playerId: 1,
+          playerId: "1",
           hotelChain: HotelChainType.AMERICAN,
         };
 
@@ -342,7 +342,7 @@ describe("AvailableActionsStateEngine", () => {
         });
         const action: PlayerAction = {
           type: "StartHotelChain",
-          playerId: 1,
+          playerId: "1",
           hotelChain: HotelChainType.AMERICAN,
         };
 
@@ -364,7 +364,7 @@ describe("AvailableActionsStateEngine", () => {
         });
         const action: PlayerAction = {
           type: "EndTurn",
-          playerId: 1,
+          playerId: "1",
         };
 
         expect(
@@ -383,7 +383,7 @@ describe("AvailableActionsStateEngine", () => {
         });
         const action: PlayerAction = {
           type: "EndTurn",
-          playerId: 1,
+          playerId: "1",
         };
 
         expect(

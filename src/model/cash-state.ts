@@ -1,3 +1,3 @@
 export interface ICashState {
-  [playerId: number]: number;
+  [playerId: string]: number;
 }

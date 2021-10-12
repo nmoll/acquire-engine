@@ -15,7 +15,7 @@ import { FirebaseService } from "./firebase.service";
 
 const INSTANCE: IAcquireGameInstance = {
   randomSeed: 1,
-  playerIds: [1, 2, 3, 4],
+  playerIds: ["1", "2", "3", "4"],
 };
 
 @customElement("acquire-app")
@@ -121,8 +121,8 @@ export class AcquireAppElement extends LitElement {
     </div>`;
   }
 
-  private getCurrentPlayerId(): number {
-    return this.state.currentPlayerIdState ?? 0;
+  private getCurrentPlayerId(): string {
+    return this.state.currentPlayerIdState ?? "";
   }
 }
 

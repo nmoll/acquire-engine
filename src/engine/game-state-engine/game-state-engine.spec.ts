@@ -29,7 +29,7 @@ describe("GameStateEngine", () => {
   it("should compute initial game state with no actions", () => {
     const gameInstance: IAcquireGameInstance = {
       randomSeed: 1,
-      playerIds: [1, 2, 3, 4],
+      playerIds: ["1", "2", "3", "4"],
     };
     const actions: PlayerAction[] = [];
 
@@ -89,7 +89,7 @@ describe("GameStateEngine", () => {
         P3 0 0 0 0 0 0 0
         P4 0 0 0 0 0 0 0
       `),
-      currentPlayerIdState: 1,
+      currentPlayerIdState: "1",
       availableActionsState: [{ type: "ChooseTile" }],
     };
 
@@ -101,16 +101,16 @@ describe("GameStateEngine", () => {
   it("should compute game state with multiple actions", () => {
     const gameInstance: IAcquireGameInstance = {
       randomSeed: 1,
-      playerIds: [1, 2, 3, 4],
+      playerIds: ["1", "2", "3", "4"],
     };
     const actions: PlayerAction[] = [
-      PlayerActionType.PlaceTile(1, getTilePosition("5G")),
-      PlayerActionType.EndTurn(1),
-      PlayerActionType.PlaceTile(2, getTilePosition("4G")),
-      PlayerActionType.StartHotelChain(2, HotelChainType.AMERICAN),
-      PlayerActionType.PurchaseShares(2, [america(3)]),
-      PlayerActionType.EndTurn(2),
-      PlayerActionType.PlaceTile(3, getTilePosition("6C")),
+      PlayerActionType.PlaceTile("1", getTilePosition("5G")),
+      PlayerActionType.EndTurn("1"),
+      PlayerActionType.PlaceTile("2", getTilePosition("4G")),
+      PlayerActionType.StartHotelChain("2", HotelChainType.AMERICAN),
+      PlayerActionType.PurchaseShares("2", [america(3)]),
+      PlayerActionType.EndTurn("2"),
+      PlayerActionType.PlaceTile("3", getTilePosition("6C")),
     ];
 
     const expectedState: IGameState = {
@@ -168,7 +168,7 @@ describe("GameStateEngine", () => {
           P4 0 0 0 0 0 0 0
           `
       ),
-      currentPlayerIdState: 3,
+      currentPlayerIdState: "3",
       availableActionsState: [
         {
           type: "ChooseShares",

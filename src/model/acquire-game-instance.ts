@@ -1,4 +1,4 @@
 export interface IAcquireGameInstance {
   randomSeed: number;
-  playerIds: number[];
+  playerIds: string[];
 }

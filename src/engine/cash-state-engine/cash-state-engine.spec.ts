@@ -10,7 +10,7 @@ describe("CashEngine", () => {
   beforeEach(() => {
     gameInstance = {
       randomSeed: 1,
-      playerIds: [1, 2, 3, 4],
+      playerIds: ["1", "2", "3", "4"],
     };
   });
 
@@ -27,7 +27,7 @@ describe("CashEngine", () => {
     expect(
       CashStateEngine.computeState(
         gameInstance,
-        PlayerActionType.PlaceTile(1, getTilePosition("1A")),
+        PlayerActionType.PlaceTile("1", getTilePosition("1A")),
         {
           1: 0,
           2: 6000,
@@ -47,7 +47,7 @@ describe("CashEngine", () => {
     expect(
       CashStateEngine.computeState(
         gameInstance,
-        PlayerActionType.PlaceTile(1, getTilePosition("1A")),
+        PlayerActionType.PlaceTile("1", getTilePosition("1A")),
         {
           1: 6000,
           2: 6000,
@@ -71,7 +71,7 @@ describe("CashEngine", () => {
       4: 6000,
     };
 
-    const playerAction = PlayerActionType.PurchaseShares(2, [
+    const playerAction = PlayerActionType.PurchaseShares("2", [
       america(1),
       continental(2),
     ]);

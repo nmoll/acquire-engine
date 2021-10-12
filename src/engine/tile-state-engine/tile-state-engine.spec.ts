@@ -9,7 +9,7 @@ describe("TileStateEngine", () => {
   beforeEach(() => {
     gameInstance = {
       randomSeed: 1,
-      playerIds: [1, 2, 3, 4],
+      playerIds: ["1", "2", "3", "4"],
     };
   });
 
@@ -42,7 +42,7 @@ describe("TileStateEngine", () => {
     const tilePlaced = 7;
     const action: PlayerAction = {
       type: "PlaceTile",
-      playerId: 1,
+      playerId: "1",
       boardSquareId: tilePlaced,
     };
 
@@ -61,7 +61,7 @@ describe("TileStateEngine", () => {
     const initialState = TileStateEngine.computeState(gameInstance);
     const action: PlayerAction = {
       type: "EndTurn",
-      playerId: 1,
+      playerId: "1",
     };
 
     const resultState = TileStateEngine.computeState(
@@ -80,7 +80,7 @@ describe("TileStateEngine", () => {
     };
     const action: PlayerAction = {
       type: "EndTurn",
-      playerId: 1,
+      playerId: "1",
     };
 
     const resultState = TileStateEngine.computeState(

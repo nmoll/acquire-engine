@@ -1,7 +1,7 @@
 import { HotelChainType } from "./hotel-chain-type";
 
 export interface ISharesState {
-  [playerId: number]: {
+  [playerId: string]: {
     [HotelChainType.AMERICAN]?: number;
     [HotelChainType.CONTINENTAL]?: number;
     [HotelChainType.FESTIVAL]?: number;

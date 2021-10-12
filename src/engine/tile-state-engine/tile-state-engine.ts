@@ -6,7 +6,7 @@ import { TileUtils } from "../../utils/tile-utils";
 const TILE_RACK_SIZE = 5;
 
 const addPlayerTile = (
-  playerId: number,
+  playerId: string,
   tileBag: number[],
   tileState: ITileState
 ): ITileState => {
@@ -24,7 +24,7 @@ const addPlayerTile = (
 
 const addPlayerTiles = (
   amount: number,
-  playerId: number,
+  playerId: string,
   tileBag: number[],
   tileState: ITileState
 ): ITileState => {
@@ -37,7 +37,7 @@ const addPlayerTiles = (
 };
 
 const discardPlayerTile = (
-  playerId: number,
+  playerId: string,
   tileId: number,
   tileState: ITileState
 ): ITileState => ({

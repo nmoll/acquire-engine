@@ -5,11 +5,11 @@ import { CurrentPlayerIdStateEngine } from "./current-player-id-state-engine";
 
 describe("CurrentPlayerIdStateEngine", () => {
   describe("computeState", () => {
-    const PLAYER_1 = 2;
-    const PLAYER_2 = 5;
-    const PLAYER_3 = 1;
-    const PLAYER_4 = 7;
-    let playerIds: number[];
+    const PLAYER_1 = "2";
+    const PLAYER_2 = "5";
+    const PLAYER_3 = "1";
+    const PLAYER_4 = "7";
+    let playerIds: string[];
     let gameInstance: IAcquireGameInstance;
 
     beforeEach(() => {

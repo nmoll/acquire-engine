@@ -2,13 +2,13 @@ import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { CurrentPlayerIdState } from "../../model/current-player-id-state";
 import { PlayerAction } from "../../model/player-action";
 
-const getPlayerIdx = (playerIds: number[], playerId: number) =>
+const getPlayerIdx = (playerIds: string[], playerId: string) =>
   playerIds.findIndex((id) => id === playerId);
 
-const isLastPlayer = (playerIds: number[], playerId: number) =>
+const isLastPlayer = (playerIds: string[], playerId: string) =>
   getPlayerIdx(playerIds, playerId) === playerIds.length - 1;
 
-const getNextPlayerId = (playerIds: number[], playerId: number) =>
+const getNextPlayerId = (playerIds: string[], playerId: string) =>
   isLastPlayer(playerIds, playerId)
     ? playerIds[0]
     : playerIds[getPlayerIdx(playerIds, playerId) + 1];

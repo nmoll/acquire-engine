@@ -3,31 +3,31 @@ import { IShares } from "./shares";
 
 export interface PlaceTile {
   type: "PlaceTile";
-  playerId: number;
+  playerId: string;
   boardSquareId: number;
 }
 
 export interface StartHotelChain {
   type: "StartHotelChain";
-  playerId: number;
+  playerId: string;
   hotelChain: HotelChainType;
 }
 
 export interface PurchaseShares {
   type: "PurchaseShares";
-  playerId: number;
+  playerId: string;
   shares: IShares[];
 }
 
 export interface Merge {
   type: "Merge";
-  playerId: number;
+  playerId: string;
   hotelChainToKeep: HotelChainType;
 }
 
 export interface EndTurn {
   type: "EndTurn";
-  playerId: number;
+  playerId: string;
 }
 
 export type PlayerAction =
@@ -38,13 +38,13 @@ export type PlayerAction =
   | EndTurn;
 
 export const PlayerActionType = {
-  PlaceTile: (playerId: number, boardSquareId: number): PlaceTile => ({
+  PlaceTile: (playerId: string, boardSquareId: number): PlaceTile => ({
     type: "PlaceTile",
     playerId,
     boardSquareId,
   }),
   StartHotelChain: (
-    playerId: number,
+    playerId: string,
     hotelChain: HotelChainType
   ): StartHotelChain => ({
     type: "StartHotelChain",
@@ -52,19 +52,19 @@ export const PlayerActionType = {
     hotelChain,
   }),
 
-  PurchaseShares: (playerId: number, shares: IShares[]): PurchaseShares => ({
+  PurchaseShares: (playerId: string, shares: IShares[]): PurchaseShares => ({
     type: "PurchaseShares",
     playerId,
     shares,
   }),
 
-  Merge: (playerId: number, hotelChainToKeep: HotelChainType): Merge => ({
+  Merge: (playerId: string, hotelChainToKeep: HotelChainType): Merge => ({
     type: "Merge",
     playerId,
     hotelChainToKeep,
   }),
 
-  EndTurn: (playerId: number): EndTurn => ({
+  EndTurn: (playerId: string): EndTurn => ({
     type: "EndTurn",
     playerId,
   }),

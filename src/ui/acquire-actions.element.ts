@@ -24,7 +24,7 @@ export class AcquireActionsElement extends LitElement {
   `;
 
   @property()
-  playerId!: number;
+  playerId!: string;
 
   @property()
   availableActionState: IAvailableActionState | undefined;

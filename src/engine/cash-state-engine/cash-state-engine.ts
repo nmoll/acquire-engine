@@ -7,7 +7,7 @@ import { IShares } from "../../model/shares";
 const startingAmount = 6000;
 
 const fillEmptyStates = (
-  playerIds: number[],
+  playerIds: string[],
   cashState: ICashState
 ): ICashState =>
   playerIds.reduce(

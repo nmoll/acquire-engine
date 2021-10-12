@@ -13,7 +13,7 @@ const expectStateWithAction = (diagram: string, action: PlayerAction | null) =>
   );
 
 const placeTile = (tileLabel: string) =>
-  PlayerActionType.PlaceTile(1, getTilePosition(tileLabel));
+  PlayerActionType.PlaceTile("1", getTilePosition(tileLabel));
 
 const state = (diagram: string) => BoardStateFactory.createBoardState(diagram);
 
@@ -184,7 +184,7 @@ describe("BoardStateEngine", () => {
       - - - - - - - - - - - -
       - - - - - - - - - - - -
         `,
-      PlayerActionType.StartHotelChain(1, HotelChainType.AMERICAN)
+      PlayerActionType.StartHotelChain("1", HotelChainType.AMERICAN)
     ).toEqual(
       state(`
       - - - - - - - - - - - -
@@ -213,7 +213,7 @@ describe("BoardStateEngine", () => {
           - - - - - - - - - - - -
           - - - - - - - - - - - -
         `,
-      PlayerActionType.StartHotelChain(1, HotelChainType.CONTINENTAL)
+      PlayerActionType.StartHotelChain("1", HotelChainType.CONTINENTAL)
     ).toEqual(
       state(`
             - - A A - - - - - - - -
@@ -242,7 +242,7 @@ describe("BoardStateEngine", () => {
           - - - - - - - - - - - -
           - - - - - - - - - - - -
         `,
-      PlayerActionType.StartHotelChain(1, HotelChainType.FESTIVAL)
+      PlayerActionType.StartHotelChain("1", HotelChainType.FESTIVAL)
     ).toEqual(
       state(`
             - - A A - - - - - - - -
@@ -271,7 +271,7 @@ describe("BoardStateEngine", () => {
             - - - - - - - - - - - -
             - - - - - - - - - - - -
           `,
-      PlayerActionType.StartHotelChain(1, HotelChainType.IMPERIAL)
+      PlayerActionType.StartHotelChain("1", HotelChainType.IMPERIAL)
     ).toEqual(
       state(`
             - - A A - - - - - - - -
@@ -300,7 +300,7 @@ describe("BoardStateEngine", () => {
             - - - - - - - - - - - -
             - - - - - - - - - - - -
           `,
-      PlayerActionType.StartHotelChain(1, HotelChainType.LUXOR)
+      PlayerActionType.StartHotelChain("1", HotelChainType.LUXOR)
     ).toEqual(
       state(`
       - - A A - - - - - - L L
@@ -329,7 +329,7 @@ describe("BoardStateEngine", () => {
       - - - - - - - - - - - 0
       - - - - - - - - - - - 0
     `,
-      PlayerActionType.StartHotelChain(1, HotelChainType.TOWER)
+      PlayerActionType.StartHotelChain("1", HotelChainType.TOWER)
     ).toEqual(
       state(`
       - - A A - - - - - - L L
@@ -358,7 +358,7 @@ describe("BoardStateEngine", () => {
       0 - - - - - - - - - - T
       0 0 - - - - - - - - - T
     `,
-      PlayerActionType.StartHotelChain(1, HotelChainType.WORLDWIDE)
+      PlayerActionType.StartHotelChain("1", HotelChainType.WORLDWIDE)
     ).toEqual(
       state(`
       - - A A - - - - - - L L

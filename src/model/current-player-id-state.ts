@@ -1,1 +1,1 @@
-export type CurrentPlayerIdState = number | null;
+export type CurrentPlayerIdState = string | null;
