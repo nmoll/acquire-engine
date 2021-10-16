@@ -1,16 +1,17 @@
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerAction } from "../../model/player-action";
 import { ITileState } from "../../model/tile-state";
+import { createGameInstance } from "../../test/factory/game-instance.factory";
 import { TileStateEngine } from "./tile-state-engine";
 
 describe("TileStateEngine", () => {
   let gameInstance: IAcquireGameInstance;
 
   beforeEach(() => {
-    gameInstance = {
+    gameInstance = createGameInstance({
       randomSeed: 1,
       playerIds: ["1", "2", "3", "4"],
-    };
+    });
   });
 
   it("should return initial tile state if no given state", () => {

@@ -8,8 +8,8 @@ export interface TileSelectEvent {
   index: number;
 }
 
-@customElement("acquire-board")
-export class AcquireBoardElement extends LitElement {
+@customElement("acquire-game-board")
+export class AcquireGameBoardElement extends LitElement {
   static styles = css`
     :host {
       display: grid;
@@ -90,6 +90,6 @@ export class AcquireBoardElement extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "acquire-board": AcquireBoardElement;
+    "acquire-game-board": AcquireGameBoardElement;
   }
 }

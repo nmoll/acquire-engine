@@ -1,6 +1,7 @@
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { ICashState } from "../../model/cash-state";
 import { PlayerActionType } from "../../model/player-action";
+import { createGameInstance } from "../../test/factory/game-instance.factory";
 import { america, continental, getTilePosition } from "../../test/helpers";
 import { CashStateEngine } from "./cash-state-engine";
 
@@ -8,10 +9,10 @@ describe("CashEngine", () => {
   let gameInstance: IAcquireGameInstance;
 
   beforeEach(() => {
-    gameInstance = {
+    gameInstance = createGameInstance({
       randomSeed: 1,
       playerIds: ["1", "2", "3", "4"],
-    };
+    });
   });
 
   it("should give player 6000 to start with", () => {

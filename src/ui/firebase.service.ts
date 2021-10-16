@@ -1,12 +1,15 @@
 import { initializeApp } from "firebase/app";
 import {
-  DatabaseReference,
+  Database,
   get,
   getDatabase,
   onValue,
+  push,
   ref,
   set,
 } from "firebase/database";
+import { IAcquireGameInstance } from "../model/acquire-game-instance";
+import { AcquireGameState } from "../model/acquire-game-state";
 import { PlayerAction } from "../model/player-action";
 
 const firebaseConfig = {
@@ -20,34 +23,79 @@ const firebaseConfig = {
 };
 
 export class FirebaseService {
-  private actionsRef: DatabaseReference;
+  private db: Database;
 
   constructor() {
     const app = initializeApp(firebaseConfig);
-
-    const db = getDatabase(app);
-    this.actionsRef = ref(db, "games/1/actions");
+    this.db = getDatabase(app);
   }
 
-  getCurrentActions(): Promise<PlayerAction[]> {
-    return new Promise((resolve) => {
-      get(this.actionsRef)
-        .then((snapshot) => {
-          resolve(snapshot.exists() ? snapshot.val() : []);
-        })
-        .catch((error) => {
-          alert("an error occured fetching the game state: " + error);
-        });
+  getGame(
+    gameId: string,
+    callback: (game: IAcquireGameInstance | null) => void
+  ) {
+    get(ref(this.db, `games/${gameId}/instance`))
+      .then((snapshot) => {
+        callback(snapshot.exists() ? snapshot.val() : null);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  onGameChanged(
+    gameId: string,
+    callback: (game: IAcquireGameInstance | null) => void
+  ) {
+    const gameRef = ref(this.db, `games/${gameId}/instance`);
+    onValue(gameRef, (snapshot) => {
+      if (!snapshot.exists()) {
+        callback(null);
+      } else {
+        callback(this.normalizeGame(snapshot.val()));
+      }
     });
   }
 
-  onActionsChanged(callback: (actions: PlayerAction[]) => void) {
-    onValue(this.actionsRef, (snapshot) => {
+  private normalizeGame(gameSnapshot: any): IAcquireGameInstance {
+    return {
+      ...gameSnapshot,
+      playerIds: Object.values(gameSnapshot.playerIds),
+    };
+  }
+
+  createGame(instance: IAcquireGameInstance) {
+    const gameRef = ref(this.db, `games/${instance.id}`);
+    set(gameRef, {
+      instance,
+    });
+  }
+
+  addPlayerToGame(playerId: string, gameId: string) {
+    const playerListRef = ref(this.db, `games/${gameId}/instance/playerIds`);
+    const newPlayerRef = push(playerListRef);
+    set(newPlayerRef, playerId);
+  }
+
+  startGame(gameId: string) {
+    const gameStarted: AcquireGameState = "started";
+    const gameStateRef = ref(this.db, `games/${gameId}/instance/state`);
+    set(gameStateRef, gameStarted);
+  }
+
+  onActionsChanged(
+    gameId: string,
+    callback: (actions: PlayerAction[]) => void
+  ) {
+    const actionsRef = ref(this.db, `games/${gameId}/actions`);
+
+    onValue(actionsRef, (snapshot) => {
       callback(snapshot.val() ?? []);
     });
   }
 
-  updateActions(actions: PlayerAction[]) {
-    set(this.actionsRef, actions);
+  updateActions(gameId: string, actions: PlayerAction[]) {
+    const actionsRef = ref(this.db, `games/${gameId}/actions`);
+    set(actionsRef, actions);
   }
 }

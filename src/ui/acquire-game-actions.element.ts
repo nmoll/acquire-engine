@@ -5,13 +5,14 @@ import { AvailableAction } from "../model/available-action";
 import { IAvailableActionState } from "../model/available-action-state";
 import { AvailableShares } from "../model/available-shares.type";
 import { PlayerAction } from "../model/player-action";
+import { PlayerUtils } from "../utils/player-utils";
 
 export interface ActionRequestEvent {
   action: PlayerAction;
 }
 
-@customElement("acquire-actions")
-export class AcquireActionsElement extends LitElement {
+@customElement("acquire-game-actions")
+export class AcquireGameActionsElement extends LitElement {
   static styles = css`
     :host {
       display: flex;
@@ -25,6 +26,9 @@ export class AcquireActionsElement extends LitElement {
 
   @property()
   playerId!: string;
+
+  @property()
+  currentPlayerId!: string;
 
   @property()
   availableActionState: IAvailableActionState | undefined;
@@ -128,14 +132,20 @@ export class AcquireActionsElement extends LitElement {
   }
 
   render() {
-    return html`<div>
-      ${this.availableActionState?.map((action) => this.renderAction(action))}
-    </div>`;
+    if (this.playerId === this.currentPlayerId) {
+      return html`<div>
+        ${this.availableActionState?.map((action) => this.renderAction(action))}
+      </div>`;
+    } else {
+      return html`<div>
+        Waiting for ${PlayerUtils.getDisplayName(this.currentPlayerId)} to move
+      </div>`;
+    }
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "acquire-actions": AcquireActionsElement;
+    "acquire-game-actions": AcquireGameActionsElement;
   }
 }

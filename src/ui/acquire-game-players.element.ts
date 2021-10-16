@@ -1,9 +1,10 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { ICashState } from "../model/cash-state";
+import { PlayerUtils } from "../utils/player-utils";
 
-@customElement("acquire-players")
-export class AcquirePlayersElement extends LitElement {
+@customElement("acquire-game-players")
+export class AcquireGamePlayersElement extends LitElement {
   static styles = css`
     :host {
       display: flex;
@@ -20,13 +21,13 @@ export class AcquirePlayersElement extends LitElement {
   `;
 
   @property()
-  players: number[] | undefined = [];
+  players: string[] | undefined = [];
 
   @property()
   cashState: ICashState = {};
 
   @property()
-  currentPlayer: number | undefined;
+  currentPlayer: string | undefined;
 
   render() {
     return this.players?.map(
@@ -34,7 +35,7 @@ export class AcquirePlayersElement extends LitElement {
         html`<div
           class="player ${playerId === this.currentPlayer ? "current" : ""}"
         >
-          <div>Player ${playerId}</div>
+          <div>Player ${PlayerUtils.getDisplayName(playerId)}</div>
           <div>$${this.cashState[playerId] ?? 0}</div>
         </div>`
     );
@@ -43,6 +44,6 @@ export class AcquirePlayersElement extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "acquire-players": AcquirePlayersElement;
+    "acquire-game-players": AcquireGamePlayersElement;
   }
 }

@@ -2,6 +2,7 @@ import { HotelChainType, IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
+import { createGameInstance } from "../../test/factory/game-instance.factory";
 import { SharesStateFactory } from "../../test/factory/shares-state.factory";
 import { america, getTilePosition } from "../../test/helpers";
 import { ArrayUtils } from "../../utils/array-utils";
@@ -27,10 +28,10 @@ describe("GameStateEngine", () => {
   });
 
   it("should compute initial game state with no actions", () => {
-    const gameInstance: IAcquireGameInstance = {
+    const gameInstance: IAcquireGameInstance = createGameInstance({
       randomSeed: 1,
       playerIds: ["1", "2", "3", "4"],
-    };
+    });
     const actions: PlayerAction[] = [];
 
     const expectedState: IGameState = {
@@ -99,10 +100,10 @@ describe("GameStateEngine", () => {
   });
 
   it("should compute game state with multiple actions", () => {
-    const gameInstance: IAcquireGameInstance = {
+    const gameInstance: IAcquireGameInstance = createGameInstance({
       randomSeed: 1,
       playerIds: ["1", "2", "3", "4"],
-    };
+    });
     const actions: PlayerAction[] = [
       PlayerActionType.PlaceTile("1", getTilePosition("5G")),
       PlayerActionType.EndTurn("1"),

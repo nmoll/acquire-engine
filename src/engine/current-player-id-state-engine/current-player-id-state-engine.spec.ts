@@ -1,6 +1,7 @@
 import { HotelChainType } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerActionType } from "../../model/player-action";
+import { createGameInstance } from "../../test/factory/game-instance.factory";
 import { CurrentPlayerIdStateEngine } from "./current-player-id-state-engine";
 
 describe("CurrentPlayerIdStateEngine", () => {
@@ -14,17 +15,17 @@ describe("CurrentPlayerIdStateEngine", () => {
 
     beforeEach(() => {
       playerIds = [PLAYER_1, PLAYER_2, PLAYER_3, PLAYER_4];
-      gameInstance = {
+      gameInstance = createGameInstance({
         randomSeed: 1,
         playerIds,
-      };
+      });
     });
 
     it("should return null if no player ids", () => {
-      const gameWithNoPlayers: IAcquireGameInstance = {
+      const gameWithNoPlayers: IAcquireGameInstance = createGameInstance({
         randomSeed: 1,
         playerIds: [],
-      };
+      });
       expect(
         CurrentPlayerIdStateEngine.computeState(gameWithNoPlayers, null)
       ).toEqual(null);
