@@ -92,4 +92,33 @@ describe("TileStateEngine", () => {
 
     expect(resultState).toEqual(tileState);
   });
+
+  it("should give player the next tile if the tile is '0'", () => {
+    const instance: IAcquireGameInstance = {
+      hostId: "3208_Nate",
+      id: "3530722",
+      playerIds: ["3208_Nate", "2706_Justin"],
+      randomSeed: 866,
+      state: "started",
+    };
+
+    const tileState: ITileState = {
+      "2706_Justin": [97, 94, 12, 32],
+      "3208_Nate": [72, 105, 37, 6, 74],
+    };
+
+    const action: PlayerAction = {
+      type: "EndTurn",
+      playerId: "2706_Justin",
+    };
+
+    const expected: ITileState = {
+      "2706_Justin": [97, 94, 12, 32, 0],
+      "3208_Nate": [72, 105, 37, 6, 74],
+    };
+
+    expect(TileStateEngine.computeState(instance, action, tileState)).toEqual(
+      expected
+    );
+  });
 });

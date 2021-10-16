@@ -12,7 +12,7 @@ const addPlayerTile = (
 ): ITileState => {
   const nextTile = TileUtils.getNextTile(tileBag, tileState);
 
-  if (!nextTile) {
+  if (nextTile === undefined) {
     return tileState;
   }
 

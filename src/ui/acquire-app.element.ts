@@ -46,7 +46,6 @@ export class AcquireAppElement extends LitElement {
   }
 
   joinGame(playerId: string, gameId: string) {
-    console.log("join game", { playerId, gameId });
     this.acquireAppService.addPlayerToGame(playerId, gameId);
   }
 

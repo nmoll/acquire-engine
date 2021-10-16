@@ -4,7 +4,15 @@ import { TileUtils } from "./tile-utils";
 describe("TileUtils", () => {
   describe("getSortedBag", () => {
     it("should return a tile bag sorted by the given seed", () => {
-      expect(TileUtils.getSortedBag(1)).toMatchSnapshot();
+      const tileBag = TileUtils.getSortedBag(1);
+      expect(tileBag).toMatchSnapshot();
+      expect(tileBag.length).toEqual(108);
+    });
+
+    it("should return a different tile bag sorted by another seed", () => {
+      const tileBag = TileUtils.getSortedBag(866);
+      expect(tileBag).toMatchSnapshot();
+      expect(tileBag.length).toEqual(108);
     });
   });
 
