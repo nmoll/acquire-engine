@@ -37,8 +37,14 @@ const getAdjacentHotelChains = (
   boardState: BoardSquareState[],
   index: number
 ): HasHotelChain[] =>
-  Array.from(
-    new Set(getAdjacentStates(boardState, index).filter(isTypeHotelChain))
+  uniqueHotelChains(
+    getAdjacentStates(boardState, index).filter(isTypeHotelChain)
+  );
+
+const uniqueHotelChains = (hotelChains: HasHotelChain[]): HasHotelChain[] =>
+  hotelChains.filter(
+    (a, i) =>
+      hotelChains.findIndex((b) => b.hotelChainType === a.hotelChainType) === i
   );
 
 const getAdjacentTiles = (
