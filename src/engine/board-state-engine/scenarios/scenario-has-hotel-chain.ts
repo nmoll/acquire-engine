@@ -1,6 +1,7 @@
 import { BoardSquareStateType, HasHotelChain } from "../../../model";
 import { PlayerActionContext } from "../../../model/player-action-context";
 import { BoardUtils } from "../../../utils/board-utils";
+import { HotelChainUtils } from "../../../utils/hotel-chain-utils";
 import { IBoardStateScenario } from "./board-state-scenario";
 
 export const ScenarioHasHotelChain: IBoardStateScenario = (
@@ -46,7 +47,7 @@ const getMergeContext = (
     return false;
   }
 
-  const adjacentHotelChains = BoardUtils.getAdjacentHotelChains(
+  const adjacentHotelChains = HotelChainUtils.getAdjacentHotelChains(
     context.boardState,
     context.playerAction.boardSquareId
   );
@@ -56,11 +57,11 @@ const getMergeContext = (
   }
 
   return {
-    minority: BoardUtils.getMinorityHotelChain(
+    minority: HotelChainUtils.getSmallestHotelChain(
       context.boardState,
       adjacentHotelChains
     ),
-    majority: BoardUtils.getLargestHotelChain(
+    majority: HotelChainUtils.getLargestHotelChain(
       context.boardState,
       adjacentHotelChains
     ),
@@ -127,7 +128,7 @@ const growHotelChain = (
     return false;
   }
 
-  const adjacentHotelChains = BoardUtils.getAdjacentHotelChains(
+  const adjacentHotelChains = HotelChainUtils.getAdjacentHotelChains(
     context.boardState,
     context.playerAction.boardSquareId
   );

@@ -1,3 +1,4 @@
+import { GameConfig } from "../../game-config";
 import {
   BoardSquareState,
   BoardSquareStateType,
@@ -9,9 +10,9 @@ import { ScenarioAvailableForSelection } from "./scenarios/scenario-available-fo
 import { ScenarioHasHotelChain } from "./scenarios/scenario-has-hotel-chain";
 import { ScenarioHasTile } from "./scenarios/scenario-has-tile";
 
-const defaultState: BoardSquareState[] = ArrayUtils.makeNumArray(108).map(() =>
-  BoardSquareStateType.Default()
-);
+const defaultState: BoardSquareState[] = ArrayUtils.makeNumArray(
+  GameConfig.board.size
+).map(() => BoardSquareStateType.Default());
 
 const getBoardSquareState = (context: PlayerActionContext): BoardSquareState =>
   ScenarioHasHotelChain(context) ||

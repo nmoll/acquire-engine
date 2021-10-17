@@ -2,7 +2,7 @@ import { BoardSquareState, IGameState, ISharesState } from "../../model";
 import { AvailableActionType } from "../../model/available-action";
 import { IAvailableActionState } from "../../model/available-action-state";
 import { PlayerAction } from "../../model/player-action";
-import { BoardUtils } from "../../utils/board-utils";
+import { HotelChainUtils } from "../../utils/hotel-chain-utils";
 import { SharesUtils } from "../../utils/shares-utils";
 
 const computeState = (
@@ -14,14 +14,14 @@ const computeState = (
     return [AvailableActionType.ChooseTile()];
   }
 
-  const activeHotelChains = BoardUtils.getActiveHotelChains(boardState);
+  const activeHotelChains = HotelChainUtils.getActiveHotelChains(boardState);
 
   switch (action.type) {
     case "PlaceTile":
-      if (BoardUtils.isHotelStarter(boardState, action.boardSquareId)) {
+      if (HotelChainUtils.isHotelStarter(boardState, action.boardSquareId)) {
         return [
           AvailableActionType.ChooseHotelChain(
-            BoardUtils.getInactiveHotelChains(boardState)
+            HotelChainUtils.getInactiveHotelChains(boardState)
           ),
         ];
       }

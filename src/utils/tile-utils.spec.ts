@@ -1,3 +1,4 @@
+import { GameConfig } from "../game-config";
 import { ITileState } from "../model/tile-state";
 import { TileUtils } from "./tile-utils";
 
@@ -6,13 +7,13 @@ describe("TileUtils", () => {
     it("should return a tile bag sorted by the given seed", () => {
       const tileBag = TileUtils.getSortedBag(1);
       expect(tileBag).toMatchSnapshot();
-      expect(tileBag.length).toEqual(108);
+      expect(tileBag.length).toEqual(GameConfig.board.size);
     });
 
     it("should return a different tile bag sorted by another seed", () => {
       const tileBag = TileUtils.getSortedBag(866);
       expect(tileBag).toMatchSnapshot();
-      expect(tileBag.length).toEqual(108);
+      expect(tileBag.length).toEqual(GameConfig.board.size);
     });
   });
 

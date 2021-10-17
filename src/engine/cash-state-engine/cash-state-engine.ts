@@ -1,9 +1,8 @@
+import { GameConfig } from "../../game-config";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { ICashState } from "../../model/cash-state";
 import { PlayerAction } from "../../model/player-action";
 import { SharesUtils } from "../../utils/shares-utils";
-
-const startingAmount = 6000;
 
 const fillEmptyStates = (
   playerIds: string[],
@@ -13,7 +12,9 @@ const fillEmptyStates = (
     (state, playerId) => ({
       ...state,
       [playerId]:
-        state[playerId] === undefined ? startingAmount : state[playerId],
+        state[playerId] === undefined
+          ? GameConfig.cash.startingAmount
+          : state[playerId],
     }),
     cashState
   );

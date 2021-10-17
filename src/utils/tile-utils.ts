@@ -1,7 +1,8 @@
+import { GameConfig } from "../game-config";
 import { ITileState } from "../model/tile-state";
 import { ArrayUtils } from "./array-utils";
 
-const TILES = ArrayUtils.makeNumArray(108);
+const TILES = ArrayUtils.makeNumArray(GameConfig.board.size);
 
 const getSortedBag = (seed: number): number[] =>
   ArrayUtils.shuffle(TILES, seed);

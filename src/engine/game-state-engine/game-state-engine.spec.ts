@@ -1,3 +1,4 @@
+import { GameConfig } from "../../game-config";
 import { HotelChainType, IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
@@ -16,7 +17,7 @@ describe("GameStateEngine", () => {
       return `${x + 1}${["A", "B", "C", "D", "E", "F", "G", "H", "I"][y]}`;
     };
 
-    const result = ArrayUtils.makeNumArray(108).reduce(
+    const result = ArrayUtils.makeNumArray(GameConfig.board.size).reduce(
       (res, idx) => ({
         ...res,
         [idx]: toPos(idx),

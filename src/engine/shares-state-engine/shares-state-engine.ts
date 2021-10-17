@@ -1,3 +1,4 @@
+import { GameConfig } from "../../game-config";
 import { ALL_HOTELS, HotelChainType } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerAction } from "../../model/player-action";
@@ -32,7 +33,7 @@ const getStarterBonuses = (
   hotel: HotelChainType
 ): number =>
   playerAction.type === "StartHotelChain" && playerAction.hotelChain === hotel
-    ? 1
+    ? GameConfig.hotel.starterBonus
     : 0;
 
 const getPurchasedShares = (

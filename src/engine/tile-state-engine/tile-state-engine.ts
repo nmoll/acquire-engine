@@ -1,9 +1,8 @@
+import { GameConfig } from "../../game-config";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerAction } from "../../model/player-action";
 import { ITileState } from "../../model/tile-state";
 import { TileUtils } from "../../utils/tile-utils";
-
-const TILE_RACK_SIZE = 5;
 
 const addPlayerTile = (
   playerId: string,
@@ -52,7 +51,8 @@ const getInitialState = (
   tileBag: number[]
 ): ITileState => {
   return gameInstance.playerIds.reduce<ITileState>(
-    (res, playerId) => addPlayerTiles(TILE_RACK_SIZE, playerId, tileBag, res),
+    (res, playerId) =>
+      addPlayerTiles(GameConfig.tile.rackSize, playerId, tileBag, res),
     {}
   );
 };
