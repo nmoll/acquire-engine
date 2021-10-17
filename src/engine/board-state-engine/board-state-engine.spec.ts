@@ -461,3 +461,43 @@ describe("BoardStateEngine", () => {
     );
   });
 });
+
+describe("BUG CASE - minor hotel not merging into majority hotel", () => {
+  it("should merge properly", () => {
+    const boardState = BoardStateFactory.createBoardState(
+      `
+        - - - - - - - 0 - - - -
+        - 0 - 0 - C - - W W - -
+        F - 0 - - C C - - - L L
+        F - - - I - - I - - - L 
+        - - 0 - I I I I - - - L
+        - - - - I - I - 0 - 0 -
+        - - - - - - - - - - - 0
+        - - 0 - A A - - - T T -
+        - 0 - - - - 0 - 0 - T -
+      `
+    );
+
+    const action: PlayerAction = {
+      type: "PlaceTile",
+      playerId: "1",
+      boardSquareId: getTilePosition("7D"),
+    };
+
+    expect(BoardStateEngine.computeState(action, boardState)).toEqual(
+      BoardStateFactory.createBoardState(
+        `
+      - - - - - - - 0 - - - -
+      - 0 - 0 - I - - W W - -
+      F - 0 - - I I - - - L L
+      F - - - I - I I - - - L
+      - - 0 - I I I I - - - L
+      - - - - I - I - 0 - 0 -
+      - - - - - - - - - - - 0
+      - - 0 - A A - - - T T -
+      - 0 - - - - 0 - 0 - T -
+    `
+      )
+    );
+  });
+});

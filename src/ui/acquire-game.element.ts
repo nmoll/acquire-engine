@@ -5,6 +5,7 @@ import { GameStateEngine } from "../engine/game-state-engine/game-state-engine";
 import { IGameState } from "../model";
 import { IAcquireGameInstance } from "../model/acquire-game-instance";
 import { PlayerAction } from "../model/player-action";
+import { BoardStateFactory } from "../test/factory/board-state.factory";
 import "./acquire-button.element";
 import "./acquire-game-actions.element";
 import { ActionRequestEvent } from "./acquire-game-actions.element";
@@ -144,6 +145,20 @@ export class AcquireGameElement extends LitElement {
 
   private calculateOrientation(): "landscape" | "portrait" {
     return window.innerHeight > window.innerWidth ? "portrait" : "landscape";
+  }
+
+  /**
+   * Prints the current state of the game for debugging
+   */
+  debug() {
+    console.log("-- Actions -- ");
+    console.log(this.actions);
+
+    console.log("-- Game state --");
+    console.log(this.state);
+
+    console.log("-- Board ASCII Diagram --");
+    console.log(BoardStateFactory.createDiagram(this.state.boardState));
   }
 }
 

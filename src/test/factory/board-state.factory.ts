@@ -21,11 +21,25 @@ const squareStates: SquareState = {
   W: BoardSquareStateType.HasHotelChain(HotelChainType.WORLDWIDE),
 };
 
-const createBoardState = (diagram: string): BoardSquareState[] => {
-  const squares = diagram.trim().split(/\s*/);
-  return squares.map((square) => squareStates[square as keyof SquareState]);
-};
+const createBoardState = (diagram: string): BoardSquareState[] =>
+  diagram
+    .trim()
+    .split(/\s*/)
+    .map((square) => squareStates[square as keyof SquareState]);
+
+const toAscii = (squareState: BoardSquareState): string =>
+  Object.entries(squareStates).find(
+    ([_, state]) => JSON.stringify(state) === JSON.stringify(squareState)
+  )?.[0] ?? "";
+
+const createDiagram = (state: BoardSquareState[]): string =>
+  state.reduce(
+    (res, squareState, idx) =>
+      `${res} ${toAscii(squareState)}${(idx + 1) % 12 === 0 ? "\n" : ""}`,
+    ""
+  );
 
 export const BoardStateFactory = {
   createBoardState,
+  createDiagram,
 };
