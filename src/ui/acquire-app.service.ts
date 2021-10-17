@@ -1,9 +1,8 @@
 import { IAcquireGameInstance } from "../model/acquire-game-instance";
-import { IPlayer } from "../model/player";
 import { PlayerUtils } from "../utils/player-utils";
 import { FirebaseService } from "./firebase.service";
 
-const PLAYER_KEY = "acquire-player";
+const PLAYER_ID_KEY = "acquire-player-id";
 
 export type GameState =
   | {
@@ -63,19 +62,15 @@ export class AcquireAppService {
     );
   }
 
-  getPlayer(): IPlayer | null {
-    const playerString = localStorage.getItem(PLAYER_KEY);
-    return playerString ? JSON.parse(playerString) : null;
+  getPlayerId(): string | null {
+    return localStorage.getItem(PLAYER_ID_KEY);
   }
 
-  createPlayer(username: string): IPlayer {
-    const player = {
-      id: PlayerUtils.assignId(username),
-      name: username,
-    };
-    localStorage.setItem(PLAYER_KEY, JSON.stringify(player));
+  createPlayerId(username: string): string {
+    const playerId = PlayerUtils.assignId(username);
+    localStorage.setItem(PLAYER_ID_KEY, playerId);
 
-    return player;
+    return playerId;
   }
 
   addPlayerToGame(playerId: string, gameId: string) {
@@ -86,13 +81,13 @@ export class AcquireAppService {
     this.firebaseService.startGame(gameId);
   }
 
-  createNewGame(host: IPlayer): string | null {
+  createNewGame(hostId: string): string | null {
     const gameId = `${Math.round(Math.random() * 9999999)}`;
     this.firebaseService.createGame({
       id: gameId,
       randomSeed: Math.floor(Math.random() * 999),
-      playerIds: [host.id],
-      hostId: host.id,
+      playerIds: [hostId],
+      hostId: hostId,
       state: "not started",
     });
 

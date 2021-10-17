@@ -1,19 +1,15 @@
-import {
-  BoardSquareState,
-  BoardSquareStateType,
-  HasHotelChain,
-} from "../../../model";
+import { BoardSquareStateType, HasHotelChain } from "../../../model";
 import { PlayerActionContext } from "../../../model/player-action-context";
 import { BoardUtils } from "../../../utils/board-utils";
 import { IBoardStateScenario } from "./board-state-scenario";
 
-export const ScenarioHasHotelChain: IBoardStateScenario = {
-  resolve: (context: PlayerActionContext): BoardSquareState | false =>
-    mergerTile(context) ||
-    minorityMergedIntoMajority(context) ||
-    newHotelStarted(context) ||
-    growHotelChain(context),
-};
+export const ScenarioHasHotelChain: IBoardStateScenario = (
+  context: PlayerActionContext
+) =>
+  mergerTile(context) ||
+  minorityMergedIntoMajority(context) ||
+  newHotelStarted(context) ||
+  growHotelChain(context);
 
 /**
  * Scenario where the tile is adjacent

@@ -30,3 +30,24 @@ export type AvailableAction =
   | ChooseShares
   | ChooseMergeDirection
   | ChooseEndTurn;
+
+export const AvailableActionType = {
+  ChooseTile: (): ChooseTile => ({
+    type: "ChooseTile",
+  }),
+  ChooseHotelChain: (hotelChains: HotelChainType[]): ChooseHotelChain => ({
+    type: "ChooseHotelChain",
+    hotelChains,
+  }),
+  ChooseShares: (availableShares: AvailableShares): ChooseShares => ({
+    type: "ChooseShares",
+    availableShares,
+  }),
+  ChooseMergeDirection: (options: HotelChainType[]): ChooseMergeDirection => ({
+    type: "ChooseMergeDirection",
+    options,
+  }),
+  ChooseEndTurn: (): ChooseEndTurn => ({
+    type: "ChooseEndTurn",
+  }),
+};

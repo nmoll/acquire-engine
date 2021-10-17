@@ -1,8 +1,7 @@
-import { HotelChainType } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { ICashState } from "../../model/cash-state";
 import { PlayerAction } from "../../model/player-action";
-import { IShares } from "../../model/shares";
+import { SharesUtils } from "../../utils/shares-utils";
 
 const startingAmount = 6000;
 
@@ -19,22 +18,6 @@ const fillEmptyStates = (
     cashState
   );
 
-const basePriceByHotel: Record<HotelChainType, number> = {
-  WORLDWIDE: 200,
-  LUXOR: 200,
-  FESTIVAL: 300,
-  IMPERIAL: 300,
-  AMERICAN: 300,
-  CONTINENTAL: 400,
-  TOWER: 400,
-};
-
-const getTotalSharesPrice = (shares: IShares[]): number =>
-  shares.reduce(
-    (total, share) => total + basePriceByHotel[share.hotel] * share.quantity,
-    0
-  );
-
 const computeState = (
   gameInstance: IAcquireGameInstance,
   playerAction: PlayerAction | null = null,
@@ -46,13 +29,14 @@ const computeState = (
     return state;
   }
 
+  const purchasedShares =
+    playerAction.type === "PurchaseShares" ? playerAction.shares : [];
+
   return {
     ...state,
     [playerAction.playerId]:
       state[playerAction.playerId] -
-      getTotalSharesPrice(
-        playerAction.type === "PurchaseShares" ? playerAction.shares : []
-      ),
+      SharesUtils.getTotalSharesCost(purchasedShares),
   };
 };
 

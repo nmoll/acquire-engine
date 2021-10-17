@@ -1,6 +1,5 @@
 import { css, html, LitElement } from "lit";
 import { customElement, state } from "lit/decorators.js";
-import { IPlayer } from "../model/player";
 import { AcquireAppService, GameState } from "./acquire-app.service";
 import "./acquire-button.element";
 import "./acquire-create-username.element";
@@ -16,7 +15,7 @@ export class AcquireAppElement extends LitElement {
   private acquireAppService: AcquireAppService;
 
   @state()
-  player: IPlayer | null;
+  playerId: string | null;
 
   @state()
   gameState: GameState = {
@@ -27,7 +26,7 @@ export class AcquireAppElement extends LitElement {
     super();
 
     this.acquireAppService = new AcquireAppService();
-    this.player = this.acquireAppService.getPlayer();
+    this.playerId = this.acquireAppService.getPlayerId();
 
     const gameId = new URLSearchParams(window.location.search).get("game-id");
     if (!gameId) {
@@ -42,15 +41,15 @@ export class AcquireAppElement extends LitElement {
   }
 
   createPlayer(username: string) {
-    this.player = this.acquireAppService.createPlayer(username);
+    this.playerId = this.acquireAppService.createPlayerId(username);
   }
 
   joinGame(playerId: string, gameId: string) {
     this.acquireAppService.addPlayerToGame(playerId, gameId);
   }
 
-  createNewGame(host: IPlayer) {
-    const gameId = this.acquireAppService.createNewGame(host);
+  createNewGame(hostId: string) {
+    const gameId = this.acquireAppService.createNewGame(hostId);
     if (gameId) {
       this.acquireAppService.onGameChanged(gameId, (gameState) => {
         this.gameState = gameState;
@@ -67,8 +66,8 @@ export class AcquireAppElement extends LitElement {
   }
 
   render() {
-    const player = this.player;
-    if (!player) {
+    const playerId = this.playerId;
+    if (!playerId) {
       return html`<acquire-create-username
         @save="${(e: CustomEvent<SaveUsernameEvent>) =>
           this.createPlayer(e.detail.username)}"
@@ -81,7 +80,7 @@ export class AcquireAppElement extends LitElement {
       case "not created":
         return html`<div>
           Start a new game:
-          <acquire-button @click="${() => this.createNewGame(player)}"
+          <acquire-button @click="${() => this.createNewGame(playerId)}"
             >New Game</acquire-button
           >
         </div>`;
@@ -94,7 +93,7 @@ export class AcquireAppElement extends LitElement {
           case "not started":
             return html`<acquire-waiting-room
               .playerIds="${gameState.game.playerIds}"
-              .playerId="${player.id}"
+              .playerId="${playerId}"
               .hostId="${gameState.game.hostId}"
               .gameUrl="${this.getGameUrl(gameState.game.id)}"
               @join-game="${(e: CustomEvent<JoinGameEvent>) =>
@@ -104,7 +103,7 @@ export class AcquireAppElement extends LitElement {
           case "started":
             return html`<acquire-game
               .game="${gameState.game}"
-              .playerId="${player.id}"
+              .playerId="${playerId}"
             ></acquire-game>`;
           case "finished":
             return html`Game finished!`;

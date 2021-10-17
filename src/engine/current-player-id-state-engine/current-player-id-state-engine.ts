@@ -1,17 +1,7 @@
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { CurrentPlayerIdState } from "../../model/current-player-id-state";
 import { PlayerAction } from "../../model/player-action";
-
-const getPlayerIdx = (playerIds: string[], playerId: string) =>
-  playerIds.findIndex((id) => id === playerId);
-
-const isLastPlayer = (playerIds: string[], playerId: string) =>
-  getPlayerIdx(playerIds, playerId) === playerIds.length - 1;
-
-const getNextPlayerId = (playerIds: string[], playerId: string) =>
-  isLastPlayer(playerIds, playerId)
-    ? playerIds[0]
-    : playerIds[getPlayerIdx(playerIds, playerId) + 1];
+import { PlayerUtils } from "../../utils/player-utils";
 
 const computeState = (
   gameInstance: IAcquireGameInstance,
@@ -25,7 +15,7 @@ const computeState = (
   }
 
   return playerAction.type === "EndTurn"
-    ? getNextPlayerId(gameInstance.playerIds, playerAction.playerId)
+    ? PlayerUtils.getNextPlayerId(gameInstance.playerIds, playerAction.playerId)
     : playerAction.playerId;
 };
 

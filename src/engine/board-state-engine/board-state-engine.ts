@@ -14,9 +14,9 @@ const defaultState: BoardSquareState[] = ArrayUtils.makeNumArray(108).map(() =>
 );
 
 const getBoardSquareState = (context: PlayerActionContext): BoardSquareState =>
-  ScenarioHasHotelChain.resolve(context) ||
-  ScenarioHasTile.resolve(context) ||
-  ScenarioAvailableForSelection.resolve(context) ||
+  ScenarioHasHotelChain(context) ||
+  ScenarioHasTile(context) ||
+  ScenarioAvailableForSelection(context) ||
   context.boardState[context.index];
 
 const computeState = (

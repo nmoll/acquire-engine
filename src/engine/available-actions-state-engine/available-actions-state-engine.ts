@@ -1,49 +1,9 @@
-import {
-  BoardSquareState,
-  HotelChainType,
-  IGameState,
-  ISharesState,
-} from "../../model";
-import {
-  ChooseEndTurn,
-  ChooseHotelChain,
-  ChooseShares,
-  ChooseTile,
-} from "../../model/available-action";
+import { BoardSquareState, IGameState, ISharesState } from "../../model";
+import { AvailableActionType } from "../../model/available-action";
 import { IAvailableActionState } from "../../model/available-action-state";
 import { PlayerAction } from "../../model/player-action";
 import { BoardUtils } from "../../utils/board-utils";
 import { SharesUtils } from "../../utils/shares-utils";
-
-const chooseTile = (): ChooseTile => ({
-  type: "ChooseTile",
-});
-
-const chooseEndTurn = (): ChooseEndTurn => ({
-  type: "ChooseEndTurn",
-});
-
-const chooseHotelChain = (hotelChains: HotelChainType[]): ChooseHotelChain => ({
-  type: "ChooseHotelChain",
-  hotelChains,
-});
-
-const chooseShares = (
-  hotelChains: HotelChainType[],
-  sharesState: ISharesState
-): ChooseShares => ({
-  type: "ChooseShares",
-  availableShares: hotelChains.reduce(
-    (result, hotelChain) => ({
-      ...result,
-      [hotelChain]: Math.min(
-        SharesUtils.getAvailableSharesForHotel(sharesState, hotelChain),
-        3
-      ),
-    }),
-    {}
-  ),
-});
 
 const computeState = (
   boardState: BoardSquareState[],
@@ -51,7 +11,7 @@ const computeState = (
   action: PlayerAction | null = null
 ): IAvailableActionState => {
   if (!action) {
-    return [chooseTile()];
+    return [AvailableActionType.ChooseTile()];
   }
 
   const activeHotelChains = BoardUtils.getActiveHotelChains(boardState);
@@ -60,25 +20,43 @@ const computeState = (
     case "PlaceTile":
       if (BoardUtils.isHotelStarter(boardState, action.boardSquareId)) {
         return [
-          chooseHotelChain(BoardUtils.getInactiveHotelChains(boardState)),
+          AvailableActionType.ChooseHotelChain(
+            BoardUtils.getInactiveHotelChains(boardState)
+          ),
         ];
       }
       if (activeHotelChains.length) {
-        return [chooseShares(activeHotelChains, sharesState), chooseEndTurn()];
+        return [
+          AvailableActionType.ChooseShares(
+            SharesUtils.getAvailableSharesForPurchase(
+              activeHotelChains,
+              sharesState
+            )
+          ),
+          AvailableActionType.ChooseEndTurn(),
+        ];
       }
-      return [chooseEndTurn()];
+      return [AvailableActionType.ChooseEndTurn()];
 
     case "StartHotelChain":
-      return [chooseShares(activeHotelChains, sharesState), chooseEndTurn()];
+      return [
+        AvailableActionType.ChooseShares(
+          SharesUtils.getAvailableSharesForPurchase(
+            activeHotelChains,
+            sharesState
+          )
+        ),
+        AvailableActionType.ChooseEndTurn(),
+      ];
 
     case "Merge":
-      return [chooseEndTurn()];
+      return [AvailableActionType.ChooseEndTurn()];
 
     case "PurchaseShares":
-      return [chooseEndTurn()];
+      return [AvailableActionType.ChooseEndTurn()];
 
     case "EndTurn":
-      return [chooseTile()];
+      return [AvailableActionType.ChooseTile()];
   }
 };
 
