@@ -51,7 +51,8 @@ const computeGameState = (
   const cashState = CashStateEngine.computeState(
     gameInstance,
     playerActions[0],
-    state.cashState
+    state.cashState,
+    boardState
   );
 
   const tileState = TileStateEngine.computeState(

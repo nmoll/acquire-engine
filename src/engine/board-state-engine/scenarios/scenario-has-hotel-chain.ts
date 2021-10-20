@@ -2,15 +2,62 @@ import { BoardSquareStateType, HasHotelChain } from "../../../model";
 import { PlayerActionContext } from "../../../model/player-action-context";
 import { BoardUtils } from "../../../utils/board-utils";
 import { HotelChainUtils } from "../../../utils/hotel-chain-utils";
-import { IBoardStateScenario } from "./board-state-scenario";
 
-export const ScenarioHasHotelChain: IBoardStateScenario = (
+/**
+ * If square should be converted into a hotel chain, returns the hotel chain type,
+ * otherwise returns false.
+ */
+export const ScenarioHasHotelChain = (context: PlayerActionContext) =>
+  ScenarioTileIsMergeInitiator(context) ||
+  ScenarioHotelChainConsumedByMerge(context) ||
+  ScenarioTilePartOfNewHotelChain(context) ||
+  ScenarioTileConsumedByHotelChain(context);
+
+/**
+ * Scenario where the played tile initiates a merge.
+ *
+ * @returns the hotel chain which will survive the merge.
+ */
+const ScenarioTileIsMergeInitiator = (
   context: PlayerActionContext
-) =>
-  mergerTile(context) ||
-  minorityMergedIntoMajority(context) ||
-  newHotelStarted(context) ||
-  growHotelChain(context);
+): HasHotelChain | false => {
+  if (
+    context.playerAction.type !== "PlaceTile" ||
+    context.playerAction.boardSquareId !== context.index
+  ) {
+    return false;
+  }
+
+  const mergeContext = getMergeContext(context);
+  if (!mergeContext) {
+    return false;
+  }
+
+  return mergeContext.majority;
+};
+
+/**
+ * Scenario where the square is part of
+ * the minority chain in the case of a merge.
+ *
+ * @returns the majority hotel chain
+ */
+const ScenarioHotelChainConsumedByMerge = (
+  context: PlayerActionContext
+): HasHotelChain | false => {
+  const mergeContext = getMergeContext(context);
+
+  if (!mergeContext) {
+    return false;
+  }
+
+  const squareState = context.boardState[context.index];
+
+  return squareState.type === "HasHotelChain" &&
+    squareState.hotelChainType === mergeContext.minority.hotelChainType
+    ? mergeContext.majority
+    : false;
+};
 
 /**
  * Scenario where the tile is adjacent
@@ -18,13 +65,39 @@ export const ScenarioHasHotelChain: IBoardStateScenario = (
  *
  * @returns the chosen hotel chain
  */
-const newHotelStarted = (
+const ScenarioTilePartOfNewHotelChain = (
   context: PlayerActionContext
 ): HasHotelChain | false => {
   return context.playerAction.type === "StartHotelChain" &&
     context.boardState[context.index].type === "HasTile" &&
     BoardUtils.hasAdjacentTiles(context.boardState, context.index)
     ? BoardSquareStateType.HasHotelChain(context.playerAction.hotelChain)
+    : false;
+};
+
+/**
+ * Scenario where the square is a tile
+ * which should be consumed by a hotel chain.
+ *
+ * @returns the hotel chain which will be grown.
+ */
+const ScenarioTileConsumedByHotelChain = (
+  context: PlayerActionContext
+): HasHotelChain | false => {
+  if (
+    context.playerAction.type !== "PlaceTile" ||
+    !(isPlayedTile(context) || isTileAdjacentToPlayedTile(context))
+  ) {
+    return false;
+  }
+
+  const adjacentHotelChains = HotelChainUtils.getAdjacentHotelChains(
+    context.boardState,
+    context.playerAction.boardSquareId
+  );
+
+  return adjacentHotelChains.length
+    ? BoardSquareStateType.HasHotelChain(adjacentHotelChains[0].hotelChainType)
     : false;
 };
 
@@ -66,76 +139,6 @@ const getMergeContext = (
       adjacentHotelChains
     ),
   };
-};
-
-/**
- * Scenario where the played tile initiates a merge.
- *
- * @returns the hotel chain which will survive the merge.
- */
-const mergerTile = (context: PlayerActionContext): HasHotelChain | false => {
-  if (
-    context.playerAction.type !== "PlaceTile" ||
-    context.playerAction.boardSquareId !== context.index
-  ) {
-    return false;
-  }
-
-  const mergeContext = getMergeContext(context);
-  if (!mergeContext) {
-    return false;
-  }
-
-  return mergeContext.majority;
-};
-
-/**
- * Scenario where the square is part of
- * the minority chain in the case of a merge.
- *
- * @returns the majority hotel chain
- */
-const minorityMergedIntoMajority = (
-  context: PlayerActionContext
-): HasHotelChain | false => {
-  const mergeContext = getMergeContext(context);
-
-  if (!mergeContext) {
-    return false;
-  }
-
-  const squareState = context.boardState[context.index];
-
-  return squareState.type === "HasHotelChain" &&
-    squareState.hotelChainType === mergeContext.minority.hotelChainType
-    ? mergeContext.majority
-    : false;
-};
-
-/**
- * Scenario where the square is a tile
- * which should be consumed by a hotel chain.
- *
- * @returns the hotel chain which will be grown.
- */
-const growHotelChain = (
-  context: PlayerActionContext
-): HasHotelChain | false => {
-  if (
-    context.playerAction.type !== "PlaceTile" ||
-    !(isPlayedTile(context) || isTileAdjacentToPlayedTile(context))
-  ) {
-    return false;
-  }
-
-  const adjacentHotelChains = HotelChainUtils.getAdjacentHotelChains(
-    context.boardState,
-    context.playerAction.boardSquareId
-  );
-
-  return adjacentHotelChains.length
-    ? BoardSquareStateType.HasHotelChain(adjacentHotelChains[0].hotelChainType)
-    : false;
 };
 
 /**

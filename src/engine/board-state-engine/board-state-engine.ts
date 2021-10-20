@@ -6,7 +6,6 @@ import {
 import { PlayerAction } from "../../model/player-action";
 import { PlayerActionContext } from "../../model/player-action-context";
 import { ArrayUtils } from "../../utils/array-utils";
-import { ScenarioAvailableForSelection } from "./scenarios/scenario-available-for-selection";
 import { ScenarioHasHotelChain } from "./scenarios/scenario-has-hotel-chain";
 import { ScenarioHasTile } from "./scenarios/scenario-has-tile";
 
@@ -17,7 +16,6 @@ const defaultState: BoardSquareState[] = ArrayUtils.makeNumArray(
 const getBoardSquareState = (context: PlayerActionContext): BoardSquareState =>
   ScenarioHasHotelChain(context) ||
   ScenarioHasTile(context) ||
-  ScenarioAvailableForSelection(context) ||
   context.boardState[context.index];
 
 const computeState = (

@@ -20,10 +20,7 @@ const state = (diagram: string) => BoardStateFactory.createBoardState(diagram);
 /**
  *  ------ LEGEND ------
  *  - : Empty square
- *  o : Square available for selection
- *  O : Square selected
  *  0 : Square has tile
- *  * : New hotel pending player decision
  *  A : American hotel
  *  C : Continental hotel
  *  F : Festival hotel

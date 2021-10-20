@@ -1,6 +1,9 @@
 import { ALL_HOTELS, HotelChainType } from "../model";
 import { SharesStateFactory } from "../test/factory/shares-state.factory";
+import { ArrayUtils } from "./array-utils";
 import { SharesUtils } from "./shares-utils";
+
+const padNum = (num: number): string => (num < 10 ? `0${num}` : `${num}`);
 
 describe("SharesUtils", () => {
   describe(SharesUtils.getAvailableShares.name, () => {
@@ -36,6 +39,35 @@ describe("SharesUtils", () => {
         [HotelChainType.TOWER]: 13,
         [HotelChainType.WORLDWIDE]: 6,
       });
+    });
+  });
+
+  describe(SharesUtils.getSharesCost.name, () => {
+    it("should calculate share price for the given hotel chain and size", () => {
+      const hotelSizes = ArrayUtils.makeNumArray(45);
+      const hotelPricesBySize = ALL_HOTELS.reduce(
+        (accHotels, hotel) => ({
+          ...accHotels,
+          [hotel]: hotelSizes.reduce(
+            (accSizes, hotelSize) => ({
+              ...accSizes,
+              [padNum(hotelSize)]: SharesUtils.getSharesCost(
+                {
+                  hotel,
+                  quantity: 1,
+                },
+                {
+                  [hotel]: ArrayUtils.makeNumArray(hotelSize),
+                }
+              ),
+            }),
+            {}
+          ),
+        }),
+        {}
+      );
+
+      expect(hotelPricesBySize).toMatchSnapshot();
     });
   });
 });

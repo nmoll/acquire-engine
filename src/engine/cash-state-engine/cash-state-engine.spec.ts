@@ -1,6 +1,7 @@
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { ICashState } from "../../model/cash-state";
 import { PlayerActionType } from "../../model/player-action";
+import { BoardStateFactory } from "../../test/factory/board-state.factory";
 import { createGameInstance } from "../../test/factory/game-instance.factory";
 import { america, continental, getTilePosition } from "../../test/helpers";
 import { CashStateEngine } from "./cash-state-engine";
@@ -72,13 +73,32 @@ describe("CashEngine", () => {
       4: 6000,
     };
 
+    const boardState = BoardStateFactory.createBoardState(
+      `
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - C - - - - - -
+      - - - - - C - - - - - -
+      - - - - - - - - L L L -
+      - - - - - - - - - - - -
+      - - - A A - - - 0 - - - 
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      `
+    );
+
     const playerAction = PlayerActionType.PurchaseShares("2", [
       america(1),
       continental(2),
     ]);
 
     expect(
-      CashStateEngine.computeState(gameInstance, playerAction, existingState)
+      CashStateEngine.computeState(
+        gameInstance,
+        playerAction,
+        existingState,
+        boardState
+      )
     ).toEqual({
       1: 6000,
       2: 4900,

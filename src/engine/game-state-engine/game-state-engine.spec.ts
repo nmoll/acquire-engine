@@ -113,6 +113,15 @@ describe("GameStateEngine", () => {
       PlayerActionType.PurchaseShares("2", [america(3)]),
       PlayerActionType.EndTurn("2"),
       PlayerActionType.PlaceTile("3", getTilePosition("6C")),
+      PlayerActionType.PurchaseShares("3", [america(1)]),
+      PlayerActionType.EndTurn("3"),
+      PlayerActionType.PlaceTile("4", getTilePosition("6F")),
+      PlayerActionType.EndTurn("4"),
+      PlayerActionType.PlaceTile("1", getTilePosition("4F")),
+      PlayerActionType.PurchaseShares("1", [america(3)]),
+      PlayerActionType.EndTurn("1"),
+      PlayerActionType.PlaceTile("2", getTilePosition("4D")),
+      PlayerActionType.PurchaseShares("2", [america(1)]),
     ];
 
     const expectedState: IGameState = {
@@ -120,64 +129,58 @@ describe("GameStateEngine", () => {
           - - - - - - - - - - - -
           - - - - - - - - - - - -
           - - - - - 0 - - - - - -
+          - - - 0 - - - - - - - -
           - - - - - - - - - - - -
-          - - - - - - - - - - - -
-          - - - - - - - - - - - -
+          - - - A - 0 - - - - - -
           - - - A A - - - - - - - 
           - - - - - - - - - - - -
           - - - - - - - - - - - -`),
       cashState: {
-        1: 6000,
-        2: 5100,
-        3: 6000,
+        1: 4800,
+        2: 4700,
+        3: 5700,
         4: 6000,
       },
       tileState: {
         1: [
           getTilePosition("12A"),
           getTilePosition("8A"),
-          getTilePosition("4F"),
           getTilePosition("11D"),
           getTilePosition("7C"),
+          getTilePosition("2I"),
         ],
         2: [
           getTilePosition("12I"),
           getTilePosition("4B"),
           getTilePosition("12F"),
           getTilePosition("3E"),
-          getTilePosition("4D"),
         ],
         3: [
           getTilePosition("11I"),
           getTilePosition("10G"),
           getTilePosition("8G"),
           getTilePosition("6I"),
+          getTilePosition("10H"),
         ],
         4: [
-          getTilePosition("6F"),
           getTilePosition("1F"),
           getTilePosition("9C"),
           getTilePosition("11F"),
           getTilePosition("10B"),
+          getTilePosition("8B"),
         ],
       },
       sharesState: SharesStateFactory.createSharesState(
         `
              A C F I L T W
-          P1 0 0 0 0 0 0 0
-          P2 4 0 0 0 0 0 0
-          P3 0 0 0 0 0 0 0
+          P1 3 0 0 0 0 0 0
+          P2 5 0 0 0 0 0 0
+          P3 1 0 0 0 0 0 0
           P4 0 0 0 0 0 0 0
           `
       ),
-      currentPlayerIdState: "3",
+      currentPlayerIdState: "2",
       availableActionsState: [
-        {
-          type: "ChooseShares",
-          availableShares: {
-            [HotelChainType.AMERICAN]: 3,
-          },
-        },
         {
           type: "ChooseEndTurn",
         },

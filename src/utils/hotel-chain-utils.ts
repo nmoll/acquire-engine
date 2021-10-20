@@ -4,6 +4,7 @@ import {
   HasHotelChain,
   HotelChainType,
 } from "../model";
+import { HotelChainPositions } from "../model/hotel-chain-positions";
 import { BoardUtils } from "./board-utils";
 
 const isTypeHotelChain = (
@@ -84,11 +85,30 @@ const getAdjacentHotelChains = (
     BoardUtils.getAdjacentSquares(boardState, index).filter(isTypeHotelChain)
   );
 
+const getHotelChainPositions = (
+  boardState: BoardSquareState[]
+): HotelChainPositions =>
+  boardState.reduce<HotelChainPositions>(
+    (res, square, idx) =>
+      square.type === "HasHotelChain"
+        ? {
+            ...res,
+            [square.hotelChainType]: [
+              ...(res[square.hotelChainType] || []),
+              idx,
+            ],
+          }
+        : res,
+    {}
+  );
+
 export const HotelChainUtils = {
+  isTypeHotelChain,
   getActiveHotelChains,
   getInactiveHotelChains,
   getAdjacentHotelChains,
   getLargestHotelChain,
   getSmallestHotelChain,
   isHotelStarter,
+  getHotelChainPositions,
 };

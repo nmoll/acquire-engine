@@ -1,9 +1,9 @@
 import { BoardSquareState, IGameState, ISharesState } from "../../model";
 import { AvailableActionType } from "../../model/available-action";
 import { IAvailableActionState } from "../../model/available-action-state";
-import { PlayerAction } from "../../model/player-action";
-import { HotelChainUtils } from "../../utils/hotel-chain-utils";
-import { SharesUtils } from "../../utils/shares-utils";
+import { PlayerAction, StartHotelChain } from "../../model/player-action";
+import { ScenarioHotelChainStarted } from "./scenarios/scenario-hotel-chain-started";
+import { ScenarioTilePlaced } from "./scenarios/scenario-tile-placed";
 
 const computeState = (
   boardState: BoardSquareState[],
@@ -14,51 +14,35 @@ const computeState = (
     return [AvailableActionType.ChooseTile()];
   }
 
-  const activeHotelChains = HotelChainUtils.getActiveHotelChains(boardState);
-
   switch (action.type) {
     case "PlaceTile":
-      if (HotelChainUtils.isHotelStarter(boardState, action.boardSquareId)) {
-        return [
-          AvailableActionType.ChooseHotelChain(
-            HotelChainUtils.getInactiveHotelChains(boardState)
-          ),
-        ];
-      }
-      if (activeHotelChains.length) {
-        return [
-          AvailableActionType.ChooseShares(
-            SharesUtils.getAvailableSharesForPurchase(
-              activeHotelChains,
-              sharesState
-            )
-          ),
-          AvailableActionType.ChooseEndTurn(),
-        ];
-      }
-      return [AvailableActionType.ChooseEndTurn()];
-
+      return ScenarioTilePlaced(action, boardState, sharesState);
     case "StartHotelChain":
-      return [
-        AvailableActionType.ChooseShares(
-          SharesUtils.getAvailableSharesForPurchase(
-            activeHotelChains,
-            sharesState
-          )
-        ),
-        AvailableActionType.ChooseEndTurn(),
-      ];
-
+      return ScenarioHotelChainStarted(boardState, sharesState);
     case "Merge":
       return [AvailableActionType.ChooseEndTurn()];
-
     case "PurchaseShares":
       return [AvailableActionType.ChooseEndTurn()];
-
     case "EndTurn":
       return [AvailableActionType.ChooseTile()];
   }
 };
+
+const validatePlaceTile = (state: IAvailableActionState): boolean =>
+  !!state.find((availableAction) => availableAction.type === "ChooseTile");
+
+const validateStartHotelChain = (
+  action: StartHotelChain,
+  state: IAvailableActionState
+): boolean =>
+  !!state.find(
+    (available) =>
+      available.type === "ChooseHotelChain" &&
+      available.hotelChains.includes(action.hotelChain)
+  );
+
+const validateEndTurn = (state: IAvailableActionState): boolean =>
+  !!state.find((available) => available.type === "ChooseEndTurn");
 
 const validateAction = (
   action: PlayerAction,
@@ -70,19 +54,11 @@ const validateAction = (
 
   switch (action.type) {
     case "PlaceTile":
-      return !!gameState.availableActionsState.find(
-        (action) => action.type === "ChooseTile"
-      );
+      return validatePlaceTile(gameState.availableActionsState);
     case "StartHotelChain":
-      return !!gameState.availableActionsState.find(
-        (a) =>
-          a.type === "ChooseHotelChain" &&
-          a.hotelChains.includes(action.hotelChain)
-      );
+      return validateStartHotelChain(action, gameState.availableActionsState);
     case "EndTurn":
-      return !!gameState.availableActionsState.find(
-        (action) => action.type === "ChooseEndTurn"
-      );
+      return validateEndTurn(gameState.availableActionsState);
   }
   return true;
 };

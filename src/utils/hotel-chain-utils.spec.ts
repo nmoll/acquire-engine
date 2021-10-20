@@ -1,5 +1,6 @@
 import { HotelChainType } from "../model";
 import { BoardStateFactory } from "../test/factory/board-state.factory";
+import { getTilePosition } from "../test/helpers";
 import { HotelChainUtils } from "./hotel-chain-utils";
 
 describe("HotelChainUtils", () => {
@@ -63,6 +64,58 @@ describe("HotelChainUtils", () => {
       const boardState = BoardStateFactory.createBoardState(`0 - T T`);
 
       expect(HotelChainUtils.isHotelStarter(boardState, 1)).toBeFalsy();
+    });
+  });
+
+  describe(HotelChainUtils.getHotelChainPositions.name, () => {
+    it("should return empty record if no hotel chains on the board", () => {
+      const boardState = BoardStateFactory.createBoardState(
+        `
+          - - - - - -
+          - - - - - -
+          - - - - - -
+          - - - - - -
+          - - - - - -
+        `
+      );
+
+      expect(HotelChainUtils.getHotelChainPositions(boardState)).toEqual({});
+    });
+
+    it("should get hotel chain positions from board state", () => {
+      const boardState = BoardStateFactory.createBoardState(
+        `
+          T T - - - - - - - - - -
+          - - - - L L L L - - - -
+          0 0 - - - - L L - - - -
+          - - A A - - - - - - - -
+          0 - - A - - 0 - - - - -
+          - - - - - - - - - - - -
+          - - - - - - - - - - - -
+          - - - - - - - - - - - -
+        `
+      );
+
+      const expected = {
+        [HotelChainType.TOWER]: [getTilePosition("1A"), getTilePosition("2A")],
+        [HotelChainType.LUXOR]: [
+          getTilePosition("5B"),
+          getTilePosition("6B"),
+          getTilePosition("7B"),
+          getTilePosition("8B"),
+          getTilePosition("7C"),
+          getTilePosition("8C"),
+        ],
+        [HotelChainType.AMERICAN]: [
+          getTilePosition("3D"),
+          getTilePosition("4D"),
+          getTilePosition("4E"),
+        ],
+      };
+
+      expect(HotelChainUtils.getHotelChainPositions(boardState)).toEqual(
+        expected
+      );
     });
   });
 });
