@@ -57,7 +57,7 @@ describe("SharesEngine", () => {
       );
     });
 
-    it("should add shares to player for all shares purchased", () => {
+    it("should add shares to player shares purchased", () => {
       expectStateWithAction(
         `
              A C F I L T W
@@ -67,21 +67,12 @@ describe("SharesEngine", () => {
           P4 0 0 0 0 0 0 0
         `,
         playerIds,
-        PlayerActionType.PurchaseShares("1", [
-          {
-            hotel: HotelChainType.AMERICAN,
-            quantity: 1,
-          },
-          {
-            hotel: HotelChainType.CONTINENTAL,
-            quantity: 2,
-          },
-        ])
+        PlayerActionType.PurchaseShares("1", HotelChainType.AMERICAN)
       ).toEqual(
         SharesStateFactory.createSharesState(
           `
               A C F I L T W
-           P1 3 3 0 0 0 0 0
+           P1 3 1 0 0 0 0 0
            P2 0 6 0 0 0 0 0
            P3 0 0 0 0 0 0 0
            P4 0 0 0 0 0 0 0

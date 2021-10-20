@@ -169,12 +169,7 @@ describe("AvailableActionsStateEngine", () => {
         const action: PlayerAction = {
           type: "PurchaseShares",
           playerId: "1",
-          shares: [
-            {
-              hotel: HotelChainType.FESTIVAL,
-              quantity: 3,
-            },
-          ],
+          hotelChain: HotelChainType.FESTIVAL,
         };
 
         expect(

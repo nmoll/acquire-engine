@@ -29,20 +29,21 @@ const computeState = (
 ): ICashState => {
   state = fillEmptyStates(gameInstance.playerIds, state);
 
-  if (!playerAction) {
+  if (playerAction?.type !== "PurchaseShares") {
     return state;
   }
 
-  const purchasedShares =
-    playerAction.type === "PurchaseShares" ? playerAction.shares : [];
-
   const hotelPositions = HotelChainUtils.getHotelChainPositions(boardState);
+  const hotelSize = hotelPositions[playerAction.hotelChain];
+  if (!hotelSize?.length) {
+    return state;
+  }
 
   return {
     ...state,
     [playerAction.playerId]:
       state[playerAction.playerId] -
-      SharesUtils.getTotalSharesCost(purchasedShares, hotelPositions),
+      SharesUtils.getSharesCost(playerAction.hotelChain, hotelSize.length),
   };
 };
 

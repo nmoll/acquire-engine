@@ -59,7 +59,7 @@ describe("CurrentPlayerIdStateEngine", () => {
       expect(
         CurrentPlayerIdStateEngine.computeState(
           gameInstance,
-          PlayerActionType.PurchaseShares(PLAYER_3, [])
+          PlayerActionType.PurchaseShares(PLAYER_3, HotelChainType.AMERICAN)
         )
       ).toEqual(PLAYER_3);
     });

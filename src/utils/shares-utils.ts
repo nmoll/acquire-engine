@@ -1,7 +1,5 @@
 import { GameConfig } from "../game-config";
 import { HotelChainType, ISharesState } from "../model";
-import { HotelChainPositions } from "../model/hotel-chain-positions";
-import { IShares } from "../model/shares";
 
 const getAvailableSharesForHotel = (
   sharesState: ISharesState,
@@ -64,35 +62,20 @@ const getBasePriceBySize = (size: number): number => {
 };
 
 const getSharesCost = (
-  share: IShares,
-  hotelPositions: HotelChainPositions
+  hotelChain: HotelChainType,
+  hotelSize: number
 ): number => {
-  const hotelSize = hotelPositions[share.hotel]?.length;
-  if (!hotelSize || hotelSize < 2) {
+  if (hotelSize < 2) {
     // ensures a player can't buy this
     return 100000;
   }
 
-  const basePriceByType = GameConfig.hotel.basePrice[share.hotel];
-  const basePriceBySize = getBasePriceBySize(
-    hotelPositions[share.hotel]?.length || 0
-  );
-  return (basePriceByType + basePriceBySize) * share.quantity;
+  return GameConfig.hotel.basePrice[hotelChain] + getBasePriceBySize(hotelSize);
 };
-
-const getTotalSharesCost = (
-  shares: IShares[],
-  hotelPositions: HotelChainPositions
-): number =>
-  shares.reduce(
-    (total, share) => total + getSharesCost(share, hotelPositions),
-    0
-  );
 
 export const SharesUtils = {
   getAvailableShares,
   getAvailableSharesForHotel,
   getAvailableSharesForPurchase,
   getSharesCost,
-  getTotalSharesCost,
 };

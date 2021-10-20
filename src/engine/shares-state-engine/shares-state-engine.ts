@@ -43,8 +43,7 @@ const getPurchasedShares = (
   if (playerAction.type !== "PurchaseShares") {
     return 0;
   }
-  const share = playerAction.shares.find((s) => s.hotel === hotel);
-  return share?.quantity ?? 0;
+  return playerAction.hotelChain === hotel ? 1 : 0;
 };
 
 const computeState = (

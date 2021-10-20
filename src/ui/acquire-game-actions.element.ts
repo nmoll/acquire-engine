@@ -60,19 +60,14 @@ export class AcquireGameActionsElement extends LitElement {
     );
   }
 
-  onPurchaseShare(hotel: HotelChainType, quantity: number) {
+  onPurchaseShare(hotelChain: HotelChainType) {
     this.dispatchEvent(
       new CustomEvent<ActionRequestEvent>("action-request", {
         detail: {
           action: {
             type: "PurchaseShares",
             playerId: this.playerId,
-            shares: [
-              {
-                hotel,
-                quantity,
-              },
-            ],
+            hotelChain,
           },
         },
       })
@@ -102,10 +97,9 @@ export class AcquireGameActionsElement extends LitElement {
         html`<acquire-button
           .color="${`var(--colors-${hotelChain})`}"
           ?disabled="${!availableShares[hotelChain]}"
-          @click="${() =>
-            this.onPurchaseShare(hotelChain, availableShares[hotelChain] ?? 0)}"
+          @click="${() => this.onPurchaseShare(hotelChain)}"
         >
-          Purchase ${availableShares[hotelChain] ?? 0} ${hotelChain}
+          Purchase ${hotelChain}
         </acquire-button>`
     );
   }

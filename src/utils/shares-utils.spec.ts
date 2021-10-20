@@ -51,15 +51,7 @@ describe("SharesUtils", () => {
           [hotel]: hotelSizes.reduce(
             (accSizes, hotelSize) => ({
               ...accSizes,
-              [padNum(hotelSize)]: SharesUtils.getSharesCost(
-                {
-                  hotel,
-                  quantity: 1,
-                },
-                {
-                  [hotel]: ArrayUtils.makeNumArray(hotelSize),
-                }
-              ),
+              [padNum(hotelSize)]: SharesUtils.getSharesCost(hotel, hotelSize),
             }),
             {}
           ),

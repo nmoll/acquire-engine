@@ -1,5 +1,4 @@
 import { HotelChainType } from "./hotel-chain-type";
-import { IShares } from "./shares";
 
 export interface PlaceTile {
   type: "PlaceTile";
@@ -16,7 +15,7 @@ export interface StartHotelChain {
 export interface PurchaseShares {
   type: "PurchaseShares";
   playerId: string;
-  shares: IShares[];
+  hotelChain: HotelChainType;
 }
 
 export interface Merge {
@@ -52,10 +51,13 @@ export const PlayerActionType = {
     hotelChain,
   }),
 
-  PurchaseShares: (playerId: string, shares: IShares[]): PurchaseShares => ({
+  PurchaseShares: (
+    playerId: string,
+    hotelChain: HotelChainType
+  ): PurchaseShares => ({
     type: "PurchaseShares",
     playerId,
-    shares,
+    hotelChain,
   }),
 
   Merge: (playerId: string, hotelChainToKeep: HotelChainType): Merge => ({

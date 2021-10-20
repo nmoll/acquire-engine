@@ -5,7 +5,7 @@ import { PlayerAction, PlayerActionType } from "../../model/player-action";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
 import { createGameInstance } from "../../test/factory/game-instance.factory";
 import { SharesStateFactory } from "../../test/factory/shares-state.factory";
-import { america, getTilePosition } from "../../test/helpers";
+import { getTilePosition } from "../../test/helpers";
 import { ArrayUtils } from "../../utils/array-utils";
 import { GameStateEngine } from "./game-state-engine";
 
@@ -110,18 +110,22 @@ describe("GameStateEngine", () => {
       PlayerActionType.EndTurn("1"),
       PlayerActionType.PlaceTile("2", getTilePosition("4G")),
       PlayerActionType.StartHotelChain("2", HotelChainType.AMERICAN),
-      PlayerActionType.PurchaseShares("2", [america(3)]),
+      PlayerActionType.PurchaseShares("2", HotelChainType.AMERICAN),
+      PlayerActionType.PurchaseShares("2", HotelChainType.AMERICAN),
+      PlayerActionType.PurchaseShares("2", HotelChainType.AMERICAN),
       PlayerActionType.EndTurn("2"),
       PlayerActionType.PlaceTile("3", getTilePosition("6C")),
-      PlayerActionType.PurchaseShares("3", [america(1)]),
+      PlayerActionType.PurchaseShares("3", HotelChainType.AMERICAN),
       PlayerActionType.EndTurn("3"),
       PlayerActionType.PlaceTile("4", getTilePosition("6F")),
       PlayerActionType.EndTurn("4"),
       PlayerActionType.PlaceTile("1", getTilePosition("4F")),
-      PlayerActionType.PurchaseShares("1", [america(3)]),
+      PlayerActionType.PurchaseShares("1", HotelChainType.AMERICAN),
+      PlayerActionType.PurchaseShares("1", HotelChainType.AMERICAN),
+      PlayerActionType.PurchaseShares("1", HotelChainType.AMERICAN),
       PlayerActionType.EndTurn("1"),
       PlayerActionType.PlaceTile("2", getTilePosition("4D")),
-      PlayerActionType.PurchaseShares("2", [america(1)]),
+      PlayerActionType.PurchaseShares("2", HotelChainType.AMERICAN),
     ];
 
     const expectedState: IGameState = {

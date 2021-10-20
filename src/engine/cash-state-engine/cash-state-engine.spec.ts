@@ -1,9 +1,10 @@
+import { HotelChainType } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { ICashState } from "../../model/cash-state";
 import { PlayerActionType } from "../../model/player-action";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
 import { createGameInstance } from "../../test/factory/game-instance.factory";
-import { america, continental, getTilePosition } from "../../test/helpers";
+import { getTilePosition } from "../../test/helpers";
 import { CashStateEngine } from "./cash-state-engine";
 
 describe("CashEngine", () => {
@@ -87,10 +88,10 @@ describe("CashEngine", () => {
       `
     );
 
-    const playerAction = PlayerActionType.PurchaseShares("2", [
-      america(1),
-      continental(2),
-    ]);
+    const playerAction = PlayerActionType.PurchaseShares(
+      "2",
+      HotelChainType.AMERICAN
+    );
 
     expect(
       CashStateEngine.computeState(
@@ -101,7 +102,7 @@ describe("CashEngine", () => {
       )
     ).toEqual({
       1: 6000,
-      2: 4900,
+      2: 5700,
       3: 6000,
       4: 6000,
     });
