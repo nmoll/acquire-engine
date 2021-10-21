@@ -178,11 +178,6 @@ describe("AvailableActionsStateEngine", () => {
             playerId: "1",
             hotelChain: HotelChainType.AMERICAN,
           },
-          {
-            type: "PurchaseShares",
-            playerId: "1",
-            hotelChain: HotelChainType.AMERICAN,
-          },
         ];
 
         const expected: IAvailableActionState = [
@@ -217,11 +212,6 @@ describe("AvailableActionsStateEngine", () => {
         };
 
         const history: PlayerAction[] = [
-          {
-            type: "PurchaseShares",
-            playerId: "1",
-            hotelChain: HotelChainType.AMERICAN,
-          },
           {
             type: "PurchaseShares",
             playerId: "1",

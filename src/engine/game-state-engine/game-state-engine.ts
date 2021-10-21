@@ -50,8 +50,6 @@ const computeGameState = (
     );
   }
 
-  const nextHistory = [...history, playerActions[0]];
-
   const boardState = BoardStateEngine.computeState(
     playerActions[0],
     state.boardState
@@ -85,7 +83,7 @@ const computeGameState = (
     boardState,
     sharesState,
     playerActions[0],
-    nextHistory
+    history
   );
 
   return computeGameState(
@@ -99,7 +97,7 @@ const computeGameState = (
       currentPlayerIdState,
       availableActionsState,
     },
-    nextHistory
+    [...history, playerActions[0]]
   );
 };
 

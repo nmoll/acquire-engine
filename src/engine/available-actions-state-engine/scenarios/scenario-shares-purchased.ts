@@ -21,7 +21,8 @@ export const ScenarioSharesPurchased = (
 
   if (
     !history ||
-    sharesPurchasedThisTurn(history) < GameConfig.turn.maxShares
+    // Add one for the current purchase
+    sharesPurchasedThisTurn(history) + 1 < GameConfig.turn.maxShares
   ) {
     result.unshift(
       AvailableActionType.ChooseShares(
