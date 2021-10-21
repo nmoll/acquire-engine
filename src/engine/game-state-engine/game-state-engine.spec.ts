@@ -1,6 +1,7 @@
 import { GameConfig } from "../../game-config";
 import { HotelChainType, IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
+import { IAvailableActionState } from "../../model/available-action-state";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
 import { createGameInstance } from "../../test/factory/game-instance.factory";
@@ -126,6 +127,7 @@ describe("GameStateEngine", () => {
       PlayerActionType.EndTurn("1"),
       PlayerActionType.PlaceTile("2", getTilePosition("4D")),
       PlayerActionType.PurchaseShares("2", HotelChainType.AMERICAN),
+      PlayerActionType.EndTurn("2"),
     ];
 
     const expectedState: IGameState = {
@@ -158,6 +160,7 @@ describe("GameStateEngine", () => {
           getTilePosition("4B"),
           getTilePosition("12F"),
           getTilePosition("3E"),
+          getTilePosition("3C"),
         ],
         3: [
           getTilePosition("11I"),
@@ -183,10 +186,10 @@ describe("GameStateEngine", () => {
           P4 0 0 0 0 0 0 0
           `
       ),
-      currentPlayerIdState: "2",
+      currentPlayerIdState: "3",
       availableActionsState: [
         {
-          type: "ChooseEndTurn",
+          type: "ChooseTile",
         },
       ],
     };
@@ -194,5 +197,89 @@ describe("GameStateEngine", () => {
     expect(GameStateEngine.computeGameState(gameInstance, actions)).toEqual(
       expectedState
     );
+  });
+});
+
+describe("BUG CASE - User can purchase 4 stocks for a turn", () => {
+  it("should not allow user to purchase stocks after 3 purchases in their turn", () => {
+    const gameInstance: IAcquireGameInstance = {
+      hostId: "4088_Nate",
+      id: "7480568",
+      playerIds: ["4088_Nate", "3044_Jake"],
+      randomSeed: 40,
+      state: "started",
+    };
+
+    const actions: PlayerAction[] = [
+      {
+        boardSquareId: 43,
+        playerId: "4088_Nate",
+        type: "PlaceTile",
+      },
+      {
+        playerId: "4088_Nate",
+        type: "EndTurn",
+      },
+      {
+        boardSquareId: 40,
+        playerId: "3044_Jake",
+        type: "PlaceTile",
+      },
+      {
+        playerId: "3044_Jake",
+        type: "EndTurn",
+      },
+      {
+        boardSquareId: 50,
+        playerId: "4088_Nate",
+        type: "PlaceTile",
+      },
+      {
+        playerId: "4088_Nate",
+        type: "EndTurn",
+      },
+      {
+        boardSquareId: 76,
+        playerId: "3044_Jake",
+        type: "PlaceTile",
+      },
+      {
+        playerId: "3044_Jake",
+        type: "EndTurn",
+      },
+      {
+        boardSquareId: 64,
+        playerId: "4088_Nate",
+        type: "PlaceTile",
+      },
+      {
+        hotelChain: HotelChainType.AMERICAN,
+        playerId: "4088_Nate",
+        type: "StartHotelChain",
+      },
+      {
+        hotelChain: HotelChainType.AMERICAN,
+        playerId: "4088_Nate",
+        type: "PurchaseShares",
+      },
+      {
+        hotelChain: HotelChainType.AMERICAN,
+        playerId: "4088_Nate",
+        type: "PurchaseShares",
+      },
+      {
+        hotelChain: HotelChainType.AMERICAN,
+        playerId: "4088_Nate",
+        type: "PurchaseShares",
+      },
+    ];
+
+    const state = GameStateEngine.computeGameState(gameInstance, actions);
+    const expected: IAvailableActionState = [
+      {
+        type: "ChooseEndTurn",
+      },
+    ];
+    expect(state.availableActionsState).toEqual(expected);
   });
 });

@@ -1,5 +1,6 @@
 import { GameConfig } from "../game-config";
 import { HotelChainType, ISharesState } from "../model";
+import { AvailableShares } from "../model/available-shares.type";
 
 const getAvailableSharesForHotel = (
   sharesState: ISharesState,
@@ -26,14 +27,12 @@ const getAvailableShares = (
 const getAvailableSharesForPurchase = (
   hotelChains: HotelChainType[],
   sharesState: ISharesState
-) =>
-  hotelChains.reduce(
+): AvailableShares =>
+  hotelChains.reduce<AvailableShares>(
     (result, hotelChain) => ({
       ...result,
-      [hotelChain]: Math.min(
-        SharesUtils.getAvailableSharesForHotel(sharesState, hotelChain),
-        GameConfig.turn.maxShares
-      ),
+      [hotelChain]:
+        SharesUtils.getAvailableSharesForHotel(sharesState, hotelChain) > 0,
     }),
     {}
   );

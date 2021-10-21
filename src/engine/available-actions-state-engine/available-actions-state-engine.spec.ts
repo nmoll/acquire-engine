@@ -126,9 +126,9 @@ describe("AvailableActionsStateEngine", () => {
           {
             type: "ChooseShares",
             availableShares: {
-              FESTIVAL: 3,
-              AMERICAN: 2,
-              WORLDWIDE: 0,
+              FESTIVAL: true,
+              AMERICAN: true,
+              WORLDWIDE: false,
             },
           },
           {
@@ -154,9 +154,9 @@ describe("AvailableActionsStateEngine", () => {
           {
             type: "ChooseShares",
             availableShares: {
-              FESTIVAL: 3,
-              AMERICAN: 2,
-              WORLDWIDE: 0,
+              FESTIVAL: true,
+              AMERICAN: true,
+              WORLDWIDE: false,
             },
           },
           {
@@ -165,24 +165,89 @@ describe("AvailableActionsStateEngine", () => {
         ]);
       });
 
-      it("should not be available after PurchaseShares action", () => {
+      it("should be available after PurchaseShares action if player can purchase more", () => {
         const action: PlayerAction = {
           type: "PurchaseShares",
           playerId: "1",
           hotelChain: HotelChainType.FESTIVAL,
         };
 
+        const history: PlayerAction[] = [
+          {
+            type: "PurchaseShares",
+            playerId: "1",
+            hotelChain: HotelChainType.AMERICAN,
+          },
+          {
+            type: "PurchaseShares",
+            playerId: "1",
+            hotelChain: HotelChainType.AMERICAN,
+          },
+        ];
+
+        const expected: IAvailableActionState = [
+          {
+            type: "ChooseShares",
+            availableShares: {
+              FESTIVAL: true,
+              AMERICAN: true,
+              WORLDWIDE: false,
+            },
+          },
+          {
+            type: "ChooseEndTurn",
+          },
+        ];
+
         expect(
           AvailableActionsStateEngine.computeState(
             boardState,
             sharesState,
-            action
+            action,
+            history
           )
-        ).toEqual([
+        ).toEqual(expected);
+      });
+
+      it("should not be available after PurchaseShares action if player has purchased 3 shares already", () => {
+        const action: PlayerAction = {
+          type: "PurchaseShares",
+          playerId: "1",
+          hotelChain: HotelChainType.FESTIVAL,
+        };
+
+        const history: PlayerAction[] = [
+          {
+            type: "PurchaseShares",
+            playerId: "1",
+            hotelChain: HotelChainType.AMERICAN,
+          },
+          {
+            type: "PurchaseShares",
+            playerId: "1",
+            hotelChain: HotelChainType.AMERICAN,
+          },
+          {
+            type: "PurchaseShares",
+            playerId: "1",
+            hotelChain: HotelChainType.AMERICAN,
+          },
+        ];
+
+        const expected: IAvailableActionState = [
           {
             type: "ChooseEndTurn",
           },
-        ]);
+        ];
+
+        expect(
+          AvailableActionsStateEngine.computeState(
+            boardState,
+            sharesState,
+            action,
+            history
+          )
+        ).toEqual(expected);
       });
 
       it("should not be available after EndTurn", () => {

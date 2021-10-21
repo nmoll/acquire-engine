@@ -1,3 +1,3 @@
 import { HotelChainType } from ".";
 
-export type AvailableShares = Partial<Record<HotelChainType, number>>;
+export type AvailableShares = Partial<Record<HotelChainType, boolean>>;

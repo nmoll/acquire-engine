@@ -33,15 +33,24 @@ const getInitialState = (gameInstance: IAcquireGameInstance): IGameState => {
 const computeGameState = (
   gameInstance: IAcquireGameInstance,
   playerActions: PlayerAction[],
-  state: IGameState = getInitialState(gameInstance)
+  state: IGameState = getInitialState(gameInstance),
+  history: PlayerAction[] = []
 ): IGameState => {
   if (!playerActions || playerActions.length === 0) {
     return state;
   }
+
   if (!AvailableActionsStateEngine.validateAction(playerActions[0], state)) {
     // Throw out the action and resume
-    return computeGameState(gameInstance, playerActions.slice(1), state);
+    return computeGameState(
+      gameInstance,
+      playerActions.slice(1),
+      state,
+      history
+    );
   }
+
+  const nextHistory = [...history, playerActions[0]];
 
   const boardState = BoardStateEngine.computeState(
     playerActions[0],
@@ -75,17 +84,23 @@ const computeGameState = (
   const availableActionsState = AvailableActionsStateEngine.computeState(
     boardState,
     sharesState,
-    playerActions[0]
+    playerActions[0],
+    nextHistory
   );
 
-  return computeGameState(gameInstance, playerActions.slice(1), {
-    boardState,
-    cashState,
-    tileState,
-    sharesState,
-    currentPlayerIdState,
-    availableActionsState,
-  });
+  return computeGameState(
+    gameInstance,
+    playerActions.slice(1),
+    {
+      boardState,
+      cashState,
+      tileState,
+      sharesState,
+      currentPlayerIdState,
+      availableActionsState,
+    },
+    nextHistory
+  );
 };
 
 export const GameStateEngine = {

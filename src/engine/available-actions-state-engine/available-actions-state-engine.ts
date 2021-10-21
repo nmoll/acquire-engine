@@ -3,12 +3,14 @@ import { AvailableActionType } from "../../model/available-action";
 import { IAvailableActionState } from "../../model/available-action-state";
 import { PlayerAction, StartHotelChain } from "../../model/player-action";
 import { ScenarioHotelChainStarted } from "./scenarios/scenario-hotel-chain-started";
+import { ScenarioSharesPurchased } from "./scenarios/scenario-shares-purchased";
 import { ScenarioTilePlaced } from "./scenarios/scenario-tile-placed";
 
 const computeState = (
   boardState: BoardSquareState[],
   sharesState: ISharesState,
-  action: PlayerAction | null = null
+  action: PlayerAction | null = null,
+  history: PlayerAction[] | null = null
 ): IAvailableActionState => {
   if (!action) {
     return [AvailableActionType.ChooseTile()];
@@ -22,7 +24,7 @@ const computeState = (
     case "Merge":
       return [AvailableActionType.ChooseEndTurn()];
     case "PurchaseShares":
-      return [AvailableActionType.ChooseEndTurn()];
+      return ScenarioSharesPurchased(boardState, sharesState, history);
     case "EndTurn":
       return [AvailableActionType.ChooseTile()];
   }
