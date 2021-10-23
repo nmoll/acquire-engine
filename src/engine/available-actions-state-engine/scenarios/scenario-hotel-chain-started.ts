@@ -6,12 +6,14 @@ import { SharesUtils } from "../../../utils/shares-utils";
 
 export const ScenarioHotelChainStarted = (
   boardState: BoardSquareState[],
-  sharesState: ISharesState
+  sharesState: ISharesState,
+  playerCash: number
 ): IAvailableActionState => [
   AvailableActionType.ChooseShares(
     SharesUtils.getAvailableSharesForPurchase(
-      HotelChainUtils.getActiveHotelChains(boardState),
-      sharesState
+      HotelChainUtils.getHotelChainPositions(boardState),
+      sharesState,
+      playerCash
     )
   ),
   AvailableActionType.ChooseEndTurn(),

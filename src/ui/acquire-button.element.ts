@@ -16,6 +16,9 @@ export class AcquireButton extends LitElement {
   @property()
   color!: string;
 
+  @property()
+  disabled!: boolean;
+
   getStyles() {
     return {
       backgroundColor: this.color ?? "",
@@ -25,7 +28,10 @@ export class AcquireButton extends LitElement {
 
   render() {
     const styles = this.getStyles();
-    return html`<button style="${styleMap(styles)}">
+    return html`<button
+      ?disabled="${this.disabled}"
+      style="${styleMap(styles)}"
+    >
       <slot></slot>
     </button>`;
   }

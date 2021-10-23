@@ -1,6 +1,7 @@
 import { BoardSquareState, HotelChainType, ISharesState } from "../../model";
 import { AvailableAction } from "../../model/available-action";
 import { IAvailableActionState } from "../../model/available-action-state";
+import { ICashState } from "../../model/cash-state";
 import { CurrentPlayerIdState } from "../../model/current-player-id-state";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
@@ -14,6 +15,7 @@ describe("AvailableActionsStateEngine", () => {
     it("should be 'ChooseTile' action is null", () => {
       const boardState = BoardStateEngine.computeState();
       const sharesState = SharesStateFactory.createSharesState(``);
+      const cashState: ICashState = {};
 
       const expected: IAvailableActionState = [
         {
@@ -22,13 +24,18 @@ describe("AvailableActionsStateEngine", () => {
       ];
 
       expect(
-        AvailableActionsStateEngine.computeState(boardState, sharesState)
+        AvailableActionsStateEngine.computeState(
+          boardState,
+          sharesState,
+          cashState
+        )
       ).toEqual(expected);
     });
 
     it("should be 'ChooseTile' action if the last action was EndTurn", () => {
       const boardState = BoardStateEngine.computeState();
       const sharesState = SharesStateFactory.createSharesState(``);
+      const cashState: ICashState = {};
 
       const action: PlayerAction = {
         type: "EndTurn",
@@ -45,6 +52,7 @@ describe("AvailableActionsStateEngine", () => {
         AvailableActionsStateEngine.computeState(
           boardState,
           sharesState,
+          cashState,
           action
         )
       ).toEqual(expected);
@@ -57,6 +65,7 @@ describe("AvailableActionsStateEngine", () => {
           0 - T - - W W 
         `);
       const sharesState = SharesStateFactory.createSharesState(``);
+      const cashState: ICashState = {};
 
       const action: PlayerAction = {
         type: "PlaceTile",
@@ -80,6 +89,7 @@ describe("AvailableActionsStateEngine", () => {
         AvailableActionsStateEngine.computeState(
           boardState,
           sharesState,
+          cashState,
           action
         )
       ).toEqual(expected);
@@ -115,11 +125,15 @@ describe("AvailableActionsStateEngine", () => {
           playerId: "1",
           boardSquareId: 6,
         };
+        const cashState: ICashState = {
+          1: 6000,
+        };
 
         expect(
           AvailableActionsStateEngine.computeState(
             boardState,
             sharesState,
+            cashState,
             action
           )
         ).toEqual([
@@ -143,11 +157,15 @@ describe("AvailableActionsStateEngine", () => {
           playerId: "1",
           hotelChain: HotelChainType.FESTIVAL,
         };
+        const cashState: ICashState = {
+          1: 6000,
+        };
 
         expect(
           AvailableActionsStateEngine.computeState(
             boardState,
             sharesState,
+            cashState,
             action
           )
         ).toEqual([
@@ -172,6 +190,10 @@ describe("AvailableActionsStateEngine", () => {
           hotelChain: HotelChainType.FESTIVAL,
         };
 
+        const cashState: ICashState = {
+          1: 6000,
+        };
+
         const history: PlayerAction[] = [
           {
             type: "PurchaseShares",
@@ -198,6 +220,45 @@ describe("AvailableActionsStateEngine", () => {
           AvailableActionsStateEngine.computeState(
             boardState,
             sharesState,
+            cashState,
+            action,
+            history
+          )
+        ).toEqual(expected);
+      });
+
+      it("should have stocks be unavailable if player can't afford it", () => {
+        const action: PlayerAction = {
+          type: "PurchaseShares",
+          playerId: "1",
+          hotelChain: HotelChainType.FESTIVAL,
+        };
+
+        const cashState: ICashState = {
+          1: 300,
+        };
+
+        const history: PlayerAction[] = [];
+
+        const expected: IAvailableActionState = [
+          {
+            type: "ChooseShares",
+            availableShares: {
+              FESTIVAL: true,
+              AMERICAN: false,
+              WORLDWIDE: false,
+            },
+          },
+          {
+            type: "ChooseEndTurn",
+          },
+        ];
+
+        expect(
+          AvailableActionsStateEngine.computeState(
+            boardState,
+            sharesState,
+            cashState,
             action,
             history
           )
@@ -209,6 +270,10 @@ describe("AvailableActionsStateEngine", () => {
           type: "PurchaseShares",
           playerId: "1",
           hotelChain: HotelChainType.FESTIVAL,
+        };
+
+        const cashState: ICashState = {
+          1: 6000,
         };
 
         const history: PlayerAction[] = [
@@ -234,6 +299,7 @@ describe("AvailableActionsStateEngine", () => {
           AvailableActionsStateEngine.computeState(
             boardState,
             sharesState,
+            cashState,
             action,
             history
           )
@@ -245,11 +311,15 @@ describe("AvailableActionsStateEngine", () => {
           type: "EndTurn",
           playerId: "1",
         };
+        const cashState: ICashState = {
+          1: 6000,
+        };
 
         expect(
           AvailableActionsStateEngine.computeState(
             boardState,
             sharesState,
+            cashState,
             action
           )
         ).toEqual([
@@ -263,6 +333,9 @@ describe("AvailableActionsStateEngine", () => {
     it("should be 'ChooseEndTurn' if tile has been placed by player", () => {
       const boardState = BoardStateEngine.computeState();
       const sharesState = SharesStateFactory.createSharesState(``);
+      const cashState: ICashState = {
+        1: 6000,
+      };
 
       const action: PlayerAction = {
         type: "PlaceTile",
@@ -280,6 +353,7 @@ describe("AvailableActionsStateEngine", () => {
         AvailableActionsStateEngine.computeState(
           boardState,
           sharesState,
+          cashState,
           action
         )
       ).toEqual(expected);
@@ -392,6 +466,54 @@ describe("AvailableActionsStateEngine", () => {
         });
         const action: PlayerAction = {
           type: "StartHotelChain",
+          playerId: "1",
+          hotelChain: HotelChainType.AMERICAN,
+        };
+
+        expect(
+          AvailableActionsStateEngine.validateAction(action, gameState)
+        ).toBeFalsy();
+      });
+    });
+
+    describe(PlayerActionType.PurchaseShares.name, () => {
+      it("should return true if hotel chain is available for purchase", () => {
+        const gameState = createGameState({
+          currentPlayerIdState,
+          availableActionsState: [
+            {
+              type: "ChooseShares",
+              availableShares: {
+                AMERICAN: true,
+              },
+            },
+          ],
+        });
+        const action: PlayerAction = {
+          type: "PurchaseShares",
+          playerId: "1",
+          hotelChain: HotelChainType.AMERICAN,
+        };
+
+        expect(
+          AvailableActionsStateEngine.validateAction(action, gameState)
+        ).toBeTruthy();
+      });
+
+      it("should return false if share is not available to purchase", () => {
+        const gameState = createGameState({
+          currentPlayerIdState,
+          availableActionsState: [
+            {
+              type: "ChooseShares",
+              availableShares: {
+                AMERICAN: false,
+              },
+            },
+          ],
+        });
+        const action: PlayerAction = {
+          type: "PurchaseShares",
           playerId: "1",
           hotelChain: HotelChainType.AMERICAN,
         };

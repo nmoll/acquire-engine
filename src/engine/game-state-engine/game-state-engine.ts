@@ -17,7 +17,8 @@ const getInitialState = (gameInstance: IAcquireGameInstance): IGameState => {
     CurrentPlayerIdStateEngine.computeState(gameInstance);
   const availableActionsState = AvailableActionsStateEngine.computeState(
     boardState,
-    sharesState
+    sharesState,
+    cashState
   );
 
   return {
@@ -82,6 +83,7 @@ const computeGameState = (
   const availableActionsState = AvailableActionsStateEngine.computeState(
     boardState,
     sharesState,
+    cashState,
     playerActions[0],
     history
   );

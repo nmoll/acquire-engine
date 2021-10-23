@@ -8,7 +8,8 @@ import { SharesUtils } from "../../../utils/shares-utils";
 export const ScenarioTilePlaced = (
   action: PlaceTile,
   boardState: BoardSquareState[],
-  sharesState: ISharesState
+  sharesState: ISharesState,
+  playerCash: number
 ): IAvailableActionState => {
   if (HotelChainUtils.isHotelStarter(boardState, action.boardSquareId)) {
     return [
@@ -17,13 +18,15 @@ export const ScenarioTilePlaced = (
       ),
     ];
   }
-  const activeHotelChains = HotelChainUtils.getActiveHotelChains(boardState);
-  if (activeHotelChains.length) {
+  const hotelChainPositions =
+    HotelChainUtils.getHotelChainPositions(boardState);
+  if (Object.keys(hotelChainPositions).length) {
     return [
       AvailableActionType.ChooseShares(
         SharesUtils.getAvailableSharesForPurchase(
-          activeHotelChains,
-          sharesState
+          hotelChainPositions,
+          sharesState,
+          playerCash
         )
       ),
       AvailableActionType.ChooseEndTurn(),

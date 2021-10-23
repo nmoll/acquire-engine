@@ -96,7 +96,7 @@ export class AcquireGameActionsElement extends LitElement {
       (hotelChain) =>
         html`<acquire-button
           .color="${`var(--colors-${hotelChain})`}"
-          ?disabled="${!availableShares[hotelChain]}"
+          .disabled="${availableShares[hotelChain] !== true}"
           @click="${() => this.onPurchaseShare(hotelChain)}"
         >
           Purchase ${hotelChain}

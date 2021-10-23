@@ -15,6 +15,7 @@ const sharesPurchasedThisTurn = (history: PlayerAction[]): number =>
 export const ScenarioSharesPurchased = (
   boardState: BoardSquareState[],
   sharesState: ISharesState,
+  playerCash: number,
   history: PlayerAction[] | null
 ): IAvailableActionState => {
   const result: IAvailableActionState = [AvailableActionType.ChooseEndTurn()];
@@ -27,8 +28,9 @@ export const ScenarioSharesPurchased = (
     result.unshift(
       AvailableActionType.ChooseShares(
         SharesUtils.getAvailableSharesForPurchase(
-          HotelChainUtils.getActiveHotelChains(boardState),
-          sharesState
+          HotelChainUtils.getHotelChainPositions(boardState),
+          sharesState,
+          playerCash
         )
       )
     );

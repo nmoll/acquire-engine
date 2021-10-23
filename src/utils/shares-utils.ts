@@ -1,6 +1,7 @@
 import { GameConfig } from "../game-config";
 import { HotelChainType, ISharesState } from "../model";
 import { AvailableShares } from "../model/available-shares.type";
+import { HotelChainPositions } from "../model/hotel-chain-positions";
 
 const getAvailableSharesForHotel = (
   sharesState: ISharesState,
@@ -25,14 +26,18 @@ const getAvailableShares = (
   );
 
 const getAvailableSharesForPurchase = (
-  hotelChains: HotelChainType[],
-  sharesState: ISharesState
+  hotelPositions: HotelChainPositions,
+  sharesState: ISharesState,
+  playerCash: number
 ): AvailableShares =>
-  hotelChains.reduce<AvailableShares>(
-    (result, hotelChain) => ({
+  Object.entries(hotelPositions).reduce<AvailableShares>(
+    (result, [hotelChain, positions]) => ({
       ...result,
       [hotelChain]:
-        SharesUtils.getAvailableSharesForHotel(sharesState, hotelChain) > 0,
+        getAvailableSharesForHotel(sharesState, hotelChain as HotelChainType) >
+          0 &&
+        getSharesCost(hotelChain as HotelChainType, positions.length) <=
+          playerCash,
     }),
     {}
   );
