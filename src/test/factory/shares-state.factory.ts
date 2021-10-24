@@ -1,13 +1,13 @@
 import { HotelChainType, ISharesState } from "../../model";
 
-const HOTELS_BY_CODE = {
-  A: HotelChainType.AMERICAN,
-  C: HotelChainType.CONTINENTAL,
-  F: HotelChainType.FESTIVAL,
-  I: HotelChainType.IMPERIAL,
-  L: HotelChainType.LUXOR,
-  T: HotelChainType.TOWER,
-  W: HotelChainType.WORLDWIDE,
+const HOTELS_BY_CODE: Record<string, HotelChainType> = {
+  A: "American",
+  C: "Continental",
+  F: "Festival",
+  I: "Imperial",
+  L: "Luxor",
+  T: "Tower",
+  W: "Worldwide",
 };
 
 const createSharesState = (diagram: string): ISharesState => {
@@ -21,13 +21,13 @@ const createSharesState = (diagram: string): ISharesState => {
     const playerId = Number(cols.shift()?.replace("P", ""));
 
     result[playerId] = {
-      AMERICAN: 0,
-      CONTINENTAL: 0,
-      FESTIVAL: 0,
-      IMPERIAL: 0,
-      LUXOR: 0,
-      TOWER: 0,
-      WORLDWIDE: 0,
+      American: 0,
+      Continental: 0,
+      Festival: 0,
+      Imperial: 0,
+      Luxor: 0,
+      Tower: 0,
+      Worldwide: 0,
     };
 
     cols.forEach((col, idx) => {

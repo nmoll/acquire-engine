@@ -1,4 +1,3 @@
-import { HotelChainType } from "../../model";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
 import { getTilePosition } from "../../test/helpers";
@@ -168,7 +167,7 @@ describe("BoardStateEngine", () => {
   //   );
   // });
 
-  it("should start AMERICAN if AMERICAN is selected with starter tile", () => {
+  it("should start American if American is selected with starter tile", () => {
     expectStateWithAction(
       `
       - - - - - - - - - - - -
@@ -181,7 +180,7 @@ describe("BoardStateEngine", () => {
       - - - - - - - - - - - -
       - - - - - - - - - - - -
         `,
-      PlayerActionType.StartHotelChain("1", HotelChainType.AMERICAN)
+      PlayerActionType.StartHotelChain("1", "American")
     ).toEqual(
       state(`
       - - - - - - - - - - - -
@@ -197,7 +196,7 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should start CONTINTENTAL if CONTINTENTAL is selected with starter tile", () => {
+  it("should start Continental if Continental is selected with starter tile", () => {
     expectStateWithAction(
       `
           - - A A - - - - - - - -
@@ -210,7 +209,7 @@ describe("BoardStateEngine", () => {
           - - - - - - - - - - - -
           - - - - - - - - - - - -
         `,
-      PlayerActionType.StartHotelChain("1", HotelChainType.CONTINENTAL)
+      PlayerActionType.StartHotelChain("1", "Continental")
     ).toEqual(
       state(`
             - - A A - - - - - - - -
@@ -226,7 +225,7 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should start FESTIVAL if FESTIVAL is selected with starter tile", () => {
+  it("should start Festival if Festival is selected with starter tile", () => {
     expectStateWithAction(
       `
           - - A A - - - - - - - -
@@ -239,7 +238,7 @@ describe("BoardStateEngine", () => {
           - - - - - - - - - - - -
           - - - - - - - - - - - -
         `,
-      PlayerActionType.StartHotelChain("1", HotelChainType.FESTIVAL)
+      PlayerActionType.StartHotelChain("1", "Festival")
     ).toEqual(
       state(`
             - - A A - - - - - - - -
@@ -268,7 +267,7 @@ describe("BoardStateEngine", () => {
             - - - - - - - - - - - -
             - - - - - - - - - - - -
           `,
-      PlayerActionType.StartHotelChain("1", HotelChainType.IMPERIAL)
+      PlayerActionType.StartHotelChain("1", "Imperial")
     ).toEqual(
       state(`
             - - A A - - - - - - - -
@@ -284,7 +283,7 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should start LUXOR if LUXOR is selected with starter tile", () => {
+  it("should start Luxor if Luxor is selected with starter tile", () => {
     expectStateWithAction(
       `
             - - A A - - - - - - 0 0
@@ -297,7 +296,7 @@ describe("BoardStateEngine", () => {
             - - - - - - - - - - - -
             - - - - - - - - - - - -
           `,
-      PlayerActionType.StartHotelChain("1", HotelChainType.LUXOR)
+      PlayerActionType.StartHotelChain("1", "Luxor")
     ).toEqual(
       state(`
       - - A A - - - - - - L L
@@ -313,7 +312,7 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should start TOWER if TOWER is selected with starter tile", () => {
+  it("should start Tower if Tower is selected with starter tile", () => {
     expectStateWithAction(
       `
       - - A A - - - - - - L L
@@ -326,7 +325,7 @@ describe("BoardStateEngine", () => {
       - - - - - - - - - - - 0
       - - - - - - - - - - - 0
     `,
-      PlayerActionType.StartHotelChain("1", HotelChainType.TOWER)
+      PlayerActionType.StartHotelChain("1", "Tower")
     ).toEqual(
       state(`
       - - A A - - - - - - L L
@@ -342,7 +341,7 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should start WORLDWIDE if WORLDWIDE is selected with starter tile", () => {
+  it("should start Worldwide if Worldwide is selected with starter tile", () => {
     expectStateWithAction(
       `
       - - A A - - - - - - L L
@@ -355,7 +354,7 @@ describe("BoardStateEngine", () => {
       0 - - - - - - - - - - T
       0 0 - - - - - - - - - T
     `,
-      PlayerActionType.StartHotelChain("1", HotelChainType.WORLDWIDE)
+      PlayerActionType.StartHotelChain("1", "Worldwide")
     ).toEqual(
       state(`
       - - A A - - - - - - L L

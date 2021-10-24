@@ -1,4 +1,3 @@
-import { HotelChainType } from "../../model";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
 import { createGameInstance } from "../../test/factory/game-instance.factory";
 import { SharesStateFactory } from "../../test/factory/shares-state.factory";
@@ -67,7 +66,7 @@ describe("SharesEngine", () => {
           P4 0 0 0 0 0 0 0
         `,
         playerIds,
-        PlayerActionType.PurchaseShares("1", HotelChainType.AMERICAN)
+        PlayerActionType.PurchaseShares("1", "American")
       ).toEqual(
         SharesStateFactory.createSharesState(
           `
@@ -91,7 +90,7 @@ describe("SharesEngine", () => {
         P4 0 0 0 0 0 0 0
         `,
         playerIds,
-        PlayerActionType.StartHotelChain("2", HotelChainType.IMPERIAL)
+        PlayerActionType.StartHotelChain("2", "Imperial")
       ).toEqual(
         SharesStateFactory.createSharesState(`
               A C F I L T W
@@ -113,7 +112,7 @@ describe("SharesEngine", () => {
         P4 0 0 0 0 0 0 0
         `,
         playerIds,
-        PlayerActionType.StartHotelChain("2", HotelChainType.IMPERIAL)
+        PlayerActionType.StartHotelChain("2", "Imperial")
       ).toEqual(
         SharesStateFactory.createSharesState(`
               A C F I L T W

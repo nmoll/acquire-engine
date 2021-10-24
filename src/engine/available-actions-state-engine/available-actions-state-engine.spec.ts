@@ -1,4 +1,4 @@
-import { BoardSquareState, HotelChainType, ISharesState } from "../../model";
+import { BoardSquareState, ISharesState } from "../../model";
 import { AvailableAction } from "../../model/available-action";
 import { IAvailableActionState } from "../../model/available-action-state";
 import { ICashState } from "../../model/cash-state";
@@ -76,12 +76,7 @@ describe("AvailableActionsStateEngine", () => {
       const expected: AvailableAction[] = [
         {
           type: "ChooseHotelChain",
-          hotelChains: [
-            HotelChainType.CONTINENTAL,
-            HotelChainType.FESTIVAL,
-            HotelChainType.IMPERIAL,
-            HotelChainType.LUXOR,
-          ],
+          hotelChains: ["Continental", "Festival", "Imperial", "Luxor"],
         },
       ];
 
@@ -140,9 +135,9 @@ describe("AvailableActionsStateEngine", () => {
           {
             type: "ChooseShares",
             availableShares: {
-              FESTIVAL: true,
-              AMERICAN: true,
-              WORLDWIDE: false,
+              Festival: true,
+              American: true,
+              Worldwide: false,
             },
           },
           {
@@ -155,7 +150,7 @@ describe("AvailableActionsStateEngine", () => {
         const action: PlayerAction = {
           type: "StartHotelChain",
           playerId: "1",
-          hotelChain: HotelChainType.FESTIVAL,
+          hotelChain: "Festival",
         };
         const cashState: ICashState = {
           1: 6000,
@@ -172,9 +167,9 @@ describe("AvailableActionsStateEngine", () => {
           {
             type: "ChooseShares",
             availableShares: {
-              FESTIVAL: true,
-              AMERICAN: true,
-              WORLDWIDE: false,
+              Festival: true,
+              American: true,
+              Worldwide: false,
             },
           },
           {
@@ -187,7 +182,7 @@ describe("AvailableActionsStateEngine", () => {
         const action: PlayerAction = {
           type: "PurchaseShares",
           playerId: "1",
-          hotelChain: HotelChainType.FESTIVAL,
+          hotelChain: "Festival",
         };
 
         const cashState: ICashState = {
@@ -198,7 +193,7 @@ describe("AvailableActionsStateEngine", () => {
           {
             type: "PurchaseShares",
             playerId: "1",
-            hotelChain: HotelChainType.AMERICAN,
+            hotelChain: "American",
           },
         ];
 
@@ -206,9 +201,9 @@ describe("AvailableActionsStateEngine", () => {
           {
             type: "ChooseShares",
             availableShares: {
-              FESTIVAL: true,
-              AMERICAN: true,
-              WORLDWIDE: false,
+              Festival: true,
+              American: true,
+              Worldwide: false,
             },
           },
           {
@@ -231,7 +226,7 @@ describe("AvailableActionsStateEngine", () => {
         const action: PlayerAction = {
           type: "PurchaseShares",
           playerId: "1",
-          hotelChain: HotelChainType.FESTIVAL,
+          hotelChain: "Festival",
         };
 
         const cashState: ICashState = {
@@ -244,9 +239,9 @@ describe("AvailableActionsStateEngine", () => {
           {
             type: "ChooseShares",
             availableShares: {
-              FESTIVAL: true,
-              AMERICAN: false,
-              WORLDWIDE: false,
+              Festival: true,
+              American: false,
+              Worldwide: false,
             },
           },
           {
@@ -269,7 +264,7 @@ describe("AvailableActionsStateEngine", () => {
         const action: PlayerAction = {
           type: "PurchaseShares",
           playerId: "1",
-          hotelChain: HotelChainType.FESTIVAL,
+          hotelChain: "Festival",
         };
 
         const cashState: ICashState = {
@@ -280,12 +275,12 @@ describe("AvailableActionsStateEngine", () => {
           {
             type: "PurchaseShares",
             playerId: "1",
-            hotelChain: HotelChainType.AMERICAN,
+            hotelChain: "American",
           },
           {
             type: "PurchaseShares",
             playerId: "1",
-            hotelChain: HotelChainType.AMERICAN,
+            hotelChain: "American",
           },
         ];
 
@@ -432,18 +427,14 @@ describe("AvailableActionsStateEngine", () => {
           availableActionsState: [
             {
               type: "ChooseHotelChain",
-              hotelChains: [
-                HotelChainType.CONTINENTAL,
-                HotelChainType.AMERICAN,
-                HotelChainType.FESTIVAL,
-              ],
+              hotelChains: ["Continental", "American", "Festival"],
             },
           ],
         });
         const action: PlayerAction = {
           type: "StartHotelChain",
           playerId: "1",
-          hotelChain: HotelChainType.AMERICAN,
+          hotelChain: "American",
         };
 
         expect(
@@ -457,17 +448,14 @@ describe("AvailableActionsStateEngine", () => {
           availableActionsState: [
             {
               type: "ChooseHotelChain",
-              hotelChains: [
-                HotelChainType.CONTINENTAL,
-                HotelChainType.FESTIVAL,
-              ],
+              hotelChains: ["Continental", "Festival"],
             },
           ],
         });
         const action: PlayerAction = {
           type: "StartHotelChain",
           playerId: "1",
-          hotelChain: HotelChainType.AMERICAN,
+          hotelChain: "American",
         };
 
         expect(
@@ -484,7 +472,7 @@ describe("AvailableActionsStateEngine", () => {
             {
               type: "ChooseShares",
               availableShares: {
-                AMERICAN: true,
+                American: true,
               },
             },
           ],
@@ -492,7 +480,7 @@ describe("AvailableActionsStateEngine", () => {
         const action: PlayerAction = {
           type: "PurchaseShares",
           playerId: "1",
-          hotelChain: HotelChainType.AMERICAN,
+          hotelChain: "American",
         };
 
         expect(
@@ -507,7 +495,7 @@ describe("AvailableActionsStateEngine", () => {
             {
               type: "ChooseShares",
               availableShares: {
-                AMERICAN: false,
+                American: false,
               },
             },
           ],
@@ -515,7 +503,7 @@ describe("AvailableActionsStateEngine", () => {
         const action: PlayerAction = {
           type: "PurchaseShares",
           playerId: "1",
-          hotelChain: HotelChainType.AMERICAN,
+          hotelChain: "American",
         };
 
         expect(

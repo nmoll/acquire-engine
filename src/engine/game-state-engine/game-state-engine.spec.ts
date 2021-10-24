@@ -1,5 +1,5 @@
 import { GameConfig } from "../../game-config";
-import { HotelChainType, IGameState } from "../../model";
+import { IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { IAvailableActionState } from "../../model/available-action-state";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
@@ -110,23 +110,23 @@ describe("GameStateEngine", () => {
       PlayerActionType.PlaceTile("1", getTilePosition("5G")),
       PlayerActionType.EndTurn("1"),
       PlayerActionType.PlaceTile("2", getTilePosition("4G")),
-      PlayerActionType.StartHotelChain("2", HotelChainType.AMERICAN),
-      PlayerActionType.PurchaseShares("2", HotelChainType.AMERICAN),
-      PlayerActionType.PurchaseShares("2", HotelChainType.AMERICAN),
-      PlayerActionType.PurchaseShares("2", HotelChainType.AMERICAN),
+      PlayerActionType.StartHotelChain("2", "American"),
+      PlayerActionType.PurchaseShares("2", "American"),
+      PlayerActionType.PurchaseShares("2", "American"),
+      PlayerActionType.PurchaseShares("2", "American"),
       PlayerActionType.EndTurn("2"),
       PlayerActionType.PlaceTile("3", getTilePosition("6C")),
-      PlayerActionType.PurchaseShares("3", HotelChainType.AMERICAN),
+      PlayerActionType.PurchaseShares("3", "American"),
       PlayerActionType.EndTurn("3"),
       PlayerActionType.PlaceTile("4", getTilePosition("6F")),
       PlayerActionType.EndTurn("4"),
       PlayerActionType.PlaceTile("1", getTilePosition("4F")),
-      PlayerActionType.PurchaseShares("1", HotelChainType.AMERICAN),
-      PlayerActionType.PurchaseShares("1", HotelChainType.AMERICAN),
-      PlayerActionType.PurchaseShares("1", HotelChainType.AMERICAN),
+      PlayerActionType.PurchaseShares("1", "American"),
+      PlayerActionType.PurchaseShares("1", "American"),
+      PlayerActionType.PurchaseShares("1", "American"),
       PlayerActionType.EndTurn("1"),
       PlayerActionType.PlaceTile("2", getTilePosition("4D")),
-      PlayerActionType.PurchaseShares("2", HotelChainType.AMERICAN),
+      PlayerActionType.PurchaseShares("2", "American"),
       PlayerActionType.EndTurn("2"),
     ];
 
@@ -253,22 +253,22 @@ describe("BUG CASE - User can purchase 4 stocks for a turn", () => {
         type: "PlaceTile",
       },
       {
-        hotelChain: HotelChainType.AMERICAN,
+        hotelChain: "American",
         playerId: "4088_Nate",
         type: "StartHotelChain",
       },
       {
-        hotelChain: HotelChainType.AMERICAN,
+        hotelChain: "American",
         playerId: "4088_Nate",
         type: "PurchaseShares",
       },
       {
-        hotelChain: HotelChainType.AMERICAN,
+        hotelChain: "American",
         playerId: "4088_Nate",
         type: "PurchaseShares",
       },
       {
-        hotelChain: HotelChainType.AMERICAN,
+        hotelChain: "American",
         playerId: "4088_Nate",
         type: "PurchaseShares",
       },

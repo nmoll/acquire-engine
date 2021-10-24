@@ -1,4 +1,3 @@
-import { HotelChainType } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerActionType } from "../../model/player-action";
 import { createGameInstance } from "../../test/factory/game-instance.factory";
@@ -50,7 +49,7 @@ describe("CurrentPlayerIdStateEngine", () => {
       expect(
         CurrentPlayerIdStateEngine.computeState(
           gameInstance,
-          PlayerActionType.StartHotelChain(PLAYER_2, HotelChainType.IMPERIAL)
+          PlayerActionType.StartHotelChain(PLAYER_2, "Imperial")
         )
       ).toEqual(PLAYER_2);
     });
@@ -59,7 +58,7 @@ describe("CurrentPlayerIdStateEngine", () => {
       expect(
         CurrentPlayerIdStateEngine.computeState(
           gameInstance,
-          PlayerActionType.PurchaseShares(PLAYER_3, HotelChainType.AMERICAN)
+          PlayerActionType.PurchaseShares(PLAYER_3, "American")
         )
       ).toEqual(PLAYER_3);
     });
@@ -68,7 +67,7 @@ describe("CurrentPlayerIdStateEngine", () => {
       expect(
         CurrentPlayerIdStateEngine.computeState(
           gameInstance,
-          PlayerActionType.Merge(PLAYER_2, HotelChainType.TOWER)
+          PlayerActionType.Merge(PLAYER_2, "Tower")
         )
       ).toEqual(PLAYER_2);
     });

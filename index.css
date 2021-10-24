@@ -16,11 +16,11 @@ body * {
   --colors-gray-100: #f3f4f6;
   --colors-gray-900: #18181b;
 
-  --colors-WORLDWIDE: #d97706;
-  --colors-LUXOR: #ea580c;
-  --colors-FESTIVAL: #16a34a;
-  --colors-IMPERIAL: #db2777;
-  --colors-AMERICAN: #0284c7;
-  --colors-CONTINENTAL: #dc2626;
-  --colors-TOWER: #9333ea;
+  --colors-Worldwide: #d97706;
+  --colors-Luxor: #ea580c;
+  --colors-Festival: #16a34a;
+  --colors-Imperial: #db2777;
+  --colors-American: #0284c7;
+  --colors-Continental: #dc2626;
+  --colors-Tower: #9333ea;
 }

@@ -2,7 +2,7 @@
 
 exports[`SharesUtils getSharesCost should calculate share price for the given hotel chain and size 1`] = `
 Object {
-  "AMERICAN": Object {
+  "American": Object {
     "00": 100000,
     "01": 100000,
     "02": 300,
@@ -49,7 +49,7 @@ Object {
     "43": 1100,
     "44": 1100,
   },
-  "CONTINENTAL": Object {
+  "Continental": Object {
     "00": 100000,
     "01": 100000,
     "02": 400,
@@ -96,7 +96,7 @@ Object {
     "43": 1200,
     "44": 1200,
   },
-  "FESTIVAL": Object {
+  "Festival": Object {
     "00": 100000,
     "01": 100000,
     "02": 300,
@@ -143,7 +143,7 @@ Object {
     "43": 1100,
     "44": 1100,
   },
-  "IMPERIAL": Object {
+  "Imperial": Object {
     "00": 100000,
     "01": 100000,
     "02": 400,
@@ -190,7 +190,7 @@ Object {
     "43": 1200,
     "44": 1200,
   },
-  "LUXOR": Object {
+  "Luxor": Object {
     "00": 100000,
     "01": 100000,
     "02": 200,
@@ -237,7 +237,7 @@ Object {
     "43": 1000,
     "44": 1000,
   },
-  "TOWER": Object {
+  "Tower": Object {
     "00": 100000,
     "01": 100000,
     "02": 200,
@@ -284,7 +284,7 @@ Object {
     "43": 1000,
     "44": 1000,
   },
-  "WORLDWIDE": Object {
+  "Worldwide": Object {
     "00": 100000,
     "01": 100000,
     "02": 300,

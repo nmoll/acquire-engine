@@ -1,4 +1,4 @@
-import { ALL_HOTELS, HotelChainType } from "../model";
+import { ALL_HOTELS } from "../model";
 import { SharesStateFactory } from "../test/factory/shares-state.factory";
 import { ArrayUtils } from "./array-utils";
 import { SharesUtils } from "./shares-utils";
@@ -15,11 +15,11 @@ describe("SharesUtils", () => {
         P3 0 0 0 0 0 0 0
         P4 0 0 0 0 0 0 1
         `);
-      expect(
-        SharesUtils.getAvailableShares(sharesState, [HotelChainType.AMERICAN])
-      ).toEqual({
-        [HotelChainType.AMERICAN]: 25,
-      });
+      expect(SharesUtils.getAvailableShares(sharesState, ["American"])).toEqual(
+        {
+          ["American"]: 25,
+        }
+      );
     });
 
     it("should return remaining shares if shares are owned by players", () => {
@@ -30,14 +30,17 @@ describe("SharesUtils", () => {
         P3 0 0 0 0 8 7 0
         P4 2 0 0 0 1 2 1
         `);
-      expect(SharesUtils.getAvailableShares(sharesState, ALL_HOTELS)).toEqual({
-        [HotelChainType.AMERICAN]: 17,
-        [HotelChainType.CONTINENTAL]: 24,
-        [HotelChainType.FESTIVAL]: 25,
-        [HotelChainType.IMPERIAL]: 24,
-        [HotelChainType.LUXOR]: 16,
-        [HotelChainType.TOWER]: 13,
-        [HotelChainType.WORLDWIDE]: 6,
+
+      const hotels = ALL_HOTELS.map((hotel) => hotel);
+
+      expect(SharesUtils.getAvailableShares(sharesState, hotels)).toEqual({
+        ["American"]: 17,
+        ["Continental"]: 24,
+        ["Festival"]: 25,
+        ["Imperial"]: 24,
+        ["Luxor"]: 16,
+        ["Tower"]: 13,
+        ["Worldwide"]: 6,
       });
     });
   });

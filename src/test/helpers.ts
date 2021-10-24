@@ -1,16 +1,15 @@
-import { HotelChainType } from "../model";
 import { IShares } from "../model/shares";
 import { BoardUtils } from "../utils/board-utils";
 
 const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I"];
 
 export const america = (quantity: number): IShares => ({
-  hotel: HotelChainType.AMERICAN,
+  hotel: "American",
   quantity,
 });
 
 export const continental = (quantity: number): IShares => ({
-  hotel: HotelChainType.CONTINENTAL,
+  hotel: "Continental",
   quantity,
 });
 

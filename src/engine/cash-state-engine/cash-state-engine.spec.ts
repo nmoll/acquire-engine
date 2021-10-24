@@ -1,4 +1,3 @@
-import { HotelChainType } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { ICashState } from "../../model/cash-state";
 import { PlayerActionType } from "../../model/player-action";
@@ -88,10 +87,7 @@ describe("CashEngine", () => {
       `
     );
 
-    const playerAction = PlayerActionType.PurchaseShares(
-      "2",
-      HotelChainType.AMERICAN
-    );
+    const playerAction = PlayerActionType.PurchaseShares("2", "American");
 
     expect(
       CashStateEngine.computeState(

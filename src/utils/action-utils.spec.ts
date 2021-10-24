@@ -1,4 +1,3 @@
-import { HotelChainType } from "../model";
 import { PlayerAction } from "../model/player-action";
 import { ActionUtils } from "./action-utils";
 
@@ -43,7 +42,7 @@ describe("ActionUtils", () => {
         {
           type: "StartHotelChain",
           playerId: "2",
-          hotelChain: HotelChainType.AMERICAN,
+          hotelChain: "American",
         },
         {
           type: "EndTurn",
@@ -57,7 +56,7 @@ describe("ActionUtils", () => {
         {
           type: "PurchaseShares",
           playerId: "3",
-          hotelChain: HotelChainType.AMERICAN,
+          hotelChain: "American",
         },
       ];
 
@@ -70,7 +69,7 @@ describe("ActionUtils", () => {
         {
           type: "PurchaseShares",
           playerId: "3",
-          hotelChain: HotelChainType.AMERICAN,
+          hotelChain: "American",
         },
       ]);
     });

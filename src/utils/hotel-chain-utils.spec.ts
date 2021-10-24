@@ -1,4 +1,3 @@
-import { HotelChainType } from "../model";
 import { BoardStateFactory } from "../test/factory/board-state.factory";
 import { getTilePosition } from "../test/helpers";
 import { HotelChainUtils } from "./hotel-chain-utils";
@@ -18,9 +17,9 @@ describe("HotelChainUtils", () => {
         - - - - - - - - - - - -`);
 
       expect(HotelChainUtils.getActiveHotelChains(boardState)).toEqual([
-        HotelChainType.AMERICAN,
-        HotelChainType.LUXOR,
-        HotelChainType.TOWER,
+        "American",
+        "Luxor",
+        "Tower",
       ]);
     });
   });
@@ -39,10 +38,10 @@ describe("HotelChainUtils", () => {
           - - - - - - - - - - - -`);
 
       expect(HotelChainUtils.getInactiveHotelChains(boardState)).toEqual([
-        HotelChainType.CONTINENTAL,
-        HotelChainType.FESTIVAL,
-        HotelChainType.IMPERIAL,
-        HotelChainType.WORLDWIDE,
+        "Continental",
+        "Festival",
+        "Imperial",
+        "Worldwide",
       ]);
     });
   });
@@ -97,8 +96,8 @@ describe("HotelChainUtils", () => {
       );
 
       const expected = {
-        [HotelChainType.TOWER]: [getTilePosition("1A"), getTilePosition("2A")],
-        [HotelChainType.LUXOR]: [
+        ["Tower"]: [getTilePosition("1A"), getTilePosition("2A")],
+        ["Luxor"]: [
           getTilePosition("5B"),
           getTilePosition("6B"),
           getTilePosition("7B"),
@@ -106,7 +105,7 @@ describe("HotelChainUtils", () => {
           getTilePosition("7C"),
           getTilePosition("8C"),
         ],
-        [HotelChainType.AMERICAN]: [
+        ["American"]: [
           getTilePosition("3D"),
           getTilePosition("4D"),
           getTilePosition("4E"),
