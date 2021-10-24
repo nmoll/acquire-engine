@@ -18,16 +18,14 @@ export const ScenarioTilePlaced = (
       ),
     ];
   }
-  const hotelChainPositions =
-    HotelChainUtils.getHotelChainPositions(boardState);
-  if (Object.keys(hotelChainPositions).length) {
+  const hotelChainState = HotelChainUtils.getHotelChainState(
+    boardState,
+    sharesState
+  );
+  if (Object.keys(hotelChainState).length) {
     return [
       AvailableActionType.ChooseShares(
-        SharesUtils.getAvailableSharesForPurchase(
-          hotelChainPositions,
-          sharesState,
-          playerCash
-        )
+        SharesUtils.getAvailableSharesForPurchase(hotelChainState, playerCash)
       ),
       AvailableActionType.ChooseEndTurn(),
     ];

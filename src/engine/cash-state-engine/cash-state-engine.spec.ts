@@ -3,7 +3,7 @@ import { ICashState } from "../../model/cash-state";
 import { PlayerActionType } from "../../model/player-action";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
 import { createGameInstance } from "../../test/factory/game-instance.factory";
-import { getTilePosition } from "../../test/helpers";
+import { tile } from "../../test/helpers";
 import { CashStateEngine } from "./cash-state-engine";
 
 describe("CashEngine", () => {
@@ -29,7 +29,7 @@ describe("CashEngine", () => {
     expect(
       CashStateEngine.computeState(
         gameInstance,
-        PlayerActionType.PlaceTile("1", getTilePosition("1A")),
+        PlayerActionType.PlaceTile("1", tile("1A")),
         {
           1: 0,
           2: 6000,
@@ -49,7 +49,7 @@ describe("CashEngine", () => {
     expect(
       CashStateEngine.computeState(
         gameInstance,
-        PlayerActionType.PlaceTile("1", getTilePosition("1A")),
+        PlayerActionType.PlaceTile("1", tile("1A")),
         {
           1: 6000,
           2: 6000,

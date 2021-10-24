@@ -33,17 +33,14 @@ const computeState = (
     return state;
   }
 
-  const hotelPositions = HotelChainUtils.getHotelChainPositions(boardState);
-  const hotelSize = hotelPositions[playerAction.hotelChain];
-  if (!hotelSize?.length) {
-    return state;
-  }
-
   return {
     ...state,
     [playerAction.playerId]:
       state[playerAction.playerId] -
-      SharesUtils.getSharesCost(playerAction.hotelChain, hotelSize.length),
+      SharesUtils.getSharesCost(
+        playerAction.hotelChain,
+        HotelChainUtils.getHotelSize(playerAction.hotelChain, boardState)
+      ),
   };
 };
 

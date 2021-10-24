@@ -1,5 +1,7 @@
+import { HotelChainState } from "../model/hotel-chain-state";
 import { BoardStateFactory } from "../test/factory/board-state.factory";
-import { getTilePosition } from "../test/helpers";
+import { SharesStateFactory } from "../test/factory/shares-state.factory";
+import { tile } from "../test/helpers";
 import { HotelChainUtils } from "./hotel-chain-utils";
 
 describe("HotelChainUtils", () => {
@@ -66,8 +68,8 @@ describe("HotelChainUtils", () => {
     });
   });
 
-  describe(HotelChainUtils.getHotelChainPositions.name, () => {
-    it("should return empty record if no hotel chains on the board", () => {
+  describe(HotelChainUtils.getHotelChainState.name, () => {
+    it("should return initial state if no hotel chains on the board", () => {
       const boardState = BoardStateFactory.createBoardState(
         `
           - - - - - -
@@ -78,10 +80,20 @@ describe("HotelChainUtils", () => {
         `
       );
 
-      expect(HotelChainUtils.getHotelChainPositions(boardState)).toEqual({});
+      const sharesState = SharesStateFactory.createSharesState(`
+          A C F I L T W
+        P1 0 0 0 0 0 0 0
+        P2 0 0 0 0 0 0 0
+        P3 0 0 0 0 0 0 0
+        P4 0 0 0 0 0 0 0
+      `);
+
+      expect(
+        HotelChainUtils.getHotelChainState(boardState, sharesState)
+      ).toEqual({});
     });
 
-    it("should get hotel chain positions from board state", () => {
+    it("should get hotel chain state", () => {
       const boardState = BoardStateFactory.createBoardState(
         `
           T T - - - - - - - - - -
@@ -95,26 +107,39 @@ describe("HotelChainUtils", () => {
         `
       );
 
-      const expected = {
-        ["Tower"]: [getTilePosition("1A"), getTilePosition("2A")],
-        ["Luxor"]: [
-          getTilePosition("5B"),
-          getTilePosition("6B"),
-          getTilePosition("7B"),
-          getTilePosition("8B"),
-          getTilePosition("7C"),
-          getTilePosition("8C"),
-        ],
-        ["American"]: [
-          getTilePosition("3D"),
-          getTilePosition("4D"),
-          getTilePosition("4E"),
-        ],
+      const sharesState = SharesStateFactory.createSharesState(`
+           A C F I L T W
+        P1 0 0 0 0 5 1 0
+        P2 0 0 0 0 0 2 0
+        P3 0 0 0 0 7 4 0
+        P4 0 0 0 0 8 0 0
+      `);
+
+      const expected: HotelChainState = {
+        American: {
+          boardSquareIds: [tile("3D"), tile("4D"), tile("4E")],
+          availableShares: 25,
+        },
+        Tower: {
+          boardSquareIds: [tile("1A"), tile("2A")],
+          availableShares: 18,
+        },
+        Luxor: {
+          boardSquareIds: [
+            tile("5B"),
+            tile("6B"),
+            tile("7B"),
+            tile("8B"),
+            tile("7C"),
+            tile("8C"),
+          ],
+          availableShares: 5,
+        },
       };
 
-      expect(HotelChainUtils.getHotelChainPositions(boardState)).toEqual(
-        expected
-      );
+      expect(
+        HotelChainUtils.getHotelChainState(boardState, sharesState)
+      ).toEqual(expected);
     });
   });
 });

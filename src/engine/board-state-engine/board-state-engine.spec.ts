@@ -1,6 +1,6 @@
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
-import { getTilePosition } from "../../test/helpers";
+import { tile } from "../../test/helpers";
 import { BoardStateEngine } from "./board-state-engine";
 
 const expectStateWithAction = (diagram: string, action: PlayerAction | null) =>
@@ -12,7 +12,7 @@ const expectStateWithAction = (diagram: string, action: PlayerAction | null) =>
   );
 
 const placeTile = (tileLabel: string) =>
-  PlayerActionType.PlaceTile("1", getTilePosition(tileLabel));
+  PlayerActionType.PlaceTile("1", tile(tileLabel));
 
 const state = (diagram: string) => BoardStateFactory.createBoardState(diagram);
 
@@ -477,7 +477,7 @@ describe("BUG CASE - minor hotel not merging into majority hotel", () => {
     const action: PlayerAction = {
       type: "PlaceTile",
       playerId: "1",
-      boardSquareId: getTilePosition("7D"),
+      boardSquareId: tile("7D"),
     };
 
     expect(BoardStateEngine.computeState(action, boardState)).toEqual(

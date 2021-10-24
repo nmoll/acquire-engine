@@ -13,7 +13,7 @@ export const continental = (quantity: number): IShares => ({
   quantity,
 });
 
-export const getTilePosition = (tileLabel: string): number => {
+export const tile = (tileLabel: string): number => {
   const letter = tileLabel.charAt(tileLabel.length - 1);
   const num = tileLabel.replace(letter, "");
 

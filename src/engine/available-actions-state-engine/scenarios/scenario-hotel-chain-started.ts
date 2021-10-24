@@ -11,8 +11,7 @@ export const ScenarioHotelChainStarted = (
 ): IAvailableActionState => [
   AvailableActionType.ChooseShares(
     SharesUtils.getAvailableSharesForPurchase(
-      HotelChainUtils.getHotelChainPositions(boardState),
-      sharesState,
+      HotelChainUtils.getHotelChainState(boardState, sharesState),
       playerCash
     )
   ),

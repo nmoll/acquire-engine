@@ -28,8 +28,7 @@ export const ScenarioSharesPurchased = (
     result.unshift(
       AvailableActionType.ChooseShares(
         SharesUtils.getAvailableSharesForPurchase(
-          HotelChainUtils.getHotelChainPositions(boardState),
-          sharesState,
+          HotelChainUtils.getHotelChainState(boardState, sharesState),
           playerCash
         )
       )

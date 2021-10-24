@@ -1,10 +1,12 @@
+import { GameConfig } from "../game-config";
 import {
   ALL_HOTELS,
   BoardSquareState,
   HasHotelChain,
   HotelChainType,
+  ISharesState,
 } from "../model";
-import { HotelChainPositions } from "../model/hotel-chain-positions";
+import { HotelChainState } from "../model/hotel-chain-state";
 import { BoardUtils } from "./board-utils";
 
 const isTypeHotelChain = (
@@ -85,24 +87,45 @@ const getAdjacentHotelChains = (
     BoardUtils.getAdjacentSquares(boardState, index).filter(isTypeHotelChain)
   );
 
-const getHotelChainPositions = (
-  boardState: BoardSquareState[]
-): HotelChainPositions =>
-  boardState.reduce<HotelChainPositions>(
-    (res, square, idx) =>
+const getHotelChainState = (
+  boardState: BoardSquareState[],
+  sharesState: ISharesState
+): HotelChainState =>
+  boardState.reduce<HotelChainState>(
+    (state, square, boardSquareId) =>
       square.type === "HasHotelChain"
         ? {
-            ...res,
-            [square.hotelChainType]: [
-              ...(res[square.hotelChainType] || []),
-              idx,
-            ],
+            ...state,
+            [square.hotelChainType]: {
+              boardSquareIds: [
+                ...(state[square.hotelChainType]?.boardSquareIds || []),
+                boardSquareId,
+              ],
+              availableShares:
+                GameConfig.hotel.shares -
+                Object.values(sharesState).reduce(
+                  (total, shares) =>
+                    total + (shares[square.hotelChainType] ?? 0),
+                  0
+                ),
+            },
           }
-        : res,
+        : state,
     {}
   );
 
+const getHotelSize = (
+  hotelChainType: HotelChainType,
+  boardState: BoardSquareState[]
+): number =>
+  boardState.filter(
+    (square) =>
+      square.type === "HasHotelChain" &&
+      square.hotelChainType === hotelChainType
+  ).length;
+
 export const HotelChainUtils = {
+  getHotelChainState,
   isTypeHotelChain,
   getActiveHotelChains,
   getInactiveHotelChains,
@@ -110,5 +133,5 @@ export const HotelChainUtils = {
   getLargestHotelChain,
   getSmallestHotelChain,
   isHotelStarter,
-  getHotelChainPositions,
+  getHotelSize,
 };

@@ -6,7 +6,7 @@ import { PlayerAction, PlayerActionType } from "../../model/player-action";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
 import { createGameInstance } from "../../test/factory/game-instance.factory";
 import { SharesStateFactory } from "../../test/factory/shares-state.factory";
-import { getTilePosition } from "../../test/helpers";
+import { tile } from "../../test/helpers";
 import { ArrayUtils } from "../../utils/array-utils";
 import { GameStateEngine } from "./game-state-engine";
 
@@ -56,34 +56,10 @@ describe("GameStateEngine", () => {
         4: 6000,
       },
       tileState: {
-        1: [
-          getTilePosition("12A"),
-          getTilePosition("8A"),
-          getTilePosition("4F"),
-          getTilePosition("5G"),
-          getTilePosition("11D"),
-        ],
-        2: [
-          getTilePosition("12I"),
-          getTilePosition("4B"),
-          getTilePosition("12F"),
-          getTilePosition("4G"),
-          getTilePosition("3E"),
-        ],
-        3: [
-          getTilePosition("11I"),
-          getTilePosition("6C"),
-          getTilePosition("10G"),
-          getTilePosition("8G"),
-          getTilePosition("6I"),
-        ],
-        4: [
-          getTilePosition("6F"),
-          getTilePosition("1F"),
-          getTilePosition("9C"),
-          getTilePosition("11F"),
-          getTilePosition("10B"),
-        ],
+        1: [tile("12A"), tile("8A"), tile("4F"), tile("5G"), tile("11D")],
+        2: [tile("12I"), tile("4B"), tile("12F"), tile("4G"), tile("3E")],
+        3: [tile("11I"), tile("6C"), tile("10G"), tile("8G"), tile("6I")],
+        4: [tile("6F"), tile("1F"), tile("9C"), tile("11F"), tile("10B")],
       },
       sharesState: SharesStateFactory.createSharesState(`
             A C F I L T W
@@ -107,25 +83,25 @@ describe("GameStateEngine", () => {
       playerIds: ["1", "2", "3", "4"],
     });
     const actions: PlayerAction[] = [
-      PlayerActionType.PlaceTile("1", getTilePosition("5G")),
+      PlayerActionType.PlaceTile("1", tile("5G")),
       PlayerActionType.EndTurn("1"),
-      PlayerActionType.PlaceTile("2", getTilePosition("4G")),
+      PlayerActionType.PlaceTile("2", tile("4G")),
       PlayerActionType.StartHotelChain("2", "American"),
       PlayerActionType.PurchaseShares("2", "American"),
       PlayerActionType.PurchaseShares("2", "American"),
       PlayerActionType.PurchaseShares("2", "American"),
       PlayerActionType.EndTurn("2"),
-      PlayerActionType.PlaceTile("3", getTilePosition("6C")),
+      PlayerActionType.PlaceTile("3", tile("6C")),
       PlayerActionType.PurchaseShares("3", "American"),
       PlayerActionType.EndTurn("3"),
-      PlayerActionType.PlaceTile("4", getTilePosition("6F")),
+      PlayerActionType.PlaceTile("4", tile("6F")),
       PlayerActionType.EndTurn("4"),
-      PlayerActionType.PlaceTile("1", getTilePosition("4F")),
+      PlayerActionType.PlaceTile("1", tile("4F")),
       PlayerActionType.PurchaseShares("1", "American"),
       PlayerActionType.PurchaseShares("1", "American"),
       PlayerActionType.PurchaseShares("1", "American"),
       PlayerActionType.EndTurn("1"),
-      PlayerActionType.PlaceTile("2", getTilePosition("4D")),
+      PlayerActionType.PlaceTile("2", tile("4D")),
       PlayerActionType.PurchaseShares("2", "American"),
       PlayerActionType.EndTurn("2"),
     ];
@@ -148,34 +124,10 @@ describe("GameStateEngine", () => {
         4: 6000,
       },
       tileState: {
-        1: [
-          getTilePosition("12A"),
-          getTilePosition("8A"),
-          getTilePosition("11D"),
-          getTilePosition("7C"),
-          getTilePosition("2I"),
-        ],
-        2: [
-          getTilePosition("12I"),
-          getTilePosition("4B"),
-          getTilePosition("12F"),
-          getTilePosition("3E"),
-          getTilePosition("3C"),
-        ],
-        3: [
-          getTilePosition("11I"),
-          getTilePosition("10G"),
-          getTilePosition("8G"),
-          getTilePosition("6I"),
-          getTilePosition("10H"),
-        ],
-        4: [
-          getTilePosition("1F"),
-          getTilePosition("9C"),
-          getTilePosition("11F"),
-          getTilePosition("10B"),
-          getTilePosition("8B"),
-        ],
+        1: [tile("12A"), tile("8A"), tile("11D"), tile("7C"), tile("2I")],
+        2: [tile("12I"), tile("4B"), tile("12F"), tile("3E"), tile("3C")],
+        3: [tile("11I"), tile("10G"), tile("8G"), tile("6I"), tile("10H")],
+        4: [tile("1F"), tile("9C"), tile("11F"), tile("10B"), tile("8B")],
       },
       sharesState: SharesStateFactory.createSharesState(
         `

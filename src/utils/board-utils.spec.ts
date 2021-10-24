@@ -1,5 +1,5 @@
 import { BoardStateFactory } from "../test/factory/board-state.factory";
-import { getTilePosition } from "../test/helpers";
+import { tile } from "../test/helpers";
 import { BoardUtils } from "./board-utils";
 
 describe("BoardBoardUtils", () => {
@@ -49,27 +49,15 @@ describe("BoardBoardUtils", () => {
       );
 
       expect(
-        BoardUtils.isAdjacent(
-          boardStates,
-          getTilePosition("4A"),
-          getTilePosition("5A")
-        )
+        BoardUtils.isAdjacent(boardStates, tile("4A"), tile("5A"))
       ).toBeTruthy();
 
       expect(
-        BoardUtils.isAdjacent(
-          boardStates,
-          getTilePosition("1A"),
-          getTilePosition("2A")
-        )
+        BoardUtils.isAdjacent(boardStates, tile("1A"), tile("2A"))
       ).toBeTruthy();
 
       expect(
-        BoardUtils.isAdjacent(
-          boardStates,
-          getTilePosition("7A"),
-          getTilePosition("7B")
-        )
+        BoardUtils.isAdjacent(boardStates, tile("7A"), tile("7B"))
       ).toBeTruthy();
     });
 
@@ -88,27 +76,15 @@ describe("BoardBoardUtils", () => {
       );
 
       expect(
-        BoardUtils.isAdjacent(
-          boardStates,
-          getTilePosition("4A"),
-          getTilePosition("8A")
-        )
+        BoardUtils.isAdjacent(boardStates, tile("4A"), tile("8A"))
       ).toBeFalsy();
 
       expect(
-        BoardUtils.isAdjacent(
-          boardStates,
-          getTilePosition("1D"),
-          getTilePosition("1A")
-        )
+        BoardUtils.isAdjacent(boardStates, tile("1D"), tile("1A"))
       ).toBeFalsy();
 
       expect(
-        BoardUtils.isAdjacent(
-          boardStates,
-          getTilePosition("12B"),
-          getTilePosition("1C")
-        )
+        BoardUtils.isAdjacent(boardStates, tile("12B"), tile("1C"))
       ).toBeFalsy();
     });
   });
