@@ -18,10 +18,30 @@ export const ScenarioTilePlaced = (
       ),
     ];
   }
+
   const hotelChainState = HotelChainUtils.getHotelChainState(
     boardState,
     sharesState
   );
+
+  const adjacentHotelChains = HotelChainUtils.getAdjacentHotelChains(
+    boardState,
+    action.boardSquareId
+  );
+  if (
+    adjacentHotelChains.length === 2 &&
+    hotelChainState[adjacentHotelChains[0].hotelChainType]?.boardSquareIds
+      .length ===
+      hotelChainState[adjacentHotelChains[1].hotelChainType]?.boardSquareIds
+        .length
+  ) {
+    return [
+      AvailableActionType.ChooseMergeDirection(
+        adjacentHotelChains.map((chain) => chain.hotelChainType)
+      ),
+    ];
+  }
+
   if (Object.keys(hotelChainState).length) {
     return [
       AvailableActionType.ChooseShares(

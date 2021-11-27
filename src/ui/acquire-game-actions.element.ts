@@ -60,6 +60,20 @@ export class AcquireGameActionsElement extends LitElement {
     );
   }
 
+  onChooseMergeDirection(hotelChain: HotelChainType) {
+    this.dispatchEvent(
+      new CustomEvent<ActionRequestEvent>("action-request", {
+        detail: {
+          action: {
+            type: "Merge",
+            playerId: this.playerId,
+            hotelChainToKeep: hotelChain,
+          },
+        },
+      })
+    );
+  }
+
   onPurchaseShare(hotelChain: HotelChainType) {
     this.dispatchEvent(
       new CustomEvent<ActionRequestEvent>("action-request", {
@@ -86,8 +100,21 @@ export class AcquireGameActionsElement extends LitElement {
     );
   }
 
-  renderChooseMergeDirection() {
-    return html`<span>Choose merge direction (not implemented)</span>`;
+  renderChooseMergeDirection(hotelChains: HotelChainType[]) {
+    return html`
+      <div>
+        Choose hotel chain to keep on board:
+        <div>
+          ${hotelChains.map(
+            (hotelChain) =>
+              html`<acquire-button .color="${`var(--colors-${hotelChain})`}"  @click="${() =>
+                this.onChooseMergeDirection(
+                  hotelChain
+                )}"">${hotelChain}</acquire-button>`
+          )}
+        </div>
+      </div>
+    `;
   }
 
   renderChooseShares(availableShares: AvailableShares) {
@@ -117,7 +144,7 @@ export class AcquireGameActionsElement extends LitElement {
       case "ChooseHotelChain":
         return this.renderChooseHotelChain(action.hotelChains);
       case "ChooseMergeDirection":
-        return this.renderChooseMergeDirection();
+        return this.renderChooseMergeDirection(action.options);
       case "ChooseShares":
         return this.renderChooseShares(action.availableShares);
       case "ChooseEndTurn":

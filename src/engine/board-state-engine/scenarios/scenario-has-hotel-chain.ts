@@ -1,7 +1,22 @@
-import { BoardSquareStateType, HasHotelChain } from "../../../model";
+import {
+  BoardSquareStateType,
+  HasHotelChain,
+  HotelChainType,
+} from "../../../model";
 import { PlayerActionContext } from "../../../model/player-action-context";
 import { BoardUtils } from "../../../utils/board-utils";
 import { HotelChainUtils } from "../../../utils/hotel-chain-utils";
+
+interface MergeContext {
+  smaller: {
+    hotelChain: HotelChainType;
+    size: number;
+  };
+  larger: {
+    hotelChain: HotelChainType;
+    size: number;
+  };
+}
 
 /**
  * If square should be converted into a hotel chain, returns the hotel chain type,
@@ -33,7 +48,10 @@ const ScenarioTileIsMergeInitiator = (
     return false;
   }
 
-  return mergeContext.majority;
+  return {
+    type: "HasHotelChain",
+    hotelChainType: mergeContext.larger.hotelChain,
+  };
 };
 
 /**
@@ -45,17 +63,38 @@ const ScenarioTileIsMergeInitiator = (
 const ScenarioHotelChainConsumedByMerge = (
   context: PlayerActionContext
 ): HasHotelChain | false => {
+  const squareState = context.boardState[context.index];
+
+  // if (context.playerAction.type === "Merge") {
+  //   if ()
+  //   if (squareState.type !== "HasHotelChain") {
+  //     return false;
+  //   } else {
+  //     const adjacentHotelChainTypes = HotelChainUtils.getAdjacentHotelChains(
+  //       context.boardState,
+  //       context.index
+  //     ).map((chain) => chain.hotelChainType);
+  //     return adjacentHotelChainTypes.includes(squareState.hotelChainType)
+  //       ? {
+  //           type: "HasHotelChain",
+  //           hotelChainType: context.playerAction.hotelChainToKeep,
+  //         }
+  //       : false;
+  //   }
+  // }
+
   const mergeContext = getMergeContext(context);
 
   if (!mergeContext) {
     return false;
   }
 
-  const squareState = context.boardState[context.index];
-
   return squareState.type === "HasHotelChain" &&
-    squareState.hotelChainType === mergeContext.minority.hotelChainType
-    ? mergeContext.majority
+    squareState.hotelChainType === mergeContext.smaller.hotelChain
+    ? {
+        type: "HasHotelChain",
+        hotelChainType: mergeContext.larger.hotelChain,
+      }
     : false;
 };
 
@@ -96,6 +135,10 @@ const ScenarioTileConsumedByHotelChain = (
     context.playerAction.boardSquareId
   );
 
+  if (adjacentHotelChains.length !== 1) {
+    return false;
+  }
+
   return adjacentHotelChains.length
     ? BoardSquareStateType.HasHotelChain(adjacentHotelChains[0].hotelChainType)
     : false;
@@ -110,12 +153,7 @@ const ScenarioTileConsumedByHotelChain = (
  */
 const getMergeContext = (
   context: PlayerActionContext
-):
-  | {
-      minority: HasHotelChain;
-      majority: HasHotelChain;
-    }
-  | false => {
+): MergeContext | false => {
   if (context.playerAction.type !== "PlaceTile") {
     return false;
   }
@@ -129,15 +167,43 @@ const getMergeContext = (
     return false;
   }
 
+  const minority = HotelChainUtils.getSmallestHotelChain(
+    context.boardState,
+    adjacentHotelChains
+  );
+  const minoritySize = HotelChainUtils.getHotelSize(
+    minority.hotelChainType,
+    context.boardState
+  );
+
+  const majority = HotelChainUtils.getLargestHotelChain(
+    context.boardState,
+    adjacentHotelChains
+  );
+  const majoritySize = HotelChainUtils.getHotelSize(
+    majority.hotelChainType,
+    context.boardState
+  );
+
+  if (minoritySize === majoritySize) {
+    return false;
+  }
+
   return {
-    minority: HotelChainUtils.getSmallestHotelChain(
-      context.boardState,
-      adjacentHotelChains
-    ),
-    majority: HotelChainUtils.getLargestHotelChain(
-      context.boardState,
-      adjacentHotelChains
-    ),
+    smaller: {
+      hotelChain: minority.hotelChainType,
+      size: HotelChainUtils.getHotelSize(
+        minority.hotelChainType,
+        context.boardState
+      ),
+    },
+    larger: {
+      hotelChain: majority.hotelChainType,
+      size: HotelChainUtils.getHotelSize(
+        minority.hotelChainType,
+        context.boardState
+      ),
+    },
   };
 };
 

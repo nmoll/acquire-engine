@@ -1,4 +1,4 @@
-import { BoardSquareState } from "../model/board-square-state";
+import { BoardSquareState, HasTile } from "../model/board-square-state";
 
 const isInBounds = (x: number, y: number): boolean =>
   x >= 0 && x <= 11 && y >= 0 && y <= 9;
@@ -26,13 +26,13 @@ const getAdjacentSquares = (
 ): BoardSquareState[] =>
   getAdjacentPositions(boardStates, index).map((i) => boardStates[i]);
 
+const hasTile = (square: BoardSquareState): square is HasTile =>
+  square.type === "HasTile";
+
 const getAdjacentTiles = (
   boardState: BoardSquareState[],
   index: number
-): BoardSquareState[] =>
-  getAdjacentSquares(boardState, index).filter(
-    (state) => state.type === "HasTile"
-  );
+): HasTile[] => getAdjacentSquares(boardState, index).filter(hasTile);
 
 const isAdjacent = (
   boardState: BoardSquareState[],

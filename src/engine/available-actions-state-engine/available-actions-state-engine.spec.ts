@@ -7,6 +7,7 @@ import { PlayerAction, PlayerActionType } from "../../model/player-action";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
 import { createGameState } from "../../test/factory/game-state.factory";
 import { SharesStateFactory } from "../../test/factory/shares-state.factory";
+import { tile } from "../../test/helpers";
 import { BoardStateEngine } from "../board-state-engine/board-state-engine";
 import { AvailableActionsStateEngine } from "./available-actions-state-engine";
 
@@ -77,6 +78,51 @@ describe("AvailableActionsStateEngine", () => {
         {
           type: "ChooseHotelChain",
           hotelChains: ["Continental", "Festival", "Imperial", "Luxor"],
+        },
+      ];
+
+      expect(
+        AvailableActionsStateEngine.computeState(
+          boardState,
+          sharesState,
+          cashState,
+          action
+        )
+      ).toEqual(expected);
+    });
+
+    it("should be 'ChooseMergeDirection' if tile is played between two equal sized hotel chains", () => {
+      const boardState = BoardStateFactory.createBoardState(
+        `
+        - - W W W W - - - - - -
+        - - - - - - - - - - - -
+        - - L L - - - - - - - -
+        - - L L - - - - - - - -
+        - - - - - - - - - - - -
+        - - - - - - - - - - - -
+        - - - - - - - - - - - -
+        - - - - - - - - - - - -
+        - - - - - - - - - - - -
+      `
+      );
+
+      const sharesState = SharesStateFactory.createSharesState(`
+           A C F I L T W
+        P1 0 0 0 0 0 0 0
+        P2 0 0 0 0 0 0 0
+      `);
+
+      const cashState: ICashState = {
+        1: 6000,
+        2: 6000,
+      };
+
+      const action = PlayerActionType.PlaceTile("1", tile("4B"));
+
+      const expected: IAvailableActionState = [
+        {
+          type: "ChooseMergeDirection",
+          options: ["Worldwide", "Luxor"],
         },
       ];
 

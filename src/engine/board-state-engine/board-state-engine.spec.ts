@@ -136,37 +136,6 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  // it("should mark the squares as pending hotel if a starter tile is played", () => {
-  //   expectStateWithAction(
-  //     `
-  //     - - - - - - - - - - - -
-  //     - - - - - - - - - - - -
-  //     - - - - 0 - - - - - - -
-  //     - - - - - - - - - - - -
-  //     - - - - 0 - - - - - - -
-  //     - - - - - - - - - - - -
-  //     - - - - - - - - - - - -
-  //     - - - - - - - - - - - -
-  //     - - - - - - - - - - - -
-  //   `,
-  //     placeTile("5D")
-  //   ).toEqual(
-  //     state(
-  //       `
-  //       - - - - - - - - - - - -
-  //       - - - - - - - - - - - -
-  //       - - - - 0 - - - - - - -
-  //       - - - - 0 - - - - - - -
-  //       - - - - 0 - - - - - - -
-  //       - - - - - - - - - - - -
-  //       - - - - - - - - - - - -
-  //       - - - - - - - - - - - -
-  //       - - - - - - - - - - - -
-  //     `
-  //     )
-  //   );
-  // });
-
   it("should start American if American is selected with starter tile", () => {
     expectStateWithAction(
       `
@@ -427,6 +396,64 @@ describe("BoardStateEngine", () => {
       )
     );
   });
+
+  it("should not automatically merge if hotels are the same size", () => {
+    expectStateWithAction(
+      `
+          - - W W W W - - - - - -
+          - - - - - - - - - - - -
+          - - L L - - - - - - - -
+          - - L L - - - - - - - -
+          - - - - - - - - - - - -
+          - - - - - - - - - - - -
+          - - - - - - - - - - - -
+          - - - - - - - - - - - -
+          - - - - - - - - - - - -
+        `,
+      placeTile("3B")
+    ).toEqual(
+      state(`
+            - - W W W W - - - - - -
+            - - 0 - - - - - - - - -
+            - - L L - - - - - - - -
+            - - L L - - - - - - - -
+            - - - - - - - - - - - -
+            - - - - - - - - - - - -
+            - - - - - - - - - - - -
+            - - - - - - - - - - - -
+            - - - - - - - - - - - -
+          `)
+    );
+  });
+
+  // it("should merge equal sized hotel chains when player chooses direction", () => {
+  //   expectStateWithAction(
+  //     `
+  //       - - W W W W - - - - - -
+  //       - - 0 - - - - - - - - -
+  //       - - L L - - - - - - - -
+  //       - - L L - - - - - - - -
+  //       - - - - - - - - - - - -
+  //       - - - - - - - - - - - -
+  //       - - - - - - - - - - - -
+  //       - - - - - - - - - - - -
+  //       - - - - - - - - - - - -
+  //     `,
+  //     PlayerActionType.Merge("1", "Luxor")
+  //   ).toEqual(
+  //     state(`
+  //   - - L L L L - - - - - -
+  //   - - L - - - - - - - - -
+  //   - - L L - - - - - - - -
+  //   - - L L - - - - - - - -
+  //   - - - - - - - - - - - -
+  //   - - - - - - - - - - - -
+  //   - - - - - - - - - - - -
+  //   - - - - - - - - - - - -
+  //   - - - - - - - - - - - -
+  // `)
+  //   );
+  // });
 
   it("should grow a hotel if tile placed adjacent to it", () => {
     expectStateWithAction(
