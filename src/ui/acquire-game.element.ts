@@ -118,6 +118,7 @@ export class AcquireGameElement extends LitElement {
       <acquire-game-players
         .players="${this.game.playerIds}"
         .cashState="${this.state.cashState}"
+        .sharesState="${this.state.sharesState}"
         .currentPlayer="${this.getCurrentPlayerId()}"
       ></acquire-game-players>
 

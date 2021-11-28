@@ -1,12 +1,8 @@
 import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 
-export interface SaveUsernameEvent {
-  username: string;
-}
-
-@customElement("acquire-create-username")
-export class AcquireCreateUsernameElement extends LitElement {
+@customElement("acquire-create-game")
+export class AcquireCreateGameElement extends LitElement {
   static styles = css`
     :host {
       height: 100%;
@@ -48,41 +44,21 @@ export class AcquireCreateUsernameElement extends LitElement {
     }
   `;
 
-  onSubmit() {
-    const username = this.getInputEl().value;
-    if (username.length <= 0) {
-      return;
-    }
-
-    this.dispatchEvent(
-      new CustomEvent<SaveUsernameEvent>("save", {
-        detail: {
-          username,
-        },
-      })
-    );
+  onCreateNewGame() {
+    this.dispatchEvent(new CustomEvent<void>("create"));
   }
 
   render() {
     return html`
       <img src="logo_144x144.svg" />
       <h1>Acquire</h1>
-      <input
-        id="name"
-        autocomplete="off"
-        placeholder="Enter your display name..."
-      />
-      <button @click="${() => this.onSubmit()}">DONE</button>
+      <button @click="${() => this.onCreateNewGame()}">Start a new game</button>
     `;
-  }
-
-  private getInputEl(): HTMLInputElement {
-    return this.shadowRoot!.getElementById("name")! as HTMLInputElement;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "acquire-create-username": AcquireCreateUsernameElement;
+    "acquire-create-game": AcquireCreateGameElement;
   }
 }

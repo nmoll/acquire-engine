@@ -2,6 +2,7 @@ import { css, html, LitElement } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { AcquireAppService, GameState } from "./acquire-app.service";
 import "./acquire-button.element";
+import "./acquire-create-game.element";
 import "./acquire-create-username.element";
 import { SaveUsernameEvent } from "./acquire-create-username.element";
 import "./acquire-game.element";
@@ -78,12 +79,9 @@ export class AcquireAppElement extends LitElement {
       case "initial":
         return html`initial state`;
       case "not created":
-        return html`<div>
-          Start a new game:
-          <acquire-button @click="${() => this.createNewGame(playerId)}"
-            >New Game</acquire-button
-          >
-        </div>`;
+        return html`<acquire-create-game
+          @create="${() => this.createNewGame(playerId)}"
+        ></acquire-create-game>`;
       case "loading":
         return html`Loading game...`;
       case "not found":
