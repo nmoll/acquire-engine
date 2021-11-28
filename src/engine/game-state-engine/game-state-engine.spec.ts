@@ -42,7 +42,7 @@ describe("GameStateEngine", () => {
         4: [tile("6F"), tile("1F"), tile("9C"), tile("11F"), tile("10B")],
       },
       sharesState: SharesStateFactory.createSharesState(`
-            A C F I L T W
+           A C F I L T W
         P1 0 0 0 0 0 0 0
         P2 0 0 0 0 0 0 0
         P3 0 0 0 0 0 0 0
@@ -65,60 +65,77 @@ describe("GameStateEngine", () => {
     const actions: PlayerAction[] = [
       PlayerActionType.PlaceTile("1", tile("5G")),
       PlayerActionType.EndTurn("1"),
+
       PlayerActionType.PlaceTile("2", tile("4G")),
       PlayerActionType.StartHotelChain("2", "American"),
       PlayerActionType.PurchaseShares("2", "American"),
       PlayerActionType.PurchaseShares("2", "American"),
       PlayerActionType.PurchaseShares("2", "American"),
       PlayerActionType.EndTurn("2"),
+
       PlayerActionType.PlaceTile("3", tile("6C")),
       PlayerActionType.PurchaseShares("3", "American"),
       PlayerActionType.EndTurn("3"),
+
       PlayerActionType.PlaceTile("4", tile("6F")),
       PlayerActionType.EndTurn("4"),
+
       PlayerActionType.PlaceTile("1", tile("4F")),
       PlayerActionType.PurchaseShares("1", "American"),
       PlayerActionType.PurchaseShares("1", "American"),
       PlayerActionType.PurchaseShares("1", "American"),
       PlayerActionType.EndTurn("1"),
+
       PlayerActionType.PlaceTile("2", tile("4D")),
       PlayerActionType.PurchaseShares("2", "American"),
       PlayerActionType.EndTurn("2"),
+
+      PlayerActionType.PlaceTile("3", tile("10H")),
+      PlayerActionType.PurchaseShares("3", "American"),
+      PlayerActionType.PurchaseShares("3", "American"),
+      PlayerActionType.PurchaseShares("3", "American"),
+      PlayerActionType.EndTurn("3"),
+
+      PlayerActionType.PlaceTile("4", tile("1F")),
+      PlayerActionType.EndTurn("4"),
+
+      PlayerActionType.PlaceTile("1", tile("8A")),
+      PlayerActionType.EndTurn("1"),
     ];
 
     const expectedState: IGameState = {
       boardState: BoardStateFactory.createBoardState(` 
-          - - - - - - - - - - - -
+          - - - - - - - 0 - - - -
           - - - - - - - - - - - -
           - - - - - 0 - - - - - -
-          - - - 0 - - - - - - - -
+          - - - 0 - - - - - - - - 
           - - - - - - - - - - - -
-          - - - A - 0 - - - - - -
+          0 - - A - 0 - - - - - -
           - - - A A - - - - - - - 
-          - - - - - - - - - - - -
+          - - - - - - - - - 0 - -
           - - - - - - - - - - - -`),
       cashState: {
         1: 4800,
         2: 4700,
-        3: 5700,
+        3: 4500,
         4: 6000,
       },
       tileState: {
-        1: [tile("12A"), tile("8A"), tile("11D"), tile("7C"), tile("2I")],
+        1: [tile("12A"), tile("11D"), tile("7C"), tile("2I"), tile("10A")],
         2: [tile("12I"), tile("4B"), tile("12F"), tile("3E"), tile("3C")],
-        3: [tile("11I"), tile("10G"), tile("8G"), tile("6I"), tile("10H")],
-        4: [tile("1F"), tile("9C"), tile("11F"), tile("10B"), tile("8B")],
+        3: [tile("11I"), tile("10G"), tile("8G"), tile("6I"), tile("2G")],
+        4: [tile("9C"), tile("11F"), tile("10B"), tile("8B"), tile("7B")],
       },
       sharesState: SharesStateFactory.createSharesState(
         `
              A C F I L T W
           P1 3 0 0 0 0 0 0
           P2 5 0 0 0 0 0 0
-          P3 1 0 0 0 0 0 0
+          P3 4 0 0 0 0 0 0
           P4 0 0 0 0 0 0 0
           `
       ),
-      currentPlayerIdState: "3",
+      currentPlayerIdState: "2",
       availableActionsState: [
         {
           type: "ChooseTile",

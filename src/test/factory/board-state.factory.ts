@@ -6,7 +6,6 @@ interface SquareState {
 
 const squareStates: SquareState = {
   "-": BoardSquareStateType.Default(),
-  o: BoardSquareStateType.AvailableForSelection(),
   "0": BoardSquareStateType.HasTile(),
   A: BoardSquareStateType.HasHotelChain("American"),
   C: BoardSquareStateType.HasHotelChain("Continental"),

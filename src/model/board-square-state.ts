@@ -4,10 +4,6 @@ export interface Default {
   type: "Default";
 }
 
-export interface AvailableForSelection {
-  type: "AvailableForSelection";
-}
-
 export interface HasTile {
   type: "HasTile";
 }
@@ -17,16 +13,9 @@ export interface HasHotelChain {
   hotelChainType: HotelChainType;
 }
 
-export type BoardSquareState =
-  | Default
-  | AvailableForSelection
-  | HasTile
-  | HasHotelChain;
+export type BoardSquareState = Default | HasTile | HasHotelChain;
 
 export const BoardSquareStateType = {
-  AvailableForSelection: (): AvailableForSelection => ({
-    type: "AvailableForSelection",
-  }),
   HasHotelChain: (hotelChainType: HotelChainType): HasHotelChain => ({
     hotelChainType,
     type: "HasHotelChain",
