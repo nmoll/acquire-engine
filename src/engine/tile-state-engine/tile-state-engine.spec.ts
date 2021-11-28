@@ -1,7 +1,9 @@
+import { GameConfig } from "../../game-config";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerAction } from "../../model/player-action";
 import { ITileState } from "../../model/tile-state";
 import { createGameInstance } from "../../test/factory/game-instance.factory";
+import { ArrayUtils } from "../../utils/array-utils";
 import { TileStateEngine } from "./tile-state-engine";
 
 describe("TileStateEngine", () => {
@@ -12,6 +14,24 @@ describe("TileStateEngine", () => {
       randomSeed: 1,
       playerIds: ["1", "2", "3", "4"],
     });
+  });
+
+  it("should create tile map", () => {
+    const toPos = (index: number): string => {
+      const x = index % 12;
+      const y = Math.floor(index / 12);
+      return `${x + 1}${["A", "B", "C", "D", "E", "F", "G", "H", "I"][y]}`;
+    };
+
+    const result = ArrayUtils.makeNumArray(GameConfig.board.size).reduce(
+      (res, idx) => ({
+        ...res,
+        [idx]: toPos(idx),
+      }),
+      {}
+    );
+
+    expect(result).toMatchSnapshot();
   });
 
   it("should return initial tile state if no given state", () => {

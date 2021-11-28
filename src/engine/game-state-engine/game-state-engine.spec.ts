@@ -1,4 +1,3 @@
-import { GameConfig } from "../../game-config";
 import { IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { IAvailableActionState } from "../../model/available-action-state";
@@ -7,28 +6,9 @@ import { BoardStateFactory } from "../../test/factory/board-state.factory";
 import { createGameInstance } from "../../test/factory/game-instance.factory";
 import { SharesStateFactory } from "../../test/factory/shares-state.factory";
 import { tile } from "../../test/helpers";
-import { ArrayUtils } from "../../utils/array-utils";
 import { GameStateEngine } from "./game-state-engine";
 
 describe("GameStateEngine", () => {
-  it("should create tile map", () => {
-    const toPos = (index: number): string => {
-      const x = index % 12;
-      const y = Math.floor(index / 12);
-      return `${x + 1}${["A", "B", "C", "D", "E", "F", "G", "H", "I"][y]}`;
-    };
-
-    const result = ArrayUtils.makeNumArray(GameConfig.board.size).reduce(
-      (res, idx) => ({
-        ...res,
-        [idx]: toPos(idx),
-      }),
-      {}
-    );
-
-    expect(result).toMatchSnapshot();
-  });
-
   it("should compute initial game state with no actions", () => {
     const gameInstance: IAcquireGameInstance = createGameInstance({
       randomSeed: 1,
