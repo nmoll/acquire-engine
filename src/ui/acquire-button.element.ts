@@ -22,8 +22,8 @@ export class AcquireButton extends LitElement {
 
   getStyles() {
     return {
-      backgroundColor: this.color ?? "",
-      borderColor: this.color ?? "",
+      backgroundColor: this.color ?? "var(--colors-gray-500)",
+      borderColor: this.color ?? "var(--colors-gray-500)",
     };
   }
 
