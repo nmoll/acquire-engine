@@ -10,7 +10,6 @@ export class AcquireCreateGameElement extends LitElement {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      transform: translateY(-15%);
     }
 
     input {
@@ -36,7 +35,7 @@ export class AcquireCreateGameElement extends LitElement {
       cursor: pointer;
       background: var(--colors-primary);
       border: 1px solid var(--colors-primary);
-      color: white;
+      color: var(--colors-gray-900);
       width: 350px;
       max-width: 100%;
       padding: 15px 10px;

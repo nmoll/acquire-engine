@@ -15,19 +15,27 @@ export class AcquireWaitingRoomElement extends LitElement {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      transform: translateY(-15%);
     }
 
     button {
       margin-top: 1rem;
       cursor: pointer;
-      background: var(--colors-primary);
-      border: 1px solid var(--colors-primary);
       color: white;
       width: 350px;
       max-width: 100%;
       padding: 15px 10px;
       font-size: 1.25rem;
+    }
+
+    button {
+      background: var(--colors-gray-400);
+      border: 1px solid var(--colors-gray-400);
+      color: var(--colors-gray-900);
+    }
+
+    button.primary {
+      background: var(--colors-primary);
+      border: 1px solid var(--colors-primary);
     }
 
     button:disabled {
@@ -49,6 +57,29 @@ export class AcquireWaitingRoomElement extends LitElement {
     .waiting-message {
       color: var(--colors-gray-500);
       margin-bottom: 1rem;
+    }
+
+    .loading:after {
+      position: absolute;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: bottom;
+      -webkit-animation: ellipsis steps(4, end) 2s infinite;
+      animation: ellipsis steps(4, end) 2s infinite;
+      content: "\\2026"; /* ascii code for the ellipsis character */
+      width: 0px;
+    }
+
+    @keyframes ellipsis {
+      to {
+        width: 20px;
+      }
+    }
+
+    @-webkit-keyframes ellipsis {
+      to {
+        width: 20px;
+      }
     }
   `;
 
@@ -123,23 +154,28 @@ export class AcquireWaitingRoomElement extends LitElement {
           (playerId) => html`<li>${PlayerUtils.getDisplayName(playerId)}</li>`
         )}
       </ul>
-      <div class="waiting-message">Waiting for others to join...</div>
-      <button @click="${() => this.onShareGameUrl()}">
-        ${this.getShareGameUrlText()}
-      </button>
+      <div class="waiting-message">
+        Waiting for others to join<span class="loading"></span>
+      </div>
       ${!this.playerIds.includes(this.playerId)
-        ? html`<button @click="${() => this.onJoinGame()}">Join Game</button>`
+        ? html`<button class="primary" @click="${() => this.onJoinGame()}">
+            Join Game
+          </button>`
         : ""}
       ${this.playerId === this.hostId
         ? html`
             <button
+              class="primary"
               ?disabled="${this.playerIds.length <= 1}"
               @click="${() => this.onStartGame()}"
             >
-              Start Game
+              Ready? Start Game
             </button>
           `
         : ""}
+      <button @click="${() => this.onShareGameUrl()}">
+        ${this.getShareGameUrlText()}
+      </button>
     `;
   }
 }
