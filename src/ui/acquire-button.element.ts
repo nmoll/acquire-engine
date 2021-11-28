@@ -11,6 +11,7 @@ export class AcquireButton extends LitElement {
       padding: 0.5rem 1rem;
       cursor: pointer;
       color: white;
+      width: 100%;
     }
   `;
 

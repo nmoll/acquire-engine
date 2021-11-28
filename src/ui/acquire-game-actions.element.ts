@@ -22,6 +22,16 @@ export class AcquireGameActionsElement extends LitElement {
       gap: 1rem;
       padding: 1rem;
     }
+
+    .actions {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 0.5rem;
+    }
+
+    .actions acquire-button {
+      width: 100%;
+    }
   `;
 
   @property()
@@ -154,7 +164,7 @@ export class AcquireGameActionsElement extends LitElement {
 
   render() {
     if (this.playerId === this.currentPlayerId) {
-      return html`<div>
+      return html`<div class="actions">
         ${this.availableActionState?.map((action) => this.renderAction(action))}
       </div>`;
     } else {
