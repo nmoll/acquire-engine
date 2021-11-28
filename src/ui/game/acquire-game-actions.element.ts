@@ -1,11 +1,11 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { HotelChainType } from "../model";
-import { AvailableAction } from "../model/available-action";
-import { IAvailableActionState } from "../model/available-action-state";
-import { AvailableShares } from "../model/available-shares.type";
-import { PlayerAction } from "../model/player-action";
-import { PlayerUtils } from "../utils/player-utils";
+import { HotelChainType } from "../../model";
+import { AvailableAction } from "../../model/available-action";
+import { IAvailableActionState } from "../../model/available-action-state";
+import { AvailableShares } from "../../model/available-shares.type";
+import { PlayerAction } from "../../model/player-action";
+import { PlayerUtils } from "../../utils/player-utils";
 
 export interface ActionRequestEvent {
   action: PlayerAction;
@@ -23,13 +23,29 @@ export class AcquireGameActionsElement extends LitElement {
       padding: 1rem;
     }
 
+    button {
+      background-color: var(--colors-gray-500);
+      border: none;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      color: white;
+      width: 100%;
+    }
+
+    button:disabled {
+      background: var(--colors-gray-800) !important;
+      color: var(--colors-gray-500);
+      cursor: not-allowed;
+    }
+
     .actions {
       display: grid;
       grid-template-columns: auto auto;
       gap: 0.5rem;
     }
 
-    .actions acquire-button {
+    .actions button {
       width: 100%;
     }
   `;
@@ -105,8 +121,8 @@ export class AcquireGameActionsElement extends LitElement {
   renderChooseHotelChain(hotelChains: HotelChainType[]) {
     return hotelChains.map(
       (hotelChain) =>
-        html`<acquire-button .color="${`var(--colors-${hotelChain})`}"  @click="${() =>
-          this.onStartHotelChain(hotelChain)}"">${hotelChain}</acquire-button>`
+        html`<button style="background-color: var(--colors-${hotelChain})"  @click="${() =>
+          this.onStartHotelChain(hotelChain)}"">${hotelChain}</button>`
     );
   }
 
@@ -117,10 +133,10 @@ export class AcquireGameActionsElement extends LitElement {
         <div>
           ${hotelChains.map(
             (hotelChain) =>
-              html`<acquire-button .color="${`var(--colors-${hotelChain})`}"  @click="${() =>
+              html`<button style="color: var(--colors-${hotelChain})"  @click="${() =>
                 this.onChooseMergeDirection(
                   hotelChain
-                )}"">${hotelChain}</acquire-button>`
+                )}"">${hotelChain}</button>`
           )}
         </div>
       </div>
@@ -131,20 +147,18 @@ export class AcquireGameActionsElement extends LitElement {
     const hotelChains = Object.keys(availableShares) as HotelChainType[];
     return hotelChains.map(
       (hotelChain) =>
-        html`<acquire-button
-          .color="${`var(--colors-${hotelChain})`}"
+        html`<button
+          style="background-color: var(--colors-${hotelChain})"
           .disabled="${availableShares[hotelChain] !== true}"
           @click="${() => this.onPurchaseShare(hotelChain)}"
         >
           Purchase ${hotelChain}
-        </acquire-button>`
+        </button>`
     );
   }
 
   renderChooseEndTurn() {
-    return html`<acquire-button @click="${() => this.onEndTurn()}"
-      >End Turn</acquire-button
-    >`;
+    return html`<button @click="${() => this.onEndTurn()}">End Turn</button>`;
   }
 
   renderAction(action: AvailableAction) {

@@ -1,8 +1,8 @@
 import { css, html, LitElement } from "lit";
 import { styleMap } from "lit-html/directives/style-map.js";
 import { customElement, property } from "lit/decorators.js";
-import { BoardSquareState } from "../model";
-import { PlayerAction } from "../model/player-action";
+import { BoardSquareState } from "../../model";
+import { PlayerAction } from "../../model/player-action";
 
 export interface TileSelectEvent {
   index: number;

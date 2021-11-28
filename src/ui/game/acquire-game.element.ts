@@ -1,18 +1,17 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import { AvailableActionsStateEngine } from "../engine/available-actions-state-engine/available-actions-state-engine";
-import { GameStateEngine } from "../engine/game-state-engine/game-state-engine";
-import { IGameState } from "../model";
-import { IAcquireGameInstance } from "../model/acquire-game-instance";
-import { PlayerAction } from "../model/player-action";
-import { BoardStateFactory } from "../test/factory/board-state.factory";
-import "./acquire-button.element";
+import { AvailableActionsStateEngine } from "../../engine/available-actions-state-engine/available-actions-state-engine";
+import { GameStateEngine } from "../../engine/game-state-engine/game-state-engine";
+import { IGameState } from "../../model";
+import { IAcquireGameInstance } from "../../model/acquire-game-instance";
+import { PlayerAction } from "../../model/player-action";
+import { BoardStateFactory } from "../../test/factory/board-state.factory";
+import { FirebaseService } from "../firebase.service";
 import "./acquire-game-actions.element";
 import { ActionRequestEvent } from "./acquire-game-actions.element";
 import "./acquire-game-board.element";
 import { TileSelectEvent } from "./acquire-game-board.element";
 import "./acquire-game-players.element";
-import { FirebaseService } from "./firebase.service";
 
 @customElement("acquire-game")
 export class AcquireGameElement extends LitElement {

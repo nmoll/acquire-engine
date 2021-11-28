@@ -1,13 +1,12 @@
 import { css, html, LitElement } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { AcquireAppService, GameState } from "./acquire-app.service";
-import "./acquire-button.element";
 import "./acquire-create-game.element";
 import "./acquire-create-username.element";
 import { SaveUsernameEvent } from "./acquire-create-username.element";
-import "./acquire-game.element";
 import "./acquire-waiting-room.element";
 import { JoinGameEvent } from "./acquire-waiting-room.element";
+import "./game/acquire-game.element";
 
 @customElement("acquire-app")
 export class AcquireAppElement extends LitElement {

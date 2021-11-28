@@ -1,8 +1,8 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { ALL_HOTELS, ISharesState } from "../model";
-import { ICashState } from "../model/cash-state";
-import { PlayerUtils } from "../utils/player-utils";
+import { ALL_HOTELS, ISharesState } from "../../model";
+import { ICashState } from "../../model/cash-state";
+import { PlayerUtils } from "../../utils/player-utils";
 
 @customElement("acquire-game-players")
 export class AcquireGamePlayersElement extends LitElement {

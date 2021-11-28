@@ -10,7 +10,6 @@ export interface JoinGameEvent {
 export class AcquireWaitingRoomElement extends LitElement {
   static styles = css`
     :host {
-      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -21,8 +20,7 @@ export class AcquireWaitingRoomElement extends LitElement {
       margin-top: 1rem;
       cursor: pointer;
       color: white;
-      width: 350px;
-      max-width: 100%;
+      width: 100%;
       padding: 15px 10px;
       font-size: 1.25rem;
     }
@@ -147,35 +145,35 @@ export class AcquireWaitingRoomElement extends LitElement {
 
   render() {
     return html`
-      <img src="logo_144x144.svg" />
-      <h1>Waiting Room</h1>
-      <ul>
-        ${this.playerIds.map(
-          (playerId) => html`<li>${PlayerUtils.getDisplayName(playerId)}</li>`
-        )}
-      </ul>
-      <div class="waiting-message">
-        Waiting for others to join<span class="loading"></span>
-      </div>
-      ${!this.playerIds.includes(this.playerId)
-        ? html`<button class="primary" @click="${() => this.onJoinGame()}">
-            Join Game
-          </button>`
-        : ""}
-      ${this.playerId === this.hostId
-        ? html`
-            <button
-              class="primary"
-              ?disabled="${this.playerIds.length <= 1}"
-              @click="${() => this.onStartGame()}"
-            >
-              Ready? Start Game
-            </button>
-          `
-        : ""}
-      <button @click="${() => this.onShareGameUrl()}">
-        ${this.getShareGameUrlText()}
-      </button>
+      <acquire-page title="Waiting Room">
+        <ul>
+          ${this.playerIds.map(
+            (playerId) => html`<li>${PlayerUtils.getDisplayName(playerId)}</li>`
+          )}
+        </ul>
+        <div class="waiting-message">
+          Waiting for others to join<span class="loading"></span>
+        </div>
+        ${!this.playerIds.includes(this.playerId)
+          ? html`<button class="primary" @click="${() => this.onJoinGame()}">
+              Join Game
+            </button>`
+          : ""}
+        ${this.playerId === this.hostId
+          ? html`
+              <button
+                class="primary"
+                ?disabled="${this.playerIds.length <= 1}"
+                @click="${() => this.onStartGame()}"
+              >
+                Ready? Start Game
+              </button>
+            `
+          : ""}
+        <button @click="${() => this.onShareGameUrl()}">
+          ${this.getShareGameUrlText()}
+        </button>
+      </acquire-page>
     `;
   }
 }

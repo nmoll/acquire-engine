@@ -1,5 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
+import "./acquire-page.element";
 
 export interface SaveUsernameEvent {
   username: string;
@@ -9,7 +10,6 @@ export interface SaveUsernameEvent {
 export class AcquireCreateUsernameElement extends LitElement {
   static styles = css`
     :host {
-      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -17,8 +17,7 @@ export class AcquireCreateUsernameElement extends LitElement {
     }
 
     input {
-      width: 350px;
-      max-width: 100%;
+      width: 100%;
       line-height: 1.5;
       padding: 15px 10px;
       border: 1px solid hsl(0, 0%, 10%);
@@ -28,6 +27,7 @@ export class AcquireCreateUsernameElement extends LitElement {
       background: hsl(0, 0%, 14%);
       transition: background-color 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25),
         transform 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+      font-size: 1.25rem;
     }
 
     input:focus {
@@ -40,12 +40,20 @@ export class AcquireCreateUsernameElement extends LitElement {
       background: var(--colors-primary);
       border: 1px solid var(--colors-primary);
       color: var(--colors-gray-900);
-      width: 350px;
-      max-width: 100%;
+      width: 100%;
       padding: 15px 10px;
       font-size: 1.25rem;
     }
   `;
+
+  firstUpdated() {
+    const nameInput = this.shadowRoot?.getElementById("name");
+    nameInput?.addEventListener("keyup", ({ key }) => {
+      if (key === "Enter") {
+        this.onSubmit();
+      }
+    });
+  }
 
   onSubmit() {
     const username = this.getInputEl().value;
@@ -64,14 +72,15 @@ export class AcquireCreateUsernameElement extends LitElement {
 
   render() {
     return html`
-      <img src="logo_144x144.svg" />
-      <h1>Acquire</h1>
-      <input
-        id="name"
-        autocomplete="off"
-        placeholder="Enter your display name..."
-      />
-      <button @click="${() => this.onSubmit()}">DONE</button>
+      <acquire-page>
+        <input
+          id="name"
+          autocomplete="off"
+          autofocus="true"
+          placeholder="Enter your display name..."
+        />
+        <button @click="${() => this.onSubmit()}">DONE</button>
+      </acquire-page>
     `;
   }
 
