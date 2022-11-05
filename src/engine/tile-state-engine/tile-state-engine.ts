@@ -1,6 +1,6 @@
 import { GameConfig } from "../../game-config";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
-import { PlayerAction } from "../../model/player-action";
+import { PlayerActionResult } from "../../model/player-action-result";
 import { ITileState } from "../../model/tile-state";
 import { TileUtils } from "../../utils/tile-utils";
 
@@ -59,16 +59,18 @@ const getInitialState = (
 
 export const computeState = (
   gameInstance: IAcquireGameInstance,
-  playerAction: PlayerAction | null = null,
+  actionResult: PlayerActionResult | null = null,
   tileState: ITileState | null = null
 ): ITileState => {
   const tileBag = TileUtils.getSortedBag(gameInstance.randomSeed);
   if (!tileState) {
     return getInitialState(gameInstance, tileBag);
   }
-  if (!playerAction) {
+  if (!actionResult) {
     return tileState;
   }
+
+  const playerAction = actionResult.action;
 
   if (playerAction.type === "PlaceTile") {
     return discardPlayerTile(

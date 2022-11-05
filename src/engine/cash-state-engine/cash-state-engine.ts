@@ -1,8 +1,8 @@
 import { GameConfig } from "../../game-config";
-import { BoardSquareState } from "../../model";
+import { IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { ICashState } from "../../model/cash-state";
-import { PlayerAction } from "../../model/player-action";
+import { PlayerActionResult } from "../../model/player-action-result";
 import { HotelChainUtils } from "../../utils/hotel-chain-utils";
 import { SharesUtils } from "../../utils/shares-utils";
 
@@ -23,25 +23,35 @@ const fillEmptyStates = (
 
 const computeState = (
   gameInstance: IAcquireGameInstance,
-  playerAction: PlayerAction | null = null,
-  state: ICashState = {},
-  boardState: BoardSquareState[] = []
+  state: IGameState | null = null,
+  actionResult: PlayerActionResult | null = null
 ): ICashState => {
-  state = fillEmptyStates(gameInstance.playerIds, state);
-
-  if (playerAction?.type !== "PurchaseShares") {
-    return state;
+  if (!state) {
+    return fillEmptyStates(gameInstance.playerIds, {});
   }
 
-  return {
-    ...state,
-    [playerAction.playerId]:
-      state[playerAction.playerId] -
-      SharesUtils.getSharesCost(
-        playerAction.hotelChain,
-        HotelChainUtils.getHotelSize(playerAction.hotelChain, boardState)
-      ),
-  };
+  if (!actionResult) {
+    return state.cashState;
+  }
+
+  const playerAction = actionResult.action;
+
+  if (playerAction.type === "PurchaseShares") {
+    return {
+      ...state.cashState,
+      [playerAction.playerId]:
+        state.cashState[playerAction.playerId] -
+        SharesUtils.getSharesCost(
+          playerAction.hotelChain,
+          HotelChainUtils.getHotelSize(
+            playerAction.hotelChain,
+            state.boardState
+          )
+        ),
+    };
+  }
+
+  return state.cashState;
 };
 
 export const CashStateEngine = {

@@ -24,7 +24,10 @@ const shuffle = <T>(arr: T[], seed: number): T[] => {
   return arrCopy;
 };
 
+const unique = <T>(arr: T[]): T[] => Array.from(new Set(arr));
+
 export const ArrayUtils = {
   shuffle,
   makeNumArray,
+  unique,
 };

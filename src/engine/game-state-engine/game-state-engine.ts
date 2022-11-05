@@ -1,6 +1,7 @@
 import { IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerAction } from "../../model/player-action";
+import { ActionResultEngine } from "../action-result-engine/action-result-engine";
 import { AvailableActionsStateEngine } from "../available-actions-state-engine/available-actions-state-engine";
 import { BoardStateEngine } from "../board-state-engine/board-state-engine";
 import { CashStateEngine } from "../cash-state-engine/cash-state-engine";
@@ -51,40 +52,44 @@ const computeGameState = (
     );
   }
 
+  const actionResult = ActionResultEngine.computeActionResult(
+    state,
+    playerActions[0]
+  );
+
   const boardState = BoardStateEngine.computeState(
-    playerActions[0],
+    actionResult,
     state.boardState
   );
 
   const cashState = CashStateEngine.computeState(
     gameInstance,
-    playerActions[0],
-    state.cashState,
-    boardState
+    state,
+    actionResult
   );
 
   const tileState = TileStateEngine.computeState(
     gameInstance,
-    playerActions[0],
+    actionResult,
     state.tileState
   );
 
   const sharesState = SharesStateEngine.computeState(
     gameInstance,
-    playerActions[0],
+    actionResult,
     state.sharesState
   );
 
   const currentPlayerIdState = CurrentPlayerIdStateEngine.computeState(
     gameInstance,
-    playerActions[0]
+    actionResult
   );
 
   const availableActionsState = AvailableActionsStateEngine.computeState(
     boardState,
     sharesState,
     cashState,
-    playerActions[0],
+    actionResult,
     history
   );
 

@@ -50,5 +50,6 @@ export const BoardUtils = {
   isAdjacent,
   getAdjacentPositions,
   getAdjacentSquares,
+  getAdjacentTiles,
   hasAdjacentTiles,
 };

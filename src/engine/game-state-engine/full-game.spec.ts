@@ -1,0 +1,87 @@
+import { IAcquireGameInstance } from "../../model/acquire-game-instance";
+import { PlayerAction, PlayerActionType } from "../../model/player-action";
+import { createGameInstance } from "../../test/factory/game-instance.factory";
+import { formatTile } from "../../test/factory/tile.factory";
+import { tile } from "../../test/helpers";
+import { gameStateSnapshotSerializer } from "../../test/snapshot-serializer/game-state-snapshot-serializer";
+import { GameStateEngine } from "./game-state-engine";
+
+expect.addSnapshotSerializer(gameStateSnapshotSerializer);
+
+const gameInstance: IAcquireGameInstance = createGameInstance({
+  randomSeed: 1,
+  playerIds: ["1", "2", "3", "4"],
+});
+
+it("Game Play", () => {
+  let actions: PlayerAction[] = [];
+
+  const playAndRecord = (action: PlayerAction) => {
+    actions.push(action);
+
+    let desc = `(${actions.length}) Player ${action.playerId}`;
+    switch (action.type) {
+      case "PlaceTile":
+        desc += ` places tile ${formatTile(action.boardSquareId)}`;
+        break;
+      case "StartHotelChain":
+        desc += ` starts ${action.hotelChain}`;
+        break;
+      case "Merge":
+        desc += ` merges ${action.hotelChainToKeep}`;
+        break;
+      case "PurchaseShares":
+        desc += ` purchases ${action.hotelChain}`;
+        break;
+      case "EndTurn":
+        desc += ` ends turn`;
+        break;
+    }
+
+    expect(
+      GameStateEngine.computeGameState(gameInstance, actions)
+    ).toMatchSnapshot(desc);
+  };
+
+  playAndRecord(PlayerActionType.PlaceTile("1", tile("5G")));
+  playAndRecord(PlayerActionType.EndTurn("1"));
+
+  playAndRecord(PlayerActionType.PlaceTile("2", tile("4G")));
+  playAndRecord(PlayerActionType.StartHotelChain("2", "American"));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "American"));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "American"));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "American"));
+  playAndRecord(PlayerActionType.EndTurn("2"));
+
+  playAndRecord(PlayerActionType.PlaceTile("3", tile("6C")));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "American"));
+  playAndRecord(PlayerActionType.EndTurn("3"));
+
+  playAndRecord(PlayerActionType.PlaceTile("4", tile("6F")));
+  playAndRecord(PlayerActionType.EndTurn("4"));
+
+  playAndRecord(PlayerActionType.PlaceTile("1", tile("4F")));
+  playAndRecord(PlayerActionType.PurchaseShares("1", "American"));
+  playAndRecord(PlayerActionType.PurchaseShares("1", "American"));
+  playAndRecord(PlayerActionType.PurchaseShares("1", "American"));
+  playAndRecord(PlayerActionType.EndTurn("1"));
+
+  playAndRecord(PlayerActionType.PlaceTile("2", tile("4D")));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "American"));
+  playAndRecord(PlayerActionType.EndTurn("2"));
+
+  playAndRecord(PlayerActionType.PlaceTile("3", tile("10H")));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "American"));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "American"));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "American"));
+  playAndRecord(PlayerActionType.EndTurn("3"));
+
+  playAndRecord(PlayerActionType.PlaceTile("4", tile("1F")));
+  playAndRecord(PlayerActionType.EndTurn("4"));
+
+  playAndRecord(PlayerActionType.PlaceTile("1", tile("8A")));
+  playAndRecord(PlayerActionType.PurchaseShares("1", "American"));
+  playAndRecord(PlayerActionType.PurchaseShares("1", "American"));
+  playAndRecord(PlayerActionType.PurchaseShares("1", "American"));
+  playAndRecord(PlayerActionType.EndTurn("1"));
+});

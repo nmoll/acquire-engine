@@ -1,5 +1,5 @@
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
-import { PlayerActionType } from "../../model/player-action";
+import { PlayerActionResult } from "../../model/player-action-result";
 import { createGameInstance } from "../../test/factory/game-instance.factory";
 import { CurrentPlayerIdStateEngine } from "./current-player-id-state-engine";
 
@@ -36,56 +36,56 @@ describe("CurrentPlayerIdStateEngine", () => {
       ).toEqual(PLAYER_1);
     });
 
-    it("should return current player id if PlaceTile action is played", () => {
+    it("should return current player id if tile is placed", () => {
       expect(
         CurrentPlayerIdStateEngine.computeState(
           gameInstance,
-          PlayerActionType.PlaceTile(PLAYER_1, 1)
+          PlayerActionResult.TilePlaced(PLAYER_1, 1)
         )
       ).toEqual(PLAYER_1);
     });
 
-    it("should return current player id if StartHotelChain action is played", () => {
+    it("should return current player id if hotel chain is started", () => {
       expect(
         CurrentPlayerIdStateEngine.computeState(
           gameInstance,
-          PlayerActionType.StartHotelChain(PLAYER_2, "Imperial")
+          PlayerActionResult.HotelChainStarted(PLAYER_2, "Imperial", [])
         )
       ).toEqual(PLAYER_2);
     });
 
-    it("should return current player id if PurchaseShares action is played", () => {
+    it("should return current player id if shares are purchased", () => {
       expect(
         CurrentPlayerIdStateEngine.computeState(
           gameInstance,
-          PlayerActionType.PurchaseShares(PLAYER_3, "American")
+          PlayerActionResult.SharesPurchased(PLAYER_3, "American")
         )
       ).toEqual(PLAYER_3);
     });
 
-    it("should return current player id if Merge action is played", () => {
+    it("should return current player id if hotel chain is merged", () => {
       expect(
         CurrentPlayerIdStateEngine.computeState(
           gameInstance,
-          PlayerActionType.Merge(PLAYER_2, "Tower")
+          PlayerActionResult.HotelAutoMerged(PLAYER_2, 1, "Tower", "Luxor")
         )
       ).toEqual(PLAYER_2);
     });
 
-    it("should return the next player id if EndTurn action is played", () => {
+    it("should return the next player id if turn ends", () => {
       expect(
         CurrentPlayerIdStateEngine.computeState(
           gameInstance,
-          PlayerActionType.EndTurn(PLAYER_2)
+          PlayerActionResult.TurnEnded(PLAYER_2)
         )
       ).toEqual(PLAYER_3);
     });
 
-    it("should return the first player id if EndTurn action is played by the last player", () => {
+    it("should return the first player id if last player turn ends", () => {
       expect(
         CurrentPlayerIdStateEngine.computeState(
           gameInstance,
-          PlayerActionType.EndTurn(PLAYER_4)
+          PlayerActionResult.TurnEnded(PLAYER_4)
         )
       ).toEqual(PLAYER_1);
     });

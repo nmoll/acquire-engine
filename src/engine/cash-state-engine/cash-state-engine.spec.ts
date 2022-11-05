@@ -1,8 +1,9 @@
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { ICashState } from "../../model/cash-state";
-import { PlayerActionType } from "../../model/player-action";
+import { PlayerActionResult } from "../../model/player-action-result";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
 import { createGameInstance } from "../../test/factory/game-instance.factory";
+import { createGameState } from "../../test/factory/game-state.factory";
 import { tile } from "../../test/helpers";
 import { CashStateEngine } from "./cash-state-engine";
 
@@ -29,13 +30,15 @@ describe("CashEngine", () => {
     expect(
       CashStateEngine.computeState(
         gameInstance,
-        PlayerActionType.PlaceTile("1", tile("1A")),
-        {
-          1: 0,
-          2: 6000,
-          3: 200,
-          4: 0,
-        }
+        createGameState({
+          cashState: {
+            1: 0,
+            2: 6000,
+            3: 200,
+            4: 0,
+          },
+        }),
+        PlayerActionResult.TilePlaced("1", tile("1A"))
       )
     ).toEqual({
       1: 0,
@@ -49,13 +52,15 @@ describe("CashEngine", () => {
     expect(
       CashStateEngine.computeState(
         gameInstance,
-        PlayerActionType.PlaceTile("1", tile("1A")),
-        {
-          1: 6000,
-          2: 6000,
-          3: 6000,
-          4: 6000,
-        }
+        createGameState({
+          cashState: {
+            1: 6000,
+            2: 6000,
+            3: 6000,
+            4: 6000,
+          },
+        }),
+        PlayerActionResult.TilePlaced("1", tile("1A"))
       )
     ).toEqual({
       1: 6000,
@@ -66,7 +71,7 @@ describe("CashEngine", () => {
   });
 
   it("should remove cash from the player for shares purchased", () => {
-    const existingState: ICashState = {
+    const cashState: ICashState = {
       1: 6000,
       2: 6000,
       3: 6000,
@@ -87,18 +92,59 @@ describe("CashEngine", () => {
       `
     );
 
-    const playerAction = PlayerActionType.PurchaseShares("2", "American");
-
     expect(
       CashStateEngine.computeState(
         gameInstance,
-        playerAction,
-        existingState,
-        boardState
+        createGameState({
+          cashState,
+          boardState,
+        }),
+        PlayerActionResult.SharesPurchased("2", "American")
       )
     ).toEqual({
       1: 6000,
       2: 5700,
+      3: 6000,
+      4: 6000,
+    });
+  });
+
+  it.skip("should award majority holder with majority bonus after merge", () => {
+    const cashState: ICashState = {
+      1: 6000,
+      2: 6000,
+      3: 6000,
+      4: 6000,
+    };
+
+    const boardState = BoardStateFactory.createBoardState(
+      `
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - L - - - - - -
+      - - - - - L - - - - - -
+      - - - - - - C C C - - -
+      - - - - - - - - - - - -
+      - - - - - - - - - - - - 
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      `
+    );
+
+    const playerAction = PlayerActionResult.TilePlaced("2", tile("6E"));
+
+    expect(
+      CashStateEngine.computeState(
+        gameInstance,
+        createGameState({
+          cashState,
+          boardState,
+        }),
+        playerAction
+      )
+    ).toEqual({
+      1: 6000,
+      2: 8000,
       3: 6000,
       4: 6000,
     });

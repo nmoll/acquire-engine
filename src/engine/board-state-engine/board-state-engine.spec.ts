@@ -1,15 +1,24 @@
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
+import { createGameState } from "../../test/factory/game-state.factory";
 import { tile } from "../../test/helpers";
+import { ActionResultEngine } from "../action-result-engine/action-result-engine";
 import { BoardStateEngine } from "./board-state-engine";
 
-const expectStateWithAction = (diagram: string, action: PlayerAction | null) =>
-  expect(
-    BoardStateEngine.computeState(
-      action,
-      BoardStateFactory.createBoardState(diagram)
-    )
-  );
+const expectStateWithAction = (
+  diagram: string,
+  playerAction: PlayerAction | null
+) => {
+  const boardState = BoardStateFactory.createBoardState(diagram);
+  const gameState = createGameState({
+    boardState,
+  });
+  const actionResult = playerAction
+    ? ActionResultEngine.computeActionResult(gameState, playerAction)
+    : null;
+
+  return expect(BoardStateEngine.computeState(actionResult, boardState));
+};
 
 const placeTile = (tileLabel: string) =>
   PlayerActionType.PlaceTile("1", tile(tileLabel));
@@ -123,6 +132,37 @@ describe("BoardStateEngine", () => {
       state(
         `
         - 0 - - - - - - - - - -
+        - - - - - - - - - - - -
+        - - - - - - - - - - - -
+        - - - - - - - - - - - -
+        - - - - - - - - - - - -
+        - - - - - - - - - - - -
+        - - - - - - - - - - - -
+        - - - - - - - - - - - -
+        - - - - - - - - - - - -
+    `
+      )
+    );
+  });
+
+  it("should place tile next to existing tile", () => {
+    expectStateWithAction(
+      `
+      - - 0 - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+    `,
+      placeTile("2A")
+    ).toEqual(
+      state(
+        `
+        - 0 0 - - - - - - - - -
         - - - - - - - - - - - -
         - - - - - - - - - - - -
         - - - - - - - - - - - -
@@ -339,7 +379,7 @@ describe("BoardStateEngine", () => {
     );
   });
 
-  it("should merge a smaller hotel into a bigger hotel", () => {
+  it("should auto merge a smaller hotel into a bigger hotel", () => {
     expectStateWithAction(
       `
           - - W W W - - - - - - -
@@ -487,29 +527,21 @@ describe("BoardStateEngine", () => {
 
 describe("BUG CASE - minor hotel not merging into majority hotel", () => {
   it("should merge properly", () => {
-    const boardState = BoardStateFactory.createBoardState(
+    expectStateWithAction(
       `
-        - - - - - - - 0 - - - -
-        - 0 - 0 - C - - W W - -
-        F - 0 - - C C - - - L L
-        F - - - I - - I - - - L 
-        - - 0 - I I I I - - - L
-        - - - - I - I - 0 - 0 -
-        - - - - - - - - - - - 0
-        - - 0 - A A - - - T T -
-        - 0 - - - - 0 - 0 - T -
-      `
-    );
-
-    const action: PlayerAction = {
-      type: "PlaceTile",
-      playerId: "1",
-      boardSquareId: tile("7D"),
-    };
-
-    expect(BoardStateEngine.computeState(action, boardState)).toEqual(
-      BoardStateFactory.createBoardState(
-        `
+      - - - - - - - 0 - - - -
+      - 0 - 0 - C - - W W - -
+      F - 0 - - C C - - - L L
+      F - - - I - - I - - - L 
+      - - 0 - I I I I - - - L
+      - - - - I - I - 0 - 0 -
+      - - - - - - - - - - - 0
+      - - 0 - A A - - - T T -
+      - 0 - - - - 0 - 0 - T -
+      `,
+      placeTile("7D")
+    ).toEqual(
+      state(`
       - - - - - - - 0 - - - -
       - 0 - 0 - I - - W W - -
       F - 0 - - I I - - - L L
@@ -519,8 +551,7 @@ describe("BUG CASE - minor hotel not merging into majority hotel", () => {
       - - - - - - - - - - - 0
       - - 0 - A A - - - T T -
       - 0 - - - - 0 - 0 - T -
-    `
-      )
+  `)
     );
   });
 });

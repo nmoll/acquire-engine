@@ -1,4 +1,4 @@
-import { PlayerAction, PlayerActionType } from "../../model/player-action";
+import { PlayerActionResult } from "../../model/player-action-result";
 import { createGameInstance } from "../../test/factory/game-instance.factory";
 import { SharesStateFactory } from "../../test/factory/shares-state.factory";
 import { SharesStateEngine } from "./shares-state-engine";
@@ -6,7 +6,7 @@ import { SharesStateEngine } from "./shares-state-engine";
 const expectStateWithAction = (
   sharesDiagram: string,
   playerIds: string[],
-  action: PlayerAction | null
+  action: PlayerActionResult | null
 ) =>
   expect(
     SharesStateEngine.computeState(
@@ -66,7 +66,7 @@ describe("SharesEngine", () => {
           P4 0 0 0 0 0 0 0
         `,
         playerIds,
-        PlayerActionType.PurchaseShares("1", "American")
+        PlayerActionResult.SharesPurchased("1", "American")
       ).toEqual(
         SharesStateFactory.createSharesState(
           `
@@ -90,7 +90,7 @@ describe("SharesEngine", () => {
         P4 0 0 0 0 0 0 0
         `,
         playerIds,
-        PlayerActionType.StartHotelChain("2", "Imperial")
+        PlayerActionResult.HotelChainStarted("2", "Imperial", [])
       ).toEqual(
         SharesStateFactory.createSharesState(`
               A C F I L T W
@@ -112,7 +112,7 @@ describe("SharesEngine", () => {
         P4 0 0 0 0 0 0 0
         `,
         playerIds,
-        PlayerActionType.StartHotelChain("2", "Imperial")
+        PlayerActionResult.HotelChainStarted("2", "Imperial", [])
       ).toEqual(
         SharesStateFactory.createSharesState(`
               A C F I L T W

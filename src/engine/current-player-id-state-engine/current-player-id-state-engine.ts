@@ -1,22 +1,25 @@
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { CurrentPlayerIdState } from "../../model/current-player-id-state";
-import { PlayerAction } from "../../model/player-action";
+import { PlayerActionResult } from "../../model/player-action-result";
 import { PlayerUtils } from "../../utils/player-utils";
 
 const computeState = (
   gameInstance: IAcquireGameInstance,
-  playerAction: PlayerAction | null = null
+  result: PlayerActionResult | null = null
 ): CurrentPlayerIdState => {
   if (!gameInstance.playerIds.length) {
     return null;
   }
-  if (!playerAction) {
+  if (!result) {
     return gameInstance.playerIds[0];
   }
 
-  return playerAction.type === "EndTurn"
-    ? PlayerUtils.getNextPlayerId(gameInstance.playerIds, playerAction.playerId)
-    : playerAction.playerId;
+  return result.type === "Turn Ended"
+    ? PlayerUtils.getNextPlayerId(
+        gameInstance.playerIds,
+        result.action.playerId
+      )
+    : result.action.playerId;
 };
 
 export const CurrentPlayerIdStateEngine = {

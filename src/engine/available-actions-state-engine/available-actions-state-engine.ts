@@ -1,5 +1,9 @@
+import { GameConfig } from "../../game-config";
 import { BoardSquareState, IGameState, ISharesState } from "../../model";
-import { AvailableActionType } from "../../model/available-action";
+import {
+  AvailableActionType,
+  ChooseShares,
+} from "../../model/available-action";
 import { IAvailableActionState } from "../../model/available-action-state";
 import { ICashState } from "../../model/cash-state";
 import {
@@ -7,38 +11,90 @@ import {
   PurchaseShares,
   StartHotelChain,
 } from "../../model/player-action";
-import { ScenarioHotelChainStarted } from "./scenarios/scenario-hotel-chain-started";
-import { ScenarioSharesPurchased } from "./scenarios/scenario-shares-purchased";
-import { ScenarioTilePlaced } from "./scenarios/scenario-tile-placed";
+import { PlayerActionResult } from "../../model/player-action-result";
+import { ActionUtils } from "../../utils/action-utils";
+import { HotelChainUtils } from "../../utils/hotel-chain-utils";
+import { isDefined } from "../../utils/is-defined-util";
+import { SharesUtils } from "../../utils/shares-utils";
+
+const chooseSharesIfAvailable = (
+  boardState: BoardSquareState[],
+  sharesState: ISharesState,
+  playerCash: number
+): ChooseShares | null => {
+  const hotelChainState = HotelChainUtils.getHotelChainState(
+    boardState,
+    sharesState
+  );
+
+  return Object.keys(hotelChainState).length
+    ? AvailableActionType.ChooseShares(
+        SharesUtils.getAvailableSharesForPurchase(hotelChainState, playerCash)
+      )
+    : null;
+};
 
 const computeState = (
   boardState: BoardSquareState[],
   sharesState: ISharesState,
   cashState: ICashState,
-  action: PlayerAction | null = null,
-  history: PlayerAction[] | null = null
+  actionResult: PlayerActionResult | null = null,
+  history: PlayerAction[] = []
 ): IAvailableActionState => {
-  if (!action) {
+  if (!actionResult) {
     return [AvailableActionType.ChooseTile()];
   }
 
-  const playerCash = cashState[action.playerId];
+  const playerCash = cashState[actionResult.action.playerId];
 
-  switch (action.type) {
-    case "PlaceTile":
-      return ScenarioTilePlaced(action, boardState, sharesState, playerCash);
-    case "StartHotelChain":
-      return ScenarioHotelChainStarted(boardState, sharesState, playerCash);
-    case "Merge":
-      return [AvailableActionType.ChooseEndTurn()];
-    case "PurchaseShares":
-      return ScenarioSharesPurchased(
-        boardState,
-        sharesState,
-        playerCash,
+  switch (actionResult.type) {
+    case "Tile Placed":
+    case "Hotel Size Increased":
+      if (
+        HotelChainUtils.isHotelStarter(
+          boardState,
+          actionResult.action.boardSquareId
+        )
+      ) {
+        return [
+          AvailableActionType.ChooseHotelChain(
+            HotelChainUtils.getInactiveHotelChains(boardState)
+          ),
+        ];
+      }
+
+      return [
+        chooseSharesIfAvailable(boardState, sharesState, playerCash),
+        AvailableActionType.ChooseEndTurn(),
+      ].filter(isDefined);
+
+    case "Merge Initiated":
+      return [
+        AvailableActionType.ChooseMergeDirection(actionResult.hotelChains),
+      ];
+
+    case "Hotel Chain Started":
+      return [
+        chooseSharesIfAvailable(boardState, sharesState, playerCash),
+        AvailableActionType.ChooseEndTurn(),
+      ].filter(isDefined);
+
+    case "Shares Purchased":
+      const sharesPurchasedThisTurn = ActionUtils.getCurrentTurn(
         history
-      );
-    case "EndTurn":
+      ).filter((action) => action.type === "PurchaseShares");
+
+      return [
+        sharesPurchasedThisTurn.length + 1 < GameConfig.turn.maxShares
+          ? chooseSharesIfAvailable(boardState, sharesState, playerCash)
+          : null,
+        AvailableActionType.ChooseEndTurn(),
+      ].filter(isDefined);
+
+    case "Turn Ended":
+      return [AvailableActionType.ChooseTile()];
+
+    default:
       return [AvailableActionType.ChooseTile()];
   }
 };

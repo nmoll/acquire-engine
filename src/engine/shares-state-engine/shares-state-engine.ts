@@ -2,6 +2,7 @@ import { GameConfig } from "../../game-config";
 import { ALL_HOTELS, HotelChainType } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerAction } from "../../model/player-action";
+import { PlayerActionResult } from "../../model/player-action-result";
 import { ISharesState } from "../../model/shares-state";
 
 const fillEmptyStates = (
@@ -48,14 +49,16 @@ const getPurchasedShares = (
 
 const computeState = (
   gameInstance: IAcquireGameInstance,
-  playerAction: PlayerAction | null = null,
+  result: PlayerActionResult | null = null,
   sharesState: ISharesState = {}
 ): ISharesState => {
   sharesState = fillEmptyStates(gameInstance.playerIds, sharesState);
 
-  if (!playerAction) {
+  if (!result) {
     return sharesState;
   }
+
+  const playerAction = result.action;
 
   return ALL_HOTELS.reduce(
     (state, hotel) => ({

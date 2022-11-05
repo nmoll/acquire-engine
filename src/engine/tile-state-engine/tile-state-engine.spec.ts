@@ -1,6 +1,6 @@
 import { GameConfig } from "../../game-config";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
-import { PlayerAction } from "../../model/player-action";
+import { PlayerActionResult } from "../../model/player-action-result";
 import { ITileState } from "../../model/tile-state";
 import { createGameInstance } from "../../test/factory/game-instance.factory";
 import { ArrayUtils } from "../../utils/array-utils";
@@ -26,7 +26,9 @@ describe("TileStateEngine", () => {
     const result = ArrayUtils.makeNumArray(GameConfig.board.size).reduce(
       (res, idx) => ({
         ...res,
-        [idx]: toPos(idx),
+        [new Intl.NumberFormat("en-US", {
+          minimumIntegerDigits: 3,
+        }).format(idx)]: toPos(idx),
       }),
       {}
     );
@@ -60,12 +62,7 @@ describe("TileStateEngine", () => {
       2: [15, 84, 100, 3, 1],
       3: [2, 8, 11, 13, 62],
     };
-    const tilePlaced = 7;
-    const action: PlayerAction = {
-      type: "PlaceTile",
-      playerId: "1",
-      boardSquareId: tilePlaced,
-    };
+    const actionResult = PlayerActionResult.TilePlaced("1", 7);
 
     const expected: ITileState = {
       1: [4, 21, 34, 19],
@@ -74,20 +71,17 @@ describe("TileStateEngine", () => {
     };
 
     expect(
-      TileStateEngine.computeState(gameInstance, action, tileState)
+      TileStateEngine.computeState(gameInstance, actionResult, tileState)
     ).toEqual(expected);
   });
 
   it("should give player next tile when turn ends", () => {
     const initialState = TileStateEngine.computeState(gameInstance);
-    const action: PlayerAction = {
-      type: "EndTurn",
-      playerId: "1",
-    };
+    const actionResult = PlayerActionResult.TurnEnded("1");
 
     const resultState = TileStateEngine.computeState(
       gameInstance,
-      action,
+      actionResult,
       initialState
     );
 
@@ -99,14 +93,11 @@ describe("TileStateEngine", () => {
       // The last tiles in the bag for this game seed
       1: [0, 67],
     };
-    const action: PlayerAction = {
-      type: "EndTurn",
-      playerId: "1",
-    };
+    const actionResult = PlayerActionResult.TurnEnded("1");
 
     const resultState = TileStateEngine.computeState(
       gameInstance,
-      action,
+      actionResult,
       tileState
     );
 
@@ -127,18 +118,15 @@ describe("TileStateEngine", () => {
       "3208_Nate": [72, 105, 37, 6, 74],
     };
 
-    const action: PlayerAction = {
-      type: "EndTurn",
-      playerId: "2706_Justin",
-    };
+    const actionResult = PlayerActionResult.TurnEnded("2706_Justin");
 
     const expected: ITileState = {
       "2706_Justin": [97, 94, 12, 32, 0],
       "3208_Nate": [72, 105, 37, 6, 74],
     };
 
-    expect(TileStateEngine.computeState(instance, action, tileState)).toEqual(
-      expected
-    );
+    expect(
+      TileStateEngine.computeState(instance, actionResult, tileState)
+    ).toEqual(expected);
   });
 });

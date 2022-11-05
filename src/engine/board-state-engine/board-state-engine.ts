@@ -3,39 +3,80 @@ import {
   BoardSquareState,
   BoardSquareStateType,
 } from "../../model/board-square-state";
-import { PlayerAction } from "../../model/player-action";
-import { PlayerActionContext } from "../../model/player-action-context";
+import { PlayerActionResult } from "../../model/player-action-result";
 import { ArrayUtils } from "../../utils/array-utils";
-import { ScenarioHasHotelChain } from "./scenarios/scenario-has-hotel-chain";
-import { ScenarioHasTile } from "./scenarios/scenario-has-tile";
+import { BoardUtils } from "../../utils/board-utils";
 
 const defaultState: BoardSquareState[] = ArrayUtils.makeNumArray(
   GameConfig.board.size
 ).map(() => BoardSquareStateType.Default());
 
-const getBoardSquareState = (context: PlayerActionContext): BoardSquareState =>
-  ScenarioHasHotelChain(context) ||
-  ScenarioHasTile(context) ||
-  context.boardState[context.index];
+const updateAll = (
+  boardState: BoardSquareState[],
+  boardSquareIds: number[],
+  newState: BoardSquareState
+): BoardSquareState[] =>
+  boardState.map((state, index) =>
+    boardSquareIds.includes(index) ? newState : state
+  );
 
 const computeState = (
-  playerAction: PlayerAction | null = null,
+  actionResult: PlayerActionResult | null = null,
   boardState: BoardSquareState[] = []
 ): BoardSquareState[] => {
   if (!boardState.length) {
     return defaultState;
   }
-  if (!playerAction) {
+  if (!actionResult) {
     return boardState;
   }
 
-  return boardState.map((_, index) =>
-    getBoardSquareState({
-      boardState,
-      playerAction,
-      index,
-    })
-  );
+  switch (actionResult.type) {
+    case "Tile Placed":
+    case "Merge Initiated":
+      return updateAll(
+        boardState,
+        [actionResult.action.boardSquareId],
+        BoardSquareStateType.HasTile()
+      );
+
+    case "Hotel Size Increased":
+      const adjacentTiles = BoardUtils.getAdjacentPositions(
+        boardState,
+        actionResult.action.boardSquareId
+      ).filter((idx) => boardState[idx].type === "HasTile");
+
+      return updateAll(
+        boardState,
+        adjacentTiles.concat(actionResult.action.boardSquareId),
+        BoardSquareStateType.HasHotelChain(actionResult.hotelChain)
+      );
+
+    case "Hotel Chain Started":
+      return updateAll(
+        boardState,
+        actionResult.boardSquareIds,
+        BoardSquareStateType.HasHotelChain(actionResult.action.hotelChain)
+      );
+
+    case "Hotel Auto Merged":
+      const minorityBoardSquareIds = boardState
+        .map((state, idx) => ({ state, idx }))
+        .filter(
+          ({ state }) =>
+            state.type === "HasHotelChain" &&
+            state.hotelChainType === actionResult.minorityHotelChain
+        )
+        .map(({ idx }) => idx);
+
+      return updateAll(
+        boardState,
+        minorityBoardSquareIds.concat(actionResult.action.boardSquareId),
+        BoardSquareStateType.HasHotelChain(actionResult.majorityHotelChain)
+      );
+    default:
+      return boardState;
+  }
 };
 
 export const BoardStateEngine = {
