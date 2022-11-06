@@ -50,6 +50,7 @@ const computeState = (
   switch (actionResult.type) {
     case "Tile Placed":
     case "Hotel Size Increased":
+    case "Hotel Auto Merged":
       if (
         HotelChainUtils.isHotelStarter(
           boardState,

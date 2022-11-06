@@ -67,7 +67,7 @@ describe("CurrentPlayerIdStateEngine", () => {
       expect(
         CurrentPlayerIdStateEngine.computeState(
           gameInstance,
-          PlayerActionResult.HotelAutoMerged(PLAYER_2, 1, "Tower", "Luxor")
+          PlayerActionResult.HotelAutoMerged(PLAYER_2, 1, "Tower", "Luxor", {})
         )
       ).toEqual(PLAYER_2);
     });

@@ -34,21 +34,26 @@ const computeState = (
     return state.cashState;
   }
 
-  const playerAction = actionResult.action;
-
-  if (playerAction.type === "PurchaseShares") {
-    return {
-      ...state.cashState,
-      [playerAction.playerId]:
-        state.cashState[playerAction.playerId] -
-        SharesUtils.getSharesCost(
-          playerAction.hotelChain,
-          HotelChainUtils.getHotelSize(
-            playerAction.hotelChain,
-            state.boardState
-          )
-        ),
-    };
+  switch (actionResult.type) {
+    case "Shares Purchased":
+      const { playerId, hotelChain } = actionResult.action;
+      return {
+        ...state.cashState,
+        [playerId]:
+          state.cashState[playerId] -
+          SharesUtils.getSharesCost(
+            hotelChain,
+            HotelChainUtils.getHotelSize(hotelChain, state.boardState)
+          ),
+      };
+    case "Hotel Auto Merged":
+      return Object.entries(actionResult.cashAwarded).reduce(
+        (state, [playerId, cashAwarded]) => ({
+          ...state,
+          [playerId]: state[playerId] + cashAwarded,
+        }),
+        state.cashState
+      );
   }
 
   return state.cashState;

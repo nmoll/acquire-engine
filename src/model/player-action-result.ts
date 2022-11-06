@@ -36,6 +36,7 @@ interface HotelAutoMerged {
   action: PlaceTile;
   minorityHotelChain: HotelChainType;
   majorityHotelChain: HotelChainType;
+  cashAwarded: Record<string, number>;
 }
 
 interface HotelMergeDirectionDecided {
@@ -99,12 +100,14 @@ export const PlayerActionResult = {
     playerId: string,
     boardSquareId: number,
     minorityHotelChain: HotelChainType,
-    majorityHotelChain: HotelChainType
+    majorityHotelChain: HotelChainType,
+    cashAwarded: Record<string, number>
   ): HotelAutoMerged => ({
     type: "Hotel Auto Merged",
     action: PlayerActionType.PlaceTile(playerId, boardSquareId),
     majorityHotelChain,
     minorityHotelChain,
+    cashAwarded,
   }),
   HotelMergeDirectionDecided: (
     playerId: string,

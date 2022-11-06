@@ -84,4 +84,137 @@ it("Game Play", () => {
   playAndRecord(PlayerActionType.PurchaseShares("1", "American"));
   playAndRecord(PlayerActionType.PurchaseShares("1", "American"));
   playAndRecord(PlayerActionType.EndTurn("1"));
+
+  playAndRecord(PlayerActionType.PlaceTile("2", tile("3C")));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "American"));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "American"));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "American"));
+  playAndRecord(PlayerActionType.EndTurn("2"));
+
+  playAndRecord(PlayerActionType.PlaceTile("3", tile("10G")));
+  playAndRecord(PlayerActionType.StartHotelChain("3", "Festival"));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "Festival"));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "Festival"));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "Festival"));
+  playAndRecord(PlayerActionType.EndTurn("3"));
+
+  playAndRecord(PlayerActionType.PlaceTile("4", tile("8B")));
+  playAndRecord(PlayerActionType.StartHotelChain("4", "Tower"));
+  playAndRecord(PlayerActionType.PurchaseShares("4", "Tower"));
+  playAndRecord(PlayerActionType.PurchaseShares("4", "Tower"));
+  playAndRecord(PlayerActionType.PurchaseShares("4", "Tower"));
+  playAndRecord(PlayerActionType.EndTurn("4"));
+
+  playAndRecord(PlayerActionType.PlaceTile("1", tile("12A")));
+  playAndRecord(PlayerActionType.PurchaseShares("1", "American"));
+  playAndRecord(PlayerActionType.PurchaseShares("1", "American"));
+  playAndRecord(PlayerActionType.PurchaseShares("1", "American"));
+  playAndRecord(PlayerActionType.EndTurn("1"));
+
+  playAndRecord(PlayerActionType.PlaceTile("2", tile("8C")));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "American"));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "American"));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "American"));
+  playAndRecord(PlayerActionType.EndTurn("2"));
+
+  playAndRecord(PlayerActionType.PlaceTile("3", tile("2G")));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "American"));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "Tower"));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "Tower"));
+  playAndRecord(PlayerActionType.EndTurn("3"));
+
+  playAndRecord(PlayerActionType.PlaceTile("4", tile("7B")));
+  playAndRecord(PlayerActionType.PurchaseShares("4", "Festival"));
+  playAndRecord(PlayerActionType.PurchaseShares("4", "Festival"));
+  playAndRecord(PlayerActionType.PurchaseShares("4", "Festival"));
+  playAndRecord(PlayerActionType.EndTurn("4"));
+
+  playAndRecord(PlayerActionType.PlaceTile("1", tile("1E")));
+  playAndRecord(PlayerActionType.StartHotelChain("1", "Worldwide"));
+  playAndRecord(PlayerActionType.PurchaseShares("1", "Worldwide"));
+  playAndRecord(PlayerActionType.PurchaseShares("1", "Worldwide"));
+  playAndRecord(PlayerActionType.PurchaseShares("1", "Worldwide"));
+  playAndRecord(PlayerActionType.EndTurn("1"));
+
+  playAndRecord(PlayerActionType.PlaceTile("2", tile("10C")));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "Worldwide"));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "Festival"));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "Tower"));
+  playAndRecord(PlayerActionType.EndTurn("2"));
+
+  playAndRecord(PlayerActionType.PlaceTile("3", tile("2H")));
+  playAndRecord(PlayerActionType.StartHotelChain("3", "Imperial"));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "Imperial"));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "Imperial"));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "Imperial"));
+  playAndRecord(PlayerActionType.EndTurn("3"));
+
+  playAndRecord(PlayerActionType.PlaceTile("4", tile("11E")));
+  playAndRecord(PlayerActionType.PurchaseShares("4", "Imperial"));
+  playAndRecord(PlayerActionType.PurchaseShares("4", "Imperial"));
+  playAndRecord(PlayerActionType.PurchaseShares("4", "Imperial"));
+  playAndRecord(PlayerActionType.EndTurn("4"));
+
+  playAndRecord(PlayerActionType.PlaceTile("1", tile("11D")));
+  playAndRecord(PlayerActionType.StartHotelChain("1", "Continental"));
+  playAndRecord(PlayerActionType.PurchaseShares("1", "Continental"));
+  playAndRecord(PlayerActionType.PurchaseShares("1", "Continental"));
+  playAndRecord(PlayerActionType.PurchaseShares("1", "Continental"));
+  playAndRecord(PlayerActionType.EndTurn("1"));
+
+  playAndRecord(PlayerActionType.PlaceTile("2", tile("3E")));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "Continental"));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "Festival"));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "Festival"));
+  playAndRecord(PlayerActionType.EndTurn("2"));
+
+  playAndRecord(PlayerActionType.PlaceTile("3", tile("4C")));
+  playAndRecord(PlayerActionType.StartHotelChain("3", "Luxor"));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "Luxor"));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "Luxor"));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "Luxor"));
+  playAndRecord(PlayerActionType.EndTurn("3"));
+
+  playAndRecord(PlayerActionType.PlaceTile("4", tile("4I")));
+  playAndRecord(PlayerActionType.PurchaseShares("4", "Luxor"));
+  playAndRecord(PlayerActionType.PurchaseShares("4", "Luxor"));
+  playAndRecord(PlayerActionType.PurchaseShares("4", "Luxor"));
+  playAndRecord(PlayerActionType.EndTurn("4"));
+
+  playAndRecord(PlayerActionType.PlaceTile("1", tile("7C")));
+  playAndRecord(PlayerActionType.PurchaseShares("1", "Festival"));
+  playAndRecord(PlayerActionType.EndTurn("1"));
+
+  playAndRecord(PlayerActionType.PlaceTile("2", tile("6G")));
+  playAndRecord(PlayerActionType.PurchaseShares("2", "Festival"));
+  playAndRecord(PlayerActionType.EndTurn("2"));
+
+  playAndRecord(PlayerActionType.PlaceTile("3", tile("8G")));
+  playAndRecord(PlayerActionType.PurchaseShares("3", "Continental"));
+  playAndRecord(PlayerActionType.EndTurn("3"));
+
+  playAndRecord(PlayerActionType.PlaceTile("4", tile("11F")));
+  playAndRecord(PlayerActionType.EndTurn("4"));
+
+  playAndRecord(PlayerActionType.PlaceTile("1", tile("4H")));
+  playAndRecord(PlayerActionType.EndTurn("1"));
+
+  playAndRecord(PlayerActionType.PlaceTile("2", tile("6A")));
+  playAndRecord(PlayerActionType.EndTurn("2"));
+
+  playAndRecord(PlayerActionType.PlaceTile("3", tile("6I")));
+  playAndRecord(PlayerActionType.EndTurn("3"));
+
+  playAndRecord(PlayerActionType.PlaceTile("4", tile("11H")));
+  playAndRecord(PlayerActionType.EndTurn("4"));
+
+  playAndRecord(PlayerActionType.PlaceTile("1", tile("2I")));
+  playAndRecord(PlayerActionType.EndTurn("1"));
+
+  playAndRecord(PlayerActionType.PlaceTile("2", tile("3G")));
+  playAndRecord(PlayerActionType.EndTurn("2"));
+
+  playAndRecord(PlayerActionType.PlaceTile("3", tile("5A")));
+  playAndRecord(PlayerActionType.StartHotelChain("3", "Imperial"));
+  playAndRecord(PlayerActionType.EndTurn("3"));
 });

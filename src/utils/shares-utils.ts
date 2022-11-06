@@ -77,9 +77,72 @@ const getSharesCost = (
   return GameConfig.hotel.basePrice[hotelChain] + getBasePriceBySize(hotelSize);
 };
 
+const getMajorityBonus = (
+  hotelChain: HotelChainType,
+  hotelSize: number
+): number => getSharesCost(hotelChain, hotelSize) * 10;
+
+const getMinorityBonus = (
+  hotelChain: HotelChainType,
+  hotelSize: number
+): number => getMajorityBonus(hotelChain, hotelSize) / 2;
+
+const getMajorityAndMinorityShareholders = (
+  sharesState: ISharesState,
+  hotelChain: HotelChainType
+): {
+  majorityShareholders: string[];
+  minorityShareholders: string[];
+} => {
+  const playersWithShares = Object.entries(sharesState)
+    .filter(([, shares]) => !!shares[hotelChain])
+    .map(([playerId, shares]) => ({
+      playerId,
+      numShares: shares[hotelChain] ?? 0,
+    }));
+
+  if (playersWithShares.length === 1) {
+    return {
+      majorityShareholders: [playersWithShares[0].playerId],
+      minorityShareholders: [playersWithShares[0].playerId],
+    };
+  }
+
+  const majorityShareAmount = Math.max(
+    ...playersWithShares.map((p) => p.numShares)
+  );
+  const majorityShareholders = playersWithShares
+    .filter((p) => p.numShares === majorityShareAmount)
+    .map((p) => p.playerId);
+
+  if (majorityShareholders.length > 1) {
+    return {
+      majorityShareholders,
+      minorityShareholders: majorityShareholders,
+    };
+  }
+
+  const minorityShareAmount = Math.max(
+    ...playersWithShares
+      .filter((p) => p.numShares !== majorityShareAmount)
+      .map((p) => p.numShares)
+  );
+  const minorityShareholders = playersWithShares
+    .filter((p) => p.numShares === minorityShareAmount)
+    .map((p) => p.playerId);
+
+  return {
+    majorityShareholders,
+    minorityShareholders,
+  };
+};
+
 export const SharesUtils = {
   getAvailableShares,
   getAvailableSharesForHotel,
   getAvailableSharesForPurchase,
   getSharesCost,
+  getMajorityBonus,
+  getMinorityBonus,
+  getMajorityAndMinorityShareholders,
 };

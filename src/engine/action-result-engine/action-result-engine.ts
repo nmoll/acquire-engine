@@ -3,6 +3,7 @@ import { PlayerAction } from "../../model/player-action";
 import { PlayerActionResult } from "../../model/player-action-result";
 import { ArrayUtils } from "../../utils/array-utils";
 import { HotelChainUtils } from "../../utils/hotel-chain-utils";
+import { SharesUtils } from "../../utils/shares-utils";
 
 /**
  * Given a board state with a place tile action,
@@ -47,17 +48,57 @@ const computeActionResult = (
             hotelChains: adjacentHotelChains,
           };
         } else {
+          const majorityHotelChain =
+            hotel1Size > hotel2Size
+              ? adjacentHotelChains[0]
+              : adjacentHotelChains[1];
+
+          const minorityHotelChain =
+            hotel1Size < hotel2Size
+              ? adjacentHotelChains[0]
+              : adjacentHotelChains[1];
+
+          let cashAwarded: Record<string, number> = {};
+
+          const { majorityShareholders, minorityShareholders } =
+            SharesUtils.getMajorityAndMinorityShareholders(
+              state.sharesState,
+              minorityHotelChain
+            );
+
+          const minorityHotelSize = HotelChainUtils.getHotelSize(
+            minorityHotelChain,
+            state.boardState
+          );
+
+          majorityShareholders.forEach((shareholder) => {
+            const bonus = SharesUtils.getMajorityBonus(
+              minorityHotelChain,
+              minorityHotelSize
+            );
+            cashAwarded[shareholder] = Math.round(
+              (cashAwarded[shareholder] ?? 0) +
+                bonus / majorityShareholders.length
+            );
+          });
+
+          minorityShareholders.forEach((shareholder) => {
+            const bonus = SharesUtils.getMinorityBonus(
+              minorityHotelChain,
+              minorityHotelSize
+            );
+            cashAwarded[shareholder] = Math.round(
+              (cashAwarded[shareholder] ?? 0) +
+                bonus / minorityShareholders.length
+            );
+          });
+
           return {
             type: "Hotel Auto Merged",
             action,
-            minorityHotelChain:
-              hotel1Size < hotel2Size
-                ? adjacentHotelChains[0]
-                : adjacentHotelChains[1],
-            majorityHotelChain:
-              hotel1Size > hotel2Size
-                ? adjacentHotelChains[0]
-                : adjacentHotelChains[1],
+            majorityHotelChain,
+            minorityHotelChain,
+            cashAwarded,
           };
         }
       }
