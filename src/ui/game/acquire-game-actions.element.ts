@@ -114,6 +114,52 @@ export class AcquireGameActionsElement extends LitElement {
     );
   }
 
+  onChooseToKeepOrphanedShare(hotelChain: HotelChainType) {
+    this.dispatchEvent(
+      new CustomEvent<ActionRequestEvent>("action-request", {
+        detail: {
+          action: {
+            type: "KeepOrphanedShare",
+            playerId: this.playerId,
+            hotelChain,
+          },
+        },
+      })
+    );
+  }
+
+  onChooseToSellOrphanedShare(hotelChain: HotelChainType) {
+    this.dispatchEvent(
+      new CustomEvent<ActionRequestEvent>("action-request", {
+        detail: {
+          action: {
+            type: "SellOrphanedShare",
+            playerId: this.playerId,
+            hotelChain,
+          },
+        },
+      })
+    );
+  }
+
+  onChooseToTradeOrphanedShare(
+    hotelChain: HotelChainType,
+    hotelChainToReceive: HotelChainType
+  ) {
+    this.dispatchEvent(
+      new CustomEvent<ActionRequestEvent>("action-request", {
+        detail: {
+          action: {
+            type: "TradeOrphanedShare",
+            playerId: this.playerId,
+            hotelChain,
+            hotelChainToReceive,
+          },
+        },
+      })
+    );
+  }
+
   renderChooseTile() {
     return html`<span>Choose a tile</span>`;
   }
@@ -157,6 +203,41 @@ export class AcquireGameActionsElement extends LitElement {
     );
   }
 
+  renderChooseToSellOrphanedShare(
+    hotelChain: HotelChainType,
+    remainingShares: number
+  ) {
+    return html`<button
+      @click="${() => this.onChooseToSellOrphanedShare(hotelChain)}"
+    >
+      Sell 1/${remainingShares} ${hotelChain}
+    </button>`;
+  }
+
+  renderChooseToKeepOrphanedShare(
+    hotelChain: HotelChainType,
+    remainingShares: number
+  ) {
+    return html`<button
+      @click="${() => this.onChooseToKeepOrphanedShare(hotelChain)}"
+    >
+      Keep 1/${remainingShares} ${hotelChain}
+    </button>`;
+  }
+
+  renderChooseToTradeOrphanedShare(
+    hotelChain: HotelChainType,
+    hotelChainToReceive: HotelChainType,
+    remainingShares: number
+  ) {
+    return html`<button
+      @click="${() =>
+        this.onChooseToTradeOrphanedShare(hotelChain, hotelChainToReceive)}"
+    >
+      Trade 2/${remainingShares} ${hotelChain} for 1 ${hotelChainToReceive}
+    </button>`;
+  }
+
   renderChooseEndTurn() {
     return html`<button @click="${() => this.onEndTurn()}">End Turn</button>`;
   }
@@ -171,6 +252,22 @@ export class AcquireGameActionsElement extends LitElement {
         return this.renderChooseMergeDirection(action.options);
       case "ChooseShares":
         return this.renderChooseShares(action.availableShares);
+      case "ChooseToKeepOrphanedShare":
+        return this.renderChooseToKeepOrphanedShare(
+          action.hotelChain,
+          action.remainingShares
+        );
+      case "ChooseToSellOrphanedShare":
+        return this.renderChooseToSellOrphanedShare(
+          action.hotelChain,
+          action.remainingShares
+        );
+      case "ChooseToTradeOrphanedShare":
+        return this.renderChooseToTradeOrphanedShare(
+          action.hotelChain,
+          action.hotelChainToReceive,
+          action.remainingShares
+        );
       case "ChooseEndTurn":
         return this.renderChooseEndTurn();
     }
