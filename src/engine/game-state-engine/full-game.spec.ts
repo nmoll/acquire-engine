@@ -33,6 +33,15 @@ it("Game Play", () => {
       case "PurchaseShares":
         desc += ` purchases ${action.hotelChain}`;
         break;
+      case "SellOrphanedShare":
+        desc += ` sells 1 orphaned ${action.hotelChain} share`;
+        break;
+      case "KeepOrphanedShare":
+        desc += ` keeps 1 orphaned ${action.hotelChain} share`;
+        break;
+      case "TradeOrphanedShare":
+        desc += ` trades 2 ${action.hotelChain} -> ${action.hotelChainToReceive}`;
+        break;
       case "EndTurn":
         desc += ` ends turn`;
         break;
@@ -212,9 +221,19 @@ it("Game Play", () => {
   playAndRecord(PlayerActionType.EndTurn("1"));
 
   playAndRecord(PlayerActionType.PlaceTile("2", tile("3G")));
-  playAndRecord(PlayerActionType.EndTurn("2"));
+  playAndRecord(
+    PlayerActionType.TradeOrphanedShare("3", "Imperial", "American")
+  );
+  playAndRecord(PlayerActionType.SellOrphanedShare("3", "Imperial"));
+  playAndRecord(PlayerActionType.KeepOrphanedShare("3", "Imperial"));
+  playAndRecord(PlayerActionType.SellOrphanedShare("4", "Imperial"));
+  playAndRecord(
+    PlayerActionType.TradeOrphanedShare("4", "Imperial", "American")
+  );
+  //TODO: Player 2 is out of money but can buy stocks because the system
+  // thinks it's player 4's turn
 
-  playAndRecord(PlayerActionType.PlaceTile("3", tile("5A")));
-  playAndRecord(PlayerActionType.StartHotelChain("3", "Imperial"));
-  playAndRecord(PlayerActionType.EndTurn("3"));
+  // playAndRecord(PlayerActionType.PlaceTile("3", tile("5A")));
+  // playAndRecord(PlayerActionType.StartHotelChain("3", "Imperial"));
+  // playAndRecord(PlayerActionType.EndTurn("3"));
 });

@@ -123,5 +123,49 @@ describe("SharesEngine", () => {
            `)
       );
     });
+
+    it("should remove share if sold", () => {
+      expectStateWithAction(
+        `
+           A C F I L T W
+        P1 4 0 0 0 0 0 0
+        P2 0 0 0 1 0 0 0
+        P3 0 0 0 0 0 0 0
+        P4 0 0 0 0 0 0 0
+        `,
+        playerIds,
+        PlayerActionResult.ShareSold("1", "American")
+      ).toEqual(
+        SharesStateFactory.createSharesState(`
+              A C F I L T W
+           P1 3 0 0 0 0 0 0
+           P2 0 0 0 1 0 0 0
+           P3 0 0 0 0 0 0 0
+           P4 0 0 0 0 0 0 0
+           `)
+      );
+    });
+
+    it("should trade share 2 for 1 if traded", () => {
+      expectStateWithAction(
+        `
+           A C F I L T W
+        P1 4 0 0 3 0 0 0
+        P2 0 0 0 1 0 0 0
+        P3 0 0 0 0 0 0 0
+        P4 0 0 0 0 0 0 0
+        `,
+        playerIds,
+        PlayerActionResult.ShareTraded("1", "American", "Imperial")
+      ).toEqual(
+        SharesStateFactory.createSharesState(`
+              A C F I L T W
+           P1 2 0 0 4 0 0 0
+           P2 0 0 0 1 0 0 0
+           P3 0 0 0 0 0 0 0
+           P4 0 0 0 0 0 0 0
+           `)
+      );
+    });
   });
 });

@@ -1,7 +1,9 @@
 import { GameConfig } from "../game-config";
 import { HotelChainType, ISharesState } from "../model";
+import { ActionLog } from "../model/action-log";
 import { AvailableShares } from "../model/available-shares.type";
 import { HotelChainState } from "../model/hotel-chain-state";
+import { PlayerUtils } from "./player-utils";
 
 const getAvailableSharesForHotel = (
   sharesState: ISharesState,
@@ -137,6 +139,43 @@ const getMajorityAndMinorityShareholders = (
   };
 };
 
+const getNumSharesKept = (currentTurn: ActionLog[], playerId: string) =>
+  currentTurn.filter(
+    (log) =>
+      log.actionResult.type === "Share Kept" &&
+      log.actionResult.action.playerId === playerId
+  ).length;
+
+const getNextPlayerWithOrphanedShares = (
+  sharesState: ISharesState,
+  startPlayerId: string,
+  hotelChain: HotelChainType,
+  currentTurn: ActionLog[]
+): {
+  playerId: string;
+  remainingShares: number;
+} | null => {
+  const playerIds = Object.keys(sharesState);
+
+  let playerId = startPlayerId;
+  let remainingShares =
+    (sharesState[playerId][hotelChain] ?? 0) -
+    getNumSharesKept(currentTurn, playerId);
+
+  while (remainingShares <= 0) {
+    playerId = PlayerUtils.getNextPlayerId(playerIds, playerId);
+    remainingShares =
+      (sharesState[playerId][hotelChain] ?? 0) -
+      getNumSharesKept(currentTurn, playerId);
+
+    if (playerId === startPlayerId) {
+      return null;
+    }
+  }
+
+  return { playerId, remainingShares };
+};
+
 export const SharesUtils = {
   getAvailableShares,
   getAvailableSharesForHotel,
@@ -145,4 +184,5 @@ export const SharesUtils = {
   getMajorityBonus,
   getMinorityBonus,
   getMajorityAndMinorityShareholders,
+  getNextPlayerWithOrphanedShares,
 };

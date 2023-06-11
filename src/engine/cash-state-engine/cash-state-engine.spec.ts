@@ -1,7 +1,9 @@
 import { IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
+import { ActionLog } from "../../model/action-log";
 import { ICashState } from "../../model/cash-state";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
+import { PlayerActionResult } from "../../model/player-action-result";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
 import { createGameInstance } from "../../test/factory/game-instance.factory";
 import { createGameState } from "../../test/factory/game-state.factory";
@@ -109,6 +111,72 @@ describe("CashEngine", () => {
       ).toEqual({
         1: 6000,
         2: 5700,
+        3: 6000,
+        4: 6000,
+      });
+    });
+  });
+
+  describe("Sell Shares", () => {
+    it("should add cash to the player for shares sold", () => {
+      const cashState: ICashState = {
+        1: 6000,
+        2: 6000,
+        3: 6000,
+        4: 6000,
+      };
+
+      const boardState = BoardStateFactory.createBoardState(
+        `
+      - - - - - - - - - - - -
+      - - - - - - - - - - - -
+      - - - - - C - - - - - -
+      - - - - - C - - L L - -
+      - - - - - - - - L L L -
+      - - - - - - - - L - - -
+      - - - A A - - - L L - - 
+      - - - - - - - - - L - -
+      - - - - - - - - - - - -
+      `
+      );
+
+      const gameState = createGameState({ cashState, boardState });
+
+      const gameLog: ActionLog[] = [
+        {
+          action: PlayerActionType.EndTurn("1"),
+          actionResult: PlayerActionResult.TurnEnded("1"),
+          state: createGameState({}),
+        },
+        {
+          action: PlayerActionType.PlaceTile("2", tile("9F")),
+          actionResult: PlayerActionResult.HotelAutoMerged(
+            "2",
+            tile("9F"),
+            {
+              hotelChain: "American",
+              size: 3,
+            },
+            {
+              hotelChain: "Luxor",
+              size: 5,
+            },
+            {}
+          ),
+          state: createGameState({}),
+        },
+      ];
+
+      expect(
+        CashStateEngine.computeState(
+          gameInstance,
+          gameState,
+          PlayerActionResult.ShareSold("2", "Luxor"),
+          gameLog
+        )
+      ).toEqual({
+        1: 6000,
+        2: 6400,
         3: 6000,
         4: 6000,
       });

@@ -1,11 +1,14 @@
 import { HotelChainType } from "./hotel-chain-type";
 import {
   EndTurn,
+  KeepOrphanedShare,
   Merge,
   PlaceTile,
   PlayerActionType,
   PurchaseShares,
+  SellOrphanedShare,
   StartHotelChain,
+  TradeOrphanedShare,
 } from "./player-action";
 
 interface TilePlaced {
@@ -34,8 +37,14 @@ interface MergeInitiated {
 interface HotelAutoMerged {
   type: "Hotel Auto Merged";
   action: PlaceTile;
-  minorityHotelChain: HotelChainType;
-  majorityHotelChain: HotelChainType;
+  minority: {
+    hotelChain: HotelChainType;
+    size: number;
+  };
+  majority: {
+    hotelChain: HotelChainType;
+    size: number;
+  };
   cashAwarded: Record<string, number>;
 }
 
@@ -47,6 +56,21 @@ interface HotelMergeDirectionDecided {
 interface SharesPurchased {
   type: "Shares Purchased";
   action: PurchaseShares;
+}
+
+interface ShareSold {
+  type: "Share Sold";
+  action: SellOrphanedShare;
+}
+
+interface ShareKept {
+  type: "Share Kept";
+  action: KeepOrphanedShare;
+}
+
+interface ShareTraded {
+  type: "Share Traded";
+  action: TradeOrphanedShare;
 }
 
 interface TurnEnded {
@@ -62,6 +86,9 @@ export type PlayerActionResult =
   | HotelAutoMerged
   | HotelMergeDirectionDecided
   | SharesPurchased
+  | ShareSold
+  | ShareKept
+  | ShareTraded
   | TurnEnded;
 
 export const PlayerActionResult = {
@@ -99,14 +126,20 @@ export const PlayerActionResult = {
   HotelAutoMerged: (
     playerId: string,
     boardSquareId: number,
-    minorityHotelChain: HotelChainType,
-    majorityHotelChain: HotelChainType,
+    minority: {
+      hotelChain: HotelChainType;
+      size: number;
+    },
+    majority: {
+      hotelChain: HotelChainType;
+      size: number;
+    },
     cashAwarded: Record<string, number>
   ): HotelAutoMerged => ({
     type: "Hotel Auto Merged",
     action: PlayerActionType.PlaceTile(playerId, boardSquareId),
-    majorityHotelChain,
-    minorityHotelChain,
+    minority,
+    majority,
     cashAwarded,
   }),
   HotelMergeDirectionDecided: (
@@ -122,6 +155,26 @@ export const PlayerActionResult = {
   ): SharesPurchased => ({
     type: "Shares Purchased",
     action: PlayerActionType.PurchaseShares(playerId, hotelChain),
+  }),
+  ShareSold: (playerId: string, hotelChain: HotelChainType): ShareSold => ({
+    type: "Share Sold",
+    action: PlayerActionType.SellOrphanedShare(playerId, hotelChain),
+  }),
+  ShareKept: (playerId: string, hotelChain: HotelChainType): ShareKept => ({
+    type: "Share Kept",
+    action: PlayerActionType.KeepOrphanedShare(playerId, hotelChain),
+  }),
+  ShareTraded: (
+    playerId: string,
+    hotelChain: HotelChainType,
+    hotelChainReceived: HotelChainType
+  ): ShareTraded => ({
+    type: "Share Traded",
+    action: PlayerActionType.TradeOrphanedShare(
+      playerId,
+      hotelChain,
+      hotelChainReceived
+    ),
   }),
   TurnEnded: (playerId: string): TurnEnded => ({
     type: "Turn Ended",

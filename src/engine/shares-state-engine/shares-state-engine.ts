@@ -47,6 +47,34 @@ const getPurchasedShares = (
   return playerAction.hotelChain === hotel ? 1 : 0;
 };
 
+const getSoldShares = (
+  playerAction: PlayerAction,
+  hotel: HotelChainType
+): number => {
+  if (playerAction.type !== "SellOrphanedShare") {
+    return 0;
+  }
+
+  return playerAction.hotelChain === hotel ? -1 : 0;
+};
+
+const getTradedShares = (
+  playerAction: PlayerAction,
+  hotel: HotelChainType
+): number => {
+  if (playerAction.type !== "TradeOrphanedShare") {
+    return 0;
+  }
+
+  if (playerAction.hotelChain === hotel) {
+    return -2;
+  } else if (playerAction.hotelChainToReceive === hotel) {
+    return 1;
+  } else {
+    return 0;
+  }
+};
+
 const computeState = (
   gameInstance: IAcquireGameInstance,
   result: PlayerActionResult | null = null,
@@ -69,7 +97,9 @@ const computeState = (
         [hotel]:
           getExistingShares(playerAction, hotel, state) +
           getStarterBonuses(playerAction, hotel) +
-          getPurchasedShares(playerAction, hotel),
+          getPurchasedShares(playerAction, hotel) +
+          getSoldShares(playerAction, hotel) +
+          getTradedShares(playerAction, hotel),
       },
     }),
     sharesState

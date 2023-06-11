@@ -66,6 +66,11 @@ const computeActionResult = (
               minorityHotelChain
             );
 
+          const majorityHotelSize = HotelChainUtils.getHotelSize(
+            majorityHotelChain,
+            state.boardState
+          );
+
           const minorityHotelSize = HotelChainUtils.getHotelSize(
             minorityHotelChain,
             state.boardState
@@ -96,8 +101,14 @@ const computeActionResult = (
           return {
             type: "Hotel Auto Merged",
             action,
-            majorityHotelChain,
-            minorityHotelChain,
+            majority: {
+              hotelChain: majorityHotelChain,
+              size: majorityHotelSize,
+            },
+            minority: {
+              hotelChain: minorityHotelChain,
+              size: minorityHotelSize,
+            },
             cashAwarded,
           };
         }
@@ -124,6 +135,21 @@ const computeActionResult = (
     case "PurchaseShares":
       return {
         type: "Shares Purchased",
+        action,
+      };
+    case "SellOrphanedShare":
+      return {
+        type: "Share Sold",
+        action,
+      };
+    case "KeepOrphanedShare":
+      return {
+        type: "Share Kept",
+        action,
+      };
+    case "TradeOrphanedShare":
+      return {
+        type: "Share Traded",
         action,
       };
     case "Merge":

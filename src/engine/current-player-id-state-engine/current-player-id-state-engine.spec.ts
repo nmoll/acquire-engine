@@ -67,7 +67,24 @@ describe("CurrentPlayerIdStateEngine", () => {
       expect(
         CurrentPlayerIdStateEngine.computeState(
           gameInstance,
-          PlayerActionResult.HotelAutoMerged(PLAYER_2, 1, "Tower", "Luxor", {})
+          PlayerActionResult.HotelAutoMerged(
+            PLAYER_2,
+            1,
+            {
+              hotelChain: "Tower",
+              size: 2,
+            },
+            {
+              hotelChain: "Luxor",
+              size: 3,
+            },
+            {}
+          ),
+          {
+            [PLAYER_2]: {
+              Tower: 1,
+            },
+          }
         )
       ).toEqual(PLAYER_2);
     });

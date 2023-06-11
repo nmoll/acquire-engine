@@ -18,6 +18,25 @@ export interface PurchaseShares {
   hotelChain: HotelChainType;
 }
 
+export interface SellOrphanedShare {
+  type: "SellOrphanedShare";
+  playerId: string;
+  hotelChain: HotelChainType;
+}
+
+export interface KeepOrphanedShare {
+  type: "KeepOrphanedShare";
+  playerId: string;
+  hotelChain: HotelChainType;
+}
+
+export interface TradeOrphanedShare {
+  type: "TradeOrphanedShare";
+  playerId: string;
+  hotelChain: HotelChainType;
+  hotelChainToReceive: HotelChainType;
+}
+
 export interface Merge {
   type: "Merge";
   playerId: string;
@@ -33,6 +52,9 @@ export type PlayerAction =
   | PlaceTile
   | StartHotelChain
   | PurchaseShares
+  | SellOrphanedShare
+  | KeepOrphanedShare
+  | TradeOrphanedShare
   | Merge
   | EndTurn;
 
@@ -58,6 +80,35 @@ export const PlayerActionType = {
     type: "PurchaseShares",
     playerId,
     hotelChain,
+  }),
+
+  SellOrphanedShare: (
+    playerId: string,
+    hotelChain: HotelChainType
+  ): SellOrphanedShare => ({
+    type: "SellOrphanedShare",
+    playerId,
+    hotelChain,
+  }),
+
+  KeepOrphanedShare: (
+    playerId: string,
+    hotelChain: HotelChainType
+  ): KeepOrphanedShare => ({
+    type: "KeepOrphanedShare",
+    playerId,
+    hotelChain,
+  }),
+
+  TradeOrphanedShare: (
+    playerId: string,
+    hotelChain: HotelChainType,
+    hotelChainToReceive: HotelChainType
+  ): TradeOrphanedShare => ({
+    type: "TradeOrphanedShare",
+    playerId,
+    hotelChain,
+    hotelChainToReceive,
   }),
 
   Merge: (playerId: string, hotelChainToKeep: HotelChainType): Merge => ({

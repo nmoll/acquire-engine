@@ -65,14 +65,14 @@ const computeState = (
         .filter(
           ({ state }) =>
             state.type === "HasHotelChain" &&
-            state.hotelChainType === actionResult.minorityHotelChain
+            state.hotelChainType === actionResult.minority.hotelChain
         )
         .map(({ idx }) => idx);
 
       return updateAll(
         boardState,
         minorityBoardSquareIds.concat(actionResult.action.boardSquareId),
-        BoardSquareStateType.HasHotelChain(actionResult.majorityHotelChain)
+        BoardSquareStateType.HasHotelChain(actionResult.majority.hotelChain)
       );
     default:
       return boardState;

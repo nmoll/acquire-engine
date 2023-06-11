@@ -203,4 +203,71 @@ describe("SharesUtils", () => {
       });
     });
   });
+
+  describe(SharesUtils.getNextPlayerWithOrphanedShares.name, () => {
+    it("should return the next player with shares of the given hotel", () => {
+      const sharesState = SharesStateFactory.createSharesState(`
+           A C F I L T W
+        P1 1 0 0 0 2 0 0
+        P2 0 1 0 1 0 3 0
+        P3 5 0 1 0 0 0 0
+        P4 0 0 0 0 0 0 5
+        `);
+
+      expect(
+        SharesUtils.getNextPlayerWithOrphanedShares(
+          sharesState,
+          "1",
+          "American",
+          []
+        )
+      ).toEqual({ playerId: "1", remainingShares: 1 });
+
+      expect(
+        SharesUtils.getNextPlayerWithOrphanedShares(
+          sharesState,
+          "2",
+          "American",
+          []
+        )
+      ).toEqual({ playerId: "3", remainingShares: 5 });
+
+      expect(
+        SharesUtils.getNextPlayerWithOrphanedShares(
+          sharesState,
+          "3",
+          "American",
+          []
+        )
+      ).toEqual({ playerId: "3", remainingShares: 5 });
+
+      expect(
+        SharesUtils.getNextPlayerWithOrphanedShares(
+          sharesState,
+          "4",
+          "American",
+          []
+        )
+      ).toEqual({ playerId: "1", remainingShares: 1 });
+    });
+
+    it("should return null if no player owns shares for the given hotel", () => {
+      const sharesState = SharesStateFactory.createSharesState(`
+           A C F I L T W
+        P1 1 0 0 0 2 0 0
+        P2 0 1 0 1 0 3 0
+        P3 5 0 0 0 0 0 0
+        P4 0 0 0 0 0 0 5
+        `);
+
+      expect(
+        SharesUtils.getNextPlayerWithOrphanedShares(
+          sharesState,
+          "1",
+          "Festival",
+          []
+        )
+      ).toEqual(null);
+    });
+  });
 });

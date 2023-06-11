@@ -53,6 +53,12 @@ const formatAction = (action: AvailableAction): string => {
         .map(([chain]) => formatHotelChain(chain))
         .join(" ");
       return `Choose Shares: ${options}`;
+    case "ChooseToSellOrphanedShare":
+      return `Sell (1/${action.remainingShares}) ${action.hotelChain} Share`;
+    case "ChooseToKeepOrphanedShare":
+      return `Keep (1/${action.remainingShares}) ${action.hotelChain} Share`;
+    case "ChooseToTradeOrphanedShare":
+      return `Trade (2/${action.remainingShares}) ${action.hotelChain} for 1 ${action.hotelChainToReceive}`;
     case "ChooseEndTurn":
       return `End Turn`;
   }

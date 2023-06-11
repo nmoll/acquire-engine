@@ -1,5 +1,6 @@
 import { IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
+import { ActionLog } from "../../model/action-log";
 import { PlayerAction } from "../../model/player-action";
 import { ActionResultEngine } from "../action-result-engine/action-result-engine";
 import { AvailableActionsStateEngine } from "../available-actions-state-engine/available-actions-state-engine";
@@ -34,78 +35,73 @@ const getInitialState = (gameInstance: IAcquireGameInstance): IGameState => {
 
 const computeGameState = (
   gameInstance: IAcquireGameInstance,
-  playerActions: PlayerAction[],
-  state: IGameState = getInitialState(gameInstance),
-  history: PlayerAction[] = []
+  playerActions: PlayerAction[]
 ): IGameState => {
-  if (!playerActions || playerActions.length === 0) {
-    return state;
-  }
+  const gameLog: ActionLog[] = [];
 
-  if (!AvailableActionsStateEngine.validateAction(playerActions[0], state)) {
-    // Throw out the action and resume
-    return computeGameState(
-      gameInstance,
-      playerActions.slice(1),
-      state,
-      history
+  return playerActions.reduce<IGameState>((state, action) => {
+    if (!AvailableActionsStateEngine.validateAction(action, state)) {
+      return state;
+    }
+
+    const actionResult = ActionResultEngine.computeActionResult(state, action);
+
+    const boardState = BoardStateEngine.computeState(
+      actionResult,
+      state.boardState
     );
-  }
 
-  const actionResult = ActionResultEngine.computeActionResult(
-    state,
-    playerActions[0]
-  );
+    const cashState = CashStateEngine.computeState(
+      gameInstance,
+      state,
+      actionResult,
+      gameLog
+    );
 
-  const boardState = BoardStateEngine.computeState(
-    actionResult,
-    state.boardState
-  );
+    const tileState = TileStateEngine.computeState(
+      gameInstance,
+      actionResult,
+      state.tileState
+    );
 
-  const cashState = CashStateEngine.computeState(
-    gameInstance,
-    state,
-    actionResult
-  );
+    const sharesState = SharesStateEngine.computeState(
+      gameInstance,
+      actionResult,
+      state.sharesState
+    );
 
-  const tileState = TileStateEngine.computeState(
-    gameInstance,
-    actionResult,
-    state.tileState
-  );
+    const currentPlayerIdState = CurrentPlayerIdStateEngine.computeState(
+      gameInstance,
+      actionResult,
+      sharesState,
+      gameLog
+    );
 
-  const sharesState = SharesStateEngine.computeState(
-    gameInstance,
-    actionResult,
-    state.sharesState
-  );
+    const availableActionsState = AvailableActionsStateEngine.computeState(
+      boardState,
+      sharesState,
+      cashState,
+      actionResult,
+      gameLog
+    );
 
-  const currentPlayerIdState = CurrentPlayerIdStateEngine.computeState(
-    gameInstance,
-    actionResult
-  );
-
-  const availableActionsState = AvailableActionsStateEngine.computeState(
-    boardState,
-    sharesState,
-    cashState,
-    actionResult,
-    history
-  );
-
-  return computeGameState(
-    gameInstance,
-    playerActions.slice(1),
-    {
+    const newState = {
       boardState,
       cashState,
-      tileState,
       sharesState,
-      currentPlayerIdState,
+      tileState,
       availableActionsState,
-    },
-    [...history, playerActions[0]]
-  );
+      currentPlayerIdState,
+    };
+
+    gameLog.push({
+      action,
+      actionResult,
+      state: newState,
+    });
+
+    return newState;
+  }, getInitialState(gameInstance));
 };
 
 export const GameStateEngine = {

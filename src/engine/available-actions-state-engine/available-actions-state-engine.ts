@@ -1,5 +1,6 @@
 import { GameConfig } from "../../game-config";
 import { BoardSquareState, IGameState, ISharesState } from "../../model";
+import { ActionLog } from "../../model/action-log";
 import {
   AvailableActionType,
   ChooseShares,
@@ -7,9 +8,12 @@ import {
 import { IAvailableActionState } from "../../model/available-action-state";
 import { ICashState } from "../../model/cash-state";
 import {
+  KeepOrphanedShare,
   PlayerAction,
   PurchaseShares,
+  SellOrphanedShare,
   StartHotelChain,
+  TradeOrphanedShare,
 } from "../../model/player-action";
 import { PlayerActionResult } from "../../model/player-action-result";
 import { ActionUtils } from "../../utils/action-utils";
@@ -39,18 +43,18 @@ const computeState = (
   sharesState: ISharesState,
   cashState: ICashState,
   actionResult: PlayerActionResult | null = null,
-  history: PlayerAction[] = []
+  gameLog: ActionLog[] = []
 ): IAvailableActionState => {
   if (!actionResult) {
     return [AvailableActionType.ChooseTile()];
   }
 
-  const playerCash = cashState[actionResult.action.playerId];
+  const playerId = actionResult.action.playerId;
+  const playerCash = cashState[playerId];
 
   switch (actionResult.type) {
     case "Tile Placed":
     case "Hotel Size Increased":
-    case "Hotel Auto Merged":
       if (
         HotelChainUtils.isHotelStarter(
           boardState,
@@ -74,6 +78,44 @@ const computeState = (
         AvailableActionType.ChooseMergeDirection(actionResult.hotelChains),
       ];
 
+    case "Hotel Auto Merged":
+      const playerWithShares = SharesUtils.getNextPlayerWithOrphanedShares(
+        sharesState,
+        playerId,
+        actionResult.minority.hotelChain,
+        ActionUtils.getCurrentTurn(gameLog)
+      );
+      const numShares = playerWithShares
+        ? sharesState[playerWithShares.playerId][
+            actionResult.minority.hotelChain
+          ]
+        : null;
+
+      if (!numShares) {
+        return [
+          chooseSharesIfAvailable(boardState, sharesState, playerCash),
+          AvailableActionType.ChooseEndTurn(),
+        ].filter(isDefined);
+      }
+
+      return [
+        AvailableActionType.ChooseToSellOrphanedShare(
+          actionResult.minority.hotelChain,
+          numShares
+        ),
+        AvailableActionType.ChooseToKeepOrphanedShare(
+          actionResult.minority.hotelChain,
+          numShares
+        ),
+        numShares > 1
+          ? AvailableActionType.ChooseToTradeOrphanedShare(
+              actionResult.minority.hotelChain,
+              actionResult.majority.hotelChain,
+              numShares
+            )
+          : null,
+      ].filter(isDefined);
+
     case "Hotel Chain Started":
       return [
         chooseSharesIfAvailable(boardState, sharesState, playerCash),
@@ -82,8 +124,8 @@ const computeState = (
 
     case "Shares Purchased":
       const sharesPurchasedThisTurn = ActionUtils.getCurrentTurn(
-        history
-      ).filter((action) => action.type === "PurchaseShares");
+        gameLog
+      ).filter((log) => log.action.type === "PurchaseShares");
 
       return [
         sharesPurchasedThisTurn.length + 1 < GameConfig.turn.maxShares
@@ -91,6 +133,45 @@ const computeState = (
           : null,
         AvailableActionType.ChooseEndTurn(),
       ].filter(isDefined);
+
+    case "Share Kept":
+    case "Share Sold":
+    case "Share Traded":
+      const mergeContext = ActionUtils.getMergeContextThisTurn(gameLog);
+      if (!mergeContext) {
+        throw new Error("Expected to find merge context for current turn");
+      }
+
+      const playerWithUnresolvedShares =
+        ActionUtils.findPlayerWithUnresolvedOrphanedShares(
+          actionResult,
+          gameLog
+        );
+
+      if (playerWithUnresolvedShares) {
+        return [
+          AvailableActionType.ChooseToSellOrphanedShare(
+            mergeContext.minority.hotelChain,
+            playerWithUnresolvedShares.shares
+          ),
+          AvailableActionType.ChooseToKeepOrphanedShare(
+            mergeContext.minority.hotelChain,
+            playerWithUnresolvedShares.shares
+          ),
+          playerWithUnresolvedShares.shares > 1
+            ? AvailableActionType.ChooseToTradeOrphanedShare(
+                mergeContext.minority.hotelChain,
+                mergeContext.majority.hotelChain,
+                playerWithUnresolvedShares.shares
+              )
+            : null,
+        ].filter(isDefined);
+      } else {
+        return [
+          chooseSharesIfAvailable(boardState, sharesState, playerCash),
+          AvailableActionType.ChooseEndTurn(),
+        ].filter(isDefined);
+      }
 
     case "Turn Ended":
       return [AvailableActionType.ChooseTile()];
@@ -123,6 +204,37 @@ const validatePurchaseShares = (
       available.availableShares[action.hotelChain]
   );
 
+const validateSellOrphanedShare = (
+  action: SellOrphanedShare,
+  state: IAvailableActionState
+): boolean =>
+  !!state.find(
+    (available) =>
+      available.type === "ChooseToSellOrphanedShare" &&
+      available.hotelChain === action.hotelChain
+  );
+
+const validateKeepOrphanedShare = (
+  action: KeepOrphanedShare,
+  state: IAvailableActionState
+): boolean =>
+  !!state.find(
+    (available) =>
+      available.type === "ChooseToKeepOrphanedShare" &&
+      available.hotelChain === action.hotelChain
+  );
+
+const validateTradeOrphanedShare = (
+  action: TradeOrphanedShare,
+  state: IAvailableActionState
+): boolean =>
+  state.some(
+    (available) =>
+      available.type === "ChooseToTradeOrphanedShare" &&
+      available.hotelChain === action.hotelChain &&
+      available.hotelChainToReceive === action.hotelChainToReceive
+  );
+
 const validateEndTurn = (state: IAvailableActionState): boolean =>
   !!state.find((available) => available.type === "ChooseEndTurn");
 
@@ -141,6 +253,15 @@ const validateAction = (
       return validateStartHotelChain(action, gameState.availableActionsState);
     case "PurchaseShares":
       return validatePurchaseShares(action, gameState.availableActionsState);
+    case "SellOrphanedShare":
+      return validateSellOrphanedShare(action, gameState.availableActionsState);
+    case "KeepOrphanedShare":
+      return validateKeepOrphanedShare(action, gameState.availableActionsState);
+    case "TradeOrphanedShare":
+      return validateTradeOrphanedShare(
+        action,
+        gameState.availableActionsState
+      );
     case "EndTurn":
       return validateEndTurn(gameState.availableActionsState);
   }
