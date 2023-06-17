@@ -1,14 +1,10 @@
 import { GameConfig } from "../../game-config";
 import { ALL_HOTELS, HotelChainType } from "../../model";
-import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerAction } from "../../model/player-action";
 import { PlayerActionResult } from "../../model/player-action-result";
 import { ISharesState } from "../../model/shares-state";
 
-const fillEmptyStates = (
-  playerIds: string[],
-  shareState: ISharesState
-): ISharesState =>
+const getInitialState = (playerIds: string[]): ISharesState =>
   playerIds.reduce(
     (state, playerId) => ({
       ...state,
@@ -20,8 +16,32 @@ const fillEmptyStates = (
         {}
       ),
     }),
-    shareState
+    {} as ISharesState
   );
+
+const computeState = (
+  result: PlayerActionResult,
+  sharesState: ISharesState
+): ISharesState => {
+  const playerAction = result.action;
+
+  return ALL_HOTELS.reduce(
+    (state, hotel) => ({
+      ...state,
+
+      [playerAction.playerId]: {
+        ...state[playerAction.playerId],
+        [hotel]:
+          getExistingShares(playerAction, hotel, state) +
+          getStarterBonuses(playerAction, hotel) +
+          getPurchasedShares(playerAction, hotel) +
+          getSoldShares(playerAction, hotel) +
+          getTradedShares(playerAction, hotel),
+      },
+    }),
+    sharesState
+  );
+};
 
 const getExistingShares = (
   playerAction: PlayerAction,
@@ -75,37 +95,7 @@ const getTradedShares = (
   }
 };
 
-const computeState = (
-  gameInstance: IAcquireGameInstance,
-  result: PlayerActionResult | null = null,
-  sharesState: ISharesState = {}
-): ISharesState => {
-  sharesState = fillEmptyStates(gameInstance.playerIds, sharesState);
-
-  if (!result) {
-    return sharesState;
-  }
-
-  const playerAction = result.action;
-
-  return ALL_HOTELS.reduce(
-    (state, hotel) => ({
-      ...state,
-
-      [playerAction.playerId]: {
-        ...state[playerAction.playerId],
-        [hotel]:
-          getExistingShares(playerAction, hotel, state) +
-          getStarterBonuses(playerAction, hotel) +
-          getPurchasedShares(playerAction, hotel) +
-          getSoldShares(playerAction, hotel) +
-          getTradedShares(playerAction, hotel),
-      },
-    }),
-    sharesState
-  );
-};
-
 export const SharesStateEngine = {
+  getInitialState,
   computeState,
 };

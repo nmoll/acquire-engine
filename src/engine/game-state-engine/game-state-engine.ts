@@ -2,6 +2,8 @@ import { IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { ActionLog } from "../../model/action-log";
 import { PlayerAction } from "../../model/player-action";
+import { TurnContext } from "../../model/turn-context";
+import { ActionUtils } from "../../utils/action-utils";
 import { ActionResultEngine } from "../action-result-engine/action-result-engine";
 import { AvailableActionsStateEngine } from "../available-actions-state-engine/available-actions-state-engine";
 import { BoardStateEngine } from "../board-state-engine/board-state-engine";
@@ -11,17 +13,14 @@ import { SharesStateEngine } from "../shares-state-engine/shares-state-engine";
 import { TileStateEngine } from "../tile-state-engine/tile-state-engine";
 
 const getInitialState = (gameInstance: IAcquireGameInstance): IGameState => {
-  const boardState = BoardStateEngine.computeState();
-  const cashState = CashStateEngine.computeState(gameInstance);
-  const tileState = TileStateEngine.computeState(gameInstance);
-  const sharesState = SharesStateEngine.computeState(gameInstance);
-  const currentPlayerIdState =
-    CurrentPlayerIdStateEngine.computeState(gameInstance);
-  const availableActionsState = AvailableActionsStateEngine.computeState(
-    boardState,
-    sharesState,
-    cashState
+  const boardState = BoardStateEngine.getInitialState();
+  const cashState = CashStateEngine.getInitialState(gameInstance.playerIds);
+  const tileState = TileStateEngine.getInitialState(gameInstance);
+  const sharesState = SharesStateEngine.getInitialState(gameInstance.playerIds);
+  const currentPlayerIdState = CurrentPlayerIdStateEngine.getInitialState(
+    gameInstance.playerIds
   );
+  const availableActionsState = AvailableActionsStateEngine.getInitialState();
 
   return {
     boardState,
@@ -46,17 +45,19 @@ const computeGameState = (
 
     const actionResult = ActionResultEngine.computeActionResult(state, action);
 
+    const turnContext: TurnContext = {
+      playerIds: gameInstance.playerIds,
+      mergeContext: ActionUtils.getMergeContextThisTurn(gameLog),
+      actionResult,
+      turnLog: ActionUtils.getCurrentTurn(gameLog),
+    };
+
     const boardState = BoardStateEngine.computeState(
       actionResult,
       state.boardState
     );
 
-    const cashState = CashStateEngine.computeState(
-      gameInstance,
-      state,
-      actionResult,
-      gameLog
-    );
+    const cashState = CashStateEngine.computeState(state, turnContext);
 
     const tileState = TileStateEngine.computeState(
       gameInstance,
@@ -65,7 +66,6 @@ const computeGameState = (
     );
 
     const sharesState = SharesStateEngine.computeState(
-      gameInstance,
       actionResult,
       state.sharesState
     );
@@ -74,15 +74,15 @@ const computeGameState = (
       gameInstance,
       actionResult,
       sharesState,
-      gameLog
+      turnContext
     );
 
     const availableActionsState = AvailableActionsStateEngine.computeState(
       boardState,
       sharesState,
       cashState,
-      actionResult,
-      gameLog
+      turnContext,
+      currentPlayerIdState
     );
 
     const newState = {

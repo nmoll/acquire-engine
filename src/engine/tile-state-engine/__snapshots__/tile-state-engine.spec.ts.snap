@@ -113,7 +113,7 @@ exports[`TileStateEngine should create tile map 1`] = `
 }
 `;
 
-exports[`TileStateEngine should return initial tile state if no given state 1`] = `
+exports[`TileStateEngine should return initial tile state 1`] = `
 {
   "1": [
     11,

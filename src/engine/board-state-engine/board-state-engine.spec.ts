@@ -5,17 +5,15 @@ import { tile } from "../../test/helpers";
 import { ActionResultEngine } from "../action-result-engine/action-result-engine";
 import { BoardStateEngine } from "./board-state-engine";
 
-const expectStateWithAction = (
-  diagram: string,
-  playerAction: PlayerAction | null
-) => {
+const expectStateWithAction = (diagram: string, playerAction: PlayerAction) => {
   const boardState = BoardStateFactory.createBoardState(diagram);
   const gameState = createGameState({
     boardState,
   });
-  const actionResult = playerAction
-    ? ActionResultEngine.computeActionResult(gameState, playerAction)
-    : null;
+  const actionResult = ActionResultEngine.computeActionResult(
+    gameState,
+    playerAction
+  );
 
   return expect(BoardStateEngine.computeState(actionResult, boardState));
 };
@@ -39,7 +37,7 @@ const state = (diagram: string) => BoardStateFactory.createBoardState(diagram);
  */
 describe("BoardStateEngine", () => {
   it("should return empty state if nothing provided", () => {
-    expectStateWithAction("", null).toEqual(
+    expect(BoardStateEngine.getInitialState()).toEqual(
       state(
         `
         - - - - - - - - - - - -
@@ -53,35 +51,6 @@ describe("BoardStateEngine", () => {
         - - - - - - - - - - - -
       `
       )
-    );
-  });
-
-  it("should return the current state if no player action", () => {
-    expectStateWithAction(
-      `
-          - - T T - - - - - - - -
-          - - - - - - - - - - - -
-          - - - - - - - - - - - -
-          - - - - W W - - - - - -
-          - - - - - W - - - - - -
-          - - - - - - - - - - - -
-          - - - - - - - - - - - -
-          - - - - - - - - - - - -
-          - - - - - - - - - - - -
-        `,
-      null
-    ).toEqual(
-      state(`
-        - - T T - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - W W - - - - - -
-        - - - - - W - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        - - - - - - - - - - - -
-        `)
     );
   });
 

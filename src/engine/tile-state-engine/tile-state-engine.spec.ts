@@ -36,23 +36,13 @@ describe("TileStateEngine", () => {
     expect(result).toMatchSnapshot();
   });
 
-  it("should return initial tile state if no given state", () => {
-    expect(TileStateEngine.computeState(gameInstance)).toMatchSnapshot();
-  });
-
-  it("should return given tile state if no action", () => {
-    const tileState: ITileState = {
-      1: [5, 2, 8, 7],
-    };
-
-    expect(TileStateEngine.computeState(gameInstance, null, tileState)).toEqual(
-      tileState
-    );
+  it("should return initial tile state", () => {
+    expect(TileStateEngine.getInitialState(gameInstance)).toMatchSnapshot();
   });
 
   it("should return the same initial state for the same game instance", () => {
-    expect(TileStateEngine.computeState(gameInstance)).toEqual(
-      TileStateEngine.computeState(gameInstance)
+    expect(TileStateEngine.getInitialState(gameInstance)).toEqual(
+      TileStateEngine.getInitialState(gameInstance)
     );
   });
 
@@ -76,7 +66,7 @@ describe("TileStateEngine", () => {
   });
 
   it("should give player next tile when turn ends", () => {
-    const initialState = TileStateEngine.computeState(gameInstance);
+    const initialState = TileStateEngine.getInitialState(gameInstance);
     const actionResult = PlayerActionResult.TurnEnded("1");
 
     const resultState = TileStateEngine.computeState(

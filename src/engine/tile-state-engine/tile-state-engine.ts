@@ -4,6 +4,37 @@ import { PlayerActionResult } from "../../model/player-action-result";
 import { ITileState } from "../../model/tile-state";
 import { TileUtils } from "../../utils/tile-utils";
 
+const getInitialState = (gameInstance: IAcquireGameInstance): ITileState => {
+  const tileBag = TileUtils.getSortedBag(gameInstance.randomSeed);
+
+  return gameInstance.playerIds.reduce<ITileState>(
+    (res, playerId) =>
+      addPlayerTiles(GameConfig.tile.rackSize, playerId, tileBag, res),
+    {}
+  );
+};
+
+export const computeState = (
+  gameInstance: IAcquireGameInstance,
+  actionResult: PlayerActionResult,
+  tileState: ITileState
+): ITileState => {
+  const tileBag = TileUtils.getSortedBag(gameInstance.randomSeed);
+  const playerAction = actionResult.action;
+
+  if (playerAction.type === "PlaceTile") {
+    return discardPlayerTile(
+      playerAction.playerId,
+      playerAction.boardSquareId,
+      tileState
+    );
+  } else if (playerAction.type === "EndTurn") {
+    return addPlayerTile(playerAction.playerId, tileBag, tileState);
+  } else {
+    return tileState;
+  }
+};
+
 const addPlayerTile = (
   playerId: string,
   tileBag: number[],
@@ -46,45 +77,7 @@ const discardPlayerTile = (
   ),
 });
 
-const getInitialState = (
-  gameInstance: IAcquireGameInstance,
-  tileBag: number[]
-): ITileState => {
-  return gameInstance.playerIds.reduce<ITileState>(
-    (res, playerId) =>
-      addPlayerTiles(GameConfig.tile.rackSize, playerId, tileBag, res),
-    {}
-  );
-};
-
-export const computeState = (
-  gameInstance: IAcquireGameInstance,
-  actionResult: PlayerActionResult | null = null,
-  tileState: ITileState | null = null
-): ITileState => {
-  const tileBag = TileUtils.getSortedBag(gameInstance.randomSeed);
-  if (!tileState) {
-    return getInitialState(gameInstance, tileBag);
-  }
-  if (!actionResult) {
-    return tileState;
-  }
-
-  const playerAction = actionResult.action;
-
-  if (playerAction.type === "PlaceTile") {
-    return discardPlayerTile(
-      playerAction.playerId,
-      playerAction.boardSquareId,
-      tileState
-    );
-  } else if (playerAction.type === "EndTurn") {
-    return addPlayerTile(playerAction.playerId, tileBag, tileState);
-  } else {
-    return tileState;
-  }
-};
-
 export const TileStateEngine = {
+  getInitialState,
   computeState,
 };

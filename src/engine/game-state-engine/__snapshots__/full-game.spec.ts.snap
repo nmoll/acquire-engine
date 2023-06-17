@@ -2676,5 +2676,5 @@ P2 | $0 | [12I] [4B] [12F] [7H] | A:11 C:1 F:4 T:1 W:1
 P3 | $5600 | [11I] [5A] [1B] [7G] [5F] | A:6 C:1 F:4 I:1 L:4 T:2
 P4 | $5400 | [9C] [10B] [6D] [10I] [12G] | A:1 F:3 L:3 T:4
 
-P2 [Choose Shares: T L C W F] [End Turn]
+P2 [Choose Shares: ] [End Turn]
 `;

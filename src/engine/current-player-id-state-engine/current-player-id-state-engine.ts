@@ -1,17 +1,19 @@
 import { ISharesState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
-import { ActionLog } from "../../model/action-log";
 import { CurrentPlayerIdState } from "../../model/current-player-id-state";
 import { PlayerActionResult } from "../../model/player-action-result";
+import { TurnContext } from "../../model/turn-context";
 import { ActionUtils } from "../../utils/action-utils";
 import { PlayerUtils } from "../../utils/player-utils";
 import { SharesUtils } from "../../utils/shares-utils";
+
+const getInitialState = (playerIds: string[]) => playerIds[0] ?? null;
 
 const computeState = (
   gameInstance: IAcquireGameInstance,
   result: PlayerActionResult | null = null,
   sharesState: ISharesState = {},
-  gameLog: ActionLog[] = []
+  turnContext: TurnContext
 ): CurrentPlayerIdState => {
   if (!gameInstance.playerIds.length) {
     return null;
@@ -25,12 +27,12 @@ const computeState = (
     case "Share Traded":
     case "Share Sold":
       const playerWithUnresolvedShares =
-        ActionUtils.findPlayerWithUnresolvedOrphanedShares(result, gameLog);
+        ActionUtils.findPlayerWithUnresolvedOrphanedShares(turnContext);
 
       if (playerWithUnresolvedShares) {
         return playerWithUnresolvedShares.playerId;
       } else {
-        const mergeContext = ActionUtils.getMergeContextThisTurn(gameLog);
+        const mergeContext = turnContext.mergeContext;
         if (mergeContext) {
           return mergeContext.action.playerId;
         }
@@ -59,5 +61,6 @@ const computeState = (
 };
 
 export const CurrentPlayerIdStateEngine = {
+  getInitialState,
   computeState,
 };

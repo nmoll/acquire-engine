@@ -1,19 +1,13 @@
 import { PlayerActionResult } from "../../model/player-action-result";
-import { createGameInstance } from "../../test/factory/game-instance.factory";
 import { SharesStateFactory } from "../../test/factory/shares-state.factory";
 import { SharesStateEngine } from "./shares-state-engine";
 
 const expectStateWithAction = (
   sharesDiagram: string,
-  playerIds: string[],
-  action: PlayerActionResult | null
+  action: PlayerActionResult
 ) =>
   expect(
     SharesStateEngine.computeState(
-      createGameInstance({
-        randomSeed: 1,
-        playerIds,
-      }),
       action,
       SharesStateFactory.createSharesState(sharesDiagram)
     )
@@ -41,9 +35,9 @@ describe("SharesEngine", () => {
     playerIds = ["1", "2", "3", "4"];
   });
 
-  describe("computeShares", () => {
-    it("should return 0 shares for each hotel if no action has been played", () => {
-      expectStateWithAction("", playerIds, null).toEqual(
+  describe(SharesStateEngine.getInitialState.name, () => {
+    it("should return 0 shares for each hotel", () => {
+      expect(SharesStateEngine.getInitialState(playerIds)).toEqual(
         SharesStateFactory.createSharesState(
           `
               A C F I L T W
@@ -55,7 +49,9 @@ describe("SharesEngine", () => {
         )
       );
     });
+  });
 
+  describe("computeShares", () => {
     it("should add shares to player shares purchased", () => {
       expectStateWithAction(
         `
@@ -65,7 +61,6 @@ describe("SharesEngine", () => {
           P3 0 0 0 0 0 0 0
           P4 0 0 0 0 0 0 0
         `,
-        playerIds,
         PlayerActionResult.SharesPurchased("1", "American")
       ).toEqual(
         SharesStateFactory.createSharesState(
@@ -89,7 +84,6 @@ describe("SharesEngine", () => {
         P3 0 0 0 0 0 0 0
         P4 0 0 0 0 0 0 0
         `,
-        playerIds,
         PlayerActionResult.HotelChainStarted("2", "Imperial", [])
       ).toEqual(
         SharesStateFactory.createSharesState(`
@@ -111,7 +105,6 @@ describe("SharesEngine", () => {
         P3 0 0 0 0 0 0 0
         P4 0 0 0 0 0 0 0
         `,
-        playerIds,
         PlayerActionResult.HotelChainStarted("2", "Imperial", [])
       ).toEqual(
         SharesStateFactory.createSharesState(`
@@ -133,7 +126,6 @@ describe("SharesEngine", () => {
         P3 0 0 0 0 0 0 0
         P4 0 0 0 0 0 0 0
         `,
-        playerIds,
         PlayerActionResult.ShareSold("1", "American")
       ).toEqual(
         SharesStateFactory.createSharesState(`
@@ -155,7 +147,6 @@ describe("SharesEngine", () => {
         P3 0 0 0 0 0 0 0
         P4 0 0 0 0 0 0 0
         `,
-        playerIds,
         PlayerActionResult.ShareTraded("1", "American", "Imperial")
       ).toEqual(
         SharesStateFactory.createSharesState(`

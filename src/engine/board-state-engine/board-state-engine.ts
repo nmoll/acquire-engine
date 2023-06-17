@@ -7,30 +7,15 @@ import { PlayerActionResult } from "../../model/player-action-result";
 import { ArrayUtils } from "../../utils/array-utils";
 import { BoardUtils } from "../../utils/board-utils";
 
-const defaultState: BoardSquareState[] = ArrayUtils.makeNumArray(
-  GameConfig.board.size
-).map(() => BoardSquareStateType.Default());
-
-const updateAll = (
-  boardState: BoardSquareState[],
-  boardSquareIds: number[],
-  newState: BoardSquareState
-): BoardSquareState[] =>
-  boardState.map((state, index) =>
-    boardSquareIds.includes(index) ? newState : state
+const getInitialState = () =>
+  ArrayUtils.makeNumArray(GameConfig.board.size).map(() =>
+    BoardSquareStateType.Default()
   );
 
 const computeState = (
-  actionResult: PlayerActionResult | null = null,
-  boardState: BoardSquareState[] = []
+  actionResult: PlayerActionResult,
+  boardState: BoardSquareState[]
 ): BoardSquareState[] => {
-  if (!boardState.length) {
-    return defaultState;
-  }
-  if (!actionResult) {
-    return boardState;
-  }
-
   switch (actionResult.type) {
     case "Tile Placed":
     case "Merge Initiated":
@@ -79,6 +64,16 @@ const computeState = (
   }
 };
 
+const updateAll = (
+  boardState: BoardSquareState[],
+  boardSquareIds: number[],
+  newState: BoardSquareState
+): BoardSquareState[] =>
+  boardState.map((state, index) =>
+    boardSquareIds.includes(index) ? newState : state
+  );
+
 export const BoardStateEngine = {
+  getInitialState,
   computeState,
 };

@@ -1,12 +1,12 @@
 import { GameConfig } from "../../game-config";
 import { BoardSquareState, IGameState, ISharesState } from "../../model";
-import { ActionLog } from "../../model/action-log";
 import {
   AvailableActionType,
   ChooseShares,
 } from "../../model/available-action";
 import { IAvailableActionState } from "../../model/available-action-state";
 import { ICashState } from "../../model/cash-state";
+import { CurrentPlayerIdState } from "../../model/current-player-id-state";
 import {
   KeepOrphanedShare,
   PlayerAction,
@@ -15,42 +15,29 @@ import {
   StartHotelChain,
   TradeOrphanedShare,
 } from "../../model/player-action";
-import { PlayerActionResult } from "../../model/player-action-result";
+import { TurnContext } from "../../model/turn-context";
 import { ActionUtils } from "../../utils/action-utils";
 import { HotelChainUtils } from "../../utils/hotel-chain-utils";
 import { isDefined } from "../../utils/is-defined-util";
 import { SharesUtils } from "../../utils/shares-utils";
 
-const chooseSharesIfAvailable = (
-  boardState: BoardSquareState[],
-  sharesState: ISharesState,
-  playerCash: number
-): ChooseShares | null => {
-  const hotelChainState = HotelChainUtils.getHotelChainState(
-    boardState,
-    sharesState
-  );
-
-  return Object.keys(hotelChainState).length
-    ? AvailableActionType.ChooseShares(
-        SharesUtils.getAvailableSharesForPurchase(hotelChainState, playerCash)
-      )
-    : null;
-};
+const getInitialState = (): IAvailableActionState => [
+  AvailableActionType.ChooseTile(),
+];
 
 const computeState = (
   boardState: BoardSquareState[],
   sharesState: ISharesState,
   cashState: ICashState,
-  actionResult: PlayerActionResult | null = null,
-  gameLog: ActionLog[] = []
+  turnContext: TurnContext,
+  currentPlayerId: CurrentPlayerIdState
 ): IAvailableActionState => {
-  if (!actionResult) {
+  const actionResult = turnContext.actionResult;
+  if (!actionResult || !currentPlayerId) {
     return [AvailableActionType.ChooseTile()];
   }
 
-  const playerId = actionResult.action.playerId;
-  const playerCash = cashState[playerId];
+  const playerCash = cashState[currentPlayerId];
 
   switch (actionResult.type) {
     case "Tile Placed":
@@ -81,9 +68,9 @@ const computeState = (
     case "Hotel Auto Merged":
       const playerWithShares = SharesUtils.getNextPlayerWithOrphanedShares(
         sharesState,
-        playerId,
+        currentPlayerId,
         actionResult.minority.hotelChain,
-        ActionUtils.getCurrentTurn(gameLog)
+        turnContext.turnLog
       );
       const numShares = playerWithShares
         ? sharesState[playerWithShares.playerId][
@@ -123,9 +110,9 @@ const computeState = (
       ].filter(isDefined);
 
     case "Shares Purchased":
-      const sharesPurchasedThisTurn = ActionUtils.getCurrentTurn(
-        gameLog
-      ).filter((log) => log.action.type === "PurchaseShares");
+      const sharesPurchasedThisTurn = turnContext.turnLog.filter(
+        (log) => log.action.type === "PurchaseShares"
+      );
 
       return [
         sharesPurchasedThisTurn.length + 1 < GameConfig.turn.maxShares
@@ -137,16 +124,13 @@ const computeState = (
     case "Share Kept":
     case "Share Sold":
     case "Share Traded":
-      const mergeContext = ActionUtils.getMergeContextThisTurn(gameLog);
+      const mergeContext = turnContext.mergeContext;
       if (!mergeContext) {
         throw new Error("Expected to find merge context for current turn");
       }
 
       const playerWithUnresolvedShares =
-        ActionUtils.findPlayerWithUnresolvedOrphanedShares(
-          actionResult,
-          gameLog
-        );
+        ActionUtils.findPlayerWithUnresolvedOrphanedShares(turnContext);
 
       if (playerWithUnresolvedShares) {
         return [
@@ -179,6 +163,23 @@ const computeState = (
     default:
       return [AvailableActionType.ChooseTile()];
   }
+};
+
+const chooseSharesIfAvailable = (
+  boardState: BoardSquareState[],
+  sharesState: ISharesState,
+  playerCash: number
+): ChooseShares | null => {
+  const hotelChainState = HotelChainUtils.getHotelChainState(
+    boardState,
+    sharesState
+  );
+
+  return Object.keys(hotelChainState).length
+    ? AvailableActionType.ChooseShares(
+        SharesUtils.getAvailableSharesForPurchase(hotelChainState, playerCash)
+      )
+    : null;
 };
 
 const validatePlaceTile = (state: IAvailableActionState): boolean =>
@@ -269,6 +270,7 @@ const validateAction = (
 };
 
 export const AvailableActionsStateEngine = {
+  getInitialState,
   computeState,
   validateAction,
 };
