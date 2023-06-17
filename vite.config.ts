@@ -33,12 +33,11 @@ export default defineConfig({
   plugins: [moduleExclude("text-encoding")],
   server: {
     proxy: {
-      "/api": {
-        target: "http://8igmfa4u7ld5r2t1hfcpsa206g.ingress.dcnorse.ddns.net",
+      "/api/gun": {
+        target: "https://gun-manhattan.herokuapp.com/gun",
         changeOrigin: true,
         secure: false,
         ws: true,
-        rewrite: (path) => path.replace("/api", ""),
       },
     },
   },
