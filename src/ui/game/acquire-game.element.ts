@@ -6,7 +6,7 @@ import { IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerAction } from "../../model/player-action";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
-import { FirebaseService } from "../firebase.service";
+import { DatabaseClient } from "../db/database-client";
 import "./acquire-game-actions.element";
 import { ActionRequestEvent } from "./acquire-game-actions.element";
 import "./acquire-game-board.element";
@@ -60,12 +60,12 @@ export class AcquireGameElement extends LitElement {
   orientation: "landscape" | "portrait";
 
   private state!: IGameState;
-  private service: FirebaseService;
+  private service: DatabaseClient;
 
   constructor() {
     super();
 
-    this.service = new FirebaseService();
+    this.service = new DatabaseClient();
 
     this.orientation = this.calculateOrientation();
     window.addEventListener("resize", () => {

@@ -1,6 +1,6 @@
 import { IAcquireGameInstance } from "../model/acquire-game-instance";
 import { PlayerUtils } from "../utils/player-utils";
-import { FirebaseService } from "./firebase.service";
+import { DatabaseClient } from "./db/database-client";
 
 const PLAYER_ID_KEY = "acquire-player-id";
 
@@ -23,14 +23,14 @@ export type GameState =
     };
 
 export class AcquireAppService {
-  firebaseService: FirebaseService;
+  db: DatabaseClient;
 
   constructor() {
-    this.firebaseService = new FirebaseService();
+    this.db = new DatabaseClient();
   }
 
   getGame(gameId: string, callback: (gameState: GameState) => void) {
-    this.firebaseService.getGame(gameId, (game) =>
+    this.db.getGame(gameId, (game) =>
       callback(
         game
           ? {
@@ -48,7 +48,7 @@ export class AcquireAppService {
     callback({
       type: "loading",
     });
-    this.firebaseService.onGameChanged(gameId, (game) =>
+    this.db.onGameChanged(gameId, (game) =>
       callback(
         game
           ? {
@@ -74,16 +74,16 @@ export class AcquireAppService {
   }
 
   addPlayerToGame(playerId: string, gameId: string) {
-    this.firebaseService.addPlayerToGame(playerId, gameId);
+    this.db.addPlayerToGame(playerId, gameId);
   }
 
   startGame(gameId: string) {
-    this.firebaseService.startGame(gameId);
+    this.db.startGame(gameId);
   }
 
   createNewGame(hostId: string): string | null {
     const gameId = `${Math.round(Math.random() * 9999999)}`;
-    this.firebaseService.createGame({
+    this.db.createGame({
       id: gameId,
       randomSeed: Math.floor(Math.random() * 999),
       playerIds: [hostId],
