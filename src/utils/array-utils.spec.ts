@@ -10,7 +10,7 @@ describe("ArrayUtils", () => {
 
     it("should shuffle array based on seed", () => {
       expect(ArrayUtils.shuffle(array, 1)).toMatchInlineSnapshot(`
-        Array [
+        [
           8,
           9,
           4,
@@ -25,7 +25,7 @@ describe("ArrayUtils", () => {
       `);
 
       expect(ArrayUtils.shuffle(array, 5)).toMatchInlineSnapshot(`
-        Array [
+        [
           6,
           4,
           8,

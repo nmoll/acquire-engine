@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SharesUtils getMajorityBonus should calculate majority bonus for the given hotel chain and size 1`] = `
-Object {
-  "American": Object {
+{
+  "American": {
     "00": 1000000,
     "01": 1000000,
     "02": 3000,
@@ -49,7 +49,7 @@ Object {
     "43": 11000,
     "44": 11000,
   },
-  "Continental": Object {
+  "Continental": {
     "00": 1000000,
     "01": 1000000,
     "02": 4000,
@@ -96,7 +96,7 @@ Object {
     "43": 12000,
     "44": 12000,
   },
-  "Festival": Object {
+  "Festival": {
     "00": 1000000,
     "01": 1000000,
     "02": 3000,
@@ -143,7 +143,7 @@ Object {
     "43": 11000,
     "44": 11000,
   },
-  "Imperial": Object {
+  "Imperial": {
     "00": 1000000,
     "01": 1000000,
     "02": 4000,
@@ -190,7 +190,7 @@ Object {
     "43": 12000,
     "44": 12000,
   },
-  "Luxor": Object {
+  "Luxor": {
     "00": 1000000,
     "01": 1000000,
     "02": 2000,
@@ -237,7 +237,7 @@ Object {
     "43": 10000,
     "44": 10000,
   },
-  "Tower": Object {
+  "Tower": {
     "00": 1000000,
     "01": 1000000,
     "02": 2000,
@@ -284,7 +284,7 @@ Object {
     "43": 10000,
     "44": 10000,
   },
-  "Worldwide": Object {
+  "Worldwide": {
     "00": 1000000,
     "01": 1000000,
     "02": 3000,
@@ -335,8 +335,8 @@ Object {
 `;
 
 exports[`SharesUtils getMinorityBonus should calculate minority bonus for the given hotel chain and size 1`] = `
-Object {
-  "American": Object {
+{
+  "American": {
     "00": 500000,
     "01": 500000,
     "02": 1500,
@@ -383,7 +383,7 @@ Object {
     "43": 5500,
     "44": 5500,
   },
-  "Continental": Object {
+  "Continental": {
     "00": 500000,
     "01": 500000,
     "02": 2000,
@@ -430,7 +430,7 @@ Object {
     "43": 6000,
     "44": 6000,
   },
-  "Festival": Object {
+  "Festival": {
     "00": 500000,
     "01": 500000,
     "02": 1500,
@@ -477,7 +477,7 @@ Object {
     "43": 5500,
     "44": 5500,
   },
-  "Imperial": Object {
+  "Imperial": {
     "00": 500000,
     "01": 500000,
     "02": 2000,
@@ -524,7 +524,7 @@ Object {
     "43": 6000,
     "44": 6000,
   },
-  "Luxor": Object {
+  "Luxor": {
     "00": 500000,
     "01": 500000,
     "02": 1000,
@@ -571,7 +571,7 @@ Object {
     "43": 5000,
     "44": 5000,
   },
-  "Tower": Object {
+  "Tower": {
     "00": 500000,
     "01": 500000,
     "02": 1000,
@@ -618,7 +618,7 @@ Object {
     "43": 5000,
     "44": 5000,
   },
-  "Worldwide": Object {
+  "Worldwide": {
     "00": 500000,
     "01": 500000,
     "02": 1500,
@@ -669,8 +669,8 @@ Object {
 `;
 
 exports[`SharesUtils getSharesCost should calculate share price for the given hotel chain and size 1`] = `
-Object {
-  "American": Object {
+{
+  "American": {
     "00": 100000,
     "01": 100000,
     "02": 300,
@@ -717,7 +717,7 @@ Object {
     "43": 1100,
     "44": 1100,
   },
-  "Continental": Object {
+  "Continental": {
     "00": 100000,
     "01": 100000,
     "02": 400,
@@ -764,7 +764,7 @@ Object {
     "43": 1200,
     "44": 1200,
   },
-  "Festival": Object {
+  "Festival": {
     "00": 100000,
     "01": 100000,
     "02": 300,
@@ -811,7 +811,7 @@ Object {
     "43": 1100,
     "44": 1100,
   },
-  "Imperial": Object {
+  "Imperial": {
     "00": 100000,
     "01": 100000,
     "02": 400,
@@ -858,7 +858,7 @@ Object {
     "43": 1200,
     "44": 1200,
   },
-  "Luxor": Object {
+  "Luxor": {
     "00": 100000,
     "01": 100000,
     "02": 200,
@@ -905,7 +905,7 @@ Object {
     "43": 1000,
     "44": 1000,
   },
-  "Tower": Object {
+  "Tower": {
     "00": 100000,
     "01": 100000,
     "02": 200,
@@ -952,7 +952,7 @@ Object {
     "43": 1000,
     "44": 1000,
   },
-  "Worldwide": Object {
+  "Worldwide": {
     "00": 100000,
     "01": 100000,
     "02": 300,

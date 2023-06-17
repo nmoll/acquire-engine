@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TileStateEngine should create tile map 1`] = `
-Object {
+{
   "000": "1A",
   "001": "2A",
   "002": "3A",
@@ -114,29 +114,29 @@ Object {
 `;
 
 exports[`TileStateEngine should return initial tile state if no given state 1`] = `
-Object {
-  "1": Array [
+{
+  "1": [
     11,
     7,
     63,
     76,
     46,
   ],
-  "2": Array [
+  "2": [
     107,
     15,
     71,
     75,
     50,
   ],
-  "3": Array [
+  "3": [
     106,
     29,
     81,
     79,
     101,
   ],
-  "4": Array [
+  "4": [
     65,
     60,
     32,

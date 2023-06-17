@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TileUtils getSortedBag should return a different tile bag sorted by another seed 1`] = `
-Array [
+[
   67,
   9,
   15,
@@ -114,7 +114,7 @@ Array [
 `;
 
 exports[`TileUtils getSortedBag should return a tile bag sorted by the given seed 1`] = `
-Array [
+[
   11,
   7,
   63,
