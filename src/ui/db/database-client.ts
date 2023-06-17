@@ -4,10 +4,13 @@ import { PlayerAction } from "../../model/player-action";
 
 /**
  * Signal server used to for clients to initiate a connection.
- * This is deployed on Akash Network using the public gundb/gun:latest docker image
+ * This is deployed on Akash Network using the public gundb/gun:latest docker image.
+ *
+ * Request is redirect using
+ *     _redirects file for netlify
+ *     proxy in vite.config.ts for dev
  */
-const GUN_SIGNAL_SERVER_URL =
-  "http://8igmfa4u7ld5r2t1hfcpsa206g.ingress.dcnorse.ddns.net/gun";
+const GUN_SIGNAL_SERVER_URL = `${document.location.origin}/api/gun`;
 
 export class DatabaseClient {
   private db: IGunInstance;
@@ -26,6 +29,7 @@ export class DatabaseClient {
       .get(gameId)
       .get("instance")
       .once((instance) => {
+        console.log("game", JSON.parse(instance));
         callback(instance ? JSON.parse(instance) : null);
       });
   }
@@ -40,6 +44,7 @@ export class DatabaseClient {
       .get(gameId)
       .get("instance")
       .on((instance) => {
+        console.log("game changed", JSON.parse(instance));
         instance ? callback(JSON.parse(instance)) : null;
       });
   }
