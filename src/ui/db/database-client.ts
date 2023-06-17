@@ -10,13 +10,13 @@ import { PlayerAction } from "../../model/player-action";
  *     _redirects file for netlify
  *     proxy in vite.config.ts for dev
  */
-const GUN_SIGNAL_SERVER_URL = `${document.location.origin}/api/gun`;
+const GUN_SERVER_URL = `${document.location.origin}/api/gun`;
 
 export class DatabaseClient {
   private db: IGunInstance;
 
   constructor() {
-    this.db = Gun([GUN_SIGNAL_SERVER_URL]);
+    this.db = Gun([GUN_SERVER_URL]);
   }
 
   getGame(
