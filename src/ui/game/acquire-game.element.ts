@@ -71,6 +71,13 @@ export class AcquireGameElement extends LitElement {
     window.addEventListener("resize", () => {
       this.orientation = this.calculateOrientation();
     });
+
+    (window as any).exportGame = () => {
+      console.log({
+        gameInstance: this.game,
+        actions: this.actions,
+      });
+    };
   }
 
   update(changedProperties: Map<keyof this, unknown>) {

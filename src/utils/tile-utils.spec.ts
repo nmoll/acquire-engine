@@ -22,7 +22,7 @@ describe("TileUtils", () => {
       const tileBag = [3, 4, 7, 1];
       const tileState: ITileState = {};
 
-      expect(TileUtils.getNextTile(tileBag, tileState)).toEqual(3);
+      expect(TileUtils.getNextTile(tileBag, tileState, [])).toEqual(3);
     });
 
     it("should return the next tile not yet held by a player", () => {
@@ -32,7 +32,7 @@ describe("TileUtils", () => {
         2: [7],
       };
 
-      expect(TileUtils.getNextTile(tileBag, tileState)).toEqual(1);
+      expect(TileUtils.getNextTile(tileBag, tileState, [])).toEqual(1);
     });
   });
 });

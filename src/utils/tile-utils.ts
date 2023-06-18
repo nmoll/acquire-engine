@@ -1,4 +1,5 @@
 import { GameConfig } from "../game-config";
+import { PlayerAction } from "../model/player-action";
 import { ITileState } from "../model/tile-state";
 import { ArrayUtils } from "./array-utils";
 
@@ -15,9 +16,19 @@ const getMaxTileIdx = (tileBag: number[], tiles: number[]): number =>
 
 const getNextTile = (
   tileBag: number[],
-  tileState: ITileState
-): number | undefined =>
-  tileBag[getMaxTileIdx(tileBag, concatPlayerTiles(tileState)) + 1];
+  tileState: ITileState,
+  actions: PlayerAction[]
+): number | undefined => {
+  const tilesPlaced = actions.filter(
+    (action) => action.type === "PlaceTile"
+  ).length;
+  const tilesHeld = concatPlayerTiles(tileState).length;
+  if (tilesPlaced + tilesHeld >= tileBag.length) {
+    return undefined;
+  }
+
+  return tileBag[getMaxTileIdx(tileBag, concatPlayerTiles(tileState)) + 1];
+};
 
 export const TileUtils = {
   getSortedBag,

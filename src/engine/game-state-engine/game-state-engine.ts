@@ -65,7 +65,8 @@ const computeGameState = (
     const tileState = TileStateEngine.computeState(
       gameInstance,
       actionResult,
-      state.tileState
+      state.tileState,
+      gameLog
     );
 
     const sharesState = SharesStateEngine.computeState(
