@@ -1,5 +1,6 @@
 import { IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
+import { AvailableActionType } from "../../model/available-action";
 import { IAvailableActionState } from "../../model/available-action-state";
 import { PlayerAction, PlayerActionType } from "../../model/player-action";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
@@ -49,7 +50,18 @@ describe("GameStateEngine", () => {
         P4 0 0 0 0 0 0 0
       `),
       currentPlayerIdState: "1",
-      availableActionsState: [{ type: "ChooseTile" }],
+      availableActionsState: [
+        AvailableActionType.ChooseTile({
+          available: [
+            tile("12A"),
+            tile("8A"),
+            tile("4F"),
+            tile("5G"),
+            tile("11D"),
+          ],
+          unavailable: [],
+        }),
+      ],
     };
 
     expect(GameStateEngine.computeGameState(gameInstance, actions)).toEqual(
@@ -137,9 +149,16 @@ describe("GameStateEngine", () => {
       ),
       currentPlayerIdState: "2",
       availableActionsState: [
-        {
-          type: "ChooseTile",
-        },
+        AvailableActionType.ChooseTile({
+          available: [
+            tile("12I"),
+            tile("4B"),
+            tile("12F"),
+            tile("3E"),
+            tile("3C"),
+          ],
+          unavailable: [],
+        }),
       ],
     };
 

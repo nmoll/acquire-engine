@@ -40,7 +40,11 @@ const print = (state: any): string => {
 const formatAction = (action: AvailableAction): string => {
   switch (action.type) {
     case "ChooseTile":
-      return `Choose Tile`;
+      const available = action.available.map(formatTile).join(" ");
+      const unavailable = action.unavailable.map(formatTile).join(" ");
+      return `Choose Tile: ${available}${
+        unavailable ? ` (unavailable: ${unavailable})` : ""
+      }`;
     case "ChooseHotelChain":
       return `Choose Hotel: ${action.hotelChains
         .map(formatHotelChain)

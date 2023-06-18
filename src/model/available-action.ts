@@ -3,6 +3,8 @@ import { AvailableShares } from "./available-shares.type";
 
 export interface ChooseTile {
   type: "ChooseTile";
+  available: number[];
+  unavailable: number[];
 }
 
 export interface ChooseHotelChain {
@@ -54,8 +56,13 @@ export type AvailableAction =
   | ChooseEndTurn;
 
 export const AvailableActionType = {
-  ChooseTile: (): ChooseTile => ({
+  ChooseTile: (tiles: {
+    available: number[];
+    unavailable: number[];
+  }): ChooseTile => ({
     type: "ChooseTile",
+    available: tiles.available,
+    unavailable: tiles.unavailable,
   }),
   ChooseHotelChain: (hotelChains: HotelChainType[]): ChooseHotelChain => ({
     type: "ChooseHotelChain",

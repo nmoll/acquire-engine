@@ -35,7 +35,7 @@ P2 | $6000 | [12I] [4B] [12F] [4G] [3E] |
 P3 | $6000 | [11I] [6C] [10G] [8G] [6I] | 
 P4 | $6000 | [6F] [1F] [9C] [11F] [10B] | 
 
-P2 [Choose Tile]
+P2 [Choose Tile: [12I] [4B] [12F] [4G] [3E]]
 `;
 
 exports[`Game Play: (3) Player 2 places tile [4G] 1`] = `
@@ -149,7 +149,7 @@ P2 | $5100 | [12I] [4B] [12F] [3E] [4D] | A:4
 P3 | $6000 | [11I] [6C] [10G] [8G] [6I] | 
 P4 | $6000 | [6F] [1F] [9C] [11F] [10B] | 
 
-P3 [Choose Tile]
+P3 [Choose Tile: [11I] [6C] [10G] [8G] [6I]]
 `;
 
 exports[`Game Play: (9) Player 3 places tile [6C] 1`] = `
@@ -206,7 +206,7 @@ P2 | $5100 | [12I] [4B] [12F] [3E] [4D] | A:4
 P3 | $5700 | [11I] [10G] [8G] [6I] [10H] | A:1
 P4 | $6000 | [6F] [1F] [9C] [11F] [10B] | 
 
-P4 [Choose Tile]
+P4 [Choose Tile: [6F] [1F] [9C] [11F] [10B]]
 `;
 
 exports[`Game Play: (12) Player 4 places tile [6F] 1`] = `
@@ -244,7 +244,7 @@ P2 | $5100 | [12I] [4B] [12F] [3E] [4D] | A:4
 P3 | $5700 | [11I] [10G] [8G] [6I] [10H] | A:1
 P4 | $6000 | [1F] [9C] [11F] [10B] [8B] | 
 
-P1 [Choose Tile]
+P1 [Choose Tile: [12A] [8A] [4F] [11D] [7C]]
 `;
 
 exports[`Game Play: (14) Player 1 places tile [4F] 1`] = `
@@ -339,7 +339,7 @@ P2 | $5100 | [12I] [4B] [12F] [3E] [4D] | A:4
 P3 | $5700 | [11I] [10G] [8G] [6I] [10H] | A:1
 P4 | $6000 | [1F] [9C] [11F] [10B] [8B] | 
 
-P2 [Choose Tile]
+P2 [Choose Tile: [12I] [4B] [12F] [3E] [4D]]
 `;
 
 exports[`Game Play: (19) Player 2 places tile [4D] 1`] = `
@@ -396,7 +396,7 @@ P2 | $4700 | [12I] [4B] [12F] [3E] [3C] | A:5
 P3 | $5700 | [11I] [10G] [8G] [6I] [10H] | A:1
 P4 | $6000 | [1F] [9C] [11F] [10B] [8B] | 
 
-P3 [Choose Tile]
+P3 [Choose Tile: [11I] [10G] [8G] [6I] [10H]]
 `;
 
 exports[`Game Play: (22) Player 3 places tile [10H] 1`] = `
@@ -491,7 +491,7 @@ P2 | $4700 | [12I] [4B] [12F] [3E] [3C] | A:5
 P3 | $4500 | [11I] [10G] [8G] [6I] [2G] | A:4
 P4 | $6000 | [1F] [9C] [11F] [10B] [8B] | 
 
-P4 [Choose Tile]
+P4 [Choose Tile: [1F] [9C] [11F] [10B] [8B]]
 `;
 
 exports[`Game Play: (27) Player 4 places tile [1F] 1`] = `
@@ -529,7 +529,7 @@ P2 | $4700 | [12I] [4B] [12F] [3E] [3C] | A:5
 P3 | $4500 | [11I] [10G] [8G] [6I] [2G] | A:4
 P4 | $6000 | [9C] [11F] [10B] [8B] [7B] | 
 
-P1 [Choose Tile]
+P1 [Choose Tile: [12A] [8A] [11D] [7C] [2I]]
 `;
 
 exports[`Game Play: (29) Player 1 places tile [8A] 1`] = `
@@ -624,7 +624,7 @@ P2 | $4700 | [12I] [4B] [12F] [3E] [3C] | A:5
 P3 | $4500 | [11I] [10G] [8G] [6I] [2G] | A:4
 P4 | $6000 | [9C] [11F] [10B] [8B] [7B] | 
 
-P2 [Choose Tile]
+P2 [Choose Tile: [12I] [4B] [12F] [3E] [3C]]
 `;
 
 exports[`Game Play: (34) Player 2 places tile [3C] 1`] = `
@@ -719,7 +719,7 @@ P2 | $3500 | [12I] [4B] [12F] [3E] [8C] | A:8
 P3 | $4500 | [11I] [10G] [8G] [6I] [2G] | A:4
 P4 | $6000 | [9C] [11F] [10B] [8B] [7B] | 
 
-P3 [Choose Tile]
+P3 [Choose Tile: [11I] [10G] [8G] [6I] [2G]]
 `;
 
 exports[`Game Play: (39) Player 3 places tile [10G] 1`] = `
@@ -833,7 +833,7 @@ P2 | $3500 | [12I] [4B] [12F] [3E] [8C] | A:8
 P3 | $3600 | [11I] [8G] [6I] [2G] [2H] | A:4 F:4
 P4 | $6000 | [9C] [11F] [10B] [8B] [7B] | 
 
-P4 [Choose Tile]
+P4 [Choose Tile: [9C] [11F] [10B] [8B] [7B]]
 `;
 
 exports[`Game Play: (45) Player 4 places tile [8B] 1`] = `
@@ -947,7 +947,7 @@ P2 | $3500 | [12I] [4B] [12F] [3E] [8C] | A:8
 P3 | $3600 | [11I] [8G] [6I] [2G] [2H] | A:4 F:4
 P4 | $5400 | [9C] [11F] [10B] [7B] [4I] | T:4
 
-P1 [Choose Tile]
+P1 [Choose Tile: [12A] [11D] [7C] [2I] [10A]]
 `;
 
 exports[`Game Play: (51) Player 1 places tile [12A] 1`] = `
@@ -1042,7 +1042,7 @@ P2 | $3500 | [12I] [4B] [12F] [3E] [8C] | A:8
 P3 | $3600 | [11I] [8G] [6I] [2G] [2H] | A:4 F:4
 P4 | $5400 | [9C] [11F] [10B] [7B] [4I] | T:4
 
-P2 [Choose Tile]
+P2 [Choose Tile: [12I] [4B] [12F] [3E] [8C]]
 `;
 
 exports[`Game Play: (56) Player 2 places tile [8C] 1`] = `
@@ -1137,7 +1137,7 @@ P2 | $2300 | [12I] [4B] [12F] [3E] [10C] | A:11
 P3 | $3600 | [11I] [8G] [6I] [2G] [2H] | A:4 F:4
 P4 | $5400 | [9C] [11F] [10B] [7B] [4I] | T:4
 
-P3 [Choose Tile]
+P3 [Choose Tile: [11I] [8G] [6I] [2G] [2H]]
 `;
 
 exports[`Game Play: (61) Player 3 places tile [2G] 1`] = `
@@ -1232,7 +1232,7 @@ P2 | $2300 | [12I] [4B] [12F] [3E] [10C] | A:11
 P3 | $2600 | [11I] [8G] [6I] [2H] [5A] | A:5 F:4 T:2
 P4 | $5400 | [9C] [11F] [10B] [7B] [4I] | T:4
 
-P4 [Choose Tile]
+P4 [Choose Tile: [9C] [11F] [10B] [7B] [4I]]
 `;
 
 exports[`Game Play: (66) Player 4 places tile [7B] 1`] = `
@@ -1327,7 +1327,7 @@ P2 | $2300 | [12I] [4B] [12F] [3E] [10C] | A:11
 P3 | $2600 | [11I] [8G] [6I] [2H] [5A] | A:5 F:4 T:2
 P4 | $4500 | [9C] [11F] [10B] [4I] [11E] | F:3 T:4
 
-P1 [Choose Tile]
+P1 [Choose Tile: [11D] [7C] [2I] [10A] [1E]]
 `;
 
 exports[`Game Play: (71) Player 1 places tile [1E] 1`] = `
@@ -1441,7 +1441,7 @@ P2 | $2300 | [12I] [4B] [12F] [3E] [10C] | A:11
 P3 | $2600 | [11I] [8G] [6I] [2H] [5A] | A:5 F:4 T:2
 P4 | $4500 | [9C] [11F] [10B] [4I] [11E] | F:3 T:4
 
-P2 [Choose Tile]
+P2 [Choose Tile: [12I] [4B] [12F] [3E] [10C]]
 `;
 
 exports[`Game Play: (77) Player 2 places tile [10C] 1`] = `
@@ -1536,7 +1536,7 @@ P2 | $1300 | [12I] [4B] [12F] [3E] [7H] | A:11 F:1 T:1 W:1
 P3 | $2600 | [11I] [8G] [6I] [2H] [5A] | A:5 F:4 T:2
 P4 | $4500 | [9C] [11F] [10B] [4I] [11E] | F:3 T:4
 
-P3 [Choose Tile]
+P3 [Choose Tile: [11I] [8G] [6I] [2H] [5A]]
 `;
 
 exports[`Game Play: (82) Player 3 places tile [2H] 1`] = `
@@ -1650,7 +1650,7 @@ P2 | $1300 | [12I] [4B] [12F] [3E] [7H] | A:11 F:1 T:1 W:1
 P3 | $1400 | [11I] [8G] [6I] [5A] [4C] | A:5 F:4 I:4 T:2
 P4 | $4500 | [9C] [11F] [10B] [4I] [11E] | F:3 T:4
 
-P4 [Choose Tile]
+P4 [Choose Tile: [9C] [11F] [10B] [4I] [11E]]
 `;
 
 exports[`Game Play: (88) Player 4 places tile [11E] 1`] = `
@@ -1745,7 +1745,7 @@ P2 | $1300 | [12I] [4B] [12F] [3E] [7H] | A:11 F:1 T:1 W:1
 P3 | $1400 | [11I] [8G] [6I] [5A] [4C] | A:5 F:4 I:4 T:2
 P4 | $3300 | [9C] [11F] [10B] [4I] [6D] | F:3 I:3 T:4
 
-P1 [Choose Tile]
+P1 [Choose Tile: [11D] [7C] [2I] [10A] [4H]]
 `;
 
 exports[`Game Play: (93) Player 1 places tile [11D] 1`] = `
@@ -1859,7 +1859,7 @@ P2 | $1300 | [12I] [4B] [12F] [3E] [7H] | A:11 F:1 T:1 W:1
 P3 | $1400 | [11I] [8G] [6I] [5A] [4C] | A:5 F:4 I:4 T:2
 P4 | $3300 | [9C] [11F] [10B] [4I] [6D] | F:3 I:3 T:4
 
-P2 [Choose Tile]
+P2 [Choose Tile: [12I] [4B] [12F] [3E] [7H]]
 `;
 
 exports[`Game Play: (99) Player 2 places tile [3E] 1`] = `
@@ -1954,7 +1954,7 @@ P2 | $300 | [12I] [4B] [12F] [7H] [6G] | A:11 C:1 F:3 T:1 W:1
 P3 | $1400 | [11I] [8G] [6I] [5A] [4C] | A:5 F:4 I:4 T:2
 P4 | $3300 | [9C] [11F] [10B] [4I] [6D] | F:3 I:3 T:4
 
-P3 [Choose Tile]
+P3 [Choose Tile: [11I] [8G] [6I] [5A] [4C]]
 `;
 
 exports[`Game Play: (104) Player 3 places tile [4C] 1`] = `
@@ -2068,7 +2068,7 @@ P2 | $300 | [12I] [4B] [12F] [7H] [6G] | A:11 C:1 F:3 T:1 W:1
 P3 | $500 | [11I] [8G] [6I] [5A] [1B] | A:5 F:4 I:4 L:4 T:2
 P4 | $3300 | [9C] [11F] [10B] [4I] [6D] | F:3 I:3 T:4
 
-P4 [Choose Tile]
+P4 [Choose Tile: [9C] [11F] [4I] (unavailable: [10B] [6D])]
 `;
 
 exports[`Game Play: (110) Player 4 places tile [4I] 1`] = `
@@ -2163,7 +2163,7 @@ P2 | $300 | [12I] [4B] [12F] [7H] [6G] | A:11 C:1 F:3 T:1 W:1
 P3 | $500 | [11I] [8G] [6I] [5A] [1B] | A:5 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [11F] [10B] [6D] [11H] | F:3 I:3 L:3 T:4
 
-P1 [Choose Tile]
+P1 [Choose Tile: [7C] [2I] [10A] [4H] [9B]]
 `;
 
 exports[`Game Play: (115) Player 1 places tile [7C] 1`] = `
@@ -2220,7 +2220,7 @@ P2 | $300 | [12I] [4B] [12F] [7H] [6G] | A:11 C:1 F:3 T:1 W:1
 P3 | $500 | [11I] [8G] [6I] [5A] [1B] | A:5 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [11F] [10B] [6D] [11H] | F:3 I:3 L:3 T:4
 
-P2 [Choose Tile]
+P2 [Choose Tile: [12I] [4B] [12F] [7H] [6G]]
 `;
 
 exports[`Game Play: (118) Player 2 places tile [6G] 1`] = `
@@ -2277,7 +2277,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [6A] | A:11 C:1 F:4 T:1 W:1
 P3 | $500 | [11I] [8G] [6I] [5A] [1B] | A:5 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [11F] [10B] [6D] [11H] | F:3 I:3 L:3 T:4
 
-P3 [Choose Tile]
+P3 [Choose Tile: [11I] [8G] [6I] [5A] [1B]]
 `;
 
 exports[`Game Play: (121) Player 3 places tile [8G] 1`] = `
@@ -2334,7 +2334,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [6A] | A:11 C:1 F:4 T:1 W:1
 P3 | $100 | [11I] [6I] [5A] [1B] [7G] | A:5 C:1 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [11F] [10B] [6D] [11H] | F:3 I:3 L:3 T:4
 
-P4 [Choose Tile]
+P4 [Choose Tile: [9C] [11F] [6D] [11H] (unavailable: [10B])]
 `;
 
 exports[`Game Play: (124) Player 4 places tile [11F] 1`] = `
@@ -2372,7 +2372,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [6A] | A:11 C:1 F:4 T:1 W:1
 P3 | $100 | [11I] [6I] [5A] [1B] [7G] | A:5 C:1 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [10B] [6D] [11H] [10I] | F:3 I:3 L:3 T:4
 
-P1 [Choose Tile]
+P1 [Choose Tile: [2I] [10A] [4H] [9B] [2A]]
 `;
 
 exports[`Game Play: (126) Player 1 places tile [4H] 1`] = `
@@ -2410,7 +2410,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [6A] | A:11 C:1 F:4 T:1 W:1
 P3 | $100 | [11I] [6I] [5A] [1B] [7G] | A:5 C:1 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [10B] [6D] [11H] [10I] | F:3 I:3 L:3 T:4
 
-P2 [Choose Tile]
+P2 [Choose Tile: [12I] [4B] [12F] [7H] [6A]]
 `;
 
 exports[`Game Play: (128) Player 2 places tile [6A] 1`] = `
@@ -2448,7 +2448,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [3G] | A:11 C:1 F:4 T:1 W:1
 P3 | $100 | [11I] [6I] [5A] [1B] [7G] | A:5 C:1 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [10B] [6D] [11H] [10I] | F:3 I:3 L:3 T:4
 
-P3 [Choose Tile]
+P3 [Choose Tile: [11I] [6I] [1B] [7G] (unavailable: [5A])]
 `;
 
 exports[`Game Play: (130) Player 3 places tile [6I] 1`] = `
@@ -2486,7 +2486,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [3G] | A:11 C:1 F:4 T:1 W:1
 P3 | $100 | [11I] [5A] [1B] [7G] [5F] | A:5 C:1 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [10B] [6D] [11H] [10I] | F:3 I:3 L:3 T:4
 
-P4 [Choose Tile]
+P4 [Choose Tile: [9C] [6D] [11H] [10I] (unavailable: [10B])]
 `;
 
 exports[`Game Play: (132) Player 4 places tile [11H] 1`] = `
@@ -2524,7 +2524,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [3G] | A:11 C:1 F:4 T:1 W:1
 P3 | $100 | [11I] [5A] [1B] [7G] [5F] | A:5 C:1 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [10B] [6D] [10I] [12G] | F:3 I:3 L:3 T:4
 
-P1 [Choose Tile]
+P1 [Choose Tile: [2I] [10A] [9B] [2A] (unavailable: [8H])]
 `;
 
 exports[`Game Play: (134) Player 1 places tile [2I] 1`] = `
@@ -2562,7 +2562,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [3G] | A:11 C:1 F:4 T:1 W:1
 P3 | $100 | [11I] [5A] [1B] [7G] [5F] | A:5 C:1 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [10B] [6D] [10I] [12G] | F:3 I:3 L:3 T:4
 
-P2 [Choose Tile]
+P2 [Choose Tile: [12I] [4B] [12F] [7H] [3G]]
 `;
 
 exports[`Game Play: (136) Player 2 places tile [3G] 1`] = `
@@ -2677,4 +2677,555 @@ P3 | $5600 | [11I] [5A] [1B] [7G] [5F] | A:6 C:1 F:4 I:1 L:4 T:2
 P4 | $5400 | [9C] [10B] [6D] [10I] [12G] | A:1 F:3 L:3 T:4
 
 P2 [Choose Shares: ] [End Turn]
+`;
+
+exports[`Game Play: (142) Player 2 ends turn 1`] = `
+ - - - - - 0 - T - - - 0
+ - - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - -
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - -
+
+P1 | $0 | [10A] [9B] [2A] [8H] [6H] | A:9 C:4 F:1 W:4
+P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
+P3 | $5600 | [11I] [5A] [1B] [7G] [5F] | A:6 C:1 F:4 I:1 L:4 T:2
+P4 | $5400 | [9C] [10B] [6D] [10I] [12G] | A:1 F:3 L:3 T:4
+
+P3 [Choose Tile: [11I] [5A] [1B] [7G] [5F]]
+`;
+
+exports[`Game Play: (143) Player 3 places tile [5A] 1`] = `
+ - - - - 0 0 - T - - - 0
+ - - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - -
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - -
+
+P1 | $0 | [10A] [9B] [2A] [8H] [6H] | A:9 C:4 F:1 W:4
+P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
+P3 | $5600 | [11I] [1B] [7G] [5F] | A:6 C:1 F:4 I:1 L:4 T:2
+P4 | $5400 | [9C] [10B] [6D] [10I] [12G] | A:1 F:3 L:3 T:4
+
+P3 [Choose Hotel: I]
+`;
+
+exports[`Game Play: (144) Player 3 starts Imperial 1`] = `
+ - - - - I I - T - - - 0
+ - - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - -
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - -
+
+P1 | $0 | [10A] [9B] [2A] [8H] [6H] | A:9 C:4 F:1 W:4
+P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
+P3 | $5600 | [11I] [1B] [7G] [5F] | A:6 C:1 F:4 I:2 L:4 T:2
+P4 | $5400 | [9C] [10B] [6D] [10I] [12G] | A:1 F:3 L:3 T:4
+
+P3 [Choose Shares: I T L C W F] [End Turn]
+`;
+
+exports[`Game Play: (145) Player 3 purchases Imperial 1`] = `
+ - - - - I I - T - - - 0
+ - - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - -
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - -
+
+P1 | $0 | [10A] [9B] [2A] [8H] [6H] | A:9 C:4 F:1 W:4
+P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
+P3 | $5200 | [11I] [1B] [7G] [5F] | A:6 C:1 F:4 I:3 L:4 T:2
+P4 | $5400 | [9C] [10B] [6D] [10I] [12G] | A:1 F:3 L:3 T:4
+
+P3 [Choose Shares: I T L C W F] [End Turn]
+`;
+
+exports[`Game Play: (146) Player 3 purchases Imperial 1`] = `
+ - - - - I I - T - - - 0
+ - - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - -
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - -
+
+P1 | $0 | [10A] [9B] [2A] [8H] [6H] | A:9 C:4 F:1 W:4
+P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
+P3 | $4800 | [11I] [1B] [7G] [5F] | A:6 C:1 F:4 I:4 L:4 T:2
+P4 | $5400 | [9C] [10B] [6D] [10I] [12G] | A:1 F:3 L:3 T:4
+
+P3 [Choose Shares: I T L C W F] [End Turn]
+`;
+
+exports[`Game Play: (147) Player 3 purchases Imperial 1`] = `
+ - - - - I I - T - - - 0
+ - - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - -
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - -
+
+P1 | $0 | [10A] [9B] [2A] [8H] [6H] | A:9 C:4 F:1 W:4
+P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
+P3 | $4400 | [11I] [1B] [7G] [5F] | A:6 C:1 F:4 I:5 L:4 T:2
+P4 | $5400 | [9C] [10B] [6D] [10I] [12G] | A:1 F:3 L:3 T:4
+
+P3 [End Turn]
+`;
+
+exports[`Game Play: (148) Player 3 ends turn 1`] = `
+ - - - - I I - T - - - 0
+ - - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - -
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - -
+
+P1 | $0 | [10A] [9B] [2A] [8H] [6H] | A:9 C:4 F:1 W:4
+P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
+P3 | $4400 | [11I] [1B] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
+P4 | $5400 | [9C] [10B] [6D] [10I] [12G] | A:1 F:3 L:3 T:4
+
+P4 [Choose Tile: [9C] [6D] [10I] [12G] (unavailable: [10B])]
+`;
+
+exports[`Game Play: (149) Player 4 places tile [12G] 1`] = `
+ - - - - I I - T - - - 0
+ - - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - -
+
+P1 | $0 | [10A] [9B] [2A] [8H] [6H] | A:9 C:4 F:1 W:4
+P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
+P3 | $4400 | [11I] [1B] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
+P4 | $5400 | [9C] [10B] [6D] [10I] | A:1 F:3 L:3 T:4
+
+P4 [Choose Shares: I T L C W F] [End Turn]
+`;
+
+exports[`Game Play: (150) Player 4 purchases Festival 1`] = `
+ - - - - I I - T - - - 0
+ - - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - -
+
+P1 | $0 | [10A] [9B] [2A] [8H] [6H] | A:9 C:4 F:1 W:4
+P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
+P3 | $4400 | [11I] [1B] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
+P4 | $5000 | [9C] [10B] [6D] [10I] | A:1 F:4 L:3 T:4
+
+P4 [Choose Shares: I T L C W F] [End Turn]
+`;
+
+exports[`Game Play: (151) Player 4 purchases Festival 1`] = `
+ - - - - I I - T - - - 0
+ - - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - -
+
+P1 | $0 | [10A] [9B] [2A] [8H] [6H] | A:9 C:4 F:1 W:4
+P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
+P3 | $4400 | [11I] [1B] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
+P4 | $4600 | [9C] [10B] [6D] [10I] | A:1 F:5 L:3 T:4
+
+P4 [Choose Shares: I T L C W F] [End Turn]
+`;
+
+exports[`Game Play: (152) Player 4 purchases Festival 1`] = `
+ - - - - I I - T - - - 0
+ - - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - -
+
+P1 | $0 | [10A] [9B] [2A] [8H] [6H] | A:9 C:4 F:1 W:4
+P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
+P3 | $4400 | [11I] [1B] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [10I] | A:1 F:6 L:3 T:4
+
+P4 [End Turn]
+`;
+
+exports[`Game Play: (153) Player 4 ends turn 1`] = `
+ - - - - I I - T - - - 0
+ - - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - -
+
+P1 | $0 | [10A] [9B] [2A] [8H] [6H] | A:9 C:4 F:1 W:4
+P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
+P3 | $4400 | [11I] [1B] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [10I] [5D] | A:1 F:6 L:3 T:4
+
+P1 [Choose Tile: [10A] [9B] [2A] [6H] (unavailable: [8H])]
+`;
+
+exports[`Game Play: (154) Player 1 places tile [10A] 1`] = `
+ - - - - I I - T - 0 - 0
+ - - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - -
+
+P1 | $0 | [9B] [2A] [8H] [6H] | A:9 C:4 F:1 W:4
+P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
+P3 | $4400 | [11I] [1B] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [10I] [5D] | A:1 F:6 L:3 T:4
+
+P1 [Choose Shares: ] [End Turn]
+`;
+
+exports[`Game Play: (155) Player 1 ends turn 1`] = `
+ - - - - I I - T - 0 - 0
+ - - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - -
+
+P1 | $0 | [9B] [2A] [8H] [6H] [9E] | A:9 C:4 F:1 W:4
+P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
+P3 | $4400 | [11I] [1B] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [10I] [5D] | A:1 F:6 L:3 T:4
+
+P2 [Choose Tile: [12I] [4B] [12F] [7H] [2F]]
+`;
+
+exports[`Game Play: (156) Player 2 places tile [12I] 1`] = `
+ - - - - I I - T - 0 - 0
+ - - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - 0
+
+P1 | $0 | [9B] [2A] [8H] [6H] [9E] | A:9 C:4 F:1 W:4
+P2 | $0 | [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
+P3 | $4400 | [11I] [1B] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [10I] [5D] | A:1 F:6 L:3 T:4
+
+P2 [Choose Shares: ] [End Turn]
+`;
+
+exports[`Game Play: (157) Player 2 ends turn 1`] = `
+ - - - - I I - T - 0 - 0
+ - - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - 0
+
+P1 | $0 | [9B] [2A] [8H] [6H] [9E] | A:9 C:4 F:1 W:4
+P2 | $0 | [4B] [12F] [7H] [2F] [12H] | A:11 C:1 F:4 T:1 W:1
+P3 | $4400 | [11I] [1B] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [10I] [5D] | A:1 F:6 L:3 T:4
+
+P3 [Choose Tile: [11I] [1B] [7G] [5F] [5H]]
+`;
+
+exports[`Game Play: (158) Player 3 places tile [1B] 1`] = `
+ - - - - I I - T - 0 - 0
+ 0 - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - 0
+
+P1 | $0 | [9B] [2A] [8H] [6H] [9E] | A:9 C:4 F:1 W:4
+P2 | $0 | [4B] [12F] [7H] [2F] [12H] | A:11 C:1 F:4 T:1 W:1
+P3 | $4400 | [11I] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [10I] [5D] | A:1 F:6 L:3 T:4
+
+P3 [Choose Shares: I T L C W F] [End Turn]
+`;
+
+exports[`Game Play: (159) Player 3 purchases Continental 1`] = `
+ - - - - I I - T - 0 - 0
+ 0 - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - 0
+
+P1 | $0 | [9B] [2A] [8H] [6H] [9E] | A:9 C:4 F:1 W:4
+P2 | $0 | [4B] [12F] [7H] [2F] [12H] | A:11 C:1 F:4 T:1 W:1
+P3 | $3900 | [11I] [7G] [5F] [5H] | A:6 C:2 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [10I] [5D] | A:1 F:6 L:3 T:4
+
+P3 [Choose Shares: I T L C W F] [End Turn]
+`;
+
+exports[`Game Play: (160) Player 3 purchases Continental 1`] = `
+ - - - - I I - T - 0 - 0
+ 0 - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - 0
+
+P1 | $0 | [9B] [2A] [8H] [6H] [9E] | A:9 C:4 F:1 W:4
+P2 | $0 | [4B] [12F] [7H] [2F] [12H] | A:11 C:1 F:4 T:1 W:1
+P3 | $3400 | [11I] [7G] [5F] [5H] | A:6 C:3 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [10I] [5D] | A:1 F:6 L:3 T:4
+
+P3 [Choose Shares: I T L C W F] [End Turn]
+`;
+
+exports[`Game Play: (161) Player 3 purchases Continental 1`] = `
+ - - - - I I - T - 0 - 0
+ 0 - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - 0
+
+P1 | $0 | [9B] [2A] [8H] [6H] [9E] | A:9 C:4 F:1 W:4
+P2 | $0 | [4B] [12F] [7H] [2F] [12H] | A:11 C:1 F:4 T:1 W:1
+P3 | $2900 | [11I] [7G] [5F] [5H] | A:6 C:4 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [10I] [5D] | A:1 F:6 L:3 T:4
+
+P3 [End Turn]
+`;
+
+exports[`Game Play: (162) Player 3 ends turn 1`] = `
+ - - - - I I - T - 0 - 0
+ 0 - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - - - 0
+
+P1 | $0 | [9B] [2A] [8H] [6H] [9E] | A:9 C:4 F:1 W:4
+P2 | $0 | [4B] [12F] [7H] [2F] [12H] | A:11 C:1 F:4 T:1 W:1
+P3 | $2900 | [11I] [7G] [5F] [5H] [4E] | A:6 C:4 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [10I] [5D] | A:1 F:6 L:3 T:4
+
+P4 [Choose Tile: [9C] [6D] [10I] [5D] (unavailable: [10B])]
+`;
+
+exports[`Game Play: (163) Player 4 places tile [10I] 1`] = `
+ - - - - I I - T - 0 - 0
+ 0 - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - F - 0
+
+P1 | $0 | [9B] [2A] [8H] [6H] [9E] | A:9 C:4 F:1 W:4
+P2 | $0 | [4B] [12F] [7H] [2F] [12H] | A:11 C:1 F:4 T:1 W:1
+P3 | $2900 | [11I] [7G] [5F] [5H] [4E] | A:6 C:4 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [5D] | A:1 F:6 L:3 T:4
+
+P4 [Choose Shares: I T L C W F] [End Turn]
+`;
+
+exports[`Game Play: (164) Player 4 ends turn 1`] = `
+ - - - - I I - T - 0 - 0
+ 0 - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - F - 0
+
+P1 | $0 | [9B] [2A] [8H] [6H] [9E] | A:9 C:4 F:1 W:4
+P2 | $0 | [4B] [12F] [7H] [2F] [12H] | A:11 C:1 F:4 T:1 W:1
+P3 | $2900 | [11I] [7G] [5F] [5H] [4E] | A:6 C:4 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [5D] [2D] | A:1 F:6 L:3 T:4
+
+P1 [Choose Tile: [9B] [2A] [6H] [9E] (unavailable: [8H])]
+`;
+
+exports[`Game Play: (165) Player 1 places tile [2A] 1`] = `
+ - 0 - - I I - T - 0 - 0
+ 0 - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - F - 0
+
+P1 | $0 | [9B] [8H] [6H] [9E] | A:9 C:4 F:1 W:4
+P2 | $0 | [4B] [12F] [7H] [2F] [12H] | A:11 C:1 F:4 T:1 W:1
+P3 | $2900 | [11I] [7G] [5F] [5H] [4E] | A:6 C:4 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [5D] [2D] | A:1 F:6 L:3 T:4
+
+P1 [Choose Shares: ] [End Turn]
+`;
+
+exports[`Game Play: (166) Player 1 ends turn 1`] = `
+ - 0 - - I I - T - 0 - 0
+ 0 - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ W - 0 - - - - - - - C -
+ W - - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - F - 0
+
+P1 | $0 | [9B] [8H] [6H] [9E] [3A] | A:9 C:4 F:1 W:4
+P2 | $0 | [4B] [12F] [7H] [2F] [12H] | A:11 C:1 F:4 T:1 W:1
+P3 | $2900 | [11I] [7G] [5F] [5H] [4E] | A:6 C:4 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [5D] [2D] | A:1 F:6 L:3 T:4
+
+P2 [Choose Tile: [4B] [12F] [7H] [2F] [12H]]
+`;
+
+exports[`Game Play: (167) Player 2 places tile [2F] 1`] = `
+ - 0 - - I I - T - 0 - 0
+ 0 - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ A - 0 - - - - - - - C -
+ A A - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - F - 0
+
+P1 | $3000 | [9B] [8H] [6H] [9E] [3A] | A:9 C:4 F:1 W:4
+P2 | $1500 | [4B] [12F] [7H] [12H] | A:11 C:1 F:4 T:1 W:1
+P3 | $2900 | [11I] [7G] [5F] [5H] [4E] | A:6 C:4 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [5D] [2D] | A:1 F:6 L:3 T:4
+
+P2 [Sell (1/1) Worldwide Share] [Keep (1/1) Worldwide Share]
+`;
+
+exports[`Game Play: (168) Player 2 sells 1 orphaned Worldwide share 1`] = `
+ - 0 - - I I - T - 0 - 0
+ 0 - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ A - 0 - - - - - - - C -
+ A A - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - F - 0
+
+P1 | $3000 | [9B] [8H] [6H] [9E] [3A] | A:9 C:4 F:1 W:4
+P2 | $1800 | [4B] [12F] [7H] [12H] | A:11 C:1 F:4 T:1
+P3 | $2900 | [11I] [7G] [5F] [5H] [4E] | A:6 C:4 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [5D] [2D] | A:1 F:6 L:3 T:4
+
+P1 [Sell (1/4) Worldwide Share] [Keep (1/4) Worldwide Share] [Trade (2/4) Worldwide for 1 American]
+`;
+
+exports[`Game Play: (169) Player 1 trades 2 Worldwide -> American 1`] = `
+ - 0 - - I I - T - 0 - 0
+ 0 - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ A - 0 - - - - - - - C -
+ A A - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - F - 0
+
+P1 | $3000 | [9B] [8H] [6H] [9E] [3A] | A:10 C:4 F:1 W:2
+P2 | $1800 | [4B] [12F] [7H] [12H] | A:11 C:1 F:4 T:1
+P3 | $2900 | [11I] [7G] [5F] [5H] [4E] | A:6 C:4 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [5D] [2D] | A:1 F:6 L:3 T:4
+
+P1 [Sell (1/2) Worldwide Share] [Keep (1/2) Worldwide Share] [Trade (2/2) Worldwide for 1 American]
+`;
+
+exports[`Game Play: (170) Player 1 trades 2 Worldwide -> American 1`] = `
+ - 0 - - I I - T - 0 - 0
+ 0 - - - - - T T - - - -
+ - - L L - T T T - 0 - -
+ - - - L - - - - - - C -
+ A - 0 - - - - - - - C -
+ A A - A - A - - - - C -
+ - A A A A A - 0 - F - 0
+ - A - A - - - - - F F -
+ - A - A - 0 - - - F - 0
+
+P1 | $3000 | [9B] [8H] [6H] [9E] [3A] | A:11 C:4 F:1
+P2 | $1800 | [4B] [12F] [7H] [12H] | A:11 C:1 F:4 T:1
+P3 | $2900 | [11I] [7G] [5F] [5H] [4E] | A:6 C:4 F:4 I:5 L:4 T:2
+P4 | $4200 | [9C] [10B] [6D] [5D] [2D] | A:1 F:6 L:3 T:4
+
+P2 [Choose Shares: I T L C F] [End Turn]
 `;

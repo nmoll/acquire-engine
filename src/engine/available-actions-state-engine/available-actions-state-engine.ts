@@ -1,5 +1,10 @@
 import { GameConfig } from "../../game-config";
-import { BoardSquareState, IGameState, ISharesState } from "../../model";
+import {
+  BoardSquareState,
+  HotelChainType,
+  IGameState,
+  ISharesState,
+} from "../../model";
 import {
   AvailableActionType,
   ChooseShares,
@@ -9,32 +14,41 @@ import { ICashState } from "../../model/cash-state";
 import { CurrentPlayerIdState } from "../../model/current-player-id-state";
 import {
   KeepOrphanedShare,
+  PlaceTile,
   PlayerAction,
   PurchaseShares,
   SellOrphanedShare,
   StartHotelChain,
   TradeOrphanedShare,
 } from "../../model/player-action";
+import { ITileState } from "../../model/tile-state";
 import { TurnContext } from "../../model/turn-context";
 import { ActionUtils } from "../../utils/action-utils";
 import { HotelChainUtils } from "../../utils/hotel-chain-utils";
 import { isDefined } from "../../utils/is-defined-util";
 import { SharesUtils } from "../../utils/shares-utils";
 
-const getInitialState = (): IAvailableActionState => [
-  AvailableActionType.ChooseTile(),
+const getInitialState = (
+  currentPlayerId: CurrentPlayerIdState,
+  tileState: ITileState
+): IAvailableActionState => [
+  AvailableActionType.ChooseTile({
+    available: currentPlayerId ? tileState[currentPlayerId] : [],
+    unavailable: [],
+  }),
 ];
 
 const computeState = (
   boardState: BoardSquareState[],
   sharesState: ISharesState,
   cashState: ICashState,
+  tileState: ITileState,
   turnContext: TurnContext,
   currentPlayerId: CurrentPlayerIdState
 ): IAvailableActionState => {
   const actionResult = turnContext.actionResult;
-  if (!actionResult || !currentPlayerId) {
-    return [AvailableActionType.ChooseTile()];
+  if (!currentPlayerId) {
+    return [];
   }
 
   const playerCash = cashState[currentPlayerId];
@@ -85,23 +99,11 @@ const computeState = (
         ].filter(isDefined);
       }
 
-      return [
-        AvailableActionType.ChooseToSellOrphanedShare(
-          actionResult.minority.hotelChain,
-          numShares
-        ),
-        AvailableActionType.ChooseToKeepOrphanedShare(
-          actionResult.minority.hotelChain,
-          numShares
-        ),
-        numShares > 1
-          ? AvailableActionType.ChooseToTradeOrphanedShare(
-              actionResult.minority.hotelChain,
-              actionResult.majority.hotelChain,
-              numShares
-            )
-          : null,
-      ].filter(isDefined);
+      return chooseOrphanedSharesOptions(
+        actionResult.minority.hotelChain,
+        actionResult.majority.hotelChain,
+        numShares
+      );
 
     case "Hotel Chain Started":
       return [
@@ -133,23 +135,11 @@ const computeState = (
         ActionUtils.findPlayerWithUnresolvedOrphanedShares(turnContext);
 
       if (playerWithUnresolvedShares) {
-        return [
-          AvailableActionType.ChooseToSellOrphanedShare(
-            mergeContext.minority.hotelChain,
-            playerWithUnresolvedShares.shares
-          ),
-          AvailableActionType.ChooseToKeepOrphanedShare(
-            mergeContext.minority.hotelChain,
-            playerWithUnresolvedShares.shares
-          ),
-          playerWithUnresolvedShares.shares > 1
-            ? AvailableActionType.ChooseToTradeOrphanedShare(
-                mergeContext.minority.hotelChain,
-                mergeContext.majority.hotelChain,
-                playerWithUnresolvedShares.shares
-              )
-            : null,
-        ].filter(isDefined);
+        return chooseOrphanedSharesOptions(
+          mergeContext.minority.hotelChain,
+          mergeContext.majority.hotelChain,
+          playerWithUnresolvedShares.shares
+        );
       } else {
         return [
           chooseSharesIfAvailable(boardState, sharesState, playerCash),
@@ -158,10 +148,10 @@ const computeState = (
       }
 
     case "Turn Ended":
-      return [AvailableActionType.ChooseTile()];
+      return [chooseTile(tileState[currentPlayerId], boardState)];
 
     default:
-      return [AvailableActionType.ChooseTile()];
+      return [chooseTile(tileState[currentPlayerId], boardState)];
   }
 };
 
@@ -182,8 +172,70 @@ const chooseSharesIfAvailable = (
     : null;
 };
 
-const validatePlaceTile = (state: IAvailableActionState): boolean =>
-  !!state.find((availableAction) => availableAction.type === "ChooseTile");
+const chooseOrphanedSharesOptions = (
+  minorityHotelChain: HotelChainType,
+  majorityHotelChain: HotelChainType,
+  remainingShares: number
+): IAvailableActionState =>
+  [
+    AvailableActionType.ChooseToSellOrphanedShare(
+      minorityHotelChain,
+      remainingShares
+    ),
+    AvailableActionType.ChooseToKeepOrphanedShare(
+      minorityHotelChain,
+      remainingShares
+    ),
+    remainingShares > 1
+      ? AvailableActionType.ChooseToTradeOrphanedShare(
+          minorityHotelChain,
+          majorityHotelChain,
+          remainingShares
+        )
+      : null,
+  ].filter(isDefined);
+
+const chooseTile = (tiles: number[], boardState: BoardSquareState[]) => {
+  const available: number[] = [];
+  const unavailable: number[] = [];
+
+  tiles.forEach((tile) => {
+    if (isTilePlayable(tile, boardState)) {
+      available.push(tile);
+    } else {
+      unavailable.push(tile);
+    }
+  });
+
+  return AvailableActionType.ChooseTile({
+    available,
+    unavailable,
+  });
+};
+
+const isTilePlayable = (
+  tile: number,
+  boardState: BoardSquareState[]
+): boolean => {
+  if (
+    HotelChainUtils.isHotelStarter(boardState, tile) &&
+    HotelChainUtils.getInactiveHotelChains(boardState).length === 0
+  ) {
+    return false;
+  }
+
+  return true;
+};
+
+const validatePlaceTile = (
+  action: PlaceTile,
+  state: IAvailableActionState
+): boolean =>
+  !!state.find(
+    (availableAction) =>
+      availableAction.type === "ChooseTile" &&
+      availableAction.available.includes(action.boardSquareId)
+  );
 
 const validateStartHotelChain = (
   action: StartHotelChain,
@@ -249,7 +301,7 @@ const validateAction = (
 
   switch (action.type) {
     case "PlaceTile":
-      return validatePlaceTile(gameState.availableActionsState);
+      return validatePlaceTile(action, gameState.availableActionsState);
     case "StartHotelChain":
       return validateStartHotelChain(action, gameState.availableActionsState);
     case "PurchaseShares":

@@ -20,7 +20,10 @@ const getInitialState = (gameInstance: IAcquireGameInstance): IGameState => {
   const currentPlayerIdState = CurrentPlayerIdStateEngine.getInitialState(
     gameInstance.playerIds
   );
-  const availableActionsState = AvailableActionsStateEngine.getInitialState();
+  const availableActionsState = AvailableActionsStateEngine.getInitialState(
+    currentPlayerIdState,
+    tileState
+  );
 
   return {
     boardState,
@@ -81,6 +84,7 @@ const computeGameState = (
       boardState,
       sharesState,
       cashState,
+      tileState,
       turnContext,
       currentPlayerIdState
     );
