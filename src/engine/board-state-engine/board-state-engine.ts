@@ -26,14 +26,11 @@ const computeState = (
       );
 
     case "Hotel Size Increased":
-      const adjacentTiles = BoardUtils.getAdjacentPositions(
-        boardState,
-        actionResult.action.boardSquareId
-      ).filter((idx) => boardState[idx].type === "HasTile");
-
       return updateAll(
         boardState,
-        adjacentTiles.concat(actionResult.action.boardSquareId),
+        getAdjacentTiles(boardState, actionResult.action.boardSquareId).concat(
+          actionResult.action.boardSquareId
+        ),
         BoardSquareStateType.HasHotelChain(actionResult.hotelChain)
       );
 
@@ -56,13 +53,25 @@ const computeState = (
 
       return updateAll(
         boardState,
-        minorityBoardSquareIds.concat(actionResult.action.boardSquareId),
+        minorityBoardSquareIds
+          .concat(
+            getAdjacentTiles(boardState, actionResult.action.boardSquareId)
+          )
+          .concat(actionResult.action.boardSquareId),
         BoardSquareStateType.HasHotelChain(actionResult.majority.hotelChain)
       );
     default:
       return boardState;
   }
 };
+
+const getAdjacentTiles = (
+  boardState: BoardSquareState[],
+  boardSquareId: number
+): number[] =>
+  BoardUtils.getAdjacentPositions(boardState, boardSquareId).filter(
+    (idx) => boardState[idx].type === "HasTile"
+  );
 
 const updateAll = (
   boardState: BoardSquareState[],

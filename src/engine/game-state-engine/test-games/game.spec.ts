@@ -1,7 +1,7 @@
-import { IAcquireGameInstance } from "../../model/acquire-game-instance";
-import { PlayerAction, PlayerActionType } from "../../model/player-action";
-import { createGameInstance } from "../../test/factory/game-instance.factory";
-import { playAndRecordActions, tile } from "../../test/helpers";
+import { IAcquireGameInstance } from "../../../model/acquire-game-instance";
+import { PlayerAction, PlayerActionType } from "../../../model/player-action";
+import { createGameInstance } from "../../../test/factory/game-instance.factory";
+import { playAndRecordActions, tile } from "../../../test/helpers";
 
 it("Game Play", () => {
   playAndRecordActions(gameInstance, actions);
