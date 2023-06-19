@@ -1,11 +1,11 @@
 import { ActionLog } from "./action-log";
 import { IGameState } from "./game-state";
 import { HotelChainType } from "./hotel-chain-type";
-import { PlaceTile } from "./player-action";
+import { Merge, PlaceTile } from "./player-action";
 import { PlayerActionResult } from "./player-action-result";
 
 export interface MergeContext {
-  action: PlaceTile;
+  action: PlaceTile | Merge;
   gameState: IGameState;
   minority: {
     hotelChain: HotelChainType;

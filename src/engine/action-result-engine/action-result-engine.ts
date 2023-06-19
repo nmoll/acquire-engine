@@ -99,7 +99,7 @@ const computeActionResult = (
           });
 
           return {
-            type: "Hotel Auto Merged",
+            type: "Hote Merged",
             action,
             majority: {
               hotelChain: majorityHotelChain,
@@ -118,6 +118,62 @@ const computeActionResult = (
         type: "Tile Placed",
         action,
       };
+
+    case "Merge":
+      const majorityHotelChain = action.hotelChainToKeep;
+      const minorityHotelChain = action.hotelChainToDissolve;
+
+      let cashAwarded: Record<string, number> = {};
+
+      const { majorityShareholders, minorityShareholders } =
+        SharesUtils.getMajorityAndMinorityShareholders(
+          state.sharesState,
+          minorityHotelChain
+        );
+
+      const majorityHotelSize = HotelChainUtils.getHotelSize(
+        majorityHotelChain,
+        state.boardState
+      );
+
+      const minorityHotelSize = HotelChainUtils.getHotelSize(
+        minorityHotelChain,
+        state.boardState
+      );
+
+      majorityShareholders.forEach((shareholder) => {
+        const bonus = SharesUtils.getMajorityBonus(
+          minorityHotelChain,
+          minorityHotelSize
+        );
+        cashAwarded[shareholder] = Math.round(
+          (cashAwarded[shareholder] ?? 0) + bonus / majorityShareholders.length
+        );
+      });
+
+      minorityShareholders.forEach((shareholder) => {
+        const bonus = SharesUtils.getMinorityBonus(
+          minorityHotelChain,
+          minorityHotelSize
+        );
+        cashAwarded[shareholder] = Math.round(
+          (cashAwarded[shareholder] ?? 0) + bonus / minorityShareholders.length
+        );
+      });
+      return {
+        type: "Hote Merged",
+        action,
+        majority: {
+          hotelChain: majorityHotelChain,
+          size: majorityHotelSize,
+        },
+        minority: {
+          hotelChain: minorityHotelChain,
+          size: minorityHotelSize,
+        },
+        cashAwarded,
+      };
+
     case "StartHotelChain":
       const boardSquareIds = state.boardState
         .map((_, idx) => idx)
@@ -150,11 +206,6 @@ const computeActionResult = (
     case "TradeOrphanedShare":
       return {
         type: "Share Traded",
-        action,
-      };
-    case "Merge":
-      return {
-        type: "Hotel Merge Direction Decided",
         action,
       };
     case "EndTurn":

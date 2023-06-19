@@ -14,6 +14,7 @@ import { ICashState } from "../../model/cash-state";
 import { CurrentPlayerIdState } from "../../model/current-player-id-state";
 import {
   KeepOrphanedShare,
+  Merge,
   PlaceTile,
   PlayerAction,
   PurchaseShares,
@@ -79,7 +80,7 @@ const computeState = (
         AvailableActionType.ChooseMergeDirection(actionResult.hotelChains),
       ];
 
-    case "Hotel Auto Merged":
+    case "Hote Merged":
       const playerWithShares = SharesUtils.getNextPlayerWithOrphanedShares(
         sharesState,
         currentPlayerId,
@@ -247,6 +248,14 @@ const validateStartHotelChain = (
       available.hotelChains.includes(action.hotelChain)
   );
 
+const validateMerge = (action: Merge, state: IAvailableActionState): boolean =>
+  state.some(
+    (available) =>
+      available.type === "ChooseMergeDirection" &&
+      available.options.includes(action.hotelChainToKeep) &&
+      available.options.includes(action.hotelChainToDissolve)
+  );
+
 const validatePurchaseShares = (
   action: PurchaseShares,
   state: IAvailableActionState
@@ -304,6 +313,8 @@ const validateAction = (
       return validatePlaceTile(action, gameState.availableActionsState);
     case "StartHotelChain":
       return validateStartHotelChain(action, gameState.availableActionsState);
+    case "Merge":
+      return validateMerge(action, gameState.availableActionsState);
     case "PurchaseShares":
       return validatePurchaseShares(action, gameState.availableActionsState);
     case "SellOrphanedShare":

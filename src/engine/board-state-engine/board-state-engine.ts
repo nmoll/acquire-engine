@@ -40,12 +40,11 @@ const computeState = (
         )
         .getState();
 
-    case "Hotel Auto Merged":
+    case "Hote Merged":
       return board
         .mergeHotels(
           actionResult.minority.hotelChain,
-          actionResult.majority.hotelChain,
-          actionResult.action.boardSquareId
+          actionResult.majority.hotelChain
         )
         .getState();
 

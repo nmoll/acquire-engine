@@ -41,6 +41,7 @@ export interface Merge {
   type: "Merge";
   playerId: string;
   hotelChainToKeep: HotelChainType;
+  hotelChainToDissolve: HotelChainType;
 }
 
 export interface EndTurn {
@@ -111,10 +112,15 @@ export const PlayerActionType = {
     hotelChainToReceive,
   }),
 
-  Merge: (playerId: string, hotelChainToKeep: HotelChainType): Merge => ({
+  Merge: (
+    playerId: string,
+    hotelChainToKeep: HotelChainType,
+    hotelChainToDissolve: HotelChainType
+  ): Merge => ({
     type: "Merge",
     playerId,
     hotelChainToKeep,
+    hotelChainToDissolve,
   }),
 
   EndTurn: (playerId: string): EndTurn => ({

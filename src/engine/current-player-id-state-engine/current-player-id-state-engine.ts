@@ -39,7 +39,7 @@ const computeState = (
       }
       break;
 
-    case "Hotel Auto Merged":
+    case "Hote Merged":
       const playerWithShares = SharesUtils.getNextPlayerWithOrphanedShares(
         sharesState,
         result.action.playerId,

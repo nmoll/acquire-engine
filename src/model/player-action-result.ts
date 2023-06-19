@@ -34,9 +34,9 @@ interface MergeInitiated {
   hotelChains: HotelChainType[];
 }
 
-interface HotelAutoMerged {
-  type: "Hotel Auto Merged";
-  action: PlaceTile;
+interface HotelMerged {
+  type: "Hote Merged";
+  action: PlaceTile | Merge;
   minority: {
     hotelChain: HotelChainType;
     size: number;
@@ -46,11 +46,6 @@ interface HotelAutoMerged {
     size: number;
   };
   cashAwarded: Record<string, number>;
-}
-
-interface HotelMergeDirectionDecided {
-  type: "Hotel Merge Direction Decided";
-  action: Merge;
 }
 
 interface SharesPurchased {
@@ -83,8 +78,7 @@ export type PlayerActionResult =
   | HotelChainStarted
   | HotelSizeIncreased
   | MergeInitiated
-  | HotelAutoMerged
-  | HotelMergeDirectionDecided
+  | HotelMerged
   | SharesPurchased
   | ShareSold
   | ShareKept
@@ -123,7 +117,7 @@ export const PlayerActionResult = {
     action: PlayerActionType.PlaceTile(playerId, boardSquareId),
     hotelChains,
   }),
-  HotelAutoMerged: (
+  HotelMerged: (
     playerId: string,
     boardSquareId: number,
     minority: {
@@ -135,19 +129,12 @@ export const PlayerActionResult = {
       size: number;
     },
     cashAwarded: Record<string, number>
-  ): HotelAutoMerged => ({
-    type: "Hotel Auto Merged",
+  ): HotelMerged => ({
+    type: "Hote Merged",
     action: PlayerActionType.PlaceTile(playerId, boardSquareId),
     minority,
     majority,
     cashAwarded,
-  }),
-  HotelMergeDirectionDecided: (
-    playerId: string,
-    hotelChainToKeep: HotelChainType
-  ): HotelMergeDirectionDecided => ({
-    type: "Hotel Merge Direction Decided",
-    action: PlayerActionType.Merge(playerId, hotelChainToKeep),
   }),
   SharesPurchased: (
     playerId: string,
