@@ -99,7 +99,7 @@ const computeActionResult = (
           });
 
           return {
-            type: "Hote Merged",
+            type: "Hotel Merged",
             action,
             majority: {
               hotelChain: majorityHotelChain,
@@ -161,7 +161,7 @@ const computeActionResult = (
         );
       });
       return {
-        type: "Hote Merged",
+        type: "Hotel Merged",
         action,
         majority: {
           hotelChain: majorityHotelChain,

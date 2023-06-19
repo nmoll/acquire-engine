@@ -91,7 +91,7 @@ const getMergeContextThisTurn = (
 
   for (let log of currentTurn) {
     const result = log.actionResult;
-    if (result.type === "Hote Merged") {
+    if (result.type === "Hotel Merged") {
       return {
         action: result.action,
         gameState: log.state,

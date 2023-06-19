@@ -33,13 +33,22 @@ export class Board {
     };
   }
 
-  public mergeHotels(minority: HotelChainType, majority: HotelChainType) {
+  public mergeHotels(
+    minority: HotelChainType,
+    majority: HotelChainType,
+    mergerTile: number | null
+  ): Board {
     const majorityBoardState = BoardSquareStateType.HasHotelChain(majority);
-    const mergerTile = this.squares.findIndex(
-      (square, idx) =>
-        square.type === "HasTile" &&
-        this.getAdjacentHotelSquares(idx).length > 0
-    );
+
+    if (mergerTile === null) {
+      mergerTile = this.squares.findIndex(
+        (square, idx) =>
+          square.type === "HasTile" &&
+          this.getAdjacentIndices(idx).some(
+            (i) => this.squares[i].type === "HasHotelChain"
+          )
+      );
+    }
 
     if (mergerTile === -1) {
       throw new Error("No merger tile found");
@@ -73,12 +82,6 @@ export class Board {
   private getAdjacentTiles(index: number): number[] {
     return this.getAdjacentIndices(index).filter(
       (idx) => this.squares[idx].type === "HasTile"
-    );
-  }
-
-  private getAdjacentHotelSquares(index: number): number[] {
-    return this.getAdjacentIndices(index).filter(
-      (idx) => this.squares[idx].type === "HasHotelChain"
     );
   }
 }

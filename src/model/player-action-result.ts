@@ -35,7 +35,7 @@ interface MergeInitiated {
 }
 
 interface HotelMerged {
-  type: "Hote Merged";
+  type: "Hotel Merged";
   action: PlaceTile | Merge;
   minority: {
     hotelChain: HotelChainType;
@@ -130,7 +130,7 @@ export const PlayerActionResult = {
     },
     cashAwarded: Record<string, number>
   ): HotelMerged => ({
-    type: "Hote Merged",
+    type: "Hotel Merged",
     action: PlayerActionType.PlaceTile(playerId, boardSquareId),
     minority,
     majority,

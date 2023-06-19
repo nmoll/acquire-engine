@@ -40,11 +40,17 @@ const computeState = (
         )
         .getState();
 
-    case "Hote Merged":
+    case "Hotel Merged":
+      const mergerTile =
+        actionResult.action.type === "PlaceTile"
+          ? actionResult.action.boardSquareId
+          : null;
+
       return board
         .mergeHotels(
           actionResult.minority.hotelChain,
-          actionResult.majority.hotelChain
+          actionResult.majority.hotelChain,
+          mergerTile
         )
         .getState();
 

@@ -80,7 +80,7 @@ const computeState = (
         AvailableActionType.ChooseMergeDirection(actionResult.hotelChains),
       ];
 
-    case "Hote Merged":
+    case "Hotel Merged":
       const playerWithShares = SharesUtils.getNextPlayerWithOrphanedShares(
         sharesState,
         currentPlayerId,

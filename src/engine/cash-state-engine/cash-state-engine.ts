@@ -36,7 +36,7 @@ const computeState = (
           state.cashState[turnContext.actionResult.action.playerId] +
           getSharesCostOfHotelBeforeMerge(turnContext),
       };
-    case "Hote Merged":
+    case "Hotel Merged":
       return Object.entries(turnContext.actionResult.cashAwarded).reduce(
         (state, [playerId, cashAwarded]) => ({
           ...state,
