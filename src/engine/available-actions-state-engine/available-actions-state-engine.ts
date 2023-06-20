@@ -1,13 +1,7 @@
-import { GameConfig } from "../../game-config";
+import { BoardSquareState, IGameState, ISharesState } from "../../model";
 import {
-  BoardSquareState,
-  HotelChainType,
-  IGameState,
-  ISharesState,
-} from "../../model";
-import {
+  AvailableAction,
   AvailableActionType,
-  ChooseShares,
 } from "../../model/available-action";
 import { IAvailableActionState } from "../../model/available-action-state";
 import { ICashState } from "../../model/cash-state";
@@ -24,10 +18,14 @@ import {
 } from "../../model/player-action";
 import { ITileState } from "../../model/tile-state";
 import { TurnContext } from "../../model/turn-context";
-import { ActionUtils } from "../../utils/action-utils";
-import { HotelChainUtils } from "../../utils/hotel-chain-utils";
-import { isDefined } from "../../utils/is-defined-util";
-import { SharesUtils } from "../../utils/shares-utils";
+import { AvailableActionStrategy } from "./strategy/available-action-strategy";
+import { AvailablActionStrategyContext } from "./strategy/available-action-strategy-context";
+import { ChooseEndTurnStrategy } from "./strategy/choose-end-turn-strategy";
+import { ChooseHotelStrategy } from "./strategy/choose-hotel-strategy";
+import { ChooseMergeDirectionStrategy } from "./strategy/choose-merge-direction-strategy";
+import { ChooseOrphanedShareStrategy } from "./strategy/choose-orphaned-share-strategy";
+import { ChooseSharesStrategy } from "./strategy/choose-shares-strategy";
+import { ChooseTileStrategy } from "./strategy/choose-tile-strategy";
 
 const getInitialState = (
   currentPlayerId: CurrentPlayerIdState,
@@ -47,185 +45,44 @@ const computeState = (
   turnContext: TurnContext,
   currentPlayerId: CurrentPlayerIdState
 ): IAvailableActionState => {
-  const actionResult = turnContext.actionResult;
   if (!currentPlayerId) {
     return [];
   }
 
-  const playerCash = cashState[currentPlayerId];
-
-  switch (actionResult.type) {
-    case "Tile Placed":
-    case "Hotel Size Increased":
-      if (
-        HotelChainUtils.isHotelStarter(
-          boardState,
-          actionResult.action.boardSquareId
-        )
-      ) {
-        return [
-          AvailableActionType.ChooseHotelChain(
-            HotelChainUtils.getInactiveHotelChains(boardState)
-          ),
-        ];
-      }
-
-      return [
-        chooseSharesIfAvailable(boardState, sharesState, playerCash),
-        AvailableActionType.ChooseEndTurn(),
-      ].filter(isDefined);
-
-    case "Merge Initiated":
-      return [
-        AvailableActionType.ChooseMergeDirection(actionResult.hotelChains),
-      ];
-
-    case "Hotel Merged":
-      const playerWithShares = SharesUtils.getNextPlayerWithOrphanedShares(
-        sharesState,
-        currentPlayerId,
-        actionResult.minority.hotelChain,
-        turnContext.turnLog
-      );
-      const numShares = playerWithShares
-        ? sharesState[playerWithShares.playerId][
-            actionResult.minority.hotelChain
-          ]
-        : null;
-
-      if (!numShares) {
-        return [
-          chooseSharesIfAvailable(boardState, sharesState, playerCash),
-          AvailableActionType.ChooseEndTurn(),
-        ].filter(isDefined);
-      }
-
-      return chooseOrphanedSharesOptions(
-        actionResult.minority.hotelChain,
-        actionResult.majority.hotelChain,
-        numShares
-      );
-
-    case "Hotel Chain Started":
-      return [
-        chooseSharesIfAvailable(boardState, sharesState, playerCash),
-        AvailableActionType.ChooseEndTurn(),
-      ].filter(isDefined);
-
-    case "Shares Purchased":
-      const sharesPurchasedThisTurn = turnContext.turnLog.filter(
-        (log) => log.action.type === "PurchaseShares"
-      );
-
-      return [
-        sharesPurchasedThisTurn.length + 1 < GameConfig.turn.maxShares
-          ? chooseSharesIfAvailable(boardState, sharesState, playerCash)
-          : null,
-        AvailableActionType.ChooseEndTurn(),
-      ].filter(isDefined);
-
-    case "Share Kept":
-    case "Share Sold":
-    case "Share Traded":
-      const mergeContext = turnContext.mergeContext;
-      if (!mergeContext) {
-        throw new Error("Expected to find merge context for current turn");
-      }
-
-      const playerWithUnresolvedShares =
-        ActionUtils.findPlayerWithUnresolvedOrphanedShares(turnContext);
-
-      if (playerWithUnresolvedShares) {
-        return chooseOrphanedSharesOptions(
-          mergeContext.minority.hotelChain,
-          mergeContext.majority.hotelChain,
-          playerWithUnresolvedShares.shares
-        );
-      } else {
-        return [
-          chooseSharesIfAvailable(boardState, sharesState, playerCash),
-          AvailableActionType.ChooseEndTurn(),
-        ].filter(isDefined);
-      }
-
-    case "Turn Ended":
-      return [chooseTile(tileState[currentPlayerId], boardState)];
-
-    default:
-      return [chooseTile(tileState[currentPlayerId], boardState)];
-  }
-};
-
-const chooseSharesIfAvailable = (
-  boardState: BoardSquareState[],
-  sharesState: ISharesState,
-  playerCash: number
-): ChooseShares | null => {
-  const hotelChainState = HotelChainUtils.getHotelChainState(
+  const context: AvailablActionStrategyContext = {
     boardState,
-    sharesState
-  );
+    sharesState,
+    cashState,
+    tileState,
+    turnContext,
+    currentPlayerId,
+  };
 
-  return Object.keys(hotelChainState).length
-    ? AvailableActionType.ChooseShares(
-        SharesUtils.getAvailableSharesForPurchase(hotelChainState, playerCash)
-      )
-    : null;
-};
+  const strategies: AvailableActionStrategy[] = [
+    new ChooseTileStrategy(context),
+    new ChooseHotelStrategy(context),
+    new ChooseSharesStrategy(context),
+    new ChooseMergeDirectionStrategy(context),
+    new ChooseOrphanedShareStrategy(context),
+    new ChooseEndTurnStrategy(),
+  ];
 
-const chooseOrphanedSharesOptions = (
-  minorityHotelChain: HotelChainType,
-  majorityHotelChain: HotelChainType,
-  remainingShares: number
-): IAvailableActionState =>
-  [
-    AvailableActionType.ChooseToSellOrphanedShare(
-      minorityHotelChain,
-      remainingShares
-    ),
-    AvailableActionType.ChooseToKeepOrphanedShare(
-      minorityHotelChain,
-      remainingShares
-    ),
-    remainingShares > 1
-      ? AvailableActionType.ChooseToTradeOrphanedShare(
-          minorityHotelChain,
-          majorityHotelChain,
-          remainingShares
-        )
-      : null,
-  ].filter(isDefined);
+  const allAvailableActions: AvailableAction[] = [];
+  const requiredActions: AvailableAction[] = [];
 
-const chooseTile = (tiles: number[], boardState: BoardSquareState[]) => {
-  const available: number[] = [];
-  const unavailable: number[] = [];
-
-  tiles.forEach((tile) => {
-    if (isTilePlayable(tile, boardState)) {
-      available.push(tile);
+  strategies.forEach((strategy) => {
+    if (strategy.isRequired()) {
+      requiredActions.push(...strategy.getAvailableActions());
     } else {
-      unavailable.push(tile);
+      allAvailableActions.push(...strategy.getAvailableActions());
     }
   });
 
-  return AvailableActionType.ChooseTile({
-    available,
-    unavailable,
-  });
-};
-
-const isTilePlayable = (
-  tile: number,
-  boardState: BoardSquareState[]
-): boolean => {
-  if (
-    HotelChainUtils.isHotelStarter(boardState, tile) &&
-    HotelChainUtils.getInactiveHotelChains(boardState).length === 0
-  ) {
-    return false;
+  if (requiredActions.length) {
+    return requiredActions;
+  } else {
+    return allAvailableActions;
   }
-
-  return true;
 };
 
 const validatePlaceTile = (
