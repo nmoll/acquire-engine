@@ -49,6 +49,11 @@ export interface EndTurn {
   playerId: string;
 }
 
+export interface EndGame {
+  type: "EndGame";
+  playerId: string;
+}
+
 export type PlayerAction =
   | PlaceTile
   | StartHotelChain
@@ -57,7 +62,8 @@ export type PlayerAction =
   | KeepOrphanedShare
   | TradeOrphanedShare
   | Merge
-  | EndTurn;
+  | EndTurn
+  | EndGame;
 
 export const PlayerActionType = {
   PlaceTile: (playerId: string, boardSquareId: number): PlaceTile => ({
@@ -125,6 +131,11 @@ export const PlayerActionType = {
 
   EndTurn: (playerId: string): EndTurn => ({
     type: "EndTurn",
+    playerId,
+  }),
+
+  EndGame: (playerId: string): EndGame => ({
+    type: "EndGame",
     playerId,
   }),
 };

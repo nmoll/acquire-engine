@@ -65,6 +65,8 @@ const formatAction = (action: AvailableAction): string => {
       return `Trade (2/${action.remainingShares}) ${action.hotelChain} for 1 ${action.hotelChainToReceive}`;
     case "ChooseEndTurn":
       return `End Turn`;
+    case "ChooseEndGame":
+      return `End Game`;
   }
 };
 

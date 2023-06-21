@@ -72,6 +72,19 @@ export class AcquireGameActionsElement extends LitElement {
     );
   }
 
+  onEndGame() {
+    this.dispatchEvent(
+      new CustomEvent<ActionRequestEvent>("action-request", {
+        detail: {
+          action: {
+            type: "EndGame",
+            playerId: this.playerId,
+          },
+        },
+      })
+    );
+  }
+
   onStartHotelChain(hotelChain: HotelChainType) {
     this.dispatchEvent(
       new CustomEvent<ActionRequestEvent>("action-request", {
@@ -86,14 +99,18 @@ export class AcquireGameActionsElement extends LitElement {
     );
   }
 
-  onChooseMergeDirection(hotelChain: HotelChainType) {
+  onChooseMergeDirection(
+    hotelChainToKeep: HotelChainType,
+    hotelChainToDissolve: HotelChainType
+  ) {
     this.dispatchEvent(
       new CustomEvent<ActionRequestEvent>("action-request", {
         detail: {
           action: {
             type: "Merge",
             playerId: this.playerId,
-            hotelChainToKeep: hotelChain,
+            hotelChainToKeep,
+            hotelChainToDissolve,
           },
         },
       })
@@ -175,14 +192,29 @@ export class AcquireGameActionsElement extends LitElement {
   renderChooseMergeDirection(hotelChains: HotelChainType[]) {
     return html`
       <div>
-        Choose hotel chain to keep on board:
+        Choose hotel chain to dissolve:
         <div>
           ${hotelChains.map(
             (hotelChain) =>
-              html`<button style="color: var(--colors-${hotelChain})"  @click="${() =>
-                this.onChooseMergeDirection(
-                  hotelChain
-                )}"">${hotelChain}</button>`
+              html`<button
+                style="color: var(--colors-${hotelChain})"
+                @click="${() => {
+                  const hotelChainToDisolve = hotelChain;
+                  const hotelChainToKeep = hotelChains.find(
+                    (h) => h !== hotelChainToDisolve
+                  );
+                  if (!hotelChainToKeep) {
+                    throw new Error("Could not find hotel chain to keep");
+                  }
+
+                  this.onChooseMergeDirection(
+                    hotelChainToKeep,
+                    hotelChainToDisolve
+                  );
+                }}"
+              >
+                ${hotelChain}
+              </button>`
           )}
         </div>
       </div>
@@ -242,6 +274,10 @@ export class AcquireGameActionsElement extends LitElement {
     return html`<button @click="${() => this.onEndTurn()}">End Turn</button>`;
   }
 
+  renderChooseEndGame() {
+    return html`<button @click="${() => this.onEndGame()}">End Game</button>`;
+  }
+
   renderAction(action: AvailableAction) {
     switch (action.type) {
       case "ChooseTile":
@@ -270,6 +306,8 @@ export class AcquireGameActionsElement extends LitElement {
         );
       case "ChooseEndTurn":
         return this.renderChooseEndTurn();
+      case "ChooseEndGame":
+        return this.renderChooseEndGame();
     }
   }
 

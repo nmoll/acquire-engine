@@ -45,6 +45,10 @@ export interface ChooseEndTurn {
   type: "ChooseEndTurn";
 }
 
+export interface ChooseEndGame {
+  type: "ChooseEndGame";
+}
+
 export type AvailableAction =
   | ChooseTile
   | ChooseHotelChain
@@ -53,7 +57,8 @@ export type AvailableAction =
   | ChooseToKeepOrphanedShare
   | ChooseToTradeOrphanedShare
   | ChooseMergeDirection
-  | ChooseEndTurn;
+  | ChooseEndTurn
+  | ChooseEndGame;
 
 export const AvailableActionType = {
   ChooseTile: (tiles: {
@@ -104,5 +109,8 @@ export const AvailableActionType = {
   }),
   ChooseEndTurn: (): ChooseEndTurn => ({
     type: "ChooseEndTurn",
+  }),
+  ChooseEndGame: (): ChooseEndGame => ({
+    type: "ChooseEndGame",
   }),
 };

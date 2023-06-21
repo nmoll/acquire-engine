@@ -20,6 +20,7 @@ import { ITileState } from "../../model/tile-state";
 import { TurnContext } from "../../model/turn-context";
 import { AvailableActionStrategy } from "./strategy/available-action-strategy";
 import { AvailablActionStrategyContext } from "./strategy/available-action-strategy-context";
+import { ChooseEndGameStrategy } from "./strategy/choose-end-game-strategy";
 import { ChooseEndTurnStrategy } from "./strategy/choose-end-turn-strategy";
 import { ChooseHotelStrategy } from "./strategy/choose-hotel-strategy";
 import { ChooseMergeDirectionStrategy } from "./strategy/choose-merge-direction-strategy";
@@ -65,6 +66,7 @@ const computeState = (
     new ChooseMergeDirectionStrategy(context),
     new ChooseOrphanedShareStrategy(context),
     new ChooseEndTurnStrategy(),
+    new ChooseEndGameStrategy(context),
   ];
 
   const allAvailableActions: AvailableAction[] = [];

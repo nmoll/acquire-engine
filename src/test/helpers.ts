@@ -48,6 +48,8 @@ export const getActionDescription = (action: PlayerAction): string => {
       return `Player ${action.playerId} trades 2 ${action.hotelChain} -> ${action.hotelChainToReceive}`;
     case "EndTurn":
       return `Player ${action.playerId} ends turn`;
+    case "EndGame":
+      return `Player ${action.playerId} ends game`;
   }
 };
 

@@ -16,6 +16,8 @@ export const GameConfig = {
   hotel: {
     shares: 25,
     starterBonus: 1,
+    safeSize: 11,
+    gameEndingSize: 41,
     basePrice: {
       Tower: 200,
       Luxor: 200,

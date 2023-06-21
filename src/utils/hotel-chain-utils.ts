@@ -124,6 +124,18 @@ const getHotelSize = (
       square.hotelChainType === hotelChainType
   ).length;
 
+const isSafe = (
+  hotelChainType: HotelChainType,
+  boardState: BoardSquareState[]
+): boolean =>
+  getHotelSize(hotelChainType, boardState) >= GameConfig.hotel.safeSize;
+
+const isGameEndingSize = (
+  hotelChainType: HotelChainType,
+  boardState: BoardSquareState[]
+): boolean =>
+  getHotelSize(hotelChainType, boardState) >= GameConfig.hotel.gameEndingSize;
+
 export const HotelChainUtils = {
   getHotelChainState,
   isTypeHotelChain,
@@ -134,4 +146,6 @@ export const HotelChainUtils = {
   getSmallestHotelChain,
   isHotelStarter,
   getHotelSize,
+  isSafe,
+  isGameEndingSize,
 };

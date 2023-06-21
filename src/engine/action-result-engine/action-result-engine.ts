@@ -213,6 +213,11 @@ const computeActionResult = (
         type: "Turn Ended",
         action,
       };
+    case "EndGame":
+      return {
+        type: "Game Ended",
+        action,
+      };
   }
 };
 

@@ -1,5 +1,6 @@
 import { HotelChainType } from "./hotel-chain-type";
 import {
+  EndGame,
   EndTurn,
   KeepOrphanedShare,
   Merge,
@@ -73,6 +74,11 @@ interface TurnEnded {
   action: EndTurn;
 }
 
+interface GameEnded {
+  type: "Game Ended";
+  action: EndGame;
+}
+
 export type PlayerActionResult =
   | TilePlaced
   | HotelChainStarted
@@ -83,7 +89,8 @@ export type PlayerActionResult =
   | ShareSold
   | ShareKept
   | ShareTraded
-  | TurnEnded;
+  | TurnEnded
+  | GameEnded;
 
 export const PlayerActionResult = {
   TilePlaced: (playerId: string, boardSquareId: number): TilePlaced => ({
@@ -166,5 +173,9 @@ export const PlayerActionResult = {
   TurnEnded: (playerId: string): TurnEnded => ({
     type: "Turn Ended",
     action: PlayerActionType.EndTurn(playerId),
+  }),
+  GameEnded: (playerId: string): GameEnded => ({
+    type: "Game Ended",
+    action: PlayerActionType.EndGame(playerId),
   }),
 };
