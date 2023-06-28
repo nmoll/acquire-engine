@@ -1,3 +1,4 @@
+import { expect } from "vitest";
 import { GameStateEngine } from "../engine/game-state-engine/game-state-engine";
 import { IAcquireGameInstance } from "../model/acquire-game-instance";
 import { PlayerAction } from "../model/player-action";

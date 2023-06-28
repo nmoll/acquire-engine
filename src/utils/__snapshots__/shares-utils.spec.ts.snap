@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SharesUtils getMajorityBonus should calculate majority bonus for the given hotel chain and size 1`] = `
+exports[`SharesUtils > getMajorityBonus > should calculate majority bonus for the given hotel chain and size 1`] = `
 {
   "American": {
     "00": 1000000,
@@ -334,7 +334,7 @@ exports[`SharesUtils getMajorityBonus should calculate majority bonus for the gi
 }
 `;
 
-exports[`SharesUtils getMinorityBonus should calculate minority bonus for the given hotel chain and size 1`] = `
+exports[`SharesUtils > getMinorityBonus > should calculate minority bonus for the given hotel chain and size 1`] = `
 {
   "American": {
     "00": 500000,
@@ -668,7 +668,7 @@ exports[`SharesUtils getMinorityBonus should calculate minority bonus for the gi
 }
 `;
 
-exports[`SharesUtils getSharesCost should calculate share price for the given hotel chain and size 1`] = `
+exports[`SharesUtils > getSharesCost > should calculate share price for the given hotel chain and size 1`] = `
 {
   "American": {
     "00": 100000,

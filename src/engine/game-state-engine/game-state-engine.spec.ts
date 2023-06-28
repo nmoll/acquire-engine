@@ -1,3 +1,4 @@
+import { it, describe, expect } from "vitest";
 import { IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { AvailableActionType } from "../../model/available-action";

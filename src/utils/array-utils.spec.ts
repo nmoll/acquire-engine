@@ -1,3 +1,4 @@
+import { it, describe, expect, beforeEach } from "vitest";
 import { ArrayUtils } from "./array-utils";
 
 describe("ArrayUtils", () => {

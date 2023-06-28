@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`TileUtils getSortedBag should return a different tile bag sorted by another seed 1`] = `
+exports[`TileUtils > getSortedBag > should return a different tile bag sorted by another seed 1`] = `
 [
   67,
   9,
@@ -113,7 +113,7 @@ exports[`TileUtils getSortedBag should return a different tile bag sorted by ano
 ]
 `;
 
-exports[`TileUtils getSortedBag should return a tile bag sorted by the given seed 1`] = `
+exports[`TileUtils > getSortedBag > should return a tile bag sorted by the given seed 1`] = `
 [
   11,
   7,

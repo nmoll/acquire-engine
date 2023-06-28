@@ -1,3 +1,4 @@
+import { it, describe, expect } from "vitest";
 import { HotelChainState } from "../model/hotel-chain-state";
 import { BoardStateFactory } from "../test/factory/board-state.factory";
 import { SharesStateFactory } from "../test/factory/shares-state.factory";

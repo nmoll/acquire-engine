@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Game Play: (1) Player 1 places tile [10G] 1`] = `
+exports[`Game Play > (1) Player 1 places tile [10G] 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -17,7 +17,7 @@ P2 | $6000 | [5E] [7F] [10E] [1D] [7G] |
 P1 [End Turn]
 `;
 
-exports[`Game Play: (2) Player 1 ends turn 1`] = `
+exports[`Game Play > (2) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -34,7 +34,7 @@ P2 | $6000 | [5E] [7F] [10E] [1D] [7G] |
 P2 [Choose Tile: [5E] [7F] [10E] [1D] [7G]]
 `;
 
-exports[`Game Play: (3) Player 2 places tile [10E] 1`] = `
+exports[`Game Play > (3) Player 2 places tile [10E] 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -51,7 +51,7 @@ P2 | $6000 | [5E] [7F] [1D] [7G] |
 P2 [End Turn]
 `;
 
-exports[`Game Play: (4) Player 2 ends turn 1`] = `
+exports[`Game Play > (4) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -68,7 +68,7 @@ P2 | $6000 | [5E] [7F] [1D] [7G] [3F] |
 P1 [Choose Tile: [12G] [11I] [6I] [3D] [2H]]
 `;
 
-exports[`Game Play: (5) Player 1 places tile [11I] 1`] = `
+exports[`Game Play > (5) Player 1 places tile [11I] 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -85,7 +85,7 @@ P2 | $6000 | [5E] [7F] [1D] [7G] [3F] |
 P1 [End Turn]
 `;
 
-exports[`Game Play: (6) Player 1 ends turn 1`] = `
+exports[`Game Play > (6) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -102,7 +102,7 @@ P2 | $6000 | [5E] [7F] [1D] [7G] [3F] |
 P2 [Choose Tile: [5E] [7F] [1D] [7G] [3F]]
 `;
 
-exports[`Game Play: (7) Player 2 places tile [3F] 1`] = `
+exports[`Game Play > (7) Player 2 places tile [3F] 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -119,7 +119,7 @@ P2 | $6000 | [5E] [7F] [1D] [7G] |
 P2 [End Turn]
 `;
 
-exports[`Game Play: (8) Player 2 ends turn 1`] = `
+exports[`Game Play > (8) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -136,7 +136,7 @@ P2 | $6000 | [5E] [7F] [1D] [7G] [10I] |
 P1 [Choose Tile: [12G] [6I] [3D] [2H] [8G]]
 `;
 
-exports[`Game Play: (9) Player 1 places tile [8G] 1`] = `
+exports[`Game Play > (9) Player 1 places tile [8G] 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -153,7 +153,7 @@ P2 | $6000 | [5E] [7F] [1D] [7G] [10I] |
 P1 [End Turn]
 `;
 
-exports[`Game Play: (10) Player 1 ends turn 1`] = `
+exports[`Game Play > (10) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -170,7 +170,7 @@ P2 | $6000 | [5E] [7F] [1D] [7G] [10I] |
 P2 [Choose Tile: [5E] [7F] [1D] [7G] [10I]]
 `;
 
-exports[`Game Play: (11) Player 2 places tile [7G] 1`] = `
+exports[`Game Play > (11) Player 2 places tile [7G] 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -187,7 +187,7 @@ P2 | $6000 | [5E] [7F] [1D] [10I] |
 P2 [Choose Hotel: A C F I L T W]
 `;
 
-exports[`Game Play: (12) Player 2 starts Tower 1`] = `
+exports[`Game Play > (12) Player 2 starts Tower 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -204,7 +204,7 @@ P2 | $6000 | [5E] [7F] [1D] [10I] | T:1
 P2 [Choose Shares: T] [End Turn]
 `;
 
-exports[`Game Play: (13) Player 2 purchases Tower 1`] = `
+exports[`Game Play > (13) Player 2 purchases Tower 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -221,7 +221,7 @@ P2 | $5800 | [5E] [7F] [1D] [10I] | T:2
 P2 [Choose Shares: T] [End Turn]
 `;
 
-exports[`Game Play: (14) Player 2 purchases Tower 1`] = `
+exports[`Game Play > (14) Player 2 purchases Tower 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -238,7 +238,7 @@ P2 | $5600 | [5E] [7F] [1D] [10I] | T:3
 P2 [Choose Shares: T] [End Turn]
 `;
 
-exports[`Game Play: (15) Player 2 ends turn 1`] = `
+exports[`Game Play > (15) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -255,7 +255,7 @@ P2 | $5600 | [5E] [7F] [1D] [10I] [7H] | T:3
 P1 [Choose Tile: [12G] [6I] [3D] [2H] [7B]]
 `;
 
-exports[`Game Play: (16) Player 1 places tile [3D] 1`] = `
+exports[`Game Play > (16) Player 1 places tile [3D] 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -272,7 +272,7 @@ P2 | $5600 | [5E] [7F] [1D] [10I] [7H] | T:3
 P1 [Choose Shares: T] [End Turn]
 `;
 
-exports[`Game Play: (17) Player 1 purchases Tower 1`] = `
+exports[`Game Play > (17) Player 1 purchases Tower 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -289,7 +289,7 @@ P2 | $5600 | [5E] [7F] [1D] [10I] [7H] | T:3
 P1 [Choose Shares: T] [End Turn]
 `;
 
-exports[`Game Play: (18) Player 1 purchases Tower 1`] = `
+exports[`Game Play > (18) Player 1 purchases Tower 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -306,7 +306,7 @@ P2 | $5600 | [5E] [7F] [1D] [10I] [7H] | T:3
 P1 [Choose Shares: T] [End Turn]
 `;
 
-exports[`Game Play: (19) Player 1 purchases Tower 1`] = `
+exports[`Game Play > (19) Player 1 purchases Tower 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -323,7 +323,7 @@ P2 | $5600 | [5E] [7F] [1D] [10I] [7H] | T:3
 P1 [End Turn]
 `;
 
-exports[`Game Play: (20) Player 1 ends turn 1`] = `
+exports[`Game Play > (20) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -340,7 +340,7 @@ P2 | $5600 | [5E] [7F] [1D] [10I] [7H] | T:3
 P2 [Choose Tile: [5E] [7F] [1D] [10I] [7H]]
 `;
 
-exports[`Game Play: (21) Player 2 places tile [7H] 1`] = `
+exports[`Game Play > (21) Player 2 places tile [7H] 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -357,7 +357,7 @@ P2 | $5600 | [5E] [7F] [1D] [10I] | T:3
 P2 [Choose Shares: T] [End Turn]
 `;
 
-exports[`Game Play: (22) Player 2 purchases Tower 1`] = `
+exports[`Game Play > (22) Player 2 purchases Tower 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -374,7 +374,7 @@ P2 | $5300 | [5E] [7F] [1D] [10I] | T:4
 P2 [Choose Shares: T] [End Turn]
 `;
 
-exports[`Game Play: (23) Player 2 purchases Tower 1`] = `
+exports[`Game Play > (23) Player 2 purchases Tower 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -391,7 +391,7 @@ P2 | $5000 | [5E] [7F] [1D] [10I] | T:5
 P2 [Choose Shares: T] [End Turn]
 `;
 
-exports[`Game Play: (24) Player 2 purchases Tower 1`] = `
+exports[`Game Play > (24) Player 2 purchases Tower 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -408,7 +408,7 @@ P2 | $4700 | [5E] [7F] [1D] [10I] | T:6
 P2 [End Turn]
 `;
 
-exports[`Game Play: (25) Player 2 ends turn 1`] = `
+exports[`Game Play > (25) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -425,7 +425,7 @@ P2 | $4700 | [5E] [7F] [1D] [10I] [8D] | T:6
 P1 [Choose Tile: [12G] [6I] [2H] [7B] [2I]]
 `;
 
-exports[`Game Play: (26) Player 1 places tile [2H] 1`] = `
+exports[`Game Play > (26) Player 1 places tile [2H] 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -442,7 +442,7 @@ P2 | $4700 | [5E] [7F] [1D] [10I] [8D] | T:6
 P1 [Choose Shares: T] [End Turn]
 `;
 
-exports[`Game Play: (27) Player 1 ends turn 1`] = `
+exports[`Game Play > (27) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -459,7 +459,7 @@ P2 | $4700 | [5E] [7F] [1D] [10I] [8D] | T:6
 P2 [Choose Tile: [5E] [7F] [1D] [10I] [8D]]
 `;
 
-exports[`Game Play: (28) Player 2 places tile [10I] 1`] = `
+exports[`Game Play > (28) Player 2 places tile [10I] 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -476,7 +476,7 @@ P2 | $4700 | [5E] [7F] [1D] [8D] | T:6
 P2 [Choose Hotel: A C F I L W]
 `;
 
-exports[`Game Play: (29) Player 2 starts Imperial 1`] = `
+exports[`Game Play > (29) Player 2 starts Imperial 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -493,7 +493,7 @@ P2 | $4700 | [5E] [7F] [1D] [8D] | I:1 T:6
 P2 [Choose Shares: T I] [End Turn]
 `;
 
-exports[`Game Play: (30) Player 2 purchases Imperial 1`] = `
+exports[`Game Play > (30) Player 2 purchases Imperial 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -510,7 +510,7 @@ P2 | $4300 | [5E] [7F] [1D] [8D] | I:2 T:6
 P2 [Choose Shares: T I] [End Turn]
 `;
 
-exports[`Game Play: (31) Player 2 purchases Imperial 1`] = `
+exports[`Game Play > (31) Player 2 purchases Imperial 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -527,7 +527,7 @@ P2 | $3900 | [5E] [7F] [1D] [8D] | I:3 T:6
 P2 [Choose Shares: T I] [End Turn]
 `;
 
-exports[`Game Play: (32) Player 2 ends turn 1`] = `
+exports[`Game Play > (32) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -544,7 +544,7 @@ P2 | $3900 | [5E] [7F] [1D] [8D] [1A] | I:3 T:6
 P1 [Choose Tile: [12G] [6I] [7B] [2I] [9E]]
 `;
 
-exports[`Game Play: (33) Player 1 places tile [9E] 1`] = `
+exports[`Game Play > (33) Player 1 places tile [9E] 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -561,7 +561,7 @@ P2 | $3900 | [5E] [7F] [1D] [8D] [1A] | I:3 T:6
 P1 [Choose Hotel: A C F L W]
 `;
 
-exports[`Game Play: (34) Player 1 starts Continental 1`] = `
+exports[`Game Play > (34) Player 1 starts Continental 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -578,7 +578,7 @@ P2 | $3900 | [5E] [7F] [1D] [8D] [1A] | I:3 T:6
 P1 [Choose Shares: C T I] [End Turn]
 `;
 
-exports[`Game Play: (35) Player 1 purchases Continental 1`] = `
+exports[`Game Play > (35) Player 1 purchases Continental 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -595,7 +595,7 @@ P2 | $3900 | [5E] [7F] [1D] [8D] [1A] | I:3 T:6
 P1 [Choose Shares: C T I] [End Turn]
 `;
 
-exports[`Game Play: (36) Player 1 purchases Continental 1`] = `
+exports[`Game Play > (36) Player 1 purchases Continental 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -612,7 +612,7 @@ P2 | $3900 | [5E] [7F] [1D] [8D] [1A] | I:3 T:6
 P1 [Choose Shares: C T I] [End Turn]
 `;
 
-exports[`Game Play: (37) Player 1 purchases Imperial 1`] = `
+exports[`Game Play > (37) Player 1 purchases Imperial 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -629,7 +629,7 @@ P2 | $3900 | [5E] [7F] [1D] [8D] [1A] | I:3 T:6
 P1 [End Turn]
 `;
 
-exports[`Game Play: (38) Player 1 ends turn 1`] = `
+exports[`Game Play > (38) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -646,7 +646,7 @@ P2 | $3900 | [5E] [7F] [1D] [8D] [1A] | I:3 T:6
 P2 [Choose Tile: [5E] [7F] [1D] [8D] [1A]]
 `;
 
-exports[`Game Play: (39) Player 2 places tile [7F] 1`] = `
+exports[`Game Play > (39) Player 2 places tile [7F] 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -663,7 +663,7 @@ P2 | $3900 | [5E] [1D] [8D] [1A] | I:3 T:6
 P2 [Choose Shares: C T I] [End Turn]
 `;
 
-exports[`Game Play: (40) Player 2 purchases Tower 1`] = `
+exports[`Game Play > (40) Player 2 purchases Tower 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -680,7 +680,7 @@ P2 | $3500 | [5E] [1D] [8D] [1A] | I:3 T:7
 P2 [Choose Shares: C T I] [End Turn]
 `;
 
-exports[`Game Play: (41) Player 2 purchases Tower 1`] = `
+exports[`Game Play > (41) Player 2 purchases Tower 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -697,7 +697,7 @@ P2 | $3100 | [5E] [1D] [8D] [1A] | I:3 T:8
 P2 [Choose Shares: C T I] [End Turn]
 `;
 
-exports[`Game Play: (42) Player 2 purchases Tower 1`] = `
+exports[`Game Play > (42) Player 2 purchases Tower 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -714,7 +714,7 @@ P2 | $2700 | [5E] [1D] [8D] [1A] | I:3 T:9
 P2 [End Turn]
 `;
 
-exports[`Game Play: (43) Player 2 ends turn 1`] = `
+exports[`Game Play > (43) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -731,7 +731,7 @@ P2 | $2700 | [5E] [1D] [8D] [1A] [6B] | I:3 T:9
 P1 [Choose Tile: [12G] [6I] [7B] [2I] [4B]]
 `;
 
-exports[`Game Play: (44) Player 1 places tile [2I] 1`] = `
+exports[`Game Play > (44) Player 1 places tile [2I] 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -748,7 +748,7 @@ P2 | $2700 | [5E] [1D] [8D] [1A] [6B] | I:3 T:9
 P1 [Choose Hotel: A F L W]
 `;
 
-exports[`Game Play: (45) Player 1 starts Worldwide 1`] = `
+exports[`Game Play > (45) Player 1 starts Worldwide 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -765,7 +765,7 @@ P2 | $2700 | [5E] [1D] [8D] [1A] [6B] | I:3 T:9
 P1 [Choose Shares: C T W I] [End Turn]
 `;
 
-exports[`Game Play: (46) Player 1 purchases Worldwide 1`] = `
+exports[`Game Play > (46) Player 1 purchases Worldwide 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -782,7 +782,7 @@ P2 | $2700 | [5E] [1D] [8D] [1A] [6B] | I:3 T:9
 P1 [Choose Shares: C T W I] [End Turn]
 `;
 
-exports[`Game Play: (47) Player 1 purchases Imperial 1`] = `
+exports[`Game Play > (47) Player 1 purchases Imperial 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -799,7 +799,7 @@ P2 | $2700 | [5E] [1D] [8D] [1A] [6B] | I:3 T:9
 P1 [Choose Shares: C T W I] [End Turn]
 `;
 
-exports[`Game Play: (48) Player 1 purchases Continental 1`] = `
+exports[`Game Play > (48) Player 1 purchases Continental 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -816,7 +816,7 @@ P2 | $2700 | [5E] [1D] [8D] [1A] [6B] | I:3 T:9
 P1 [End Turn]
 `;
 
-exports[`Game Play: (49) Player 1 ends turn 1`] = `
+exports[`Game Play > (49) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -833,7 +833,7 @@ P2 | $2700 | [5E] [1D] [8D] [1A] [6B] | I:3 T:9
 P2 [Choose Tile: [5E] [1D] [8D] [1A] [6B]]
 `;
 
-exports[`Game Play: (50) Player 2 places tile [8D] 1`] = `
+exports[`Game Play > (50) Player 2 places tile [8D] 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -850,7 +850,7 @@ P2 | $2700 | [5E] [1D] [1A] [6B] | I:3 T:9
 P2 [Choose Shares: C T W I] [End Turn]
 `;
 
-exports[`Game Play: (51) Player 2 purchases Imperial 1`] = `
+exports[`Game Play > (51) Player 2 purchases Imperial 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -867,7 +867,7 @@ P2 | $2300 | [5E] [1D] [1A] [6B] | I:4 T:9
 P2 [Choose Shares: C T W I] [End Turn]
 `;
 
-exports[`Game Play: (52) Player 2 purchases Imperial 1`] = `
+exports[`Game Play > (52) Player 2 purchases Imperial 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -884,7 +884,7 @@ P2 | $1900 | [5E] [1D] [1A] [6B] | I:5 T:9
 P2 [Choose Shares: C T W I] [End Turn]
 `;
 
-exports[`Game Play: (53) Player 2 purchases Imperial 1`] = `
+exports[`Game Play > (53) Player 2 purchases Imperial 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -901,7 +901,7 @@ P2 | $1500 | [5E] [1D] [1A] [6B] | I:6 T:9
 P2 [End Turn]
 `;
 
-exports[`Game Play: (54) Player 2 ends turn 1`] = `
+exports[`Game Play > (54) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - - - - - - - -
  - - - - - - - - - - - -
@@ -918,7 +918,7 @@ P2 | $1500 | [5E] [1D] [1A] [6B] [1G] | I:6 T:9
 P1 [Choose Tile: [12G] [6I] [7B] [4B] [12I]]
 `;
 
-exports[`Game Play: (55) Player 1 places tile [7B] 1`] = `
+exports[`Game Play > (55) Player 1 places tile [7B] 1`] = `
  - - - - - - - - - - - -
  - - - - - - 0 - - - - -
  - - - - - - - - - - - -
@@ -935,7 +935,7 @@ P2 | $1500 | [5E] [1D] [1A] [6B] [1G] | I:6 T:9
 P1 [Choose Shares: C T W I] [End Turn]
 `;
 
-exports[`Game Play: (56) Player 1 ends turn 1`] = `
+exports[`Game Play > (56) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - - 0 - - - - -
  - - - - - - - - - - - -
@@ -952,7 +952,7 @@ P2 | $1500 | [5E] [1D] [1A] [6B] [1G] | I:6 T:9
 P2 [Choose Tile: [5E] [1D] [1A] [6B] [1G]]
 `;
 
-exports[`Game Play: (57) Player 2 places tile [6B] 1`] = `
+exports[`Game Play > (57) Player 2 places tile [6B] 1`] = `
  - - - - - - - - - - - -
  - - - - - 0 0 - - - - -
  - - - - - - - - - - - -
@@ -969,7 +969,7 @@ P2 | $1500 | [5E] [1D] [1A] [1G] | I:6 T:9
 P2 [Choose Hotel: A F L]
 `;
 
-exports[`Game Play: (58) Player 2 starts Luxor 1`] = `
+exports[`Game Play > (58) Player 2 starts Luxor 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - - - - -
@@ -986,7 +986,7 @@ P2 | $1500 | [5E] [1D] [1A] [1G] | I:6 L:1 T:9
 P2 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (59) Player 2 purchases Luxor 1`] = `
+exports[`Game Play > (59) Player 2 purchases Luxor 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - - - - -
@@ -1003,7 +1003,7 @@ P2 | $1300 | [5E] [1D] [1A] [1G] | I:6 L:2 T:9
 P2 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (60) Player 2 purchases Luxor 1`] = `
+exports[`Game Play > (60) Player 2 purchases Luxor 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - - - - -
@@ -1020,7 +1020,7 @@ P2 | $1100 | [5E] [1D] [1A] [1G] | I:6 L:3 T:9
 P2 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (61) Player 2 ends turn 1`] = `
+exports[`Game Play > (61) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - - - - -
@@ -1037,7 +1037,7 @@ P2 | $1100 | [5E] [1D] [1A] [1G] [9C] | I:6 L:3 T:9
 P1 [Choose Tile: [12G] [6I] [4B] [12I] [9I]]
 `;
 
-exports[`Game Play: (62) Player 1 places tile [6I] 1`] = `
+exports[`Game Play > (62) Player 1 places tile [6I] 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - - - - -
@@ -1054,7 +1054,7 @@ P2 | $1100 | [5E] [1D] [1A] [1G] [9C] | I:6 L:3 T:9
 P1 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (63) Player 1 purchases Imperial 1`] = `
+exports[`Game Play > (63) Player 1 purchases Imperial 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - - - - -
@@ -1071,7 +1071,7 @@ P2 | $1100 | [5E] [1D] [1A] [1G] [9C] | I:6 L:3 T:9
 P1 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (64) Player 1 purchases Imperial 1`] = `
+exports[`Game Play > (64) Player 1 purchases Imperial 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - - - - -
@@ -1088,7 +1088,7 @@ P2 | $1100 | [5E] [1D] [1A] [1G] [9C] | I:6 L:3 T:9
 P1 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (65) Player 1 purchases Worldwide 1`] = `
+exports[`Game Play > (65) Player 1 purchases Worldwide 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - - - - -
@@ -1105,7 +1105,7 @@ P2 | $1100 | [5E] [1D] [1A] [1G] [9C] | I:6 L:3 T:9
 P1 [End Turn]
 `;
 
-exports[`Game Play: (66) Player 1 ends turn 1`] = `
+exports[`Game Play > (66) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - - - - -
@@ -1122,7 +1122,7 @@ P2 | $1100 | [5E] [1D] [1A] [1G] [9C] | I:6 L:3 T:9
 P2 [Choose Tile: [5E] [1D] [1A] [1G] [9C]]
 `;
 
-exports[`Game Play: (67) Player 2 places tile [9C] 1`] = `
+exports[`Game Play > (67) Player 2 places tile [9C] 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1139,7 +1139,7 @@ P2 | $1100 | [5E] [1D] [1A] [1G] | I:6 L:3 T:9
 P2 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (68) Player 2 purchases Worldwide 1`] = `
+exports[`Game Play > (68) Player 2 purchases Worldwide 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1156,7 +1156,7 @@ P2 | $800 | [5E] [1D] [1A] [1G] | I:6 L:3 T:9 W:1
 P2 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (69) Player 2 purchases Worldwide 1`] = `
+exports[`Game Play > (69) Player 2 purchases Worldwide 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1173,7 +1173,7 @@ P2 | $500 | [5E] [1D] [1A] [1G] | I:6 L:3 T:9 W:2
 P2 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (70) Player 2 purchases Worldwide 1`] = `
+exports[`Game Play > (70) Player 2 purchases Worldwide 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1190,7 +1190,7 @@ P2 | $200 | [5E] [1D] [1A] [1G] | I:6 L:3 T:9 W:3
 P2 [End Turn]
 `;
 
-exports[`Game Play: (71) Player 2 ends turn 1`] = `
+exports[`Game Play > (71) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1207,7 +1207,7 @@ P2 | $200 | [5E] [1D] [1A] [1G] [6G] | I:6 L:3 T:9 W:3
 P1 [Choose Tile: [12G] [4B] [12I] [9I] [2G]]
 `;
 
-exports[`Game Play: (72) Player 1 places tile [9I] 1`] = `
+exports[`Game Play > (72) Player 1 places tile [9I] 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1224,7 +1224,7 @@ P2 | $200 | [5E] [1D] [1A] [1G] [6G] | I:6 L:3 T:9 W:3
 P1 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (73) Player 1 purchases Imperial 1`] = `
+exports[`Game Play > (73) Player 1 purchases Imperial 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1241,7 +1241,7 @@ P2 | $200 | [5E] [1D] [1A] [1G] [6G] | I:6 L:3 T:9 W:3
 P1 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (74) Player 1 purchases Imperial 1`] = `
+exports[`Game Play > (74) Player 1 purchases Imperial 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1258,7 +1258,7 @@ P2 | $200 | [5E] [1D] [1A] [1G] [6G] | I:6 L:3 T:9 W:3
 P1 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (75) Player 1 purchases Luxor 1`] = `
+exports[`Game Play > (75) Player 1 purchases Luxor 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1275,7 +1275,7 @@ P2 | $200 | [5E] [1D] [1A] [1G] [6G] | I:6 L:3 T:9 W:3
 P1 [End Turn]
 `;
 
-exports[`Game Play: (76) Player 1 ends turn 1`] = `
+exports[`Game Play > (76) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1292,7 +1292,7 @@ P2 | $200 | [5E] [1D] [1A] [1G] [6G] | I:6 L:3 T:9 W:3
 P2 [Choose Tile: [5E] [1D] [1A] [1G] [6G]]
 `;
 
-exports[`Game Play: (77) Player 2 places tile [6G] 1`] = `
+exports[`Game Play > (77) Player 2 places tile [6G] 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1309,7 +1309,7 @@ P2 | $200 | [5E] [1D] [1A] [1G] | I:6 L:3 T:9 W:3
 P2 [Choose Shares: L] [End Turn]
 `;
 
-exports[`Game Play: (78) Player 2 purchases Luxor 1`] = `
+exports[`Game Play > (78) Player 2 purchases Luxor 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1326,7 +1326,7 @@ P2 | $0 | [5E] [1D] [1A] [1G] | I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (79) Player 2 ends turn 1`] = `
+exports[`Game Play > (79) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1343,7 +1343,7 @@ P2 | $0 | [5E] [1D] [1A] [1G] [6H] | I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [4B] [12I] [2G] [7E]]
 `;
 
-exports[`Game Play: (80) Player 1 places tile [7E] 1`] = `
+exports[`Game Play > (80) Player 1 places tile [7E] 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1360,7 +1360,7 @@ P2 | $0 | [5E] [1D] [1A] [1G] [6H] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: L T C W I] [End Turn]
 `;
 
-exports[`Game Play: (81) Player 1 ends turn 1`] = `
+exports[`Game Play > (81) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1377,7 +1377,7 @@ P2 | $0 | [5E] [1D] [1A] [1G] [6H] | I:6 L:4 T:9 W:3
 P2 [Choose Tile: [5E] [1D] [1A] [1G] [6H]]
 `;
 
-exports[`Game Play: (82) Player 2 places tile [6H] 1`] = `
+exports[`Game Play > (82) Player 2 places tile [6H] 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1394,7 +1394,7 @@ P2 | $0 | [5E] [1D] [1A] [1G] | I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (83) Player 2 ends turn 1`] = `
+exports[`Game Play > (83) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1411,7 +1411,7 @@ P2 | $0 | [5E] [1D] [1A] [1G] [3I] | I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [4B] [12I] [2G] [11D]]
 `;
 
-exports[`Game Play: (84) Player 1 places tile [12I] 1`] = `
+exports[`Game Play > (84) Player 1 places tile [12I] 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1428,7 +1428,7 @@ P2 | $0 | [5E] [1D] [1A] [1G] [3I] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: L T C W I] [End Turn]
 `;
 
-exports[`Game Play: (85) Player 1 ends turn 1`] = `
+exports[`Game Play > (85) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1445,7 +1445,7 @@ P2 | $0 | [5E] [1D] [1A] [1G] [3I] | I:6 L:4 T:9 W:3
 P2 [Choose Tile: [5E] [1D] [1A] [1G] [3I]]
 `;
 
-exports[`Game Play: (86) Player 2 places tile [5E] 1`] = `
+exports[`Game Play > (86) Player 2 places tile [5E] 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1462,7 +1462,7 @@ P2 | $0 | [1D] [1A] [1G] [3I] | I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (87) Player 2 ends turn 1`] = `
+exports[`Game Play > (87) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - - - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1479,7 +1479,7 @@ P2 | $0 | [1D] [1A] [1G] [3I] [3C] | I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [4B] [2G] [11D] [8B]]
 `;
 
-exports[`Game Play: (88) Player 1 places tile [4B] 1`] = `
+exports[`Game Play > (88) Player 1 places tile [4B] 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1496,7 +1496,7 @@ P2 | $0 | [1D] [1A] [1G] [3I] [3C] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: L T C W I] [End Turn]
 `;
 
-exports[`Game Play: (89) Player 1 purchases Continental 1`] = `
+exports[`Game Play > (89) Player 1 purchases Continental 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1513,7 +1513,7 @@ P2 | $0 | [1D] [1A] [1G] [3I] [3C] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C W] [End Turn]
 `;
 
-exports[`Game Play: (90) Player 1 purchases Worldwide 1`] = `
+exports[`Game Play > (90) Player 1 purchases Worldwide 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1530,7 +1530,7 @@ P2 | $0 | [1D] [1A] [1G] [3I] [3C] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (91) Player 1 ends turn 1`] = `
+exports[`Game Play > (91) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1547,7 +1547,7 @@ P2 | $0 | [1D] [1A] [1G] [3I] [3C] | I:6 L:4 T:9 W:3
 P2 [Choose Tile: [1D] [1A] [1G] [3I] [3C]]
 `;
 
-exports[`Game Play: (92) Player 2 places tile [3I] 1`] = `
+exports[`Game Play > (92) Player 2 places tile [3I] 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1564,7 +1564,7 @@ P2 | $0 | [1D] [1A] [1G] [3C] | I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (93) Player 2 ends turn 1`] = `
+exports[`Game Play > (93) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L - - - - -
  - - - - - - - - 0 - - -
@@ -1581,7 +1581,7 @@ P2 | $0 | [1D] [1A] [1G] [3C] [8F] | I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [2G] [11D] [8B] [10C]]
 `;
 
-exports[`Game Play: (94) Player 1 places tile [10C] 1`] = `
+exports[`Game Play > (94) Player 1 places tile [10C] 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L - - - - -
  - - - - - - - - 0 0 - -
@@ -1598,7 +1598,7 @@ P2 | $0 | [1D] [1A] [1G] [3C] [8F] | I:6 L:4 T:9 W:3
 P1 [Choose Hotel: A F]
 `;
 
-exports[`Game Play: (95) Player 1 starts Festival 1`] = `
+exports[`Game Play > (95) Player 1 starts Festival 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L - - - - -
  - - - - - - - - F F - -
@@ -1615,7 +1615,7 @@ P2 | $0 | [1D] [1A] [1G] [3C] [8F] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (96) Player 1 ends turn 1`] = `
+exports[`Game Play > (96) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L - - - - -
  - - - - - - - - F F - -
@@ -1632,7 +1632,7 @@ P2 | $0 | [1D] [1A] [1G] [3C] [8F] | I:6 L:4 T:9 W:3
 P2 [Choose Tile: [1D] [1A] [1G] [3C] [8F]]
 `;
 
-exports[`Game Play: (97) Player 2 places tile [8F] 1`] = `
+exports[`Game Play > (97) Player 2 places tile [8F] 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L - - - - -
  - - - - - - - - F F - -
@@ -1649,7 +1649,7 @@ P2 | $0 | [1D] [1A] [1G] [3C] | I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (98) Player 2 ends turn 1`] = `
+exports[`Game Play > (98) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L - - - - -
  - - - - - - - - F F - -
@@ -1666,7 +1666,7 @@ P2 | $0 | [1D] [1A] [1G] [3C] [12B] | I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [2G] [11D] [8B] [7I]]
 `;
 
-exports[`Game Play: (99) Player 1 places tile [8B] 1`] = `
+exports[`Game Play > (99) Player 1 places tile [8B] 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - -
  - - - - - - - - F F - -
@@ -1683,7 +1683,7 @@ P2 | $0 | [1D] [1A] [1G] [3C] [12B] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (100) Player 1 ends turn 1`] = `
+exports[`Game Play > (100) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - -
  - - - - - - - - F F - -
@@ -1700,7 +1700,7 @@ P2 | $0 | [1D] [1A] [1G] [3C] [12B] | I:6 L:4 T:9 W:3
 P2 [Choose Tile: [1D] [1A] [1G] [3C] [12B]]
 `;
 
-exports[`Game Play: (101) Player 2 places tile [12B] 1`] = `
+exports[`Game Play > (101) Player 2 places tile [12B] 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - F F - -
@@ -1717,7 +1717,7 @@ P2 | $0 | [1D] [1A] [1G] [3C] | I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (102) Player 2 ends turn 1`] = `
+exports[`Game Play > (102) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - F F - -
@@ -1734,7 +1734,7 @@ P2 | $0 | [1D] [1A] [1G] [3C] [11F] | I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [2G] [11D] [7I] [5I]]
 `;
 
-exports[`Game Play: (103) Player 1 places tile [2G] 1`] = `
+exports[`Game Play > (103) Player 1 places tile [2G] 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - F F - -
@@ -1751,7 +1751,7 @@ P2 | $0 | [1D] [1A] [1G] [3C] [11F] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (104) Player 1 ends turn 1`] = `
+exports[`Game Play > (104) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - F F - -
@@ -1768,7 +1768,7 @@ P2 | $0 | [1D] [1A] [1G] [3C] [11F] | I:6 L:4 T:9 W:3
 P2 [Choose Tile: [1D] [1A] [1G] [3C] [11F]]
 `;
 
-exports[`Game Play: (105) Player 2 places tile [1G] 1`] = `
+exports[`Game Play > (105) Player 2 places tile [1G] 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - F F - -
@@ -1785,7 +1785,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] | I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (106) Player 2 ends turn 1`] = `
+exports[`Game Play > (106) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - F F - -
@@ -1802,7 +1802,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [10D] | I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [11D] [7I] [5I] [8E]]
 `;
 
-exports[`Game Play: (107) Player 1 places tile [8E] 1`] = `
+exports[`Game Play > (107) Player 1 places tile [8E] 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - F F - -
@@ -1819,7 +1819,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [10D] | I:6 L:4 T:9 W:3
 P1 [Sell (1/5) Continental Share] [Keep (1/5) Continental Share] [Trade (2/5) Continental for 1 Tower]
 `;
 
-exports[`Game Play: (108) Player 1 trades 2 Continental -> Tower 1`] = `
+exports[`Game Play > (108) Player 1 trades 2 Continental -> Tower 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - F F - -
@@ -1836,7 +1836,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [10D] | I:6 L:4 T:9 W:3
 P1 [Sell (1/3) Continental Share] [Keep (1/3) Continental Share] [Trade (2/3) Continental for 1 Tower]
 `;
 
-exports[`Game Play: (109) Player 1 trades 2 Continental -> Tower 1`] = `
+exports[`Game Play > (109) Player 1 trades 2 Continental -> Tower 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - F F - -
@@ -1853,7 +1853,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [10D] | I:6 L:4 T:9 W:3
 P1 [Sell (1/1) Continental Share] [Keep (1/1) Continental Share]
 `;
 
-exports[`Game Play: (110) Player 1 sells 1 orphaned Continental share 1`] = `
+exports[`Game Play > (110) Player 1 sells 1 orphaned Continental share 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - F F - -
@@ -1870,7 +1870,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [10D] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: L F T W I] [End Turn]
 `;
 
-exports[`Game Play: (111) Player 1 purchases Festival 1`] = `
+exports[`Game Play > (111) Player 1 purchases Festival 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - F F - -
@@ -1887,7 +1887,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [10D] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: L F T W I] [End Turn]
 `;
 
-exports[`Game Play: (112) Player 1 purchases Festival 1`] = `
+exports[`Game Play > (112) Player 1 purchases Festival 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - F F - -
@@ -1904,7 +1904,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [10D] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: L F T W I] [End Turn]
 `;
 
-exports[`Game Play: (113) Player 1 purchases Festival 1`] = `
+exports[`Game Play > (113) Player 1 purchases Festival 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - F F - -
@@ -1921,7 +1921,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [10D] | I:6 L:4 T:9 W:3
 P1 [End Turn]
 `;
 
-exports[`Game Play: (114) Player 1 ends turn 1`] = `
+exports[`Game Play > (114) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - F F - -
@@ -1938,7 +1938,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [10D] | I:6 L:4 T:9 W:3
 P2 [Choose Tile: [1D] [1A] [3C] [11F] [10D]]
 `;
 
-exports[`Game Play: (115) Player 2 places tile [10D] 1`] = `
+exports[`Game Play > (115) Player 2 places tile [10D] 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - T T - -
@@ -1955,7 +1955,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] | I:6 L:4 T:9 W:3
 P1 [Sell (1/4) Festival Share] [Keep (1/4) Festival Share] [Trade (2/4) Festival for 1 Tower]
 `;
 
-exports[`Game Play: (116) Player 1 trades 2 Festival -> Tower 1`] = `
+exports[`Game Play > (116) Player 1 trades 2 Festival -> Tower 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - T T - -
@@ -1972,7 +1972,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] | I:6 L:4 T:9 W:3
 P1 [Sell (1/2) Festival Share] [Keep (1/2) Festival Share] [Trade (2/2) Festival for 1 Tower]
 `;
 
-exports[`Game Play: (117) Player 1 trades 2 Festival -> Tower 1`] = `
+exports[`Game Play > (117) Player 1 trades 2 Festival -> Tower 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - T T - -
@@ -1989,7 +1989,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] | I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (118) Player 2 ends turn 1`] = `
+exports[`Game Play > (118) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - T T - -
@@ -2006,7 +2006,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [9G] | I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [11D] [7I] [5I] [6A]]
 `;
 
-exports[`Game Play: (119) Player 1 places tile [7I] 1`] = `
+exports[`Game Play > (119) Player 1 places tile [7I] 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - T T - -
@@ -2023,7 +2023,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [9G] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: L T W I] [End Turn]
 `;
 
-exports[`Game Play: (120) Player 1 purchases Tower 1`] = `
+exports[`Game Play > (120) Player 1 purchases Tower 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - T T - -
@@ -2040,7 +2040,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [9G] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: L T W I] [End Turn]
 `;
 
-exports[`Game Play: (121) Player 1 purchases Tower 1`] = `
+exports[`Game Play > (121) Player 1 purchases Tower 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - T T - -
@@ -2057,7 +2057,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [9G] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: L T W I] [End Turn]
 `;
 
-exports[`Game Play: (122) Player 1 purchases Tower 1`] = `
+exports[`Game Play > (122) Player 1 purchases Tower 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - T T - -
@@ -2074,7 +2074,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [9G] | I:6 L:4 T:9 W:3
 P1 [End Turn]
 `;
 
-exports[`Game Play: (123) Player 1 ends turn 1`] = `
+exports[`Game Play > (123) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - T T - -
@@ -2091,7 +2091,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [9G] | I:6 L:4 T:9 W:3
 P2 [Choose Tile: [1D] [1A] [3C] [11F] [9G]]
 `;
 
-exports[`Game Play: (124) Player 2 places tile [9G] 1`] = `
+exports[`Game Play > (124) Player 2 places tile [9G] 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - T T - -
@@ -2108,7 +2108,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] | I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (125) Player 2 ends turn 1`] = `
+exports[`Game Play > (125) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - - 0
  - - - - - - - - T T - -
@@ -2125,7 +2125,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [5F] | I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [11D] [5I] [6A] [11B]]
 `;
 
-exports[`Game Play: (126) Player 1 places tile [11B] 1`] = `
+exports[`Game Play > (126) Player 1 places tile [11B] 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - 0 0
  - - - - - - - - T T - -
@@ -2142,7 +2142,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [5F] | I:6 L:4 T:9 W:3
 P1 [Choose Hotel: A C F]
 `;
 
-exports[`Game Play: (127) Player 1 starts Continental 1`] = `
+exports[`Game Play > (127) Player 1 starts Continental 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2159,7 +2159,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [5F] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (128) Player 1 purchases Continental 1`] = `
+exports[`Game Play > (128) Player 1 purchases Continental 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2176,7 +2176,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [5F] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (129) Player 1 purchases Continental 1`] = `
+exports[`Game Play > (129) Player 1 purchases Continental 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2193,7 +2193,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [5F] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (130) Player 1 purchases Continental 1`] = `
+exports[`Game Play > (130) Player 1 purchases Continental 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2210,7 +2210,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [5F] | I:6 L:4 T:9 W:3
 P1 [End Turn]
 `;
 
-exports[`Game Play: (131) Player 1 ends turn 1`] = `
+exports[`Game Play > (131) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2227,7 +2227,7 @@ P2 | $0 | [1D] [1A] [3C] [11F] [5F] | I:6 L:4 T:9 W:3
 P2 [Choose Tile: [1D] [1A] [3C] [11F] [5F]]
 `;
 
-exports[`Game Play: (132) Player 2 places tile [11F] 1`] = `
+exports[`Game Play > (132) Player 2 places tile [11F] 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2244,7 +2244,7 @@ P2 | $0 | [1D] [1A] [3C] [5F] | I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (133) Player 2 ends turn 1`] = `
+exports[`Game Play > (133) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2261,7 +2261,7 @@ P2 | $0 | [1D] [1A] [3C] [5F] [1C] | I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [11D] [5I] [6A] [5D]]
 `;
 
-exports[`Game Play: (134) Player 1 places tile [11D] 1`] = `
+exports[`Game Play > (134) Player 1 places tile [11D] 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2278,7 +2278,7 @@ P2 | $0 | [1D] [1A] [3C] [5F] [1C] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (135) Player 1 purchases Luxor 1`] = `
+exports[`Game Play > (135) Player 1 purchases Luxor 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2295,7 +2295,7 @@ P2 | $0 | [1D] [1A] [3C] [5F] [1C] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (136) Player 1 purchases Luxor 1`] = `
+exports[`Game Play > (136) Player 1 purchases Luxor 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2312,7 +2312,7 @@ P2 | $0 | [1D] [1A] [3C] [5F] [1C] | I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T W I] [End Turn]
 `;
 
-exports[`Game Play: (137) Player 1 purchases Luxor 1`] = `
+exports[`Game Play > (137) Player 1 purchases Luxor 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2329,7 +2329,7 @@ P2 | $0 | [1D] [1A] [3C] [5F] [1C] | I:6 L:4 T:9 W:3
 P1 [End Turn]
 `;
 
-exports[`Game Play: (138) Player 1 ends turn 1`] = `
+exports[`Game Play > (138) Player 1 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2346,7 +2346,7 @@ P2 | $0 | [1D] [1A] [3C] [5F] [1C] | I:6 L:4 T:9 W:3
 P2 [Choose Tile: [1D] [1A] [3C] [5F] [1C]]
 `;
 
-exports[`Game Play: (139) Player 2 places tile [5F] 1`] = `
+exports[`Game Play > (139) Player 2 places tile [5F] 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2363,7 +2363,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] | I:6 L:4 T:9 W:3
 P2 [Choose Hotel: A F]
 `;
 
-exports[`Game Play: (140) Player 2 starts American 1`] = `
+exports[`Game Play > (140) Player 2 starts American 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2380,7 +2380,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] | A:1 I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (141) Player 2 ends turn 1`] = `
+exports[`Game Play > (141) Player 2 ends turn 1`] = `
  - - - - - - - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2397,7 +2397,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [12A] | A:1 I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [5I] [6A] [5D] [7C]]
 `;
 
-exports[`Game Play: (142) Player 1 places tile [6A] 1`] = `
+exports[`Game Play > (142) Player 1 places tile [6A] 1`] = `
  - - - - - L - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2414,7 +2414,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [12A] | A:1 I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T A W I] [End Turn]
 `;
 
-exports[`Game Play: (143) Player 1 purchases Luxor 1`] = `
+exports[`Game Play > (143) Player 1 purchases Luxor 1`] = `
  - - - - - L - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2431,7 +2431,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [12A] | A:1 I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T A W I] [End Turn]
 `;
 
-exports[`Game Play: (144) Player 1 purchases Continental 1`] = `
+exports[`Game Play > (144) Player 1 purchases Continental 1`] = `
  - - - - - L - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2448,7 +2448,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [12A] | A:1 I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T A W I] [End Turn]
 `;
 
-exports[`Game Play: (145) Player 1 purchases Continental 1`] = `
+exports[`Game Play > (145) Player 1 purchases Continental 1`] = `
  - - - - - L - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2465,7 +2465,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [12A] | A:1 I:6 L:4 T:9 W:3
 P1 [End Turn]
 `;
 
-exports[`Game Play: (146) Player 1 ends turn 1`] = `
+exports[`Game Play > (146) Player 1 ends turn 1`] = `
  - - - - - L - - - - - -
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2482,7 +2482,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [12A] | A:1 I:6 L:4 T:9 W:3
 P2 [Choose Tile: [1D] [1A] [3C] [1C] [12A]]
 `;
 
-exports[`Game Play: (147) Player 2 places tile [12A] 1`] = `
+exports[`Game Play > (147) Player 2 places tile [12A] 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2499,7 +2499,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] | A:1 I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (148) Player 2 ends turn 1`] = `
+exports[`Game Play > (148) Player 2 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2516,7 +2516,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [4H] | A:1 I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [5I] [5D] [7C] [3B]]
 `;
 
-exports[`Game Play: (149) Player 1 places tile [5D] 1`] = `
+exports[`Game Play > (149) Player 1 places tile [5D] 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2533,7 +2533,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [4H] | A:1 I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T A W I] [End Turn]
 `;
 
-exports[`Game Play: (150) Player 1 purchases American 1`] = `
+exports[`Game Play > (150) Player 1 purchases American 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2550,7 +2550,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [4H] | A:1 I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T A W I] [End Turn]
 `;
 
-exports[`Game Play: (151) Player 1 purchases American 1`] = `
+exports[`Game Play > (151) Player 1 purchases American 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2567,7 +2567,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [4H] | A:1 I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T A W I] [End Turn]
 `;
 
-exports[`Game Play: (152) Player 1 purchases American 1`] = `
+exports[`Game Play > (152) Player 1 purchases American 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2584,7 +2584,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [4H] | A:1 I:6 L:4 T:9 W:3
 P1 [End Turn]
 `;
 
-exports[`Game Play: (153) Player 1 ends turn 1`] = `
+exports[`Game Play > (153) Player 1 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2601,7 +2601,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [4H] | A:1 I:6 L:4 T:9 W:3
 P2 [Choose Tile: [1D] [1A] [3C] [1C] [4H]]
 `;
 
-exports[`Game Play: (154) Player 2 places tile [4H] 1`] = `
+exports[`Game Play > (154) Player 2 places tile [4H] 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2618,7 +2618,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] | A:1 I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (155) Player 2 ends turn 1`] = `
+exports[`Game Play > (155) Player 2 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2635,7 +2635,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [2D] | A:1 I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [5I] [7C] [3B] [9D]]
 `;
 
-exports[`Game Play: (156) Player 1 places tile [9D] 1`] = `
+exports[`Game Play > (156) Player 1 places tile [9D] 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2652,7 +2652,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [2D] | A:1 I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T A W I] [End Turn]
 `;
 
-exports[`Game Play: (157) Player 1 purchases Imperial 1`] = `
+exports[`Game Play > (157) Player 1 purchases Imperial 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2669,7 +2669,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [2D] | A:1 I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T A W I] [End Turn]
 `;
 
-exports[`Game Play: (158) Player 1 purchases American 1`] = `
+exports[`Game Play > (158) Player 1 purchases American 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2686,7 +2686,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [2D] | A:1 I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T A W I] [End Turn]
 `;
 
-exports[`Game Play: (159) Player 1 purchases Worldwide 1`] = `
+exports[`Game Play > (159) Player 1 purchases Worldwide 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2703,7 +2703,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [2D] | A:1 I:6 L:4 T:9 W:3
 P1 [End Turn]
 `;
 
-exports[`Game Play: (160) Player 1 ends turn 1`] = `
+exports[`Game Play > (160) Player 1 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2720,7 +2720,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [2D] | A:1 I:6 L:4 T:9 W:3
 P2 [Choose Tile: [1D] [1A] [3C] [1C] [2D]]
 `;
 
-exports[`Game Play: (161) Player 2 places tile [2D] 1`] = `
+exports[`Game Play > (161) Player 2 places tile [2D] 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2737,7 +2737,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] | A:1 I:6 L:4 T:9 W:3
 P2 [Choose Hotel: F]
 `;
 
-exports[`Game Play: (162) Player 2 starts Festival 1`] = `
+exports[`Game Play > (162) Player 2 starts Festival 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2754,7 +2754,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] | A:1 F:1 I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (163) Player 2 ends turn 1`] = `
+exports[`Game Play > (163) Player 2 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2771,7 +2771,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [10F] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [5I] [7C] [5B] (unavailable: [3B])]
 `;
 
-exports[`Game Play: (164) Player 1 places tile [3B] 1`] = `
+exports[`Game Play > (164) Player 1 places tile [3B] 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2788,7 +2788,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [10F] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [5I] [7C] [5B] (unavailable: [3B])]
 `;
 
-exports[`Game Play: (165) Player 1 places tile [5I] 1`] = `
+exports[`Game Play > (165) Player 1 places tile [5I] 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2805,7 +2805,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [10F] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T F A W I] [End Turn]
 `;
 
-exports[`Game Play: (166) Player 1 purchases Festival 1`] = `
+exports[`Game Play > (166) Player 1 purchases Festival 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2822,7 +2822,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [10F] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T F A W I] [End Turn]
 `;
 
-exports[`Game Play: (167) Player 1 purchases Festival 1`] = `
+exports[`Game Play > (167) Player 1 purchases Festival 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2839,7 +2839,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [10F] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T F A W I] [End Turn]
 `;
 
-exports[`Game Play: (168) Player 1 purchases Festival 1`] = `
+exports[`Game Play > (168) Player 1 purchases Festival 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2856,7 +2856,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [10F] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [End Turn]
 `;
 
-exports[`Game Play: (169) Player 1 ends turn 1`] = `
+exports[`Game Play > (169) Player 1 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2873,7 +2873,7 @@ P2 | $0 | [1D] [1A] [3C] [1C] [10F] | A:1 F:1 I:6 L:4 T:9 W:3
 P2 [Choose Tile: [1D] [1A] [3C] [1C] [10F]]
 `;
 
-exports[`Game Play: (170) Player 2 places tile [1D] 1`] = `
+exports[`Game Play > (170) Player 2 places tile [1D] 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2890,7 +2890,7 @@ P2 | $0 | [1A] [3C] [1C] [10F] | A:1 F:1 I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (171) Player 2 ends turn 1`] = `
+exports[`Game Play > (171) Player 2 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - - - T T - -
@@ -2907,7 +2907,7 @@ P2 | $0 | [1A] [3C] [1C] [10F] [12C] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [7C] [5B] [12H] (unavailable: [3B])]
 `;
 
-exports[`Game Play: (172) Player 1 places tile [7C] 1`] = `
+exports[`Game Play > (172) Player 1 places tile [7C] 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - L - T T - -
@@ -2924,7 +2924,7 @@ P2 | $0 | [1A] [3C] [1C] [10F] [12C] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [Choose Shares: L C T F A W I] [End Turn]
 `;
 
-exports[`Game Play: (173) Player 1 purchases Tower 1`] = `
+exports[`Game Play > (173) Player 1 purchases Tower 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - L - T T - -
@@ -2941,7 +2941,7 @@ P2 | $0 | [1A] [3C] [1C] [10F] [12C] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (174) Player 1 ends turn 1`] = `
+exports[`Game Play > (174) Player 1 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - - - - - L - T T - -
@@ -2958,7 +2958,7 @@ P2 | $0 | [1A] [3C] [1C] [10F] [12C] | A:1 F:1 I:6 L:4 T:9 W:3
 P2 [Choose Tile: [1A] [3C] [1C] [10F] [12C]]
 `;
 
-exports[`Game Play: (175) Player 2 places tile [3C] 1`] = `
+exports[`Game Play > (175) Player 2 places tile [3C] 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - -
@@ -2975,7 +2975,7 @@ P2 | $0 | [1A] [1C] [10F] [12C] | A:1 F:1 I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (176) Player 2 ends turn 1`] = `
+exports[`Game Play > (176) Player 2 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - -
@@ -2992,7 +2992,7 @@ P2 | $0 | [1A] [1C] [10F] [12C] [9A] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [Choose Tile: [12G] [3B] [5B] [12H] [1F]]
 `;
 
-exports[`Game Play: (177) Player 1 places tile [12G] 1`] = `
+exports[`Game Play > (177) Player 1 places tile [12G] 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - -
@@ -3009,7 +3009,7 @@ P2 | $0 | [1A] [1C] [10F] [12C] [9A] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (178) Player 1 ends turn 1`] = `
+exports[`Game Play > (178) Player 1 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - -
@@ -3026,7 +3026,7 @@ P2 | $0 | [1A] [1C] [10F] [12C] [9A] | A:1 F:1 I:6 L:4 T:9 W:3
 P2 [Choose Tile: [1A] [1C] [10F] [12C] [9A]]
 `;
 
-exports[`Game Play: (179) Player 2 places tile [10F] 1`] = `
+exports[`Game Play > (179) Player 2 places tile [10F] 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - -
@@ -3043,7 +3043,7 @@ P2 | $0 | [1A] [1C] [12C] [9A] | A:1 F:1 I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (180) Player 2 ends turn 1`] = `
+exports[`Game Play > (180) Player 2 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - -
@@ -3060,7 +3060,7 @@ P2 | $0 | [1A] [1C] [12C] [9A] [6E] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [Choose Tile: [3B] [5B] [12H] [1F] [11E]]
 `;
 
-exports[`Game Play: (181) Player 1 places tile [11E] 1`] = `
+exports[`Game Play > (181) Player 1 places tile [11E] 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - -
@@ -3077,7 +3077,7 @@ P2 | $0 | [1A] [1C] [12C] [9A] [6E] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (182) Player 1 ends turn 1`] = `
+exports[`Game Play > (182) Player 1 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - -
@@ -3094,7 +3094,7 @@ P2 | $0 | [1A] [1C] [12C] [9A] [6E] | A:1 F:1 I:6 L:4 T:9 W:3
 P2 [Choose Tile: [1A] [1C] [12C] [9A] [6E]]
 `;
 
-exports[`Game Play: (183) Player 2 places tile [12C] 1`] = `
+exports[`Game Play > (183) Player 2 places tile [12C] 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3111,7 +3111,7 @@ P2 | $0 | [1A] [1C] [9A] [6E] | A:1 F:1 I:6 L:4 T:9 W:3
 P2 [Choose Shares: ] [End Turn]
 `;
 
-exports[`Game Play: (184) Player 2 ends turn 1`] = `
+exports[`Game Play > (184) Player 2 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3128,7 +3128,7 @@ P2 | $0 | [1A] [1C] [9A] [6E] [2E] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [Choose Tile: [3B] [5B] [12H] [1F] [4I]]
 `;
 
-exports[`Game Play: (185) Player 1 places tile [4I] 1`] = `
+exports[`Game Play > (185) Player 1 places tile [4I] 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3145,7 +3145,7 @@ P2 | $3000 | [1A] [1C] [9A] [6E] [2E] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [Sell (1/5) Worldwide Share] [Keep (1/5) Worldwide Share] [Trade (2/5) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (186) Player 1 trades 2 Worldwide -> Tower 1`] = `
+exports[`Game Play > (186) Player 1 trades 2 Worldwide -> Tower 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3162,7 +3162,7 @@ P2 | $3000 | [1A] [1C] [9A] [6E] [2E] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [Sell (1/3) Worldwide Share] [Keep (1/3) Worldwide Share] [Trade (2/3) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (187) Player 1 trades 2 Worldwide -> Tower 1`] = `
+exports[`Game Play > (187) Player 1 trades 2 Worldwide -> Tower 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3179,7 +3179,7 @@ P2 | $3000 | [1A] [1C] [9A] [6E] [2E] | A:1 F:1 I:6 L:4 T:9 W:3
 P1 [Sell (1/1) Worldwide Share] [Keep (1/1) Worldwide Share]
 `;
 
-exports[`Game Play: (188) Player 1 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (188) Player 1 sells 1 orphaned Worldwide share 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3196,7 +3196,7 @@ P2 | $3000 | [1A] [1C] [9A] [6E] [2E] | A:1 F:1 I:6 L:4 T:9 W:3
 P2 [Sell (1/3) Worldwide Share] [Keep (1/3) Worldwide Share] [Trade (2/3) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (189) Player 2 trades 2 Worldwide -> Tower 1`] = `
+exports[`Game Play > (189) Player 2 trades 2 Worldwide -> Tower 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3213,7 +3213,7 @@ P2 | $3000 | [1A] [1C] [9A] [6E] [2E] | A:1 F:1 I:6 L:4 T:10 W:1
 P2 [Sell (1/1) Worldwide Share] [Keep (1/1) Worldwide Share]
 `;
 
-exports[`Game Play: (190) Player 2 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (190) Player 2 sells 1 orphaned Worldwide share 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3230,7 +3230,7 @@ P2 | $3600 | [1A] [1C] [9A] [6E] [2E] | A:1 F:1 I:6 L:4 T:10
 P1 [Choose Shares: L C F T A I] [End Turn]
 `;
 
-exports[`Game Play: (191) Player 1 purchases Tower 1`] = `
+exports[`Game Play > (191) Player 1 purchases Tower 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3247,7 +3247,7 @@ P2 | $3600 | [1A] [1C] [9A] [6E] [2E] | A:1 F:1 I:6 L:4 T:10
 P1 [Choose Shares: L C F T A I] [End Turn]
 `;
 
-exports[`Game Play: (192) Player 1 purchases Luxor 1`] = `
+exports[`Game Play > (192) Player 1 purchases Luxor 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3264,7 +3264,7 @@ P2 | $3600 | [1A] [1C] [9A] [6E] [2E] | A:1 F:1 I:6 L:4 T:10
 P1 [Choose Shares: L C F T A I] [End Turn]
 `;
 
-exports[`Game Play: (193) Player 1 purchases American 1`] = `
+exports[`Game Play > (193) Player 1 purchases American 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3281,7 +3281,7 @@ P2 | $3600 | [1A] [1C] [9A] [6E] [2E] | A:1 F:1 I:6 L:4 T:10
 P1 [End Turn]
 `;
 
-exports[`Game Play: (194) Player 1 ends turn 1`] = `
+exports[`Game Play > (194) Player 1 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3298,7 +3298,7 @@ P2 | $3600 | [1A] [1C] [9A] [6E] [2E] | A:1 F:1 I:6 L:4 T:10
 P2 [Choose Tile: [1A] [1C] [9A] [6E] [2E]]
 `;
 
-exports[`Game Play: (195) Player 2 places tile [6E] 1`] = `
+exports[`Game Play > (195) Player 2 places tile [6E] 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3315,7 +3315,7 @@ P2 | $5600 | [1A] [1C] [9A] [2E] | A:1 F:1 I:6 L:4 T:10
 P2 [Sell (1/1) American Share] [Keep (1/1) American Share]
 `;
 
-exports[`Game Play: (196) Player 2 keeps 1 orphaned American share 1`] = `
+exports[`Game Play > (196) Player 2 keeps 1 orphaned American share 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3332,7 +3332,7 @@ P2 | $5600 | [1A] [1C] [9A] [2E] | A:1 F:1 I:6 L:4 T:10
 P1 [Sell (1/5) American Share] [Keep (1/5) American Share] [Trade (2/5) American for 1 Tower]
 `;
 
-exports[`Game Play: (197) Player 1 trades 2 American -> Tower 1`] = `
+exports[`Game Play > (197) Player 1 trades 2 American -> Tower 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3349,7 +3349,7 @@ P2 | $5600 | [1A] [1C] [9A] [2E] | A:1 F:1 I:6 L:4 T:10
 P1 [Sell (1/3) American Share] [Keep (1/3) American Share] [Trade (2/3) American for 1 Tower]
 `;
 
-exports[`Game Play: (198) Player 1 trades 2 American -> Tower 1`] = `
+exports[`Game Play > (198) Player 1 trades 2 American -> Tower 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3366,7 +3366,7 @@ P2 | $5600 | [1A] [1C] [9A] [2E] | A:1 F:1 I:6 L:4 T:10
 P1 [Sell (1/1) American Share] [Keep (1/1) American Share]
 `;
 
-exports[`Game Play: (199) Player 1 sells 1 orphaned American share 1`] = `
+exports[`Game Play > (199) Player 1 sells 1 orphaned American share 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3383,7 +3383,7 @@ P2 | $5600 | [1A] [1C] [9A] [2E] | A:1 F:1 I:6 L:4 T:10
 P2 [Choose Shares: L C F I] [End Turn]
 `;
 
-exports[`Game Play: (200) Player 2 purchases Imperial 1`] = `
+exports[`Game Play > (200) Player 2 purchases Imperial 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3400,7 +3400,7 @@ P2 | $5000 | [1A] [1C] [9A] [2E] | A:1 F:1 I:7 L:4 T:10
 P2 [Choose Shares: L C F I] [End Turn]
 `;
 
-exports[`Game Play: (201) Player 2 purchases Imperial 1`] = `
+exports[`Game Play > (201) Player 2 purchases Imperial 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3417,7 +3417,7 @@ P2 | $4400 | [1A] [1C] [9A] [2E] | A:1 F:1 I:8 L:4 T:10
 P2 [Choose Shares: L C F I] [End Turn]
 `;
 
-exports[`Game Play: (202) Player 2 purchases Imperial 1`] = `
+exports[`Game Play > (202) Player 2 purchases Imperial 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3434,7 +3434,7 @@ P2 | $3800 | [1A] [1C] [9A] [2E] | A:1 F:1 I:9 L:4 T:10
 P2 [End Turn]
 `;
 
-exports[`Game Play: (203) Player 2 ends turn 1`] = `
+exports[`Game Play > (203) Player 2 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - 0 - L L L - - C C
  - - F - - - L - T T - C
@@ -3451,7 +3451,7 @@ P2 | $3800 | [1A] [1C] [9A] [2E] [6D] | A:1 F:1 I:9 L:4 T:10
 P1 [Choose Tile: [3B] [5B] [12H] [1F] [10A]]
 `;
 
-exports[`Game Play: (204) Player 1 places tile [5B] 1`] = `
+exports[`Game Play > (204) Player 1 places tile [5B] 1`] = `
  - - - - - L - - - - - C
  - - - L L L L L - - C C
  - - F - - - L - T T - C
@@ -3468,7 +3468,7 @@ P2 | $3800 | [1A] [1C] [9A] [2E] [6D] | A:1 F:1 I:9 L:4 T:10
 P1 [Choose Shares: L C F I] [End Turn]
 `;
 
-exports[`Game Play: (205) Player 1 purchases Festival 1`] = `
+exports[`Game Play > (205) Player 1 purchases Festival 1`] = `
  - - - - - L - - - - - C
  - - - L L L L L - - C C
  - - F - - - L - T T - C
@@ -3485,7 +3485,7 @@ P2 | $3800 | [1A] [1C] [9A] [2E] [6D] | A:1 F:1 I:9 L:4 T:10
 P1 [Choose Shares: L C F I] [End Turn]
 `;
 
-exports[`Game Play: (206) Player 1 purchases Festival 1`] = `
+exports[`Game Play > (206) Player 1 purchases Festival 1`] = `
  - - - - - L - - - - - C
  - - - L L L L L - - C C
  - - F - - - L - T T - C
@@ -3502,7 +3502,7 @@ P2 | $3800 | [1A] [1C] [9A] [2E] [6D] | A:1 F:1 I:9 L:4 T:10
 P1 [Choose Shares: L C F I] [End Turn]
 `;
 
-exports[`Game Play: (207) Player 1 purchases Festival 1`] = `
+exports[`Game Play > (207) Player 1 purchases Festival 1`] = `
  - - - - - L - - - - - C
  - - - L L L L L - - C C
  - - F - - - L - T T - C
@@ -3519,7 +3519,7 @@ P2 | $3800 | [1A] [1C] [9A] [2E] [6D] | A:1 F:1 I:9 L:4 T:10
 P1 [End Turn]
 `;
 
-exports[`Game Play: (208) Player 1 ends turn 1`] = `
+exports[`Game Play > (208) Player 1 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - L L L L L - - C C
  - - F - - - L - T T - C
@@ -3536,7 +3536,7 @@ P2 | $3800 | [1A] [1C] [9A] [2E] [6D] | A:1 F:1 I:9 L:4 T:10
 P2 [Choose Tile: [1A] [1C] [9A] [2E] [6D]]
 `;
 
-exports[`Game Play: (209) Player 2 places tile [6D] 1`] = `
+exports[`Game Play > (209) Player 2 places tile [6D] 1`] = `
  - - - - - L - - - - - C
  - - - L L L L L - - C C
  - - F - - - L - T T - C
@@ -3553,7 +3553,7 @@ P2 | $3800 | [1A] [1C] [9A] [2E] | A:1 F:1 I:9 L:4 T:10
 P2 [Choose Shares: L C F I] [End Turn]
 `;
 
-exports[`Game Play: (210) Player 2 purchases Imperial 1`] = `
+exports[`Game Play > (210) Player 2 purchases Imperial 1`] = `
  - - - - - L - - - - - C
  - - - L L L L L - - C C
  - - F - - - L - T T - C
@@ -3570,7 +3570,7 @@ P2 | $3200 | [1A] [1C] [9A] [2E] | A:1 F:1 I:10 L:4 T:10
 P2 [Choose Shares: L C F I] [End Turn]
 `;
 
-exports[`Game Play: (211) Player 2 purchases Imperial 1`] = `
+exports[`Game Play > (211) Player 2 purchases Imperial 1`] = `
  - - - - - L - - - - - C
  - - - L L L L L - - C C
  - - F - - - L - T T - C
@@ -3587,7 +3587,7 @@ P2 | $2600 | [1A] [1C] [9A] [2E] | A:1 F:1 I:11 L:4 T:10
 P2 [Choose Shares: L C F I] [End Turn]
 `;
 
-exports[`Game Play: (212) Player 2 purchases Imperial 1`] = `
+exports[`Game Play > (212) Player 2 purchases Imperial 1`] = `
  - - - - - L - - - - - C
  - - - L L L L L - - C C
  - - F - - - L - T T - C
@@ -3604,7 +3604,7 @@ P2 | $2000 | [1A] [1C] [9A] [2E] | A:1 F:1 I:12 L:4 T:10
 P2 [End Turn]
 `;
 
-exports[`Game Play: (213) Player 2 ends turn 1`] = `
+exports[`Game Play > (213) Player 2 ends turn 1`] = `
  - - - - - L - - - - - C
  - - - L L L L L - - C C
  - - F - - - L - T T - C
@@ -3621,7 +3621,7 @@ P2 | $2000 | [1A] [1C] [9A] [2E] [5C] | A:1 F:1 I:12 L:4 T:10
 P1 [Choose Tile: [3B] [12H] [1F] [10A] [4F]]
 `;
 
-exports[`Game Play: (214) Player 1 places tile [3B] 1`] = `
+exports[`Game Play > (214) Player 1 places tile [3B] 1`] = `
  - - - - - L - - - - - C
  - - L L L L L L - - C C
  - - L - - - L - T T - C
@@ -3638,7 +3638,7 @@ P2 | $4500 | [1A] [1C] [9A] [2E] [5C] | A:1 F:1 I:12 L:4 T:10
 P1 [Sell (1/6) Festival Share] [Keep (1/6) Festival Share] [Trade (2/6) Festival for 1 Luxor]
 `;
 
-exports[`Game Play: (215) Player 1 trades 2 Festival -> Luxor 1`] = `
+exports[`Game Play > (215) Player 1 trades 2 Festival -> Luxor 1`] = `
  - - - - - L - - - - - C
  - - L L L L L L - - C C
  - - L - - - L - T T - C
@@ -3655,7 +3655,7 @@ P2 | $4500 | [1A] [1C] [9A] [2E] [5C] | A:1 F:1 I:12 L:4 T:10
 P1 [Sell (1/4) Festival Share] [Keep (1/4) Festival Share] [Trade (2/4) Festival for 1 Luxor]
 `;
 
-exports[`Game Play: (216) Player 1 trades 2 Festival -> Luxor 1`] = `
+exports[`Game Play > (216) Player 1 trades 2 Festival -> Luxor 1`] = `
  - - - - - L - - - - - C
  - - L L L L L L - - C C
  - - L - - - L - T T - C
@@ -3672,7 +3672,7 @@ P2 | $4500 | [1A] [1C] [9A] [2E] [5C] | A:1 F:1 I:12 L:4 T:10
 P1 [Sell (1/2) Festival Share] [Keep (1/2) Festival Share] [Trade (2/2) Festival for 1 Luxor]
 `;
 
-exports[`Game Play: (217) Player 1 trades 2 Festival -> Luxor 1`] = `
+exports[`Game Play > (217) Player 1 trades 2 Festival -> Luxor 1`] = `
  - - - - - L - - - - - C
  - - L L L L L L - - C C
  - - L - - - L - T T - C
@@ -3689,7 +3689,7 @@ P2 | $4500 | [1A] [1C] [9A] [2E] [5C] | A:1 F:1 I:12 L:4 T:10
 P2 [Sell (1/1) Festival Share] [Keep (1/1) Festival Share]
 `;
 
-exports[`Game Play: (218) Player 2 sells 1 orphaned Festival share 1`] = `
+exports[`Game Play > (218) Player 2 sells 1 orphaned Festival share 1`] = `
  - - - - - L - - - - - C
  - - L L L L L L - - C C
  - - L - - - L - T T - C
@@ -3706,7 +3706,7 @@ P2 | $5000 | [1A] [1C] [9A] [2E] [5C] | A:1 I:12 L:4 T:10
 P1 [Choose Shares: L C I] [End Turn]
 `;
 
-exports[`Game Play: (219) Player 1 ends turn 1`] = `
+exports[`Game Play > (219) Player 1 ends turn 1`] = `
  - - - - - L - - - - - C
  - - L L L L L L - - C C
  - - L - - - L - T T - C
@@ -3723,7 +3723,7 @@ P2 | $5000 | [1A] [1C] [9A] [2E] [5C] | A:1 I:12 L:4 T:10
 P2 [Choose Tile: [1A] [1C] [9A] [2E] [5C]]
 `;
 
-exports[`Game Play: (220) Player 2 places tile [5C] 1`] = `
+exports[`Game Play > (220) Player 2 places tile [5C] 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -3740,7 +3740,7 @@ P2 | $8500 | [1A] [1C] [9A] [2E] | A:1 I:12 L:4 T:10
 P2 [Sell (1/4) Luxor Share] [Keep (1/4) Luxor Share] [Trade (2/4) Luxor for 1 Tower]
 `;
 
-exports[`Game Play: (221) Player 2 sells 1 orphaned Luxor share 1`] = `
+exports[`Game Play > (221) Player 2 sells 1 orphaned Luxor share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -3757,7 +3757,7 @@ P2 | $9200 | [1A] [1C] [9A] [2E] | A:1 I:12 L:3 T:10
 P2 [Sell (1/3) Luxor Share] [Keep (1/3) Luxor Share] [Trade (2/3) Luxor for 1 Tower]
 `;
 
-exports[`Game Play: (222) Player 2 sells 1 orphaned Luxor share 1`] = `
+exports[`Game Play > (222) Player 2 sells 1 orphaned Luxor share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -3774,7 +3774,7 @@ P2 | $9900 | [1A] [1C] [9A] [2E] | A:1 I:12 L:2 T:10
 P2 [Sell (1/2) Luxor Share] [Keep (1/2) Luxor Share] [Trade (2/2) Luxor for 1 Tower]
 `;
 
-exports[`Game Play: (223) Player 2 sells 1 orphaned Luxor share 1`] = `
+exports[`Game Play > (223) Player 2 sells 1 orphaned Luxor share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -3791,7 +3791,7 @@ P2 | $10600 | [1A] [1C] [9A] [2E] | A:1 I:12 L:1 T:10
 P2 [Sell (1/1) Luxor Share] [Keep (1/1) Luxor Share]
 `;
 
-exports[`Game Play: (224) Player 2 sells 1 orphaned Luxor share 1`] = `
+exports[`Game Play > (224) Player 2 sells 1 orphaned Luxor share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -3808,7 +3808,7 @@ P2 | $11300 | [1A] [1C] [9A] [2E] | A:1 I:12 T:10
 P1 [Sell (1/9) Luxor Share] [Keep (1/9) Luxor Share] [Trade (2/9) Luxor for 1 Tower]
 `;
 
-exports[`Game Play: (225) Player 1 sells 1 orphaned Luxor share 1`] = `
+exports[`Game Play > (225) Player 1 sells 1 orphaned Luxor share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -3825,7 +3825,7 @@ P2 | $11300 | [1A] [1C] [9A] [2E] | A:1 I:12 T:10
 P1 [Sell (1/8) Luxor Share] [Keep (1/8) Luxor Share] [Trade (2/8) Luxor for 1 Tower]
 `;
 
-exports[`Game Play: (226) Player 1 sells 1 orphaned Luxor share 1`] = `
+exports[`Game Play > (226) Player 1 sells 1 orphaned Luxor share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -3842,7 +3842,7 @@ P2 | $11300 | [1A] [1C] [9A] [2E] | A:1 I:12 T:10
 P1 [Sell (1/7) Luxor Share] [Keep (1/7) Luxor Share] [Trade (2/7) Luxor for 1 Tower]
 `;
 
-exports[`Game Play: (227) Player 1 sells 1 orphaned Luxor share 1`] = `
+exports[`Game Play > (227) Player 1 sells 1 orphaned Luxor share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -3859,7 +3859,7 @@ P2 | $11300 | [1A] [1C] [9A] [2E] | A:1 I:12 T:10
 P1 [Sell (1/6) Luxor Share] [Keep (1/6) Luxor Share] [Trade (2/6) Luxor for 1 Tower]
 `;
 
-exports[`Game Play: (228) Player 1 sells 1 orphaned Luxor share 1`] = `
+exports[`Game Play > (228) Player 1 sells 1 orphaned Luxor share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -3876,7 +3876,7 @@ P2 | $11300 | [1A] [1C] [9A] [2E] | A:1 I:12 T:10
 P1 [Sell (1/5) Luxor Share] [Keep (1/5) Luxor Share] [Trade (2/5) Luxor for 1 Tower]
 `;
 
-exports[`Game Play: (229) Player 1 sells 1 orphaned Luxor share 1`] = `
+exports[`Game Play > (229) Player 1 sells 1 orphaned Luxor share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -3893,7 +3893,7 @@ P2 | $11300 | [1A] [1C] [9A] [2E] | A:1 I:12 T:10
 P1 [Sell (1/4) Luxor Share] [Keep (1/4) Luxor Share] [Trade (2/4) Luxor for 1 Tower]
 `;
 
-exports[`Game Play: (230) Player 1 sells 1 orphaned Luxor share 1`] = `
+exports[`Game Play > (230) Player 1 sells 1 orphaned Luxor share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -3910,7 +3910,7 @@ P2 | $11300 | [1A] [1C] [9A] [2E] | A:1 I:12 T:10
 P1 [Sell (1/3) Luxor Share] [Keep (1/3) Luxor Share] [Trade (2/3) Luxor for 1 Tower]
 `;
 
-exports[`Game Play: (231) Player 1 sells 1 orphaned Luxor share 1`] = `
+exports[`Game Play > (231) Player 1 sells 1 orphaned Luxor share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -3927,7 +3927,7 @@ P2 | $11300 | [1A] [1C] [9A] [2E] | A:1 I:12 T:10
 P1 [Sell (1/2) Luxor Share] [Keep (1/2) Luxor Share] [Trade (2/2) Luxor for 1 Tower]
 `;
 
-exports[`Game Play: (232) Player 1 sells 1 orphaned Luxor share 1`] = `
+exports[`Game Play > (232) Player 1 sells 1 orphaned Luxor share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -3944,7 +3944,7 @@ P2 | $11300 | [1A] [1C] [9A] [2E] | A:1 I:12 T:10
 P1 [Sell (1/1) Luxor Share] [Keep (1/1) Luxor Share]
 `;
 
-exports[`Game Play: (233) Player 1 sells 1 orphaned Luxor share 1`] = `
+exports[`Game Play > (233) Player 1 sells 1 orphaned Luxor share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -3961,7 +3961,7 @@ P2 | $11300 | [1A] [1C] [9A] [2E] | A:1 I:12 T:10
 P2 [Choose Shares: C I] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (234) Player 2 purchases Imperial 1`] = `
+exports[`Game Play > (234) Player 2 purchases Imperial 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -3978,7 +3978,7 @@ P2 | $10700 | [1A] [1C] [9A] [2E] | A:1 I:13 T:10
 P2 [Choose Shares: C I] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (235) Player 2 purchases Continental 1`] = `
+exports[`Game Play > (235) Player 2 purchases Continental 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -3995,7 +3995,7 @@ P2 | $10100 | [1A] [1C] [9A] [2E] | A:1 C:1 I:13 T:10
 P2 [Choose Shares: C I] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (236) Player 2 purchases Continental 1`] = `
+exports[`Game Play > (236) Player 2 purchases Continental 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4012,7 +4012,7 @@ P2 | $9500 | [1A] [1C] [9A] [2E] | A:1 C:2 I:13 T:10
 P2 [End Turn] [End Game]
 `;
 
-exports[`Game Play: (237) Player 2 ends turn 1`] = `
+exports[`Game Play > (237) Player 2 ends turn 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4029,7 +4029,7 @@ P2 | $9500 | [1A] [1C] [9A] [2E] [12F] | A:1 C:2 I:13 T:10
 P1 [Choose Tile: [12H] [1F] [10A] [4F] [6C]]
 `;
 
-exports[`Game Play: (238) Player 1 places tile [4F] 1`] = `
+exports[`Game Play > (238) Player 1 places tile [4F] 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4046,7 +4046,7 @@ P2 | $9500 | [1A] [1C] [9A] [2E] [12F] | A:1 C:2 I:13 T:10
 P1 [Choose Shares: C I] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (239) Player 1 purchases Imperial 1`] = `
+exports[`Game Play > (239) Player 1 purchases Imperial 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4063,7 +4063,7 @@ P2 | $9500 | [1A] [1C] [9A] [2E] [12F] | A:1 C:2 I:13 T:10
 P1 [Choose Shares: C I] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (240) Player 1 purchases Imperial 1`] = `
+exports[`Game Play > (240) Player 1 purchases Imperial 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4080,7 +4080,7 @@ P2 | $9500 | [1A] [1C] [9A] [2E] [12F] | A:1 C:2 I:13 T:10
 P1 [Choose Shares: C I] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (241) Player 1 purchases Imperial 1`] = `
+exports[`Game Play > (241) Player 1 purchases Imperial 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4097,7 +4097,7 @@ P2 | $9500 | [1A] [1C] [9A] [2E] [12F] | A:1 C:2 I:13 T:10
 P1 [End Turn] [End Game]
 `;
 
-exports[`Game Play: (242) Player 1 ends turn 1`] = `
+exports[`Game Play > (242) Player 1 ends turn 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4114,7 +4114,7 @@ P2 | $9500 | [1A] [1C] [9A] [2E] [12F] | A:1 C:2 I:13 T:10
 P2 [Choose Tile: [1A] [1C] [9A] [2E] [12F]]
 `;
 
-exports[`Game Play: (243) Player 2 places tile [12F] 1`] = `
+exports[`Game Play > (243) Player 2 places tile [12F] 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4131,7 +4131,7 @@ P2 | $9500 | [1A] [1C] [9A] [2E] | A:1 C:2 I:13 T:10
 P2 [Choose Shares: C I] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (244) Player 2 purchases Imperial 1`] = `
+exports[`Game Play > (244) Player 2 purchases Imperial 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4148,7 +4148,7 @@ P2 | $8900 | [1A] [1C] [9A] [2E] | A:1 C:2 I:14 T:10
 P2 [Choose Shares: C I] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (245) Player 2 purchases Imperial 1`] = `
+exports[`Game Play > (245) Player 2 purchases Imperial 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4165,7 +4165,7 @@ P2 | $8300 | [1A] [1C] [9A] [2E] | A:1 C:2 I:15 T:10
 P2 [Choose Shares: C] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (246) Player 2 purchases Continental 1`] = `
+exports[`Game Play > (246) Player 2 purchases Continental 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4182,7 +4182,7 @@ P2 | $7700 | [1A] [1C] [9A] [2E] | A:1 C:3 I:15 T:10
 P2 [End Turn] [End Game]
 `;
 
-exports[`Game Play: (247) Player 2 ends turn 1`] = `
+exports[`Game Play > (247) Player 2 ends turn 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4199,7 +4199,7 @@ P2 | $7700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:15 T:10
 P1 [Choose Tile: [12H] [1F] [10A] [6C] [4C]]
 `;
 
-exports[`Game Play: (248) Player 1 places tile [12H] 1`] = `
+exports[`Game Play > (248) Player 1 places tile [12H] 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4216,7 +4216,7 @@ P2 | $13700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:15 T:10
 P1 [Sell (1/10) Imperial Share] [Keep (1/10) Imperial Share] [Trade (2/10) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (249) Player 1 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (249) Player 1 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4233,7 +4233,7 @@ P2 | $13700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:15 T:10
 P1 [Sell (1/9) Imperial Share] [Keep (1/9) Imperial Share] [Trade (2/9) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (250) Player 1 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (250) Player 1 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4250,7 +4250,7 @@ P2 | $13700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:15 T:10
 P1 [Sell (1/8) Imperial Share] [Keep (1/8) Imperial Share] [Trade (2/8) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (251) Player 1 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (251) Player 1 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4267,7 +4267,7 @@ P2 | $13700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:15 T:10
 P1 [Sell (1/7) Imperial Share] [Keep (1/7) Imperial Share] [Trade (2/7) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (252) Player 1 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (252) Player 1 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4284,7 +4284,7 @@ P2 | $13700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:15 T:10
 P1 [Sell (1/6) Imperial Share] [Keep (1/6) Imperial Share] [Trade (2/6) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (253) Player 1 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (253) Player 1 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4301,7 +4301,7 @@ P2 | $13700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:15 T:10
 P1 [Sell (1/5) Imperial Share] [Keep (1/5) Imperial Share] [Trade (2/5) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (254) Player 1 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (254) Player 1 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4318,7 +4318,7 @@ P2 | $13700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:15 T:10
 P1 [Sell (1/4) Imperial Share] [Keep (1/4) Imperial Share] [Trade (2/4) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (255) Player 1 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (255) Player 1 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4335,7 +4335,7 @@ P2 | $13700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:15 T:10
 P1 [Sell (1/3) Imperial Share] [Keep (1/3) Imperial Share] [Trade (2/3) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (256) Player 1 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (256) Player 1 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4352,7 +4352,7 @@ P2 | $13700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:15 T:10
 P1 [Sell (1/2) Imperial Share] [Keep (1/2) Imperial Share] [Trade (2/2) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (257) Player 1 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (257) Player 1 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4369,7 +4369,7 @@ P2 | $13700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:15 T:10
 P1 [Sell (1/1) Imperial Share] [Keep (1/1) Imperial Share]
 `;
 
-exports[`Game Play: (258) Player 1 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (258) Player 1 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4386,7 +4386,7 @@ P2 | $13700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:15 T:10
 P2 [Sell (1/15) Imperial Share] [Keep (1/15) Imperial Share] [Trade (2/15) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (259) Player 2 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (259) Player 2 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4403,7 +4403,7 @@ P2 | $14300 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:14 T:10
 P2 [Sell (1/14) Imperial Share] [Keep (1/14) Imperial Share] [Trade (2/14) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (260) Player 2 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (260) Player 2 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4420,7 +4420,7 @@ P2 | $14900 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:13 T:10
 P2 [Sell (1/13) Imperial Share] [Keep (1/13) Imperial Share] [Trade (2/13) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (261) Player 2 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (261) Player 2 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4437,7 +4437,7 @@ P2 | $15500 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:12 T:10
 P2 [Sell (1/12) Imperial Share] [Keep (1/12) Imperial Share] [Trade (2/12) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (262) Player 2 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (262) Player 2 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4454,7 +4454,7 @@ P2 | $16100 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:11 T:10
 P2 [Sell (1/11) Imperial Share] [Keep (1/11) Imperial Share] [Trade (2/11) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (263) Player 2 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (263) Player 2 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4471,7 +4471,7 @@ P2 | $16700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:10 T:10
 P2 [Sell (1/10) Imperial Share] [Keep (1/10) Imperial Share] [Trade (2/10) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (264) Player 2 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (264) Player 2 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4488,7 +4488,7 @@ P2 | $17300 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:9 T:10
 P2 [Sell (1/9) Imperial Share] [Keep (1/9) Imperial Share] [Trade (2/9) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (265) Player 2 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (265) Player 2 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4505,7 +4505,7 @@ P2 | $17900 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:8 T:10
 P2 [Sell (1/8) Imperial Share] [Keep (1/8) Imperial Share] [Trade (2/8) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (266) Player 2 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (266) Player 2 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4522,7 +4522,7 @@ P2 | $18500 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:7 T:10
 P2 [Sell (1/7) Imperial Share] [Keep (1/7) Imperial Share] [Trade (2/7) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (267) Player 2 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (267) Player 2 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4539,7 +4539,7 @@ P2 | $19100 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:6 T:10
 P2 [Sell (1/6) Imperial Share] [Keep (1/6) Imperial Share] [Trade (2/6) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (268) Player 2 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (268) Player 2 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4556,7 +4556,7 @@ P2 | $19700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:5 T:10
 P2 [Sell (1/5) Imperial Share] [Keep (1/5) Imperial Share] [Trade (2/5) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (269) Player 2 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (269) Player 2 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4573,7 +4573,7 @@ P2 | $20300 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:4 T:10
 P2 [Sell (1/4) Imperial Share] [Keep (1/4) Imperial Share] [Trade (2/4) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (270) Player 2 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (270) Player 2 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4590,7 +4590,7 @@ P2 | $20900 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:3 T:10
 P2 [Sell (1/3) Imperial Share] [Keep (1/3) Imperial Share] [Trade (2/3) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (271) Player 2 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (271) Player 2 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4607,7 +4607,7 @@ P2 | $21500 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:2 T:10
 P2 [Sell (1/2) Imperial Share] [Keep (1/2) Imperial Share] [Trade (2/2) Imperial for 1 Tower]
 `;
 
-exports[`Game Play: (272) Player 2 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (272) Player 2 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4624,7 +4624,7 @@ P2 | $22100 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 I:1 T:10
 P2 [Sell (1/1) Imperial Share] [Keep (1/1) Imperial Share]
 `;
 
-exports[`Game Play: (273) Player 2 sells 1 orphaned Imperial share 1`] = `
+exports[`Game Play > (273) Player 2 sells 1 orphaned Imperial share 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4641,7 +4641,7 @@ P2 | $22700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 T:10
 P1 [Choose Shares: C] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (274) Player 1 purchases Continental 1`] = `
+exports[`Game Play > (274) Player 1 purchases Continental 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4658,7 +4658,7 @@ P2 | $22700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 T:10
 P1 [Choose Shares: C] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (275) Player 1 purchases Continental 1`] = `
+exports[`Game Play > (275) Player 1 purchases Continental 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4675,7 +4675,7 @@ P2 | $22700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 T:10
 P1 [Choose Shares: C] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (276) Player 1 purchases Continental 1`] = `
+exports[`Game Play > (276) Player 1 purchases Continental 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4692,7 +4692,7 @@ P2 | $22700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 T:10
 P1 [End Turn] [End Game]
 `;
 
-exports[`Game Play: (277) Player 1 ends turn 1`] = `
+exports[`Game Play > (277) Player 1 ends turn 1`] = `
  - - - - - T - - - - - C
  - - T T T T T T - - C C
  - - T - T - T - T T - C
@@ -4709,7 +4709,7 @@ P2 | $22700 | [1A] [1C] [9A] [2E] [12D] | A:1 C:3 T:10
 P2 [Choose Tile: [1A] [1C] [9A] [2E] [12D]]
 `;
 
-exports[`Game Play: (278) Player 2 places tile [12D] 1`] = `
+exports[`Game Play > (278) Player 2 places tile [12D] 1`] = `
  - - - - - T - - - - - T
  - - T T T T T T - - T T
  - - T - T - T - T T - T
@@ -4726,7 +4726,7 @@ P2 | $25700 | [1A] [1C] [9A] [2E] | A:1 C:3 T:10
 P2 [Sell (1/3) Continental Share] [Keep (1/3) Continental Share] [Trade (2/3) Continental for 1 Tower]
 `;
 
-exports[`Game Play: (279) Player 2 sells 1 orphaned Continental share 1`] = `
+exports[`Game Play > (279) Player 2 sells 1 orphaned Continental share 1`] = `
  - - - - - T - - - - - T
  - - T T T T T T - - T T
  - - T - T - T - T T - T
@@ -4743,7 +4743,7 @@ P2 | $26300 | [1A] [1C] [9A] [2E] | A:1 C:2 T:10
 P2 [Sell (1/2) Continental Share] [Keep (1/2) Continental Share] [Trade (2/2) Continental for 1 Tower]
 `;
 
-exports[`Game Play: (280) Player 2 sells 1 orphaned Continental share 1`] = `
+exports[`Game Play > (280) Player 2 sells 1 orphaned Continental share 1`] = `
  - - - - - T - - - - - T
  - - T T T T T T - - T T
  - - T - T - T - T T - T
@@ -4760,7 +4760,7 @@ P2 | $26900 | [1A] [1C] [9A] [2E] | A:1 C:1 T:10
 P2 [Sell (1/1) Continental Share] [Keep (1/1) Continental Share]
 `;
 
-exports[`Game Play: (281) Player 2 sells 1 orphaned Continental share 1`] = `
+exports[`Game Play > (281) Player 2 sells 1 orphaned Continental share 1`] = `
  - - - - - T - - - - - T
  - - T T T T T T - - T T
  - - T - T - T - T T - T
@@ -4777,7 +4777,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] | A:1 T:10
 P1 [Sell (1/9) Continental Share] [Keep (1/9) Continental Share] [Trade (2/9) Continental for 1 Tower]
 `;
 
-exports[`Game Play: (282) Player 1 sells 1 orphaned Continental share 1`] = `
+exports[`Game Play > (282) Player 1 sells 1 orphaned Continental share 1`] = `
  - - - - - T - - - - - T
  - - T T T T T T - - T T
  - - T - T - T - T T - T
@@ -4794,7 +4794,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] | A:1 T:10
 P1 [Sell (1/8) Continental Share] [Keep (1/8) Continental Share] [Trade (2/8) Continental for 1 Tower]
 `;
 
-exports[`Game Play: (283) Player 1 sells 1 orphaned Continental share 1`] = `
+exports[`Game Play > (283) Player 1 sells 1 orphaned Continental share 1`] = `
  - - - - - T - - - - - T
  - - T T T T T T - - T T
  - - T - T - T - T T - T
@@ -4811,7 +4811,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] | A:1 T:10
 P1 [Sell (1/7) Continental Share] [Keep (1/7) Continental Share] [Trade (2/7) Continental for 1 Tower]
 `;
 
-exports[`Game Play: (284) Player 1 sells 1 orphaned Continental share 1`] = `
+exports[`Game Play > (284) Player 1 sells 1 orphaned Continental share 1`] = `
  - - - - - T - - - - - T
  - - T T T T T T - - T T
  - - T - T - T - T T - T
@@ -4828,7 +4828,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] | A:1 T:10
 P1 [Sell (1/6) Continental Share] [Keep (1/6) Continental Share] [Trade (2/6) Continental for 1 Tower]
 `;
 
-exports[`Game Play: (285) Player 1 sells 1 orphaned Continental share 1`] = `
+exports[`Game Play > (285) Player 1 sells 1 orphaned Continental share 1`] = `
  - - - - - T - - - - - T
  - - T T T T T T - - T T
  - - T - T - T - T T - T
@@ -4845,7 +4845,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] | A:1 T:10
 P1 [Sell (1/5) Continental Share] [Keep (1/5) Continental Share] [Trade (2/5) Continental for 1 Tower]
 `;
 
-exports[`Game Play: (286) Player 1 sells 1 orphaned Continental share 1`] = `
+exports[`Game Play > (286) Player 1 sells 1 orphaned Continental share 1`] = `
  - - - - - T - - - - - T
  - - T T T T T T - - T T
  - - T - T - T - T T - T
@@ -4862,7 +4862,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] | A:1 T:10
 P1 [Sell (1/4) Continental Share] [Keep (1/4) Continental Share] [Trade (2/4) Continental for 1 Tower]
 `;
 
-exports[`Game Play: (287) Player 1 sells 1 orphaned Continental share 1`] = `
+exports[`Game Play > (287) Player 1 sells 1 orphaned Continental share 1`] = `
  - - - - - T - - - - - T
  - - T T T T T T - - T T
  - - T - T - T - T T - T
@@ -4879,7 +4879,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] | A:1 T:10
 P1 [Sell (1/3) Continental Share] [Keep (1/3) Continental Share] [Trade (2/3) Continental for 1 Tower]
 `;
 
-exports[`Game Play: (288) Player 1 sells 1 orphaned Continental share 1`] = `
+exports[`Game Play > (288) Player 1 sells 1 orphaned Continental share 1`] = `
  - - - - - T - - - - - T
  - - T T T T T T - - T T
  - - T - T - T - T T - T
@@ -4896,7 +4896,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] | A:1 T:10
 P1 [Sell (1/2) Continental Share] [Keep (1/2) Continental Share] [Trade (2/2) Continental for 1 Tower]
 `;
 
-exports[`Game Play: (289) Player 1 sells 1 orphaned Continental share 1`] = `
+exports[`Game Play > (289) Player 1 sells 1 orphaned Continental share 1`] = `
  - - - - - T - - - - - T
  - - T T T T T T - - T T
  - - T - T - T - T T - T
@@ -4913,7 +4913,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] | A:1 T:10
 P1 [Sell (1/1) Continental Share] [Keep (1/1) Continental Share]
 `;
 
-exports[`Game Play: (290) Player 1 sells 1 orphaned Continental share 1`] = `
+exports[`Game Play > (290) Player 1 sells 1 orphaned Continental share 1`] = `
  - - - - - T - - - - - T
  - - T T T T T T - - T T
  - - T - T - T - T T - T
@@ -4930,7 +4930,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (291) Player 2 ends turn 1`] = `
+exports[`Game Play > (291) Player 2 ends turn 1`] = `
  - - - - - T - - - - - T
  - - T T T T T T - - T T
  - - T - T - T - T T - T
@@ -4947,7 +4947,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] [7A] | A:1 T:10
 P1 [Choose Tile: [1F] [10A] [6C] [4C] [1H]]
 `;
 
-exports[`Game Play: (292) Player 1 places tile [6C] 1`] = `
+exports[`Game Play > (292) Player 1 places tile [6C] 1`] = `
  - - - - - T - - - - - T
  - - T T T T T T - - T T
  - - T - T T T - T T - T
@@ -4964,7 +4964,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] [7A] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (293) Player 1 ends turn 1`] = `
+exports[`Game Play > (293) Player 1 ends turn 1`] = `
  - - - - - T - - - - - T
  - - T T T T T T - - T T
  - - T - T T T - T T - T
@@ -4981,7 +4981,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] [7A] | A:1 T:10
 P2 [Choose Tile: [1A] [1C] [9A] [2E] [7A]]
 `;
 
-exports[`Game Play: (294) Player 2 places tile [7A] 1`] = `
+exports[`Game Play > (294) Player 2 places tile [7A] 1`] = `
  - - - - - T T - - - - T
  - - T T T T T T - - T T
  - - T - T T T - T T - T
@@ -4998,7 +4998,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (295) Player 2 ends turn 1`] = `
+exports[`Game Play > (295) Player 2 ends turn 1`] = `
  - - - - - T T - - - - T
  - - T T T T T T - - T T
  - - T - T T T - T T - T
@@ -5015,7 +5015,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] [3E] | A:1 T:10
 P1 [Choose Tile: [1F] [10A] [4C] [1H] [11C]]
 `;
 
-exports[`Game Play: (296) Player 1 places tile [4C] 1`] = `
+exports[`Game Play > (296) Player 1 places tile [4C] 1`] = `
  - - - - - T T - - - - T
  - - T T T T T T - - T T
  - - T T T T T - T T - T
@@ -5032,7 +5032,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] [3E] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (297) Player 1 ends turn 1`] = `
+exports[`Game Play > (297) Player 1 ends turn 1`] = `
  - - - - - T T - - - - T
  - - T T T T T T - - T T
  - - T T T T T - T T - T
@@ -5049,7 +5049,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] [3E] | A:1 T:10
 P2 [Choose Tile: [1A] [1C] [9A] [2E] [3E]]
 `;
 
-exports[`Game Play: (298) Player 2 places tile [3E] 1`] = `
+exports[`Game Play > (298) Player 2 places tile [3E] 1`] = `
  - - - - - T T - - - - T
  - - T T T T T T - - T T
  - - T T T T T - T T - T
@@ -5066,7 +5066,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (299) Player 2 ends turn 1`] = `
+exports[`Game Play > (299) Player 2 ends turn 1`] = `
  - - - - - T T - - - - T
  - - T T T T T T - - T T
  - - T T T T T - T T - T
@@ -5083,7 +5083,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] [3A] | A:1 T:10
 P1 [Choose Tile: [1F] [10A] [1H] [11C] [10B]]
 `;
 
-exports[`Game Play: (300) Player 1 places tile [10A] 1`] = `
+exports[`Game Play > (300) Player 1 places tile [10A] 1`] = `
  - - - - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T - T
@@ -5100,7 +5100,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] [3A] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (301) Player 1 ends turn 1`] = `
+exports[`Game Play > (301) Player 1 ends turn 1`] = `
  - - - - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T - T
@@ -5117,7 +5117,7 @@ P2 | $27500 | [1A] [1C] [9A] [2E] [3A] | A:1 T:10
 P2 [Choose Tile: [1A] [1C] [9A] [2E] [3A]]
 `;
 
-exports[`Game Play: (302) Player 2 places tile [2E] 1`] = `
+exports[`Game Play > (302) Player 2 places tile [2E] 1`] = `
  - - - - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T - T
@@ -5134,7 +5134,7 @@ P2 | $27500 | [1A] [1C] [9A] [3A] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (303) Player 2 ends turn 1`] = `
+exports[`Game Play > (303) Player 2 ends turn 1`] = `
  - - - - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T - T
@@ -5151,7 +5151,7 @@ P2 | $27500 | [1A] [1C] [9A] [3A] [2A] | A:1 T:10
 P1 [Choose Tile: [1F] [1H] [11C] [10B] [7D]]
 `;
 
-exports[`Game Play: (304) Player 1 places tile [7D] 1`] = `
+exports[`Game Play > (304) Player 1 places tile [7D] 1`] = `
  - - - - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T - T
@@ -5168,7 +5168,7 @@ P2 | $27500 | [1A] [1C] [9A] [3A] [2A] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (305) Player 1 ends turn 1`] = `
+exports[`Game Play > (305) Player 1 ends turn 1`] = `
  - - - - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T - T
@@ -5185,7 +5185,7 @@ P2 | $27500 | [1A] [1C] [9A] [3A] [2A] | A:1 T:10
 P2 [Choose Tile: [1A] [1C] [9A] [3A] [2A]]
 `;
 
-exports[`Game Play: (306) Player 2 places tile [3A] 1`] = `
+exports[`Game Play > (306) Player 2 places tile [3A] 1`] = `
  - - T - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T - T
@@ -5202,7 +5202,7 @@ P2 | $27500 | [1A] [1C] [9A] [2A] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (307) Player 2 ends turn 1`] = `
+exports[`Game Play > (307) Player 2 ends turn 1`] = `
  - - T - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T - T
@@ -5219,7 +5219,7 @@ P2 | $27500 | [1A] [1C] [9A] [2A] [10H] | A:1 T:10
 P1 [Choose Tile: [1F] [1H] [11C] [10B] [12E]]
 `;
 
-exports[`Game Play: (308) Player 1 places tile [12E] 1`] = `
+exports[`Game Play > (308) Player 1 places tile [12E] 1`] = `
  - - T - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T - T
@@ -5236,7 +5236,7 @@ P2 | $27500 | [1A] [1C] [9A] [2A] [10H] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (309) Player 1 ends turn 1`] = `
+exports[`Game Play > (309) Player 1 ends turn 1`] = `
  - - T - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T - T
@@ -5253,7 +5253,7 @@ P2 | $27500 | [1A] [1C] [9A] [2A] [10H] | A:1 T:10
 P2 [Choose Tile: [1A] [1C] [9A] [2A] [10H]]
 `;
 
-exports[`Game Play: (310) Player 2 places tile [10H] 1`] = `
+exports[`Game Play > (310) Player 2 places tile [10H] 1`] = `
  - - T - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T - T
@@ -5270,7 +5270,7 @@ P2 | $27500 | [1A] [1C] [9A] [2A] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (311) Player 2 ends turn 1`] = `
+exports[`Game Play > (311) Player 2 ends turn 1`] = `
  - - T - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T - T
@@ -5287,7 +5287,7 @@ P2 | $27500 | [1A] [1C] [9A] [2A] [5H] | A:1 T:10
 P1 [Choose Tile: [1F] [1H] [11C] [10B] [8H]]
 `;
 
-exports[`Game Play: (312) Player 1 places tile [11C] 1`] = `
+exports[`Game Play > (312) Player 1 places tile [11C] 1`] = `
  - - T - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T T T
@@ -5304,7 +5304,7 @@ P2 | $27500 | [1A] [1C] [9A] [2A] [5H] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (313) Player 1 ends turn 1`] = `
+exports[`Game Play > (313) Player 1 ends turn 1`] = `
  - - T - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T T T
@@ -5321,7 +5321,7 @@ P2 | $27500 | [1A] [1C] [9A] [2A] [5H] | A:1 T:10
 P2 [Choose Tile: [1A] [1C] [9A] [2A] [5H]]
 `;
 
-exports[`Game Play: (314) Player 2 places tile [5H] 1`] = `
+exports[`Game Play > (314) Player 2 places tile [5H] 1`] = `
  - - T - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T T T
@@ -5338,7 +5338,7 @@ P2 | $27500 | [1A] [1C] [9A] [2A] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (315) Player 2 ends turn 1`] = `
+exports[`Game Play > (315) Player 2 ends turn 1`] = `
  - - T - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T T T
@@ -5355,7 +5355,7 @@ P2 | $27500 | [1A] [1C] [9A] [2A] [8C] | A:1 T:10
 P1 [Choose Tile: [1F] [1H] [10B] [8H] [5A]]
 `;
 
-exports[`Game Play: (316) Player 1 places tile [8H] 1`] = `
+exports[`Game Play > (316) Player 1 places tile [8H] 1`] = `
  - - T - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T T T
@@ -5372,7 +5372,7 @@ P2 | $27500 | [1A] [1C] [9A] [2A] [8C] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (317) Player 1 ends turn 1`] = `
+exports[`Game Play > (317) Player 1 ends turn 1`] = `
  - - T - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T - T T T T
@@ -5389,7 +5389,7 @@ P2 | $27500 | [1A] [1C] [9A] [2A] [8C] | A:1 T:10
 P2 [Choose Tile: [1A] [1C] [9A] [2A] [8C]]
 `;
 
-exports[`Game Play: (318) Player 2 places tile [8C] 1`] = `
+exports[`Game Play > (318) Player 2 places tile [8C] 1`] = `
  - - T - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5406,7 +5406,7 @@ P2 | $27500 | [1A] [1C] [9A] [2A] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (319) Player 2 ends turn 1`] = `
+exports[`Game Play > (319) Player 2 ends turn 1`] = `
  - - T - - T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5423,7 +5423,7 @@ P2 | $27500 | [1A] [1C] [9A] [2A] [9H] | A:1 T:10
 P1 [Choose Tile: [1F] [1H] [10B] [5A] [11A]]
 `;
 
-exports[`Game Play: (320) Player 1 places tile [5A] 1`] = `
+exports[`Game Play > (320) Player 1 places tile [5A] 1`] = `
  - - T - T T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5440,7 +5440,7 @@ P2 | $27500 | [1A] [1C] [9A] [2A] [9H] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (321) Player 1 ends turn 1`] = `
+exports[`Game Play > (321) Player 1 ends turn 1`] = `
  - - T - T T T - - 0 - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5457,7 +5457,7 @@ P2 | $27500 | [1A] [1C] [9A] [2A] [9H] | A:1 T:10
 P2 [Choose Tile: [1A] [1C] [9A] [2A] [9H]]
 `;
 
-exports[`Game Play: (322) Player 2 places tile [9A] 1`] = `
+exports[`Game Play > (322) Player 2 places tile [9A] 1`] = `
  - - T - T T T - 0 0 - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5474,7 +5474,7 @@ P2 | $27500 | [1A] [1C] [2A] [9H] | A:1 T:10
 P2 [Choose Hotel: A C F I L W]
 `;
 
-exports[`Game Play: (323) Player 2 starts Worldwide 1`] = `
+exports[`Game Play > (323) Player 2 starts Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5491,7 +5491,7 @@ P2 | $27500 | [1A] [1C] [2A] [9H] | A:1 T:10 W:1
 P2 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (324) Player 2 purchases Worldwide 1`] = `
+exports[`Game Play > (324) Player 2 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5508,7 +5508,7 @@ P2 | $27200 | [1A] [1C] [2A] [9H] | A:1 T:10 W:2
 P2 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (325) Player 2 purchases Worldwide 1`] = `
+exports[`Game Play > (325) Player 2 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5525,7 +5525,7 @@ P2 | $26900 | [1A] [1C] [2A] [9H] | A:1 T:10 W:3
 P2 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (326) Player 2 purchases Worldwide 1`] = `
+exports[`Game Play > (326) Player 2 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5542,7 +5542,7 @@ P2 | $26600 | [1A] [1C] [2A] [9H] | A:1 T:10 W:4
 P2 [End Turn] [End Game]
 `;
 
-exports[`Game Play: (327) Player 2 ends turn 1`] = `
+exports[`Game Play > (327) Player 2 ends turn 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5559,7 +5559,7 @@ P2 | $26600 | [1A] [1C] [2A] [9H] [1I] | A:1 T:10 W:4
 P1 [Choose Tile: [1F] [1H] [10B] [11A] [11H]]
 `;
 
-exports[`Game Play: (328) Player 1 places tile [11H] 1`] = `
+exports[`Game Play > (328) Player 1 places tile [11H] 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5576,7 +5576,7 @@ P2 | $26600 | [1A] [1C] [2A] [9H] [1I] | A:1 T:10 W:4
 P1 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (329) Player 1 purchases Worldwide 1`] = `
+exports[`Game Play > (329) Player 1 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5593,7 +5593,7 @@ P2 | $26600 | [1A] [1C] [2A] [9H] [1I] | A:1 T:10 W:4
 P1 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (330) Player 1 purchases Worldwide 1`] = `
+exports[`Game Play > (330) Player 1 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5610,7 +5610,7 @@ P2 | $26600 | [1A] [1C] [2A] [9H] [1I] | A:1 T:10 W:4
 P1 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (331) Player 1 purchases Worldwide 1`] = `
+exports[`Game Play > (331) Player 1 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5627,7 +5627,7 @@ P2 | $26600 | [1A] [1C] [2A] [9H] [1I] | A:1 T:10 W:4
 P1 [End Turn] [End Game]
 `;
 
-exports[`Game Play: (332) Player 1 ends turn 1`] = `
+exports[`Game Play > (332) Player 1 ends turn 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5644,7 +5644,7 @@ P2 | $26600 | [1A] [1C] [2A] [9H] [1I] | A:1 T:10 W:4
 P2 [Choose Tile: [1A] [1C] [2A] [9H] [1I]]
 `;
 
-exports[`Game Play: (333) Player 2 places tile [9H] 1`] = `
+exports[`Game Play > (333) Player 2 places tile [9H] 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5661,7 +5661,7 @@ P2 | $26600 | [1A] [1C] [2A] [1I] | A:1 T:10 W:4
 P2 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (334) Player 2 purchases Worldwide 1`] = `
+exports[`Game Play > (334) Player 2 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5678,7 +5678,7 @@ P2 | $26300 | [1A] [1C] [2A] [1I] | A:1 T:10 W:5
 P2 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (335) Player 2 purchases Worldwide 1`] = `
+exports[`Game Play > (335) Player 2 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5695,7 +5695,7 @@ P2 | $26000 | [1A] [1C] [2A] [1I] | A:1 T:10 W:6
 P2 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (336) Player 2 purchases Worldwide 1`] = `
+exports[`Game Play > (336) Player 2 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5712,7 +5712,7 @@ P2 | $25700 | [1A] [1C] [2A] [1I] | A:1 T:10 W:7
 P2 [End Turn] [End Game]
 `;
 
-exports[`Game Play: (337) Player 2 ends turn 1`] = `
+exports[`Game Play > (337) Player 2 ends turn 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5729,7 +5729,7 @@ P2 | $25700 | [1A] [1C] [2A] [1I] [1E] | A:1 T:10 W:7
 P1 [Choose Tile: [1F] [1H] [10B] [11A] [8A]]
 `;
 
-exports[`Game Play: (338) Player 1 places tile [1H] 1`] = `
+exports[`Game Play > (338) Player 1 places tile [1H] 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5746,7 +5746,7 @@ P2 | $25700 | [1A] [1C] [2A] [1I] [1E] | A:1 T:10 W:7
 P1 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (339) Player 1 purchases Worldwide 1`] = `
+exports[`Game Play > (339) Player 1 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5763,7 +5763,7 @@ P2 | $25700 | [1A] [1C] [2A] [1I] [1E] | A:1 T:10 W:7
 P1 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (340) Player 1 purchases Worldwide 1`] = `
+exports[`Game Play > (340) Player 1 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5780,7 +5780,7 @@ P2 | $25700 | [1A] [1C] [2A] [1I] [1E] | A:1 T:10 W:7
 P1 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (341) Player 1 purchases Worldwide 1`] = `
+exports[`Game Play > (341) Player 1 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5797,7 +5797,7 @@ P2 | $25700 | [1A] [1C] [2A] [1I] [1E] | A:1 T:10 W:7
 P1 [End Turn] [End Game]
 `;
 
-exports[`Game Play: (342) Player 1 ends turn 1`] = `
+exports[`Game Play > (342) Player 1 ends turn 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5814,7 +5814,7 @@ P2 | $25700 | [1A] [1C] [2A] [1I] [1E] | A:1 T:10 W:7
 P2 [Choose Tile: [1A] [1C] [2A] [1I] [1E]]
 `;
 
-exports[`Game Play: (343) Player 2 places tile [1I] 1`] = `
+exports[`Game Play > (343) Player 2 places tile [1I] 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5831,7 +5831,7 @@ P2 | $25700 | [1A] [1C] [2A] [1E] | A:1 T:10 W:7
 P2 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (344) Player 2 purchases Worldwide 1`] = `
+exports[`Game Play > (344) Player 2 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5848,7 +5848,7 @@ P2 | $25400 | [1A] [1C] [2A] [1E] | A:1 T:10 W:8
 P2 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (345) Player 2 purchases Worldwide 1`] = `
+exports[`Game Play > (345) Player 2 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5865,7 +5865,7 @@ P2 | $25100 | [1A] [1C] [2A] [1E] | A:1 T:10 W:9
 P2 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (346) Player 2 purchases Worldwide 1`] = `
+exports[`Game Play > (346) Player 2 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5882,7 +5882,7 @@ P2 | $24800 | [1A] [1C] [2A] [1E] | A:1 T:10 W:10
 P2 [End Turn] [End Game]
 `;
 
-exports[`Game Play: (347) Player 2 ends turn 1`] = `
+exports[`Game Play > (347) Player 2 ends turn 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5899,7 +5899,7 @@ P2 | $24800 | [1A] [1C] [2A] [1E] [4E] | A:1 T:10 W:10
 P1 [Choose Tile: [1F] [10B] [11A] [8A] [3H]]
 `;
 
-exports[`Game Play: (348) Player 1 places tile [3H] 1`] = `
+exports[`Game Play > (348) Player 1 places tile [3H] 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5916,7 +5916,7 @@ P2 | $24800 | [1A] [1C] [2A] [1E] [4E] | A:1 T:10 W:10
 P1 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (349) Player 1 purchases Worldwide 1`] = `
+exports[`Game Play > (349) Player 1 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5933,7 +5933,7 @@ P2 | $24800 | [1A] [1C] [2A] [1E] [4E] | A:1 T:10 W:10
 P1 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (350) Player 1 purchases Worldwide 1`] = `
+exports[`Game Play > (350) Player 1 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5950,7 +5950,7 @@ P2 | $24800 | [1A] [1C] [2A] [1E] [4E] | A:1 T:10 W:10
 P1 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (351) Player 1 purchases Worldwide 1`] = `
+exports[`Game Play > (351) Player 1 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5967,7 +5967,7 @@ P2 | $24800 | [1A] [1C] [2A] [1E] [4E] | A:1 T:10 W:10
 P1 [End Turn] [End Game]
 `;
 
-exports[`Game Play: (352) Player 1 ends turn 1`] = `
+exports[`Game Play > (352) Player 1 ends turn 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -5984,7 +5984,7 @@ P2 | $24800 | [1A] [1C] [2A] [1E] [4E] | A:1 T:10 W:10
 P2 [Choose Tile: [1A] [1C] [2A] [1E] [4E]]
 `;
 
-exports[`Game Play: (353) Player 2 places tile [4E] 1`] = `
+exports[`Game Play > (353) Player 2 places tile [4E] 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6001,7 +6001,7 @@ P2 | $24800 | [1A] [1C] [2A] [1E] | A:1 T:10 W:10
 P2 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (354) Player 2 purchases Worldwide 1`] = `
+exports[`Game Play > (354) Player 2 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6018,7 +6018,7 @@ P2 | $24500 | [1A] [1C] [2A] [1E] | A:1 T:10 W:11
 P2 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (355) Player 2 purchases Worldwide 1`] = `
+exports[`Game Play > (355) Player 2 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6035,7 +6035,7 @@ P2 | $24200 | [1A] [1C] [2A] [1E] | A:1 T:10 W:12
 P2 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (356) Player 2 purchases Worldwide 1`] = `
+exports[`Game Play > (356) Player 2 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6052,7 +6052,7 @@ P2 | $23900 | [1A] [1C] [2A] [1E] | A:1 T:10 W:13
 P2 [End Turn] [End Game]
 `;
 
-exports[`Game Play: (357) Player 2 ends turn 1`] = `
+exports[`Game Play > (357) Player 2 ends turn 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6069,7 +6069,7 @@ P2 | $23900 | [1A] [1C] [2A] [1E] [2B] | A:1 T:10 W:13
 P1 [Choose Tile: [1F] [10B] [11A] [8A] [8I]]
 `;
 
-exports[`Game Play: (358) Player 1 places tile [8I] 1`] = `
+exports[`Game Play > (358) Player 1 places tile [8I] 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6086,7 +6086,7 @@ P2 | $23900 | [1A] [1C] [2A] [1E] [2B] | A:1 T:10 W:13
 P1 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (359) Player 1 purchases Worldwide 1`] = `
+exports[`Game Play > (359) Player 1 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6103,7 +6103,7 @@ P2 | $23900 | [1A] [1C] [2A] [1E] [2B] | A:1 T:10 W:13
 P1 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (360) Player 1 purchases Worldwide 1`] = `
+exports[`Game Play > (360) Player 1 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6120,7 +6120,7 @@ P2 | $23900 | [1A] [1C] [2A] [1E] [2B] | A:1 T:10 W:13
 P1 [Choose Shares: W] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (361) Player 1 purchases Worldwide 1`] = `
+exports[`Game Play > (361) Player 1 purchases Worldwide 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6137,7 +6137,7 @@ P2 | $23900 | [1A] [1C] [2A] [1E] [2B] | A:1 T:10 W:13
 P1 [End Turn] [End Game]
 `;
 
-exports[`Game Play: (362) Player 1 ends turn 1`] = `
+exports[`Game Play > (362) Player 1 ends turn 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6154,7 +6154,7 @@ P2 | $23900 | [1A] [1C] [2A] [1E] [2B] | A:1 T:10 W:13
 P2 [Choose Tile: [1A] [1C] [2A] [1E] [2B]]
 `;
 
-exports[`Game Play: (363) Player 2 places tile [1E] 1`] = `
+exports[`Game Play > (363) Player 2 places tile [1E] 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6171,7 +6171,7 @@ P2 | $23900 | [1A] [1C] [2A] [2B] | A:1 T:10 W:13
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (364) Player 2 ends turn 1`] = `
+exports[`Game Play > (364) Player 2 ends turn 1`] = `
  - - T - T T T - W W - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6188,7 +6188,7 @@ P2 | $23900 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:13
 P1 [Choose Tile: [1F] [10B] [11A] [8A] [11G]]
 `;
 
-exports[`Game Play: (365) Player 1 places tile [8A] 1`] = `
+exports[`Game Play > (365) Player 1 places tile [8A] 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6205,7 +6205,7 @@ P2 | $26900 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:13
 P1 [Sell (1/12) Worldwide Share] [Keep (1/12) Worldwide Share] [Trade (2/12) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (366) Player 1 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (366) Player 1 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6222,7 +6222,7 @@ P2 | $26900 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:13
 P1 [Sell (1/11) Worldwide Share] [Keep (1/11) Worldwide Share] [Trade (2/11) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (367) Player 1 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (367) Player 1 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6239,7 +6239,7 @@ P2 | $26900 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:13
 P1 [Sell (1/10) Worldwide Share] [Keep (1/10) Worldwide Share] [Trade (2/10) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (368) Player 1 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (368) Player 1 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6256,7 +6256,7 @@ P2 | $26900 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:13
 P1 [Sell (1/9) Worldwide Share] [Keep (1/9) Worldwide Share] [Trade (2/9) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (369) Player 1 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (369) Player 1 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6273,7 +6273,7 @@ P2 | $26900 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:13
 P1 [Sell (1/8) Worldwide Share] [Keep (1/8) Worldwide Share] [Trade (2/8) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (370) Player 1 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (370) Player 1 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6290,7 +6290,7 @@ P2 | $26900 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:13
 P1 [Sell (1/7) Worldwide Share] [Keep (1/7) Worldwide Share] [Trade (2/7) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (371) Player 1 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (371) Player 1 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6307,7 +6307,7 @@ P2 | $26900 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:13
 P1 [Sell (1/6) Worldwide Share] [Keep (1/6) Worldwide Share] [Trade (2/6) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (372) Player 1 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (372) Player 1 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6324,7 +6324,7 @@ P2 | $26900 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:13
 P1 [Sell (1/5) Worldwide Share] [Keep (1/5) Worldwide Share] [Trade (2/5) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (373) Player 1 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (373) Player 1 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6341,7 +6341,7 @@ P2 | $26900 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:13
 P1 [Sell (1/4) Worldwide Share] [Keep (1/4) Worldwide Share] [Trade (2/4) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (374) Player 1 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (374) Player 1 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6358,7 +6358,7 @@ P2 | $26900 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:13
 P1 [Sell (1/3) Worldwide Share] [Keep (1/3) Worldwide Share] [Trade (2/3) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (375) Player 1 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (375) Player 1 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6375,7 +6375,7 @@ P2 | $26900 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:13
 P1 [Sell (1/2) Worldwide Share] [Keep (1/2) Worldwide Share] [Trade (2/2) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (376) Player 1 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (376) Player 1 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6392,7 +6392,7 @@ P2 | $26900 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:13
 P1 [Sell (1/1) Worldwide Share] [Keep (1/1) Worldwide Share]
 `;
 
-exports[`Game Play: (377) Player 1 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (377) Player 1 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6409,7 +6409,7 @@ P2 | $26900 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:13
 P2 [Sell (1/13) Worldwide Share] [Keep (1/13) Worldwide Share] [Trade (2/13) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (378) Player 2 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (378) Player 2 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6426,7 +6426,7 @@ P2 | $27200 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:12
 P2 [Sell (1/12) Worldwide Share] [Keep (1/12) Worldwide Share] [Trade (2/12) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (379) Player 2 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (379) Player 2 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6443,7 +6443,7 @@ P2 | $27500 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:11
 P2 [Sell (1/11) Worldwide Share] [Keep (1/11) Worldwide Share] [Trade (2/11) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (380) Player 2 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (380) Player 2 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6460,7 +6460,7 @@ P2 | $27800 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:10
 P2 [Sell (1/10) Worldwide Share] [Keep (1/10) Worldwide Share] [Trade (2/10) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (381) Player 2 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (381) Player 2 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6477,7 +6477,7 @@ P2 | $28100 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:9
 P2 [Sell (1/9) Worldwide Share] [Keep (1/9) Worldwide Share] [Trade (2/9) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (382) Player 2 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (382) Player 2 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6494,7 +6494,7 @@ P2 | $28400 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:8
 P2 [Sell (1/8) Worldwide Share] [Keep (1/8) Worldwide Share] [Trade (2/8) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (383) Player 2 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (383) Player 2 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6511,7 +6511,7 @@ P2 | $28700 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:7
 P2 [Sell (1/7) Worldwide Share] [Keep (1/7) Worldwide Share] [Trade (2/7) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (384) Player 2 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (384) Player 2 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6528,7 +6528,7 @@ P2 | $29000 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:6
 P2 [Sell (1/6) Worldwide Share] [Keep (1/6) Worldwide Share] [Trade (2/6) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (385) Player 2 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (385) Player 2 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6545,7 +6545,7 @@ P2 | $29300 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:5
 P2 [Sell (1/5) Worldwide Share] [Keep (1/5) Worldwide Share] [Trade (2/5) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (386) Player 2 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (386) Player 2 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6562,7 +6562,7 @@ P2 | $29600 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:4
 P2 [Sell (1/4) Worldwide Share] [Keep (1/4) Worldwide Share] [Trade (2/4) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (387) Player 2 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (387) Player 2 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6579,7 +6579,7 @@ P2 | $29900 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:3
 P2 [Sell (1/3) Worldwide Share] [Keep (1/3) Worldwide Share] [Trade (2/3) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (388) Player 2 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (388) Player 2 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6596,7 +6596,7 @@ P2 | $30200 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:2
 P2 [Sell (1/2) Worldwide Share] [Keep (1/2) Worldwide Share] [Trade (2/2) Worldwide for 1 Tower]
 `;
 
-exports[`Game Play: (389) Player 2 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (389) Player 2 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6613,7 +6613,7 @@ P2 | $30500 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10 W:1
 P2 [Sell (1/1) Worldwide Share] [Keep (1/1) Worldwide Share]
 `;
 
-exports[`Game Play: (390) Player 2 sells 1 orphaned Worldwide share 1`] = `
+exports[`Game Play > (390) Player 2 sells 1 orphaned Worldwide share 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6630,7 +6630,7 @@ P2 | $30800 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (391) Player 1 ends turn 1`] = `
+exports[`Game Play > (391) Player 1 ends turn 1`] = `
  - - T - T T T T T T - T
  - - T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6647,7 +6647,7 @@ P2 | $30800 | [1A] [1C] [2A] [2B] [9F] | A:1 T:10
 P2 [Choose Tile: [1A] [1C] [2A] [2B] [9F]]
 `;
 
-exports[`Game Play: (392) Player 2 places tile [2B] 1`] = `
+exports[`Game Play > (392) Player 2 places tile [2B] 1`] = `
  - - T - T T T T T T - T
  - T T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6664,7 +6664,7 @@ P2 | $30800 | [1A] [1C] [2A] [9F] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (393) Player 2 ends turn 1`] = `
+exports[`Game Play > (393) Player 2 ends turn 1`] = `
  - - T - T T T T T T - T
  - T T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6681,7 +6681,7 @@ P2 | $30800 | [1A] [1C] [2A] [9F] [2F] | A:1 T:10
 P1 [Choose Tile: [1F] [10B] [11A] [11G] [5G]]
 `;
 
-exports[`Game Play: (394) Player 1 places tile [11A] 1`] = `
+exports[`Game Play > (394) Player 1 places tile [11A] 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6698,7 +6698,7 @@ P2 | $30800 | [1A] [1C] [2A] [9F] [2F] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (395) Player 1 ends turn 1`] = `
+exports[`Game Play > (395) Player 1 ends turn 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6715,7 +6715,7 @@ P2 | $30800 | [1A] [1C] [2A] [9F] [2F] | A:1 T:10
 P2 [Choose Tile: [1A] [1C] [2A] [9F] [2F]]
 `;
 
-exports[`Game Play: (396) Player 2 places tile [9F] 1`] = `
+exports[`Game Play > (396) Player 2 places tile [9F] 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6732,7 +6732,7 @@ P2 | $30800 | [1A] [1C] [2A] [2F] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (397) Player 2 ends turn 1`] = `
+exports[`Game Play > (397) Player 2 ends turn 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6749,7 +6749,7 @@ P2 | $30800 | [1A] [1C] [2A] [2F] [2C] | A:1 T:10
 P1 [Choose Tile: [1F] [10B] [11G] [5G] [4G]]
 `;
 
-exports[`Game Play: (398) Player 1 places tile [11G] 1`] = `
+exports[`Game Play > (398) Player 1 places tile [11G] 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6766,7 +6766,7 @@ P2 | $30800 | [1A] [1C] [2A] [2F] [2C] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (399) Player 1 ends turn 1`] = `
+exports[`Game Play > (399) Player 1 ends turn 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6783,7 +6783,7 @@ P2 | $30800 | [1A] [1C] [2A] [2F] [2C] | A:1 T:10
 P2 [Choose Tile: [1A] [1C] [2A] [2F] [2C]]
 `;
 
-exports[`Game Play: (400) Player 2 places tile [2F] 1`] = `
+exports[`Game Play > (400) Player 2 places tile [2F] 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6800,7 +6800,7 @@ P2 | $30800 | [1A] [1C] [2A] [2C] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (401) Player 2 ends turn 1`] = `
+exports[`Game Play > (401) Player 2 ends turn 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T - - T T
  - - T T T T T T T T T T
@@ -6817,7 +6817,7 @@ P2 | $30800 | [1A] [1C] [2A] [2C] [6F] | A:1 T:10
 P1 [Choose Tile: [1F] [10B] [5G] [4G] [4D]]
 `;
 
-exports[`Game Play: (402) Player 1 places tile [10B] 1`] = `
+exports[`Game Play > (402) Player 1 places tile [10B] 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T - T T T
  - - T T T T T T T T T T
@@ -6834,7 +6834,7 @@ P2 | $30800 | [1A] [1C] [2A] [2C] [6F] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (403) Player 1 ends turn 1`] = `
+exports[`Game Play > (403) Player 1 ends turn 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T - T T T
  - - T T T T T T T T T T
@@ -6851,7 +6851,7 @@ P2 | $30800 | [1A] [1C] [2A] [2C] [6F] | A:1 T:10
 P2 [Choose Tile: [1A] [1C] [2A] [2C] [6F]]
 `;
 
-exports[`Game Play: (404) Player 2 places tile [6F] 1`] = `
+exports[`Game Play > (404) Player 2 places tile [6F] 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T - T T T
  - - T T T T T T T T T T
@@ -6868,7 +6868,7 @@ P2 | $30800 | [1A] [1C] [2A] [2C] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (405) Player 2 ends turn 1`] = `
+exports[`Game Play > (405) Player 2 ends turn 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T - T T T
  - - T T T T T T T T T T
@@ -6885,7 +6885,7 @@ P2 | $30800 | [1A] [1C] [2A] [2C] [9B] | A:1 T:10
 P1 [Choose Tile: [1F] [5G] [4G] [4D] [1B]]
 `;
 
-exports[`Game Play: (406) Player 1 places tile [5G] 1`] = `
+exports[`Game Play > (406) Player 1 places tile [5G] 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T - T T T
  - - T T T T T T T T T T
@@ -6902,7 +6902,7 @@ P2 | $30800 | [1A] [1C] [2A] [2C] [9B] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (407) Player 1 ends turn 1`] = `
+exports[`Game Play > (407) Player 1 ends turn 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T - T T T
  - - T T T T T T T T T T
@@ -6919,7 +6919,7 @@ P2 | $30800 | [1A] [1C] [2A] [2C] [9B] | A:1 T:10
 P2 [Choose Tile: [1A] [1C] [2A] [2C] [9B]]
 `;
 
-exports[`Game Play: (408) Player 2 places tile [9B] 1`] = `
+exports[`Game Play > (408) Player 2 places tile [9B] 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T T T T T
  - - T T T T T T T T T T
@@ -6936,7 +6936,7 @@ P2 | $30800 | [1A] [1C] [2A] [2C] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (409) Player 2 ends turn 1`] = `
+exports[`Game Play > (409) Player 2 ends turn 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T T T T T
  - - T T T T T T T T T T
@@ -6953,7 +6953,7 @@ P2 | $30800 | [1A] [1C] [2A] [2C] [3G] | A:1 T:10
 P1 [Choose Tile: [1F] [4G] [4D] [1B] [4A]]
 `;
 
-exports[`Game Play: (410) Player 1 places tile [4G] 1`] = `
+exports[`Game Play > (410) Player 1 places tile [4G] 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T T T T T
  - - T T T T T T T T T T
@@ -6970,7 +6970,7 @@ P2 | $30800 | [1A] [1C] [2A] [2C] [3G] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (411) Player 1 ends turn 1`] = `
+exports[`Game Play > (411) Player 1 ends turn 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T T T T T
  - - T T T T T T T T T T
@@ -6987,7 +6987,7 @@ P2 | $30800 | [1A] [1C] [2A] [2C] [3G] | A:1 T:10
 P2 [Choose Tile: [1A] [1C] [2A] [2C] [3G]]
 `;
 
-exports[`Game Play: (412) Player 2 places tile [3G] 1`] = `
+exports[`Game Play > (412) Player 2 places tile [3G] 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T T T T T
  - - T T T T T T T T T T
@@ -7004,7 +7004,7 @@ P2 | $30800 | [1A] [1C] [2A] [2C] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (413) Player 2 ends turn 1`] = `
+exports[`Game Play > (413) Player 2 ends turn 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T T T T T
  - - T T T T T T T T T T
@@ -7021,7 +7021,7 @@ P2 | $30800 | [1A] [1C] [2A] [2C] | A:1 T:10
 P1 [Choose Tile: [1F] [4D] [1B] [4A]]
 `;
 
-exports[`Game Play: (414) Player 1 places tile [1F] 1`] = `
+exports[`Game Play > (414) Player 1 places tile [1F] 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T T T T T
  - - T T T T T T T T T T
@@ -7038,7 +7038,7 @@ P2 | $30800 | [1A] [1C] [2A] [2C] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (415) Player 1 ends turn 1`] = `
+exports[`Game Play > (415) Player 1 ends turn 1`] = `
  - - T - T T T T T T T T
  - T T T T T T T T T T T
  - - T T T T T T T T T T
@@ -7055,7 +7055,7 @@ P2 | $30800 | [1A] [1C] [2A] [2C] | A:1 T:10
 P2 [Choose Tile: [1A] [1C] [2A] [2C]]
 `;
 
-exports[`Game Play: (416) Player 2 places tile [1A] 1`] = `
+exports[`Game Play > (416) Player 2 places tile [1A] 1`] = `
  0 - T - T T T T T T T T
  - T T T T T T T T T T T
  - - T T T T T T T T T T
@@ -7072,7 +7072,7 @@ P2 | $30800 | [1C] [2A] [2C] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (417) Player 2 ends turn 1`] = `
+exports[`Game Play > (417) Player 2 ends turn 1`] = `
  0 - T - T T T T T T T T
  - T T T T T T T T T T T
  - - T T T T T T T T T T
@@ -7089,7 +7089,7 @@ P2 | $30800 | [1C] [2A] [2C] | A:1 T:10
 P1 [Choose Tile: [4D] [1B] [4A]]
 `;
 
-exports[`Game Play: (418) Player 1 places tile [1B] 1`] = `
+exports[`Game Play > (418) Player 1 places tile [1B] 1`] = `
  T - T - T T T T T T T T
  T T T T T T T T T T T T
  - - T T T T T T T T T T
@@ -7106,7 +7106,7 @@ P2 | $30800 | [1C] [2A] [2C] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (419) Player 1 ends turn 1`] = `
+exports[`Game Play > (419) Player 1 ends turn 1`] = `
  T - T - T T T T T T T T
  T T T T T T T T T T T T
  - - T T T T T T T T T T
@@ -7123,7 +7123,7 @@ P2 | $30800 | [1C] [2A] [2C] | A:1 T:10
 P2 [Choose Tile: [1C] [2A] [2C]]
 `;
 
-exports[`Game Play: (420) Player 2 places tile [1C] 1`] = `
+exports[`Game Play > (420) Player 2 places tile [1C] 1`] = `
  T - T - T T T T T T T T
  T T T T T T T T T T T T
  T - T T T T T T T T T T
@@ -7140,7 +7140,7 @@ P2 | $30800 | [2A] [2C] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (421) Player 2 ends turn 1`] = `
+exports[`Game Play > (421) Player 2 ends turn 1`] = `
  T - T - T T T T T T T T
  T T T T T T T T T T T T
  T - T T T T T T T T T T
@@ -7157,7 +7157,7 @@ P2 | $30800 | [2A] [2C] | A:1 T:10
 P1 [Choose Tile: [4D] [4A]]
 `;
 
-exports[`Game Play: (422) Player 1 places tile [4D] 1`] = `
+exports[`Game Play > (422) Player 1 places tile [4D] 1`] = `
  T - T - T T T T T T T T
  T T T T T T T T T T T T
  T - T T T T T T T T T T
@@ -7174,7 +7174,7 @@ P2 | $30800 | [2A] [2C] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (423) Player 1 ends turn 1`] = `
+exports[`Game Play > (423) Player 1 ends turn 1`] = `
  T - T - T T T T T T T T
  T T T T T T T T T T T T
  T - T T T T T T T T T T
@@ -7191,7 +7191,7 @@ P2 | $30800 | [2A] [2C] | A:1 T:10
 P2 [Choose Tile: [2A] [2C]]
 `;
 
-exports[`Game Play: (424) Player 2 places tile [2A] 1`] = `
+exports[`Game Play > (424) Player 2 places tile [2A] 1`] = `
  T T T - T T T T T T T T
  T T T T T T T T T T T T
  T - T T T T T T T T T T
@@ -7208,7 +7208,7 @@ P2 | $30800 | [2C] | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (425) Player 2 ends turn 1`] = `
+exports[`Game Play > (425) Player 2 ends turn 1`] = `
  T T T - T T T T T T T T
  T T T T T T T T T T T T
  T - T T T T T T T T T T
@@ -7225,7 +7225,7 @@ P2 | $30800 | [2C] | A:1 T:10
 P1 [Choose Tile: [4A]]
 `;
 
-exports[`Game Play: (426) Player 1 places tile [4A] 1`] = `
+exports[`Game Play > (426) Player 1 places tile [4A] 1`] = `
  T T T T T T T T T T T T
  T T T T T T T T T T T T
  T - T T T T T T T T T T
@@ -7242,7 +7242,7 @@ P2 | $30800 | [2C] | A:1 T:10
 P1 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (427) Player 1 ends turn 1`] = `
+exports[`Game Play > (427) Player 1 ends turn 1`] = `
  T T T T T T T T T T T T
  T T T T T T T T T T T T
  T - T T T T T T T T T T
@@ -7259,7 +7259,7 @@ P2 | $30800 | [2C] | A:1 T:10
 P2 [Choose Tile: [2C]]
 `;
 
-exports[`Game Play: (428) Player 2 places tile [2C] 1`] = `
+exports[`Game Play > (428) Player 2 places tile [2C] 1`] = `
  T T T T T T T T T T T T
  T T T T T T T T T T T T
  T T T T T T T T T T T T
@@ -7276,7 +7276,7 @@ P2 | $30800 |  | A:1 T:10
 P2 [Choose Shares: ] [End Turn] [End Game]
 `;
 
-exports[`Game Play: (429) Player 2 ends turn 1`] = `
+exports[`Game Play > (429) Player 2 ends turn 1`] = `
  T T T T T T T T T T T T
  T T T T T T T T T T T T
  T T T T T T T T T T T T

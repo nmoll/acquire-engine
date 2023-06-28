@@ -1,3 +1,4 @@
+import { it } from "vitest";
 import { IAcquireGameInstance } from "../../../model/acquire-game-instance";
 import { PlayerAction } from "../../../model/player-action";
 import { playAndRecordActions } from "../../../test/helpers";

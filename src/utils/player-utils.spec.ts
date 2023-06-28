@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { PlayerUtils } from "./player-utils";
 
 describe("PlayerUtils", () => {

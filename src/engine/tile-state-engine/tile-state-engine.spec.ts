@@ -1,3 +1,4 @@
+import { it, describe, expect, beforeEach } from "vitest";
 import { GameConfig } from "../../game-config";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerActionResult } from "../../model/player-action-result";

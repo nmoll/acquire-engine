@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`TileStateEngine should create tile map 1`] = `
+exports[`TileStateEngine > should create tile map 1`] = `
 {
   "000": "1A",
   "001": "2A",
@@ -113,7 +113,7 @@ exports[`TileStateEngine should create tile map 1`] = `
 }
 `;
 
-exports[`TileStateEngine should return initial tile state 1`] = `
+exports[`TileStateEngine > should return initial tile state 1`] = `
 {
   "1": [
     11,

@@ -1,3 +1,4 @@
+import { it, describe, expect } from "vitest";
 import { GameConfig } from "../game-config";
 import { ITileState } from "../model/tile-state";
 import { TileUtils } from "./tile-utils";
