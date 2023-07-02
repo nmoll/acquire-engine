@@ -1,6 +1,6 @@
 import Gun, { IGunInstance } from "gun";
-import { IAcquireGameInstance } from "../../model/acquire-game-instance";
-import { PlayerAction } from "../../model/player-action";
+import { IAcquireGameInstance } from "../model/acquire-game-instance";
+import { PlayerAction } from "../model/player-action";
 
 /**
  * Signal server used to for clients to initiate a connection.

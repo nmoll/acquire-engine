@@ -2,7 +2,6 @@ import { ArrayUtils } from "../utils/array-utils";
 import { BoardUtils } from "../utils/board-utils";
 import { BoardSquareState, BoardSquareStateType } from "./board-square-state";
 import { Hotel } from "./hotel";
-import { HotelChainType } from "./hotel-chain-type";
 
 export class Board {
   constructor(private squares: BoardSquareState[]) {}
@@ -18,27 +17,14 @@ export class Board {
     return this.squares;
   }
 
-  public getHotel<T extends HotelChainType>(type: T): Hotel<T> {
-    const boardSquareIds: number[] = [];
-    for (let i = 0; i < this.squares.length; i++) {
-      const square = this.squares[i];
-      if (square.type === "HasHotelChain" && square.hotelChainType === type) {
-        boardSquareIds.push(i);
-      }
-    }
-
-    return {
-      type,
-      boardSquareIds,
-    };
-  }
-
   public mergeHotels(
-    minority: HotelChainType,
-    majority: HotelChainType,
+    minority: Hotel,
+    majority: Hotel,
     mergerTile: number | null
   ): Board {
-    const majorityBoardState = BoardSquareStateType.HasHotelChain(majority);
+    const majorityBoardState = BoardSquareStateType.HasHotelChain(
+      majority.type
+    );
 
     if (mergerTile === null) {
       mergerTile = this.squares.findIndex(
@@ -55,7 +41,7 @@ export class Board {
     }
 
     return this.update(mergerTile, majorityBoardState)
-      .updateAll(this.getHotel(minority).boardSquareIds, majorityBoardState)
+      .updateAll(minority.boardSquareIds, majorityBoardState)
       .updateAdjacentTiles(mergerTile, majorityBoardState);
   }
 

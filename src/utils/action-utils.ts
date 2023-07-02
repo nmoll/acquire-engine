@@ -1,5 +1,6 @@
-import { HotelChainType, IGameState } from "../model";
+import { IGameState } from "../model";
 import { ActionLog } from "../model/action-log";
+import { Hotel } from "../model/hotel";
 import { Merge, PlaceTile } from "../model/player-action";
 import { PlayerActionResult } from "../model/player-action-result";
 import { TurnContext } from "../model/turn-context";
@@ -63,9 +64,8 @@ const getNumOrphanedSharesToResolve = (
   const sharesResolved = getSharesResolvedThisTurn(playerId, turnContext);
 
   const sharesAtMerge =
-    mergeContext.gameState.sharesState[playerId][
-      mergeContext.minority.hotelChain
-    ] ?? 0;
+    mergeContext.gameState.sharesState[playerId][mergeContext.minority.type] ??
+    0;
 
   return sharesAtMerge - sharesResolved;
 };
@@ -78,14 +78,8 @@ const getMergeContextThisTurn = (
 ): {
   action: PlaceTile | Merge;
   gameState: IGameState;
-  minority: {
-    hotelChain: HotelChainType;
-    size: number;
-  };
-  majority: {
-    hotelChain: HotelChainType;
-    size: number;
-  };
+  minority: Hotel;
+  majority: Hotel;
 } | null => {
   const currentTurn = getCurrentTurn(gameLog);
 

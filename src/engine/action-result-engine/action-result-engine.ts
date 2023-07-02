@@ -1,9 +1,9 @@
 import { IGameState } from "../../model";
+import { HotelManager } from "../../model/hotel-manager";
 import { PlayerAction } from "../../model/player-action";
 import { PlayerActionResult } from "../../model/player-action-result";
-import { ArrayUtils } from "../../utils/array-utils";
+import { StockBroker } from "../../model/stock-broker";
 import { HotelChainUtils } from "../../utils/hotel-chain-utils";
-import { SharesUtils } from "../../utils/shares-utils";
 
 /**
  * Given a board state with a place tile action,
@@ -13,102 +13,48 @@ const computeActionResult = (
   state: IGameState,
   action: PlayerAction
 ): PlayerActionResult => {
+  const hotelManager = new HotelManager(state.boardState);
+  const stockBroker = new StockBroker(state.sharesState);
+
   switch (action.type) {
     case "PlaceTile":
-      const adjacentHotelChains = ArrayUtils.unique(
-        HotelChainUtils.getAdjacentHotelChains(
-          state.boardState,
-          action.boardSquareId
-        ).map((hotelChain) => hotelChain.hotelChainType)
+      const adjacentHotels = hotelManager.findAllAdjacentToSquare(
+        action.boardSquareId
       );
 
-      if (adjacentHotelChains.length === 1) {
+      if (adjacentHotels.length === 1) {
         return {
           type: "Hotel Size Increased",
           action,
-          hotelChain: adjacentHotelChains[0],
+          hotelChain: adjacentHotels[0].type,
         };
       }
 
-      if (adjacentHotelChains.length === 2) {
-        const hotel1Size = HotelChainUtils.getHotelSize(
-          adjacentHotelChains[0],
-          state.boardState
-        );
+      if (adjacentHotels.length === 2) {
+        const hotel1 = adjacentHotels[0];
+        const hotel2 = adjacentHotels[1];
 
-        const hotel2Size = HotelChainUtils.getHotelSize(
-          adjacentHotelChains[1],
-          state.boardState
-        );
-
-        if (hotel1Size === hotel2Size) {
+        if (hotel1.getSize() === hotel2.getSize()) {
           return {
             type: "Merge Initiated",
             action,
-            hotelChains: adjacentHotelChains,
+            hotelChains: [hotel1.type, hotel2.type],
           };
         } else {
-          const majorityHotelChain =
-            hotel1Size > hotel2Size
-              ? adjacentHotelChains[0]
-              : adjacentHotelChains[1];
+          const majority =
+            hotel1.getSize() > hotel2.getSize() ? hotel1 : hotel2;
 
-          const minorityHotelChain =
-            hotel1Size < hotel2Size
-              ? adjacentHotelChains[0]
-              : adjacentHotelChains[1];
+          const minority =
+            hotel1.getSize() < hotel2.getSize() ? hotel1 : hotel2;
 
-          let cashAwarded: Record<string, number> = {};
-
-          const { majorityShareholders, minorityShareholders } =
-            SharesUtils.getMajorityAndMinorityShareholders(
-              state.sharesState,
-              minorityHotelChain
-            );
-
-          const majorityHotelSize = HotelChainUtils.getHotelSize(
-            majorityHotelChain,
-            state.boardState
-          );
-
-          const minorityHotelSize = HotelChainUtils.getHotelSize(
-            minorityHotelChain,
-            state.boardState
-          );
-
-          majorityShareholders.forEach((shareholder) => {
-            const bonus = SharesUtils.getMajorityBonus(
-              minorityHotelChain,
-              minorityHotelSize
-            );
-            cashAwarded[shareholder] = Math.round(
-              (cashAwarded[shareholder] ?? 0) +
-                bonus / majorityShareholders.length
-            );
-          });
-
-          minorityShareholders.forEach((shareholder) => {
-            const bonus = SharesUtils.getMinorityBonus(
-              minorityHotelChain,
-              minorityHotelSize
-            );
-            cashAwarded[shareholder] = Math.round(
-              (cashAwarded[shareholder] ?? 0) +
-                bonus / minorityShareholders.length
-            );
-          });
+          let cashAwarded: Record<string, number> =
+            stockBroker.getCashAwardedOnDissolve(minority);
 
           return {
             type: "Hotel Merged",
             action,
-            majority: {
-              hotelChain: majorityHotelChain,
-              size: majorityHotelSize,
-            },
-            minority: {
-              hotelChain: minorityHotelChain,
-              size: minorityHotelSize,
-            },
+            majority,
+            minority,
             cashAwarded,
           };
         }
@@ -120,58 +66,15 @@ const computeActionResult = (
       };
 
     case "Merge":
-      const majorityHotelChain = action.hotelChainToKeep;
-      const minorityHotelChain = action.hotelChainToDissolve;
+      const majority = hotelManager.getHotel(action.hotelChainToKeep);
+      const minority = hotelManager.getHotel(action.hotelChainToDissolve);
 
-      let cashAwarded: Record<string, number> = {};
-
-      const { majorityShareholders, minorityShareholders } =
-        SharesUtils.getMajorityAndMinorityShareholders(
-          state.sharesState,
-          minorityHotelChain
-        );
-
-      const majorityHotelSize = HotelChainUtils.getHotelSize(
-        majorityHotelChain,
-        state.boardState
-      );
-
-      const minorityHotelSize = HotelChainUtils.getHotelSize(
-        minorityHotelChain,
-        state.boardState
-      );
-
-      majorityShareholders.forEach((shareholder) => {
-        const bonus = SharesUtils.getMajorityBonus(
-          minorityHotelChain,
-          minorityHotelSize
-        );
-        cashAwarded[shareholder] = Math.round(
-          (cashAwarded[shareholder] ?? 0) + bonus / majorityShareholders.length
-        );
-      });
-
-      minorityShareholders.forEach((shareholder) => {
-        const bonus = SharesUtils.getMinorityBonus(
-          minorityHotelChain,
-          minorityHotelSize
-        );
-        cashAwarded[shareholder] = Math.round(
-          (cashAwarded[shareholder] ?? 0) + bonus / minorityShareholders.length
-        );
-      });
       return {
         type: "Hotel Merged",
         action,
-        majority: {
-          hotelChain: majorityHotelChain,
-          size: majorityHotelSize,
-        },
-        minority: {
-          hotelChain: minorityHotelChain,
-          size: minorityHotelSize,
-        },
-        cashAwarded,
+        majority,
+        minority,
+        cashAwarded: stockBroker.getCashAwardedOnDissolve(minority),
       };
 
     case "StartHotelChain":

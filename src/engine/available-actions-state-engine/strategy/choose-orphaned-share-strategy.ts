@@ -27,12 +27,12 @@ export class ChooseOrphanedShareStrategy implements AvailableActionStrategy {
       const playerWithShares = SharesUtils.getNextPlayerWithOrphanedShares(
         this.context.sharesState,
         this.context.currentPlayerId,
-        actionResult.minority.hotelChain,
+        actionResult.minority.type,
         this.context.turnContext.turnLog
       );
       const numShares = playerWithShares
         ? this.context.sharesState[playerWithShares.playerId][
-            actionResult.minority.hotelChain
+            actionResult.minority.type
           ]
         : null;
 
@@ -40,8 +40,8 @@ export class ChooseOrphanedShareStrategy implements AvailableActionStrategy {
         return [];
       }
 
-      minorityHotelChain = actionResult.minority.hotelChain;
-      majorityHotelChain = actionResult.majority.hotelChain;
+      minorityHotelChain = actionResult.minority.type;
+      majorityHotelChain = actionResult.majority.type;
       remainingShares = numShares;
     } else if (
       actionResult.type === "Share Kept" ||
@@ -62,8 +62,8 @@ export class ChooseOrphanedShareStrategy implements AvailableActionStrategy {
         return [];
       }
 
-      minorityHotelChain = mergeContext.minority.hotelChain;
-      majorityHotelChain = mergeContext.majority.hotelChain;
+      minorityHotelChain = mergeContext.minority.type;
+      majorityHotelChain = mergeContext.majority.type;
       remainingShares = playerWithUnresolvedShares.shares;
     } else {
       return [];

@@ -1629,7 +1629,7 @@ exports[`Game Play > (96) Player 2427_Rose places tile [11C] 1`] = `
 P2427_Rose | $600 | [2H] [7C] [8A] [4H] | A:3 C:4 F:6 I:5 L:2 T:1 W:1
 P5031_Nate | $2200 | [8F] [9G] [12E] [5G] [1D] | A:7 C:1 F:2 I:2 L:1
 
-P2427_Rose [Merge: T W]
+P2427_Rose [Merge: W T]
 `;
 
 exports[`Game Play > (97) Player 2427_Rose merges Tower 1`] = `

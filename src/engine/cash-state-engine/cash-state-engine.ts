@@ -65,8 +65,8 @@ const getSharesCostOfHotelBeforeMerge = (turnContext: TurnContext) => {
   }
 
   return SharesUtils.getSharesCost(
-    mergeContext.minority.hotelChain,
-    mergeContext.minority.size
+    mergeContext.minority.type,
+    mergeContext.minority.getSize()
   );
 };
 

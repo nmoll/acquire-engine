@@ -43,7 +43,7 @@ const computeState = (
       const playerWithShares = SharesUtils.getNextPlayerWithOrphanedShares(
         sharesState,
         result.action.playerId,
-        result.minority.hotelChain,
+        result.minority.type,
         []
       );
       if (playerWithShares) {

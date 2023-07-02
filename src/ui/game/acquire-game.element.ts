@@ -6,7 +6,7 @@ import { IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerAction } from "../../model/player-action";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
-import { DatabaseClient } from "../db/database-client";
+import { DatabaseClient } from "../../db/database-client";
 import "./acquire-game-actions.element";
 import { ActionRequestEvent } from "./acquire-game-actions.element";
 import "./acquire-game-board.element";

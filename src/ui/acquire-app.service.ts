@@ -1,6 +1,6 @@
 import { IAcquireGameInstance } from "../model/acquire-game-instance";
 import { PlayerUtils } from "../utils/player-utils";
-import { DatabaseClient } from "./db/database-client";
+import { DatabaseClient } from "../db/database-client";
 
 const PLAYER_ID_KEY = "acquire-player-id";
 

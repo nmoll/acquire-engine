@@ -1,3 +1,4 @@
+import { Hotel } from "./hotel";
 import { HotelChainType } from "./hotel-chain-type";
 import {
   EndGame,
@@ -38,14 +39,8 @@ interface MergeInitiated {
 interface HotelMerged {
   type: "Hotel Merged";
   action: PlaceTile | Merge;
-  minority: {
-    hotelChain: HotelChainType;
-    size: number;
-  };
-  majority: {
-    hotelChain: HotelChainType;
-    size: number;
-  };
+  minority: Hotel;
+  majority: Hotel;
   cashAwarded: Record<string, number>;
 }
 
@@ -127,14 +122,8 @@ export const PlayerActionResult = {
   HotelMerged: (
     playerId: string,
     boardSquareId: number,
-    minority: {
-      hotelChain: HotelChainType;
-      size: number;
-    },
-    majority: {
-      hotelChain: HotelChainType;
-      size: number;
-    },
+    minority: Hotel,
+    majority: Hotel,
     cashAwarded: Record<string, number>
   ): HotelMerged => ({
     type: "Hotel Merged",

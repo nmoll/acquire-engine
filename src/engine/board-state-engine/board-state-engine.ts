@@ -47,11 +47,7 @@ const computeState = (
           : null;
 
       return board
-        .mergeHotels(
-          actionResult.minority.hotelChain,
-          actionResult.majority.hotelChain,
-          mergerTile
-        )
+        .mergeHotels(actionResult.minority, actionResult.majority, mergerTile)
         .getState();
 
     default:
