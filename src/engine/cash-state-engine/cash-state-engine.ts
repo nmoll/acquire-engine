@@ -1,9 +1,8 @@
 import { GameConfig } from "../../game-config";
-import { BoardSquareState, HotelChainType, IGameState } from "../../model";
+import { IGameState } from "../../model";
 import { ICashState } from "../../model/cash-state";
+import { HotelManager } from "../../model/hotel-manager";
 import { TurnContext } from "../../model/turn-context";
-import { HotelChainUtils } from "../../utils/hotel-chain-utils";
-import { SharesUtils } from "../../utils/shares-utils";
 
 const getInitialState = (playerIds: string[]): ICashState =>
   playerIds.reduce(
@@ -18,16 +17,17 @@ const computeState = (
   state: IGameState,
   turnContext: TurnContext
 ): ICashState => {
+  const hotelManager = new HotelManager(state.boardState);
+
   switch (turnContext.actionResult.type) {
     case "Shares Purchased":
       return {
         ...state.cashState,
         [turnContext.actionResult.action.playerId]:
           state.cashState[turnContext.actionResult.action.playerId] -
-          getSharesCost(
-            turnContext.actionResult.action.hotelChain,
-            state.boardState
-          ),
+          hotelManager
+            .getHotel(turnContext.actionResult.action.hotelChain)
+            .getSharesCost(),
       };
     case "Share Sold":
       return {
@@ -49,25 +49,13 @@ const computeState = (
   return state.cashState;
 };
 
-const getSharesCost = (
-  hotelChain: HotelChainType,
-  boardState: BoardSquareState[]
-) =>
-  SharesUtils.getSharesCost(
-    hotelChain,
-    HotelChainUtils.getHotelSize(hotelChain, boardState)
-  );
-
 const getSharesCostOfHotelBeforeMerge = (turnContext: TurnContext) => {
   const mergeContext = turnContext.mergeContext;
   if (!mergeContext) {
     throw new Error("Expected merge context when selling shares");
   }
 
-  return SharesUtils.getSharesCost(
-    mergeContext.minority.type,
-    mergeContext.minority.getSize()
-  );
+  return mergeContext.minority.getSharesCost();
 };
 
 export const CashStateEngine = {

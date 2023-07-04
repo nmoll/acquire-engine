@@ -28,7 +28,7 @@ const computeState = (
       return board
         .updateAdjacentTiles(
           actionResult.action.boardSquareId,
-          BoardSquareStateType.HasHotelChain(actionResult.hotelChain)
+          BoardSquareStateType.HasHotelChain(actionResult.hotel.type)
         )
         .getState();
 

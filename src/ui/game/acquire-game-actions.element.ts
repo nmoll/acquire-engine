@@ -3,7 +3,6 @@ import { customElement, property } from "lit/decorators.js";
 import { HotelChainType } from "../../model";
 import { AvailableAction } from "../../model/available-action";
 import { IAvailableActionState } from "../../model/available-action-state";
-import { AvailableShares } from "../../model/available-shares.type";
 import { PlayerAction } from "../../model/player-action";
 import { PlayerUtils } from "../../utils/player-utils";
 
@@ -221,13 +220,11 @@ export class AcquireGameActionsElement extends LitElement {
     `;
   }
 
-  renderChooseShares(availableShares: AvailableShares) {
-    const hotelChains = Object.keys(availableShares) as HotelChainType[];
+  renderChooseShares(hotelChains: HotelChainType[]) {
     return hotelChains.map(
       (hotelChain) =>
         html`<button
           style="background-color: var(--colors-${hotelChain})"
-          .disabled="${availableShares[hotelChain] !== true}"
           @click="${() => this.onPurchaseShare(hotelChain)}"
         >
           Purchase ${hotelChain}
@@ -287,7 +284,7 @@ export class AcquireGameActionsElement extends LitElement {
       case "ChooseMergeDirection":
         return this.renderChooseMergeDirection(action.options);
       case "ChooseShares":
-        return this.renderChooseShares(action.availableShares);
+        return this.renderChooseShares(action.hotelChains);
       case "ChooseToKeepOrphanedShare":
         return this.renderChooseToKeepOrphanedShare(
           action.hotelChain,

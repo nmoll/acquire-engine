@@ -17,7 +17,9 @@ export class ChooseMergeDirectionStrategy implements AvailableActionStrategy {
 
     if (actionResult.type === "Merge Initiated") {
       return [
-        AvailableActionType.ChooseMergeDirection(actionResult.hotelChains),
+        AvailableActionType.ChooseMergeDirection(
+          actionResult.hotels.map((hotel) => hotel.type)
+        ),
       ];
     }
 

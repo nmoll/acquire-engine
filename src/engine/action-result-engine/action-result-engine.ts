@@ -1,9 +1,9 @@
 import { IGameState } from "../../model";
+import { Board } from "../../model/board";
 import { HotelManager } from "../../model/hotel-manager";
 import { PlayerAction } from "../../model/player-action";
 import { PlayerActionResult } from "../../model/player-action-result";
 import { StockBroker } from "../../model/stock-broker";
-import { HotelChainUtils } from "../../utils/hotel-chain-utils";
 
 /**
  * Given a board state with a place tile action,
@@ -13,6 +13,7 @@ const computeActionResult = (
   state: IGameState,
   action: PlayerAction
 ): PlayerActionResult => {
+  const board = new Board(state.boardState);
   const hotelManager = new HotelManager(state.boardState);
   const stockBroker = new StockBroker(state.sharesState);
 
@@ -26,7 +27,7 @@ const computeActionResult = (
         return {
           type: "Hotel Size Increased",
           action,
-          hotelChain: adjacentHotels[0].type,
+          hotel: adjacentHotels[0],
         };
       }
 
@@ -38,7 +39,7 @@ const computeActionResult = (
           return {
             type: "Merge Initiated",
             action,
-            hotelChains: [hotel1.type, hotel2.type],
+            hotels: adjacentHotels,
           };
         } else {
           const majority =
@@ -83,7 +84,7 @@ const computeActionResult = (
         .filter(
           (idx) =>
             state.boardState[idx].type === "HasTile" &&
-            HotelChainUtils.isHotelStarter(state.boardState, idx)
+            board.isHotelStarter(idx)
         );
 
       return {

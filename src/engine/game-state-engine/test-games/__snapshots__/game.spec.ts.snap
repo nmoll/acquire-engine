@@ -54,7 +54,7 @@ P2 | $6000 | [12I] [4B] [12F] [3E] |
 P3 | $6000 | [11I] [6C] [10G] [8G] [6I] | 
 P4 | $6000 | [6F] [1F] [9C] [11F] [10B] | 
 
-P2 [Choose Hotel: A C F I L T W]
+P2 [Choose Hotel: A C F I W T L]
 `;
 
 exports[`Game Play > (4) Player 2 starts American 1`] = `
@@ -738,7 +738,7 @@ P2 | $3500 | [12I] [4B] [12F] [3E] [8C] | A:8
 P3 | $4500 | [11I] [8G] [6I] [2G] | A:4
 P4 | $6000 | [9C] [11F] [10B] [8B] [7B] | 
 
-P3 [Choose Hotel: C F I L T W]
+P3 [Choose Hotel: C F I W T L]
 `;
 
 exports[`Game Play > (40) Player 3 starts Festival 1`] = `
@@ -852,7 +852,7 @@ P2 | $3500 | [12I] [4B] [12F] [3E] [8C] | A:8
 P3 | $3600 | [11I] [8G] [6I] [2G] [2H] | A:4 F:4
 P4 | $6000 | [9C] [11F] [10B] [7B] | 
 
-P4 [Choose Hotel: C I L T W]
+P4 [Choose Hotel: C I W T L]
 `;
 
 exports[`Game Play > (46) Player 4 starts Tower 1`] = `
@@ -871,7 +871,7 @@ P2 | $3500 | [12I] [4B] [12F] [3E] [8C] | A:8
 P3 | $3600 | [11I] [8G] [6I] [2G] [2H] | A:4 F:4
 P4 | $6000 | [9C] [11F] [10B] [7B] | T:1
 
-P4 [Choose Shares: T A F] [End Turn]
+P4 [Choose Shares: A F T] [End Turn]
 `;
 
 exports[`Game Play > (47) Player 4 purchases Tower 1`] = `
@@ -890,7 +890,7 @@ P2 | $3500 | [12I] [4B] [12F] [3E] [8C] | A:8
 P3 | $3600 | [11I] [8G] [6I] [2G] [2H] | A:4 F:4
 P4 | $5800 | [9C] [11F] [10B] [7B] | T:2
 
-P4 [Choose Shares: T A F] [End Turn]
+P4 [Choose Shares: A F T] [End Turn]
 `;
 
 exports[`Game Play > (48) Player 4 purchases Tower 1`] = `
@@ -909,7 +909,7 @@ P2 | $3500 | [12I] [4B] [12F] [3E] [8C] | A:8
 P3 | $3600 | [11I] [8G] [6I] [2G] [2H] | A:4 F:4
 P4 | $5600 | [9C] [11F] [10B] [7B] | T:3
 
-P4 [Choose Shares: T A F] [End Turn]
+P4 [Choose Shares: A F T] [End Turn]
 `;
 
 exports[`Game Play > (49) Player 4 purchases Tower 1`] = `
@@ -966,7 +966,7 @@ P2 | $3500 | [12I] [4B] [12F] [3E] [8C] | A:8
 P3 | $3600 | [11I] [8G] [6I] [2G] [2H] | A:4 F:4
 P4 | $5400 | [9C] [11F] [10B] [7B] [4I] | T:4
 
-P1 [Choose Shares: T A F] [End Turn]
+P1 [Choose Shares: A F T] [End Turn]
 `;
 
 exports[`Game Play > (52) Player 1 purchases American 1`] = `
@@ -985,7 +985,7 @@ P2 | $3500 | [12I] [4B] [12F] [3E] [8C] | A:8
 P3 | $3600 | [11I] [8G] [6I] [2G] [2H] | A:4 F:4
 P4 | $5400 | [9C] [11F] [10B] [7B] [4I] | T:4
 
-P1 [Choose Shares: T A F] [End Turn]
+P1 [Choose Shares: A F T] [End Turn]
 `;
 
 exports[`Game Play > (53) Player 1 purchases American 1`] = `
@@ -1004,7 +1004,7 @@ P2 | $3500 | [12I] [4B] [12F] [3E] [8C] | A:8
 P3 | $3600 | [11I] [8G] [6I] [2G] [2H] | A:4 F:4
 P4 | $5400 | [9C] [11F] [10B] [7B] [4I] | T:4
 
-P1 [Choose Shares: T A F] [End Turn]
+P1 [Choose Shares: A F T] [End Turn]
 `;
 
 exports[`Game Play > (54) Player 1 purchases American 1`] = `
@@ -1061,7 +1061,7 @@ P2 | $3500 | [12I] [4B] [12F] [3E] | A:8
 P3 | $3600 | [11I] [8G] [6I] [2G] [2H] | A:4 F:4
 P4 | $5400 | [9C] [11F] [10B] [7B] [4I] | T:4
 
-P2 [Choose Shares: T A F] [End Turn]
+P2 [Choose Shares: A F T] [End Turn]
 `;
 
 exports[`Game Play > (57) Player 2 purchases American 1`] = `
@@ -1080,7 +1080,7 @@ P2 | $3100 | [12I] [4B] [12F] [3E] | A:9
 P3 | $3600 | [11I] [8G] [6I] [2G] [2H] | A:4 F:4
 P4 | $5400 | [9C] [11F] [10B] [7B] [4I] | T:4
 
-P2 [Choose Shares: T A F] [End Turn]
+P2 [Choose Shares: A F T] [End Turn]
 `;
 
 exports[`Game Play > (58) Player 2 purchases American 1`] = `
@@ -1099,7 +1099,7 @@ P2 | $2700 | [12I] [4B] [12F] [3E] | A:10
 P3 | $3600 | [11I] [8G] [6I] [2G] [2H] | A:4 F:4
 P4 | $5400 | [9C] [11F] [10B] [7B] [4I] | T:4
 
-P2 [Choose Shares: T A F] [End Turn]
+P2 [Choose Shares: A F T] [End Turn]
 `;
 
 exports[`Game Play > (59) Player 2 purchases American 1`] = `
@@ -1156,7 +1156,7 @@ P2 | $2300 | [12I] [4B] [12F] [3E] [10C] | A:11
 P3 | $3600 | [11I] [8G] [6I] [2H] | A:4 F:4
 P4 | $5400 | [9C] [11F] [10B] [7B] [4I] | T:4
 
-P3 [Choose Shares: T A F] [End Turn]
+P3 [Choose Shares: A F T] [End Turn]
 `;
 
 exports[`Game Play > (62) Player 3 purchases American 1`] = `
@@ -1175,7 +1175,7 @@ P2 | $2300 | [12I] [4B] [12F] [3E] [10C] | A:11
 P3 | $3200 | [11I] [8G] [6I] [2H] | A:5 F:4
 P4 | $5400 | [9C] [11F] [10B] [7B] [4I] | T:4
 
-P3 [Choose Shares: T F] [End Turn]
+P3 [Choose Shares: F T] [End Turn]
 `;
 
 exports[`Game Play > (63) Player 3 purchases Tower 1`] = `
@@ -1194,7 +1194,7 @@ P2 | $2300 | [12I] [4B] [12F] [3E] [10C] | A:11
 P3 | $2900 | [11I] [8G] [6I] [2H] | A:5 F:4 T:1
 P4 | $5400 | [9C] [11F] [10B] [7B] [4I] | T:4
 
-P3 [Choose Shares: T F] [End Turn]
+P3 [Choose Shares: F T] [End Turn]
 `;
 
 exports[`Game Play > (64) Player 3 purchases Tower 1`] = `
@@ -1251,7 +1251,7 @@ P2 | $2300 | [12I] [4B] [12F] [3E] [10C] | A:11
 P3 | $2600 | [11I] [8G] [6I] [2H] [5A] | A:5 F:4 T:2
 P4 | $5400 | [9C] [11F] [10B] [4I] | T:4
 
-P4 [Choose Shares: T F] [End Turn]
+P4 [Choose Shares: F T] [End Turn]
 `;
 
 exports[`Game Play > (67) Player 4 purchases Festival 1`] = `
@@ -1270,7 +1270,7 @@ P2 | $2300 | [12I] [4B] [12F] [3E] [10C] | A:11
 P3 | $2600 | [11I] [8G] [6I] [2H] [5A] | A:5 F:4 T:2
 P4 | $5100 | [9C] [11F] [10B] [4I] | F:1 T:4
 
-P4 [Choose Shares: T F] [End Turn]
+P4 [Choose Shares: F T] [End Turn]
 `;
 
 exports[`Game Play > (68) Player 4 purchases Festival 1`] = `
@@ -1289,7 +1289,7 @@ P2 | $2300 | [12I] [4B] [12F] [3E] [10C] | A:11
 P3 | $2600 | [11I] [8G] [6I] [2H] [5A] | A:5 F:4 T:2
 P4 | $4800 | [9C] [11F] [10B] [4I] | F:2 T:4
 
-P4 [Choose Shares: T F] [End Turn]
+P4 [Choose Shares: F T] [End Turn]
 `;
 
 exports[`Game Play > (69) Player 4 purchases Festival 1`] = `
@@ -1346,7 +1346,7 @@ P2 | $2300 | [12I] [4B] [12F] [3E] [10C] | A:11
 P3 | $2600 | [11I] [8G] [6I] [2H] [5A] | A:5 F:4 T:2
 P4 | $4500 | [9C] [11F] [10B] [4I] [11E] | F:3 T:4
 
-P1 [Choose Hotel: C I L W]
+P1 [Choose Hotel: C I W L]
 `;
 
 exports[`Game Play > (72) Player 1 starts Worldwide 1`] = `
@@ -1365,7 +1365,7 @@ P2 | $2300 | [12I] [4B] [12F] [3E] [10C] | A:11
 P3 | $2600 | [11I] [8G] [6I] [2H] [5A] | A:5 F:4 T:2
 P4 | $4500 | [9C] [11F] [10B] [4I] [11E] | F:3 T:4
 
-P1 [Choose Shares: T W F] [End Turn]
+P1 [Choose Shares: F W T] [End Turn]
 `;
 
 exports[`Game Play > (73) Player 1 purchases Worldwide 1`] = `
@@ -1384,7 +1384,7 @@ P2 | $2300 | [12I] [4B] [12F] [3E] [10C] | A:11
 P3 | $2600 | [11I] [8G] [6I] [2H] [5A] | A:5 F:4 T:2
 P4 | $4500 | [9C] [11F] [10B] [4I] [11E] | F:3 T:4
 
-P1 [Choose Shares: T W F] [End Turn]
+P1 [Choose Shares: F W T] [End Turn]
 `;
 
 exports[`Game Play > (74) Player 1 purchases Worldwide 1`] = `
@@ -1403,7 +1403,7 @@ P2 | $2300 | [12I] [4B] [12F] [3E] [10C] | A:11
 P3 | $2600 | [11I] [8G] [6I] [2H] [5A] | A:5 F:4 T:2
 P4 | $4500 | [9C] [11F] [10B] [4I] [11E] | F:3 T:4
 
-P1 [Choose Shares: T W F] [End Turn]
+P1 [Choose Shares: F W T] [End Turn]
 `;
 
 exports[`Game Play > (75) Player 1 purchases Worldwide 1`] = `
@@ -1460,7 +1460,7 @@ P2 | $2300 | [12I] [4B] [12F] [3E] | A:11
 P3 | $2600 | [11I] [8G] [6I] [2H] [5A] | A:5 F:4 T:2
 P4 | $4500 | [9C] [11F] [10B] [4I] [11E] | F:3 T:4
 
-P2 [Choose Shares: T W F] [End Turn]
+P2 [Choose Shares: F W T] [End Turn]
 `;
 
 exports[`Game Play > (78) Player 2 purchases Worldwide 1`] = `
@@ -1479,7 +1479,7 @@ P2 | $2000 | [12I] [4B] [12F] [3E] | A:11 W:1
 P3 | $2600 | [11I] [8G] [6I] [2H] [5A] | A:5 F:4 T:2
 P4 | $4500 | [9C] [11F] [10B] [4I] [11E] | F:3 T:4
 
-P2 [Choose Shares: T W F] [End Turn]
+P2 [Choose Shares: F W T] [End Turn]
 `;
 
 exports[`Game Play > (79) Player 2 purchases Festival 1`] = `
@@ -1498,7 +1498,7 @@ P2 | $1700 | [12I] [4B] [12F] [3E] | A:11 F:1 W:1
 P3 | $2600 | [11I] [8G] [6I] [2H] [5A] | A:5 F:4 T:2
 P4 | $4500 | [9C] [11F] [10B] [4I] [11E] | F:3 T:4
 
-P2 [Choose Shares: T W F] [End Turn]
+P2 [Choose Shares: F W T] [End Turn]
 `;
 
 exports[`Game Play > (80) Player 2 purchases Tower 1`] = `
@@ -1574,7 +1574,7 @@ P2 | $1300 | [12I] [4B] [12F] [3E] [7H] | A:11 F:1 T:1 W:1
 P3 | $2600 | [11I] [8G] [6I] [5A] | A:5 F:4 I:1 T:2
 P4 | $4500 | [9C] [11F] [10B] [4I] [11E] | F:3 T:4
 
-P3 [Choose Shares: T W I F] [End Turn]
+P3 [Choose Shares: F I W T] [End Turn]
 `;
 
 exports[`Game Play > (84) Player 3 purchases Imperial 1`] = `
@@ -1593,7 +1593,7 @@ P2 | $1300 | [12I] [4B] [12F] [3E] [7H] | A:11 F:1 T:1 W:1
 P3 | $2200 | [11I] [8G] [6I] [5A] | A:5 F:4 I:2 T:2
 P4 | $4500 | [9C] [11F] [10B] [4I] [11E] | F:3 T:4
 
-P3 [Choose Shares: T W I F] [End Turn]
+P3 [Choose Shares: F I W T] [End Turn]
 `;
 
 exports[`Game Play > (85) Player 3 purchases Imperial 1`] = `
@@ -1612,7 +1612,7 @@ P2 | $1300 | [12I] [4B] [12F] [3E] [7H] | A:11 F:1 T:1 W:1
 P3 | $1800 | [11I] [8G] [6I] [5A] | A:5 F:4 I:3 T:2
 P4 | $4500 | [9C] [11F] [10B] [4I] [11E] | F:3 T:4
 
-P3 [Choose Shares: T W I F] [End Turn]
+P3 [Choose Shares: F I W T] [End Turn]
 `;
 
 exports[`Game Play > (86) Player 3 purchases Imperial 1`] = `
@@ -1669,7 +1669,7 @@ P2 | $1300 | [12I] [4B] [12F] [3E] [7H] | A:11 F:1 T:1 W:1
 P3 | $1400 | [11I] [8G] [6I] [5A] [4C] | A:5 F:4 I:4 T:2
 P4 | $4500 | [9C] [11F] [10B] [4I] | F:3 T:4
 
-P4 [Choose Shares: T W I F] [End Turn]
+P4 [Choose Shares: F I W T] [End Turn]
 `;
 
 exports[`Game Play > (89) Player 4 purchases Imperial 1`] = `
@@ -1688,7 +1688,7 @@ P2 | $1300 | [12I] [4B] [12F] [3E] [7H] | A:11 F:1 T:1 W:1
 P3 | $1400 | [11I] [8G] [6I] [5A] [4C] | A:5 F:4 I:4 T:2
 P4 | $4100 | [9C] [11F] [10B] [4I] | F:3 I:1 T:4
 
-P4 [Choose Shares: T W I F] [End Turn]
+P4 [Choose Shares: F I W T] [End Turn]
 `;
 
 exports[`Game Play > (90) Player 4 purchases Imperial 1`] = `
@@ -1707,7 +1707,7 @@ P2 | $1300 | [12I] [4B] [12F] [3E] [7H] | A:11 F:1 T:1 W:1
 P3 | $1400 | [11I] [8G] [6I] [5A] [4C] | A:5 F:4 I:4 T:2
 P4 | $3700 | [9C] [11F] [10B] [4I] | F:3 I:2 T:4
 
-P4 [Choose Shares: T W I F] [End Turn]
+P4 [Choose Shares: F I W T] [End Turn]
 `;
 
 exports[`Game Play > (91) Player 4 purchases Imperial 1`] = `
@@ -1783,7 +1783,7 @@ P2 | $1300 | [12I] [4B] [12F] [3E] [7H] | A:11 F:1 T:1 W:1
 P3 | $1400 | [11I] [8G] [6I] [5A] [4C] | A:5 F:4 I:4 T:2
 P4 | $3300 | [9C] [11F] [10B] [4I] [6D] | F:3 I:3 T:4
 
-P1 [Choose Shares: T C W I F] [End Turn]
+P1 [Choose Shares: C F I W T] [End Turn]
 `;
 
 exports[`Game Play > (95) Player 1 purchases Continental 1`] = `
@@ -1802,7 +1802,7 @@ P2 | $1300 | [12I] [4B] [12F] [3E] [7H] | A:11 F:1 T:1 W:1
 P3 | $1400 | [11I] [8G] [6I] [5A] [4C] | A:5 F:4 I:4 T:2
 P4 | $3300 | [9C] [11F] [10B] [4I] [6D] | F:3 I:3 T:4
 
-P1 [Choose Shares: T C W I F] [End Turn]
+P1 [Choose Shares: C F I W T] [End Turn]
 `;
 
 exports[`Game Play > (96) Player 1 purchases Continental 1`] = `
@@ -1821,7 +1821,7 @@ P2 | $1300 | [12I] [4B] [12F] [3E] [7H] | A:11 F:1 T:1 W:1
 P3 | $1400 | [11I] [8G] [6I] [5A] [4C] | A:5 F:4 I:4 T:2
 P4 | $3300 | [9C] [11F] [10B] [4I] [6D] | F:3 I:3 T:4
 
-P1 [Choose Shares: T C W I F] [End Turn]
+P1 [Choose Shares: C F I W T] [End Turn]
 `;
 
 exports[`Game Play > (97) Player 1 purchases Continental 1`] = `
@@ -1878,7 +1878,7 @@ P2 | $1300 | [12I] [4B] [12F] [7H] | A:11 F:1 T:1 W:1
 P3 | $1400 | [11I] [8G] [6I] [5A] [4C] | A:5 F:4 I:4 T:2
 P4 | $3300 | [9C] [11F] [10B] [4I] [6D] | F:3 I:3 T:4
 
-P2 [Choose Shares: T C W I F] [End Turn]
+P2 [Choose Shares: C F I W T] [End Turn]
 `;
 
 exports[`Game Play > (100) Player 2 purchases Continental 1`] = `
@@ -1897,7 +1897,7 @@ P2 | $900 | [12I] [4B] [12F] [7H] | A:11 C:1 F:1 T:1 W:1
 P3 | $1400 | [11I] [8G] [6I] [5A] [4C] | A:5 F:4 I:4 T:2
 P4 | $3300 | [9C] [11F] [10B] [4I] [6D] | F:3 I:3 T:4
 
-P2 [Choose Shares: T C W I F] [End Turn]
+P2 [Choose Shares: C F I W T] [End Turn]
 `;
 
 exports[`Game Play > (101) Player 2 purchases Festival 1`] = `
@@ -1916,7 +1916,7 @@ P2 | $600 | [12I] [4B] [12F] [7H] | A:11 C:1 F:2 T:1 W:1
 P3 | $1400 | [11I] [8G] [6I] [5A] [4C] | A:5 F:4 I:4 T:2
 P4 | $3300 | [9C] [11F] [10B] [4I] [6D] | F:3 I:3 T:4
 
-P2 [Choose Shares: T C W I F] [End Turn]
+P2 [Choose Shares: C F I W T] [End Turn]
 `;
 
 exports[`Game Play > (102) Player 2 purchases Festival 1`] = `
@@ -1992,7 +1992,7 @@ P2 | $300 | [12I] [4B] [12F] [7H] [6G] | A:11 C:1 F:3 T:1 W:1
 P3 | $1400 | [11I] [8G] [6I] [5A] | A:5 F:4 I:4 L:1 T:2
 P4 | $3300 | [9C] [11F] [10B] [4I] [6D] | F:3 I:3 T:4
 
-P3 [Choose Shares: T L C W I F] [End Turn]
+P3 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (106) Player 3 purchases Luxor 1`] = `
@@ -2011,7 +2011,7 @@ P2 | $300 | [12I] [4B] [12F] [7H] [6G] | A:11 C:1 F:3 T:1 W:1
 P3 | $1100 | [11I] [8G] [6I] [5A] | A:5 F:4 I:4 L:2 T:2
 P4 | $3300 | [9C] [11F] [10B] [4I] [6D] | F:3 I:3 T:4
 
-P3 [Choose Shares: T L C W I F] [End Turn]
+P3 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (107) Player 3 purchases Luxor 1`] = `
@@ -2030,7 +2030,7 @@ P2 | $300 | [12I] [4B] [12F] [7H] [6G] | A:11 C:1 F:3 T:1 W:1
 P3 | $800 | [11I] [8G] [6I] [5A] | A:5 F:4 I:4 L:3 T:2
 P4 | $3300 | [9C] [11F] [10B] [4I] [6D] | F:3 I:3 T:4
 
-P3 [Choose Shares: T L C W I F] [End Turn]
+P3 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (108) Player 3 purchases Luxor 1`] = `
@@ -2087,7 +2087,7 @@ P2 | $300 | [12I] [4B] [12F] [7H] [6G] | A:11 C:1 F:3 T:1 W:1
 P3 | $500 | [11I] [8G] [6I] [5A] [1B] | A:5 F:4 I:4 L:4 T:2
 P4 | $3300 | [9C] [11F] [10B] [6D] | F:3 I:3 T:4
 
-P4 [Choose Shares: T L C W I F] [End Turn]
+P4 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (111) Player 4 purchases Luxor 1`] = `
@@ -2106,7 +2106,7 @@ P2 | $300 | [12I] [4B] [12F] [7H] [6G] | A:11 C:1 F:3 T:1 W:1
 P3 | $500 | [11I] [8G] [6I] [5A] [1B] | A:5 F:4 I:4 L:4 T:2
 P4 | $3000 | [9C] [11F] [10B] [6D] | F:3 I:3 L:1 T:4
 
-P4 [Choose Shares: T L C W I F] [End Turn]
+P4 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (112) Player 4 purchases Luxor 1`] = `
@@ -2125,7 +2125,7 @@ P2 | $300 | [12I] [4B] [12F] [7H] [6G] | A:11 C:1 F:3 T:1 W:1
 P3 | $500 | [11I] [8G] [6I] [5A] [1B] | A:5 F:4 I:4 L:4 T:2
 P4 | $2700 | [9C] [11F] [10B] [6D] | F:3 I:3 L:2 T:4
 
-P4 [Choose Shares: T L C W I F] [End Turn]
+P4 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (113) Player 4 purchases Luxor 1`] = `
@@ -2182,7 +2182,7 @@ P2 | $300 | [12I] [4B] [12F] [7H] [6G] | A:11 C:1 F:3 T:1 W:1
 P3 | $500 | [11I] [8G] [6I] [5A] [1B] | A:5 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [11F] [10B] [6D] [11H] | F:3 I:3 L:3 T:4
 
-P1 [Choose Shares: L W F] [End Turn]
+P1 [Choose Shares: F W L] [End Turn]
 `;
 
 exports[`Game Play > (116) Player 1 purchases Festival 1`] = `
@@ -2201,7 +2201,7 @@ P2 | $300 | [12I] [4B] [12F] [7H] [6G] | A:11 C:1 F:3 T:1 W:1
 P3 | $500 | [11I] [8G] [6I] [5A] [1B] | A:5 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [11F] [10B] [6D] [11H] | F:3 I:3 L:3 T:4
 
-P1 [Choose Shares: ] [End Turn]
+P1 [End Turn]
 `;
 
 exports[`Game Play > (117) Player 1 ends turn 1`] = `
@@ -2239,7 +2239,7 @@ P2 | $300 | [12I] [4B] [12F] [7H] | A:11 C:1 F:3 T:1 W:1
 P3 | $500 | [11I] [8G] [6I] [5A] [1B] | A:5 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [11F] [10B] [6D] [11H] | F:3 I:3 L:3 T:4
 
-P2 [Choose Shares: L W F] [End Turn]
+P2 [Choose Shares: F W L] [End Turn]
 `;
 
 exports[`Game Play > (119) Player 2 purchases Festival 1`] = `
@@ -2258,7 +2258,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] | A:11 C:1 F:4 T:1 W:1
 P3 | $500 | [11I] [8G] [6I] [5A] [1B] | A:5 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [11F] [10B] [6D] [11H] | F:3 I:3 L:3 T:4
 
-P2 [Choose Shares: ] [End Turn]
+P2 [End Turn]
 `;
 
 exports[`Game Play > (120) Player 2 ends turn 1`] = `
@@ -2296,7 +2296,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [6A] | A:11 C:1 F:4 T:1 W:1
 P3 | $500 | [11I] [6I] [5A] [1B] | A:5 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [11F] [10B] [6D] [11H] | F:3 I:3 L:3 T:4
 
-P3 [Choose Shares: L C W I F] [End Turn]
+P3 [Choose Shares: C F I W L] [End Turn]
 `;
 
 exports[`Game Play > (122) Player 3 purchases Continental 1`] = `
@@ -2315,7 +2315,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [6A] | A:11 C:1 F:4 T:1 W:1
 P3 | $100 | [11I] [6I] [5A] [1B] | A:5 C:1 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [11F] [10B] [6D] [11H] | F:3 I:3 L:3 T:4
 
-P3 [Choose Shares: ] [End Turn]
+P3 [End Turn]
 `;
 
 exports[`Game Play > (123) Player 3 ends turn 1`] = `
@@ -2353,7 +2353,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [6A] | A:11 C:1 F:4 T:1 W:1
 P3 | $100 | [11I] [6I] [5A] [1B] [7G] | A:5 C:1 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [10B] [6D] [11H] | F:3 I:3 L:3 T:4
 
-P4 [Choose Shares: T L C W I F] [End Turn]
+P4 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (125) Player 4 ends turn 1`] = `
@@ -2391,7 +2391,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [6A] | A:11 C:1 F:4 T:1 W:1
 P3 | $100 | [11I] [6I] [5A] [1B] [7G] | A:5 C:1 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [10B] [6D] [11H] [10I] | F:3 I:3 L:3 T:4
 
-P1 [Choose Shares: ] [End Turn]
+P1 [End Turn]
 `;
 
 exports[`Game Play > (127) Player 1 ends turn 1`] = `
@@ -2429,7 +2429,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] | A:11 C:1 F:4 T:1 W:1
 P3 | $100 | [11I] [6I] [5A] [1B] [7G] | A:5 C:1 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [10B] [6D] [11H] [10I] | F:3 I:3 L:3 T:4
 
-P2 [Choose Shares: ] [End Turn]
+P2 [End Turn]
 `;
 
 exports[`Game Play > (129) Player 2 ends turn 1`] = `
@@ -2467,7 +2467,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [3G] | A:11 C:1 F:4 T:1 W:1
 P3 | $100 | [11I] [5A] [1B] [7G] | A:5 C:1 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [10B] [6D] [11H] [10I] | F:3 I:3 L:3 T:4
 
-P3 [Choose Shares: ] [End Turn]
+P3 [End Turn]
 `;
 
 exports[`Game Play > (131) Player 3 ends turn 1`] = `
@@ -2505,7 +2505,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [3G] | A:11 C:1 F:4 T:1 W:1
 P3 | $100 | [11I] [5A] [1B] [7G] [5F] | A:5 C:1 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [10B] [6D] [10I] | F:3 I:3 L:3 T:4
 
-P4 [Choose Shares: T L C W I F] [End Turn]
+P4 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (133) Player 4 ends turn 1`] = `
@@ -2543,7 +2543,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [3G] | A:11 C:1 F:4 T:1 W:1
 P3 | $100 | [11I] [5A] [1B] [7G] [5F] | A:5 C:1 F:4 I:4 L:4 T:2
 P4 | $2400 | [9C] [10B] [6D] [10I] [12G] | F:3 I:3 L:3 T:4
 
-P1 [Choose Shares: ] [End Turn]
+P1 [End Turn]
 `;
 
 exports[`Game Play > (135) Player 1 ends turn 1`] = `
@@ -2676,7 +2676,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] | A:11 C:1 F:4 T:1 W:1
 P3 | $5600 | [11I] [5A] [1B] [7G] [5F] | A:6 C:1 F:4 I:1 L:4 T:2
 P4 | $5400 | [9C] [10B] [6D] [10I] [12G] | A:1 F:3 L:3 T:4
 
-P2 [Choose Shares: ] [End Turn]
+P2 [End Turn]
 `;
 
 exports[`Game Play > (142) Player 2 ends turn 1`] = `
@@ -2733,7 +2733,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
 P3 | $5600 | [11I] [1B] [7G] [5F] | A:6 C:1 F:4 I:2 L:4 T:2
 P4 | $5400 | [9C] [10B] [6D] [10I] [12G] | A:1 F:3 L:3 T:4
 
-P3 [Choose Shares: I T L C W F] [End Turn]
+P3 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (145) Player 3 purchases Imperial 1`] = `
@@ -2752,7 +2752,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
 P3 | $5200 | [11I] [1B] [7G] [5F] | A:6 C:1 F:4 I:3 L:4 T:2
 P4 | $5400 | [9C] [10B] [6D] [10I] [12G] | A:1 F:3 L:3 T:4
 
-P3 [Choose Shares: I T L C W F] [End Turn]
+P3 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (146) Player 3 purchases Imperial 1`] = `
@@ -2771,7 +2771,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
 P3 | $4800 | [11I] [1B] [7G] [5F] | A:6 C:1 F:4 I:4 L:4 T:2
 P4 | $5400 | [9C] [10B] [6D] [10I] [12G] | A:1 F:3 L:3 T:4
 
-P3 [Choose Shares: I T L C W F] [End Turn]
+P3 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (147) Player 3 purchases Imperial 1`] = `
@@ -2828,7 +2828,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
 P3 | $4400 | [11I] [1B] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
 P4 | $5400 | [9C] [10B] [6D] [10I] | A:1 F:3 L:3 T:4
 
-P4 [Choose Shares: I T L C W F] [End Turn]
+P4 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (150) Player 4 purchases Festival 1`] = `
@@ -2847,7 +2847,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
 P3 | $4400 | [11I] [1B] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
 P4 | $5000 | [9C] [10B] [6D] [10I] | A:1 F:4 L:3 T:4
 
-P4 [Choose Shares: I T L C W F] [End Turn]
+P4 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (151) Player 4 purchases Festival 1`] = `
@@ -2866,7 +2866,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
 P3 | $4400 | [11I] [1B] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
 P4 | $4600 | [9C] [10B] [6D] [10I] | A:1 F:5 L:3 T:4
 
-P4 [Choose Shares: I T L C W F] [End Turn]
+P4 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (152) Player 4 purchases Festival 1`] = `
@@ -2923,7 +2923,7 @@ P2 | $0 | [12I] [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
 P3 | $4400 | [11I] [1B] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
 P4 | $4200 | [9C] [10B] [6D] [10I] [5D] | A:1 F:6 L:3 T:4
 
-P1 [Choose Shares: ] [End Turn]
+P1 [End Turn]
 `;
 
 exports[`Game Play > (155) Player 1 ends turn 1`] = `
@@ -2961,7 +2961,7 @@ P2 | $0 | [4B] [12F] [7H] [2F] | A:11 C:1 F:4 T:1 W:1
 P3 | $4400 | [11I] [1B] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
 P4 | $4200 | [9C] [10B] [6D] [10I] [5D] | A:1 F:6 L:3 T:4
 
-P2 [Choose Shares: ] [End Turn]
+P2 [End Turn]
 `;
 
 exports[`Game Play > (157) Player 2 ends turn 1`] = `
@@ -2999,7 +2999,7 @@ P2 | $0 | [4B] [12F] [7H] [2F] [12H] | A:11 C:1 F:4 T:1 W:1
 P3 | $4400 | [11I] [7G] [5F] [5H] | A:6 C:1 F:4 I:5 L:4 T:2
 P4 | $4200 | [9C] [10B] [6D] [10I] [5D] | A:1 F:6 L:3 T:4
 
-P3 [Choose Shares: I T L C W F] [End Turn]
+P3 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (159) Player 3 purchases Continental 1`] = `
@@ -3018,7 +3018,7 @@ P2 | $0 | [4B] [12F] [7H] [2F] [12H] | A:11 C:1 F:4 T:1 W:1
 P3 | $3900 | [11I] [7G] [5F] [5H] | A:6 C:2 F:4 I:5 L:4 T:2
 P4 | $4200 | [9C] [10B] [6D] [10I] [5D] | A:1 F:6 L:3 T:4
 
-P3 [Choose Shares: I T L C W F] [End Turn]
+P3 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (160) Player 3 purchases Continental 1`] = `
@@ -3037,7 +3037,7 @@ P2 | $0 | [4B] [12F] [7H] [2F] [12H] | A:11 C:1 F:4 T:1 W:1
 P3 | $3400 | [11I] [7G] [5F] [5H] | A:6 C:3 F:4 I:5 L:4 T:2
 P4 | $4200 | [9C] [10B] [6D] [10I] [5D] | A:1 F:6 L:3 T:4
 
-P3 [Choose Shares: I T L C W F] [End Turn]
+P3 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (161) Player 3 purchases Continental 1`] = `
@@ -3094,7 +3094,7 @@ P2 | $0 | [4B] [12F] [7H] [2F] [12H] | A:11 C:1 F:4 T:1 W:1
 P3 | $2900 | [11I] [7G] [5F] [5H] [4E] | A:6 C:4 F:4 I:5 L:4 T:2
 P4 | $4200 | [9C] [10B] [6D] [5D] | A:1 F:6 L:3 T:4
 
-P4 [Choose Shares: I T L C W F] [End Turn]
+P4 [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (164) Player 4 ends turn 1`] = `
@@ -3132,7 +3132,7 @@ P2 | $0 | [4B] [12F] [7H] [2F] [12H] | A:11 C:1 F:4 T:1 W:1
 P3 | $2900 | [11I] [7G] [5F] [5H] [4E] | A:6 C:4 F:4 I:5 L:4 T:2
 P4 | $4200 | [9C] [10B] [6D] [5D] [2D] | A:1 F:6 L:3 T:4
 
-P1 [Choose Shares: ] [End Turn]
+P1 [End Turn]
 `;
 
 exports[`Game Play > (166) Player 1 ends turn 1`] = `
@@ -3227,5 +3227,5 @@ P2 | $1800 | [4B] [12F] [7H] [12H] | A:11 C:1 F:4 T:1
 P3 | $2900 | [11I] [7G] [5F] [5H] [4E] | A:6 C:4 F:4 I:5 L:4 T:2
 P4 | $4200 | [9C] [10B] [6D] [5D] [2D] | A:1 F:6 L:3 T:4
 
-P2 [Choose Shares: I T L C F] [End Turn]
+P2 [Choose Shares: C F I T L] [End Turn]
 `;

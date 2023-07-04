@@ -1,14 +1,20 @@
-import { BoardSquareState } from "../../../model";
 import {
   AvailableAction,
   AvailableActionType,
 } from "../../../model/available-action";
-import { HotelChainUtils } from "../../../utils/hotel-chain-utils";
+import { Board } from "../../../model/board";
+import { HotelManager } from "../../../model/hotel-manager";
 import { AvailableActionStrategy } from "./available-action-strategy";
 import { AvailablActionStrategyContext } from "./available-action-strategy-context";
 
 export class ChooseTileStrategy implements AvailableActionStrategy {
-  constructor(private context: AvailablActionStrategyContext) {}
+  private board: Board;
+  private hotelManager: HotelManager;
+
+  constructor(private context: AvailablActionStrategyContext) {
+    this.board = new Board(this.context.boardState);
+    this.hotelManager = new HotelManager(this.context.boardState);
+  }
 
   public isRequired() {
     return true;
@@ -34,7 +40,7 @@ export class ChooseTileStrategy implements AvailableActionStrategy {
     const tiles = this.context.tileState[this.context.currentPlayerId];
 
     tiles.forEach((tile) => {
-      if (this.isTilePlayable(tile, this.context.boardState)) {
+      if (this.isTilePlayable(tile)) {
         available.push(tile);
       } else {
         unavailable.push(tile);
@@ -47,13 +53,10 @@ export class ChooseTileStrategy implements AvailableActionStrategy {
     };
   }
 
-  private isTilePlayable(
-    tile: number,
-    boardState: BoardSquareState[]
-  ): boolean {
+  private isTilePlayable(tile: number): boolean {
     if (
-      HotelChainUtils.isHotelStarter(boardState, tile) &&
-      HotelChainUtils.getInactiveHotelChains(boardState).length === 0
+      this.board.isHotelStarter(tile) &&
+      this.hotelManager.getInactiveHotels().length === 0
     ) {
       return false;
     }

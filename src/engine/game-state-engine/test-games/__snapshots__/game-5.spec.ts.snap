@@ -116,7 +116,7 @@ exports[`Game Play > (7) Player 5975_Joe places tile [11H] 1`] = `
 P3658_Nate | $6000 | [1I] [1F] [3D] [7I] [9C] | 
 P5975_Joe | $6000 | [6D] [11I] [4D] [12F] | 
 
-P5975_Joe [Choose Hotel: A C F I L T W]
+P5975_Joe [Choose Hotel: A C F I W T L]
 `;
 
 exports[`Game Play > (8) Player 5975_Joe starts Continental 1`] = `
@@ -218,7 +218,7 @@ exports[`Game Play > (13) Player 3658_Nate places tile [3D] 1`] = `
 P3658_Nate | $6000 | [1I] [1F] [7I] [9C] | 
 P5975_Joe | $4800 | [6D] [11I] [4D] [12F] [10B] | C:4
 
-P3658_Nate [Choose Hotel: A F I L T W]
+P3658_Nate [Choose Hotel: A F I W T L]
 `;
 
 exports[`Game Play > (14) Player 3658_Nate starts Festival 1`] = `
@@ -235,7 +235,7 @@ exports[`Game Play > (14) Player 3658_Nate starts Festival 1`] = `
 P3658_Nate | $6000 | [1I] [1F] [7I] [9C] | F:1
 P5975_Joe | $4800 | [6D] [11I] [4D] [12F] [10B] | C:4
 
-P3658_Nate [Choose Shares: F C] [End Turn]
+P3658_Nate [Choose Shares: C F] [End Turn]
 `;
 
 exports[`Game Play > (15) Player 3658_Nate purchases Festival 1`] = `
@@ -252,7 +252,7 @@ exports[`Game Play > (15) Player 3658_Nate purchases Festival 1`] = `
 P3658_Nate | $5700 | [1I] [1F] [7I] [9C] | F:2
 P5975_Joe | $4800 | [6D] [11I] [4D] [12F] [10B] | C:4
 
-P3658_Nate [Choose Shares: F C] [End Turn]
+P3658_Nate [Choose Shares: C F] [End Turn]
 `;
 
 exports[`Game Play > (16) Player 3658_Nate purchases Festival 1`] = `
@@ -269,7 +269,7 @@ exports[`Game Play > (16) Player 3658_Nate purchases Festival 1`] = `
 P3658_Nate | $5400 | [1I] [1F] [7I] [9C] | F:3
 P5975_Joe | $4800 | [6D] [11I] [4D] [12F] [10B] | C:4
 
-P3658_Nate [Choose Shares: F C] [End Turn]
+P3658_Nate [Choose Shares: C F] [End Turn]
 `;
 
 exports[`Game Play > (17) Player 3658_Nate purchases Festival 1`] = `
@@ -320,7 +320,7 @@ exports[`Game Play > (19) Player 5975_Joe places tile [6D] 1`] = `
 P3658_Nate | $5100 | [1I] [1F] [7I] [9C] [6B] | F:4
 P5975_Joe | $4800 | [11I] [4D] [12F] [10B] | C:4
 
-P5975_Joe [Choose Shares: F C] [End Turn]
+P5975_Joe [Choose Shares: C F] [End Turn]
 `;
 
 exports[`Game Play > (20) Player 5975_Joe ends turn 1`] = `
@@ -354,7 +354,7 @@ exports[`Game Play > (21) Player 3658_Nate places tile [6B] 1`] = `
 P3658_Nate | $5100 | [1I] [1F] [7I] [9C] | F:4
 P5975_Joe | $4800 | [11I] [4D] [12F] [10B] [2F] | C:4
 
-P3658_Nate [Choose Shares: F C] [End Turn]
+P3658_Nate [Choose Shares: C F] [End Turn]
 `;
 
 exports[`Game Play > (22) Player 3658_Nate ends turn 1`] = `
@@ -388,7 +388,7 @@ exports[`Game Play > (23) Player 5975_Joe places tile [2F] 1`] = `
 P3658_Nate | $5100 | [1I] [1F] [7I] [9C] [9H] | F:4
 P5975_Joe | $4800 | [11I] [4D] [12F] [10B] | C:4
 
-P5975_Joe [Choose Shares: F C] [End Turn]
+P5975_Joe [Choose Shares: C F] [End Turn]
 `;
 
 exports[`Game Play > (24) Player 5975_Joe ends turn 1`] = `
@@ -422,7 +422,7 @@ exports[`Game Play > (25) Player 3658_Nate places tile [1F] 1`] = `
 P3658_Nate | $5100 | [1I] [7I] [9C] [9H] | F:4
 P5975_Joe | $4800 | [11I] [4D] [12F] [10B] [1C] | C:4
 
-P3658_Nate [Choose Hotel: A I L T W]
+P3658_Nate [Choose Hotel: A I W T L]
 `;
 
 exports[`Game Play > (26) Player 3658_Nate starts Imperial 1`] = `
@@ -439,7 +439,7 @@ exports[`Game Play > (26) Player 3658_Nate starts Imperial 1`] = `
 P3658_Nate | $5100 | [1I] [7I] [9C] [9H] | F:4 I:1
 P5975_Joe | $4800 | [11I] [4D] [12F] [10B] [1C] | C:4
 
-P3658_Nate [Choose Shares: F I C] [End Turn]
+P3658_Nate [Choose Shares: C F I] [End Turn]
 `;
 
 exports[`Game Play > (27) Player 3658_Nate purchases Imperial 1`] = `
@@ -456,7 +456,7 @@ exports[`Game Play > (27) Player 3658_Nate purchases Imperial 1`] = `
 P3658_Nate | $4700 | [1I] [7I] [9C] [9H] | F:4 I:2
 P5975_Joe | $4800 | [11I] [4D] [12F] [10B] [1C] | C:4
 
-P3658_Nate [Choose Shares: F I C] [End Turn]
+P3658_Nate [Choose Shares: C F I] [End Turn]
 `;
 
 exports[`Game Play > (28) Player 3658_Nate purchases Continental 1`] = `
@@ -473,7 +473,7 @@ exports[`Game Play > (28) Player 3658_Nate purchases Continental 1`] = `
 P3658_Nate | $4300 | [1I] [7I] [9C] [9H] | C:1 F:4 I:2
 P5975_Joe | $4800 | [11I] [4D] [12F] [10B] [1C] | C:4
 
-P3658_Nate [Choose Shares: F I C] [End Turn]
+P3658_Nate [Choose Shares: C F I] [End Turn]
 `;
 
 exports[`Game Play > (29) Player 3658_Nate purchases Festival 1`] = `
@@ -524,7 +524,7 @@ exports[`Game Play > (31) Player 5975_Joe places tile [10B] 1`] = `
 P3658_Nate | $4000 | [1I] [7I] [9C] [9H] [7E] | C:1 F:5 I:2
 P5975_Joe | $4800 | [11I] [4D] [12F] [1C] | C:4
 
-P5975_Joe [Choose Shares: F I C] [End Turn]
+P5975_Joe [Choose Shares: C F I] [End Turn]
 `;
 
 exports[`Game Play > (32) Player 5975_Joe ends turn 1`] = `
@@ -558,7 +558,7 @@ exports[`Game Play > (33) Player 3658_Nate places tile [7E] 1`] = `
 P3658_Nate | $4000 | [1I] [7I] [9C] [9H] | C:1 F:5 I:2
 P5975_Joe | $4800 | [11I] [4D] [12F] [1C] [6G] | C:4
 
-P3658_Nate [Choose Hotel: A L T W]
+P3658_Nate [Choose Hotel: A W T L]
 `;
 
 exports[`Game Play > (34) Player 3658_Nate starts Worldwide 1`] = `
@@ -575,7 +575,7 @@ exports[`Game Play > (34) Player 3658_Nate starts Worldwide 1`] = `
 P3658_Nate | $4000 | [1I] [7I] [9C] [9H] | C:1 F:5 I:2 W:1
 P5975_Joe | $4800 | [11I] [4D] [12F] [1C] [6G] | C:4
 
-P3658_Nate [Choose Shares: F W I C] [End Turn]
+P3658_Nate [Choose Shares: C F I W] [End Turn]
 `;
 
 exports[`Game Play > (35) Player 3658_Nate purchases Worldwide 1`] = `
@@ -592,7 +592,7 @@ exports[`Game Play > (35) Player 3658_Nate purchases Worldwide 1`] = `
 P3658_Nate | $3700 | [1I] [7I] [9C] [9H] | C:1 F:5 I:2 W:2
 P5975_Joe | $4800 | [11I] [4D] [12F] [1C] [6G] | C:4
 
-P3658_Nate [Choose Shares: F W I C] [End Turn]
+P3658_Nate [Choose Shares: C F I W] [End Turn]
 `;
 
 exports[`Game Play > (36) Player 3658_Nate purchases Worldwide 1`] = `
@@ -609,7 +609,7 @@ exports[`Game Play > (36) Player 3658_Nate purchases Worldwide 1`] = `
 P3658_Nate | $3400 | [1I] [7I] [9C] [9H] | C:1 F:5 I:2 W:3
 P5975_Joe | $4800 | [11I] [4D] [12F] [1C] [6G] | C:4
 
-P3658_Nate [Choose Shares: F W I C] [End Turn]
+P3658_Nate [Choose Shares: C F I W] [End Turn]
 `;
 
 exports[`Game Play > (37) Player 3658_Nate purchases Worldwide 1`] = `
@@ -660,7 +660,7 @@ exports[`Game Play > (39) Player 5975_Joe places tile [6G] 1`] = `
 P3658_Nate | $3100 | [1I] [7I] [9C] [9H] [6I] | C:1 F:5 I:2 W:4
 P5975_Joe | $4800 | [11I] [4D] [12F] [1C] | C:4
 
-P5975_Joe [Choose Shares: F W I C] [End Turn]
+P5975_Joe [Choose Shares: C F I W] [End Turn]
 `;
 
 exports[`Game Play > (40) Player 5975_Joe purchases Festival 1`] = `
@@ -677,7 +677,7 @@ exports[`Game Play > (40) Player 5975_Joe purchases Festival 1`] = `
 P3658_Nate | $3100 | [1I] [7I] [9C] [9H] [6I] | C:1 F:5 I:2 W:4
 P5975_Joe | $4500 | [11I] [4D] [12F] [1C] | C:4 F:1
 
-P5975_Joe [Choose Shares: F W I C] [End Turn]
+P5975_Joe [Choose Shares: C F I W] [End Turn]
 `;
 
 exports[`Game Play > (41) Player 5975_Joe purchases Continental 1`] = `
@@ -694,7 +694,7 @@ exports[`Game Play > (41) Player 5975_Joe purchases Continental 1`] = `
 P3658_Nate | $3100 | [1I] [7I] [9C] [9H] [6I] | C:1 F:5 I:2 W:4
 P5975_Joe | $4100 | [11I] [4D] [12F] [1C] | C:5 F:1
 
-P5975_Joe [Choose Shares: F W I C] [End Turn]
+P5975_Joe [Choose Shares: C F I W] [End Turn]
 `;
 
 exports[`Game Play > (42) Player 5975_Joe purchases Worldwide 1`] = `
@@ -745,7 +745,7 @@ exports[`Game Play > (44) Player 3658_Nate places tile [7I] 1`] = `
 P3658_Nate | $3100 | [1I] [9C] [9H] [6I] | C:1 F:5 I:2 W:4
 P5975_Joe | $3800 | [11I] [4D] [12F] [1C] [11F] | C:5 F:1 W:1
 
-P3658_Nate [Choose Shares: F W I C] [End Turn]
+P3658_Nate [Choose Shares: C F I W] [End Turn]
 `;
 
 exports[`Game Play > (45) Player 3658_Nate purchases Worldwide 1`] = `
@@ -762,7 +762,7 @@ exports[`Game Play > (45) Player 3658_Nate purchases Worldwide 1`] = `
 P3658_Nate | $2800 | [1I] [9C] [9H] [6I] | C:1 F:5 I:2 W:5
 P5975_Joe | $3800 | [11I] [4D] [12F] [1C] [11F] | C:5 F:1 W:1
 
-P3658_Nate [Choose Shares: F W I C] [End Turn]
+P3658_Nate [Choose Shares: C F I W] [End Turn]
 `;
 
 exports[`Game Play > (46) Player 3658_Nate ends turn 1`] = `
@@ -796,7 +796,7 @@ exports[`Game Play > (47) Player 5975_Joe places tile [4D] 1`] = `
 P3658_Nate | $2800 | [1I] [9C] [9H] [6I] [5A] | C:1 F:5 I:2 W:5
 P5975_Joe | $3800 | [11I] [12F] [1C] [11F] | C:5 F:1 W:1
 
-P5975_Joe [Choose Shares: F W I C] [End Turn]
+P5975_Joe [Choose Shares: C F I W] [End Turn]
 `;
 
 exports[`Game Play > (48) Player 5975_Joe ends turn 1`] = `
@@ -830,7 +830,7 @@ exports[`Game Play > (49) Player 3658_Nate places tile [6I] 1`] = `
 P3658_Nate | $2800 | [1I] [9C] [9H] [5A] | C:1 F:5 I:2 W:5
 P5975_Joe | $3800 | [11I] [12F] [1C] [11F] [3E] | C:5 F:1 W:1
 
-P3658_Nate [Choose Hotel: A L T]
+P3658_Nate [Choose Hotel: A T L]
 `;
 
 exports[`Game Play > (50) Player 3658_Nate starts Luxor 1`] = `
@@ -847,7 +847,7 @@ exports[`Game Play > (50) Player 3658_Nate starts Luxor 1`] = `
 P3658_Nate | $2800 | [1I] [9C] [9H] [5A] | C:1 F:5 I:2 L:1 W:5
 P5975_Joe | $3800 | [11I] [12F] [1C] [11F] [3E] | C:5 F:1 W:1
 
-P3658_Nate [Choose Shares: F W I C L] [End Turn]
+P3658_Nate [Choose Shares: C F I W L] [End Turn]
 `;
 
 exports[`Game Play > (51) Player 3658_Nate purchases Continental 1`] = `
@@ -864,7 +864,7 @@ exports[`Game Play > (51) Player 3658_Nate purchases Continental 1`] = `
 P3658_Nate | $2400 | [1I] [9C] [9H] [5A] | C:2 F:5 I:2 L:1 W:5
 P5975_Joe | $3800 | [11I] [12F] [1C] [11F] [3E] | C:5 F:1 W:1
 
-P3658_Nate [Choose Shares: F W I C L] [End Turn]
+P3658_Nate [Choose Shares: C F I W L] [End Turn]
 `;
 
 exports[`Game Play > (52) Player 3658_Nate purchases Luxor 1`] = `
@@ -881,7 +881,7 @@ exports[`Game Play > (52) Player 3658_Nate purchases Luxor 1`] = `
 P3658_Nate | $2200 | [1I] [9C] [9H] [5A] | C:2 F:5 I:2 L:2 W:5
 P5975_Joe | $3800 | [11I] [12F] [1C] [11F] [3E] | C:5 F:1 W:1
 
-P3658_Nate [Choose Shares: F W I C L] [End Turn]
+P3658_Nate [Choose Shares: C F I W L] [End Turn]
 `;
 
 exports[`Game Play > (53) Player 3658_Nate ends turn 1`] = `
@@ -915,7 +915,7 @@ exports[`Game Play > (54) Player 5975_Joe places tile [11F] 1`] = `
 P3658_Nate | $2200 | [1I] [9C] [9H] [5A] [2D] | C:2 F:5 I:2 L:2 W:5
 P5975_Joe | $3800 | [11I] [12F] [1C] [3E] | C:5 F:1 W:1
 
-P5975_Joe [Choose Shares: F W I C L] [End Turn]
+P5975_Joe [Choose Shares: C F I W L] [End Turn]
 `;
 
 exports[`Game Play > (55) Player 5975_Joe ends turn 1`] = `
@@ -949,7 +949,7 @@ exports[`Game Play > (56) Player 3658_Nate places tile [9C] 1`] = `
 P3658_Nate | $2200 | [1I] [9H] [5A] [2D] | C:2 F:5 I:2 L:2 W:5
 P5975_Joe | $3800 | [11I] [12F] [1C] [3E] [8F] | C:5 F:1 W:1
 
-P3658_Nate [Choose Shares: F W I C L] [End Turn]
+P3658_Nate [Choose Shares: C F I W L] [End Turn]
 `;
 
 exports[`Game Play > (57) Player 3658_Nate ends turn 1`] = `
@@ -983,7 +983,7 @@ exports[`Game Play > (58) Player 5975_Joe places tile [1C] 1`] = `
 P3658_Nate | $2200 | [1I] [9H] [5A] [2D] [8C] | C:2 F:5 I:2 L:2 W:5
 P5975_Joe | $3800 | [11I] [12F] [3E] [8F] | C:5 F:1 W:1
 
-P5975_Joe [Choose Shares: F W I C L] [End Turn]
+P5975_Joe [Choose Shares: C F I W L] [End Turn]
 `;
 
 exports[`Game Play > (59) Player 5975_Joe purchases Festival 1`] = `
@@ -1000,7 +1000,7 @@ exports[`Game Play > (59) Player 5975_Joe purchases Festival 1`] = `
 P3658_Nate | $2200 | [1I] [9H] [5A] [2D] [8C] | C:2 F:5 I:2 L:2 W:5
 P5975_Joe | $3400 | [11I] [12F] [3E] [8F] | C:5 F:2 W:1
 
-P5975_Joe [Choose Shares: F W I C L] [End Turn]
+P5975_Joe [Choose Shares: C F I W L] [End Turn]
 `;
 
 exports[`Game Play > (60) Player 5975_Joe purchases Continental 1`] = `
@@ -1017,7 +1017,7 @@ exports[`Game Play > (60) Player 5975_Joe purchases Continental 1`] = `
 P3658_Nate | $2200 | [1I] [9H] [5A] [2D] [8C] | C:2 F:5 I:2 L:2 W:5
 P5975_Joe | $3000 | [11I] [12F] [3E] [8F] | C:6 F:2 W:1
 
-P5975_Joe [Choose Shares: F W I C L] [End Turn]
+P5975_Joe [Choose Shares: C F I W L] [End Turn]
 `;
 
 exports[`Game Play > (61) Player 5975_Joe purchases Luxor 1`] = `
@@ -1085,7 +1085,7 @@ exports[`Game Play > (64) Player 3658_Nate starts Tower 1`] = `
 P3658_Nate | $2200 | [1I] [9H] [5A] [2D] | C:2 F:5 I:2 L:2 T:1 W:5
 P5975_Joe | $2800 | [11I] [12F] [3E] [8F] [2I] | C:6 F:2 L:1 W:1
 
-P3658_Nate [Choose Shares: F T W I C L] [End Turn]
+P3658_Nate [Choose Shares: C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (65) Player 3658_Nate ends turn 1`] = `
@@ -1136,7 +1136,7 @@ exports[`Game Play > (67) Player 5975_Joe starts American 1`] = `
 P3658_Nate | $2200 | [1I] [9H] [5A] [2D] [5D] | C:2 F:5 I:2 L:2 T:1 W:5
 P5975_Joe | $2800 | [11I] [3E] [8F] [2I] | A:1 C:6 F:2 L:1 W:1
 
-P5975_Joe [Choose Shares: F T W I A C L] [End Turn]
+P5975_Joe [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (68) Player 5975_Joe ends turn 1`] = `
@@ -1170,7 +1170,7 @@ exports[`Game Play > (69) Player 3658_Nate places tile [5D] 1`] = `
 P3658_Nate | $2200 | [1I] [9H] [5A] [2D] | C:2 F:5 I:2 L:2 T:1 W:5
 P5975_Joe | $2800 | [11I] [3E] [8F] [2I] [4G] | A:1 C:6 F:2 L:1 W:1
 
-P3658_Nate [Choose Shares: F T W I A C L] [End Turn]
+P3658_Nate [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (70) Player 3658_Nate ends turn 1`] = `
@@ -1204,7 +1204,7 @@ exports[`Game Play > (71) Player 5975_Joe places tile [8F] 1`] = `
 P3658_Nate | $2200 | [1I] [9H] [5A] [2D] [9G] | C:2 F:5 I:2 L:2 T:1 W:5
 P5975_Joe | $2800 | [11I] [3E] [2I] [4G] | A:1 C:6 F:2 L:1 W:1
 
-P5975_Joe [Choose Shares: F T W I A C L] [End Turn]
+P5975_Joe [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (72) Player 5975_Joe ends turn 1`] = `
@@ -1238,7 +1238,7 @@ exports[`Game Play > (73) Player 3658_Nate places tile [9H] 1`] = `
 P3658_Nate | $2200 | [1I] [5A] [2D] [9G] | C:2 F:5 I:2 L:2 T:1 W:5
 P5975_Joe | $2800 | [11I] [3E] [2I] [4G] [5I] | A:1 C:6 F:2 L:1 W:1
 
-P3658_Nate [Choose Shares: F T W I A C L] [End Turn]
+P3658_Nate [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (74) Player 3658_Nate ends turn 1`] = `
@@ -1272,7 +1272,7 @@ exports[`Game Play > (75) Player 5975_Joe places tile [5I] 1`] = `
 P3658_Nate | $2200 | [1I] [5A] [2D] [9G] [3A] | C:2 F:5 I:2 L:2 T:1 W:5
 P5975_Joe | $2800 | [11I] [3E] [2I] [4G] | A:1 C:6 F:2 L:1 W:1
 
-P5975_Joe [Choose Shares: F T W I A C L] [End Turn]
+P5975_Joe [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (76) Player 5975_Joe ends turn 1`] = `
@@ -1306,7 +1306,7 @@ exports[`Game Play > (77) Player 3658_Nate places tile [9G] 1`] = `
 P3658_Nate | $2200 | [1I] [5A] [2D] [3A] | C:2 F:5 I:2 L:2 T:1 W:5
 P5975_Joe | $2800 | [11I] [3E] [2I] [4G] [1D] | A:1 C:6 F:2 L:1 W:1
 
-P3658_Nate [Choose Shares: F T W I A C L] [End Turn]
+P3658_Nate [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (78) Player 3658_Nate ends turn 1`] = `
@@ -1340,7 +1340,7 @@ exports[`Game Play > (79) Player 5975_Joe places tile [4G] 1`] = `
 P3658_Nate | $2200 | [1I] [5A] [2D] [3A] [12E] | C:2 F:5 I:2 L:2 T:1 W:5
 P5975_Joe | $2800 | [11I] [3E] [2I] [1D] | A:1 C:6 F:2 L:1 W:1
 
-P5975_Joe [Choose Shares: F T W I A C L] [End Turn]
+P5975_Joe [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (80) Player 5975_Joe ends turn 1`] = `
@@ -1374,7 +1374,7 @@ exports[`Game Play > (81) Player 3658_Nate places tile [5A] 1`] = `
 P3658_Nate | $2200 | [1I] [2D] [3A] [12E] | C:2 F:5 I:2 L:2 T:1 W:5
 P5975_Joe | $2800 | [11I] [3E] [2I] [1D] [2G] | A:1 C:6 F:2 L:1 W:1
 
-P3658_Nate [Choose Shares: F T W I A C L] [End Turn]
+P3658_Nate [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (82) Player 3658_Nate ends turn 1`] = `
@@ -1408,7 +1408,7 @@ exports[`Game Play > (83) Player 5975_Joe places tile [3E] 1`] = `
 P3658_Nate | $2200 | [1I] [2D] [3A] [12E] [10E] | C:2 F:5 I:2 L:2 T:1 W:5
 P5975_Joe | $2800 | [11I] [2I] [1D] [2G] | A:1 C:6 F:2 L:1 W:1
 
-P5975_Joe [Choose Shares: F T W I A C L] [End Turn]
+P5975_Joe [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (84) Player 5975_Joe ends turn 1`] = `
@@ -1442,7 +1442,7 @@ exports[`Game Play > (85) Player 3658_Nate places tile [10E] 1`] = `
 P3658_Nate | $2200 | [1I] [2D] [3A] [12E] | C:2 F:5 I:2 L:2 T:1 W:5
 P5975_Joe | $2800 | [11I] [2I] [1D] [2G] [8H] | A:1 C:6 F:2 L:1 W:1
 
-P3658_Nate [Choose Shares: F T W I A C L] [End Turn]
+P3658_Nate [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (86) Player 3658_Nate ends turn 1`] = `
@@ -1476,7 +1476,7 @@ exports[`Game Play > (87) Player 5975_Joe places tile [2G] 1`] = `
 P3658_Nate | $2200 | [1I] [2D] [3A] [12E] [9A] | C:2 F:5 I:2 L:2 T:1 W:5
 P5975_Joe | $2800 | [11I] [2I] [1D] [8H] | A:1 C:6 F:2 L:1 W:1
 
-P5975_Joe [Choose Shares: F T W I A C L] [End Turn]
+P5975_Joe [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (88) Player 5975_Joe purchases Luxor 1`] = `
@@ -1493,7 +1493,7 @@ exports[`Game Play > (88) Player 5975_Joe purchases Luxor 1`] = `
 P3658_Nate | $2200 | [1I] [2D] [3A] [12E] [9A] | C:2 F:5 I:2 L:2 T:1 W:5
 P5975_Joe | $2500 | [11I] [2I] [1D] [8H] | A:1 C:6 F:2 L:2 W:1
 
-P5975_Joe [Choose Shares: F T W I A C L] [End Turn]
+P5975_Joe [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (89) Player 5975_Joe purchases American 1`] = `
@@ -1510,7 +1510,7 @@ exports[`Game Play > (89) Player 5975_Joe purchases American 1`] = `
 P3658_Nate | $2200 | [1I] [2D] [3A] [12E] [9A] | C:2 F:5 I:2 L:2 T:1 W:5
 P5975_Joe | $2200 | [11I] [2I] [1D] [8H] | A:2 C:6 F:2 L:2 W:1
 
-P5975_Joe [Choose Shares: F T W I A C L] [End Turn]
+P5975_Joe [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (90) Player 5975_Joe purchases Worldwide 1`] = `
@@ -1561,7 +1561,7 @@ exports[`Game Play > (92) Player 3658_Nate places tile [12E] 1`] = `
 P3658_Nate | $2200 | [1I] [2D] [3A] [9A] | C:2 F:5 I:2 L:2 T:1 W:5
 P5975_Joe | $1800 | [11I] [2I] [1D] [8H] [7D] | A:2 C:6 F:2 L:2 W:2
 
-P3658_Nate [Choose Shares: F T W A I C L] [End Turn]
+P3658_Nate [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (93) Player 3658_Nate ends turn 1`] = `
@@ -1663,7 +1663,7 @@ exports[`Game Play > (98) Player 3658_Nate sells 1 orphaned Worldwide share 1`] 
 P3658_Nate | $6600 | [1I] [2D] [3A] [9A] [5H] | C:2 F:7 I:2 L:2 T:1
 P5975_Joe | $3800 | [11I] [2I] [1D] [8H] | A:2 C:6 F:3 L:2
 
-P5975_Joe [Choose Shares: F T A I C L] [End Turn]
+P5975_Joe [Choose Shares: A C F I T L] [End Turn]
 `;
 
 exports[`Game Play > (99) Player 5975_Joe ends turn 1`] = `
@@ -1697,7 +1697,7 @@ exports[`Game Play > (100) Player 3658_Nate places tile [5H] 1`] = `
 P3658_Nate | $6600 | [1I] [2D] [3A] [9A] | C:2 F:7 I:2 L:2 T:1
 P5975_Joe | $3800 | [11I] [2I] [1D] [8H] [11D] | A:2 C:6 F:3 L:2
 
-P3658_Nate [Choose Shares: F T A I C L] [End Turn]
+P3658_Nate [Choose Shares: A C F I T L] [End Turn]
 `;
 
 exports[`Game Play > (101) Player 3658_Nate ends turn 1`] = `
@@ -1731,7 +1731,7 @@ exports[`Game Play > (102) Player 5975_Joe places tile [8H] 1`] = `
 P3658_Nate | $6600 | [1I] [2D] [3A] [9A] [4F] | C:2 F:7 I:2 L:2 T:1
 P5975_Joe | $3800 | [11I] [2I] [1D] [11D] | A:2 C:6 F:3 L:2
 
-P5975_Joe [Choose Shares: F T A I C L] [End Turn]
+P5975_Joe [Choose Shares: A C F I T L] [End Turn]
 `;
 
 exports[`Game Play > (103) Player 5975_Joe ends turn 1`] = `
@@ -1782,7 +1782,7 @@ exports[`Game Play > (105) Player 3658_Nate starts Worldwide 1`] = `
 P3658_Nate | $6600 | [1I] [2D] [3A] [9A] | C:2 F:7 I:2 L:2 T:1 W:1
 P5975_Joe | $3800 | [11I] [2I] [1D] [11D] [2C] | A:2 C:6 F:3 L:2
 
-P3658_Nate [Choose Shares: F T A I W C L] [End Turn]
+P3658_Nate [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (106) Player 3658_Nate purchases Worldwide 1`] = `
@@ -1799,7 +1799,7 @@ exports[`Game Play > (106) Player 3658_Nate purchases Worldwide 1`] = `
 P3658_Nate | $6300 | [1I] [2D] [3A] [9A] | C:2 F:7 I:2 L:2 T:1 W:2
 P5975_Joe | $3800 | [11I] [2I] [1D] [11D] [2C] | A:2 C:6 F:3 L:2
 
-P3658_Nate [Choose Shares: F T A I W C L] [End Turn]
+P3658_Nate [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (107) Player 3658_Nate purchases Tower 1`] = `
@@ -1816,7 +1816,7 @@ exports[`Game Play > (107) Player 3658_Nate purchases Tower 1`] = `
 P3658_Nate | $6100 | [1I] [2D] [3A] [9A] | C:2 F:7 I:2 L:2 T:2 W:2
 P5975_Joe | $3800 | [11I] [2I] [1D] [11D] [2C] | A:2 C:6 F:3 L:2
 
-P3658_Nate [Choose Shares: F T A I W C L] [End Turn]
+P3658_Nate [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (108) Player 3658_Nate ends turn 1`] = `
@@ -1850,7 +1850,7 @@ exports[`Game Play > (109) Player 5975_Joe places tile [11I] 1`] = `
 P3658_Nate | $6100 | [1I] [2D] [3A] [9A] [1G] | C:2 F:7 I:2 L:2 T:2 W:2
 P5975_Joe | $3800 | [2I] [1D] [11D] [2C] | A:2 C:6 F:3 L:2
 
-P5975_Joe [Choose Shares: F T A I W C L] [End Turn]
+P5975_Joe [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (110) Player 5975_Joe ends turn 1`] = `
@@ -1884,7 +1884,7 @@ exports[`Game Play > (111) Player 3658_Nate places tile [9A] 1`] = `
 P3658_Nate | $6100 | [1I] [2D] [3A] [1G] | C:2 F:7 I:2 L:2 T:2 W:2
 P5975_Joe | $3800 | [2I] [1D] [11D] [2C] [7H] | A:2 C:6 F:3 L:2
 
-P3658_Nate [Choose Shares: F T A I W C L] [End Turn]
+P3658_Nate [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (112) Player 3658_Nate ends turn 1`] = `
@@ -1952,7 +1952,7 @@ exports[`Game Play > (115) Player 3658_Nate trades 2 Luxor -> Continental 1`] = 
 P3658_Nate | $9100 | [1I] [2D] [3A] [1G] [1B] | C:3 F:7 I:2 T:2 W:2
 P5975_Joe | $6800 | [2I] [1D] [11D] [2C] | A:2 C:7 F:3
 
-P5975_Joe [Choose Shares: F T A I W C] [End Turn]
+P5975_Joe [Choose Shares: A C F I W T] [End Turn]
 `;
 
 exports[`Game Play > (116) Player 5975_Joe ends turn 1`] = `
@@ -1986,7 +1986,7 @@ exports[`Game Play > (117) Player 3658_Nate places tile [3A] 1`] = `
 P3658_Nate | $9100 | [1I] [2D] [1G] [1B] | C:3 F:7 I:2 T:2 W:2
 P5975_Joe | $6800 | [2I] [1D] [11D] [2C] [2E] | A:2 C:7 F:3
 
-P3658_Nate [Choose Shares: F T A I W C] [End Turn]
+P3658_Nate [Choose Shares: A C F I W T] [End Turn]
 `;
 
 exports[`Game Play > (118) Player 3658_Nate ends turn 1`] = `
@@ -2037,7 +2037,7 @@ exports[`Game Play > (120) Player 3658_Nate trades 2 Imperial -> Festival 1`] = 
 P3658_Nate | $16600 | [1I] [2D] [1G] [1B] [6A] | C:3 F:8 T:2 W:2
 P5975_Joe | $6800 | [2I] [1D] [11D] [2C] | A:2 C:7 F:3
 
-P5975_Joe [Choose Shares: F T A W C] [End Turn]
+P5975_Joe [Choose Shares: A C F W T] [End Turn]
 `;
 
 exports[`Game Play > (121) Player 5975_Joe ends turn 1`] = `
@@ -2071,7 +2071,7 @@ exports[`Game Play > (122) Player 3658_Nate places tile [1I] 1`] = `
 P3658_Nate | $16600 | [2D] [1G] [1B] [6A] | C:3 F:8 T:2 W:2
 P5975_Joe | $6800 | [2I] [1D] [11D] [2C] [4H] | A:2 C:7 F:3
 
-P3658_Nate [Choose Shares: F T A W C] [End Turn]
+P3658_Nate [Choose Shares: A C F W T] [End Turn]
 `;
 
 exports[`Game Play > (123) Player 3658_Nate ends turn 1`] = `
@@ -2139,7 +2139,7 @@ exports[`Game Play > (126) Player 3658_Nate sells 1 orphaned Worldwide share 1`]
 P3658_Nate | $21700 | [2D] [1G] [1B] [6A] [9D] | C:3 F:8 T:2
 P5975_Joe | $6800 | [2I] [1D] [11D] [2C] | A:2 C:7 F:3
 
-P5975_Joe [Choose Shares: F T A C] [End Turn]
+P5975_Joe [Choose Shares: A C F T] [End Turn]
 `;
 
 exports[`Game Play > (127) Player 5975_Joe ends turn 1`] = `
@@ -2173,7 +2173,7 @@ exports[`Game Play > (128) Player 3658_Nate places tile [9D] 1`] = `
 P3658_Nate | $21700 | [2D] [1G] [1B] [6A] | C:3 F:8 T:2
 P5975_Joe | $6800 | [2I] [1D] [11D] [2C] [11E] | A:2 C:7 F:3
 
-P3658_Nate [Choose Shares: F T A C] [End Turn]
+P3658_Nate [Choose Shares: A C F T] [End Turn]
 `;
 
 exports[`Game Play > (129) Player 3658_Nate ends turn 1`] = `
@@ -2207,7 +2207,7 @@ exports[`Game Play > (130) Player 5975_Joe places tile [11E] 1`] = `
 P3658_Nate | $21700 | [2D] [1G] [1B] [6A] [5G] | C:3 F:8 T:2
 P5975_Joe | $6800 | [2I] [1D] [11D] [2C] | A:2 C:7 F:3
 
-P5975_Joe [Choose Shares: F T A C] [End Turn]
+P5975_Joe [Choose Shares: A C F T] [End Turn]
 `;
 
 exports[`Game Play > (131) Player 5975_Joe ends turn 1`] = `
@@ -2241,7 +2241,7 @@ exports[`Game Play > (132) Player 3658_Nate places tile [5G] 1`] = `
 P3658_Nate | $21700 | [2D] [1G] [1B] [6A] | C:3 F:8 T:2
 P5975_Joe | $6800 | [2I] [1D] [11D] [2C] [7C] | A:2 C:7 F:3
 
-P3658_Nate [Choose Shares: F T A C] [End Turn]
+P3658_Nate [Choose Shares: A C F T] [End Turn]
 `;
 
 exports[`Game Play > (133) Player 3658_Nate ends turn 1`] = `
@@ -2292,7 +2292,7 @@ exports[`Game Play > (135) Player 3658_Nate trades 2 Tower -> Festival 1`] = `
 P3658_Nate | $26200 | [2D] [1G] [1B] [6A] [7G] | C:3 F:9
 P5975_Joe | $6800 | [2I] [1D] [11D] [2C] | A:2 C:7 F:3
 
-P5975_Joe [Choose Shares: F A C] [End Turn]
+P5975_Joe [Choose Shares: A C F] [End Turn]
 `;
 
 exports[`Game Play > (136) Player 5975_Joe ends turn 1`] = `
@@ -2326,7 +2326,7 @@ exports[`Game Play > (137) Player 3658_Nate places tile [7G] 1`] = `
 P3658_Nate | $26200 | [2D] [1G] [1B] [6A] | C:3 F:9
 P5975_Joe | $6800 | [2I] [1D] [11D] [2C] [9I] | A:2 C:7 F:3
 
-P3658_Nate [Choose Shares: F A C] [End Turn]
+P3658_Nate [Choose Shares: A C F] [End Turn]
 `;
 
 exports[`Game Play > (138) Player 3658_Nate ends turn 1`] = `
@@ -2360,7 +2360,7 @@ exports[`Game Play > (139) Player 5975_Joe places tile [11D] 1`] = `
 P3658_Nate | $26200 | [2D] [1G] [1B] [6A] [10G] | C:3 F:9
 P5975_Joe | $6800 | [2I] [1D] [2C] [9I] | A:2 C:7 F:3
 
-P5975_Joe [Choose Shares: F A C] [End Turn]
+P5975_Joe [Choose Shares: A C F] [End Turn]
 `;
 
 exports[`Game Play > (140) Player 5975_Joe ends turn 1`] = `
@@ -2394,7 +2394,7 @@ exports[`Game Play > (141) Player 3658_Nate places tile [10G] 1`] = `
 P3658_Nate | $26200 | [2D] [1G] [1B] [6A] | C:3 F:9
 P5975_Joe | $6800 | [2I] [1D] [2C] [9I] [11A] | A:2 C:7 F:3
 
-P3658_Nate [Choose Shares: F A C] [End Turn]
+P3658_Nate [Choose Shares: A C F] [End Turn]
 `;
 
 exports[`Game Play > (142) Player 3658_Nate ends turn 1`] = `
@@ -2428,7 +2428,7 @@ exports[`Game Play > (143) Player 5975_Joe places tile [9I] 1`] = `
 P3658_Nate | $26200 | [2D] [1G] [1B] [6A] [12C] | C:3 F:9
 P5975_Joe | $6800 | [2I] [1D] [2C] [11A] | A:2 C:7 F:3
 
-P5975_Joe [Choose Shares: F A C] [End Turn]
+P5975_Joe [Choose Shares: A C F] [End Turn]
 `;
 
 exports[`Game Play > (144) Player 5975_Joe ends turn 1`] = `
@@ -2462,7 +2462,7 @@ exports[`Game Play > (145) Player 3658_Nate places tile [2D] 1`] = `
 P3658_Nate | $26200 | [1G] [1B] [6A] [12C] | C:3 F:9
 P5975_Joe | $6800 | [2I] [1D] [2C] [11A] [3I] | A:2 C:7 F:3
 
-P3658_Nate [Choose Shares: F A C] [End Turn]
+P3658_Nate [Choose Shares: A C F] [End Turn]
 `;
 
 exports[`Game Play > (146) Player 3658_Nate ends turn 1`] = `
@@ -2496,7 +2496,7 @@ exports[`Game Play > (147) Player 5975_Joe places tile [2C] 1`] = `
 P3658_Nate | $26200 | [1G] [1B] [6A] [12C] [5B] | C:3 F:9
 P5975_Joe | $6800 | [2I] [1D] [11A] [3I] | A:2 C:7 F:3
 
-P5975_Joe [Choose Shares: F A C] [End Turn]
+P5975_Joe [Choose Shares: A C F] [End Turn]
 `;
 
 exports[`Game Play > (148) Player 5975_Joe ends turn 1`] = `
@@ -2530,7 +2530,7 @@ exports[`Game Play > (149) Player 3658_Nate places tile [12C] 1`] = `
 P3658_Nate | $26200 | [1G] [1B] [6A] [5B] | C:3 F:9
 P5975_Joe | $6800 | [2I] [1D] [11A] [3I] [4I] | A:2 C:7 F:3
 
-P3658_Nate [Choose Shares: F A C] [End Turn]
+P3658_Nate [Choose Shares: A C F] [End Turn]
 `;
 
 exports[`Game Play > (150) Player 3658_Nate ends turn 1`] = `
@@ -2564,7 +2564,7 @@ exports[`Game Play > (151) Player 5975_Joe places tile [11A] 1`] = `
 P3658_Nate | $26200 | [1G] [1B] [6A] [5B] [5F] | C:3 F:9
 P5975_Joe | $6800 | [2I] [1D] [3I] [4I] | A:2 C:7 F:3
 
-P5975_Joe [Choose Shares: F A C] [End Turn]
+P5975_Joe [Choose Shares: A C F] [End Turn]
 `;
 
 exports[`Game Play > (152) Player 5975_Joe ends turn 1`] = `
@@ -2598,7 +2598,7 @@ exports[`Game Play > (153) Player 3658_Nate places tile [5F] 1`] = `
 P3658_Nate | $26200 | [1G] [1B] [6A] [5B] | C:3 F:9
 P5975_Joe | $6800 | [2I] [1D] [3I] [4I] [10F] | A:2 C:7 F:3
 
-P3658_Nate [Choose Shares: F A C] [End Turn]
+P3658_Nate [Choose Shares: A C F] [End Turn]
 `;
 
 exports[`Game Play > (154) Player 3658_Nate ends turn 1`] = `
@@ -2649,7 +2649,7 @@ exports[`Game Play > (156) Player 5975_Joe trades 2 American -> Continental 1`] 
 P3658_Nate | $26200 | [1G] [1B] [6A] [5B] [4B] | C:3 F:9
 P5975_Joe | $17300 | [2I] [1D] [3I] [4I] | C:8 F:3
 
-P5975_Joe [Choose Shares: F C] [End Turn] [End Game]
+P5975_Joe [Choose Shares: C F] [End Turn] [End Game]
 `;
 
 exports[`Game Play > (157) Player 5975_Joe ends turn 1`] = `
@@ -2683,5 +2683,5 @@ exports[`Game Play > (158) Player 3658_Nate places tile [1G] 1`] = `
 P3658_Nate | $26200 | [1B] [6A] [5B] [4B] | C:3 F:9
 P5975_Joe | $17300 | [2I] [1D] [3I] [4I] [12I] | C:8 F:3
 
-P3658_Nate [Choose Shares: F C] [End Turn] [End Game]
+P3658_Nate [Choose Shares: C F] [End Turn] [End Game]
 `;

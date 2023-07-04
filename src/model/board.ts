@@ -65,6 +65,15 @@ export class Board {
     return BoardUtils.getAdjacentPositions(this.getState(), index);
   }
 
+  public isHotelStarter(index: number): boolean {
+    return (
+      this.getAdjacentTiles(index).length >= 1 &&
+      !this.getAdjacentIndices(index).some(
+        (i) => this.squares[i].type === "HasHotelChain"
+      )
+    );
+  }
+
   private getAdjacentTiles(index: number): number[] {
     return this.getAdjacentIndices(index).filter(
       (idx) => this.squares[idx].type === "HasTile"

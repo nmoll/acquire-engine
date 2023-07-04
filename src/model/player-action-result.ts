@@ -27,13 +27,13 @@ interface HotelChainStarted {
 interface HotelSizeIncreased {
   type: "Hotel Size Increased";
   action: PlaceTile;
-  hotelChain: HotelChainType;
+  hotel: Hotel;
 }
 
 interface MergeInitiated {
   type: "Merge Initiated";
   action: PlaceTile;
-  hotelChains: HotelChainType[];
+  hotels: Hotel[];
 }
 
 interface HotelMerged {
@@ -104,20 +104,20 @@ export const PlayerActionResult = {
   HotelSizeIncreased: (
     playerId: string,
     boardSquareId: number,
-    hotelChain: HotelChainType
+    hotel: Hotel
   ): HotelSizeIncreased => ({
     type: "Hotel Size Increased",
     action: PlayerActionType.PlaceTile(playerId, boardSquareId),
-    hotelChain,
+    hotel,
   }),
   MergeInitiated: (
     playerId: string,
     boardSquareId: number,
-    hotelChains: HotelChainType[]
+    hotels: Hotel[]
   ): MergeInitiated => ({
     type: "Merge Initiated",
     action: PlayerActionType.PlaceTile(playerId, boardSquareId),
-    hotelChains,
+    hotels,
   }),
   HotelMerged: (
     playerId: string,

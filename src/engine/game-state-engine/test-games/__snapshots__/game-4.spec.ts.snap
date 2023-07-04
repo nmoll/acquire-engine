@@ -116,7 +116,7 @@ exports[`Game Play > (7) Player 5031_Nate places tile [4D] 1`] = `
 P2427_Rose | $6000 | [5A] [3I] [11B] [2D] [9E] | 
 P5031_Nate | $6000 | [8I] [2C] [1F] [11D] | 
 
-P5031_Nate [Choose Hotel: A C F I L T W]
+P5031_Nate [Choose Hotel: A C F I W T L]
 `;
 
 exports[`Game Play > (8) Player 5031_Nate starts American 1`] = `
@@ -303,7 +303,7 @@ exports[`Game Play > (18) Player 2427_Rose places tile [7G] 1`] = `
 P2427_Rose | $5700 | [5A] [3I] [11B] [2D] | A:1
 P5031_Nate | $5100 | [8I] [2C] [1F] [11D] [8F] | A:4
 
-P2427_Rose [Choose Hotel: C F I L T W]
+P2427_Rose [Choose Hotel: C F I W T L]
 `;
 
 exports[`Game Play > (19) Player 2427_Rose starts Festival 1`] = `
@@ -575,7 +575,7 @@ exports[`Game Play > (34) Player 2427_Rose places tile [5A] 1`] = `
 P2427_Rose | $4200 | [3I] [11B] [2D] [10C] | A:2 F:5
 P5031_Nate | $4500 | [8I] [2C] [1F] [8F] [3H] | A:4 F:2
 
-P2427_Rose [Choose Hotel: C I L T W]
+P2427_Rose [Choose Hotel: C I W T L]
 `;
 
 exports[`Game Play > (35) Player 2427_Rose starts Continental 1`] = `
@@ -592,7 +592,7 @@ exports[`Game Play > (35) Player 2427_Rose starts Continental 1`] = `
 P2427_Rose | $4200 | [3I] [11B] [2D] [10C] | A:2 C:1 F:5
 P5031_Nate | $4500 | [8I] [2C] [1F] [8F] [3H] | A:4 F:2
 
-P2427_Rose [Choose Shares: C A F] [End Turn]
+P2427_Rose [Choose Shares: A C F] [End Turn]
 `;
 
 exports[`Game Play > (36) Player 2427_Rose purchases Continental 1`] = `
@@ -609,7 +609,7 @@ exports[`Game Play > (36) Player 2427_Rose purchases Continental 1`] = `
 P2427_Rose | $3800 | [3I] [11B] [2D] [10C] | A:2 C:2 F:5
 P5031_Nate | $4500 | [8I] [2C] [1F] [8F] [3H] | A:4 F:2
 
-P2427_Rose [Choose Shares: C A F] [End Turn]
+P2427_Rose [Choose Shares: A C F] [End Turn]
 `;
 
 exports[`Game Play > (37) Player 2427_Rose purchases Continental 1`] = `
@@ -626,7 +626,7 @@ exports[`Game Play > (37) Player 2427_Rose purchases Continental 1`] = `
 P2427_Rose | $3400 | [3I] [11B] [2D] [10C] | A:2 C:3 F:5
 P5031_Nate | $4500 | [8I] [2C] [1F] [8F] [3H] | A:4 F:2
 
-P2427_Rose [Choose Shares: C A F] [End Turn]
+P2427_Rose [Choose Shares: A C F] [End Turn]
 `;
 
 exports[`Game Play > (38) Player 2427_Rose ends turn 1`] = `
@@ -660,7 +660,7 @@ exports[`Game Play > (39) Player 5031_Nate places tile [3H] 1`] = `
 P2427_Rose | $3400 | [3I] [11B] [2D] [10C] [4G] | A:2 C:3 F:5
 P5031_Nate | $4500 | [8I] [2C] [1F] [8F] | A:4 F:2
 
-P5031_Nate [Choose Shares: C A F] [End Turn]
+P5031_Nate [Choose Shares: A C F] [End Turn]
 `;
 
 exports[`Game Play > (40) Player 5031_Nate purchases Continental 1`] = `
@@ -677,7 +677,7 @@ exports[`Game Play > (40) Player 5031_Nate purchases Continental 1`] = `
 P2427_Rose | $3400 | [3I] [11B] [2D] [10C] [4G] | A:2 C:3 F:5
 P5031_Nate | $4100 | [8I] [2C] [1F] [8F] | A:4 C:1 F:2
 
-P5031_Nate [Choose Shares: C A F] [End Turn]
+P5031_Nate [Choose Shares: A C F] [End Turn]
 `;
 
 exports[`Game Play > (41) Player 5031_Nate ends turn 1`] = `
@@ -711,7 +711,7 @@ exports[`Game Play > (42) Player 2427_Rose places tile [3I] 1`] = `
 P2427_Rose | $3400 | [11B] [2D] [10C] [4G] | A:2 C:3 F:5
 P5031_Nate | $4100 | [8I] [2C] [1F] [8F] [9G] | A:4 C:1 F:2
 
-P2427_Rose [Choose Hotel: I L T W]
+P2427_Rose [Choose Hotel: I W T L]
 `;
 
 exports[`Game Play > (43) Player 2427_Rose starts Luxor 1`] = `
@@ -728,7 +728,7 @@ exports[`Game Play > (43) Player 2427_Rose starts Luxor 1`] = `
 P2427_Rose | $3400 | [11B] [2D] [10C] [4G] | A:2 C:3 F:5 L:1
 P5031_Nate | $4100 | [8I] [2C] [1F] [8F] [9G] | A:4 C:1 F:2
 
-P2427_Rose [Choose Shares: C A F L] [End Turn]
+P2427_Rose [Choose Shares: A C F L] [End Turn]
 `;
 
 exports[`Game Play > (44) Player 2427_Rose purchases Luxor 1`] = `
@@ -745,7 +745,7 @@ exports[`Game Play > (44) Player 2427_Rose purchases Luxor 1`] = `
 P2427_Rose | $3200 | [11B] [2D] [10C] [4G] | A:2 C:3 F:5 L:2
 P5031_Nate | $4100 | [8I] [2C] [1F] [8F] [9G] | A:4 C:1 F:2
 
-P2427_Rose [Choose Shares: C A F L] [End Turn]
+P2427_Rose [Choose Shares: A C F L] [End Turn]
 `;
 
 exports[`Game Play > (45) Player 2427_Rose purchases Festival 1`] = `
@@ -762,7 +762,7 @@ exports[`Game Play > (45) Player 2427_Rose purchases Festival 1`] = `
 P2427_Rose | $2900 | [11B] [2D] [10C] [4G] | A:2 C:3 F:6 L:2
 P5031_Nate | $4100 | [8I] [2C] [1F] [8F] [9G] | A:4 C:1 F:2
 
-P2427_Rose [Choose Shares: C A F L] [End Turn]
+P2427_Rose [Choose Shares: A C F L] [End Turn]
 `;
 
 exports[`Game Play > (46) Player 2427_Rose purchases American 1`] = `
@@ -813,7 +813,7 @@ exports[`Game Play > (48) Player 5031_Nate places tile [2C] 1`] = `
 P2427_Rose | $2600 | [11B] [2D] [10C] [4G] [11E] | A:3 C:3 F:6 L:2
 P5031_Nate | $4100 | [8I] [1F] [8F] [9G] | A:4 C:1 F:2
 
-P5031_Nate [Choose Shares: C A F L] [End Turn]
+P5031_Nate [Choose Shares: A C F L] [End Turn]
 `;
 
 exports[`Game Play > (49) Player 5031_Nate purchases American 1`] = `
@@ -830,7 +830,7 @@ exports[`Game Play > (49) Player 5031_Nate purchases American 1`] = `
 P2427_Rose | $2600 | [11B] [2D] [10C] [4G] [11E] | A:3 C:3 F:6 L:2
 P5031_Nate | $3800 | [8I] [1F] [8F] [9G] | A:5 C:1 F:2
 
-P5031_Nate [Choose Shares: C A F L] [End Turn]
+P5031_Nate [Choose Shares: A C F L] [End Turn]
 `;
 
 exports[`Game Play > (50) Player 5031_Nate purchases American 1`] = `
@@ -847,7 +847,7 @@ exports[`Game Play > (50) Player 5031_Nate purchases American 1`] = `
 P2427_Rose | $2600 | [11B] [2D] [10C] [4G] [11E] | A:3 C:3 F:6 L:2
 P5031_Nate | $3500 | [8I] [1F] [8F] [9G] | A:6 C:1 F:2
 
-P5031_Nate [Choose Shares: C A F L] [End Turn]
+P5031_Nate [Choose Shares: A C F L] [End Turn]
 `;
 
 exports[`Game Play > (51) Player 5031_Nate purchases American 1`] = `
@@ -898,7 +898,7 @@ exports[`Game Play > (53) Player 2427_Rose places tile [2D] 1`] = `
 P2427_Rose | $2600 | [11B] [10C] [4G] [11E] | A:3 C:3 F:6 L:2
 P5031_Nate | $3200 | [8I] [1F] [8F] [9G] [10I] | A:7 C:1 F:2
 
-P2427_Rose [Choose Hotel: I T W]
+P2427_Rose [Choose Hotel: I W T]
 `;
 
 exports[`Game Play > (54) Player 2427_Rose starts Imperial 1`] = `
@@ -915,7 +915,7 @@ exports[`Game Play > (54) Player 2427_Rose starts Imperial 1`] = `
 P2427_Rose | $2600 | [11B] [10C] [4G] [11E] | A:3 C:3 F:6 I:1 L:2
 P5031_Nate | $3200 | [8I] [1F] [8F] [9G] [10I] | A:7 C:1 F:2
 
-P2427_Rose [Choose Shares: C I A F L] [End Turn]
+P2427_Rose [Choose Shares: A C F I L] [End Turn]
 `;
 
 exports[`Game Play > (55) Player 2427_Rose purchases Imperial 1`] = `
@@ -932,7 +932,7 @@ exports[`Game Play > (55) Player 2427_Rose purchases Imperial 1`] = `
 P2427_Rose | $2200 | [11B] [10C] [4G] [11E] | A:3 C:3 F:6 I:2 L:2
 P5031_Nate | $3200 | [8I] [1F] [8F] [9G] [10I] | A:7 C:1 F:2
 
-P2427_Rose [Choose Shares: C I A F L] [End Turn]
+P2427_Rose [Choose Shares: A C F I L] [End Turn]
 `;
 
 exports[`Game Play > (56) Player 2427_Rose purchases Imperial 1`] = `
@@ -949,7 +949,7 @@ exports[`Game Play > (56) Player 2427_Rose purchases Imperial 1`] = `
 P2427_Rose | $1800 | [11B] [10C] [4G] [11E] | A:3 C:3 F:6 I:3 L:2
 P5031_Nate | $3200 | [8I] [1F] [8F] [9G] [10I] | A:7 C:1 F:2
 
-P2427_Rose [Choose Shares: C I A F L] [End Turn]
+P2427_Rose [Choose Shares: A C F I L] [End Turn]
 `;
 
 exports[`Game Play > (57) Player 2427_Rose purchases Imperial 1`] = `
@@ -1000,7 +1000,7 @@ exports[`Game Play > (59) Player 5031_Nate places tile [10I] 1`] = `
 P2427_Rose | $1400 | [11B] [10C] [4G] [11E] [5H] | A:3 C:3 F:6 I:4 L:2
 P5031_Nate | $3200 | [8I] [1F] [8F] [9G] | A:7 C:1 F:2
 
-P5031_Nate [Choose Shares: C I A F L] [End Turn]
+P5031_Nate [Choose Shares: A C F I L] [End Turn]
 `;
 
 exports[`Game Play > (60) Player 5031_Nate purchases Luxor 1`] = `
@@ -1017,7 +1017,7 @@ exports[`Game Play > (60) Player 5031_Nate purchases Luxor 1`] = `
 P2427_Rose | $1400 | [11B] [10C] [4G] [11E] [5H] | A:3 C:3 F:6 I:4 L:2
 P5031_Nate | $3000 | [8I] [1F] [8F] [9G] | A:7 C:1 F:2 L:1
 
-P5031_Nate [Choose Shares: C I A F L] [End Turn]
+P5031_Nate [Choose Shares: A C F I L] [End Turn]
 `;
 
 exports[`Game Play > (61) Player 5031_Nate purchases Imperial 1`] = `
@@ -1034,7 +1034,7 @@ exports[`Game Play > (61) Player 5031_Nate purchases Imperial 1`] = `
 P2427_Rose | $1400 | [11B] [10C] [4G] [11E] [5H] | A:3 C:3 F:6 I:4 L:2
 P5031_Nate | $2600 | [8I] [1F] [8F] [9G] | A:7 C:1 F:2 I:1 L:1
 
-P5031_Nate [Choose Shares: C I A F L] [End Turn]
+P5031_Nate [Choose Shares: A C F I L] [End Turn]
 `;
 
 exports[`Game Play > (62) Player 5031_Nate purchases Imperial 1`] = `
@@ -1085,7 +1085,7 @@ exports[`Game Play > (64) Player 2427_Rose places tile [11E] 1`] = `
 P2427_Rose | $1400 | [11B] [10C] [4G] [5H] | A:3 C:3 F:6 I:4 L:2
 P5031_Nate | $2200 | [8I] [1F] [8F] [9G] [10B] | A:7 C:1 F:2 I:2 L:1
 
-P2427_Rose [Choose Hotel: T W]
+P2427_Rose [Choose Hotel: W T]
 `;
 
 exports[`Game Play > (65) Player 2427_Rose starts Worldwide 1`] = `
@@ -1102,7 +1102,7 @@ exports[`Game Play > (65) Player 2427_Rose starts Worldwide 1`] = `
 P2427_Rose | $1400 | [11B] [10C] [4G] [5H] | A:3 C:3 F:6 I:4 L:2 W:1
 P5031_Nate | $2200 | [8I] [1F] [8F] [9G] [10B] | A:7 C:1 F:2 I:2 L:1
 
-P2427_Rose [Choose Shares: C I A W F L] [End Turn]
+P2427_Rose [Choose Shares: A C F I W L] [End Turn]
 `;
 
 exports[`Game Play > (66) Player 2427_Rose purchases Continental 1`] = `
@@ -1119,7 +1119,7 @@ exports[`Game Play > (66) Player 2427_Rose purchases Continental 1`] = `
 P2427_Rose | $1000 | [11B] [10C] [4G] [5H] | A:3 C:4 F:6 I:4 L:2 W:1
 P5031_Nate | $2200 | [8I] [1F] [8F] [9G] [10B] | A:7 C:1 F:2 I:2 L:1
 
-P2427_Rose [Choose Shares: C I A W F L] [End Turn]
+P2427_Rose [Choose Shares: A C F I W L] [End Turn]
 `;
 
 exports[`Game Play > (67) Player 2427_Rose purchases Imperial 1`] = `
@@ -1136,7 +1136,7 @@ exports[`Game Play > (67) Player 2427_Rose purchases Imperial 1`] = `
 P2427_Rose | $600 | [11B] [10C] [4G] [5H] | A:3 C:4 F:6 I:5 L:2 W:1
 P5031_Nate | $2200 | [8I] [1F] [8F] [9G] [10B] | A:7 C:1 F:2 I:2 L:1
 
-P2427_Rose [Choose Shares: C I A W F L] [End Turn]
+P2427_Rose [Choose Shares: A C F I W L] [End Turn]
 `;
 
 exports[`Game Play > (68) Player 2427_Rose ends turn 1`] = `
@@ -1170,7 +1170,7 @@ exports[`Game Play > (69) Player 5031_Nate places tile [10B] 1`] = `
 P2427_Rose | $600 | [11B] [10C] [4G] [5H] [2H] | A:3 C:4 F:6 I:5 L:2 W:1
 P5031_Nate | $2200 | [8I] [1F] [8F] [9G] | A:7 C:1 F:2 I:2 L:1
 
-P5031_Nate [Choose Shares: C I A W F L] [End Turn]
+P5031_Nate [Choose Shares: A C F I W L] [End Turn]
 `;
 
 exports[`Game Play > (70) Player 5031_Nate ends turn 1`] = `
@@ -1204,7 +1204,7 @@ exports[`Game Play > (71) Player 2427_Rose places tile [4G] 1`] = `
 P2427_Rose | $600 | [11B] [10C] [5H] [2H] | A:3 C:4 F:6 I:5 L:2 W:1
 P5031_Nate | $2200 | [8I] [1F] [8F] [9G] [8C] | A:7 C:1 F:2 I:2 L:1
 
-P2427_Rose [Choose Shares: C I A W F L] [End Turn]
+P2427_Rose [Choose Shares: A C F I W L] [End Turn]
 `;
 
 exports[`Game Play > (72) Player 2427_Rose ends turn 1`] = `
@@ -1238,7 +1238,7 @@ exports[`Game Play > (73) Player 5031_Nate places tile [8C] 1`] = `
 P2427_Rose | $600 | [11B] [10C] [5H] [2H] [12A] | A:3 C:4 F:6 I:5 L:2 W:1
 P5031_Nate | $2200 | [8I] [1F] [8F] [9G] | A:7 C:1 F:2 I:2 L:1
 
-P5031_Nate [Choose Shares: C I A W F L] [End Turn]
+P5031_Nate [Choose Shares: A C F I W L] [End Turn]
 `;
 
 exports[`Game Play > (74) Player 5031_Nate ends turn 1`] = `
@@ -1289,7 +1289,7 @@ exports[`Game Play > (76) Player 2427_Rose starts Tower 1`] = `
 P2427_Rose | $600 | [10C] [5H] [2H] [12A] | A:3 C:4 F:6 I:5 L:2 T:1 W:1
 P5031_Nate | $2200 | [8I] [1F] [8F] [9G] [4B] | A:7 C:1 F:2 I:2 L:1
 
-P2427_Rose [Choose Shares: C T I A W F L] [End Turn]
+P2427_Rose [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (77) Player 2427_Rose ends turn 1`] = `
@@ -1323,7 +1323,7 @@ exports[`Game Play > (78) Player 5031_Nate places tile [8I] 1`] = `
 P2427_Rose | $600 | [10C] [5H] [2H] [12A] [11H] | A:3 C:4 F:6 I:5 L:2 T:1 W:1
 P5031_Nate | $2200 | [1F] [8F] [9G] [4B] | A:7 C:1 F:2 I:2 L:1
 
-P5031_Nate [Choose Shares: C T I A W F L] [End Turn]
+P5031_Nate [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (79) Player 5031_Nate ends turn 1`] = `
@@ -1357,7 +1357,7 @@ exports[`Game Play > (80) Player 2427_Rose places tile [5H] 1`] = `
 P2427_Rose | $600 | [10C] [2H] [12A] [11H] | A:3 C:4 F:6 I:5 L:2 T:1 W:1
 P5031_Nate | $2200 | [1F] [8F] [9G] [4B] [6D] | A:7 C:1 F:2 I:2 L:1
 
-P2427_Rose [Choose Shares: C T I A W F L] [End Turn]
+P2427_Rose [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (81) Player 2427_Rose ends turn 1`] = `
@@ -1391,7 +1391,7 @@ exports[`Game Play > (82) Player 5031_Nate places tile [6D] 1`] = `
 P2427_Rose | $600 | [10C] [2H] [12A] [11H] [7C] | A:3 C:4 F:6 I:5 L:2 T:1 W:1
 P5031_Nate | $2200 | [1F] [8F] [9G] [4B] | A:7 C:1 F:2 I:2 L:1
 
-P5031_Nate [Choose Shares: C T I A W F L] [End Turn]
+P5031_Nate [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (83) Player 5031_Nate ends turn 1`] = `
@@ -1425,7 +1425,7 @@ exports[`Game Play > (84) Player 2427_Rose places tile [10C] 1`] = `
 P2427_Rose | $600 | [2H] [12A] [11H] [7C] | A:3 C:4 F:6 I:5 L:2 T:1 W:1
 P5031_Nate | $2200 | [1F] [8F] [9G] [4B] [12E] | A:7 C:1 F:2 I:2 L:1
 
-P2427_Rose [Choose Shares: C T I A W F L] [End Turn]
+P2427_Rose [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (85) Player 2427_Rose ends turn 1`] = `
@@ -1459,7 +1459,7 @@ exports[`Game Play > (86) Player 5031_Nate places tile [1F] 1`] = `
 P2427_Rose | $600 | [2H] [12A] [11H] [7C] [8A] | A:3 C:4 F:6 I:5 L:2 T:1 W:1
 P5031_Nate | $2200 | [8F] [9G] [4B] [12E] | A:7 C:1 F:2 I:2 L:1
 
-P5031_Nate [Choose Shares: C T I A W F L] [End Turn]
+P5031_Nate [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (87) Player 5031_Nate ends turn 1`] = `
@@ -1493,7 +1493,7 @@ exports[`Game Play > (88) Player 2427_Rose places tile [11H] 1`] = `
 P2427_Rose | $600 | [2H] [12A] [7C] [8A] | A:3 C:4 F:6 I:5 L:2 T:1 W:1
 P5031_Nate | $2200 | [8F] [9G] [4B] [12E] [5F] | A:7 C:1 F:2 I:2 L:1
 
-P2427_Rose [Choose Shares: C T I A W F L] [End Turn]
+P2427_Rose [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (89) Player 2427_Rose ends turn 1`] = `
@@ -1527,7 +1527,7 @@ exports[`Game Play > (90) Player 5031_Nate places tile [5F] 1`] = `
 P2427_Rose | $600 | [2H] [12A] [7C] [8A] [4H] | A:3 C:4 F:6 I:5 L:2 T:1 W:1
 P5031_Nate | $2200 | [8F] [9G] [4B] [12E] | A:7 C:1 F:2 I:2 L:1
 
-P5031_Nate [Choose Shares: C T I A W F L] [End Turn]
+P5031_Nate [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (91) Player 5031_Nate ends turn 1`] = `
@@ -1561,7 +1561,7 @@ exports[`Game Play > (92) Player 2427_Rose places tile [12A] 1`] = `
 P2427_Rose | $600 | [2H] [7C] [8A] [4H] | A:3 C:4 F:6 I:5 L:2 T:1 W:1
 P5031_Nate | $2200 | [8F] [9G] [4B] [12E] [5G] | A:7 C:1 F:2 I:2 L:1
 
-P2427_Rose [Choose Shares: C T I A W F L] [End Turn]
+P2427_Rose [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (93) Player 2427_Rose ends turn 1`] = `
@@ -1595,7 +1595,7 @@ exports[`Game Play > (94) Player 5031_Nate places tile [4B] 1`] = `
 P2427_Rose | $600 | [2H] [7C] [8A] [4H] [11C] | A:3 C:4 F:6 I:5 L:2 T:1 W:1
 P5031_Nate | $2200 | [8F] [9G] [12E] [5G] | A:7 C:1 F:2 I:2 L:1
 
-P5031_Nate [Choose Shares: C T I A W F L] [End Turn]
+P5031_Nate [Choose Shares: A C F I W T L] [End Turn]
 `;
 
 exports[`Game Play > (95) Player 5031_Nate ends turn 1`] = `
@@ -1663,5 +1663,5 @@ exports[`Game Play > (98) Player 2427_Rose sells 1 orphaned Worldwide share 1`] 
 P2427_Rose | $7000 | [2H] [7C] [8A] [4H] | A:3 C:4 F:6 I:5 L:2 T:1
 P5031_Nate | $2200 | [8F] [9G] [12E] [5G] [1D] | A:7 C:1 F:2 I:2 L:1
 
-P2427_Rose [Choose Shares: C T I A F L] [End Turn]
+P2427_Rose [Choose Shares: A C F I T L] [End Turn]
 `;

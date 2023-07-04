@@ -2,12 +2,19 @@ import {
   AvailableAction,
   AvailableActionType,
 } from "../../../model/available-action";
-import { HotelChainUtils } from "../../../utils/hotel-chain-utils";
+import { Board } from "../../../model/board";
+import { HotelManager } from "../../../model/hotel-manager";
 import { AvailableActionStrategy } from "./available-action-strategy";
 import { AvailablActionStrategyContext } from "./available-action-strategy-context";
 
 export class ChooseHotelStrategy implements AvailableActionStrategy {
-  constructor(private context: AvailablActionStrategyContext) {}
+  private board: Board;
+  private hotelManager: HotelManager;
+
+  constructor(private context: AvailablActionStrategyContext) {
+    this.board = new Board(this.context.boardState);
+    this.hotelManager = new HotelManager(this.context.boardState);
+  }
 
   public isRequired() {
     return true;
@@ -15,9 +22,10 @@ export class ChooseHotelStrategy implements AvailableActionStrategy {
 
   public getAvailableActions(): AvailableAction[] {
     if (this.hotelStarterPlayed()) {
+      const inactiveHotels = this.hotelManager.getInactiveHotels();
       return [
         AvailableActionType.ChooseHotelChain(
-          HotelChainUtils.getInactiveHotelChains(this.context.boardState)
+          inactiveHotels.map((hotel) => hotel.type)
         ),
       ];
     }
@@ -32,7 +40,7 @@ export class ChooseHotelStrategy implements AvailableActionStrategy {
       return false;
     }
 
-    return HotelChainUtils.isHotelStarter(this.context.boardState, placedTile);
+    return this.board.isHotelStarter(placedTile);
   }
 
   private getPlacedTile(): number | null {

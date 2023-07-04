@@ -1,5 +1,4 @@
 import { HotelChainType } from ".";
-import { AvailableShares } from "./available-shares.type";
 
 export interface ChooseTile {
   type: "ChooseTile";
@@ -14,7 +13,7 @@ export interface ChooseHotelChain {
 
 export interface ChooseShares {
   type: "ChooseShares";
-  availableShares: AvailableShares;
+  hotelChains: HotelChainType[];
 }
 
 export interface ChooseToSellOrphanedShare {
@@ -73,9 +72,9 @@ export const AvailableActionType = {
     type: "ChooseHotelChain",
     hotelChains,
   }),
-  ChooseShares: (availableShares: AvailableShares): ChooseShares => ({
+  ChooseShares: (hotelChains: HotelChainType[]): ChooseShares => ({
     type: "ChooseShares",
-    availableShares,
+    hotelChains,
   }),
   ChooseToSellOrphanedShare: (
     hotelChain: HotelChainType,

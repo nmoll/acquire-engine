@@ -14,6 +14,14 @@ export class HotelManager {
     return this.hotelsByType[type];
   }
 
+  getActiveHotels(): Hotel[] {
+    return this.hotels.filter((hotel) => hotel.isActive());
+  }
+
+  getInactiveHotels(): Hotel[] {
+    return this.hotels.filter((hotel) => !hotel.isActive());
+  }
+
   findAllAdjacentToSquare(square: number): Hotel[] {
     return this.hotels.filter((hotel) =>
       hotel.boardSquareIds.some((id) =>

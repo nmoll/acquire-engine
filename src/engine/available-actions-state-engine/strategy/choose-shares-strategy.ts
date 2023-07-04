@@ -1,16 +1,22 @@
 import { GameConfig } from "../../../game-config";
+import { HotelChainType } from "../../../model";
 import {
   AvailableAction,
   AvailableActionType,
 } from "../../../model/available-action";
-import { AvailableShares } from "../../../model/available-shares.type";
-import { HotelChainUtils } from "../../../utils/hotel-chain-utils";
-import { SharesUtils } from "../../../utils/shares-utils";
+import { HotelManager } from "../../../model/hotel-manager";
+import { StockBroker } from "../../../model/stock-broker";
 import { AvailableActionStrategy } from "./available-action-strategy";
 import { AvailablActionStrategyContext } from "./available-action-strategy-context";
 
 export class ChooseSharesStrategy implements AvailableActionStrategy {
-  constructor(private context: AvailablActionStrategyContext) {}
+  private hotelManager: HotelManager;
+  private stockBroker: StockBroker;
+
+  constructor(private context: AvailablActionStrategyContext) {
+    this.hotelManager = new HotelManager(context.boardState);
+    this.stockBroker = new StockBroker(context.sharesState);
+  }
 
   public isRequired(): boolean {
     return false;
@@ -38,23 +44,25 @@ export class ChooseSharesStrategy implements AvailableActionStrategy {
     return purchasedShares >= GameConfig.turn.maxShares;
   }
 
-  private getSharesAvailableToPurchase(): AvailableShares | null {
+  private getSharesAvailableToPurchase(): HotelChainType[] | null {
     if (this.hasPurchasedMaxShares()) {
       return null;
     }
 
-    const hotelChainState = HotelChainUtils.getHotelChainState(
-      this.context.boardState,
-      this.context.sharesState
-    );
+    const playerCash =
+      this.context.cashState[this.context.currentPlayerId] ?? 0;
 
-    if (!Object.keys(hotelChainState).length) {
+    const available = this.hotelManager.getActiveHotels().filter((hotel) => {
+      return (
+        this.stockBroker.getAvailableShares(hotel.type) > 0 &&
+        playerCash >= hotel.getSharesCost()
+      );
+    });
+
+    if (!available.length) {
       return null;
     }
 
-    return SharesUtils.getAvailableSharesForPurchase(
-      hotelChainState,
-      this.context.cashState[this.context.currentPlayerId] ?? 0
-    );
+    return available.map((hotel) => hotel.type);
   }
 }
