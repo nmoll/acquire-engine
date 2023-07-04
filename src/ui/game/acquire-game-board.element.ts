@@ -3,6 +3,9 @@ import { styleMap } from "lit-html/directives/style-map.js";
 import { customElement, property } from "lit/decorators.js";
 import { BoardSquareState } from "../../model";
 import { PlayerAction } from "../../model/player-action";
+import { TileUtils } from "../../utils/tile-utils";
+import { ChooseTile } from "../../model/available-action";
+import { IAvailableActionState } from "../../model/available-action-state";
 
 export interface TileSelectEvent {
   index: number;
@@ -18,8 +21,12 @@ export class AcquireGameBoardElement extends LitElement {
 
     .cell {
       border: 1px solid #374151;
+      color: #374151;
       background-color: #1f2937;
       box-shadow: rgb(0 0 0 / 59%) 0px 2px 4px 0px inset;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   `;
 
@@ -27,6 +34,9 @@ export class AcquireGameBoardElement extends LitElement {
 
   @property()
   boardState!: BoardSquareState[] | undefined;
+
+  @property()
+  availableActions!: IAvailableActionState;
 
   @property()
   availableForSelection!: number[] | undefined;
@@ -43,11 +53,13 @@ export class AcquireGameBoardElement extends LitElement {
       class="cell"
       style="${styleMap(styles)}"
       @click=${() => this.onClick(idx)}
-    ></div>`;
+    >
+      ${TileUtils.getTileDisplay(idx)}
+    </div>`;
   }
 
   private onClick(index: number): void {
-    if (this.isSelectable(index)) {
+    if (this.getTileOptions().available.includes(index)) {
       this.dispatchEvent(
         new CustomEvent<TileSelectEvent>("tile-select", {
           detail: {
@@ -58,15 +70,39 @@ export class AcquireGameBoardElement extends LitElement {
     }
   }
 
-  private isSelectable(idx: number): boolean {
-    return this.availableForSelection?.includes(idx) || false;
+  private getTileOptions(): {
+    available: number[];
+    unavailable: number[];
+  } {
+    const chooseTileAction = this.availableActions.find(
+      (action): action is ChooseTile => action.type === "ChooseTile"
+    );
+    if (chooseTileAction) {
+      return {
+        available: chooseTileAction.available,
+        unavailable: chooseTileAction.unavailable,
+      };
+    }
+    return {
+      available: [],
+      unavailable: [],
+    };
   }
 
   private getSquareStyles(state: BoardSquareState, idx: number) {
-    if (this.isSelectable(idx)) {
+    if (this.getTileOptions().available.includes(idx)) {
       return {
         borderColor: "#22c55e",
+        color: "#22c55e",
         cursor: "pointer",
+      };
+    }
+
+    if (this.getTileOptions().unavailable.includes(idx)) {
+      return {
+        borderColor: "#dc2626",
+        color: "#dc2626",
+        cursor: "not-allowed",
       };
     }
 

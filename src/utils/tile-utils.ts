@@ -30,7 +30,14 @@ const getNextTile = (
   return tileBag[getMaxTileIdx(tileBag, concatPlayerTiles(tileState)) + 1];
 };
 
+const getTileDisplay = (tile: number): string => {
+  const x = tile % 12;
+  const y = Math.floor(tile / 12);
+  return `${x + 1}${["A", "B", "C", "D", "E", "F", "G", "H", "I"][y]}`;
+};
+
 export const TileUtils = {
+  getTileDisplay,
   getSortedBag,
   getNextTile,
 };

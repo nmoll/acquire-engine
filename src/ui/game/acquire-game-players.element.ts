@@ -13,7 +13,12 @@ export class AcquireGamePlayersElement extends LitElement {
     }
 
     .player {
-      padding: 0.5rem;
+      padding: 0.25rem;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      justify-content: center;
     }
 
     .player-name {
@@ -22,6 +27,7 @@ export class AcquireGamePlayersElement extends LitElement {
     }
 
     .player-holdings {
+      grid-column: 1 / -1;
       display: flex;
       gap: 0.25rem;
       margin-top: 0.25rem;
@@ -39,29 +45,6 @@ export class AcquireGamePlayersElement extends LitElement {
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    .current-turn-indicator {
-      border: solid;
-      border-width: 0 2px 2px 0;
-      display: none;
-      padding: 3px;
-    }
-
-    .current-turn .current-turn-indicator {
-      display: inline-block;
-    }
-
-    .right {
-      transform: rotate(-45deg);
-      -webkit-transform: rotate(-45deg);
-      margin-right: 0.5rem;
-    }
-
-    .left {
-      transform: rotate(135deg);
-      -webkit-transform: rotate(135deg);
-      margin-left: 0.5rem;
     }
   `;
 
@@ -99,15 +82,9 @@ export class AcquireGamePlayersElement extends LitElement {
             ? "current-turn"
             : ""}"
         >
-          <div class="player-name">
-            <span class="current-turn-indicator right"></span>
-            ${PlayerUtils.getDisplayName(playerId)}
-            <span class="current-turn-indicator left"></span>
-          </div>
-          <div class="player-holdings">
-            <span class="player-cash">$${this.cashState[playerId] ?? 0}</span>
-            ${this.renderShares(playerId)}
-          </div>
+          <div class="player-name">${PlayerUtils.getDisplayName(playerId)}</div>
+          <span class="player-cash">$${this.cashState[playerId] ?? 0}</span>
+          <div class="player-holdings">${this.renderShares(playerId)}</div>
         </div>`
     );
   }

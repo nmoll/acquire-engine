@@ -120,6 +120,11 @@ export class AcquireGameElement extends LitElement {
       return;
     }
 
+    const availableActions =
+      this.state.currentPlayerIdState === this.playerId
+        ? this.state.availableActionsState
+        : [];
+
     return html`<div class="app ${this.orientation}">
       <acquire-game-players
         .players="${this.game.playerIds}"
@@ -130,7 +135,7 @@ export class AcquireGameElement extends LitElement {
 
       <acquire-game-board
         .boardState="${this.state.boardState}"
-        .availableForSelection="${this.state.tileState[this.playerId]}"
+        .availableActions="${availableActions}"
         @tile-select="${(e: CustomEvent<TileSelectEvent>) =>
           this.onTileSelect(e)}"
       >
