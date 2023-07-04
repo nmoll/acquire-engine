@@ -761,5 +761,9 @@ const game: {
       playerId: "3658_Nate",
       boardSquareId: 72,
     },
+    {
+      type: "EndGame",
+      playerId: "3658_Nate",
+    },
   ],
 };

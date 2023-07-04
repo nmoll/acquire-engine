@@ -50,6 +50,10 @@ const computeState = (
     return [];
   }
 
+  if (turnContext.actionResult.type === "Game Ended") {
+    return [];
+  }
+
   const context: AvailablActionStrategyContext = {
     boardState,
     sharesState,

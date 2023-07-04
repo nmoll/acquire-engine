@@ -2,6 +2,7 @@ import { GameConfig } from "../../game-config";
 import { IGameState } from "../../model";
 import { ICashState } from "../../model/cash-state";
 import { HotelManager } from "../../model/hotel-manager";
+import { StockBroker } from "../../model/stock-broker";
 import { TurnContext } from "../../model/turn-context";
 
 const getInitialState = (playerIds: string[]): ICashState =>
@@ -18,6 +19,7 @@ const computeState = (
   turnContext: TurnContext
 ): ICashState => {
   const hotelManager = new HotelManager(state.boardState);
+  const stockBroker = new StockBroker(state.sharesState);
 
   switch (turnContext.actionResult.type) {
     case "Shares Purchased":
@@ -44,6 +46,22 @@ const computeState = (
         }),
         state.cashState
       );
+    case "Game Ended":
+      const playerIds = Object.keys(state.cashState);
+      const activeHotels = hotelManager.getActiveHotels();
+      const cashState = { ...state.cashState };
+
+      for (const hotel of activeHotels) {
+        const cashAward = stockBroker.getCashAwardedOnDissolve(hotel);
+
+        for (const playerId of playerIds) {
+          const shares = state.sharesState[playerId]?.[hotel.type] ?? 0;
+          const totalSharesAmount = shares * hotel.getSharesCost();
+          cashState[playerId] += totalSharesAmount + (cashAward[playerId] ?? 0);
+        }
+      }
+
+      return cashState;
   }
 
   return state.cashState;

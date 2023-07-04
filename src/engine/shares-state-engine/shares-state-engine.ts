@@ -25,6 +25,10 @@ const computeState = (
 ): ISharesState => {
   const playerAction = result.action;
 
+  if (result.type === "Game Ended") {
+    return getInitialState(Object.keys(sharesState));
+  }
+
   return ALL_HOTELS.reduce(
     (state, hotel) => ({
       ...state,

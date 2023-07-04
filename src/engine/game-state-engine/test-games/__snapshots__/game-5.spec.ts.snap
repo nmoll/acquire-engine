@@ -2685,3 +2685,20 @@ P5975_Joe | $17300 | [2I] [1D] [3I] [4I] [12I] | C:8 F:3
 
 P3658_Nate [Choose Shares: C F] [End Turn] [End Game]
 `;
+
+exports[`Game Play > (159) Player 3658_Nate ends game 1`] = `
+ - - 0 - 0 - - - 0 - 0 -
+ - - - - - 0 - - - 0 - -
+ F F F - - - F F F - - 0
+ - F F F F F F - F - C -
+ - F F - - - F F - C C C
+ F F - C C - - F - C C C
+ F F - C C C C - C C - -
+ - - - C C - C C C C C -
+ 0 - - - C C C - C - C -
+
+P3658_Nate | $51300 | [1B] [6A] [5B] [4B] | 
+P5975_Joe | $42500 | [2I] [1D] [3I] [4I] [12I] | 
+
+P3658_Nate 
+`;
