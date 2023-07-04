@@ -43,6 +43,10 @@ export class AcquireWaitingRoomElement extends LitElement {
       cursor: not-allowed;
     }
 
+    .text-primary {
+      color: var(--colors-primary);
+    }
+
     ul {
       list-style: none;
       padding: 0;
@@ -89,6 +93,9 @@ export class AcquireWaitingRoomElement extends LitElement {
 
   @property()
   hostId!: string;
+
+  @property()
+  gameId!: string;
 
   @property()
   gameUrl!: string;
@@ -146,6 +153,7 @@ export class AcquireWaitingRoomElement extends LitElement {
   render() {
     return html`
       <acquire-page title="Waiting Room">
+        <h3>Game ID: <span class="text-primary">${this.gameId}</span></h3>
         <ul>
           ${this.playerIds.map(
             (playerId) => html`<li>${PlayerUtils.getDisplayName(playerId)}</li>`

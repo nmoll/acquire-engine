@@ -5,7 +5,8 @@ import "./acquire-create-game.element";
 import "./acquire-create-username.element";
 import { SaveUsernameEvent } from "./acquire-create-username.element";
 import "./acquire-waiting-room.element";
-import { JoinGameEvent } from "./acquire-waiting-room.element";
+import { JoinGameEvent as WaitingRoomJoinGameEvent } from "./acquire-waiting-room.element";
+import { JoinGameEvent as JoinGameByIdEvent } from "./acquire-create-game.element";
 import "./game/acquire-game.element";
 
 @customElement("acquire-app")
@@ -44,8 +45,16 @@ export class AcquireAppElement extends LitElement {
     this.playerId = this.acquireAppService.createPlayerId(username);
   }
 
-  joinGame(playerId: string, gameId: string) {
+  addPlayerToGame(playerId: string, gameId: string) {
     this.acquireAppService.addPlayerToGame(playerId, gameId);
+  }
+
+  navigateToGame(gameId: string) {
+    window.location.href = this.getGameUrl(gameId);
+  }
+
+  goToHome() {
+    window.location.href = location.origin;
   }
 
   createNewGame(hostId: string) {
@@ -80,11 +89,14 @@ export class AcquireAppElement extends LitElement {
       case "not created":
         return html`<acquire-create-game
           @create="${() => this.createNewGame(playerId)}"
+          @join="${(event: CustomEvent<JoinGameByIdEvent>) =>
+            this.navigateToGame(event.detail.gameId)}"
         ></acquire-create-game>`;
       case "loading":
         return html`Loading game...`;
       case "not found":
-        return html`No game found!`;
+        return html`No game found!
+          <button @click="${() => this.goToHome()}">Go to home</button>`;
       case "loaded":
         switch (gameState.game.state) {
           case "not started":
@@ -92,9 +104,10 @@ export class AcquireAppElement extends LitElement {
               .playerIds="${gameState.game.playerIds}"
               .playerId="${playerId}"
               .hostId="${gameState.game.hostId}"
+              .gameId="${gameState.game.id}"
               .gameUrl="${this.getGameUrl(gameState.game.id)}"
-              @join-game="${(e: CustomEvent<JoinGameEvent>) =>
-                this.joinGame(e.detail.playerId, gameState.game.id)}"
+              @join-game="${(e: CustomEvent<WaitingRoomJoinGameEvent>) =>
+                this.addPlayerToGame(e.detail.playerId, gameState.game.id)}"
               @start-game="${() => this.startGame(gameState.game.id)}"
             ></acquire-waiting-room>`;
           case "started":

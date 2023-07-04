@@ -30,7 +30,18 @@ export class AcquireAppService {
   }
 
   getGame(gameId: string, callback: (gameState: GameState) => void) {
-    this.db.getGame(gameId, (game) =>
+    let gotResponse = false;
+
+    setTimeout(() => {
+      if (!gotResponse) {
+        callback({
+          type: "not found",
+        });
+      }
+    }, 3000);
+
+    this.db.getGame(gameId, (game) => {
+      gotResponse = true;
       callback(
         game
           ? {
@@ -40,15 +51,27 @@ export class AcquireAppService {
           : {
               type: "not found",
             }
-      )
-    );
+      );
+    });
   }
 
   onGameChanged(gameId: string, callback: (gameState: GameState) => void) {
     callback({
       type: "loading",
     });
-    this.db.onGameChanged(gameId, (game) =>
+
+    let gotResponse = false;
+
+    setTimeout(() => {
+      if (!gotResponse) {
+        callback({
+          type: "not found",
+        });
+      }
+    }, 3000);
+
+    this.db.onGameChanged(gameId, (game) => {
+      gotResponse = true;
       callback(
         game
           ? {
@@ -58,8 +81,8 @@ export class AcquireAppService {
           : {
               type: "not found",
             }
-      )
-    );
+      );
+    });
   }
 
   getPlayerId(): string | null {
@@ -82,7 +105,7 @@ export class AcquireAppService {
   }
 
   createNewGame(hostId: string): string | null {
-    const gameId = `${Math.round(Math.random() * 9999999)}`;
+    const gameId = this.generateGameId();
     this.db.createGame({
       id: gameId,
       randomSeed: Math.floor(Math.random() * 999),
@@ -96,5 +119,17 @@ export class AcquireAppService {
     window.history.replaceState({}, "", url.toString());
 
     return gameId;
+  }
+
+  private generateGameId(): string {
+    // create game id of 3 random number and 3 random capitalized letters
+    const randomNumbers = Math.floor(Math.random() * 999);
+    const randomLetters = Math.random()
+      .toString(36)
+      .replace(/[^a-z]+/g, "")
+      .substr(0, 3)
+      .toUpperCase();
+
+    return `${randomNumbers}${randomLetters}`;
   }
 }
