@@ -27,6 +27,7 @@ export class AcquireGameBoardElement extends LitElement {
       display: flex;
       justify-content: center;
       align-items: center;
+      font-size: 0.75rem;
     }
   `;
 
@@ -54,7 +55,7 @@ export class AcquireGameBoardElement extends LitElement {
       style="${styleMap(styles)}"
       @click=${() => this.onClick(idx)}
     >
-      ${TileUtils.getTileDisplay(idx)}
+      ${this.getTileDisplay(state, idx)}
     </div>`;
   }
 
@@ -89,6 +90,13 @@ export class AcquireGameBoardElement extends LitElement {
     };
   }
 
+  private getTileDisplay(state: BoardSquareState, idx: number): string {
+    if (state.type === "HasHotelChain") {
+      return state.hotelChainType.charAt(0).toUpperCase();
+    }
+    return TileUtils.getTileDisplay(idx);
+  }
+
   private getSquareStyles(state: BoardSquareState, idx: number) {
     if (this.getTileOptions().available.includes(idx)) {
       return {
@@ -117,6 +125,8 @@ export class AcquireGameBoardElement extends LitElement {
         return {
           borderColor: `var(--colors-${state.hotelChainType})`,
           backgroundColor: `var(--colors-${state.hotelChainType})`,
+          color: "#fff",
+          boxShadow: "none",
         };
       default:
         return {};
