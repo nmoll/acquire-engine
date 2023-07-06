@@ -3,6 +3,7 @@ import {
   AvailableAction,
   AvailableActionType,
 } from "../../../model/available-action";
+import { StockBroker } from "../../../model/stock-broker";
 import { ActionUtils } from "../../../utils/action-utils";
 import { isDefined } from "../../../utils/is-defined-util";
 import { SharesUtils } from "../../../utils/shares-utils";
@@ -10,7 +11,11 @@ import { AvailableActionStrategy } from "./available-action-strategy";
 import { AvailablActionStrategyContext } from "./available-action-strategy-context";
 
 export class ChooseOrphanedShareStrategy implements AvailableActionStrategy {
-  constructor(private context: AvailablActionStrategyContext) {}
+  private stockBroker: StockBroker;
+
+  constructor(private context: AvailablActionStrategyContext) {
+    this.stockBroker = new StockBroker(this.context.sharesState);
+  }
 
   isRequired(): boolean {
     return true;
@@ -69,6 +74,9 @@ export class ChooseOrphanedShareStrategy implements AvailableActionStrategy {
       return [];
     }
 
+    const availableMajorityShares =
+      this.stockBroker.getAvailableShares(majorityHotelChain);
+
     return [
       AvailableActionType.ChooseToSellOrphanedShare(
         minorityHotelChain,
@@ -78,7 +86,7 @@ export class ChooseOrphanedShareStrategy implements AvailableActionStrategy {
         minorityHotelChain,
         remainingShares
       ),
-      remainingShares > 1
+      remainingShares > 1 && availableMajorityShares >= 1
         ? AvailableActionType.ChooseToTradeOrphanedShare(
             minorityHotelChain,
             majorityHotelChain,

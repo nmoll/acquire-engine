@@ -3722,3 +3722,207 @@ P5031_Nate | $23400 | [10B] [9E] [1E] [6B] [12E] | A:13 F:9 T:8 W:4
 
 P8143_Rowan [Choose Tile: [11C] [9B] [8E] [12D] (unavailable: [4C])]
 `;
+
+exports[`Game Play > (220) Player 8143_Rowan places tile [8E] 1`] = `
+ 0 - 0 - T T T T T T T T
+ - L - T T - - T - - - T
+ L L - - - - - T T T - T
+ - - F F F F - T T T - -
+ - F F - - - T T - T - -
+ F F - 0 - T T - - T T -
+ F - - - - T T - - - T T
+ F F F F - T - - W - T T
+ F F - F - - - - W - - -
+
+P8143_Rowan | $13300 | [11C] [9B] [4C] [12D] | A:9 F:9 L:4 T:8 W:6
+P5031_Nate | $30400 | [10B] [9E] [1E] [6B] [12E] | A:13 F:9 T:8 W:4
+
+P8143_Rowan [Sell (1/9) American Share] [Keep (1/9) American Share] [Trade (2/9) American for 1 Tower]
+`;
+
+exports[`Game Play > (221) Player 8143_Rowan trades 2 American -> Tower 1`] = `
+ 0 - 0 - T T T T T T T T
+ - L - T T - - T - - - T
+ L L - - - - - T T T - T
+ - - F F F F - T T T - -
+ - F F - - - T T - T - -
+ F F - 0 - T T - - T T -
+ F - - - - T T - - - T T
+ F F F F - T - - W - T T
+ F F - F - - - - W - - -
+
+P8143_Rowan | $13300 | [11C] [9B] [4C] [12D] | A:7 F:9 L:4 T:9 W:6
+P5031_Nate | $30400 | [10B] [9E] [1E] [6B] [12E] | A:13 F:9 T:8 W:4
+
+P8143_Rowan [Sell (1/7) American Share] [Keep (1/7) American Share] [Trade (2/7) American for 1 Tower]
+`;
+
+exports[`Game Play > (222) Player 8143_Rowan trades 2 American -> Tower 1`] = `
+ 0 - 0 - T T T T T T T T
+ - L - T T - - T - - - T
+ L L - - - - - T T T - T
+ - - F F F F - T T T - -
+ - F F - - - T T - T - -
+ F F - 0 - T T - - T T -
+ F - - - - T T - - - T T
+ F F F F - T - - W - T T
+ F F - F - - - - W - - -
+
+P8143_Rowan | $13300 | [11C] [9B] [4C] [12D] | A:5 F:9 L:4 T:10 W:6
+P5031_Nate | $30400 | [10B] [9E] [1E] [6B] [12E] | A:13 F:9 T:8 W:4
+
+P8143_Rowan [Sell (1/5) American Share] [Keep (1/5) American Share] [Trade (2/5) American for 1 Tower]
+`;
+
+exports[`Game Play > (223) Player 8143_Rowan trades 2 American -> Tower 1`] = `
+ 0 - 0 - T T T T T T T T
+ - L - T T - - T - - - T
+ L L - - - - - T T T - T
+ - - F F F F - T T T - -
+ - F F - - - T T - T - -
+ F F - 0 - T T - - T T -
+ F - - - - T T - - - T T
+ F F F F - T - - W - T T
+ F F - F - - - - W - - -
+
+P8143_Rowan | $13300 | [11C] [9B] [4C] [12D] | A:3 F:9 L:4 T:11 W:6
+P5031_Nate | $30400 | [10B] [9E] [1E] [6B] [12E] | A:13 F:9 T:8 W:4
+
+P8143_Rowan [Sell (1/3) American Share] [Keep (1/3) American Share] [Trade (2/3) American for 1 Tower]
+`;
+
+exports[`Game Play > (224) Player 8143_Rowan trades 2 American -> Tower 1`] = `
+ 0 - 0 - T T T T T T T T
+ - L - T T - - T - - - T
+ L L - - - - - T T T - T
+ - - F F F F - T T T - -
+ - F F - - - T T - T - -
+ F F - 0 - T T - - T T -
+ F - - - - T T - - - T T
+ F F F F - T - - W - T T
+ F F - F - - - - W - - -
+
+P8143_Rowan | $13300 | [11C] [9B] [4C] [12D] | A:1 F:9 L:4 T:12 W:6
+P5031_Nate | $30400 | [10B] [9E] [1E] [6B] [12E] | A:13 F:9 T:8 W:4
+
+P8143_Rowan [Sell (1/1) American Share] [Keep (1/1) American Share]
+`;
+
+exports[`Game Play > (225) Player 8143_Rowan sells 1 orphaned American share 1`] = `
+ 0 - 0 - T T T T T T T T
+ - L - T T - - T - - - T
+ L L - - - - - T T T - T
+ - - F F F F - T T T - -
+ - F F - - - T T - T - -
+ F F - 0 - T T - - T T -
+ F - - - - T T - - - T T
+ F F F F - T - - W - T T
+ F F - F - - - - W - - -
+
+P8143_Rowan | $14000 | [11C] [9B] [4C] [12D] | F:9 L:4 T:12 W:6
+P5031_Nate | $30400 | [10B] [9E] [1E] [6B] [12E] | A:13 F:9 T:8 W:4
+
+P5031_Nate [Sell (1/13) American Share] [Keep (1/13) American Share] [Trade (2/13) American for 1 Tower]
+`;
+
+exports[`Game Play > (226) Player 5031_Nate trades 2 American -> Tower 1`] = `
+ 0 - 0 - T T T T T T T T
+ - L - T T - - T - - - T
+ L L - - - - - T T T - T
+ - - F F F F - T T T - -
+ - F F - - - T T - T - -
+ F F - 0 - T T - - T T -
+ F - - - - T T - - - T T
+ F F F F - T - - W - T T
+ F F - F - - - - W - - -
+
+P8143_Rowan | $14000 | [11C] [9B] [4C] [12D] | F:9 L:4 T:12 W:6
+P5031_Nate | $30400 | [10B] [9E] [1E] [6B] [12E] | A:11 F:9 T:9 W:4
+
+P5031_Nate [Sell (1/11) American Share] [Keep (1/11) American Share] [Trade (2/11) American for 1 Tower]
+`;
+
+exports[`Game Play > (227) Player 5031_Nate trades 2 American -> Tower 1`] = `
+ 0 - 0 - T T T T T T T T
+ - L - T T - - T - - - T
+ L L - - - - - T T T - T
+ - - F F F F - T T T - -
+ - F F - - - T T - T - -
+ F F - 0 - T T - - T T -
+ F - - - - T T - - - T T
+ F F F F - T - - W - T T
+ F F - F - - - - W - - -
+
+P8143_Rowan | $14000 | [11C] [9B] [4C] [12D] | F:9 L:4 T:12 W:6
+P5031_Nate | $30400 | [10B] [9E] [1E] [6B] [12E] | A:9 F:9 T:10 W:4
+
+P5031_Nate [Sell (1/9) American Share] [Keep (1/9) American Share] [Trade (2/9) American for 1 Tower]
+`;
+
+exports[`Game Play > (228) Player 5031_Nate trades 2 American -> Tower 1`] = `
+ 0 - 0 - T T T T T T T T
+ - L - T T - - T - - - T
+ L L - - - - - T T T - T
+ - - F F F F - T T T - -
+ - F F - - - T T - T - -
+ F F - 0 - T T - - T T -
+ F - - - - T T - - - T T
+ F F F F - T - - W - T T
+ F F - F - - - - W - - -
+
+P8143_Rowan | $14000 | [11C] [9B] [4C] [12D] | F:9 L:4 T:12 W:6
+P5031_Nate | $30400 | [10B] [9E] [1E] [6B] [12E] | A:7 F:9 T:11 W:4
+
+P5031_Nate [Sell (1/7) American Share] [Keep (1/7) American Share] [Trade (2/7) American for 1 Tower]
+`;
+
+exports[`Game Play > (229) Player 5031_Nate trades 2 American -> Tower 1`] = `
+ 0 - 0 - T T T T T T T T
+ - L - T T - - T - - - T
+ L L - - - - - T T T - T
+ - - F F F F - T T T - -
+ - F F - - - T T - T - -
+ F F - 0 - T T - - T T -
+ F - - - - T T - - - T T
+ F F F F - T - - W - T T
+ F F - F - - - - W - - -
+
+P8143_Rowan | $14000 | [11C] [9B] [4C] [12D] | F:9 L:4 T:12 W:6
+P5031_Nate | $30400 | [10B] [9E] [1E] [6B] [12E] | A:5 F:9 T:12 W:4
+
+P5031_Nate [Sell (1/5) American Share] [Keep (1/5) American Share] [Trade (2/5) American for 1 Tower]
+`;
+
+exports[`Game Play > (230) Player 5031_Nate trades 2 American -> Tower 1`] = `
+ 0 - 0 - T T T T T T T T
+ - L - T T - - T - - - T
+ L L - - - - - T T T - T
+ - - F F F F - T T T - -
+ - F F - - - T T - T - -
+ F F - 0 - T T - - T T -
+ F - - - - T T - - - T T
+ F F F F - T - - W - T T
+ F F - F - - - - W - - -
+
+P8143_Rowan | $14000 | [11C] [9B] [4C] [12D] | F:9 L:4 T:12 W:6
+P5031_Nate | $30400 | [10B] [9E] [1E] [6B] [12E] | A:3 F:9 T:13 W:4
+
+P5031_Nate [Sell (1/3) American Share] [Keep (1/3) American Share]
+`;
+
+exports[`Game Play > (231) Player 5031_Nate trades 2 American -> Tower 1`] = `
+ 0 - 0 - T T T T T T T T
+ - L - T T - - T - - - T
+ L L - - - - - T T T - T
+ - - F F F F - T T T - -
+ - F F - - - T T - T - -
+ F F - 0 - T T - - T T -
+ F - - - - T T - - - T T
+ F F F F - T - - W - T T
+ F F - F - - - - W - - -
+
+P8143_Rowan | $14000 | [11C] [9B] [4C] [12D] | F:9 L:4 T:12 W:6
+P5031_Nate | $30400 | [10B] [9E] [1E] [6B] [12E] | A:3 F:9 T:13 W:4
+
+P5031_Nate [Sell (1/3) American Share] [Keep (1/3) American Share]
+`;
