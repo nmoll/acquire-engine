@@ -30,6 +30,16 @@ export class HotelManager {
     );
   }
 
+  /**
+   * A square is considered "dead" if it merges 2 companies that are safe.
+   */
+  isDeadSquare(square: number): boolean {
+    return (
+      this.findAllAdjacentToSquare(square).filter((hotel) => hotel.isSafe())
+        .length >= 2
+    );
+  }
+
   private get hotels(): Hotel[] {
     return Object.values(this.hotelsByType);
   }

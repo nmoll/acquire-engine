@@ -5,8 +5,7 @@ import { playAndRecordActions } from "../../../test/helpers";
 
 /**
  * This tests:
- *  - Cannot merge 2 safe companies
- *  - Cannot trade 2 -> 1 if majority shares are sold out
+ *  - Dead chips are replaced when turn is ended
  */
 it("Game Play", () => {
   playAndRecordActions(game.gameInstance, game.actions);
@@ -1049,102 +1048,6 @@ const game: {
     {
       type: "EndTurn",
       playerId: "8143_Rowan",
-    },
-    {
-      type: "PlaceTile",
-      playerId: "5031_Nate",
-      boardSquareId: 10,
-    },
-    {
-      type: "TradeOrphanedShare",
-      playerId: "5031_Nate",
-      hotelChain: "Continental",
-      hotelChainToReceive: "Tower",
-    },
-    {
-      type: "TradeOrphanedShare",
-      playerId: "5031_Nate",
-      hotelChain: "Continental",
-      hotelChainToReceive: "Tower",
-    },
-    {
-      type: "SellOrphanedShare",
-      playerId: "8143_Rowan",
-      hotelChain: "Continental",
-    },
-    {
-      type: "EndTurn",
-      playerId: "5031_Nate",
-    },
-    {
-      type: "PlaceTile",
-      playerId: "8143_Rowan",
-      boardSquareId: 55,
-    },
-    {
-      type: "TradeOrphanedShare",
-      playerId: "8143_Rowan",
-      hotelChain: "American",
-      hotelChainToReceive: "Tower",
-    },
-    {
-      type: "TradeOrphanedShare",
-      playerId: "8143_Rowan",
-      hotelChain: "American",
-      hotelChainToReceive: "Tower",
-    },
-    {
-      type: "TradeOrphanedShare",
-      playerId: "8143_Rowan",
-      hotelChain: "American",
-      hotelChainToReceive: "Tower",
-    },
-    {
-      type: "TradeOrphanedShare",
-      playerId: "8143_Rowan",
-      hotelChain: "American",
-      hotelChainToReceive: "Tower",
-    },
-    {
-      type: "SellOrphanedShare",
-      playerId: "8143_Rowan",
-      hotelChain: "American",
-    },
-    {
-      type: "TradeOrphanedShare",
-      playerId: "5031_Nate",
-      hotelChain: "American",
-      hotelChainToReceive: "Tower",
-    },
-    {
-      type: "TradeOrphanedShare",
-      playerId: "5031_Nate",
-      hotelChain: "American",
-      hotelChainToReceive: "Tower",
-    },
-    {
-      type: "TradeOrphanedShare",
-      playerId: "5031_Nate",
-      hotelChain: "American",
-      hotelChainToReceive: "Tower",
-    },
-    {
-      type: "TradeOrphanedShare",
-      playerId: "5031_Nate",
-      hotelChain: "American",
-      hotelChainToReceive: "Tower",
-    },
-    {
-      type: "TradeOrphanedShare",
-      playerId: "5031_Nate",
-      hotelChain: "American",
-      hotelChainToReceive: "Tower",
-    },
-    {
-      type: "TradeOrphanedShare",
-      playerId: "5031_Nate",
-      hotelChain: "American",
-      hotelChainToReceive: "Tower",
     },
   ],
 };

@@ -61,10 +61,7 @@ export class ChooseTileStrategy implements AvailableActionStrategy {
       return false;
     }
 
-    const adjacentHotels = this.hotelManager.findAllAdjacentToSquare(tile);
-    const safeHotels = adjacentHotels.filter((hotel) => hotel.isSafe());
-
-    if (safeHotels.length >= 2) {
+    if (this.hotelManager.isDeadSquare(tile)) {
       return false;
     }
 

@@ -1,6 +1,8 @@
 import { GameConfig } from "../../game-config";
+import { BoardSquareState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { ActionLog } from "../../model/action-log";
+import { HotelManager } from "../../model/hotel-manager";
 import { PlayerAction } from "../../model/player-action";
 import { PlayerActionResult } from "../../model/player-action-result";
 import { ITileState } from "../../model/tile-state";
@@ -20,21 +22,30 @@ export const computeState = (
   gameInstance: IAcquireGameInstance,
   actionResult: PlayerActionResult,
   tileState: ITileState,
+  boardState: BoardSquareState[],
   gameLog: ActionLog[]
 ): ITileState => {
+  const hotelManager = new HotelManager(boardState);
+
   const actions = gameLog.map((log) => log.action);
 
   const tileBag = TileUtils.getSortedBag(gameInstance.randomSeed);
   const playerAction = actionResult.action;
+  const playerId = playerAction.playerId;
 
   if (playerAction.type === "PlaceTile") {
-    return discardPlayerTile(
-      playerAction.playerId,
-      playerAction.boardSquareId,
-      tileState
-    );
+    return discardPlayerTile(playerId, playerAction.boardSquareId, tileState);
   } else if (playerAction.type === "EndTurn") {
-    return addPlayerTile(playerAction.playerId, tileBag, tileState, actions);
+    for (const tile of tileState[playerId]) {
+      if (hotelManager.isDeadSquare(tile)) {
+        tileState = discardPlayerTile(playerId, tile, tileState);
+        tileState = addPlayerTile(playerId, tileBag, tileState, actions);
+      }
+    }
+
+    tileState = addPlayerTile(playerId, tileBag, tileState, actions);
+
+    return tileState;
   } else {
     return tileState;
   }

@@ -66,6 +66,7 @@ const computeGameState = (
       gameInstance,
       actionResult,
       state.tileState,
+      boardState,
       gameLog
     );
 

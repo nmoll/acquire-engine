@@ -62,7 +62,13 @@ describe("TileStateEngine", () => {
     };
 
     expect(
-      TileStateEngine.computeState(gameInstance, actionResult, tileState, [])
+      TileStateEngine.computeState(
+        gameInstance,
+        actionResult,
+        tileState,
+        [],
+        []
+      )
     ).toEqual(expected);
   });
 
@@ -74,6 +80,7 @@ describe("TileStateEngine", () => {
       gameInstance,
       actionResult,
       initialState,
+      [],
       []
     );
 
@@ -91,6 +98,7 @@ describe("TileStateEngine", () => {
       gameInstance,
       actionResult,
       tileState,
+      [],
       []
     );
 
@@ -119,7 +127,7 @@ describe("TileStateEngine", () => {
     };
 
     expect(
-      TileStateEngine.computeState(instance, actionResult, tileState, [])
+      TileStateEngine.computeState(instance, actionResult, tileState, [], [])
     ).toEqual(expected);
   });
 });

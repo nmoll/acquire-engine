@@ -4,6 +4,10 @@ import { PlayerAction, PlayerActionType } from "../../../model/player-action";
 import { createGameInstance } from "../../../test/factory/game-instance.factory";
 import { playAndRecordActions, tile } from "../../../test/helpers";
 
+/**
+ * This tests:
+ *  - Cannot trade 2 -> 1 if majority shares are sold out
+ */
 it("Game Play", () => {
   playAndRecordActions(gameInstance, actions);
 });
@@ -183,46 +187,4 @@ const actions: PlayerAction[] = [
   PlayerActionType.EndTurn("1"),
 
   PlayerActionType.PlaceTile("2", tile("3G")),
-  PlayerActionType.TradeOrphanedShare("3", "Imperial", "American"),
-  PlayerActionType.SellOrphanedShare("3", "Imperial"),
-  PlayerActionType.KeepOrphanedShare("3", "Imperial"),
-  PlayerActionType.SellOrphanedShare("4", "Imperial"),
-  PlayerActionType.TradeOrphanedShare("4", "Imperial", "American"),
-  PlayerActionType.EndTurn("2"),
-
-  PlayerActionType.PlaceTile("3", tile("5A")),
-  PlayerActionType.StartHotelChain("3", "Imperial"),
-  PlayerActionType.PurchaseShares("3", "Imperial"),
-  PlayerActionType.PurchaseShares("3", "Imperial"),
-  PlayerActionType.PurchaseShares("3", "Imperial"),
-  PlayerActionType.EndTurn("3"),
-
-  PlayerActionType.PlaceTile("4", tile("12G")),
-  PlayerActionType.PurchaseShares("4", "Festival"),
-  PlayerActionType.PurchaseShares("4", "Festival"),
-  PlayerActionType.PurchaseShares("4", "Festival"),
-  PlayerActionType.EndTurn("4"),
-
-  PlayerActionType.PlaceTile("1", tile("10A")),
-  PlayerActionType.EndTurn("1"),
-
-  PlayerActionType.PlaceTile("2", tile("12I")),
-  PlayerActionType.EndTurn("2"),
-
-  PlayerActionType.PlaceTile("3", tile("1B")),
-  PlayerActionType.PurchaseShares("3", "Continental"),
-  PlayerActionType.PurchaseShares("3", "Continental"),
-  PlayerActionType.PurchaseShares("3", "Continental"),
-  PlayerActionType.EndTurn("3"),
-
-  PlayerActionType.PlaceTile("4", tile("10I")),
-  PlayerActionType.EndTurn("4"),
-
-  PlayerActionType.PlaceTile("1", tile("2A")),
-  PlayerActionType.EndTurn("1"),
-
-  PlayerActionType.PlaceTile("2", tile("2F")),
-  PlayerActionType.SellOrphanedShare("2", "Worldwide"),
-  PlayerActionType.TradeOrphanedShare("1", "Worldwide", "American"),
-  PlayerActionType.TradeOrphanedShare("1", "Worldwide", "American"),
 ];
