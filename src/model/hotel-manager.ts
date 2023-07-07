@@ -34,10 +34,14 @@ export class HotelManager {
    * A square is considered "dead" if it merges 2 companies that are safe.
    */
   isDeadSquare(square: number): boolean {
-    return (
-      this.findAllAdjacentToSquare(square).filter((hotel) => hotel.isSafe())
-        .length >= 2
-    );
+    const adjacentHotels = this.findAllAdjacentToSquare(square);
+
+    // Temporarily disable 3 way merges
+    if (adjacentHotels.length > 2) {
+      return true;
+    }
+
+    return adjacentHotels.filter((hotel) => hotel.isSafe()).length >= 2;
   }
 
   private get hotels(): Hotel[] {
