@@ -11,7 +11,7 @@ export interface ActionRequestEvent {
 }
 
 @customElement("acquire-choose-tile-action")
-export class AcquireGameActionsElement extends LitElement {
+export class ChooseTileActionElement extends LitElement {
   static styles = css`
     :host {
       display: flex;
@@ -98,6 +98,6 @@ export class AcquireGameActionsElement extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "acquire-choose-tile-action": AcquireGameActionsElement;
+    "acquire-choose-tile-action": ChooseTileActionElement;
   }
 }

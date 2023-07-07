@@ -11,6 +11,9 @@ import {
   TileSelectEvent,
 } from "../../events/tile-select-event";
 import { createConfirmTilePlaceEvent } from "../../events/confirm-tile-place-event";
+import "./end-turn-action.element";
+import "./choose-hotel-chain-action.element";
+import { StartHotelChainEvent } from "../../events/start-hotel-chain-event";
 
 export interface ActionRequestEvent {
   action: PlayerAction;
@@ -77,14 +80,6 @@ export class AcquireGameActionsElement extends LitElement {
         Waiting for ${PlayerUtils.getDisplayName(this.currentPlayerId)} to move
       </div>`;
     }
-  }
-
-  renderChooseHotelChain(hotelChains: HotelChainType[]) {
-    return hotelChains.map(
-      (hotelChain) =>
-        html`<button style="background-color: var(--colors-${hotelChain})"  @click="${() =>
-          this.onStartHotelChain(hotelChain)}"">${hotelChain}</button>`
-    );
   }
 
   renderChooseMergeDirection(hotelChains: HotelChainType[]) {
@@ -166,10 +161,6 @@ export class AcquireGameActionsElement extends LitElement {
     </button>`;
   }
 
-  renderChooseEndTurn() {
-    return html`<button @click="${() => this.onEndTurn()}">End Turn</button>`;
-  }
-
   renderChooseEndGame() {
     return html`<button @click="${() => this.onEndGame()}">End Game</button>`;
   }
@@ -186,7 +177,11 @@ export class AcquireGameActionsElement extends LitElement {
             this.dispatchEvent(createConfirmTilePlaceEvent())}"
         />`;
       case "ChooseHotelChain":
-        return this.renderChooseHotelChain(action.hotelChains);
+        return html`<acquire-choose-hotel-chain-action
+          .action="${action}"
+          @start-hotel-chain="${(e: StartHotelChainEvent) =>
+            this.onStartHotelChain(e.hotelChain)}"
+        />`;
       case "ChooseMergeDirection":
         return this.renderChooseMergeDirection(action.options);
       case "ChooseShares":
@@ -208,7 +203,9 @@ export class AcquireGameActionsElement extends LitElement {
           action.remainingShares
         );
       case "ChooseEndTurn":
-        return this.renderChooseEndTurn();
+        return html`<acquire-end-turn-action
+          @end-turn="${() => this.onEndTurn()}"
+        />`;
       case "ChooseEndGame":
         return this.renderChooseEndGame();
     }
