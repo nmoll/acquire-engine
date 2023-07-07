@@ -14,6 +14,8 @@ import { createConfirmTilePlaceEvent } from "../../events/confirm-tile-place-eve
 import "./end-turn-action.element";
 import "./choose-hotel-chain-action.element";
 import { StartHotelChainEvent } from "../../events/start-hotel-chain-event";
+import "./choose-shares-action.element";
+import { PurchaseShareEvent } from "../../events/purchase-share-event";
 
 export interface ActionRequestEvent {
   action: PlayerAction;
@@ -50,11 +52,15 @@ export class AcquireGameActionsElement extends LitElement {
     .actions {
       display: grid;
       grid-template-columns: auto auto;
-      gap: 0.5rem;
+      gap: 1rem;
     }
 
     .actions button {
       width: 100%;
+    }
+
+    .col-span-full {
+      grid-column: 1 / -1;
     }
   `;
 
@@ -114,18 +120,6 @@ export class AcquireGameActionsElement extends LitElement {
     `;
   }
 
-  renderChooseShares(shares: { hotelChain: HotelChainType; price: number }[]) {
-    return shares.map(
-      ({ hotelChain, price }) =>
-        html`<button
-          style="background-color: var(--colors-${hotelChain})"
-          @click="${() => this.onPurchaseShare(hotelChain)}"
-        >
-          ${hotelChain}: $${price}
-        </button>`
-    );
-  }
-
   renderChooseToSellOrphanedShare(
     hotelChain: HotelChainType,
     remainingShares: number
@@ -162,7 +156,12 @@ export class AcquireGameActionsElement extends LitElement {
   }
 
   renderChooseEndGame() {
-    return html`<button @click="${() => this.onEndGame()}">End Game</button>`;
+    return html`<button
+      @click="${() => this.onEndGame()}"
+      class="col-span-full"
+    >
+      End Game
+    </button>`;
   }
 
   renderAction(action: AvailableAction) {
@@ -185,7 +184,12 @@ export class AcquireGameActionsElement extends LitElement {
       case "ChooseMergeDirection":
         return this.renderChooseMergeDirection(action.options);
       case "ChooseShares":
-        return this.renderChooseShares(action.shares);
+        return html`<acquire-choose-shares-action
+          .action="${action}"
+          @purchase-share="${(e: PurchaseShareEvent) =>
+            this.onPurchaseShare(e.hotelChain)}"
+          class="col-span-full"
+        />`;
       case "ChooseToKeepOrphanedShare":
         return this.renderChooseToKeepOrphanedShare(
           action.hotelChain,
@@ -205,6 +209,7 @@ export class AcquireGameActionsElement extends LitElement {
       case "ChooseEndTurn":
         return html`<acquire-end-turn-action
           @end-turn="${() => this.onEndTurn()}"
+          class="col-span-full"
         />`;
       case "ChooseEndGame":
         return this.renderChooseEndGame();
