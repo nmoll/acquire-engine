@@ -6,10 +6,7 @@ import { PlayerAction } from "../../model/player-action";
 import { TileUtils } from "../../utils/tile-utils";
 import { ChooseTile } from "../../model/available-action";
 import { IAvailableActionState } from "../../model/available-action-state";
-
-export interface TileSelectEvent {
-  index: number;
-}
+import { createTileSelectEvent } from "../events/tile-select-event";
 
 @customElement("acquire-game-board")
 export class AcquireGameBoardElement extends LitElement {
@@ -20,8 +17,8 @@ export class AcquireGameBoardElement extends LitElement {
     }
 
     .cell {
-      border: 1px solid #374151;
-      color: #374151;
+      border: 1px solid var(--colors-gray-700);
+      color: var(--colors-gray-700);
       background-color: #1f2937;
       box-shadow: rgb(0 0 0 / 59%) 0px 2px 4px 0px inset;
       display: flex;
@@ -42,6 +39,9 @@ export class AcquireGameBoardElement extends LitElement {
   @property()
   availableForSelection!: number[] | undefined;
 
+  @property()
+  selectedTile!: number | null;
+
   render() {
     return this.boardState?.map((squareState, idx) =>
       this.renderSquare(squareState, idx)
@@ -59,15 +59,9 @@ export class AcquireGameBoardElement extends LitElement {
     </div>`;
   }
 
-  private onClick(index: number): void {
-    if (this.getTileOptions().available.includes(index)) {
-      this.dispatchEvent(
-        new CustomEvent<TileSelectEvent>("tile-select", {
-          detail: {
-            index,
-          },
-        })
-      );
+  private onClick(tile: number): void {
+    if (this.getTileOptions().available.includes(tile)) {
+      this.dispatchEvent(createTileSelectEvent(tile));
     }
   }
 
@@ -98,18 +92,26 @@ export class AcquireGameBoardElement extends LitElement {
   }
 
   private getSquareStyles(state: BoardSquareState, idx: number) {
+    if (idx === this.selectedTile) {
+      return {
+        borderColor: "var(--colors-primary)",
+        background: "var(--colors-tile)",
+        boxShadow: "none",
+      };
+    }
+
     if (this.getTileOptions().available.includes(idx)) {
       return {
-        borderColor: "#22c55e",
-        color: "#22c55e",
+        borderColor: "var(--colors-primary)",
+        color: "var(--colors-primary)",
         cursor: "pointer",
       };
     }
 
     if (this.getTileOptions().unavailable.includes(idx)) {
       return {
-        borderColor: "#dc2626",
-        color: "#dc2626",
+        borderColor: "var(--colors-red-600)",
+        color: "var(--colors-red-600)",
         cursor: "not-allowed",
       };
     }
@@ -117,8 +119,8 @@ export class AcquireGameBoardElement extends LitElement {
     switch (state.type) {
       case "HasTile":
         return {
-          backgroundColor: "#9ca3af",
-          borderColor: "#9ca3af",
+          backgroundColor: "var(--colors-tile)",
+          borderColor: "var(--colors-tile)",
           boxShadow: "none",
         };
       case "HasHotelChain":

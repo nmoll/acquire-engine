@@ -7,11 +7,11 @@ import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { PlayerAction } from "../../model/player-action";
 import { BoardStateFactory } from "../../test/factory/board-state.factory";
 import { DatabaseClient } from "../../db/database-client";
-import "./acquire-game-actions.element";
-import { ActionRequestEvent } from "./acquire-game-actions.element";
+import "./actions/acquire-game-actions.element";
+import { ActionRequestEvent } from "./actions/acquire-game-actions.element";
 import "./acquire-game-board.element";
-import { TileSelectEvent } from "./acquire-game-board.element";
 import "./acquire-game-players.element";
+import { TileSelectEvent } from "../events/tile-select-event";
 
 @customElement("acquire-game")
 export class AcquireGameElement extends LitElement {
@@ -59,6 +59,9 @@ export class AcquireGameElement extends LitElement {
   @state()
   orientation: "landscape" | "portrait";
 
+  @state()
+  selectedTile: number | null = null;
+
   private state!: IGameState;
   private service: DatabaseClient;
 
@@ -98,12 +101,18 @@ export class AcquireGameElement extends LitElement {
     super.update(changedProperties);
   }
 
-  onTileSelect(event: CustomEvent<TileSelectEvent>) {
+  onConfirmTileSelect() {
+    if (this.selectedTile === null) {
+      return;
+    }
+
     this.onPlayerAction({
       type: "PlaceTile",
       playerId: this.playerId,
-      boardSquareId: event.detail.index,
+      boardSquareId: this.selectedTile,
     });
+
+    this.selectedTile = null;
   }
 
   onPlayerAction(action: PlayerAction) {
@@ -136,8 +145,8 @@ export class AcquireGameElement extends LitElement {
       <acquire-game-board
         .boardState="${this.state.boardState}"
         .availableActions="${availableActions}"
-        @tile-select="${(e: CustomEvent<TileSelectEvent>) =>
-          this.onTileSelect(e)}"
+        .selectedTile="${this.selectedTile}"
+        @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
       >
       </acquire-game-board>
 
@@ -145,6 +154,9 @@ export class AcquireGameElement extends LitElement {
         .playerId="${this.playerId}"
         .currentPlayerId="${this.getCurrentPlayerId()}"
         .availableActionState="${this.state.availableActionsState}"
+        .selectedTile="${this.selectedTile}"
+        @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
+        @confirm-tile-place="${() => this.onConfirmTileSelect()}"
         @action-request="${(e: CustomEvent<ActionRequestEvent>) =>
           this.onPlayerAction(e.detail.action)}"
       ></acquire-game-actions>

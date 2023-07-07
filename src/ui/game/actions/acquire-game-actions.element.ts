@@ -1,10 +1,16 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { HotelChainType } from "../../model";
-import { AvailableAction } from "../../model/available-action";
-import { IAvailableActionState } from "../../model/available-action-state";
-import { PlayerAction } from "../../model/player-action";
-import { PlayerUtils } from "../../utils/player-utils";
+import { HotelChainType } from "../../../model";
+import { AvailableAction } from "../../../model/available-action";
+import { IAvailableActionState } from "../../../model/available-action-state";
+import { PlayerAction } from "../../../model/player-action";
+import { PlayerUtils } from "../../../utils/player-utils";
+import "./choose-tile-action.element";
+import {
+  createTileSelectEvent,
+  TileSelectEvent,
+} from "../../events/tile-select-event";
+import { createConfirmTilePlaceEvent } from "../../events/confirm-tile-place-event";
 
 export interface ActionRequestEvent {
   action: PlayerAction;
@@ -57,6 +63,156 @@ export class AcquireGameActionsElement extends LitElement {
 
   @property()
   availableActionState: IAvailableActionState | undefined;
+
+  @property()
+  selectedTile!: number | null;
+
+  render() {
+    if (this.playerId === this.currentPlayerId) {
+      return html`<div class="actions">
+        ${this.availableActionState?.map((action) => this.renderAction(action))}
+      </div>`;
+    } else {
+      return html`<div>
+        Waiting for ${PlayerUtils.getDisplayName(this.currentPlayerId)} to move
+      </div>`;
+    }
+  }
+
+  renderChooseHotelChain(hotelChains: HotelChainType[]) {
+    return hotelChains.map(
+      (hotelChain) =>
+        html`<button style="background-color: var(--colors-${hotelChain})"  @click="${() =>
+          this.onStartHotelChain(hotelChain)}"">${hotelChain}</button>`
+    );
+  }
+
+  renderChooseMergeDirection(hotelChains: HotelChainType[]) {
+    return html`
+      <div>
+        Choose hotel chain to dissolve:
+        <div>
+          ${hotelChains.map(
+            (hotelChain) =>
+              html`<button
+                style="color: var(--colors-${hotelChain})"
+                @click="${() => {
+                  const hotelChainToDisolve = hotelChain;
+                  const hotelChainToKeep = hotelChains.find(
+                    (h) => h !== hotelChainToDisolve
+                  );
+                  if (!hotelChainToKeep) {
+                    throw new Error("Could not find hotel chain to keep");
+                  }
+
+                  this.onChooseMergeDirection(
+                    hotelChainToKeep,
+                    hotelChainToDisolve
+                  );
+                }}"
+              >
+                ${hotelChain}
+              </button>`
+          )}
+        </div>
+      </div>
+    `;
+  }
+
+  renderChooseShares(shares: { hotelChain: HotelChainType; price: number }[]) {
+    return shares.map(
+      ({ hotelChain, price }) =>
+        html`<button
+          style="background-color: var(--colors-${hotelChain})"
+          @click="${() => this.onPurchaseShare(hotelChain)}"
+        >
+          ${hotelChain}: $${price}
+        </button>`
+    );
+  }
+
+  renderChooseToSellOrphanedShare(
+    hotelChain: HotelChainType,
+    remainingShares: number
+  ) {
+    return html`<button
+      @click="${() => this.onChooseToSellOrphanedShare(hotelChain)}"
+    >
+      Sell 1/${remainingShares} ${hotelChain}
+    </button>`;
+  }
+
+  renderChooseToKeepOrphanedShare(
+    hotelChain: HotelChainType,
+    remainingShares: number
+  ) {
+    return html`<button
+      @click="${() => this.onChooseToKeepOrphanedShare(hotelChain)}"
+    >
+      Keep 1/${remainingShares} ${hotelChain}
+    </button>`;
+  }
+
+  renderChooseToTradeOrphanedShare(
+    hotelChain: HotelChainType,
+    hotelChainToReceive: HotelChainType,
+    remainingShares: number
+  ) {
+    return html`<button
+      @click="${() =>
+        this.onChooseToTradeOrphanedShare(hotelChain, hotelChainToReceive)}"
+    >
+      Trade 2/${remainingShares} ${hotelChain} for 1 ${hotelChainToReceive}
+    </button>`;
+  }
+
+  renderChooseEndTurn() {
+    return html`<button @click="${() => this.onEndTurn()}">End Turn</button>`;
+  }
+
+  renderChooseEndGame() {
+    return html`<button @click="${() => this.onEndGame()}">End Game</button>`;
+  }
+
+  renderAction(action: AvailableAction) {
+    switch (action.type) {
+      case "ChooseTile":
+        return html`<acquire-choose-tile-action
+          .action="${action}"
+          .selectedTile="${this.selectedTile}"
+          @tile-select="${(e: TileSelectEvent) =>
+            this.dispatchEvent(createTileSelectEvent(e.tile))}"
+          @confirm-tile-place="${() =>
+            this.dispatchEvent(createConfirmTilePlaceEvent())}"
+        />`;
+      case "ChooseHotelChain":
+        return this.renderChooseHotelChain(action.hotelChains);
+      case "ChooseMergeDirection":
+        return this.renderChooseMergeDirection(action.options);
+      case "ChooseShares":
+        return this.renderChooseShares(action.shares);
+      case "ChooseToKeepOrphanedShare":
+        return this.renderChooseToKeepOrphanedShare(
+          action.hotelChain,
+          action.remainingShares
+        );
+      case "ChooseToSellOrphanedShare":
+        return this.renderChooseToSellOrphanedShare(
+          action.hotelChain,
+          action.remainingShares
+        );
+      case "ChooseToTradeOrphanedShare":
+        return this.renderChooseToTradeOrphanedShare(
+          action.hotelChain,
+          action.hotelChainToReceive,
+          action.remainingShares
+        );
+      case "ChooseEndTurn":
+        return this.renderChooseEndTurn();
+      case "ChooseEndGame":
+        return this.renderChooseEndGame();
+    }
+  }
 
   onEndTurn() {
     this.dispatchEvent(
@@ -174,150 +330,6 @@ export class AcquireGameActionsElement extends LitElement {
         },
       })
     );
-  }
-
-  renderChooseTile() {
-    return html`<span>Choose a tile</span>`;
-  }
-
-  renderChooseHotelChain(hotelChains: HotelChainType[]) {
-    return hotelChains.map(
-      (hotelChain) =>
-        html`<button style="background-color: var(--colors-${hotelChain})"  @click="${() =>
-          this.onStartHotelChain(hotelChain)}"">${hotelChain}</button>`
-    );
-  }
-
-  renderChooseMergeDirection(hotelChains: HotelChainType[]) {
-    return html`
-      <div>
-        Choose hotel chain to dissolve:
-        <div>
-          ${hotelChains.map(
-            (hotelChain) =>
-              html`<button
-                style="color: var(--colors-${hotelChain})"
-                @click="${() => {
-                  const hotelChainToDisolve = hotelChain;
-                  const hotelChainToKeep = hotelChains.find(
-                    (h) => h !== hotelChainToDisolve
-                  );
-                  if (!hotelChainToKeep) {
-                    throw new Error("Could not find hotel chain to keep");
-                  }
-
-                  this.onChooseMergeDirection(
-                    hotelChainToKeep,
-                    hotelChainToDisolve
-                  );
-                }}"
-              >
-                ${hotelChain}
-              </button>`
-          )}
-        </div>
-      </div>
-    `;
-  }
-
-  renderChooseShares(shares: { hotelChain: HotelChainType; price: number }[]) {
-    return shares.map(
-      ({ hotelChain, price }) =>
-        html`<button
-          style="background-color: var(--colors-${hotelChain})"
-          @click="${() => this.onPurchaseShare(hotelChain)}"
-        >
-          ${hotelChain}: $${price}
-        </button>`
-    );
-  }
-
-  renderChooseToSellOrphanedShare(
-    hotelChain: HotelChainType,
-    remainingShares: number
-  ) {
-    return html`<button
-      @click="${() => this.onChooseToSellOrphanedShare(hotelChain)}"
-    >
-      Sell 1/${remainingShares} ${hotelChain}
-    </button>`;
-  }
-
-  renderChooseToKeepOrphanedShare(
-    hotelChain: HotelChainType,
-    remainingShares: number
-  ) {
-    return html`<button
-      @click="${() => this.onChooseToKeepOrphanedShare(hotelChain)}"
-    >
-      Keep 1/${remainingShares} ${hotelChain}
-    </button>`;
-  }
-
-  renderChooseToTradeOrphanedShare(
-    hotelChain: HotelChainType,
-    hotelChainToReceive: HotelChainType,
-    remainingShares: number
-  ) {
-    return html`<button
-      @click="${() =>
-        this.onChooseToTradeOrphanedShare(hotelChain, hotelChainToReceive)}"
-    >
-      Trade 2/${remainingShares} ${hotelChain} for 1 ${hotelChainToReceive}
-    </button>`;
-  }
-
-  renderChooseEndTurn() {
-    return html`<button @click="${() => this.onEndTurn()}">End Turn</button>`;
-  }
-
-  renderChooseEndGame() {
-    return html`<button @click="${() => this.onEndGame()}">End Game</button>`;
-  }
-
-  renderAction(action: AvailableAction) {
-    switch (action.type) {
-      case "ChooseTile":
-        return this.renderChooseTile();
-      case "ChooseHotelChain":
-        return this.renderChooseHotelChain(action.hotelChains);
-      case "ChooseMergeDirection":
-        return this.renderChooseMergeDirection(action.options);
-      case "ChooseShares":
-        return this.renderChooseShares(action.shares);
-      case "ChooseToKeepOrphanedShare":
-        return this.renderChooseToKeepOrphanedShare(
-          action.hotelChain,
-          action.remainingShares
-        );
-      case "ChooseToSellOrphanedShare":
-        return this.renderChooseToSellOrphanedShare(
-          action.hotelChain,
-          action.remainingShares
-        );
-      case "ChooseToTradeOrphanedShare":
-        return this.renderChooseToTradeOrphanedShare(
-          action.hotelChain,
-          action.hotelChainToReceive,
-          action.remainingShares
-        );
-      case "ChooseEndTurn":
-        return this.renderChooseEndTurn();
-      case "ChooseEndGame":
-        return this.renderChooseEndGame();
-    }
-  }
-
-  render() {
-    if (this.playerId === this.currentPlayerId) {
-      return html`<div class="actions">
-        ${this.availableActionState?.map((action) => this.renderAction(action))}
-      </div>`;
-    } else {
-      return html`<div>
-        Waiting for ${PlayerUtils.getDisplayName(this.currentPlayerId)} to move
-      </div>`;
-    }
   }
 }
 
