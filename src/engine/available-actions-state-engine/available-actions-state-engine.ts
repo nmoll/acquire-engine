@@ -126,7 +126,7 @@ const validatePurchaseShares = (
   !!state.find(
     (available) =>
       available.type === "ChooseShares" &&
-      available.hotelChains.includes(action.hotelChain)
+      available.shares.some((share) => share.hotelChain === action.hotelChain)
   );
 
 const validateSellOrphanedShare = (

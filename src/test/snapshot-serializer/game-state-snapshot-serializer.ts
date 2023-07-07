@@ -52,7 +52,10 @@ const formatAction = (action: AvailableAction): string => {
     case "ChooseMergeDirection":
       return `Merge: ${action.options.map(formatHotelChain).join(" ")}`;
     case "ChooseShares":
-      const options = action.hotelChains.map(formatHotelChain).join(" ");
+      const options = action.shares
+        .map((share) => share.hotelChain)
+        .map(formatHotelChain)
+        .join(" ");
       return `Choose Shares: ${options}`;
     case "ChooseToSellOrphanedShare":
       return `Sell (1/${action.remainingShares}) ${action.hotelChain} Share`;

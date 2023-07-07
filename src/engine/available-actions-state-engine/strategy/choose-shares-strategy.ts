@@ -44,7 +44,9 @@ export class ChooseSharesStrategy implements AvailableActionStrategy {
     return purchasedShares >= GameConfig.turn.maxShares;
   }
 
-  private getSharesAvailableToPurchase(): HotelChainType[] | null {
+  private getSharesAvailableToPurchase():
+    | { hotelChain: HotelChainType; price: number }[]
+    | null {
     if (this.hasPurchasedMaxShares()) {
       return null;
     }
@@ -63,6 +65,9 @@ export class ChooseSharesStrategy implements AvailableActionStrategy {
       return null;
     }
 
-    return available.map((hotel) => hotel.type);
+    return available.map((hotel) => ({
+      hotelChain: hotel.type,
+      price: hotel.getSharesCost(),
+    }));
   }
 }

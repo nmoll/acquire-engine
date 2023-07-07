@@ -220,14 +220,14 @@ export class AcquireGameActionsElement extends LitElement {
     `;
   }
 
-  renderChooseShares(hotelChains: HotelChainType[]) {
-    return hotelChains.map(
-      (hotelChain) =>
+  renderChooseShares(shares: { hotelChain: HotelChainType; price: number }[]) {
+    return shares.map(
+      ({ hotelChain, price }) =>
         html`<button
           style="background-color: var(--colors-${hotelChain})"
           @click="${() => this.onPurchaseShare(hotelChain)}"
         >
-          Purchase ${hotelChain}
+          ${hotelChain}: $${price}
         </button>`
     );
   }
@@ -284,7 +284,7 @@ export class AcquireGameActionsElement extends LitElement {
       case "ChooseMergeDirection":
         return this.renderChooseMergeDirection(action.options);
       case "ChooseShares":
-        return this.renderChooseShares(action.hotelChains);
+        return this.renderChooseShares(action.shares);
       case "ChooseToKeepOrphanedShare":
         return this.renderChooseToKeepOrphanedShare(
           action.hotelChain,

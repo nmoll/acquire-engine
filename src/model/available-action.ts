@@ -13,7 +13,10 @@ export interface ChooseHotelChain {
 
 export interface ChooseShares {
   type: "ChooseShares";
-  hotelChains: HotelChainType[];
+  shares: {
+    hotelChain: HotelChainType;
+    price: number;
+  }[];
 }
 
 export interface ChooseToSellOrphanedShare {
@@ -72,9 +75,11 @@ export const AvailableActionType = {
     type: "ChooseHotelChain",
     hotelChains,
   }),
-  ChooseShares: (hotelChains: HotelChainType[]): ChooseShares => ({
+  ChooseShares: (
+    shares: { hotelChain: HotelChainType; price: number }[]
+  ): ChooseShares => ({
     type: "ChooseShares",
-    hotelChains,
+    shares,
   }),
   ChooseToSellOrphanedShare: (
     hotelChain: HotelChainType,
