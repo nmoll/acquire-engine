@@ -71,12 +71,26 @@ export class AcquireGameActionsElement extends LitElement {
   currentPlayerId!: string;
 
   @property()
+  winners: string[] | null = null;
+
+  @property()
   availableActionState: IAvailableActionState | undefined;
 
   @property()
   selectedTile!: number | null;
 
   render() {
+    if (this.winners) {
+      if (this.winners.length > 1) {
+        return html`${this.winners
+          .map(PlayerUtils.getDisplayName)
+          .join(" and ")}
+        tie for the win!`;
+      } else {
+        return html`${PlayerUtils.getDisplayName(this.winners[0])} wins!`;
+      }
+    }
+
     if (this.playerId === this.currentPlayerId) {
       return html`<div class="actions">
         ${this.availableActionState?.map((action) => this.renderAction(action))}

@@ -1,6 +1,7 @@
 import { IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { ActionLog } from "../../model/action-log";
+import { ICashState } from "../../model/cash-state";
 import { PlayerAction } from "../../model/player-action";
 import { TurnContext } from "../../model/turn-context";
 import { ActionUtils } from "../../utils/action-utils";
@@ -91,6 +92,11 @@ const computeGameState = (
       currentPlayerIdState
     );
 
+    let winners = null;
+    if (actionResult.type === "Game Ended") {
+      winners = getWinners(cashState);
+    }
+
     const newState = {
       boardState,
       cashState,
@@ -98,6 +104,7 @@ const computeGameState = (
       tileState,
       availableActionsState,
       currentPlayerIdState,
+      winners,
     };
 
     gameLog.push({
@@ -108,6 +115,13 @@ const computeGameState = (
 
     return newState;
   }, getInitialState(gameInstance));
+};
+
+const getWinners = (cashState: ICashState): string[] => {
+  const maxCash = Math.max(...Object.values(cashState));
+  return Object.entries(cashState)
+    .filter(([, cash]) => cash === maxCash)
+    .map(([playerId]) => playerId);
 };
 
 export const GameStateEngine = {

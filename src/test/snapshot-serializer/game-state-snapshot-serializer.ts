@@ -30,10 +30,18 @@ const print = (state: any): string => {
     .map((a) => `[${formatAction(a)}]`)
     .join(" ")}`;
 
+  let gameEndMessage = "";
+  if (state.winners && state.winners.length > 1) {
+    gameEndMessage = `\n\n${state.winners.join(" and ")} win!`;
+  } else if (state.winners && state.winners.length === 1) {
+    gameEndMessage = `\n\n${state.winners[0]} wins!`;
+  }
+
   return (
     BoardStateFactory.createDiagram(state.boardState) +
     playerState +
-    currentTurn
+    currentTurn +
+    gameEndMessage
   );
 };
 

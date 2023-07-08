@@ -153,6 +153,7 @@ export class AcquireGameElement extends LitElement {
       <acquire-game-actions
         .playerId="${this.playerId}"
         .currentPlayerId="${this.getCurrentPlayerId()}"
+        .winners="${this.state.winners}"
         .availableActionState="${this.state.availableActionsState}"
         .selectedTile="${this.selectedTile}"
         @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
