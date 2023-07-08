@@ -115,6 +115,14 @@ export class AcquireGameElement extends LitElement {
     this.selectedTile = null;
   }
 
+  onUndoAction() {
+    const action = this.actions.at(-1);
+    if (action && action.playerId === this.getCurrentPlayerId()) {
+      const actions = this.actions.slice(0, -1);
+      this.service.updateActions(this.game.id, actions);
+    }
+  }
+
   onPlayerAction(action: PlayerAction) {
     if (
       AvailableActionsStateEngine.validateAction(action, this.state) &&
@@ -158,6 +166,7 @@ export class AcquireGameElement extends LitElement {
         .selectedTile="${this.selectedTile}"
         @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
         @confirm-tile-place="${() => this.onConfirmTileSelect()}"
+        @undo-action="${() => this.onUndoAction()}"
         @action-request="${(e: CustomEvent<ActionRequestEvent>) =>
           this.onPlayerAction(e.detail.action)}"
       ></acquire-game-actions>

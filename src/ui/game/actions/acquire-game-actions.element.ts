@@ -16,6 +16,7 @@ import "./choose-hotel-chain-action.element";
 import { StartHotelChainEvent } from "../../events/start-hotel-chain-event";
 import "./choose-shares-action.element";
 import { PurchaseShareEvent } from "../../events/purchase-share-event";
+import { createUndoActionEvent } from "../../events/undo-action-event";
 
 export interface ActionRequestEvent {
   action: PlayerAction;
@@ -31,6 +32,7 @@ export class AcquireGameActionsElement extends LitElement {
       align-items: center;
       gap: 1rem;
       padding: 1rem;
+      position: relative;
     }
 
     button {
@@ -57,6 +59,22 @@ export class AcquireGameActionsElement extends LitElement {
 
     .actions button {
       width: 100%;
+    }
+
+    button.undo {
+      position: absolute;
+      top: 0.25rem;
+      left: 0.25rem;
+      width: 5rem;
+      padding: 0.25rem;
+      padding-left: 0;
+      background: var(--colors-gray-800);
+      color: var(--colors-gray-300);
+    }
+
+    .undo-icon {
+      position: relative;
+      top: 1px;
     }
 
     .col-span-full {
@@ -93,6 +111,7 @@ export class AcquireGameActionsElement extends LitElement {
 
     if (this.playerId === this.currentPlayerId) {
       return html`<div class="actions">
+        ${this.renderUndoAction()}
         ${this.availableActionState?.map((action) => this.renderAction(action))}
       </div>`;
     } else {
@@ -100,6 +119,22 @@ export class AcquireGameActionsElement extends LitElement {
         Waiting for ${PlayerUtils.getDisplayName(this.currentPlayerId)} to move
       </div>`;
     }
+  }
+
+  private renderUndoAction() {
+    const isPlaceTileAction = this.availableActionState?.some(
+      (action) => action.type === "ChooseTile"
+    );
+    if (isPlaceTileAction) {
+      return;
+    }
+
+    return html`<button
+      class="undo"
+      @click="${() => this.dispatchEvent(createUndoActionEvent())}"
+    >
+      <span class="undo-icon">↩</span> Undo
+    </button>`;
   }
 
   renderChooseMergeDirection(hotelChains: HotelChainType[]) {
