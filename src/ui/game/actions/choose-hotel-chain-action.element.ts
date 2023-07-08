@@ -29,40 +29,23 @@ export class ChooseHotelChainActionElement extends LitElement {
     }
 
     button {
-      background-color: var(--colors-gray-500);
-      border: none;
-      border-radius: 0.5rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      color: white;
-      width: 100%;
-    }
-
-    button.fade {
-      opacity: 0.5;
-    }
-
-    button:disabled {
-      background: var(--colors-gray-800) !important;
-      color: var(--colors-gray-500);
-      cursor: not-allowed;
-    }
-
-    .confirm-btn {
-      width: 100%;
-      border: 1px solid var(--colors-primary);
+      border: 1px solid var(--colors-gray-300);
+      color: var(--colors-gray-300);
       background: transparent;
       border-radius: 0.5rem;
       padding: 0.875rem 1rem;
       cursor: pointer;
-      color: var(--colors-primary);
       width: 100%;
     }
 
-    button:disabled {
-      color: var(--colors-gray-500);
-      border-color: var(--colors-gray-500);
-      cursor: not-allowed;
+    .option-grid button {
+      padding: 0.5rem 1rem;
+      border: 0;
+    }
+
+    .confirm-btn {
+      border: 1px solid var(--colors-primary);
+      color: var(--colors-primary);
     }
   `;
 
@@ -73,16 +56,18 @@ export class ChooseHotelChainActionElement extends LitElement {
   selected: HotelChainType | null = null;
 
   render() {
+    if (this.selected) {
+      return html`
+        <button class="confirm-btn" @click="${() => this.onConfirm()}">
+          Start ${this.selected ?? "Hotel Chain"}
+        </button>
+        <button @click="${() => (this.selected = null)}">Cancel</button>
+      `;
+    }
+
     return html`
       <span>Choose a hotel chain to start:</span>
       <div class="option-grid">${this.renderHotelOptions()}</div>
-      <button
-        class="confirm-btn"
-        ?disabled="${!this.selected}"
-        @click="${() => this.onConfirm()}"
-      >
-        Start ${this.selected ?? "Hotel Chain"}
-      </button>
     `;
   }
 
@@ -117,7 +102,6 @@ export class ChooseHotelChainActionElement extends LitElement {
   private renderHotelOption(hotelChain: HotelChainType) {
     return html`<button
       style="background-color: var(--colors-${hotelChain})"
-      class="${!!this.selected && this.selected !== hotelChain ? "fade" : ""}"
       @click="${() => (this.selected = hotelChain)}"
     >
       ${hotelChain}

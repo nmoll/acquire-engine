@@ -17,6 +17,13 @@ import { StartHotelChainEvent } from "../../events/start-hotel-chain-event";
 import "./choose-shares-action.element";
 import { PurchaseShareEvent } from "../../events/purchase-share-event";
 import { createUndoActionEvent } from "../../events/undo-action-event";
+import { createCancelTilePlaceEvent } from "../../events/cancel-tile-place-event";
+import "./choose-merge-direction.element";
+import { MergeEvent } from "../../events/merge-event";
+import "./choose-orphaned-shares.element";
+import { TradeShareEvent } from "../../events/trade-share-event";
+import { KeepShareEvent } from "../../events/keep-share-event";
+import { SellShareEvent } from "../../events/sell-share-event";
 
 export interface ActionRequestEvent {
   action: PlayerAction;
@@ -111,8 +118,7 @@ export class AcquireGameActionsElement extends LitElement {
 
     if (this.playerId === this.currentPlayerId) {
       return html`<div class="actions">
-        ${this.renderUndoAction()}
-        ${this.availableActionState?.map((action) => this.renderAction(action))}
+        ${this.renderUndoAction()} ${this.renderActions()}
       </div>`;
     } else {
       return html`<div>
@@ -137,71 +143,34 @@ export class AcquireGameActionsElement extends LitElement {
     </button>`;
   }
 
-  renderChooseMergeDirection(hotelChains: HotelChainType[]) {
-    return html`
-      <div>
-        Choose hotel chain to dissolve:
-        <div>
-          ${hotelChains.map(
-            (hotelChain) =>
-              html`<button
-                style="color: var(--colors-${hotelChain})"
-                @click="${() => {
-                  const hotelChainToDisolve = hotelChain;
-                  const hotelChainToKeep = hotelChains.find(
-                    (h) => h !== hotelChainToDisolve
-                  );
-                  if (!hotelChainToKeep) {
-                    throw new Error("Could not find hotel chain to keep");
-                  }
+  private renderActions() {
+    if (!this.availableActionState) {
+      return;
+    }
 
-                  this.onChooseMergeDirection(
-                    hotelChainToKeep,
-                    hotelChainToDisolve
-                  );
-                }}"
-              >
-                ${hotelChain}
-              </button>`
-          )}
-        </div>
-      </div>
-    `;
-  }
+    if (
+      this.availableActionState.some(
+        (action) =>
+          action.type === "ChooseToKeepOrphanedShare" ||
+          action.type === "ChooseToSellOrphanedShare" ||
+          action.type === "ChooseToTradeOrphanedShare"
+      )
+    ) {
+      return html`<acquire-choose-orphaned-shares-action
+        .actions="${this.availableActionState}"
+        @trade-share="${(e: TradeShareEvent) =>
+          this.onChooseToTradeOrphanedShare(
+            e.hotelChain,
+            e.hotelChainToReceive
+          )}"
+        @keep-share="${(e: KeepShareEvent) =>
+          this.onChooseToKeepOrphanedShare(e.hotelChain)}"
+        @sell-share="${(e: SellShareEvent) =>
+          this.onChooseToSellOrphanedShare(e.hotelChain)}"
+      />`;
+    }
 
-  renderChooseToSellOrphanedShare(
-    hotelChain: HotelChainType,
-    remainingShares: number
-  ) {
-    return html`<button
-      @click="${() => this.onChooseToSellOrphanedShare(hotelChain)}"
-    >
-      Sell 1/${remainingShares} ${hotelChain}
-    </button>`;
-  }
-
-  renderChooseToKeepOrphanedShare(
-    hotelChain: HotelChainType,
-    remainingShares: number
-  ) {
-    return html`<button
-      @click="${() => this.onChooseToKeepOrphanedShare(hotelChain)}"
-    >
-      Keep 1/${remainingShares} ${hotelChain}
-    </button>`;
-  }
-
-  renderChooseToTradeOrphanedShare(
-    hotelChain: HotelChainType,
-    hotelChainToReceive: HotelChainType,
-    remainingShares: number
-  ) {
-    return html`<button
-      @click="${() =>
-        this.onChooseToTradeOrphanedShare(hotelChain, hotelChainToReceive)}"
-    >
-      Trade 2/${remainingShares} ${hotelChain} for 1 ${hotelChainToReceive}
-    </button>`;
+    return this.availableActionState.map((action) => this.renderAction(action));
   }
 
   renderChooseEndGame() {
@@ -223,6 +192,8 @@ export class AcquireGameActionsElement extends LitElement {
             this.dispatchEvent(createTileSelectEvent(e.tile))}"
           @confirm-tile-place="${() =>
             this.dispatchEvent(createConfirmTilePlaceEvent())}"
+          @cancel-tile-place="${() =>
+            this.dispatchEvent(createCancelTilePlaceEvent())}"
         />`;
       case "ChooseHotelChain":
         return html`<acquire-choose-hotel-chain-action
@@ -231,7 +202,14 @@ export class AcquireGameActionsElement extends LitElement {
             this.onStartHotelChain(e.hotelChain)}"
         />`;
       case "ChooseMergeDirection":
-        return this.renderChooseMergeDirection(action.options);
+        return html`<acquire-choose-merge-direction-action
+          .action="${action}"
+          @merge="${(e: MergeEvent) =>
+            this.onChooseMergeDirection(
+              e.hotelChainToKeep,
+              e.hotelChainToDissolve
+            )}"
+        />`;
       case "ChooseShares":
         return html`<acquire-choose-shares-action
           .action="${action}"
@@ -239,22 +217,6 @@ export class AcquireGameActionsElement extends LitElement {
             this.onPurchaseShare(e.hotelChain)}"
           class="col-span-full"
         />`;
-      case "ChooseToKeepOrphanedShare":
-        return this.renderChooseToKeepOrphanedShare(
-          action.hotelChain,
-          action.remainingShares
-        );
-      case "ChooseToSellOrphanedShare":
-        return this.renderChooseToSellOrphanedShare(
-          action.hotelChain,
-          action.remainingShares
-        );
-      case "ChooseToTradeOrphanedShare":
-        return this.renderChooseToTradeOrphanedShare(
-          action.hotelChain,
-          action.hotelChainToReceive,
-          action.remainingShares
-        );
       case "ChooseEndTurn":
         return html`<acquire-end-turn-action
           @end-turn="${() => this.onEndTurn()}"
@@ -262,10 +224,12 @@ export class AcquireGameActionsElement extends LitElement {
         />`;
       case "ChooseEndGame":
         return this.renderChooseEndGame();
+      default:
+        return;
     }
   }
 
-  onEndTurn() {
+  private onEndTurn() {
     this.dispatchEvent(
       new CustomEvent<ActionRequestEvent>("action-request", {
         detail: {
@@ -278,7 +242,7 @@ export class AcquireGameActionsElement extends LitElement {
     );
   }
 
-  onEndGame() {
+  private onEndGame() {
     this.dispatchEvent(
       new CustomEvent<ActionRequestEvent>("action-request", {
         detail: {
@@ -291,7 +255,7 @@ export class AcquireGameActionsElement extends LitElement {
     );
   }
 
-  onStartHotelChain(hotelChain: HotelChainType) {
+  private onStartHotelChain(hotelChain: HotelChainType) {
     this.dispatchEvent(
       new CustomEvent<ActionRequestEvent>("action-request", {
         detail: {
@@ -305,7 +269,7 @@ export class AcquireGameActionsElement extends LitElement {
     );
   }
 
-  onChooseMergeDirection(
+  private onChooseMergeDirection(
     hotelChainToKeep: HotelChainType,
     hotelChainToDissolve: HotelChainType
   ) {
@@ -323,7 +287,7 @@ export class AcquireGameActionsElement extends LitElement {
     );
   }
 
-  onPurchaseShare(hotelChain: HotelChainType) {
+  private onPurchaseShare(hotelChain: HotelChainType) {
     this.dispatchEvent(
       new CustomEvent<ActionRequestEvent>("action-request", {
         detail: {
@@ -337,7 +301,7 @@ export class AcquireGameActionsElement extends LitElement {
     );
   }
 
-  onChooseToKeepOrphanedShare(hotelChain: HotelChainType) {
+  private onChooseToKeepOrphanedShare(hotelChain: HotelChainType) {
     this.dispatchEvent(
       new CustomEvent<ActionRequestEvent>("action-request", {
         detail: {
@@ -351,7 +315,7 @@ export class AcquireGameActionsElement extends LitElement {
     );
   }
 
-  onChooseToSellOrphanedShare(hotelChain: HotelChainType) {
+  private onChooseToSellOrphanedShare(hotelChain: HotelChainType) {
     this.dispatchEvent(
       new CustomEvent<ActionRequestEvent>("action-request", {
         detail: {
@@ -365,7 +329,7 @@ export class AcquireGameActionsElement extends LitElement {
     );
   }
 
-  onChooseToTradeOrphanedShare(
+  private onChooseToTradeOrphanedShare(
     hotelChain: HotelChainType,
     hotelChainToReceive: HotelChainType
   ) {

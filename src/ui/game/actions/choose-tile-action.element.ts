@@ -1,14 +1,9 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { ChooseTile } from "../../../model/available-action";
-import { PlayerAction } from "../../../model/player-action";
 import { TileUtils } from "../../../utils/tile-utils";
-import { createTileSelectEvent } from "../../events/tile-select-event";
 import { createConfirmTilePlaceEvent } from "../../events/confirm-tile-place-event";
-
-export interface ActionRequestEvent {
-  action: PlayerAction;
-}
+import { createCancelTilePlaceEvent } from "../../events/cancel-tile-place-event";
 
 @customElement("acquire-choose-tile-action")
 export class ChooseTileActionElement extends LitElement {
@@ -18,48 +13,23 @@ export class ChooseTileActionElement extends LitElement {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 2rem;
+      gap: 1rem;
       color: var(--colors-gray-300);
     }
 
-    p {
-      margin: 0;
-    }
-
-    .tile-rack {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .tile {
-      border: 1px solid var(--colors-primary);
-      color: var(--colors-primary);
-      background: transparent;
-      width: 2.75rem;
-      height: 2.75rem;
-      cursor: pointer;
-    }
-
-    .tile.selected {
-      background: var(--colors-tile);
-      color: var(--colors-gray-700);
-    }
-
-    .confirm-btn {
+    button {
       width: 100%;
-      border: 1px solid var(--colors-primary);
       background: transparent;
       border-radius: 0.5rem;
       padding: 0.875rem 1rem;
       cursor: pointer;
-      color: var(--colors-primary);
-      width: 100%;
+      border: 1px solid var(--colors-gray-300);
+      color: var(--colors-gray-300);
     }
 
-    button:disabled {
-      color: var(--colors-gray-500);
-      border-color: var(--colors-gray-500);
-      cursor: not-allowed;
+    button.confirm-btn {
+      border: 1px solid var(--colors-primary);
+      color: var(--colors-primary);
     }
   `;
 
@@ -70,29 +40,26 @@ export class ChooseTileActionElement extends LitElement {
   selectedTile!: number | null;
 
   render() {
-    return html`
-      <p>Choose a tile to place:</p>
+    if (this.selectedTile) {
+      return html`
+        <button
+          class="confirm-btn"
+          ?disabled="${this.selectedTile === null}"
+          @click="${() => this.dispatchEvent(createConfirmTilePlaceEvent())}"
+        >
+          Place Tile ${TileUtils.getTileDisplay(this.selectedTile)}
+        </button>
 
-      <div class="tile-rack">
-        ${this.action.available.map(
-          (tile) =>
-            html`<button
-              class="tile ${this.selectedTile === tile ? "selected" : ""}"
-              @click="${() => this.dispatchEvent(createTileSelectEvent(tile))}"
-            >
-              ${TileUtils.getTileDisplay(tile)}
-            </button>`
-        )}
-      </div>
+        <button
+          class="cancen-btn"
+          @click="${() => this.dispatchEvent(createCancelTilePlaceEvent())}"
+        >
+          Cancel
+        </button>
+      `;
+    }
 
-      <button
-        class="confirm-btn"
-        ?disabled="${this.selectedTile === null}"
-        @click="${() => this.dispatchEvent(createConfirmTilePlaceEvent())}"
-      >
-        Place Tile
-      </button>
-    `;
+    return html`<p>Select a tile on the board highlighted in green</p>`;
   }
 }
 

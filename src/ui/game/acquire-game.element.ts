@@ -166,6 +166,7 @@ export class AcquireGameElement extends LitElement {
         .selectedTile="${this.selectedTile}"
         @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
         @confirm-tile-place="${() => this.onConfirmTileSelect()}"
+        @cancel-tile-place="${() => (this.selectedTile = null)}"
         @undo-action="${() => this.onUndoAction()}"
         @action-request="${(e: CustomEvent<ActionRequestEvent>) =>
           this.onPlayerAction(e.detail.action)}"
