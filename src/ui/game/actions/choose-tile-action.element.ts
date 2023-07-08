@@ -40,7 +40,7 @@ export class ChooseTileActionElement extends LitElement {
   selectedTile!: number | null;
 
   render() {
-    if (this.selectedTile) {
+    if (this.selectedTile !== null) {
       return html`
         <button
           class="confirm-btn"
