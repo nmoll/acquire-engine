@@ -4,6 +4,7 @@ import { ALL_HOTELS, ISharesState } from "../../model";
 import { ICashState } from "../../model/cash-state";
 import { PlayerUtils } from "../../utils/player-utils";
 import "./player-cash.element";
+import "./player-shares.element";
 
 @customElement("acquire-game-players")
 export class AcquireGamePlayersElement extends LitElement {
@@ -67,11 +68,10 @@ export class AcquireGamePlayersElement extends LitElement {
       if (numShares === 0) {
         return "";
       }
-      return html`<span
-        class="player-shares-qty"
-        style="background: var(--colors-${hotel})"
-        >${numShares}</span
-      >`;
+      return html`<acquire-player-shares
+        .hotelChain="${hotel}"
+        .numShares="${numShares}"
+      />`;
     })}`;
   }
 

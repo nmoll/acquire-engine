@@ -22,7 +22,11 @@ export class PlayerCashElement extends LitElement {
     changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>
   ): void {
     if (changedProperties.has("cash")) {
-      this.updateDisplayedCash();
+      if (changedProperties.get("cash") === undefined) {
+        this.displayedCash = this.cash;
+      } else {
+        this.updateDisplayedCash();
+      }
     }
 
     super.update(changedProperties);
