@@ -1,10 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import "./acquire-page.element";
-
-export interface JoinGameEvent {
-  gameId: string;
-}
+import { createJoinGameEvent } from "./events/join-game-event";
 
 @customElement("acquire-create-game")
 export class AcquireCreateGameElement extends LitElement {
@@ -19,9 +16,9 @@ export class AcquireCreateGameElement extends LitElement {
     button {
       margin-top: 1rem;
       cursor: pointer;
-      color: var(--colors-gray-900);
-      background: var(--colors-gray-200);
-      border: 1px solid var(--colors-gray-200);
+      color: var(--colors-gray-300);
+      background: transparent;
+      border: 1px solid var(--colors-gray-300);
       width: 100%;
       padding: 15px 10px;
       font-size: 1.25rem;
@@ -53,6 +50,7 @@ export class AcquireCreateGameElement extends LitElement {
       background: var(--colors-gray-900);
       border: 1px solid var(--colors-gray-700);
       color: var(--colors-gray-100);
+      text-transform: uppercase;
     }
   `;
 
@@ -64,7 +62,6 @@ export class AcquireCreateGameElement extends LitElement {
 
   render() {
     if (this.isJoinGameFormVisible) {
-      const isGameIdValid = this.gameId.length === 6;
       return html`
         <acquire-page>
           <form>
@@ -72,10 +69,10 @@ export class AcquireCreateGameElement extends LitElement {
               id="game-id"
               type="text"
               @input="${this.onGameIdInputChange}"
-              placeholder="Enter Game ID"
+              placeholder="Game ID"
             />
             <button
-              ?disabled="${!isGameIdValid}"
+              ?disabled="${!this.gameId}"
               @click="${() => this.onJoinGame()}"
               type="button"
               class="primary"
@@ -110,21 +107,15 @@ export class AcquireCreateGameElement extends LitElement {
   }
 
   private onJoinGame() {
-    if (this.gameId.length !== 6) {
+    if (!this.gameId) {
       return;
     }
 
-    this.dispatchEvent(
-      new CustomEvent<JoinGameEvent>("join", {
-        detail: {
-          gameId: this.gameId,
-        },
-      })
-    );
+    this.dispatchEvent(createJoinGameEvent(this.gameId));
   }
 
   private onGameIdInputChange() {
-    this.gameId = this.gameIdInput.value;
+    this.gameId = this.gameIdInput.value.toUpperCase();
   }
 
   private get gameIdInput(): HTMLInputElement {

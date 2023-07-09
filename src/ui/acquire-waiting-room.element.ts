@@ -1,10 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { PlayerUtils } from "../utils/player-utils";
-
-export interface JoinGameEvent {
-  playerId: string;
-}
+import { createJoinGameEvent } from "./events/join-game-event";
 
 @customElement("acquire-waiting-room")
 export class AcquireWaitingRoomElement extends LitElement {
@@ -104,13 +101,7 @@ export class AcquireWaitingRoomElement extends LitElement {
   showCopiedMessage = false;
 
   onJoinGame() {
-    this.dispatchEvent(
-      new CustomEvent<JoinGameEvent>("join-game", {
-        detail: {
-          playerId: this.playerId,
-        },
-      })
-    );
+    this.dispatchEvent(createJoinGameEvent(null));
   }
 
   onStartGame() {
