@@ -27,6 +27,10 @@ export class PlayerSharesElement extends LitElement {
       align-items: center;
       justify-content: center;
     }
+
+    .fade {
+      opacity: 0.25;
+    }
   `;
 
   @property()
@@ -35,7 +39,7 @@ export class PlayerSharesElement extends LitElement {
   @property()
   hotelChain!: HotelChainType;
 
-  private shareNumbers = Array.from(new Array(25)).map((_, idx) => idx);
+  private shareNumbers = Array.from(new Array(26)).map((_, idx) => idx);
 
   render() {
     const sliderTop = -1.25 * this.numShares;
@@ -45,7 +49,7 @@ export class PlayerSharesElement extends LitElement {
           ${this.shareNumbers.map(
             (num) => html`
               <span
-                class="shares"
+                class="shares ${num === 0 ? "fade" : ""}"
                 style="background: var(--colors-${this.hotelChain})"
                 >${num}</span
               >
