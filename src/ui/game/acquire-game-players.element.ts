@@ -3,6 +3,7 @@ import { customElement, property } from "lit/decorators.js";
 import { ALL_HOTELS, ISharesState } from "../../model";
 import { ICashState } from "../../model/cash-state";
 import { PlayerUtils } from "../../utils/player-utils";
+import "./player-cash.element";
 
 @customElement("acquire-game-players")
 export class AcquireGamePlayersElement extends LitElement {
@@ -83,7 +84,9 @@ export class AcquireGamePlayersElement extends LitElement {
             : ""}"
         >
           <div class="player-name">${PlayerUtils.getDisplayName(playerId)}</div>
-          <span class="player-cash">$${this.cashState[playerId] ?? 0}</span>
+          <acquire-player-cash
+            .cash="${this.cashState[playerId] ?? 0}"
+          ></acquire-player-cash>
           <div class="player-holdings">${this.renderShares(playerId)}</div>
         </div>`
     );
