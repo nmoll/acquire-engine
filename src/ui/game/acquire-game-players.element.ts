@@ -11,16 +11,21 @@ export class AcquireGamePlayersElement extends LitElement {
   static styles = css`
     :host {
       display: grid;
-      grid-template-columns: 1fr 1fr 2fr;
+      grid-template-columns: 1fr 1fr min-content;
       align-items: center;
       justify-content: center;
       padding: 0.25rem;
+      column-gap: 0.75rem;
+      row-gap: 0.25rem;
     }
 
     .player-holdings {
       display: flex;
       gap: 0.25rem;
-      margin-top: 0.25rem;
+    }
+
+    acquire-player-cash {
+      text-align: right;
     }
   `;
 

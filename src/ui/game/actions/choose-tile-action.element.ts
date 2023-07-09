@@ -13,6 +13,7 @@ export class ChooseTileActionElement extends LitElement {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      text-align: center;
       gap: 1rem;
       color: var(--colors-gray-300);
     }
