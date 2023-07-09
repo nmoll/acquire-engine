@@ -114,6 +114,7 @@ export class AcquireAppElement extends LitElement {
             return html`<acquire-game
               .game="${gameState.game}"
               .playerId="${playerId}"
+              @leave-game="${() => this.goToHome()}"
             ></acquire-game>`;
           case "finished":
             return html`Game finished!`;

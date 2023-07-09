@@ -12,6 +12,7 @@ import { ActionRequestEvent } from "./actions/acquire-game-actions.element";
 import "./acquire-game-board.element";
 import "./acquire-game-players.element";
 import { TileSelectEvent } from "../events/tile-select-event";
+import { createLeaveGameEvent } from "../events/leave-game-event";
 
 @customElement("acquire-game")
 export class AcquireGameElement extends LitElement {
@@ -170,6 +171,7 @@ export class AcquireGameElement extends LitElement {
         @undo-action="${() => this.onUndoAction()}"
         @action-request="${(e: CustomEvent<ActionRequestEvent>) =>
           this.onPlayerAction(e.detail.action)}"
+        @leave-game="${() => this.dispatchEvent(createLeaveGameEvent())}"
       ></acquire-game-actions>
     </div>`;
   }

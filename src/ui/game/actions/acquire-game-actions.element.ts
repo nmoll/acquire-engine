@@ -24,6 +24,7 @@ import "./choose-orphaned-shares.element";
 import { TradeShareEvent } from "../../events/trade-share-event";
 import { KeepShareEvent } from "../../events/keep-share-event";
 import { SellShareEvent } from "../../events/sell-share-event";
+import { createLeaveGameEvent } from "../../events/leave-game-event";
 
 export interface ActionRequestEvent {
   action: PlayerAction;
@@ -50,6 +51,12 @@ export class AcquireGameActionsElement extends LitElement {
       cursor: pointer;
       color: white;
       width: 100%;
+    }
+
+    button.primary {
+      background-color: transparent;
+      border: 1px solid var(--colors-primary);
+      color: var(--colors-primary);
     }
 
     button:disabled {
@@ -112,7 +119,17 @@ export class AcquireGameActionsElement extends LitElement {
           .join(" and ")}
         tie for the win!`;
       } else {
-        return html`${PlayerUtils.getDisplayName(this.winners[0])} wins!`;
+        return html`
+          ${PlayerUtils.getDisplayName(this.winners[0])} wins!
+          <div>
+            <button
+              class="primary"
+              @click="${() => this.dispatchEvent(createLeaveGameEvent())}"
+            >
+              Leave Game
+            </button>
+          </div>
+        `;
       }
     }
 
