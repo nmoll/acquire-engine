@@ -28,6 +28,7 @@ const getPlayerIds = (
 
 const getSharesResolvedThisTurn = (
   playerId: string,
+  hotel: Hotel,
   turnContext: TurnContext
 ) => {
   const actions = [
@@ -35,15 +36,21 @@ const getSharesResolvedThisTurn = (
     turnContext.actionResult.action,
   ];
   return actions.reduce((total, action) => {
-    if (action.type === "KeepOrphanedShare" && action.playerId === playerId) {
+    if (
+      action.type === "KeepOrphanedShare" &&
+      action.hotelChain === hotel.type &&
+      action.playerId === playerId
+    ) {
       return total + 1;
     } else if (
       action.type === "SellOrphanedShare" &&
+      action.hotelChain === hotel.type &&
       action.playerId === playerId
     ) {
       return total + 1;
     } else if (
       action.type === "TradeOrphanedShare" &&
+      action.hotelChain === hotel.type &&
       action.playerId === playerId
     ) {
       return total + 2;
@@ -52,22 +59,41 @@ const getSharesResolvedThisTurn = (
   }, 0);
 };
 
-const getNumOrphanedSharesToResolve = (
+const getOrphanedSharesToResolve = (
   playerId: string,
   turnContext: TurnContext
-): number => {
+): {
+  playerId: string;
+  shares: number;
+  hotel: Hotel;
+} | null => {
   const mergeContext = turnContext.mergeContext;
   if (!mergeContext) {
-    return 0;
+    return null;
   }
 
-  const sharesResolved = getSharesResolvedThisTurn(playerId, turnContext);
+  for (const hotel of mergeContext.dissolved) {
+    const sharesAtMerge =
+      mergeContext.gameState.sharesState[playerId][hotel.type] ?? 0;
 
-  const sharesAtMerge =
-    mergeContext.gameState.sharesState[playerId][mergeContext.minority.type] ??
-    0;
+    const sharesResolved = getSharesResolvedThisTurn(
+      playerId,
+      hotel,
+      turnContext
+    );
 
-  return sharesAtMerge - sharesResolved;
+    const shares = sharesAtMerge - sharesResolved;
+
+    if (shares > 0) {
+      return {
+        playerId,
+        shares,
+        hotel,
+      };
+    }
+  }
+
+  return null;
 };
 
 /**
@@ -78,8 +104,8 @@ const getMergeContextThisTurn = (
 ): {
   action: PlaceTile | Merge;
   gameState: IGameState;
-  minority: Hotel;
-  majority: Hotel;
+  survivor: Hotel;
+  dissolved: Hotel[];
 } | null => {
   const currentTurn = getCurrentTurn(gameLog);
 
@@ -89,8 +115,8 @@ const getMergeContextThisTurn = (
       return {
         action: result.action,
         gameState: log.state,
-        minority: result.minority,
-        majority: result.majority,
+        survivor: result.survivor,
+        dissolved: result.dissolved,
       };
     }
   }
@@ -102,20 +128,21 @@ const findPlayerWithUnresolvedOrphanedShares = (
 ): {
   playerId: string;
   shares: number;
+  hotel: Hotel;
 } | null => {
   const startPlayerId = turnContext.actionResult.action.playerId;
   let playerId = startPlayerId;
-  let sharesToResolve = getNumOrphanedSharesToResolve(playerId, turnContext);
+  let orphanedShares = getOrphanedSharesToResolve(playerId, turnContext);
 
-  while (sharesToResolve <= 0) {
+  while (!orphanedShares) {
     playerId = PlayerUtils.getNextPlayerId(turnContext.playerIds, playerId);
-    sharesToResolve = getNumOrphanedSharesToResolve(playerId, turnContext);
+    orphanedShares = getOrphanedSharesToResolve(playerId, turnContext);
     if (playerId === startPlayerId) {
       return null;
     }
   }
 
-  return { playerId, shares: sharesToResolve };
+  return orphanedShares;
 };
 
 export const ActionUtils = {

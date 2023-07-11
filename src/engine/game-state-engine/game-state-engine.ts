@@ -92,7 +92,7 @@ const computeGameState = (
       currentPlayerIdState
     );
 
-    let winners = null;
+    let winners;
     if (actionResult.type === "Game Ended") {
       winners = getWinners(cashState);
     }

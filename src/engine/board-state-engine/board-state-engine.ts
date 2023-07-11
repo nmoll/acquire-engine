@@ -47,7 +47,7 @@ const computeState = (
           : null;
 
       return board
-        .mergeHotels(actionResult.minority, actionResult.majority, mergerTile)
+        .mergeHotels(actionResult.survivor, actionResult.dissolved, mergerTile)
         .getState();
 
     default:

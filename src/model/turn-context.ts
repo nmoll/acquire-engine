@@ -7,8 +7,8 @@ import { PlayerActionResult } from "./player-action-result";
 export interface MergeContext {
   action: PlaceTile | Merge;
   gameState: IGameState;
-  minority: Hotel;
-  majority: Hotel;
+  survivor: Hotel;
+  dissolved: Hotel[];
 }
 
 export interface TurnContext {

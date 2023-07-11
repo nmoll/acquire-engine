@@ -23,6 +23,13 @@ const computeActionResult = (
         action.boardSquareId
       );
 
+      if (!adjacentHotels.length) {
+        return {
+          type: "Tile Placed",
+          action,
+        };
+      }
+
       if (adjacentHotels.length === 1) {
         return {
           type: "Hotel Size Increased",
@@ -31,51 +38,42 @@ const computeActionResult = (
         };
       }
 
-      if (adjacentHotels.length === 2) {
-        const hotel1 = adjacentHotels[0];
-        const hotel2 = adjacentHotels[1];
+      const largest = hotelManager.getLargestHotel(adjacentHotels);
 
-        if (hotel1.getSize() === hotel2.getSize()) {
-          return {
-            type: "Merge Initiated",
-            action,
-            hotels: adjacentHotels,
-          };
-        } else {
-          const majority =
-            hotel1.getSize() > hotel2.getSize() ? hotel1 : hotel2;
+      if (largest.length > 1) {
+        return {
+          type: "Merge Initiated",
+          action,
+          hotels: largest,
+        };
+      } else {
+        const survivor = largest[0];
+        const dissolved = adjacentHotels.filter(
+          (hotel) => !largest.some((h) => h.type === hotel.type)
+        );
 
-          const minority =
-            hotel1.getSize() < hotel2.getSize() ? hotel1 : hotel2;
+        let cashAwarded: Record<string, number> =
+          stockBroker.getCashAwardedOnDissolve(dissolved);
 
-          let cashAwarded: Record<string, number> =
-            stockBroker.getCashAwardedOnDissolve(minority);
-
-          return {
-            type: "Hotel Merged",
-            action,
-            majority,
-            minority,
-            cashAwarded,
-          };
-        }
+        return {
+          type: "Hotel Merged",
+          action,
+          survivor,
+          dissolved,
+          cashAwarded,
+        };
       }
 
-      return {
-        type: "Tile Placed",
-        action,
-      };
-
     case "Merge":
-      const majority = hotelManager.getHotel(action.hotelChainToKeep);
-      const minority = hotelManager.getHotel(action.hotelChainToDissolve);
+      const survivor = hotelManager.getHotel(action.hotelChainToKeep);
+      const dissolved = hotelManager.getHotel(action.hotelChainToDissolve);
 
       return {
         type: "Hotel Merged",
         action,
-        majority,
-        minority,
-        cashAwarded: stockBroker.getCashAwardedOnDissolve(minority),
+        survivor,
+        dissolved: [dissolved],
+        cashAwarded: stockBroker.getCashAwardedOnDissolve([dissolved]),
       };
 
     case "StartHotelChain":

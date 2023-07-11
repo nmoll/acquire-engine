@@ -1,5 +1,5 @@
 import { GameConfig } from "../../game-config";
-import { IGameState } from "../../model";
+import { HotelChainType, IGameState } from "../../model";
 import { ICashState } from "../../model/cash-state";
 import { HotelManager } from "../../model/hotel-manager";
 import { StockBroker } from "../../model/stock-broker";
@@ -32,11 +32,12 @@ const computeState = (
             .getSharesCost(),
       };
     case "Share Sold":
+      const action = turnContext.actionResult.action;
       return {
         ...state.cashState,
-        [turnContext.actionResult.action.playerId]:
-          state.cashState[turnContext.actionResult.action.playerId] +
-          getSharesCostOfHotelBeforeMerge(turnContext),
+        [action.playerId]:
+          state.cashState[action.playerId] +
+          getSharesCostOfHotelBeforeMerge(turnContext, action.hotelChain),
       };
     case "Hotel Merged":
       return Object.entries(turnContext.actionResult.cashAwarded).reduce(
@@ -52,8 +53,7 @@ const computeState = (
       const cashState = { ...state.cashState };
 
       for (const hotel of activeHotels) {
-        const cashAward = stockBroker.getCashAwardedOnDissolve(hotel);
-
+        const cashAward = stockBroker.getCashAwardedOnDissolve([hotel]);
         for (const playerId of playerIds) {
           const shares = state.sharesState[playerId]?.[hotel.type] ?? 0;
           const totalSharesAmount = shares * hotel.getSharesCost();
@@ -67,13 +67,18 @@ const computeState = (
   return state.cashState;
 };
 
-const getSharesCostOfHotelBeforeMerge = (turnContext: TurnContext) => {
+const getSharesCostOfHotelBeforeMerge = (
+  turnContext: TurnContext,
+  hotelChainType: HotelChainType
+) => {
   const mergeContext = turnContext.mergeContext;
   if (!mergeContext) {
     throw new Error("Expected merge context when selling shares");
   }
 
-  return mergeContext.minority.getSharesCost();
+  const hotel = mergeContext.dissolved.find((h) => h.type === hotelChainType);
+
+  return hotel?.getSharesCost() ?? 0;
 };
 
 export const CashStateEngine = {

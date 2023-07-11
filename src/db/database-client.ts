@@ -29,7 +29,6 @@ export class DatabaseClient {
       .get(gameId)
       .get("instance")
       .once((instance) => {
-        console.log("game", JSON.parse(instance));
         callback(instance ? JSON.parse(instance) : null);
       });
   }
@@ -44,7 +43,6 @@ export class DatabaseClient {
       .get(gameId)
       .get("instance")
       .on((instance) => {
-        console.log("game changed", JSON.parse(instance));
         instance ? callback(JSON.parse(instance)) : null;
       });
   }

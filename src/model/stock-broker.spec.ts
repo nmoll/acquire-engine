@@ -31,7 +31,7 @@ describe(StockBroker.name, () => {
       const hotelManager = new HotelManager(boardState);
 
       expect(
-        broker.getCashAwardedOnDissolve(hotelManager.getHotel("Continental"))
+        broker.getCashAwardedOnDissolve([hotelManager.getHotel("Continental")])
       ).toEqual({
         "1": 6000,
       });
@@ -62,7 +62,7 @@ describe(StockBroker.name, () => {
       const hotelManager = new HotelManager(boardState);
 
       expect(
-        broker.getCashAwardedOnDissolve(hotelManager.getHotel("Imperial"))
+        broker.getCashAwardedOnDissolve([hotelManager.getHotel("Imperial")])
       ).toEqual({
         "2": 3750,
         "4": 3750,
@@ -94,7 +94,7 @@ describe(StockBroker.name, () => {
       const hotelManager = new HotelManager(boardState);
 
       expect(
-        broker.getCashAwardedOnDissolve(hotelManager.getHotel("American"))
+        broker.getCashAwardedOnDissolve([hotelManager.getHotel("American")])
       ).toEqual({
         1: 1000,
         2: 1000,
@@ -128,7 +128,7 @@ describe(StockBroker.name, () => {
       const hotelManager = new HotelManager(boardState);
 
       expect(
-        broker.getCashAwardedOnDissolve(hotelManager.getHotel("Imperial"))
+        broker.getCashAwardedOnDissolve([hotelManager.getHotel("Imperial")])
       ).toEqual({
         1: 2500,
         2: 5000,

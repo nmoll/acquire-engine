@@ -40,11 +40,11 @@ const computeState = (
       break;
 
     case "Hotel Merged":
-      const playerWithShares = SharesUtils.getNextPlayerWithOrphanedShares(
+      const playerWithShares = SharesUtils.findNextOrphanedShares(
         sharesState,
         result.action.playerId,
-        result.minority.type,
-        []
+        result.dissolved,
+        turnContext.turnLog
       );
       if (playerWithShares) {
         return playerWithShares.playerId;

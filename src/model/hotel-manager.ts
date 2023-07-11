@@ -30,17 +30,16 @@ export class HotelManager {
     );
   }
 
+  getLargestHotel(hotels: Hotel[]): Hotel[] {
+    const maxSize = Math.max(...hotels.map((hotel) => hotel.getSize()));
+    return hotels.filter((hotel) => hotel.getSize() === maxSize);
+  }
+
   /**
    * A square is considered "dead" if it merges 2 companies that are safe.
    */
   isDeadSquare(square: number): boolean {
     const adjacentHotels = this.findAllAdjacentToSquare(square);
-
-    // Temporarily disable 3 way merges
-    if (adjacentHotels.length > 2) {
-      return true;
-    }
-
     return adjacentHotels.filter((hotel) => hotel.isSafe()).length >= 2;
   }
 

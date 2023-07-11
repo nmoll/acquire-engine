@@ -18,12 +18,12 @@ export class Board {
   }
 
   public mergeHotels(
-    minority: Hotel,
-    majority: Hotel,
+    survivor: Hotel,
+    dissolved: Hotel[],
     mergerTile: number | null
   ): Board {
     const majorityBoardState = BoardSquareStateType.HasHotelChain(
-      majority.type
+      survivor.type
     );
 
     if (mergerTile === null) {
@@ -40,8 +40,13 @@ export class Board {
       throw new Error("No merger tile found");
     }
 
+    const boardSquareIds = dissolved.reduce<number[]>(
+      (acc, hotel) => acc.concat(hotel.boardSquareIds),
+      []
+    );
+
     return this.update(mergerTile, majorityBoardState)
-      .updateAll(minority.boardSquareIds, majorityBoardState)
+      .updateAll(boardSquareIds, majorityBoardState)
       .updateAdjacentTiles(mergerTile, majorityBoardState);
   }
 

@@ -1,6 +1,7 @@
 import { GameConfig } from "../game-config";
 import { HotelChainType, ISharesState } from "../model";
 import { ActionLog } from "../model/action-log";
+import { Hotel } from "../model/hotel";
 import { PlayerUtils } from "./player-utils";
 
 const getBasePriceBySize = (size: number): number => {
@@ -38,44 +39,77 @@ const getSharesCost = (
   return GameConfig.hotel.basePrice[hotelChain] + getBasePriceBySize(hotelSize);
 };
 
-const getNumSharesKept = (currentTurn: ActionLog[], playerId: string) =>
-  currentTurn.filter(
-    (log) =>
-      log.actionResult.type === "Share Kept" &&
-      log.actionResult.action.playerId === playerId
-  ).length;
-
-const getNextPlayerWithOrphanedShares = (
+const getOrphanedShares = (
+  playerId: string,
+  hotels: Hotel[],
   sharesState: ISharesState,
-  startPlayerId: string,
-  hotelChain: HotelChainType,
   currentTurn: ActionLog[]
 ): {
   playerId: string;
   remainingShares: number;
+  hotel: Hotel;
+} | null => {
+  for (const hotel of hotels) {
+    const totalShares = sharesState[playerId][hotel.type] ?? 0;
+
+    const sharesKept = currentTurn.filter(
+      (log) =>
+        log.actionResult.type === "Share Kept" &&
+        log.actionResult.action.playerId === playerId &&
+        log.actionResult.action.hotelChain === hotel.type
+    ).length;
+
+    const remainingShares = totalShares - sharesKept;
+
+    if (remainingShares > 0) {
+      return { playerId, remainingShares, hotel };
+    }
+  }
+
+  return null;
+};
+
+/**
+ * Finds the next player with shares that they haven't kept for the given hotels
+ */
+const findNextOrphanedShares = (
+  sharesState: ISharesState,
+  startPlayerId: string,
+  hotels: Hotel[],
+  currentTurn: ActionLog[]
+): {
+  playerId: string;
+  remainingShares: number;
+  hotel: Hotel;
 } | null => {
   const playerIds = Object.keys(sharesState);
 
   let playerId = startPlayerId;
-  let remainingShares =
-    (sharesState[playerId][hotelChain] ?? 0) -
-    getNumSharesKept(currentTurn, playerId);
+  let orphanedShares = getOrphanedShares(
+    playerId,
+    hotels,
+    sharesState,
+    currentTurn
+  );
 
-  while (remainingShares <= 0) {
+  while (!orphanedShares) {
     playerId = PlayerUtils.getNextPlayerId(playerIds, playerId);
-    remainingShares =
-      (sharesState[playerId][hotelChain] ?? 0) -
-      getNumSharesKept(currentTurn, playerId);
+    orphanedShares = getOrphanedShares(
+      playerId,
+      hotels,
+      sharesState,
+      currentTurn
+    );
 
     if (playerId === startPlayerId) {
       return null;
     }
   }
 
-  return { playerId, remainingShares };
+  return orphanedShares;
 };
 
 export const SharesUtils = {
   getSharesCost,
-  getNextPlayerWithOrphanedShares,
+  findNextOrphanedShares,
 };

@@ -29,25 +29,20 @@ export class ChooseOrphanedShareStrategy implements AvailableActionStrategy {
     let remainingShares: number;
 
     if (actionResult.type === "Hotel Merged") {
-      const playerWithShares = SharesUtils.getNextPlayerWithOrphanedShares(
+      const orphanedShares = SharesUtils.findNextOrphanedShares(
         this.context.sharesState,
         this.context.currentPlayerId,
-        actionResult.minority.type,
+        actionResult.dissolved,
         this.context.turnContext.turnLog
       );
-      const numShares = playerWithShares
-        ? this.context.sharesState[playerWithShares.playerId][
-            actionResult.minority.type
-          ]
-        : null;
 
-      if (!numShares) {
+      if (!orphanedShares) {
         return [];
       }
 
-      minorityHotelChain = actionResult.minority.type;
-      majorityHotelChain = actionResult.majority.type;
-      remainingShares = numShares;
+      minorityHotelChain = orphanedShares.hotel.type;
+      majorityHotelChain = actionResult.survivor.type;
+      remainingShares = orphanedShares.remainingShares;
     } else if (
       actionResult.type === "Share Kept" ||
       actionResult.type === "Share Sold" ||
@@ -67,8 +62,8 @@ export class ChooseOrphanedShareStrategy implements AvailableActionStrategy {
         return [];
       }
 
-      minorityHotelChain = mergeContext.minority.type;
-      majorityHotelChain = mergeContext.majority.type;
+      minorityHotelChain = playerWithUnresolvedShares.hotel.type;
+      majorityHotelChain = mergeContext.survivor.type;
       remainingShares = playerWithUnresolvedShares.shares;
     } else {
       return [];

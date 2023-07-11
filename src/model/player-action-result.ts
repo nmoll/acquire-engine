@@ -39,8 +39,8 @@ interface MergeInitiated {
 interface HotelMerged {
   type: "Hotel Merged";
   action: PlaceTile | Merge;
-  minority: Hotel;
-  majority: Hotel;
+  survivor: Hotel;
+  dissolved: Hotel[];
   cashAwarded: Record<string, number>;
 }
 
@@ -122,14 +122,14 @@ export const PlayerActionResult = {
   HotelMerged: (
     playerId: string,
     boardSquareId: number,
-    minority: Hotel,
-    majority: Hotel,
+    survivor: Hotel,
+    dissolved: Hotel[],
     cashAwarded: Record<string, number>
   ): HotelMerged => ({
     type: "Hotel Merged",
     action: PlayerActionType.PlaceTile(playerId, boardSquareId),
-    minority,
-    majority,
+    survivor,
+    dissolved,
     cashAwarded,
   }),
   SharesPurchased: (
