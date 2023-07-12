@@ -7,6 +7,7 @@ export const createGameState = (state: Partial<IGameState>): IGameState => ({
   sharesState: {},
   tileState: {},
   availableActionsState: [],
+  previousActions: [],
 
   ...state,
 });

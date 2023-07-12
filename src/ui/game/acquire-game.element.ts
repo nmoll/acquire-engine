@@ -165,6 +165,7 @@ export class AcquireGameElement extends LitElement {
         .winners="${this.state.winners}"
         .availableActionState="${this.state.availableActionsState}"
         .selectedTile="${this.selectedTile}"
+        .previousActions="${this.state.previousActions}"
         @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
         @confirm-tile-place="${() => this.onConfirmTileSelect()}"
         @cancel-tile-place="${() => (this.selectedTile = null)}"

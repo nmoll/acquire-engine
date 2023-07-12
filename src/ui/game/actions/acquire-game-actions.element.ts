@@ -1,6 +1,6 @@
-import { css, html, LitElement } from "lit";
+import { css, html, LitElement, PropertyValueMap } from "lit";
 import "../../icon/undo-icon.element";
-import { customElement, property } from "lit/decorators.js";
+import { customElement, property, state } from "lit/decorators.js";
 import { HotelChainType } from "../../../model";
 import { AvailableAction } from "../../../model/available-action";
 import { IAvailableActionState } from "../../../model/available-action-state";
@@ -26,6 +26,8 @@ import { TradeShareEvent } from "../../events/trade-share-event";
 import { KeepShareEvent } from "../../events/keep-share-event";
 import { SellShareEvent } from "../../events/sell-share-event";
 import { createLeaveGameEvent } from "../../events/leave-game-event";
+import { PlayerActionResult } from "../../../model/player-action-result";
+import "./previous-action-log.element";
 
 export interface ActionRequestEvent {
   action: PlayerAction;
@@ -108,6 +110,25 @@ export class AcquireGameActionsElement extends LitElement {
   @property()
   selectedTile!: number | null;
 
+  @property()
+  previousActions: PlayerActionResult[] = [];
+
+  @state()
+  confirmPreviousActions = false;
+
+  protected update(
+    changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>
+  ): void {
+    if (changedProperties.has("previousActions")) {
+      if (!this.previousActions.length) {
+        // reset confirm so next turn will show it again
+        this.confirmPreviousActions = false;
+      }
+    }
+
+    super.update(changedProperties);
+  }
+
   render() {
     if (this.winners) {
       if (this.winners.length > 1) {
@@ -131,6 +152,13 @@ export class AcquireGameActionsElement extends LitElement {
     }
 
     if (this.playerId === this.currentPlayerId) {
+      if (this.previousActions.length && !this.confirmPreviousActions) {
+        return html`<acquire-previous-action-log
+          .actionResults="${this.previousActions}"
+          @confirm="${() => (this.confirmPreviousActions = true)}"
+        />`;
+      }
+
       return html`<div class="actions">
         ${this.renderUndoAction()} ${this.renderActions()}
       </div>`;

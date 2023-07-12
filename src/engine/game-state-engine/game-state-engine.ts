@@ -2,7 +2,9 @@ import { IGameState } from "../../model";
 import { IAcquireGameInstance } from "../../model/acquire-game-instance";
 import { ActionLog } from "../../model/action-log";
 import { ICashState } from "../../model/cash-state";
+import { CurrentPlayerIdState } from "../../model/current-player-id-state";
 import { PlayerAction } from "../../model/player-action";
+import { PlayerActionResult } from "../../model/player-action-result";
 import { TurnContext } from "../../model/turn-context";
 import { ActionUtils } from "../../utils/action-utils";
 import { ActionResultEngine } from "../action-result-engine/action-result-engine";
@@ -33,6 +35,7 @@ const getInitialState = (gameInstance: IAcquireGameInstance): IGameState => {
     sharesState,
     currentPlayerIdState,
     availableActionsState,
+    previousActions: [],
   };
 };
 
@@ -41,6 +44,7 @@ const computeGameState = (
   playerActions: PlayerAction[]
 ): IGameState => {
   const gameLog: ActionLog[] = [];
+  const actionResults: PlayerActionResult[] = [];
 
   return playerActions.reduce<IGameState>((state, action) => {
     if (!AvailableActionsStateEngine.validateAction(action, state)) {
@@ -48,6 +52,7 @@ const computeGameState = (
     }
 
     const actionResult = ActionResultEngine.computeActionResult(state, action);
+    actionResults.push(actionResult);
 
     const turnContext: TurnContext = {
       playerIds: gameInstance.playerIds,
@@ -104,6 +109,7 @@ const computeGameState = (
       tileState,
       availableActionsState,
       currentPlayerIdState,
+      previousActions: getPreviousActions(actionResults, currentPlayerIdState),
       winners,
     };
 
@@ -122,6 +128,26 @@ const getWinners = (cashState: ICashState): string[] => {
   return Object.entries(cashState)
     .filter(([, cash]) => cash === maxCash)
     .map(([playerId]) => playerId);
+};
+
+const getPreviousActions = (
+  actionResults: PlayerActionResult[],
+  currentPlayer: CurrentPlayerIdState
+): PlayerActionResult[] => {
+  if (!currentPlayer) {
+    return [];
+  }
+  let idx = actionResults
+    .map((a) => a.action.playerId)
+    .lastIndexOf(currentPlayer);
+
+  if (idx === -1) {
+    return [];
+  }
+
+  return actionResults
+    .slice(idx + 1)
+    .filter((r) => r.action.playerId !== currentPlayer);
 };
 
 export const GameStateEngine = {
