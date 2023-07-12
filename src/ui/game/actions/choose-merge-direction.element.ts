@@ -88,18 +88,13 @@ export class ChooseMergeDirectionActionElement extends LitElement {
       return;
     }
 
-    const hotelChainToKeep = this.selected;
-    const hotelChainToDissolve = this.action.options.find(
-      (h) => h !== hotelChainToKeep
-    );
-    if (!hotelChainToDissolve) {
-      throw new Error("Could not find hotel chain to dissolve");
-    }
+    const survivor = this.selected;
+    const dissolve = this.action.options.filter((h) => h !== survivor);
 
     this.dispatchEvent(
       createMergeEvent({
-        hotelChainToKeep,
-        hotelChainToDissolve,
+        survivor,
+        dissolve,
       })
     );
   }

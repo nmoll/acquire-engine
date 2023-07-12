@@ -469,8 +469,8 @@ const actions: PlayerAction[] = [
   {
     type: "Merge",
     playerId: "2427_Rose",
-    hotelChainToKeep: "Tower",
-    hotelChainToDissolve: "Worldwide",
+    survivor: "Tower",
+    dissolve: ["Worldwide"],
   },
   {
     type: "SellOrphanedShare",

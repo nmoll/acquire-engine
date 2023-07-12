@@ -222,10 +222,7 @@ export class AcquireGameActionsElement extends LitElement {
         return html`<acquire-choose-merge-direction-action
           .action="${action}"
           @merge="${(e: MergeEvent) =>
-            this.onChooseMergeDirection(
-              e.hotelChainToKeep,
-              e.hotelChainToDissolve
-            )}"
+            this.onChooseMergeDirection(e.survivor, e.dissolve)}"
         />`;
       case "ChooseShares":
         return html`<acquire-choose-shares-action
@@ -287,8 +284,8 @@ export class AcquireGameActionsElement extends LitElement {
   }
 
   private onChooseMergeDirection(
-    hotelChainToKeep: HotelChainType,
-    hotelChainToDissolve: HotelChainType
+    survivor: HotelChainType,
+    dissolve: HotelChainType[]
   ) {
     this.dispatchEvent(
       new CustomEvent<ActionRequestEvent>("action-request", {
@@ -296,8 +293,8 @@ export class AcquireGameActionsElement extends LitElement {
           action: {
             type: "Merge",
             playerId: this.playerId,
-            hotelChainToKeep,
-            hotelChainToDissolve,
+            survivor,
+            dissolve,
           },
         },
       })

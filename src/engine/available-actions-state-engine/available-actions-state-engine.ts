@@ -115,8 +115,8 @@ const validateMerge = (action: Merge, state: IAvailableActionState): boolean =>
   state.some(
     (available) =>
       available.type === "ChooseMergeDirection" &&
-      available.options.includes(action.hotelChainToKeep) &&
-      available.options.includes(action.hotelChainToDissolve)
+      available.options.includes(action.survivor) &&
+      action.dissolve.every((hotel) => available.options.includes(hotel))
   );
 
 const validatePurchaseShares = (

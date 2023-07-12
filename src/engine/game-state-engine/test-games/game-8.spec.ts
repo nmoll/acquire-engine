@@ -409,8 +409,8 @@ const game: {
     {
       type: "Merge",
       playerId: "5031_Nate",
-      hotelChainToKeep: "Imperial",
-      hotelChainToDissolve: "Worldwide",
+      survivor: "Imperial",
+      dissolve: ["Worldwide"],
     },
     {
       type: "TradeOrphanedShare",

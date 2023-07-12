@@ -38,7 +38,9 @@ export const getActionDescription = (action: PlayerAction): string => {
     case "StartHotelChain":
       return `Player ${action.playerId} starts ${action.hotelChain}`;
     case "Merge":
-      return `Player ${action.playerId} merges ${action.hotelChainToKeep}`;
+      return `Player ${action.playerId} merges ${action.dissolve.join(
+        " and "
+      )} into ${action.survivor}`;
     case "PurchaseShares":
       return `Player ${action.playerId} purchases ${action.hotelChain}`;
     case "SellOrphanedShare":

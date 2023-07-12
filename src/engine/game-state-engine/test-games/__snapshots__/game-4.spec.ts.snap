@@ -1632,7 +1632,7 @@ P5031_Nate | $2200 | [8F] [9G] [12E] [5G] [1D] | A:7 C:1 F:2 I:2 L:1
 P2427_Rose [Merge: W T]
 `;
 
-exports[`Game Play > (97) Player 2427_Rose merges Tower 1`] = `
+exports[`Game Play > (97) Player 2427_Rose merges Worldwide into Tower 1`] = `
  - - - - C - - - - - - 0
  - - - C C - - - - T T -
  - I - - - - - 0 - T T -

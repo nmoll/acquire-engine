@@ -907,8 +907,8 @@ const game: {
     {
       type: "Merge",
       playerId: "8143_Rowan",
-      hotelChainToKeep: "Festival",
-      hotelChainToDissolve: "Luxor",
+      survivor: "Festival",
+      dissolve: ["Luxor"],
     },
     {
       type: "TradeOrphanedShare",

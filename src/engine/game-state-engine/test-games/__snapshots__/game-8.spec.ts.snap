@@ -1394,7 +1394,7 @@ P5031_Nate | $2300 | [1H] [5I] [3B] [2A] | A:1 C:1 F:5 I:3 T:3 W:3
 P5031_Nate [Merge: I W]
 `;
 
-exports[`Game Play > (83) Player 5031_Nate merges Imperial 1`] = `
+exports[`Game Play > (83) Player 5031_Nate merges Worldwide into Imperial 1`] = `
  - - - - - C C - - - A A
  - - - - - - - - - - - -
  - 0 - F - - - - 0 - - 0

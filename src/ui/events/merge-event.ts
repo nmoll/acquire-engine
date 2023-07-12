@@ -1,25 +1,25 @@
 import { HotelChainType } from "../../model";
 
 export class MergeEvent extends CustomEvent<{
-  hotelChainToKeep: HotelChainType;
-  hotelChainToDissolve: HotelChainType;
+  survivor: HotelChainType;
+  dissolve: HotelChainType[];
 }> {
-  get hotelChainToKeep() {
-    return this.detail.hotelChainToKeep;
+  get survivor() {
+    return this.detail.survivor;
   }
 
-  get hotelChainToDissolve() {
-    return this.detail.hotelChainToDissolve;
+  get dissolve() {
+    return this.detail.dissolve;
   }
 }
 
 export const createMergeEvent = (merge: {
-  hotelChainToKeep: HotelChainType;
-  hotelChainToDissolve: HotelChainType;
+  survivor: HotelChainType;
+  dissolve: HotelChainType[];
 }) =>
   new MergeEvent("merge", {
     detail: {
-      hotelChainToKeep: merge.hotelChainToKeep,
-      hotelChainToDissolve: merge.hotelChainToDissolve,
+      survivor: merge.survivor,
+      dissolve: merge.dissolve,
     },
   });

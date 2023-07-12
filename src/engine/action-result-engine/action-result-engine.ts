@@ -65,15 +65,17 @@ const computeActionResult = (
       }
 
     case "Merge":
-      const survivor = hotelManager.getHotel(action.hotelChainToKeep);
-      const dissolved = hotelManager.getHotel(action.hotelChainToDissolve);
+      const survivor = hotelManager.getHotel(action.survivor);
+      const dissolved = action.dissolve.map((type) =>
+        hotelManager.getHotel(type)
+      );
 
       return {
         type: "Hotel Merged",
         action,
         survivor,
-        dissolved: [dissolved],
-        cashAwarded: stockBroker.getCashAwardedOnDissolve([dissolved]),
+        dissolved,
+        cashAwarded: stockBroker.getCashAwardedOnDissolve(dissolved),
       };
 
     case "StartHotelChain":

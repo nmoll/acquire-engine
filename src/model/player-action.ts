@@ -40,8 +40,8 @@ export interface TradeOrphanedShare {
 export interface Merge {
   type: "Merge";
   playerId: string;
-  hotelChainToKeep: HotelChainType;
-  hotelChainToDissolve: HotelChainType;
+  survivor: HotelChainType;
+  dissolve: HotelChainType[];
 }
 
 export interface EndTurn {
@@ -120,13 +120,13 @@ export const PlayerActionType = {
 
   Merge: (
     playerId: string,
-    hotelChainToKeep: HotelChainType,
-    hotelChainToDissolve: HotelChainType
+    survivor: HotelChainType,
+    dissolve: HotelChainType[]
   ): Merge => ({
     type: "Merge",
     playerId,
-    hotelChainToKeep,
-    hotelChainToDissolve,
+    survivor,
+    dissolve,
   }),
 
   EndTurn: (playerId: string): EndTurn => ({

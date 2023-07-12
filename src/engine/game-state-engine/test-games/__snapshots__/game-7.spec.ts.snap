@@ -3145,7 +3145,7 @@ P5031_Nate | $8100 | [10B] [11A] [9E] [1E] [7F] | A:13 C:4 F:6 I:5 L:2 T:6 W:4
 P8143_Rowan [Merge: F L]
 `;
 
-exports[`Game Play > (186) Player 8143_Rowan merges Festival 1`] = `
+exports[`Game Play > (186) Player 8143_Rowan merges Luxor into Festival 1`] = `
  0 - 0 - T T T T T T - -
  - 0 - T T - - T - - - C
  0 - - - - - - T T T - C
