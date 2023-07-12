@@ -1,0 +1,1905 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Game Play > (1) Player 9186_Justin places tile [12H] 1`] = `
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - 0
+ - - - - - - - - - - - -
+
+P9186_Justin | $6000 | [5F] [4G] [10D] [10A] | 
+P5031_Nate | $6000 | [12I] [7I] [1C] [3A] [4E] | 
+
+P9186_Justin [End Turn]
+`;
+
+exports[`Game Play > (2) Player 9186_Justin ends turn 1`] = `
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - 0
+ - - - - - - - - - - - -
+
+P9186_Justin | $6000 | [5F] [4G] [10D] [10A] [4H] | 
+P5031_Nate | $6000 | [12I] [7I] [1C] [3A] [4E] | 
+
+P5031_Nate [Choose Tile: [12I] [7I] [1C] [3A] [4E]]
+`;
+
+exports[`Game Play > (3) Player 5031_Nate places tile [12I] 1`] = `
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - 0
+ - - - - - - - - - - - 0
+
+P9186_Justin | $6000 | [5F] [4G] [10D] [10A] [4H] | 
+P5031_Nate | $6000 | [7I] [1C] [3A] [4E] | 
+
+P5031_Nate [Choose Hotel: A C F I W T L]
+`;
+
+exports[`Game Play > (4) Player 5031_Nate starts American 1`] = `
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [4G] [10D] [10A] [4H] | 
+P5031_Nate | $6000 | [7I] [1C] [3A] [4E] | A:1
+
+P5031_Nate [Choose Shares: A] [End Turn]
+`;
+
+exports[`Game Play > (5) Player 5031_Nate purchases American 1`] = `
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [4G] [10D] [10A] [4H] | 
+P5031_Nate | $5700 | [7I] [1C] [3A] [4E] | A:2
+
+P5031_Nate [Choose Shares: A] [End Turn]
+`;
+
+exports[`Game Play > (6) Player 5031_Nate ends turn 1`] = `
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [4G] [10D] [10A] [4H] | 
+P5031_Nate | $5700 | [7I] [1C] [3A] [4E] [2I] | A:2
+
+P9186_Justin [Choose Tile: [5F] [4G] [10D] [10A] [4H]]
+`;
+
+exports[`Game Play > (7) Player 9186_Justin places tile [4G] 1`] = `
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - 0 - - - - - - - -
+ - - - - - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [4H] | 
+P5031_Nate | $5700 | [7I] [1C] [3A] [4E] [2I] | A:2
+
+P9186_Justin [Choose Shares: A] [End Turn]
+`;
+
+exports[`Game Play > (8) Player 9186_Justin ends turn 1`] = `
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - 0 - - - - - - - -
+ - - - - - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [4H] [2A] | 
+P5031_Nate | $5700 | [7I] [1C] [3A] [4E] [2I] | A:2
+
+P5031_Nate [Choose Tile: [7I] [1C] [3A] [4E] [2I]]
+`;
+
+exports[`Game Play > (9) Player 5031_Nate places tile [3A] 1`] = `
+ - - 0 - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - 0 - - - - - - - -
+ - - - - - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [4H] [2A] | 
+P5031_Nate | $5700 | [7I] [1C] [4E] [2I] | A:2
+
+P5031_Nate [Choose Shares: A] [End Turn]
+`;
+
+exports[`Game Play > (10) Player 5031_Nate ends turn 1`] = `
+ - - 0 - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - 0 - - - - - - - -
+ - - - - - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [4H] [2A] | 
+P5031_Nate | $5700 | [7I] [1C] [4E] [2I] [5C] | A:2
+
+P9186_Justin [Choose Tile: [5F] [10D] [10A] [4H] [2A]]
+`;
+
+exports[`Game Play > (11) Player 9186_Justin places tile [4H] 1`] = `
+ - - 0 - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - 0 - - - - - - - -
+ - - - 0 - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [2A] | 
+P5031_Nate | $5700 | [7I] [1C] [4E] [2I] [5C] | A:2
+
+P9186_Justin [Choose Hotel: C F I W T L]
+`;
+
+exports[`Game Play > (12) Player 9186_Justin starts Continental 1`] = `
+ - - 0 - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - -
+ - - - C - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [2A] | C:1
+P5031_Nate | $5700 | [7I] [1C] [4E] [2I] [5C] | A:2
+
+P9186_Justin [Choose Shares: A C] [End Turn]
+`;
+
+exports[`Game Play > (13) Player 9186_Justin ends turn 1`] = `
+ - - 0 - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - -
+ - - - C - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [2A] [2E] | C:1
+P5031_Nate | $5700 | [7I] [1C] [4E] [2I] [5C] | A:2
+
+P5031_Nate [Choose Tile: [7I] [1C] [4E] [2I] [5C]]
+`;
+
+exports[`Game Play > (14) Player 5031_Nate places tile [5C] 1`] = `
+ - - 0 - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - -
+ - - - C - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [2A] [2E] | C:1
+P5031_Nate | $5700 | [7I] [1C] [4E] [2I] | A:2
+
+P5031_Nate [Choose Shares: A C] [End Turn]
+`;
+
+exports[`Game Play > (15) Player 5031_Nate purchases Continental 1`] = `
+ - - 0 - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - -
+ - - - C - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [2A] [2E] | C:1
+P5031_Nate | $5300 | [7I] [1C] [4E] [2I] | A:2 C:1
+
+P5031_Nate [Choose Shares: A C] [End Turn]
+`;
+
+exports[`Game Play > (16) Player 5031_Nate purchases Continental 1`] = `
+ - - 0 - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - -
+ - - - C - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [2A] [2E] | C:1
+P5031_Nate | $4900 | [7I] [1C] [4E] [2I] | A:2 C:2
+
+P5031_Nate [Choose Shares: A C] [End Turn]
+`;
+
+exports[`Game Play > (17) Player 5031_Nate ends turn 1`] = `
+ - - 0 - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - -
+ - - - C - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [2A] [2E] | C:1
+P5031_Nate | $4900 | [7I] [1C] [4E] [2I] [8H] | A:2 C:2
+
+P9186_Justin [Choose Tile: [5F] [10D] [10A] [2A] [2E]]
+`;
+
+exports[`Game Play > (18) Player 9186_Justin places tile [2A] 1`] = `
+ - 0 0 - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - -
+ - - - C - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [2E] | C:1
+P5031_Nate | $4900 | [7I] [1C] [4E] [2I] [8H] | A:2 C:2
+
+P9186_Justin [Choose Hotel: F I W T L]
+`;
+
+exports[`Game Play > (19) Player 9186_Justin starts Tower 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - -
+ - - - C - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [2E] | C:1 T:1
+P5031_Nate | $4900 | [7I] [1C] [4E] [2I] [8H] | A:2 C:2
+
+P9186_Justin [Choose Shares: A C T] [End Turn]
+`;
+
+exports[`Game Play > (20) Player 9186_Justin ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - -
+ - - - C - - - - - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [2E] [12G] | C:1 T:1
+P5031_Nate | $4900 | [7I] [1C] [4E] [2I] [8H] | A:2 C:2
+
+P5031_Nate [Choose Tile: [7I] [1C] [4E] [2I] [8H]]
+`;
+
+exports[`Game Play > (21) Player 5031_Nate places tile [8H] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - -
+ - - - C - - - 0 - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [2E] [12G] | C:1 T:1
+P5031_Nate | $4900 | [7I] [1C] [4E] [2I] | A:2 C:2
+
+P5031_Nate [Choose Shares: A C T] [End Turn]
+`;
+
+exports[`Game Play > (22) Player 5031_Nate purchases Tower 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - -
+ - - - C - - - 0 - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [2E] [12G] | C:1 T:1
+P5031_Nate | $4700 | [7I] [1C] [4E] [2I] | A:2 C:2 T:1
+
+P5031_Nate [Choose Shares: A C T] [End Turn]
+`;
+
+exports[`Game Play > (23) Player 5031_Nate ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - -
+ - - - C - - - 0 - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [2E] [12G] | C:1 T:1
+P5031_Nate | $4700 | [7I] [1C] [4E] [2I] [10I] | A:2 C:2 T:1
+
+P9186_Justin [Choose Tile: [5F] [10D] [10A] [2E] [12G]]
+`;
+
+exports[`Game Play > (24) Player 9186_Justin places tile [12G] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $6000 | [5F] [10D] [10A] [2E] | C:1 T:1
+P5031_Nate | $4700 | [7I] [1C] [4E] [2I] [10I] | A:2 C:2 T:1
+
+P9186_Justin [Choose Shares: A C T] [End Turn]
+`;
+
+exports[`Game Play > (25) Player 9186_Justin purchases American 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $5600 | [5F] [10D] [10A] [2E] | A:1 C:1 T:1
+P5031_Nate | $4700 | [7I] [1C] [4E] [2I] [10I] | A:2 C:2 T:1
+
+P9186_Justin [Choose Shares: A C T] [End Turn]
+`;
+
+exports[`Game Play > (26) Player 9186_Justin ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $5600 | [5F] [10D] [10A] [2E] [8E] | A:1 C:1 T:1
+P5031_Nate | $4700 | [7I] [1C] [4E] [2I] [10I] | A:2 C:2 T:1
+
+P5031_Nate [Choose Tile: [7I] [1C] [4E] [2I] [10I]]
+`;
+
+exports[`Game Play > (27) Player 5031_Nate places tile [4E] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - - - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $5600 | [5F] [10D] [10A] [2E] [8E] | A:1 C:1 T:1
+P5031_Nate | $4700 | [7I] [1C] [2I] [10I] | A:2 C:2 T:1
+
+P5031_Nate [Choose Shares: A C T] [End Turn]
+`;
+
+exports[`Game Play > (28) Player 5031_Nate purchases Tower 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - - - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $5600 | [5F] [10D] [10A] [2E] [8E] | A:1 C:1 T:1
+P5031_Nate | $4500 | [7I] [1C] [2I] [10I] | A:2 C:2 T:2
+
+P5031_Nate [Choose Shares: A C T] [End Turn]
+`;
+
+exports[`Game Play > (29) Player 5031_Nate ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - - - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $5600 | [5F] [10D] [10A] [2E] [8E] | A:1 C:1 T:1
+P5031_Nate | $4500 | [7I] [1C] [2I] [10I] [12C] | A:2 C:2 T:2
+
+P9186_Justin [Choose Tile: [5F] [10D] [10A] [2E] [8E]]
+`;
+
+exports[`Game Play > (30) Player 9186_Justin places tile [2E] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - 0 - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $5600 | [5F] [10D] [10A] [8E] | A:1 C:1 T:1
+P5031_Nate | $4500 | [7I] [1C] [2I] [10I] [12C] | A:2 C:2 T:2
+
+P9186_Justin [Choose Shares: A C T] [End Turn]
+`;
+
+exports[`Game Play > (31) Player 9186_Justin purchases American 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - 0 - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $5200 | [5F] [10D] [10A] [8E] | A:2 C:1 T:1
+P5031_Nate | $4500 | [7I] [1C] [2I] [10I] [12C] | A:2 C:2 T:2
+
+P9186_Justin [Choose Shares: A C T] [End Turn]
+`;
+
+exports[`Game Play > (32) Player 9186_Justin ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - 0 - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - - - - - - A
+
+P9186_Justin | $5200 | [5F] [10D] [10A] [8E] [6C] | A:2 C:1 T:1
+P5031_Nate | $4500 | [7I] [1C] [2I] [10I] [12C] | A:2 C:2 T:2
+
+P5031_Nate [Choose Tile: [7I] [1C] [2I] [10I] [12C]]
+`;
+
+exports[`Game Play > (33) Player 5031_Nate places tile [7I] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - 0 - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - - - A
+
+P9186_Justin | $5200 | [5F] [10D] [10A] [8E] [6C] | A:2 C:1 T:1
+P5031_Nate | $4500 | [1C] [2I] [10I] [12C] | A:2 C:2 T:2
+
+P5031_Nate [Choose Shares: A C T] [End Turn]
+`;
+
+exports[`Game Play > (34) Player 5031_Nate ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - - - - - - - - - -
+ - 0 - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - - - A
+
+P9186_Justin | $5200 | [5F] [10D] [10A] [8E] [6C] | A:2 C:1 T:1
+P5031_Nate | $4500 | [1C] [2I] [10I] [12C] [7C] | A:2 C:2 T:2
+
+P9186_Justin [Choose Tile: [5F] [10D] [10A] [8E] [6C]]
+`;
+
+exports[`Game Play > (35) Player 9186_Justin places tile [6C] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - 0 0 - - - - - -
+ - - - - - - - - - - - -
+ - 0 - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - - - A
+
+P9186_Justin | $5200 | [5F] [10D] [10A] [8E] | A:2 C:1 T:1
+P5031_Nate | $4500 | [1C] [2I] [10I] [12C] [7C] | A:2 C:2 T:2
+
+P9186_Justin [Choose Hotel: F I W L]
+`;
+
+exports[`Game Play > (36) Player 9186_Justin starts Imperial 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ - 0 - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - - - A
+
+P9186_Justin | $5200 | [5F] [10D] [10A] [8E] | A:2 C:1 I:1 T:1
+P5031_Nate | $4500 | [1C] [2I] [10I] [12C] [7C] | A:2 C:2 T:2
+
+P9186_Justin [Choose Shares: A C I T] [End Turn]
+`;
+
+exports[`Game Play > (37) Player 9186_Justin purchases Tower 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ - 0 - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - - - A
+
+P9186_Justin | $5000 | [5F] [10D] [10A] [8E] | A:2 C:1 I:1 T:2
+P5031_Nate | $4500 | [1C] [2I] [10I] [12C] [7C] | A:2 C:2 T:2
+
+P9186_Justin [Choose Shares: A C I T] [End Turn]
+`;
+
+exports[`Game Play > (38) Player 9186_Justin purchases Continental 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ - 0 - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - - - A
+
+P9186_Justin | $4600 | [5F] [10D] [10A] [8E] | A:2 C:2 I:1 T:2
+P5031_Nate | $4500 | [1C] [2I] [10I] [12C] [7C] | A:2 C:2 T:2
+
+P9186_Justin [Choose Shares: A C I T] [End Turn]
+`;
+
+exports[`Game Play > (39) Player 9186_Justin ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ - 0 - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - - - A
+
+P9186_Justin | $4600 | [5F] [10D] [10A] [8E] [1E] | A:2 C:2 I:1 T:2
+P5031_Nate | $4500 | [1C] [2I] [10I] [12C] [7C] | A:2 C:2 T:2
+
+P5031_Nate [Choose Tile: [1C] [2I] [10I] [12C] [7C]]
+`;
+
+exports[`Game Play > (40) Player 5031_Nate places tile [10I] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ - 0 - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - 0 - A
+
+P9186_Justin | $4600 | [5F] [10D] [10A] [8E] [1E] | A:2 C:2 I:1 T:2
+P5031_Nate | $4500 | [1C] [2I] [12C] [7C] | A:2 C:2 T:2
+
+P5031_Nate [Choose Shares: A C I T] [End Turn]
+`;
+
+exports[`Game Play > (41) Player 5031_Nate purchases Imperial 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ - 0 - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - 0 - A
+
+P9186_Justin | $4600 | [5F] [10D] [10A] [8E] [1E] | A:2 C:2 I:1 T:2
+P5031_Nate | $4100 | [1C] [2I] [12C] [7C] | A:2 C:2 I:1 T:2
+
+P5031_Nate [Choose Shares: A C I T] [End Turn]
+`;
+
+exports[`Game Play > (42) Player 5031_Nate purchases Imperial 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ - 0 - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - 0 - A
+
+P9186_Justin | $4600 | [5F] [10D] [10A] [8E] [1E] | A:2 C:2 I:1 T:2
+P5031_Nate | $3700 | [1C] [2I] [12C] [7C] | A:2 C:2 I:2 T:2
+
+P5031_Nate [Choose Shares: A C I T] [End Turn]
+`;
+
+exports[`Game Play > (43) Player 5031_Nate purchases Imperial 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ - 0 - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - 0 - A
+
+P9186_Justin | $4600 | [5F] [10D] [10A] [8E] [1E] | A:2 C:2 I:1 T:2
+P5031_Nate | $3300 | [1C] [2I] [12C] [7C] | A:2 C:2 I:3 T:2
+
+P5031_Nate [End Turn]
+`;
+
+exports[`Game Play > (44) Player 5031_Nate ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ - 0 - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - 0 - A
+
+P9186_Justin | $4600 | [5F] [10D] [10A] [8E] [1E] | A:2 C:2 I:1 T:2
+P5031_Nate | $3300 | [1C] [2I] [12C] [7C] [6B] | A:2 C:2 I:3 T:2
+
+P9186_Justin [Choose Tile: [5F] [10D] [10A] [8E] [1E]]
+`;
+
+exports[`Game Play > (45) Player 9186_Justin places tile [1E] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ 0 0 - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - 0 - A
+
+P9186_Justin | $4600 | [5F] [10D] [10A] [8E] | A:2 C:2 I:1 T:2
+P5031_Nate | $3300 | [1C] [2I] [12C] [7C] [6B] | A:2 C:2 I:3 T:2
+
+P9186_Justin [Choose Hotel: F W L]
+`;
+
+exports[`Game Play > (46) Player 9186_Justin starts Worldwide 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - 0 - A
+
+P9186_Justin | $4600 | [5F] [10D] [10A] [8E] | A:2 C:2 I:1 T:2 W:1
+P5031_Nate | $3300 | [1C] [2I] [12C] [7C] [6B] | A:2 C:2 I:3 T:2
+
+P9186_Justin [Choose Shares: A C I W T] [End Turn]
+`;
+
+exports[`Game Play > (47) Player 9186_Justin purchases Tower 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - 0 - A
+
+P9186_Justin | $4400 | [5F] [10D] [10A] [8E] | A:2 C:2 I:1 T:3 W:1
+P5031_Nate | $3300 | [1C] [2I] [12C] [7C] [6B] | A:2 C:2 I:3 T:2
+
+P9186_Justin [Choose Shares: A C I W T] [End Turn]
+`;
+
+exports[`Game Play > (48) Player 9186_Justin purchases Continental 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - 0 - A
+
+P9186_Justin | $4000 | [5F] [10D] [10A] [8E] | A:2 C:3 I:1 T:3 W:1
+P5031_Nate | $3300 | [1C] [2I] [12C] [7C] [6B] | A:2 C:2 I:3 T:2
+
+P9186_Justin [Choose Shares: A C I W T] [End Turn]
+`;
+
+exports[`Game Play > (49) Player 9186_Justin purchases American 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - 0 - A
+
+P9186_Justin | $3600 | [5F] [10D] [10A] [8E] | A:3 C:3 I:1 T:3 W:1
+P5031_Nate | $3300 | [1C] [2I] [12C] [7C] [6B] | A:2 C:2 I:3 T:2
+
+P9186_Justin [End Turn]
+`;
+
+exports[`Game Play > (50) Player 9186_Justin ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - - - - - - 0 - - 0 - A
+
+P9186_Justin | $3600 | [5F] [10D] [10A] [8E] [10C] | A:3 C:3 I:1 T:3 W:1
+P5031_Nate | $3300 | [1C] [2I] [12C] [7C] [6B] | A:2 C:2 I:3 T:2
+
+P5031_Nate [Choose Tile: [1C] [2I] [12C] [7C] [6B]]
+`;
+
+exports[`Game Play > (51) Player 5031_Nate places tile [2I] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3600 | [5F] [10D] [10A] [8E] [10C] | A:3 C:3 I:1 T:3 W:1
+P5031_Nate | $3300 | [1C] [12C] [7C] [6B] | A:2 C:2 I:3 T:2
+
+P5031_Nate [Choose Shares: A C I W T] [End Turn]
+`;
+
+exports[`Game Play > (52) Player 5031_Nate purchases Worldwide 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3600 | [5F] [10D] [10A] [8E] [10C] | A:3 C:3 I:1 T:3 W:1
+P5031_Nate | $3000 | [1C] [12C] [7C] [6B] | A:2 C:2 I:3 T:2 W:1
+
+P5031_Nate [Choose Shares: A C I W T] [End Turn]
+`;
+
+exports[`Game Play > (53) Player 5031_Nate purchases Worldwide 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3600 | [5F] [10D] [10A] [8E] [10C] | A:3 C:3 I:1 T:3 W:1
+P5031_Nate | $2700 | [1C] [12C] [7C] [6B] | A:2 C:2 I:3 T:2 W:2
+
+P5031_Nate [Choose Shares: A C I W T] [End Turn]
+`;
+
+exports[`Game Play > (54) Player 5031_Nate ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - - - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3600 | [5F] [10D] [10A] [8E] [10C] | A:3 C:3 I:1 T:3 W:1
+P5031_Nate | $2700 | [1C] [12C] [7C] [6B] [9B] | A:2 C:2 I:3 T:2 W:2
+
+P9186_Justin [Choose Tile: [5F] [10D] [10A] [8E] [10C]]
+`;
+
+exports[`Game Play > (55) Player 9186_Justin places tile [5F] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3600 | [10D] [10A] [8E] [10C] | A:3 C:3 I:1 T:3 W:1
+P5031_Nate | $2700 | [1C] [12C] [7C] [6B] [9B] | A:2 C:2 I:3 T:2 W:2
+
+P9186_Justin [Choose Shares: A C I W T] [End Turn]
+`;
+
+exports[`Game Play > (56) Player 9186_Justin purchases Tower 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3400 | [10D] [10A] [8E] [10C] | A:3 C:3 I:1 T:4 W:1
+P5031_Nate | $2700 | [1C] [12C] [7C] [6B] [9B] | A:2 C:2 I:3 T:2 W:2
+
+P9186_Justin [Choose Shares: A C I W T] [End Turn]
+`;
+
+exports[`Game Play > (57) Player 9186_Justin purchases Tower 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10D] [10A] [8E] [10C] | A:3 C:3 I:1 T:5 W:1
+P5031_Nate | $2700 | [1C] [12C] [7C] [6B] [9B] | A:2 C:2 I:3 T:2 W:2
+
+P9186_Justin [Choose Shares: A C I W T] [End Turn]
+`;
+
+exports[`Game Play > (58) Player 9186_Justin ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - -
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10D] [10A] [8E] [10C] [8A] | A:3 C:3 I:1 T:5 W:1
+P5031_Nate | $2700 | [1C] [12C] [7C] [6B] [9B] | A:2 C:2 I:3 T:2 W:2
+
+P5031_Nate [Choose Tile: [1C] [12C] [7C] [6B] [9B]]
+`;
+
+exports[`Game Play > (59) Player 5031_Nate places tile [12C] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - 0
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10D] [10A] [8E] [10C] [8A] | A:3 C:3 I:1 T:5 W:1
+P5031_Nate | $2700 | [1C] [7C] [6B] [9B] | A:2 C:2 I:3 T:2 W:2
+
+P5031_Nate [Choose Shares: A C I W T] [End Turn]
+`;
+
+exports[`Game Play > (60) Player 5031_Nate ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - - - 0
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10D] [10A] [8E] [10C] [8A] | A:3 C:3 I:1 T:5 W:1
+P5031_Nate | $2700 | [1C] [7C] [6B] [9B] [6E] | A:2 C:2 I:3 T:2 W:2
+
+P9186_Justin [Choose Tile: [10D] [10A] [8E] [10C] [8A]]
+`;
+
+exports[`Game Play > (61) Player 9186_Justin places tile [10C] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - 0 - 0
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10D] [10A] [8E] [8A] | A:3 C:3 I:1 T:5 W:1
+P5031_Nate | $2700 | [1C] [7C] [6B] [9B] [6E] | A:2 C:2 I:3 T:2 W:2
+
+P9186_Justin [Choose Shares: A C I W T] [End Turn]
+`;
+
+exports[`Game Play > (62) Player 9186_Justin ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - 0 - 0
+ - - - - - - - - - - - -
+ W W - 0 - - - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10D] [10A] [8E] [8A] [10B] | A:3 C:3 I:1 T:5 W:1
+P5031_Nate | $2700 | [1C] [7C] [6B] [9B] [6E] | A:2 C:2 I:3 T:2 W:2
+
+P5031_Nate [Choose Tile: [1C] [7C] [6B] [9B] [6E]]
+`;
+
+exports[`Game Play > (63) Player 5031_Nate places tile [6E] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - 0 - 0
+ - - - - - - - - - - - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10D] [10A] [8E] [8A] [10B] | A:3 C:3 I:1 T:5 W:1
+P5031_Nate | $2700 | [1C] [7C] [6B] [9B] | A:2 C:2 I:3 T:2 W:2
+
+P5031_Nate [Choose Shares: A C I W T] [End Turn]
+`;
+
+exports[`Game Play > (64) Player 5031_Nate purchases Continental 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - 0 - 0
+ - - - - - - - - - - - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10D] [10A] [8E] [8A] [10B] | A:3 C:3 I:1 T:5 W:1
+P5031_Nate | $2300 | [1C] [7C] [6B] [9B] | A:2 C:3 I:3 T:2 W:2
+
+P5031_Nate [Choose Shares: A C I W T] [End Turn]
+`;
+
+exports[`Game Play > (65) Player 5031_Nate purchases Continental 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - 0 - 0
+ - - - - - - - - - - - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10D] [10A] [8E] [8A] [10B] | A:3 C:3 I:1 T:5 W:1
+P5031_Nate | $1900 | [1C] [7C] [6B] [9B] | A:2 C:4 I:3 T:2 W:2
+
+P5031_Nate [Choose Shares: A C I W T] [End Turn]
+`;
+
+exports[`Game Play > (66) Player 5031_Nate ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - 0 - 0
+ - - - - - - - - - - - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10D] [10A] [8E] [8A] [10B] | A:3 C:3 I:1 T:5 W:1
+P5031_Nate | $1900 | [1C] [7C] [6B] [9B] [9E] | A:2 C:4 I:3 T:2 W:2
+
+P9186_Justin [Choose Tile: [10D] [10A] [8E] [8A] [10B]]
+`;
+
+exports[`Game Play > (67) Player 9186_Justin places tile [10D] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - 0 - 0
+ - - - - - - - - - 0 - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10A] [8E] [8A] [10B] | A:3 C:3 I:1 T:5 W:1
+P5031_Nate | $1900 | [1C] [7C] [6B] [9B] [9E] | A:2 C:4 I:3 T:2 W:2
+
+P9186_Justin [Choose Hotel: F L]
+`;
+
+exports[`Game Play > (68) Player 9186_Justin starts Festival 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10A] [8E] [8A] [10B] | A:3 C:3 F:1 I:1 T:5 W:1
+P5031_Nate | $1900 | [1C] [7C] [6B] [9B] [9E] | A:2 C:4 I:3 T:2 W:2
+
+P9186_Justin [Choose Shares: A C F I W T] [End Turn]
+`;
+
+exports[`Game Play > (69) Player 9186_Justin ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I - - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10A] [8E] [8A] [10B] [6F] | A:3 C:3 F:1 I:1 T:5 W:1
+P5031_Nate | $1900 | [1C] [7C] [6B] [9B] [9E] | A:2 C:4 I:3 T:2 W:2
+
+P5031_Nate [Choose Tile: [1C] [7C] [6B] [9B] [9E]]
+`;
+
+exports[`Game Play > (70) Player 5031_Nate places tile [7C] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10A] [8E] [8A] [10B] [6F] | A:3 C:3 F:1 I:1 T:5 W:1
+P5031_Nate | $1900 | [1C] [6B] [9B] [9E] | A:2 C:4 I:3 T:2 W:2
+
+P5031_Nate [Choose Shares: A C F I W T] [End Turn]
+`;
+
+exports[`Game Play > (71) Player 5031_Nate purchases Continental 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10A] [8E] [8A] [10B] [6F] | A:3 C:3 F:1 I:1 T:5 W:1
+P5031_Nate | $1500 | [1C] [6B] [9B] [9E] | A:2 C:5 I:3 T:2 W:2
+
+P5031_Nate [Choose Shares: A C F I W T] [End Turn]
+`;
+
+exports[`Game Play > (72) Player 5031_Nate purchases Continental 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10A] [8E] [8A] [10B] [6F] | A:3 C:3 F:1 I:1 T:5 W:1
+P5031_Nate | $1100 | [1C] [6B] [9B] [9E] | A:2 C:6 I:3 T:2 W:2
+
+P5031_Nate [Choose Shares: A C F I W T] [End Turn]
+`;
+
+exports[`Game Play > (73) Player 5031_Nate ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - - - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10A] [8E] [8A] [10B] [6F] | A:3 C:3 F:1 I:1 T:5 W:1
+P5031_Nate | $1100 | [1C] [6B] [9B] [9E] [8C] | A:2 C:6 I:3 T:2 W:2
+
+P9186_Justin [Choose Tile: [10A] [8E] [8A] [10B] [6F]]
+`;
+
+exports[`Game Play > (74) Player 9186_Justin places tile [10B] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10A] [8E] [8A] [6F] | A:3 C:3 F:1 I:1 T:5 W:1
+P5031_Nate | $1100 | [1C] [6B] [9B] [9E] [8C] | A:2 C:6 I:3 T:2 W:2
+
+P9186_Justin [Choose Shares: A C F I W T] [End Turn]
+`;
+
+exports[`Game Play > (75) Player 9186_Justin ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - - - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10A] [8E] [8A] [6F] [12D] | A:3 C:3 F:1 I:1 T:5 W:1
+P5031_Nate | $1100 | [1C] [6B] [9B] [9E] [8C] | A:2 C:6 I:3 T:2 W:2
+
+P5031_Nate [Choose Tile: [1C] [6B] [9B] [9E] [8C]]
+`;
+
+exports[`Game Play > (76) Player 5031_Nate places tile [6B] 1`] = `
+ - T T - - - - - - - - -
+ - - - - - I - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10A] [8E] [8A] [6F] [12D] | A:3 C:3 F:1 I:1 T:5 W:1
+P5031_Nate | $1100 | [1C] [9B] [9E] [8C] | A:2 C:6 I:3 T:2 W:2
+
+P5031_Nate [Choose Shares: A C F I W T] [End Turn]
+`;
+
+exports[`Game Play > (77) Player 5031_Nate ends turn 1`] = `
+ - T T - - - - - - - - -
+ - - - - - I - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [10A] [8E] [8A] [6F] [12D] | A:3 C:3 F:1 I:1 T:5 W:1
+P5031_Nate | $1100 | [1C] [9B] [9E] [8C] [5G] | A:2 C:6 I:3 T:2 W:2
+
+P9186_Justin [Choose Tile: [10A] [8E] [8A] [6F] [12D]]
+`;
+
+exports[`Game Play > (78) Player 9186_Justin places tile [10A] 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $3200 | [8E] [8A] [6F] [12D] | A:3 C:3 F:1 I:1 T:5 W:1
+P5031_Nate | $1100 | [1C] [9B] [9E] [8C] [5G] | A:2 C:6 I:3 T:2 W:2
+
+P9186_Justin [Choose Shares: A C F I W T] [End Turn]
+`;
+
+exports[`Game Play > (79) Player 9186_Justin purchases Worldwide 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $2900 | [8E] [8A] [6F] [12D] | A:3 C:3 F:1 I:1 T:5 W:2
+P5031_Nate | $1100 | [1C] [9B] [9E] [8C] [5G] | A:2 C:6 I:3 T:2 W:2
+
+P9186_Justin [Choose Shares: A C F I W T] [End Turn]
+`;
+
+exports[`Game Play > (80) Player 9186_Justin purchases Tower 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $2700 | [8E] [8A] [6F] [12D] | A:3 C:3 F:1 I:1 T:6 W:2
+P5031_Nate | $1100 | [1C] [9B] [9E] [8C] [5G] | A:2 C:6 I:3 T:2 W:2
+
+P9186_Justin [Choose Shares: A C F I W T] [End Turn]
+`;
+
+exports[`Game Play > (81) Player 9186_Justin purchases Festival 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $2200 | [8E] [8A] [6F] [12D] | A:3 C:3 F:2 I:1 T:6 W:2
+P5031_Nate | $1100 | [1C] [9B] [9E] [8C] [5G] | A:2 C:6 I:3 T:2 W:2
+
+P9186_Justin [End Turn]
+`;
+
+exports[`Game Play > (82) Player 9186_Justin ends turn 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - 0 - - - - - - -
+ - - - C - - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $2200 | [8E] [8A] [6F] [12D] [3I] | A:3 C:3 F:2 I:1 T:6 W:2
+P5031_Nate | $1100 | [1C] [9B] [9E] [8C] [5G] | A:2 C:6 I:3 T:2 W:2
+
+P5031_Nate [Choose Tile: [1C] [9B] [9E] [8C] [5G]]
+`;
+
+exports[`Game Play > (83) Player 5031_Nate places tile [5G] 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - C - - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $2200 | [8E] [8A] [6F] [12D] [3I] | A:3 C:3 F:2 I:1 T:6 W:2
+P5031_Nate | $1100 | [1C] [9B] [9E] [8C] | A:2 C:6 I:3 T:2 W:2
+
+P5031_Nate [Choose Shares: A C F I W T] [End Turn]
+`;
+
+exports[`Game Play > (84) Player 5031_Nate purchases Worldwide 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - C - - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $2200 | [8E] [8A] [6F] [12D] [3I] | A:3 C:3 F:2 I:1 T:6 W:2
+P5031_Nate | $800 | [1C] [9B] [9E] [8C] | A:2 C:6 I:3 T:2 W:3
+
+P5031_Nate [Choose Shares: A C F I W T] [End Turn]
+`;
+
+exports[`Game Play > (85) Player 5031_Nate ends turn 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - 0 - - - - - -
+ - - - - C - - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $2200 | [8E] [8A] [6F] [12D] [3I] | A:3 C:3 F:2 I:1 T:6 W:2
+P5031_Nate | $800 | [1C] [9B] [9E] [8C] [3G] | A:2 C:6 I:3 T:2 W:3
+
+P9186_Justin [Choose Tile: [8E] [8A] [6F] [12D] [3I]]
+`;
+
+exports[`Game Play > (86) Player 9186_Justin places tile [6F] 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - C - - - - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $2200 | [8E] [8A] [12D] [3I] | A:3 C:3 F:2 I:1 T:6 W:2
+P5031_Nate | $800 | [1C] [9B] [9E] [8C] [3G] | A:2 C:6 I:3 T:2 W:3
+
+P9186_Justin [Choose Shares: A C F I W T] [End Turn]
+`;
+
+exports[`Game Play > (87) Player 9186_Justin purchases Festival 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - C - - - - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $1700 | [8E] [8A] [12D] [3I] | A:3 C:3 F:3 I:1 T:6 W:2
+P5031_Nate | $800 | [1C] [9B] [9E] [8C] [3G] | A:2 C:6 I:3 T:2 W:3
+
+P9186_Justin [Choose Shares: A C F I W T] [End Turn]
+`;
+
+exports[`Game Play > (88) Player 9186_Justin purchases American 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - C - - - - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $1300 | [8E] [8A] [12D] [3I] | A:4 C:3 F:3 I:1 T:6 W:2
+P5031_Nate | $800 | [1C] [9B] [9E] [8C] [3G] | A:2 C:6 I:3 T:2 W:3
+
+P9186_Justin [Choose Shares: A C F I W T] [End Turn]
+`;
+
+exports[`Game Play > (89) Player 9186_Justin purchases Continental 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - C - - - - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $500 | [8E] [8A] [12D] [3I] | A:4 C:4 F:3 I:1 T:6 W:2
+P5031_Nate | $800 | [1C] [9B] [9E] [8C] [3G] | A:2 C:6 I:3 T:2 W:3
+
+P9186_Justin [End Turn]
+`;
+
+exports[`Game Play > (90) Player 9186_Justin ends turn 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ - - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - C - - - - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $500 | [8E] [8A] [12D] [3I] [9H] | A:4 C:4 F:3 I:1 T:6 W:2
+P5031_Nate | $800 | [1C] [9B] [9E] [8C] [3G] | A:2 C:6 I:3 T:2 W:3
+
+P5031_Nate [Choose Tile: [1C] [9B] [9E] [8C] [3G]]
+`;
+
+exports[`Game Play > (91) Player 5031_Nate places tile [1C] 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ 0 - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - C - - - - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $500 | [8E] [8A] [12D] [3I] [9H] | A:4 C:4 F:3 I:1 T:6 W:2
+P5031_Nate | $800 | [9B] [9E] [8C] [3G] | A:2 C:6 I:3 T:2 W:3
+
+P5031_Nate [Choose Shares: A C F I W T] [End Turn]
+`;
+
+exports[`Game Play > (92) Player 5031_Nate ends turn 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ 0 - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - C - - - - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 - - - - 0 - - 0 - A
+
+P9186_Justin | $500 | [8E] [8A] [12D] [3I] [9H] | A:4 C:4 F:3 I:1 T:6 W:2
+P5031_Nate | $800 | [9B] [9E] [8C] [3G] [1I] | A:2 C:6 I:3 T:2 W:3
+
+P9186_Justin [Choose Tile: [8E] [8A] [12D] [3I] [9H]]
+`;
+
+exports[`Game Play > (93) Player 9186_Justin places tile [3I] 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ 0 - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - C - - - - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - 0 0 - - - 0 - - 0 - A
+
+P9186_Justin | $500 | [8E] [8A] [12D] [9H] | A:4 C:4 F:3 I:1 T:6 W:2
+P5031_Nate | $800 | [9B] [9E] [8C] [3G] [1I] | A:2 C:6 I:3 T:2 W:3
+
+P9186_Justin [Choose Hotel: L]
+`;
+
+exports[`Game Play > (94) Player 9186_Justin starts Luxor 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ 0 - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - C - - - - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $500 | [8E] [8A] [12D] [9H] | A:4 C:4 F:3 I:1 L:1 T:6 W:2
+P5031_Nate | $800 | [9B] [9E] [8C] [3G] [1I] | A:2 C:6 I:3 T:2 W:3
+
+P9186_Justin [Choose Shares: A F W T L] [End Turn]
+`;
+
+exports[`Game Play > (95) Player 9186_Justin purchases Luxor 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ 0 - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - C - - - - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $300 | [8E] [8A] [12D] [9H] | A:4 C:4 F:3 I:1 L:2 T:6 W:2
+P5031_Nate | $800 | [9B] [9E] [8C] [3G] [1I] | A:2 C:6 I:3 T:2 W:3
+
+P9186_Justin [Choose Shares: W T L] [End Turn]
+`;
+
+exports[`Game Play > (96) Player 9186_Justin ends turn 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ 0 - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - C - - - - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $300 | [8E] [8A] [12D] [9H] [2D] | A:4 C:4 F:3 I:1 L:2 T:6 W:2
+P5031_Nate | $800 | [9B] [9E] [8C] [3G] [1I] | A:2 C:6 I:3 T:2 W:3
+
+P5031_Nate [Choose Tile: [9B] [9E] [8C] [3G] [1I]]
+`;
+
+exports[`Game Play > (97) Player 5031_Nate places tile [9E] 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ 0 - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - C - - 0 - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $300 | [8E] [8A] [12D] [9H] [2D] | A:4 C:4 F:3 I:1 L:2 T:6 W:2
+P5031_Nate | $800 | [9B] [8C] [3G] [1I] | A:2 C:6 I:3 T:2 W:3
+
+P5031_Nate [Choose Shares: A C F I W T L] [End Turn]
+`;
+
+exports[`Game Play > (98) Player 5031_Nate ends turn 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ 0 - - - I I I - - F - 0
+ - - - - - - - - - F - -
+ W W - 0 - C - - 0 - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $300 | [8E] [8A] [12D] [9H] [2D] | A:4 C:4 F:3 I:1 L:2 T:6 W:2
+P5031_Nate | $800 | [9B] [8C] [3G] [1I] [2B] | A:2 C:6 I:3 T:2 W:3
+
+P9186_Justin [Choose Tile: [8A] [2D] (unavailable: [8E] [12D] [9H])]
+`;
+
+exports[`Game Play > (99) Player 9186_Justin places tile [2D] 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ 0 - - - I I I - - F - 0
+ - W - - - - - - - F - -
+ W W - 0 - C - - 0 - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $300 | [8E] [8A] [12D] [9H] | A:4 C:4 F:3 I:1 L:2 T:6 W:2
+P5031_Nate | $800 | [9B] [8C] [3G] [1I] [2B] | A:2 C:6 I:3 T:2 W:3
+
+P9186_Justin [Choose Shares: T L] [End Turn]
+`;
+
+exports[`Game Play > (100) Player 9186_Justin purchases Luxor 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ 0 - - - I I I - - F - 0
+ - W - - - - - - - F - -
+ W W - 0 - C - - 0 - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $100 | [8E] [8A] [12D] [9H] | A:4 C:4 F:3 I:1 L:3 T:6 W:2
+P5031_Nate | $800 | [9B] [8C] [3G] [1I] [2B] | A:2 C:6 I:3 T:2 W:3
+
+P9186_Justin [End Turn]
+`;
+
+exports[`Game Play > (101) Player 9186_Justin ends turn 1`] = `
+ - T T - - - - - - F - -
+ - - - - - I - - - F - -
+ 0 - - - I I I - - F - 0
+ - W - - - - - - - F - -
+ W W - 0 - C - - 0 - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $100 | [8E] [8A] [12D] [9H] [8I] | A:4 C:4 F:3 I:1 L:3 T:6 W:2
+P5031_Nate | $800 | [9B] [8C] [3G] [1I] [2B] | A:2 C:6 I:3 T:2 W:3
+
+P5031_Nate [Choose Tile: [9B] [8C] [3G] [1I] [2B]]
+`;
+
+exports[`Game Play > (102) Player 5031_Nate places tile [2B] 1`] = `
+ - T T - - - - - - F - -
+ - T - - - I - - - F - -
+ 0 - - - I I I - - F - 0
+ - W - - - - - - - F - -
+ W W - 0 - C - - 0 - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $100 | [8E] [8A] [12D] [9H] [8I] | A:4 C:4 F:3 I:1 L:3 T:6 W:2
+P5031_Nate | $800 | [9B] [8C] [3G] [1I] | A:2 C:6 I:3 T:2 W:3
+
+P5031_Nate [Choose Shares: A C F I W T L] [End Turn]
+`;
+
+exports[`Game Play > (103) Player 5031_Nate ends turn 1`] = `
+ - T T - - - - - - F - -
+ - T - - - I - - - F - -
+ 0 - - - I I I - - F - 0
+ - W - - - - - - - F - -
+ W W - 0 - C - - 0 - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $100 | [8E] [8A] [12D] [9H] [8I] | A:4 C:4 F:3 I:1 L:3 T:6 W:2
+P5031_Nate | $800 | [9B] [8C] [3G] [1I] [7H] | A:2 C:6 I:3 T:2 W:3
+
+P9186_Justin [Choose Tile: [8A] (unavailable: [8E] [12D] [9H] [8I])]
+`;
+
+exports[`Game Play > (104) Player 9186_Justin places tile [8A] 1`] = `
+ - T T - - - - 0 - F - -
+ - T - - - I - - - F - -
+ 0 - - - I I I - - F - 0
+ - W - - - - - - - F - -
+ W W - 0 - C - - 0 - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $100 | [8E] [12D] [9H] [8I] | A:4 C:4 F:3 I:1 L:3 T:6 W:2
+P5031_Nate | $800 | [9B] [8C] [3G] [1I] [7H] | A:2 C:6 I:3 T:2 W:3
+
+P9186_Justin [End Turn]
+`;
+
+exports[`Game Play > (105) Player 9186_Justin ends turn 1`] = `
+ - T T - - - - 0 - F - -
+ - T - - - I - - - F - -
+ 0 - - - I I I - - F - 0
+ - W - - - - - - - F - -
+ W W - 0 - C - - 0 - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $100 | [8E] [12D] [9H] [8I] [1H] | A:4 C:4 F:3 I:1 L:3 T:6 W:2
+P5031_Nate | $800 | [9B] [8C] [3G] [1I] [7H] | A:2 C:6 I:3 T:2 W:3
+
+P5031_Nate [Choose Tile: [9B] [8C] [3G] [1I] (unavailable: [7H])]
+`;
+
+exports[`Game Play > (106) Player 5031_Nate places tile [8C] 1`] = `
+ - T T - - - - 0 - F - -
+ - T - - - I - - - F - -
+ 0 - - - I I I I - F - 0
+ - W - - - - - - - F - -
+ W W - 0 - C - - 0 - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $100 | [8E] [12D] [9H] [8I] [1H] | A:4 C:4 F:3 I:1 L:3 T:6 W:2
+P5031_Nate | $800 | [9B] [3G] [1I] [7H] | A:2 C:6 I:3 T:2 W:3
+
+P5031_Nate [Choose Shares: A C F I W T L] [End Turn]
+`;
+
+exports[`Game Play > (107) Player 5031_Nate ends turn 1`] = `
+ - T T - - - - 0 - F - -
+ - T - - - I - - - F - -
+ 0 - - - I I I I - F - 0
+ - W - - - - - - - F - -
+ W W - 0 - C - - 0 - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ - - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $100 | [8E] [12D] [9H] [8I] [1H] | A:4 C:4 F:3 I:1 L:3 T:6 W:2
+P5031_Nate | $800 | [9B] [3G] [1I] [7H] [11A] | A:2 C:6 I:3 T:2 W:3
+
+P9186_Justin [Choose Tile: [1H] (unavailable: [8E] [12D] [9H] [8I])]
+`;
+
+exports[`Game Play > (108) Player 9186_Justin places tile [1H] 1`] = `
+ - T T - - - - 0 - F - -
+ - T - - - I - - - F - -
+ 0 - - - I I I I - F - 0
+ - W - - - - - - - F - -
+ W W - 0 - C - - 0 - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ 0 - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $100 | [8E] [12D] [9H] [8I] | A:4 C:4 F:3 I:1 L:3 T:6 W:2
+P5031_Nate | $800 | [9B] [3G] [1I] [7H] [11A] | A:2 C:6 I:3 T:2 W:3
+
+P9186_Justin [End Turn]
+`;
+
+exports[`Game Play > (109) Player 9186_Justin ends turn 1`] = `
+ - T T - - - - 0 - F - -
+ - T - - - I - - - F - -
+ 0 - - - I I I I - F - 0
+ - W - - - - - - - F - -
+ W W - 0 - C - - 0 - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ 0 - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $100 | [8E] [12D] [9H] [8I] [9F] | A:4 C:4 F:3 I:1 L:3 T:6 W:2
+P5031_Nate | $800 | [9B] [3G] [1I] [7H] [11A] | A:2 C:6 I:3 T:2 W:3
+
+P5031_Nate [Choose Tile: [9B] [3G] [1I] [11A] (unavailable: [7H])]
+`;
+
+exports[`Game Play > (110) Player 5031_Nate places tile [11A] 1`] = `
+ - T T - - - - 0 - F F -
+ - T - - - I - - - F - -
+ 0 - - - I I I I - F - 0
+ - W - - - - - - - F - -
+ W W - 0 - C - - 0 - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ 0 - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $100 | [8E] [12D] [9H] [8I] [9F] | A:4 C:4 F:3 I:1 L:3 T:6 W:2
+P5031_Nate | $800 | [9B] [3G] [1I] [7H] | A:2 C:6 I:3 T:2 W:3
+
+P5031_Nate [Choose Shares: A C F I W T L] [End Turn]
+`;
+
+exports[`Game Play > (111) Player 5031_Nate purchases Festival 1`] = `
+ - T T - - - - 0 - F F -
+ - T - - - I - - - F - -
+ 0 - - - I I I I - F - 0
+ - W - - - - - - - F - -
+ W W - 0 - C - - 0 - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ 0 - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $100 | [8E] [12D] [9H] [8I] [9F] | A:4 C:4 F:3 I:1 L:3 T:6 W:2
+P5031_Nate | $200 | [9B] [3G] [1I] [7H] | A:2 C:6 F:1 I:3 T:2 W:3
+
+P5031_Nate [Choose Shares: L] [End Turn]
+`;
+
+exports[`Game Play > (112) Player 5031_Nate ends turn 1`] = `
+ - T T - - - - 0 - F F -
+ - T - - - I - - - F - -
+ 0 - - - I I I I - F - 0
+ - W - - - - - - - F - -
+ W W - 0 - C - - 0 - - -
+ - - - - C C - - - - - -
+ - - - C C - - - - - - A
+ 0 - - C - - - 0 - - - A
+ - L L - - - 0 - - 0 - A
+
+P9186_Justin | $100 | [8E] [12D] [9H] [8I] [9F] | A:4 C:4 F:3 I:1 L:3 T:6 W:2
+P5031_Nate | $200 | [9B] [3G] [1I] [7H] [2H] | A:2 C:6 F:1 I:3 T:2 W:3
+
+P9186_Justin [Choose Tile:  (unavailable: [8E] [12D] [9H] [8I] [9F])]
+`;

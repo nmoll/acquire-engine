@@ -100,10 +100,10 @@ export class PreviousActionLogElement extends LitElement {
   ): TemplateResult[] {
     const result: TemplateResult[] = [];
     hotelChainTypes.forEach((type, idx) => {
-      if (idx > 0 && idx < hotelChainTypes.length - 1) {
+      result.push(html`${this.renderHotelName(type)}`);
+      if (idx >= 0 && idx < hotelChainTypes.length - 1) {
         result.push(html` and `);
       }
-      result.push(html`${this.renderHotelName(type)}`);
     });
 
     return result;

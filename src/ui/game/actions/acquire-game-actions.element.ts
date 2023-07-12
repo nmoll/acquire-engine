@@ -28,6 +28,7 @@ import { SellShareEvent } from "../../events/sell-share-event";
 import { createLeaveGameEvent } from "../../events/leave-game-event";
 import { PlayerActionResult } from "../../../model/player-action-result";
 import "./previous-action-log.element";
+import "../confetti.element";
 
 export interface ActionRequestEvent {
   action: PlayerAction;
@@ -60,6 +61,13 @@ export class AcquireGameActionsElement extends LitElement {
       background-color: transparent;
       border: 1px solid var(--colors-primary);
       color: var(--colors-primary);
+    }
+
+    button.end-game {
+      background-color: transparent;
+      border: 1px solid var(--colors-yellow-300);
+      color: var(--colors-yellow-300);
+      padding: 1rem 1rem;
     }
 
     button:disabled {
@@ -132,7 +140,7 @@ export class AcquireGameActionsElement extends LitElement {
   render() {
     if (this.winners) {
       if (this.winners.length > 1) {
-        return html`${this.winners
+        return html` ${this.winners
           .map(PlayerUtils.getDisplayName)
           .join(" and ")}
         tie for the win!`;
@@ -152,8 +160,12 @@ export class AcquireGameActionsElement extends LitElement {
     }
 
     if (this.playerId === this.currentPlayerId) {
-      if (this.previousActions.length && !this.confirmPreviousActions) {
-        return html`<acquire-previous-action-log
+      if (
+        this.previousActions.length &&
+        !this.confirmPreviousActions &&
+        !this.selectedTile
+      ) {
+        return html` <acquire-previous-action-log
           .actionResults="${this.previousActions}"
           @confirm="${() => (this.confirmPreviousActions = true)}"
         />`;
@@ -218,7 +230,7 @@ export class AcquireGameActionsElement extends LitElement {
   renderChooseEndGame() {
     return html`<button
       @click="${() => this.onEndGame()}"
-      class="col-span-full"
+      class="col-span-full end-game"
     >
       End Game
     </button>`;
