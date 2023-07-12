@@ -1,4 +1,5 @@
 import { css, html, LitElement } from "lit";
+import "../../icon/undo-icon.element";
 import { customElement, property } from "lit/decorators.js";
 import { HotelChainType } from "../../../model";
 import { AvailableAction } from "../../../model/available-action";
@@ -79,16 +80,12 @@ export class AcquireGameActionsElement extends LitElement {
       position: absolute;
       top: 0.25rem;
       left: 0.25rem;
-      width: 5rem;
+      width: 2.25rem;
+      height: 2.25rem;
       padding: 0.25rem;
       padding-left: 0;
       background: var(--colors-gray-800);
       color: var(--colors-gray-300);
-    }
-
-    .undo-icon {
-      position: relative;
-      top: 1px;
     }
 
     .col-span-full {
@@ -156,7 +153,7 @@ export class AcquireGameActionsElement extends LitElement {
       class="undo"
       @click="${() => this.dispatchEvent(createUndoActionEvent())}"
     >
-      <span class="undo-icon">↩</span> Undo
+      <acquire-undo-icon />
     </button>`;
   }
 
