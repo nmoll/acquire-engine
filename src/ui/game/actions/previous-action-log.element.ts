@@ -1,10 +1,31 @@
 import { LitElement, TemplateResult, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { PlayerActionResult } from "../../../model/player-action-result";
-import { PlayerUtils } from "../../../utils/player-utils";
+import {
+  PlayerActionResult,
+  isGameEndedResult,
+  isHotelChainStartedResult,
+  isHotelMergedResult,
+  isHotelSizeIncreasedResult,
+  isMergeInitiatedResult,
+  isShareKeptResult,
+  isShareSoldResult,
+  isShareTradedResult,
+  isSharesPurchasedResult,
+  isTilePlacedResult,
+} from "../../../model/player-action-result";
 import { TileUtils } from "../../../utils/tile-utils";
 import { createConfirmEvent } from "../../events/confirm-event";
+import "../player-shares.element";
 import { HotelChainType } from "../../../model";
+import { ArrayUtils } from "../../../utils/array-utils";
+import { PlayerUtils } from "../../../utils/player-utils";
+
+type PlayerActionRenderers = Record<
+  PlayerActionResult["type"],
+  (results: PlayerActionResult[]) => TemplateResult | null
+>;
+
+type SharesByHotel = Partial<Record<HotelChainType, number>>;
 
 @customElement("acquire-previous-action-log")
 export class PreviousActionLogElement extends LitElement {
@@ -12,7 +33,14 @@ export class PreviousActionLogElement extends LitElement {
     :host {
       display: flex;
       flex-direction: column;
+      gap: 1rem;
+    }
+
+    .player-logs {
+      display: grid;
+      grid-template-columns: min-content 1fr;
       gap: 0.5rem;
+      align-items: center;
     }
 
     button {
@@ -27,7 +55,21 @@ export class PreviousActionLogElement extends LitElement {
       background: var(--colors-tile);
       color: var(--colors-gray-700);
       font-size: 0.875rem;
-      padding: 0.1875rem;
+      aspect-ratio: 1/1;
+      width: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .player-name {
+      justify-self: end;
+    }
+
+    .result-log {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
   `;
 
@@ -35,10 +77,33 @@ export class PreviousActionLogElement extends LitElement {
   actionResults: PlayerActionResult[] = [];
 
   render() {
+    const playerIds = ArrayUtils.unique(
+      this.actionResults.map((r) => r.action.playerId)
+    );
+    const playerLogs: TemplateResult[] = [];
+
+    playerIds.forEach((playerId) => {
+      const actionResults = this.actionResults.filter(
+        (r) => r.action.playerId === playerId
+      );
+
+      Object.values(this.actionRenderers).forEach((renderer, idx) => {
+        const result = renderer(actionResults);
+        if (result) {
+          playerLogs.push(
+            html`
+              <div class="player-name">
+                ${idx === 0 ? PlayerUtils.getDisplayName(playerId) : ""}
+              </div>
+              <div class="result-log">${result}</div>
+            `
+          );
+        }
+      });
+    });
+
     return html`
-      ${this.actionResults.map(
-        (result) => html`<div>${this.renderActionResult(result)}</div>`
-      )}
+      <div class="player-logs">${playerLogs}</div>
 
       <button @click="${() => this.dispatchEvent(createConfirmEvent())}">
         OK
@@ -46,47 +111,150 @@ export class PreviousActionLogElement extends LitElement {
     `;
   }
 
-  private renderActionResult(result: PlayerActionResult) {
-    const player = PlayerUtils.getDisplayName(result.action.playerId);
-    switch (result.type) {
-      case "Tile Placed":
-      case "Merge Initiated":
-      case "Hotel Size Increased":
-        return html`<div>
-          ${player} placed tile
-          <span class="tile">
-            ${TileUtils.getTileDisplay(result.action.boardSquareId)}
-          </span>
-        </div> `;
-      case "Hotel Merged":
-        return html`
-          ${player} merged
-          ${this.renderHotelNames(result.dissolved.map((h) => h.type))} into
-          ${this.renderHotelName(result.survivor.type)}
-        `;
-      case "Hotel Chain Started":
-        return html`
-          ${player} started ${this.renderHotelName(result.action.hotelChain)}
-        `;
-      case "Shares Purchased":
-        return html` ${player} purchased 1
-        ${this.renderHotelName(result.action.hotelChain)}`;
-      case "Share Kept":
-        return html`
-          ${player} kept 1 ${this.renderHotelName(result.action.hotelChain)}
-        `;
-      case "Share Sold":
-        return html`${player} sold 1
-        ${this.renderHotelName(result.action.hotelChain)}`;
-      case "Share Traded":
-        return html`${player} traded 2
-        ${this.renderHotelName(result.action.hotelChain)} for 1
-        ${this.renderHotelName(result.action.hotelChainToReceive)}`;
-      case "Turn Ended":
-        return html``;
-      case "Game Ended":
-        return html`${player} ended the game`;
-    }
+  private actionRenderers: PlayerActionRenderers = {
+    "Tile Placed": (results) => {
+      const result = results.find(isTilePlacedResult);
+      if (!result) {
+        return null;
+      }
+
+      return html`placed tile
+        <span class="tile">
+          ${TileUtils.getTileDisplay(result.action.boardSquareId)}
+        </span>`;
+    },
+    "Hotel Size Increased": (results) => {
+      const result = results.find(isHotelSizeIncreasedResult);
+      if (!result) {
+        return null;
+      }
+
+      return html`placed tile
+        <span class="tile">
+          ${TileUtils.getTileDisplay(result.action.boardSquareId)}
+        </span>`;
+    },
+    "Merge Initiated": (results) => {
+      const result = results.find(isMergeInitiatedResult);
+      if (!result) {
+        return null;
+      }
+
+      return html`placed tile
+        <span class="tile">
+          ${TileUtils.getTileDisplay(result.action.boardSquareId)}
+        </span>`;
+    },
+    "Hotel Chain Started": (results) => {
+      const result = results.find(isHotelChainStartedResult);
+      if (!result) {
+        return null;
+      }
+
+      return html`started ${this.renderHotelName(result.action.hotelChain)}`;
+    },
+    "Hotel Merged": (results) => {
+      const result = results.find(isHotelMergedResult);
+      if (!result) {
+        return null;
+      }
+
+      return html`merged
+      ${this.renderHotelNames(result.dissolved.map((h) => h.type))} into
+      ${this.renderHotelName(result.survivor.type)}`;
+    },
+    "Share Kept": (results) => {
+      const kept = results.filter(isShareKeptResult);
+      if (!kept.length) {
+        return null;
+      }
+
+      const sharesByType = kept.reduce<SharesByHotel>(
+        (acc, i) => ({
+          ...acc,
+          [i.action.hotelChain]: (acc[i.action.hotelChain] ?? 0) + 1,
+        }),
+        {}
+      );
+
+      return html`kept
+      ${Object.entries(sharesByType).map(([hotel, shares]) =>
+        this.renderShares(hotel as HotelChainType, shares)
+      )}`;
+    },
+    "Share Sold": (results) => {
+      const sold = results.filter(isShareSoldResult);
+      if (!sold.length) {
+        return null;
+      }
+
+      const sharesByType = sold.reduce<SharesByHotel>(
+        (acc, i) => ({
+          ...acc,
+          [i.action.hotelChain]: (acc[i.action.hotelChain] ?? 0) + 1,
+        }),
+        {}
+      );
+
+      return html`sold
+      ${Object.entries(sharesByType).map(([hotel, shares]) =>
+        this.renderShares(hotel as HotelChainType, shares)
+      )}`;
+    },
+    "Share Traded": (results) => {
+      const traded = results.filter(isShareTradedResult);
+      if (!traded.length) {
+        return null;
+      }
+      const sharesTradedByType = traded.reduce<SharesByHotel>(
+        (acc, i) => ({
+          ...acc,
+          [i.action.hotelChain]: (acc[i.action.hotelChain] ?? 0) + 2,
+        }),
+        {}
+      );
+
+      return html`traded
+      ${Object.entries(sharesTradedByType).map(([hotel, shares]) =>
+        this.renderShares(hotel as HotelChainType, shares)
+      )}
+      for
+      ${this.renderShares(traded[0].action.hotelChainToReceive, traded.length)}`;
+    },
+    "Shares Purchased": (results) => {
+      const purchased = results.filter(isSharesPurchasedResult);
+      if (!purchased.length) {
+        return null;
+      }
+      const sharesByType = purchased.reduce<SharesByHotel>(
+        (acc, i) => ({
+          ...acc,
+          [i.action.hotelChain]: (acc[i.action.hotelChain] ?? 0) + 1,
+        }),
+        {}
+      );
+
+      return html`purchased
+      ${Object.entries(sharesByType).map(([hotel, shares]) =>
+        this.renderShares(hotel as HotelChainType, shares)
+      )}`;
+    },
+    "Turn Ended": () => null,
+    "Game Ended": (results) => {
+      const result = results.find(isGameEndedResult);
+      if (!result) {
+        return null;
+      }
+
+      return html`ended the game`;
+    },
+  };
+
+  private renderShares(hotelChainType: HotelChainType, shares: number) {
+    return html`<acquire-player-shares
+      .hotelChain="${hotelChainType}"
+      .numShares="${shares}"
+    />`;
   }
 
   private renderHotelName(hotelChainType: HotelChainType) {

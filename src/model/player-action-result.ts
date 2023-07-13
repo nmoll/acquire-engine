@@ -18,11 +18,18 @@ interface TilePlaced {
   action: PlaceTile;
 }
 
+export const isTilePlacedResult = (a: PlayerActionResult): a is TilePlaced =>
+  a.type === "Tile Placed";
+
 interface HotelChainStarted {
   type: "Hotel Chain Started";
   action: StartHotelChain;
   boardSquareIds: number[];
 }
+
+export const isHotelChainStartedResult = (
+  a: PlayerActionResult
+): a is HotelChainStarted => a.type === "Hotel Chain Started";
 
 interface HotelSizeIncreased {
   type: "Hotel Size Increased";
@@ -30,11 +37,19 @@ interface HotelSizeIncreased {
   hotel: Hotel;
 }
 
+export const isHotelSizeIncreasedResult = (
+  a: PlayerActionResult
+): a is HotelSizeIncreased => a.type === "Hotel Size Increased";
+
 interface MergeInitiated {
   type: "Merge Initiated";
   action: PlaceTile;
   hotels: Hotel[];
 }
+
+export const isMergeInitiatedResult = (
+  a: PlayerActionResult
+): a is MergeInitiated => a.type === "Merge Initiated";
 
 interface HotelMerged {
   type: "Hotel Merged";
@@ -44,35 +59,57 @@ interface HotelMerged {
   cashAwarded: Record<string, number>;
 }
 
+export const isHotelMergedResult = (a: PlayerActionResult): a is HotelMerged =>
+  a.type === "Hotel Merged";
+
 interface SharesPurchased {
   type: "Shares Purchased";
   action: PurchaseShares;
 }
+
+export const isSharesPurchasedResult = (
+  a: PlayerActionResult
+): a is SharesPurchased => a.type === "Shares Purchased";
 
 interface ShareSold {
   type: "Share Sold";
   action: SellOrphanedShare;
 }
 
+export const isShareSoldResult = (a: PlayerActionResult): a is ShareSold =>
+  a.type === "Share Sold";
+
 interface ShareKept {
   type: "Share Kept";
   action: KeepOrphanedShare;
 }
+
+export const isShareKeptResult = (a: PlayerActionResult): a is ShareKept =>
+  a.type === "Share Kept";
 
 interface ShareTraded {
   type: "Share Traded";
   action: TradeOrphanedShare;
 }
 
+export const isShareTradedResult = (a: PlayerActionResult): a is ShareTraded =>
+  a.type === "Share Traded";
+
 interface TurnEnded {
   type: "Turn Ended";
   action: EndTurn;
 }
 
+export const isTurnEndedResult = (a: PlayerActionResult): a is TurnEnded =>
+  a.type === "Turn Ended";
+
 interface GameEnded {
   type: "Game Ended";
   action: EndGame;
 }
+
+export const isGameEndedResult = (a: PlayerActionResult): a is GameEnded =>
+  a.type === "Game Ended";
 
 export type PlayerActionResult =
   | TilePlaced
