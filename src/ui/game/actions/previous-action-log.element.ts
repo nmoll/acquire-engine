@@ -62,6 +62,12 @@ export class PreviousActionLogElement extends LitElement {
       align-items: center;
     }
 
+    .hotel-name {
+      color: white;
+      font-size: 0.875rem;
+      padding: 0.1875rem 0.5rem;
+    }
+
     .player-name {
       justify-self: end;
     }
@@ -258,7 +264,9 @@ export class PreviousActionLogElement extends LitElement {
   }
 
   private renderHotelName(hotelChainType: HotelChainType) {
-    return html`<span style="color: var(--colors-${hotelChainType})"
+    return html`<span
+      class="hotel-name"
+      style="background: var(--colors-${hotelChainType})"
       >${hotelChainType}</span
     >`;
   }

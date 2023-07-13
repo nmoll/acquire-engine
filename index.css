@@ -34,11 +34,11 @@ body * {
 
   --colors-tile: var(--colors-gray-400);
 
-  --colors-Worldwide: #d97706;
-  --colors-Luxor: #ea580c;
-  --colors-Festival: #16a34a;
+  --colors-Worldwide: #92400e;
+  --colors-Luxor: #dc2626;
+  --colors-Festival: #166534;
   --colors-Imperial: #db2777;
-  --colors-American: #0284c7;
-  --colors-Continental: #dc2626;
-  --colors-Tower: #9333ea;
+  --colors-American: #3730a3;
+  --colors-Continental: #0891b2;
+  --colors-Tower: #ca8a04;
 }
