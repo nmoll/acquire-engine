@@ -13,7 +13,7 @@ import "./acquire-game-board.element";
 import "./acquire-game-players.element";
 import { TileSelectEvent } from "../events/tile-select-event";
 import { createLeaveGameEvent } from "../events/leave-game-event";
-import "./confetti.element";
+import { AcquireGameService } from "./acquire-game.service";
 
 @customElement("acquire-game")
 export class AcquireGameElement extends LitElement {
@@ -69,6 +69,8 @@ export class AcquireGameElement extends LitElement {
 
   constructor() {
     super();
+
+    AcquireGameService.getInstance().setGame(this);
 
     this.service = new DatabaseClient();
 
@@ -144,42 +146,46 @@ export class AcquireGameElement extends LitElement {
         ? this.state.availableActionsState
         : [];
 
-    return html` ${this.state.winners
-        ? html`<acquire-confetti></acquire-confetti>`
-        : ""}
+    return html`<div class="app ${this.orientation}">
+      <acquire-game-players
+        .players="${this.game.playerIds}"
+        .cashState="${this.state.cashState}"
+        .sharesState="${this.state.sharesState}"
+        .currentPlayer="${this.getCurrentPlayerId()}"
+      ></acquire-game-players>
 
-      <div class="app ${this.orientation}">
-        <acquire-game-players
-          .players="${this.game.playerIds}"
-          .cashState="${this.state.cashState}"
-          .sharesState="${this.state.sharesState}"
-          .currentPlayer="${this.getCurrentPlayerId()}"
-        ></acquire-game-players>
+      <acquire-game-board
+        .boardState="${this.state.boardState}"
+        .availableActions="${availableActions}"
+        .selectedTile="${this.selectedTile}"
+        @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
+      >
+      </acquire-game-board>
 
-        <acquire-game-board
-          .boardState="${this.state.boardState}"
-          .availableActions="${availableActions}"
-          .selectedTile="${this.selectedTile}"
-          @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
-        >
-        </acquire-game-board>
+      <acquire-game-actions
+        .playerId="${this.playerId}"
+        .currentPlayerId="${this.getCurrentPlayerId()}"
+        .winners="${this.state.winners}"
+        .availableActionState="${this.state.availableActionsState}"
+        .selectedTile="${this.selectedTile}"
+        .previousActions="${this.state.previousActions}"
+        @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
+        @confirm-tile-place="${() => this.onConfirmTileSelect()}"
+        @cancel-tile-place="${() => (this.selectedTile = null)}"
+        @undo-action="${() => this.onUndoAction()}"
+        @action-request="${(e: CustomEvent<ActionRequestEvent>) =>
+          this.onPlayerAction(e.detail.action)}"
+        @leave-game="${() => this.dispatchEvent(createLeaveGameEvent())}"
+      ></acquire-game-actions>
+    </div>`;
+  }
 
-        <acquire-game-actions
-          .playerId="${this.playerId}"
-          .currentPlayerId="${this.getCurrentPlayerId()}"
-          .winners="${this.state.winners}"
-          .availableActionState="${this.state.availableActionsState}"
-          .selectedTile="${this.selectedTile}"
-          .previousActions="${this.state.previousActions}"
-          @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
-          @confirm-tile-place="${() => this.onConfirmTileSelect()}"
-          @cancel-tile-place="${() => (this.selectedTile = null)}"
-          @undo-action="${() => this.onUndoAction()}"
-          @action-request="${(e: CustomEvent<ActionRequestEvent>) =>
-            this.onPlayerAction(e.detail.action)}"
-          @leave-game="${() => this.dispatchEvent(createLeaveGameEvent())}"
-        ></acquire-game-actions>
-      </div>`;
+  appendGameObject(el: HTMLElement) {
+    this.shadowRoot?.appendChild(el);
+  }
+
+  hasGameObject(selector: keyof HTMLElementTagNameMap) {
+    return !!this.shadowRoot?.querySelector(selector);
   }
 
   private getCurrentPlayerId(): string {

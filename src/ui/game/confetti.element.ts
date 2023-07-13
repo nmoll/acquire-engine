@@ -6,8 +6,9 @@ export class ConfettiElement extends LitElement {
   static styles = css`
     svg {
       position: absolute;
-      width: 100%;
+      inset: 0px;
       height: 100%;
+      width: 100%;
     }
 
     circle {

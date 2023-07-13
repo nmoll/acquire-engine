@@ -2,11 +2,13 @@ import { css, html, LitElement } from "lit";
 import { styleMap } from "lit-html/directives/style-map.js";
 import { customElement, property } from "lit/decorators.js";
 import { BoardSquareState } from "../../model";
-import { PlayerAction } from "../../model/player-action";
 import { TileUtils } from "../../utils/tile-utils";
 import { ChooseTile } from "../../model/available-action";
 import { IAvailableActionState } from "../../model/available-action-state";
 import { createTileSelectEvent } from "../events/tile-select-event";
+import { AcquireGameService } from "./acquire-game.service";
+
+const getCellId = (idx: number) => `cell-${idx}`;
 
 @customElement("acquire-game-board")
 export class AcquireGameBoardElement extends LitElement {
@@ -28,8 +30,6 @@ export class AcquireGameBoardElement extends LitElement {
     }
   `;
 
-  actions: PlayerAction[] = [];
-
   @property()
   boardState!: BoardSquareState[] | undefined;
 
@@ -42,6 +42,12 @@ export class AcquireGameBoardElement extends LitElement {
   @property()
   selectedTile!: number | null;
 
+  constructor() {
+    super();
+
+    AcquireGameService.getInstance().setGameBoard(this);
+  }
+
   render() {
     return this.boardState?.map((squareState, idx) =>
       this.renderSquare(squareState, idx)
@@ -52,11 +58,16 @@ export class AcquireGameBoardElement extends LitElement {
     const styles = this.getSquareStyles(state, idx);
     return html`<div
       class="cell"
+      id="${getCellId(idx)}"
       style="${styleMap(styles)}"
       @click=${() => this.onClick(idx)}
     >
       ${this.getTileDisplay(state, idx)}
     </div>`;
+  }
+
+  getSquareEl(id: number) {
+    return this.shadowRoot?.getElementById(getCellId(id));
   }
 
   private onClick(tile: number): void {

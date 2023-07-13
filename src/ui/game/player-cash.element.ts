@@ -57,9 +57,11 @@ export class PlayerCashElement extends LitElement {
       return;
     }
 
-    let amountToUpdate = 1000;
-    if (diff > 2000) {
-      amountToUpdate = 200;
+    let amountToUpdate;
+    if (diff > 10000) {
+      amountToUpdate = 5000;
+    } else if (diff > 2000) {
+      amountToUpdate = 2000;
     } else if (diff > 1000) {
       amountToUpdate = 1000;
     } else if (diff > 500) {

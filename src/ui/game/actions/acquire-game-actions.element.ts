@@ -29,6 +29,7 @@ import { createLeaveGameEvent } from "../../events/leave-game-event";
 import { PlayerActionResult } from "../../../model/player-action-result";
 import "./previous-action-log.element";
 import "../confetti.element";
+import { AcquireGameService } from "../acquire-game.service";
 
 export interface ActionRequestEvent {
   action: PlayerAction;
@@ -124,6 +125,12 @@ export class AcquireGameActionsElement extends LitElement {
   @state()
   confirmPreviousActions = false;
 
+  constructor() {
+    super();
+
+    AcquireGameService.getInstance().setGameActions(this);
+  }
+
   protected update(
     changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>
   ): void {
@@ -139,11 +146,18 @@ export class AcquireGameActionsElement extends LitElement {
 
   render() {
     if (this.winners) {
+      const game = AcquireGameService.getInstance().game;
+      if (!game?.hasGameObject("acquire-confetti")) {
+        AcquireGameService.getInstance().game?.appendGameObject(
+          document.createElement("acquire-confetti")
+        );
+      }
+
       if (this.winners.length > 1) {
-        return html` ${this.winners
-          .map(PlayerUtils.getDisplayName)
-          .join(" and ")}
-        tie for the win!`;
+        return html`
+          ${this.winners.map(PlayerUtils.getDisplayName).join(" and ")} tie for
+          the win!
+        `;
       } else {
         return html`
           ${PlayerUtils.getDisplayName(this.winners[0])} wins!

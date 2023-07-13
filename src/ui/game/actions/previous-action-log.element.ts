@@ -13,12 +13,12 @@ import {
   isSharesPurchasedResult,
   isTilePlacedResult,
 } from "../../../model/player-action-result";
-import { TileUtils } from "../../../utils/tile-utils";
 import { createConfirmEvent } from "../../events/confirm-event";
 import "../player-shares.element";
 import { HotelChainType } from "../../../model";
 import { ArrayUtils } from "../../../utils/array-utils";
 import { PlayerUtils } from "../../../utils/player-utils";
+import "./played-tile.element";
 
 type PlayerActionRenderers = Record<
   PlayerActionResult["type"],
@@ -87,19 +87,19 @@ export class PreviousActionLogElement extends LitElement {
         (r) => r.action.playerId === playerId
       );
 
-      Object.values(this.actionRenderers).forEach((renderer, idx) => {
-        const result = renderer(actionResults);
-        if (result) {
+      Object.values(this.actionRenderers)
+        .map((renderer) => renderer(actionResults))
+        .filter((result) => !!result)
+        .forEach((logTemplate, idx) => {
           playerLogs.push(
             html`
               <div class="player-name">
                 ${idx === 0 ? PlayerUtils.getDisplayName(playerId) : ""}
               </div>
-              <div class="result-log">${result}</div>
+              <div class="result-log">${logTemplate}</div>
             `
           );
-        }
-      });
+        });
     });
 
     return html`
@@ -119,9 +119,9 @@ export class PreviousActionLogElement extends LitElement {
       }
 
       return html`placed tile
-        <span class="tile">
-          ${TileUtils.getTileDisplay(result.action.boardSquareId)}
-        </span>`;
+        <acquire-played-tile
+          .tile="${result.action.boardSquareId}"
+        ></acquire-played-tile>`;
     },
     "Hotel Size Increased": (results) => {
       const result = results.find(isHotelSizeIncreasedResult);
@@ -130,9 +130,9 @@ export class PreviousActionLogElement extends LitElement {
       }
 
       return html`placed tile
-        <span class="tile">
-          ${TileUtils.getTileDisplay(result.action.boardSquareId)}
-        </span>`;
+        <acquire-played-tile
+          .tile="${result.action.boardSquareId}"
+        ></acquire-played-tile>`;
     },
     "Merge Initiated": (results) => {
       const result = results.find(isMergeInitiatedResult);
@@ -141,9 +141,9 @@ export class PreviousActionLogElement extends LitElement {
       }
 
       return html`placed tile
-        <span class="tile">
-          ${TileUtils.getTileDisplay(result.action.boardSquareId)}
-        </span>`;
+        <acquire-played-tile
+          .tile="${result.action.boardSquareId}"
+        ></acquire-played-tile>`;
     },
     "Hotel Chain Started": (results) => {
       const result = results.find(isHotelChainStartedResult);
