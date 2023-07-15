@@ -8,7 +8,7 @@ export const GameConfig = {
     startingAmount: 6000,
   },
   tile: {
-    rackSize: 5,
+    rackSize: 6,
   },
   turn: {
     maxShares: 3,
