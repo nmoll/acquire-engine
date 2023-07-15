@@ -165,6 +165,7 @@ export class AcquireGameActionsElement extends LitElement {
             <button
               class="primary"
               @click="${() => this.dispatchEvent(createLeaveGameEvent())}"
+              style="position: absolute; left: 0;"
             >
               Leave Game
             </button>
