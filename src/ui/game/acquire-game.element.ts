@@ -158,6 +158,9 @@ export class AcquireGameElement extends LitElement {
         .boardState="${this.state.boardState}"
         .availableActions="${availableActions}"
         .selectedTile="${this.selectedTile}"
+        .playerTiles="${this.state.tileState[this.playerId] ?? []}"
+        .isPlayerTurn=""
+        ${this.playerId === this.state.currentPlayerIdState}
         @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
       >
       </acquire-game-board>

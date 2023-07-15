@@ -37,6 +37,12 @@ export class AcquireGameBoardElement extends LitElement {
   availableActions!: IAvailableActionState;
 
   @property()
+  playerTiles: number[] = [];
+
+  @property()
+  isPlayerTurn!: boolean;
+
+  @property()
   availableForSelection!: number[] | undefined;
 
   @property()
@@ -80,6 +86,13 @@ export class AcquireGameBoardElement extends LitElement {
     available: number[];
     unavailable: number[];
   } {
+    if (!this.isPlayerTurn) {
+      return {
+        available: [],
+        unavailable: [],
+      };
+    }
+
     const chooseTileAction = this.availableActions.find(
       (action): action is ChooseTile => action.type === "ChooseTile"
     );
@@ -111,19 +124,19 @@ export class AcquireGameBoardElement extends LitElement {
       };
     }
 
-    if (this.getTileOptions().available.includes(idx)) {
-      return {
-        borderColor: "var(--colors-primary)",
-        color: "var(--colors-primary)",
-        cursor: "pointer",
-      };
-    }
-
     if (this.getTileOptions().unavailable.includes(idx)) {
       return {
         borderColor: "var(--colors-red-600)",
         color: "var(--colors-red-600)",
         cursor: "not-allowed",
+      };
+    }
+
+    if (this.playerTiles.includes(idx)) {
+      return {
+        borderColor: "var(--colors-primary)",
+        color: "var(--colors-primary)",
+        cursor: "pointer",
       };
     }
 
