@@ -146,32 +146,39 @@ export class AcquireGameActionsElement extends LitElement {
 
   render() {
     if (this.winners) {
-      const game = AcquireGameService.getInstance().game;
-      if (!game?.hasGameObject("acquire-confetti")) {
-        AcquireGameService.getInstance().game?.appendGameObject(
-          document.createElement("acquire-confetti")
-        );
-      }
-
+      let winnerMessage;
       if (this.winners.length > 1) {
-        return html`
+        winnerMessage = `
           ${this.winners.map(PlayerUtils.getDisplayName).join(" and ")} tie for
           the win!
         `;
       } else {
-        return html`
+        winnerMessage = `
           ${PlayerUtils.getDisplayName(this.winners[0])} wins!
-          <div>
-            <button
-              class="primary"
-              @click="${() => this.dispatchEvent(createLeaveGameEvent())}"
-              style="position: absolute; left: 0;"
-            >
-              Leave Game
-            </button>
-          </div>
         `;
       }
+
+      const game = AcquireGameService.getInstance().game;
+      if (!game?.hasGameObject("acquire-confetti")) {
+        const confetti = document.createElement("acquire-confetti");
+        confetti.setAttribute("message", winnerMessage);
+        confetti.addEventListener("confirm", () => {
+          confetti.remove();
+        });
+        AcquireGameService.getInstance().game?.appendGameObject(confetti);
+      }
+
+      return html`
+        ${winnerMessage}
+        <div>
+          <button
+            class="primary"
+            @click="${() => this.dispatchEvent(createLeaveGameEvent())}"
+          >
+            Leave Game
+          </button>
+        </div>
+      `;
     }
 
     if (this.playerId === this.currentPlayerId) {

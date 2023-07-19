@@ -1,5 +1,6 @@
-import { css, LitElement, svg, TemplateResult } from "lit";
-import { customElement, state } from "lit/decorators.js";
+import { css, html, LitElement, svg, TemplateResult } from "lit";
+import { customElement, property, state } from "lit/decorators.js";
+import { createConfirmEvent } from "../events/confirm-event";
 
 @customElement("acquire-confetti")
 export class ConfettiElement extends LitElement {
@@ -9,6 +10,31 @@ export class ConfettiElement extends LitElement {
       inset: 0px;
       height: 100%;
       width: 100%;
+    }
+
+    .message {
+      position: absolute;
+      inset: 0px;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+      font-size: 1.5rem;
+    }
+
+    button {
+      width: 8rem;
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border: 1px solid var(--colors-primary);
+      color: var(--colors-primary);
+      cursor: pointer;
     }
 
     circle {
@@ -37,6 +63,9 @@ export class ConfettiElement extends LitElement {
       }
     }
   `;
+
+  @property()
+  message!: string;
 
   @state()
   width: number;
@@ -91,7 +120,16 @@ export class ConfettiElement extends LitElement {
       `);
     }
 
-    return svg`<svg xmlns="http://www.w3.org/2000/svg">${circles}</svg>`;
+    return html`
+      ${svg`<svg xmlns="http://www.w3.org/2000/svg">${circles}</svg>`}
+      <div
+        class="message"
+        @click="${() => this.dispatchEvent(createConfirmEvent())}"
+      >
+        ${this.message}
+        <button>OK</button>
+      </div>
+    `;
   }
 
   private randRange(min: number, max: number) {
