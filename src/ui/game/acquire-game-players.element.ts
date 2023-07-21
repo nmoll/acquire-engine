@@ -39,10 +39,13 @@ export class AcquireGamePlayersElement extends LitElement {
   sharesState: ISharesState = {};
 
   @property()
+  playerId!: string;
+
+  @property()
   currentPlayer: string | undefined;
 
   render() {
-    return this.players?.map((playerId) => this.renderPlayer(playerId));
+    return this.renderPlayer(this.playerId);
   }
 
   private renderPlayer(playerId: string) {

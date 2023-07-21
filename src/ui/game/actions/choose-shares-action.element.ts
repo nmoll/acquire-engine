@@ -1,8 +1,9 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { ChooseShares } from "../../../model/available-action";
-import { ALL_HOTELS, HotelChainType } from "../../../model";
+import { ALL_HOTELS, HotelChainType, ISharesState } from "../../../model";
 import { createPurchaseShareEvent } from "../../events/purchase-share-event";
+import { StockBroker } from "../../../model/stock-broker";
 
 @customElement("acquire-choose-shares-action")
 export class ChooseSharesActionElement extends LitElement {
@@ -38,6 +39,9 @@ export class ChooseSharesActionElement extends LitElement {
   @property()
   action!: ChooseShares;
 
+  @property()
+  sharesState!: ISharesState;
+
   render() {
     return html`
       <div class="options">
@@ -54,11 +58,16 @@ export class ChooseSharesActionElement extends LitElement {
         @click="${() =>
           this.dispatchEvent(createPurchaseShareEvent(hotelChain))}"
       >
-        ${hotelChain}: $${share.price}
+        (${this.getAvailableShares(hotelChain)}) ${hotelChain}: $${share.price}
       </button>`;
     } else {
       return html`<button disabled>${hotelChain}</button>`;
     }
+  }
+
+  private getAvailableShares(hotelChain: HotelChainType) {
+    const stockBroker = new StockBroker(this.sharesState);
+    return stockBroker.getAvailableShares(hotelChain);
   }
 }
 

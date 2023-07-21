@@ -1,7 +1,7 @@
 import { css, html, LitElement, PropertyValueMap } from "lit";
 import "../../icon/undo-icon.element";
 import { customElement, property, state } from "lit/decorators.js";
-import { HotelChainType } from "../../../model";
+import { HotelChainType, IGameState } from "../../../model";
 import { AvailableAction } from "../../../model/available-action";
 import { IAvailableActionState } from "../../../model/available-action-state";
 import { PlayerAction } from "../../../model/player-action";
@@ -103,6 +103,9 @@ export class AcquireGameActionsElement extends LitElement {
       grid-column: 1 / -1;
     }
   `;
+
+  @property()
+  gameState!: IGameState;
 
   @property()
   playerId!: string;
@@ -286,6 +289,7 @@ export class AcquireGameActionsElement extends LitElement {
       case "ChooseShares":
         return html`<acquire-choose-shares-action
           .action="${action}"
+          .sharesState="${this.gameState.sharesState}"
           @purchase-share="${(e: PurchaseShareEvent) =>
             this.onPurchaseShare(e.hotelChain)}"
           class="col-span-full"
