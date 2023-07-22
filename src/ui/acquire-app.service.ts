@@ -56,22 +56,7 @@ export class AcquireAppService {
   }
 
   onGameChanged(gameId: string, callback: (gameState: GameState) => void) {
-    callback({
-      type: "loading",
-    });
-
-    let gotResponse = false;
-
-    setTimeout(() => {
-      if (!gotResponse) {
-        callback({
-          type: "not found",
-        });
-      }
-    }, 3000);
-
     this.db.onGameChanged(gameId, (game) => {
-      gotResponse = true;
       callback(
         game
           ? {
@@ -96,12 +81,19 @@ export class AcquireAppService {
     return playerId;
   }
 
-  addPlayerToGame(playerId: string, gameId: string) {
-    this.db.addPlayerToGame(playerId, gameId);
+  addPlayerToGame(
+    playerId: string,
+    gameId: string,
+    callback: (instance: IAcquireGameInstance) => void
+  ) {
+    this.db.addPlayerToGame(playerId, gameId, callback);
   }
 
-  startGame(gameId: string) {
-    this.db.startGame(gameId);
+  startGame(
+    gameId: string,
+    callback: (instance: IAcquireGameInstance) => void
+  ) {
+    this.db.startGame(gameId, callback);
   }
 
   createNewGame(hostId: string): string | null {

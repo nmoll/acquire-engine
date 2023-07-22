@@ -40,6 +40,9 @@ export class AcquireAppElement extends LitElement {
         type: "not created",
       };
     } else {
+      this.acquireAppService.getGame(gameId, (gameState) => {
+        this.gameState = gameState;
+      });
       this.acquireAppService.onGameChanged(gameId, (gameState) => {
         this.gameState = gameState;
       });
@@ -51,7 +54,12 @@ export class AcquireAppElement extends LitElement {
   }
 
   addPlayerToGame(playerId: string, gameId: string) {
-    this.acquireAppService.addPlayerToGame(playerId, gameId);
+    this.acquireAppService.addPlayerToGame(playerId, gameId, (instance) => {
+      this.gameState = {
+        type: "loaded",
+        game: instance,
+      };
+    });
   }
 
   navigateToGame(gameId: string) {
@@ -65,6 +73,9 @@ export class AcquireAppElement extends LitElement {
   createNewGame(hostId: string) {
     const gameId = this.acquireAppService.createNewGame(hostId);
     if (gameId) {
+      this.acquireAppService.getGame(gameId, (gameState) => {
+        this.gameState = gameState;
+      });
       this.acquireAppService.onGameChanged(gameId, (gameState) => {
         this.gameState = gameState;
       });
@@ -72,7 +83,12 @@ export class AcquireAppElement extends LitElement {
   }
 
   startGame(gameId: string) {
-    this.acquireAppService.startGame(gameId);
+    this.acquireAppService.startGame(gameId, (instance) => {
+      this.gameState = {
+        type: "loaded",
+        game: instance,
+      };
+    });
   }
 
   getGameUrl(gameId: string): string {
@@ -90,7 +106,7 @@ export class AcquireAppElement extends LitElement {
     const gameState = this.gameState;
     switch (gameState.type) {
       case "initial":
-        return html`initial state`;
+        return html``;
       case "not created":
         return html`<acquire-create-game
           @create="${() => this.createNewGame(playerId)}"
