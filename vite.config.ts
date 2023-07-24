@@ -44,12 +44,12 @@ export default defineConfig({
         theme_color: "#22c55e",
         icons: [
           {
-            src: "src/logo_60x60.svg",
+            src: "logo_60x60.svg",
             sizes: "60x60",
             purpose: "any",
           },
           {
-            src: "src/logo_144x144.svg",
+            src: "logo_144x144.svg",
             sizes: "144x144",
             purpose: "any",
           },
