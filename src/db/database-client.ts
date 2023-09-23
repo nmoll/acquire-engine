@@ -7,15 +7,16 @@ import {
   createClient,
 } from "@supabase/supabase-js";
 
+const SUPABASE_URL = "https://yxpdhbkmlkmemexhllxl.supabase.co";
+const SUPABASE_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl4cGRoYmttbGttZW1leGhsbHhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODk5OTg2OTMsImV4cCI6MjAwNTU3NDY5M30.SE8vc02MrgVLvgbnuiR_njek2_xDBvLNI7bQnX-VVkI";
+
 export class DatabaseClient {
   private db: SupabaseClient;
   private gameChannelSub: RealtimeChannel | null = null;
 
   constructor() {
-    this.db = createClient(
-      "https://yxpdhbkmlkmemexhllxl.supabase.co",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl4cGRoYmttbGttZW1leGhsbHhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODk5OTg2OTMsImV4cCI6MjAwNTU3NDY5M30.SE8vc02MrgVLvgbnuiR_njek2_xDBvLNI7bQnX-VVkI"
-    );
+    this.db = createClient(SUPABASE_URL, SUPABASE_KEY);
   }
 
   getGame(
