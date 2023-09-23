@@ -10,7 +10,7 @@ import { PlayerAction } from "../model/player-action";
  *     _redirects file for netlify
  *     proxy in vite.config.ts for dev
  */
-const GUN_SERVER_URL = "https://seal-app-dr6q6.ondigitalocean.app/gun"; //`${document.location.origin}/api/gun`;
+const GUN_SERVER_URL = "https://gun-manhattan.herokuapp.com/gun"; //`${document.location.origin}/api/gun`;
 
 export class DatabaseClient {
   private db: IGunInstance;

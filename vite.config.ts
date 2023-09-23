@@ -60,7 +60,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api/gun": {
-        target: "https://seal-app-dr6q6.ondigitalocean.app/gun",
+        target: "https://gun-manhattan.herokuapp.com/gun",
         changeOrigin: true,
         secure: false,
         ws: true,
