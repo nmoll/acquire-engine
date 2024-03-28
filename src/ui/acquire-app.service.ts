@@ -81,19 +81,12 @@ export class AcquireAppService {
     return playerId;
   }
 
-  addPlayerToGame(
-    playerId: string,
-    gameId: string,
-    callback: (instance: IAcquireGameInstance) => void
-  ) {
-    this.db.addPlayerToGame(playerId, gameId, callback);
+  addPlayerToGame(playerId: string, gameId: string) {
+    this.db.addPlayerToGame(playerId, gameId);
   }
 
-  startGame(
-    gameId: string,
-    callback: (instance: IAcquireGameInstance) => void
-  ) {
-    this.db.startGame(gameId, callback);
+  startGame(gameId: string) {
+    this.db.startGame(gameId);
   }
 
   createNewGame(hostId: string): string | null {

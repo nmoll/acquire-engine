@@ -54,12 +54,7 @@ export class AcquireAppElement extends LitElement {
   }
 
   addPlayerToGame(playerId: string, gameId: string) {
-    this.acquireAppService.addPlayerToGame(playerId, gameId, (instance) => {
-      this.gameState = {
-        type: "loaded",
-        game: instance,
-      };
-    });
+    this.acquireAppService.addPlayerToGame(playerId, gameId);
   }
 
   navigateToGame(gameId: string) {
@@ -83,12 +78,7 @@ export class AcquireAppElement extends LitElement {
   }
 
   startGame(gameId: string) {
-    this.acquireAppService.startGame(gameId, (instance) => {
-      this.gameState = {
-        type: "loaded",
-        game: instance,
-      };
-    });
+    this.acquireAppService.startGame(gameId);
   }
 
   getGameUrl(gameId: string): string {

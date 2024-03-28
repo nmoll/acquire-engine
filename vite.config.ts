@@ -60,7 +60,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api/gun": {
-        target: "https://gun-manhattan.herokuapp.com/gun",
+        target: "https://acquirebynate.com/gun",
         changeOrigin: true,
         secure: false,
         ws: true,
