@@ -19,7 +19,7 @@
     "vitest": "^0.32.2"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.36.0",
+    "gun": "^0.2020.1239",
     "lit": "^2.7.5"
   }
 }

@@ -1,22 +1,18 @@
+import Gun, { IGunInstance } from "gun";
 import { IAcquireGameInstance } from "../model/acquire-game-instance";
 import { PlayerAction } from "../model/player-action";
 
-import {
-  RealtimeChannel,
-  SupabaseClient,
-  createClient,
-} from "@supabase/supabase-js";
-
-const SUPABASE_URL = "https://yxpdhbkmlkmemexhllxl.supabase.co";
-const SUPABASE_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl4cGRoYmttbGttZW1leGhsbHhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODk5OTg2OTMsImV4cCI6MjAwNTU3NDY5M30.SE8vc02MrgVLvgbnuiR_njek2_xDBvLNI7bQnX-VVkI";
+/**
+ * Signal server used to for clients to initiate a connection.
+ * This is deployed on Akash Network using the public gundb/gun:latest docker image
+ */
+const GUN_SIGNAL_SERVER_URL = "https://acquirebynate.com/gun";
 
 export class DatabaseClient {
-  private db: SupabaseClient;
-  private gameChannelSub: RealtimeChannel | null = null;
+  private db: IGunInstance;
 
   constructor() {
-    this.db = createClient(SUPABASE_URL, SUPABASE_KEY);
+    this.db = Gun([GUN_SIGNAL_SERVER_URL]);
   }
 
   getGame(
@@ -24,14 +20,12 @@ export class DatabaseClient {
     callback: (game: IAcquireGameInstance | null) => void
   ) {
     this.db
-      .from("game")
-      .select("instance")
-      .eq("game_id", gameId)
-      .then((res) => {
-        const game = res.data?.[0];
-        if (game) {
-          callback(game.instance);
-        }
+      .get("acquire")
+      .get("games")
+      .get(gameId)
+      .get("instance")
+      .once((instance) => {
+        callback(instance ? JSON.parse(instance) : null);
       });
   }
 
@@ -39,55 +33,43 @@ export class DatabaseClient {
     gameId: string,
     callback: (game: IAcquireGameInstance | null) => void
   ) {
-    this.getGameChannel(gameId, (instance) => callback(instance));
-  }
-
-  createGame(instance: IAcquireGameInstance) {
     this.db
-      .from("game")
-      .insert({
-        game_id: instance.id,
-        instance,
-      })
-      .then(() => {});
-  }
-
-  updateGame(
-    instance: IAcquireGameInstance,
-    callback: (instance: IAcquireGameInstance) => void
-  ) {
-    this.db
-      .from("game")
-      .update({
-        instance,
-      })
-      .eq("game_id", instance.id)
-      .then(() => {
-        callback(instance);
+      .get("acquire")
+      .get("games")
+      .get(gameId)
+      .get("instance")
+      .on((instance) => {
+        instance ? callback(JSON.parse(instance)) : null;
       });
   }
 
-  addPlayerToGame(
-    playerId: string,
-    gameId: string,
-    callback: (instance: IAcquireGameInstance) => void
-  ) {
+  createGame(instance: IAcquireGameInstance) {
+    this.updateGame(instance);
+  }
+
+  updateGame(instance: IAcquireGameInstance) {
+    this.db
+      .get("acquire")
+      .get("games")
+      .get(instance.id)
+      .get("instance")
+      .put(JSON.stringify(instance));
+  }
+
+  addPlayerToGame(playerId: string, gameId: string) {
     this.getGame(gameId, (instance) => {
       if (instance) {
         instance.playerIds.push(playerId);
-        this.updateGame(instance, callback);
+        this.updateGame(instance);
       }
     });
   }
 
-  startGame(
-    gameId: string,
-    callback: (instance: IAcquireGameInstance) => void
-  ) {
+  startGame(gameId: string) {
     this.getGame(gameId, (instance) => {
       if (instance) {
         instance.state = "started";
-        this.updateGame(instance, callback);
+        this.updateGame(instance);
       }
     });
   }
@@ -96,42 +78,22 @@ export class DatabaseClient {
     gameId: string,
     callback: (actions: PlayerAction[]) => void
   ) {
-    this.getGameChannel(gameId, (_, actions) => callback(actions));
+    this.db
+      .get("acquire")
+      .get("games")
+      .get(gameId)
+      .get("actions")
+      .on((actions) => {
+        callback(JSON.parse(actions));
+      });
   }
 
   updateActions(gameId: string, actions: PlayerAction[]) {
     this.db
-      .from("game")
-      .update({ actions })
-      .eq("game_id", gameId)
-      .then(() => {});
-  }
-
-  private getGameChannel(
-    gameId: string,
-    callback: (instance: IAcquireGameInstance, actions: PlayerAction[]) => void
-  ) {
-    if (!this.gameChannelSub) {
-      this.gameChannelSub = this.db
-        .channel("schema-db-changes")
-        .on(
-          "postgres_changes",
-          {
-            event: "*",
-            schema: "public",
-            table: "game",
-            filter: `game_id=eq.${gameId}`,
-          },
-          (payload) => {
-            callback(
-              (payload.new as any).instance,
-              (payload.new as any).actions
-            );
-          }
-        )
-        .subscribe();
-    }
-
-    return this.gameChannelSub;
+      .get("acquire")
+      .get("games")
+      .get(gameId)
+      .get("actions")
+      .put(JSON.stringify(actions));
   }
 }
