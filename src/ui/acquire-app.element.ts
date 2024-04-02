@@ -57,6 +57,10 @@ export class AcquireAppElement extends LitElement {
     this.acquireAppService.addPlayerToGame(playerId, gameId);
   }
 
+  setIsOpen(gameId: string, isOpen: boolean) {
+    this.acquireAppService.setIsOpen(gameId, isOpen);
+  }
+
   navigateToGame(gameId: string) {
     window.location.href = this.getGameUrl(gameId);
   }
@@ -117,6 +121,9 @@ export class AcquireAppElement extends LitElement {
               .hostId="${gameState.game.hostId}"
               .gameId="${gameState.game.id}"
               .gameUrl="${this.getGameUrl(gameState.game.id)}"
+              .isOpen="${gameState.game.isOpen || false}"
+              @is-open-change="${(event: CustomEvent<boolean>) =>
+                this.setIsOpen(gameState.game.id, event.detail)}"
               @join-game="${() =>
                 this.addPlayerToGame(this.playerId!, gameState.game.id)}"
               @start-game="${() => this.startGame(gameState.game.id)}"

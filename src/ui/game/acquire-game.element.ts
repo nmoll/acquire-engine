@@ -153,6 +153,7 @@ export class AcquireGameElement extends LitElement {
         .sharesState="${this.state.sharesState}"
         .currentPlayer="${this.getCurrentPlayerId()}"
         .playerId="${this.playerId}"
+        .isOpen="${this.game.isOpen ?? false}"
       ></acquire-game-players>
 
       <acquire-game-board

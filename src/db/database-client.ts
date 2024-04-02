@@ -65,6 +65,15 @@ export class DatabaseClient {
     });
   }
 
+  setIsOpen(gameId: string, isOpen: boolean) {
+    this.getGame(gameId, (instance) => {
+      if (instance) {
+        instance.isOpen = isOpen;
+        this.updateGame(instance);
+      }
+    });
+  }
+
   startGame(gameId: string) {
     this.getGame(gameId, (instance) => {
       if (instance) {

@@ -85,6 +85,10 @@ export class AcquireAppService {
     this.db.addPlayerToGame(playerId, gameId);
   }
 
+  setIsOpen(gameId: string, isOpen: boolean) {
+    this.db.setIsOpen(gameId, isOpen);
+  }
+
   startGame(gameId: string) {
     this.db.startGame(gameId);
   }

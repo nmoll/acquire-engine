@@ -44,8 +44,15 @@ export class AcquireGamePlayersElement extends LitElement {
   @property()
   currentPlayer: string | undefined;
 
+  @property()
+  isOpen = false;
+
   render() {
-    return this.renderPlayer(this.playerId);
+    if (this.isOpen) {
+      return this.players?.map((p) => this.renderPlayer(p));
+    } else {
+      return this.renderPlayer(this.playerId);
+    }
   }
 
   private renderPlayer(playerId: string) {
