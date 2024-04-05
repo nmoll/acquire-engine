@@ -15,6 +15,16 @@ import { CurrentPlayerIdStateEngine } from "../current-player-id-state-engine/cu
 import { SharesStateEngine } from "../shares-state-engine/shares-state-engine";
 import { TileStateEngine } from "../tile-state-engine/tile-state-engine";
 
+interface GameStateCache {
+  gameId: string;
+  actions: PlayerAction[];
+  gameState: IGameState;
+  gameLog: ActionLog[];
+  actionResults: PlayerActionResult[]
+}
+
+let CACHE: GameStateCache | null = null;
+
 const getInitialState = (gameInstance: IAcquireGameInstance): IGameState => {
   const boardState = BoardStateEngine.getInitialState();
   const cashState = CashStateEngine.getInitialState(gameInstance.playerIds);
@@ -43,10 +53,23 @@ const computeGameState = (
   gameInstance: IAcquireGameInstance,
   playerActions: PlayerAction[]
 ): IGameState => {
-  const gameLog: ActionLog[] = [];
-  const actionResults: PlayerActionResult[] = [];
+  let gameLog: ActionLog[] = [];
+  let actionResults: PlayerActionResult[] = [];
+  let initialState = getInitialState(gameInstance);
+  let actionsToCompute = playerActions;
 
-  return playerActions.reduce<IGameState>((state, action) => {
+  if (CACHE && CACHE.gameId !== gameInstance.id) {
+    CACHE = null;
+  }
+
+  if (CACHE && playerActions.length >= CACHE.actions.length) {
+    gameLog = CACHE.gameLog;
+    actionResults = CACHE.actionResults;
+    initialState = CACHE.gameState;
+    actionsToCompute = playerActions.slice(CACHE.actions.length - 1)
+  }
+
+  const newState = actionsToCompute.reduce<IGameState>((state, action) => {
     if (!AvailableActionsStateEngine.validateAction(action, state)) {
       return state;
     }
@@ -120,7 +143,17 @@ const computeGameState = (
     });
 
     return newState;
-  }, getInitialState(gameInstance));
+  }, initialState);
+
+  CACHE = {
+    gameId: gameInstance.id,
+    actions: playerActions,
+    gameState: newState,
+    gameLog,
+    actionResults
+  }
+
+  return newState;
 };
 
 const getWinners = (cashState: ICashState): string[] => {
