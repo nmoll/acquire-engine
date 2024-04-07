@@ -252,7 +252,7 @@ export class AcquireCreateGameElement extends LitElement {
     });
 
     if (!games.length) {
-      return `<div class="muted">No games found.</div>`;
+      return html`<div class="muted">No games found.</div>`;
     }
 
     return html`<div class="lobby-games">${games}</div>`;
