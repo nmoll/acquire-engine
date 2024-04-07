@@ -154,6 +154,7 @@ export class AcquireGameElement extends LitElement {
         .currentPlayer="${this.getCurrentPlayerId()}"
         .playerId="${this.playerId}"
         .isOpen="${this.game.isOpen ?? false}"
+        .isGameOver="${!!this.state.winners?.length}"
       ></acquire-game-players>
 
       <acquire-game-board

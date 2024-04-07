@@ -30,7 +30,7 @@ export class AcquireGamePlayersElement extends LitElement {
   `;
 
   @property()
-  players: string[] | undefined = [];
+  players: string[] = [];
 
   @property()
   cashState: ICashState = {};
@@ -45,14 +45,18 @@ export class AcquireGamePlayersElement extends LitElement {
   currentPlayer: string | undefined;
 
   @property()
+  isGameOver = false;
+
+  @property()
   isOpen = false;
 
   render() {
-    if (this.isOpen) {
+    const isSpectator = !this.players.includes(this.playerId);
+    if (this.isOpen || this.isGameOver || isSpectator) {
       return this.players?.map((p) => this.renderPlayer(p));
-    } else {
-      return this.renderPlayer(this.playerId);
     }
+
+    return this.renderPlayer(this.playerId);
   }
 
   private renderPlayer(playerId: string) {
