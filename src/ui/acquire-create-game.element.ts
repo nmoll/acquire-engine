@@ -87,6 +87,15 @@ export class AcquireCreateGameElement extends LitElement {
       align-items: start;
     }
 
+    .refresh-btn {
+      border-color: var(--colors-gray-700);
+      background: var(--colors-gray-900);
+      width: auto;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.75rem;
+      border-radius: 0.5rem;
+    }
+
     .game__id {
       font-size: 0.875rem;
       color: var(--colors-gray-500);
@@ -140,12 +149,22 @@ export class AcquireCreateGameElement extends LitElement {
       games.sort((a, b) => (b.createdDate ?? 0) - (a.createdDate ?? 0));
     });
 
-    setTimeout(() => {
-      this.lobbyState = {
-        type: "loaded",
-        games,
-      };
-    }, 3000);
+    let attempt = 0;
+    const waitAndSetGames = () => {
+      if (!games.length && attempt < 10) {
+        setTimeout(() => {
+          attempt++;
+          waitAndSetGames();
+        }, 300 * attempt);
+      } else {
+        this.lobbyState = {
+          type: "loaded",
+          games,
+        };
+      }
+    };
+
+    waitAndSetGames();
   }
 
   render() {
@@ -193,16 +212,17 @@ export class AcquireCreateGameElement extends LitElement {
         </button>
 
         <div class="lobby">
-          <p>Join an existing game:</p>
-          ${this.lobbyState.type !== "loading"
-            ? html`<button
-                class="refresh-btn"
-                style="margin-bottom: 1rem"
-                @click="${() => this.loadGames()}"
-              >
-                Refresh
-              </button>`
-            : ""}
+          <div style="display: flex; align-items: center;">
+            <p style="flex: 1 1 0%">Join an existing game:</p>
+            ${this.lobbyState.type !== "loading"
+              ? html`<button
+                  class="refresh-btn"
+                  @click="${() => this.loadGames()}"
+                >
+                  Refresh
+                </button>`
+              : ""}
+          </div>
           ${this.renderLobbyGames()}
         </div>
       </acquire-page>
