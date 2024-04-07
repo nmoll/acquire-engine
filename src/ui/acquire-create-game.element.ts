@@ -119,28 +119,36 @@ export class AcquireCreateGameElement extends LitElement {
     super();
 
     this.appService = new AcquireAppService();
+    setTimeout(() => {
+      this.loadGames();
+    }, 500);
   }
 
-  private loadGames(refresh?: boolean) {
-    if (!this.playerId || (this.lobbyState.type === "loaded" && !refresh)) {
+  private loadGames() {
+    if (!this.playerId) {
       return;
     }
 
+    this.lobbyState = {
+      type: "loading",
+    };
+
+    let games: IAcquireGameInstance[] = [];
+
     this.appService.findGamesNotStarted((game) => {
-      const games =
-        this.lobbyState.type === "loaded" ? this.lobbyState.games : [];
       games.push(game);
       games.sort((a, b) => (b.createdDate ?? 0) - (a.createdDate ?? 0));
+    });
+
+    setTimeout(() => {
       this.lobbyState = {
         type: "loaded",
         games,
       };
-    });
+    }, 3000);
   }
 
   render() {
-    this.loadGames();
-
     if (this.isJoinGameFormVisible) {
       return html`
         <acquire-page>
@@ -186,6 +194,15 @@ export class AcquireCreateGameElement extends LitElement {
 
         <div class="lobby">
           <p>Join an existing game:</p>
+          ${this.lobbyState.type !== "loading"
+            ? html`<button
+                class="refresh-btn"
+                style="margin-bottom: 1rem"
+                @click="${() => this.loadGames()}"
+              >
+                Refresh
+              </button>`
+            : ""}
           ${this.renderLobbyGames()}
         </div>
       </acquire-page>
