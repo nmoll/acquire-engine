@@ -103,6 +103,7 @@ export class AcquireAppElement extends LitElement {
         return html``;
       case "not created":
         return html`<acquire-create-game
+          .playerId="${playerId}"
           @create="${() => this.createNewGame(playerId)}"
           @join-game="${(e: JoinGameEvent) => this.navigateToGame(e.gameId!)}"
         ></acquire-create-game>`;
@@ -127,6 +128,7 @@ export class AcquireAppElement extends LitElement {
               @join-game="${() =>
                 this.addPlayerToGame(this.playerId!, gameState.game.id)}"
               @start-game="${() => this.startGame(gameState.game.id)}"
+              @leave-game="${() => this.goToHome()}"
             ></acquire-waiting-room>`;
           case "started":
             return html`<acquire-game

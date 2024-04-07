@@ -2,6 +2,7 @@ import { css, html, LitElement } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { PlayerUtils } from "../utils/player-utils";
 import { createJoinGameEvent } from "./events/join-game-event";
+import { AcquireAppService } from "./acquire-app.service";
 
 @customElement("acquire-waiting-room")
 export class AcquireWaitingRoomElement extends LitElement {
@@ -31,6 +32,11 @@ export class AcquireWaitingRoomElement extends LitElement {
     button.primary {
       background: var(--colors-primary);
       border: 1px solid var(--colors-primary);
+    }
+
+    button.danger {
+      background: var(--colors-red-500);
+      border: 1px solid var(--colors-red-500);
     }
 
     button:disabled {
@@ -114,6 +120,11 @@ export class AcquireWaitingRoomElement extends LitElement {
   @state()
   showCopiedMessage = false;
 
+  @state()
+  isDeleting = false;
+
+  appService = new AcquireAppService();
+
   onJoinGame() {
     this.dispatchEvent(createJoinGameEvent(null));
   }
@@ -163,13 +174,30 @@ export class AcquireWaitingRoomElement extends LitElement {
     return !!navigator.share ? "Share Game URL" : "Copy Game URL";
   }
 
+  onLeaveGame() {
+    this.dispatchEvent(new CustomEvent<void>("leave-game"));
+  }
+
+  onDeleteGame() {
+    this.appService.deleteGame(this.gameId, () => {
+      this.isDeleting = true;
+      setTimeout(() => {
+        this.dispatchEvent(new CustomEvent<void>("leave-game"));
+      }, 2000);
+    });
+  }
+
   render() {
     return html`
       <acquire-page title="Waiting Room">
         <p>Game ID: <span class="text-primary">${this.gameId}</span></p>
         <ul>
           ${this.playerIds.map(
-            (playerId) => html`<li>${PlayerUtils.getDisplayName(playerId)}</li>`
+            (playerId) =>
+              html`<li>
+                ${PlayerUtils.getDisplayName(playerId)}
+                ${this.playerId === playerId ? "(you)" : ""}
+              </li>`
           )}
         </ul>
 
@@ -196,6 +224,10 @@ export class AcquireWaitingRoomElement extends LitElement {
           : ""}
         <button @click="${() => this.onShareGameUrl()}">
           ${this.getShareGameUrlText()}
+        </button>
+        <button @click="${() => this.onLeaveGame()}">Leave Game</button>
+        <button class="danger" @click="${() => this.onDeleteGame()}">
+          ${this.isDeleting ? "Deleting Game..." : "Delete Game"}
         </button>
       </acquire-page>
     `;

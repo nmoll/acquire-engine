@@ -1,7 +1,10 @@
 import { css, html, LitElement } from "lit";
-import { customElement, state } from "lit/decorators.js";
+import { customElement, property, state } from "lit/decorators.js";
 import "./acquire-page.element";
 import { createJoinGameEvent } from "./events/join-game-event";
+import { AcquireAppService } from "./acquire-app.service";
+import { IAcquireGameInstance } from "../model/acquire-game-instance";
+import { PlayerUtils } from "../utils/player-utils";
 
 @customElement("acquire-create-game")
 export class AcquireCreateGameElement extends LitElement {
@@ -14,7 +17,6 @@ export class AcquireCreateGameElement extends LitElement {
     }
 
     button {
-      margin-top: 1rem;
       cursor: pointer;
       color: var(--colors-gray-300);
       background: transparent;
@@ -25,7 +27,6 @@ export class AcquireCreateGameElement extends LitElement {
     }
 
     button.primary {
-      margin-top: 1rem;
       cursor: pointer;
       background: var(--colors-primary);
       border: 1px solid var(--colors-primary);
@@ -52,7 +53,52 @@ export class AcquireCreateGameElement extends LitElement {
       color: var(--colors-gray-100);
       text-transform: uppercase;
     }
+
+    .lobby {
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .lobby-games {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .game {
+      border: 1px solid var(--colors-gray-700);
+      background: var(--colors-gray-800);
+      border-radius: 0.25rem;
+      padding: 1rem;
+      box-sizing: border-box;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .game__players {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: start;
+    }
+
+    .game__id {
+      font-size: 0.875rem;
+      color: var(--colors-gray-500);
+    }
+
+    .muted {
+      color: var(--colors-gray-500);
+    }
   `;
+
+  @property()
+  playerId!: string;
 
   @state()
   isJoinGameFormVisible = false;
@@ -60,7 +106,41 @@ export class AcquireCreateGameElement extends LitElement {
   @state()
   gameId = "";
 
+  @state()
+  lobbyState:
+    | { type: "loading" }
+    | { type: "loaded"; games: IAcquireGameInstance[] } = {
+    type: "loading",
+  };
+
+  private appService: AcquireAppService;
+
+  constructor() {
+    super();
+
+    this.appService = new AcquireAppService();
+  }
+
+  private loadGames(refresh?: boolean) {
+    if (!this.playerId || (this.lobbyState.type === "loaded" && !refresh)) {
+      return;
+    }
+
+    this.appService.findGamesNotStarted((game) => {
+      const games =
+        this.lobbyState.type === "loaded" ? this.lobbyState.games : [];
+      games.push(game);
+      games.sort((a, b) => (b.createdDate ?? 0) - (a.createdDate ?? 0));
+      this.lobbyState = {
+        type: "loaded",
+        games,
+      };
+    });
+  }
+
   render() {
+    this.loadGames();
+
     if (this.isJoinGameFormVisible) {
       return html`
         <acquire-page>
@@ -73,13 +153,17 @@ export class AcquireCreateGameElement extends LitElement {
             />
             <button
               ?disabled="${!this.gameId}"
-              @click="${() => this.onJoinGame()}"
+              @click="${() => this.onJoinGame(this.gameId)}"
               type="button"
               class="primary"
+              style="margin-top: 1rem"
             >
               Join game
             </button>
-            <button @click="${() => (this.isJoinGameFormVisible = false)}">
+            <button
+              @click="${() => (this.isJoinGameFormVisible = false)}"
+              style="margin-top: 1rem"
+            >
               Cancel
             </button>
           </form>
@@ -93,25 +177,60 @@ export class AcquireCreateGameElement extends LitElement {
           Start new game
         </button>
         <button
+          style="margin-top: 1rem;"
           @click="${() => (this.isJoinGameFormVisible = true)}"
           class="primary"
         >
-          Join existing game
+          Join game with ID
         </button>
+
+        <div class="lobby">
+          <p>Join an existing game:</p>
+          ${this.renderLobbyGames()}
+        </div>
       </acquire-page>
     `;
+  }
+
+  private renderLobbyGames() {
+    if (this.lobbyState.type === "loading") {
+      return html`<div class="muted">Looking for games...</div>`;
+    }
+
+    const games = this.lobbyState.games.map((game) => {
+      return html`
+        <button class="game" @click="${() => this.onJoinGame(game.id)}">
+          <div class="game__players">
+            ${game.playerIds.map(
+              (p) =>
+                html`<span>
+                  ${PlayerUtils.getDisplayName(p)}
+                  ${this.playerId === p ? "(you)" : ""}
+                </span>`
+            )}
+          </div>
+          <span class="game__id"> ${game.id} </span>
+        </button>
+      `;
+    });
+
+    if (!games.length) {
+      return `<div class="muted">No games found.</div>`;
+    }
+
+    return html`<div class="lobby-games">${games}</div>`;
   }
 
   private onCreateNewGame() {
     this.dispatchEvent(new CustomEvent<void>("create"));
   }
 
-  private onJoinGame() {
-    if (!this.gameId) {
+  private onJoinGame(gameId: string) {
+    if (!gameId) {
       return;
     }
 
-    this.dispatchEvent(createJoinGameEvent(this.gameId));
+    this.dispatchEvent(createJoinGameEvent(gameId));
   }
 
   private onGameIdInputChange() {

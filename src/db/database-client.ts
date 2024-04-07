@@ -15,6 +15,16 @@ export class DatabaseClient {
     this.db = Gun([GUN_SIGNAL_SERVER_URL]);
   }
 
+  getGameIds(callback: (gameIds: string[]) => void) {
+    this.db
+      .get("acquire")
+      .get("games")
+      .once((games: Record<string, { "#": string }>) => {
+        const gameIds = games ? Object.keys(games) : [];
+        callback(gameIds.filter((id) => id !== "_"));
+      });
+  }
+
   getGame(
     gameId: string,
     callback: (game: IAcquireGameInstance | null) => void
@@ -44,10 +54,10 @@ export class DatabaseClient {
   }
 
   createGame(instance: IAcquireGameInstance) {
-    this.updateGame(instance);
+    this.updateGameInstance(instance);
   }
 
-  updateGame(instance: IAcquireGameInstance) {
+  updateGameInstance(instance: IAcquireGameInstance) {
     this.db
       .get("acquire")
       .get("games")
@@ -60,7 +70,7 @@ export class DatabaseClient {
     this.getGame(gameId, (instance) => {
       if (instance) {
         instance.playerIds.push(playerId);
-        this.updateGame(instance);
+        this.updateGameInstance(instance);
       }
     });
   }
@@ -69,7 +79,7 @@ export class DatabaseClient {
     this.getGame(gameId, (instance) => {
       if (instance) {
         instance.isOpen = isOpen;
-        this.updateGame(instance);
+        this.updateGameInstance(instance);
       }
     });
   }
@@ -78,7 +88,7 @@ export class DatabaseClient {
     this.getGame(gameId, (instance) => {
       if (instance) {
         instance.state = "started";
-        this.updateGame(instance);
+        this.updateGameInstance(instance);
       }
     });
   }
@@ -104,5 +114,9 @@ export class DatabaseClient {
       .get(gameId)
       .get("actions")
       .put(JSON.stringify(actions));
+  }
+
+  deleteGame(gameId: string, callback?: () => void) {
+    this.db.get("acquire").get("games").get(gameId).put(null, callback);
   }
 }

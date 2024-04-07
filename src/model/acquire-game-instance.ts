@@ -7,4 +7,5 @@ export interface IAcquireGameInstance {
   hostId: string;
   state: AcquireGameState;
   isOpen?: boolean;
+  createdDate?: number;
 }
