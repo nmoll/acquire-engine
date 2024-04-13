@@ -8,7 +8,17 @@ import { PlayerAction } from "../model/player-action";
  */
 const GUN_SIGNAL_SERVER_URL = "https://acquirebynate.com/gun";
 
-export class DatabaseClient {
+export interface DatabaseClient {
+  getGame(gameId: string, callback: (game: IAcquireGameInstance | null) => void): void;
+  onGameChanged(gameId: string, callback: (game: IAcquireGameInstance | null) => void): void;
+  createGame(game: IAcquireGameInstance): void;
+  updateGameInstance(game: IAcquireGameInstance): void;
+  deleteGame(gameId: string, callback?: () => void): void;
+  onActionsChanged(gameId: string, callback: (actions: PlayerAction[]) => void): void;
+  updateActions(gameId: string, actions: PlayerAction[]): void;
+}
+
+export class GunDatabaseClient implements DatabaseClient {
   private db: IGunInstance;
 
   constructor() {
@@ -70,15 +80,6 @@ export class DatabaseClient {
     this.getGame(gameId, (instance) => {
       if (instance) {
         instance.playerIds.push(playerId);
-        this.updateGameInstance(instance);
-      }
-    });
-  }
-
-  setIsOpen(gameId: string, isOpen: boolean) {
-    this.getGame(gameId, (instance) => {
-      if (instance) {
-        instance.isOpen = isOpen;
         this.updateGameInstance(instance);
       }
     });

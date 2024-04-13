@@ -1,1 +1,1 @@
-export type AcquireGameState = "not started" | "started" | "finished";
+export type AcquireGameState = "not started" | "started";
