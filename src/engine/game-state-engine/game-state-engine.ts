@@ -109,6 +109,7 @@ const computeGameState = (
       tileState,
       availableActionsState,
       currentPlayerIdState,
+      actionResult,
       previousActions: getPreviousActions(actionResults, currentPlayerIdState),
       winners,
     };

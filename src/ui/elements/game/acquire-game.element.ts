@@ -17,6 +17,7 @@ import { PlayerStore } from "../../state/player/player.store";
 import { computed, Signal, SignalWatcher } from "@lit-labs/preact-signals";
 import { gameStoreContext } from "../../context/game.store.context";
 import { GameStore } from "../../state/game/game.store";
+import "./game-alerts/game-alerts.element";
 
 @customElement("acquire-game")
 export class AcquireGameElement extends SignalWatcher(LitElement) {
@@ -28,15 +29,15 @@ export class AcquireGameElement extends SignalWatcher(LitElement) {
 
   actions: Signal<PlayerAction[]> | null = null;
   state: Signal<IGameState | null> = computed(() => {
-    if (this.gameStore.gameLoadedState.value.type !== 'loaded') {
+    if (this.gameStore.gameLoadedState.value.type !== "loaded") {
       return null;
     }
 
     return GameStateEngine.computeGameState(
       this.gameStore.gameLoadedState.value.game,
       this.actions?.value ?? []
-    )
-  })
+    );
+  });
 
   @state()
   orientation: "landscape" | "portrait";
@@ -94,7 +95,11 @@ export class AcquireGameElement extends SignalWatcher(LitElement) {
     const state = this.state.value;
     const actions = this.actions?.value ?? [];
 
-    if (game && state && AvailableActionsStateEngine.validateAction(action, state)) {
+    if (
+      game &&
+      state &&
+      AvailableActionsStateEngine.validateAction(action, state)
+    ) {
       this.gameStore.updateActions(game.id, [...actions, action]);
     }
   }
@@ -105,17 +110,20 @@ export class AcquireGameElement extends SignalWatcher(LitElement) {
       return;
     }
 
-    const game = this.gameStore.gameLoadedState.value.type === 'loaded' ? this.gameStore.gameLoadedState.value.game : null;
+    const game =
+      this.gameStore.gameLoadedState.value.type === "loaded"
+        ? this.gameStore.gameLoadedState.value.game
+        : null;
     if (!game) {
       return html``;
     }
 
-    if (game.state === 'not started') {
-      return html``
+    if (game.state === "not started") {
+      return html``;
     }
 
     if (!this.actions) {
-      this.actions = this.gameStore.watchActions(game.id)
+      this.actions = this.gameStore.watchActions(game.id);
     }
 
     const state = this.state.value;
@@ -128,44 +136,47 @@ export class AcquireGameElement extends SignalWatcher(LitElement) {
         ? state.availableActionsState
         : [];
 
-    return html`<div class="app ${this.orientation}">
-      <acquire-game-players
-        .players="${game.playerIds}"
-        .cashState="${state.cashState}"
-        .sharesState="${state.sharesState}"
-        .currentPlayer="${this.getCurrentPlayerId()}"
-        .playerId="${playerId}"
-        .isOpen="${game.isOpen ?? false}"
-        .isGameOver="${!!state.winners?.length}"
-      ></acquire-game-players>
-
-      <acquire-game-board
-        .boardState="${state.boardState}"
-        .availableActions="${availableActions}"
-        .selectedTile="${this.selectedTile}"
-        .playerTiles="${state.tileState[playerId] ?? []}"
-        .isPlayerTurn="${playerId === state.currentPlayerIdState}"
-        @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
-      >
-      </acquire-game-board>
-
-      <acquire-game-actions
+    return html` <acquire-game-alerts
         .gameState="${state}"
-        .playerId="${playerId}"
-        .currentPlayerId="${this.getCurrentPlayerId()}"
-        .winners="${state.winners}"
-        .availableActionState="${state.availableActionsState}"
-        .selectedTile="${this.selectedTile}"
-        .previousActions="${state.previousActions}"
-        @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
-        @confirm-tile-place="${() => this.onConfirmTileSelect()}"
-        @cancel-tile-place="${() => (this.selectedTile = null)}"
-        @undo-action="${() => this.onUndoAction()}"
-        @action-request="${(e: CustomEvent<ActionRequestEvent>) =>
-        this.onPlayerAction(e.detail.action)}"
-        @leave-game="${() => this.gameStore.leaveGame()}"
-      ></acquire-game-actions>
-    </div>`;
+      ></acquire-game-alerts>
+      <div class="app ${this.orientation}">
+        <acquire-game-players
+          .players="${game.playerIds}"
+          .cashState="${state.cashState}"
+          .sharesState="${state.sharesState}"
+          .currentPlayer="${this.getCurrentPlayerId()}"
+          .playerId="${playerId}"
+          .isOpen="${game.isOpen ?? false}"
+          .isGameOver="${!!state.winners?.length}"
+        ></acquire-game-players>
+
+        <acquire-game-board
+          .boardState="${state.boardState}"
+          .availableActions="${availableActions}"
+          .selectedTile="${this.selectedTile}"
+          .playerTiles="${state.tileState[playerId] ?? []}"
+          .isPlayerTurn="${playerId === state.currentPlayerIdState}"
+          @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
+        >
+        </acquire-game-board>
+
+        <acquire-game-actions
+          .gameState="${state}"
+          .playerId="${playerId}"
+          .currentPlayerId="${this.getCurrentPlayerId()}"
+          .winners="${state.winners}"
+          .availableActionState="${state.availableActionsState}"
+          .selectedTile="${this.selectedTile}"
+          .previousActions="${state.previousActions}"
+          @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
+          @confirm-tile-place="${() => this.onConfirmTileSelect()}"
+          @cancel-tile-place="${() => (this.selectedTile = null)}"
+          @undo-action="${() => this.onUndoAction()}"
+          @action-request="${(e: CustomEvent<ActionRequestEvent>) =>
+            this.onPlayerAction(e.detail.action)}"
+          @leave-game="${() => this.gameStore.leaveGame()}"
+        ></acquire-game-actions>
+      </div>`;
   }
 
   appendGameObject(el: HTMLElement) {
@@ -177,7 +188,9 @@ export class AcquireGameElement extends SignalWatcher(LitElement) {
   }
 
   private getGame() {
-    return this.gameStore.gameLoadedState.value.type === 'loaded' ? this.gameStore.gameLoadedState.value.game : null
+    return this.gameStore.gameLoadedState.value.type === "loaded"
+      ? this.gameStore.gameLoadedState.value.game
+      : null;
   }
 
   private getCurrentPlayerId(): string {
@@ -199,7 +212,11 @@ export class AcquireGameElement extends SignalWatcher(LitElement) {
     console.log(this.state);
 
     console.log("-- Board ASCII Diagram --");
-    console.log(this.state.value ? BoardStateFactory.createDiagram(this.state.value.boardState) : "(empty)");
+    console.log(
+      this.state.value
+        ? BoardStateFactory.createDiagram(this.state.value.boardState)
+        : "(empty)"
+    );
   }
 
   static styles = css`

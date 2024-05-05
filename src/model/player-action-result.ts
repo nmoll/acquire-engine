@@ -51,7 +51,7 @@ export const isMergeInitiatedResult = (
   a: PlayerActionResult
 ): a is MergeInitiated => a.type === "Merge Initiated";
 
-interface HotelMerged {
+export interface HotelMerged {
   type: "Hotel Merged";
   action: PlaceTile | Merge;
   survivor: Hotel;

@@ -19,6 +19,7 @@ import { HotelChainType } from "../../../../model";
 import { ArrayUtils } from "../../../../utils/array-utils";
 import { PlayerUtils } from "../../../../utils/player-utils";
 import "./played-tile.element";
+import "../hotel/hotel-name.element";
 
 type PlayerActionRenderers = Record<
   PlayerActionResult["type"],
@@ -62,18 +63,17 @@ export class PreviousActionLogElement extends LitElement {
       align-items: center;
     }
 
-    .hotel-name {
-      color: white;
-      font-size: 0.875rem;
-      padding: 0.1875rem 0.5rem;
-    }
-
     .player-name {
       justify-self: end;
     }
 
+    .cash {
+      color: var(--colors-emerald-400);
+    }
+
     .result-log {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 0.5rem;
     }
@@ -97,14 +97,12 @@ export class PreviousActionLogElement extends LitElement {
         .map((renderer) => renderer(actionResults))
         .filter((result) => !!result)
         .forEach((logTemplate, idx) => {
-          playerLogs.push(
-            html`
-              <div class="player-name">
-                ${idx === 0 ? PlayerUtils.getDisplayName(playerId) : ""}
-              </div>
-              <div class="result-log">${logTemplate}</div>
-            `
-          );
+          playerLogs.push(html`
+            <div class="player-name">
+              ${idx === 0 ? PlayerUtils.getDisplayName(playerId) : ""}
+            </div>
+            <div class="result-log">${logTemplate}</div>
+          `);
         });
     });
 
@@ -167,7 +165,8 @@ export class PreviousActionLogElement extends LitElement {
 
       return html`merged
       ${this.renderHotelNames(result.dissolved.map((h) => h.type))} into
-      ${this.renderHotelName(result.survivor.type)}`;
+      ${this.renderHotelName(result.survivor.type)}
+      ${this.renderCashAwarded(result.cashAwarded)} `;
     },
     "Share Kept": (results) => {
       const kept = results.filter(isShareKeptResult);
@@ -264,11 +263,17 @@ export class PreviousActionLogElement extends LitElement {
   }
 
   private renderHotelName(hotelChainType: HotelChainType) {
-    return html`<span
-      class="hotel-name"
-      style="background: var(--colors-${hotelChainType})"
-      >${hotelChainType}</span
-    >`;
+    return html`<acquire-hotel-name .hotelChainType="${hotelChainType}"></acquire-hotel-chain-name>`;
+  }
+
+  private renderCashAwarded(cashAwarded: Record<string, number>) {
+    const awards = Object.entries(cashAwarded).map(
+      ([playerId, cash]) =>
+        html`${PlayerUtils.getDisplayName(playerId)} received
+          <span class="cash">$${cash}</span>`
+    );
+
+    return html`${awards}`;
   }
 
   private renderHotelNames(

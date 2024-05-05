@@ -13,6 +13,7 @@ export interface IGameState {
   tileState: ITileState;
   currentPlayerIdState: CurrentPlayerIdState;
   availableActionsState: IAvailableActionState;
+  actionResult?: PlayerActionResult;
   previousActions: PlayerActionResult[];
   winners?: string[] | null;
 }
