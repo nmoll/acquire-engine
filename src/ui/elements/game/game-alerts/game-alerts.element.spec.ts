@@ -1,7 +1,6 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { AcquireGameAlertsElement } from "./game-alerts.element";
 import { TestBed } from "../../../test/test-bed";
-import { MergeAlertHarness } from "../../../test/harness/merge-alert.harness";
 import { MergeScenario } from "./test-data";
 import { GameStateEngine } from "../../../../engine/game-state-engine/game-state-engine";
 import { ModalService } from "../../modal/modal.service";
@@ -10,7 +9,6 @@ import { render } from "lit";
 
 describe(AcquireGameAlertsElement.name, () => {
   let el: AcquireGameAlertsElement;
-  let harness: MergeAlertHarness;
 
   let modalService: ModalService;
 
@@ -26,12 +24,9 @@ describe(AcquireGameAlertsElement.name, () => {
         },
       ],
     });
-    harness = new MergeAlertHarness(el);
   });
 
   it("should show alert if merge happened", async () => {
-    expect(await harness.isVisible()).toBeFalsy();
-
     expect(modalService.modalRequest.value).toBeNull();
 
     const gameState = GameStateEngine.computeGameState(
