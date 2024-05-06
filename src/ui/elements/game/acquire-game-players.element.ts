@@ -5,30 +5,10 @@ import { ICashState } from "../../../model/cash-state";
 import { PlayerUtils } from "../../../utils/player-utils";
 import "./player-cash.element";
 import "./player-shares.element";
+import { StockBroker } from "../../../model/stock-broker";
 
 @customElement("acquire-game-players")
 export class AcquireGamePlayersElement extends LitElement {
-  static styles = css`
-    :host {
-      display: grid;
-      grid-template-columns: 1fr 1fr min-content;
-      align-items: center;
-      justify-content: center;
-      padding: 0.25rem;
-      column-gap: 0.75rem;
-      row-gap: 0.25rem;
-    }
-
-    .player-shares {
-      display: flex;
-      gap: 0.25rem;
-    }
-
-    acquire-player-cash {
-      text-align: right;
-    }
-  `;
-
   @property()
   players: string[] = [];
 
@@ -56,7 +36,7 @@ export class AcquireGamePlayersElement extends LitElement {
       return this.players?.map((p) => this.renderPlayer(p));
     }
 
-    return this.renderPlayer(this.playerId);
+    return [this.renderPlayer(this.playerId), this.renderRemainingShares()];
   }
 
   private renderPlayer(playerId: string) {
@@ -78,6 +58,43 @@ export class AcquireGamePlayersElement extends LitElement {
       />`;
     });
   }
+
+  private renderRemainingShares() {
+    const stockBroker = new StockBroker(this.sharesState);
+
+    const shares = ALL_HOTELS.map((hotel) => {
+      const numShares = stockBroker.getAvailableShares(hotel);
+      return html`<acquire-player-shares
+        .hotelChain="${hotel}"
+        .numShares="${numShares}"
+      />`;
+    });
+
+    return html`<div class="player-name"></div>
+      <div></div>
+      <div class="player-shares">${shares}</div>`;
+  }
+
+  static styles = css`
+    :host {
+      display: grid;
+      grid-template-columns: 1fr 1fr min-content;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem;
+      column-gap: 0.75rem;
+      row-gap: 0.25rem;
+    }
+
+    .player-shares {
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    acquire-player-cash {
+      text-align: right;
+    }
+  `;
 }
 
 declare global {
