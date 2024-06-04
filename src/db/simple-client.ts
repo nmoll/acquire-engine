@@ -2,7 +2,7 @@ import { IAcquireGameInstance } from "../model/acquire-game-instance";
 import { PlayerAction } from "../model/player-action";
 import { DatabaseClient } from "./database-client";
 
-const url = "api";
+const url = "/api";
 
 interface GameData {
   instance: IAcquireGameInstance;

@@ -67,7 +67,6 @@ export default defineConfig({
       },
       "/api": {
         target: "https://acquire-api.onrender.com",
-        rewrite: (path) => path.replace("api", ""),
         changeOrigin: true,
         secure: false,
       },
