@@ -122,23 +122,28 @@ class RequestPoller {
   async addListener(callback: GameDataCallbackConfig) {
     this.listeners.push(callback);
 
+    this.pollData(true);
+
     if (!this.interval) {
       this.interval = this.interval = setInterval(async () => {
-        const resp = await fetch(`${url}/game/${this.gameId}`);
-        const data: GameData = await resp.json();
-        if (
-          !this.instanceEquals(data.instance, this.gameData?.instance ?? null)
-        ) {
-          this.notifyInstanceChanged(data.instance);
-        }
-        if (
-          (data.actions?.length ?? 0) > (this.gameData?.actions?.length ?? 0)
-        ) {
-          this.notifyActionsChanged(data.actions);
-        }
-        this.gameData = data;
+        this.pollData();
       }, 2000);
     }
+  }
+
+  private async pollData(isFirstPoll?: boolean) {
+    const resp = await fetch(`${url}/game/${this.gameId}`);
+    const data: GameData = await resp.json();
+    if (!this.instanceEquals(data.instance, this.gameData?.instance ?? null)) {
+      this.notifyInstanceChanged(data.instance);
+    }
+    if (
+      isFirstPoll ||
+      (data.actions?.length ?? 0) > (this.gameData?.actions?.length ?? 0)
+    ) {
+      this.notifyActionsChanged(data.actions);
+    }
+    this.gameData = data;
   }
 
   notifyActionsChanged(actions: PlayerAction[]) {
