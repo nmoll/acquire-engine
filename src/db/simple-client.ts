@@ -40,7 +40,7 @@ export class SimpleDatabaseClient implements DatabaseClient {
 
   createGame(game: IAcquireGameInstance): void {
     fetch(`${url}/game/${game.id}`, {
-      method: "PATCH",
+      method: "POST",
       body: JSON.stringify({
         instance: game,
       }),
@@ -49,7 +49,7 @@ export class SimpleDatabaseClient implements DatabaseClient {
 
   updateGameInstance(instance: IAcquireGameInstance): void {
     fetch(`${url}/game/${instance.id}`, {
-      method: "PATCH",
+      method: "POST",
       body: JSON.stringify({ instance }),
     });
     if (this.poller && this.poller.gameId === instance.id) {
