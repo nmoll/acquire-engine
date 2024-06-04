@@ -1,2 +1,2 @@
 /api/gun https://acquirebynate.com/gun
-/api/\* https://acquire-api.onrender.com/api/:splat 200
+/api/* https://acquire-api.onrender.com/api/:splat 200
