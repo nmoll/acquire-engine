@@ -6,13 +6,13 @@ import { PlayerStore } from "../state/player/player.store";
 import { SignalWatcher } from "@lit-labs/preact-signals";
 import { GameStore } from "../state/game/game.store";
 import { WindowService } from "../core/window/window-service";
-import { GunDatabaseClient } from "../../db/database-client";
 import { gameStoreContext } from "../context/game.store.context";
 import { RandomGameSeedGenerator } from "../state/game/game-seed-generator";
 import "./app-routing.element";
 import "./modal/modal-container.element";
 import { modalServiceContext } from "../context/modal.service.context";
 import { ModalService } from "./modal/modal.service";
+import { SimpleDatabaseClient } from "../../db/simple-client";
 
 @customElement("acquire-app")
 export class AcquireAppElement extends SignalWatcher(LitElement) {
@@ -28,7 +28,7 @@ export class AcquireAppElement extends SignalWatcher(LitElement) {
   @provide({ context: gameStoreContext })
   gameStore = new GameStore(
     new WindowService(),
-    new GunDatabaseClient(),
+    new SimpleDatabaseClient(),
     new RandomGameSeedGenerator()
   );
 

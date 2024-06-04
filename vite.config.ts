@@ -65,10 +65,16 @@ export default defineConfig({
         secure: false,
         ws: true,
       },
+      "/api": {
+        target: "https://acquire-api.onrender.com",
+        rewrite: (path) => path.replace("api", ""),
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
   test: {
     root: "./src",
-    environment: 'happy-dom'
+    environment: "happy-dom",
   },
 });
