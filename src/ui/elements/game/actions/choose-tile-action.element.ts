@@ -61,7 +61,7 @@ export class ChooseTileActionElement extends LitElement {
       `;
     }
 
-    return html`<p>Select a tile on the board highlighted in green</p>`;
+    return html`<p>Choose a tile to place</p>`;
   }
 }
 

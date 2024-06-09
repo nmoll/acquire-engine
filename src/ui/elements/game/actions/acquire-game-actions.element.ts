@@ -1,7 +1,6 @@
-import { css, html, LitElement, PropertyValueMap } from "lit";
-import "../../../icon/undo-icon.element";
+import { css, html, LitElement, PropertyValueMap, TemplateResult } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import { HotelChainType, IGameState } from "../../../../model";
+import { ALL_HOTELS, HotelChainType, IGameState } from "../../../../model";
 import { AvailableAction } from "../../../../model/available-action";
 import { IAvailableActionState } from "../../../../model/available-action-state";
 import { PlayerAction } from "../../../../model/player-action";
@@ -30,6 +29,11 @@ import { PlayerActionResult } from "../../../../model/player-action-result";
 import "./previous-action-log.element";
 import "../confetti.element";
 import { AcquireGameService } from "../acquire-game.service";
+import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.1/cdn/components/button/button.js';
+import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.1/cdn/components/button-group/button-group.js';
+import { SharesUtils } from "../../../../utils/shares-utils";
+import { HotelManager } from "../../../../model/hotel-manager";
+import { styleMap } from "lit/directives/style-map.js";
 
 export interface ActionRequestEvent {
   action: PlayerAction;
@@ -37,73 +41,6 @@ export interface ActionRequestEvent {
 
 @customElement("acquire-game-actions")
 export class AcquireGameActionsElement extends LitElement {
-  static styles = css`
-    :host {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem;
-      position: relative;
-    }
-
-    button {
-      background-color: var(--colors-gray-500);
-      border: none;
-      border-radius: 0.5rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      color: white;
-      width: 100%;
-    }
-
-    button.primary {
-      background-color: transparent;
-      border: 1px solid var(--colors-primary);
-      color: var(--colors-primary);
-    }
-
-    button.end-game {
-      background-color: transparent;
-      border: 1px solid var(--colors-yellow-300);
-      color: var(--colors-yellow-300);
-      padding: 1rem 1rem;
-    }
-
-    button:disabled {
-      background: var(--colors-gray-800) !important;
-      color: var(--colors-gray-500);
-      cursor: not-allowed;
-    }
-
-    .actions {
-      display: grid;
-      grid-template-columns: auto auto;
-      gap: 1rem;
-    }
-
-    .actions button {
-      width: 100%;
-    }
-
-    button.undo {
-      position: absolute;
-      top: 0.25rem;
-      left: 0.25rem;
-      width: 2.25rem;
-      height: 2.25rem;
-      padding: 0.25rem;
-      padding-left: 0;
-      background: var(--colors-gray-800);
-      color: var(--colors-gray-300);
-    }
-
-    .col-span-full {
-      grid-column: 1 / -1;
-    }
-  `;
-
   @property()
   gameState!: IGameState;
 
@@ -127,6 +64,9 @@ export class AcquireGameActionsElement extends LitElement {
 
   @state()
   confirmPreviousActions = false;
+
+  @state()
+  view: 'actions' | 'reference' = 'actions'
 
   constructor() {
     super();
@@ -190,17 +130,33 @@ export class AcquireGameActionsElement extends LitElement {
         !this.confirmPreviousActions &&
         !this.selectedTile
       ) {
-        return html` <acquire-previous-action-log
-          .actionResults="${this.previousActions}"
-          @confirm="${() => (this.confirmPreviousActions = true)}"
-        />`;
+        return html`
+        <div class="actions">
+          <acquire-previous-action-log
+            .actionResults="${this.previousActions}"
+            @confirm="${() => (this.confirmPreviousActions = true)}"
+          />
+        </div>`;
       }
 
-      return html`<div class="actions">
-        ${this.renderUndoAction()} ${this.renderActions()}
+      return html`
+      <div class="actions-container">
+        <div class="actions-topbar">
+          <div>${this.renderUndoAction()}</div>
+
+          <sl-button-group label="Alignment">
+            <sl-button .variant="${this.view == 'actions' ? 'success' : 'default'}" @click="${() => this.view = 'actions'}" size="small">Action</sl-button>
+            <sl-button .variant="${this.view == 'reference' ? 'success' : 'default'}" @click="${() => this.view = 'reference'}" size="small">Reference</sl-button>
+          </sl-button-group>
+
+
+        </div>
+        <div class="actions">
+          ${this.view == 'actions' ? this.renderActions() : this.renderReference()}
+        </div>
       </div>`;
     } else {
-      return html`<div>
+      return html`<div class="actions">
         Waiting for ${PlayerUtils.getDisplayName(this.currentPlayerId)} to move
       </div>`;
     }
@@ -214,12 +170,12 @@ export class AcquireGameActionsElement extends LitElement {
       return;
     }
 
-    return html`<button
-      class="undo"
+    return html`<sl-button
+    size="small"
       @click="${() => this.dispatchEvent(createUndoActionEvent())}"
     >
-      <acquire-undo-icon />
-    </button>`;
+      Undo
+    </sl-button>`;
   }
 
   private renderActions() {
@@ -250,6 +206,53 @@ export class AcquireGameActionsElement extends LitElement {
     }
 
     return this.availableActionState.map((action) => this.renderAction(action));
+  }
+
+  private renderReference() {
+    const hotelManager = new HotelManager(this.gameState.boardState)
+    const headers = ALL_HOTELS.map(h => html`
+      <th style="${styleMap({
+      color: "white",
+      background: `var(--colors-${h})`,
+      opacity: hotelManager.getHotel(h).isActive() ? 1 : 0.3
+    })}">${h[0]}</th>
+    `)
+    const rows: TemplateResult<1>[] = []
+    const sizes = [2, 3, 4, 5, 10, 20, 30, 40]
+    sizes.forEach((size, idx) => {
+      const rowData = [html`<th style="background: var(--colors-tile); color: var(--colors-gray-900)">${size}</th>`]
+      for (let h of ALL_HOTELS) {
+        const hotel = hotelManager.getHotel(h)
+        const hotelSize = hotel.getSize()
+        const nextSize = size == 40 ? 100 : sizes[idx + 1]
+        const matchesSize = hotelSize >= size && hotelSize < nextSize
+        rowData.push(html`
+        <td style="${styleMap({
+          opacity: matchesSize ? 1 : 0.3,
+          color: matchesSize ? "var(--colors-emerald-400)" : "white",
+        })}">
+          <span style="display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 0.75rem;">$${SharesUtils.getSharesCost(h, size) / 100}</span>
+            <span style="font-size: 0.75rem;">00</span>
+          </span>
+        </td>
+        `)
+      }
+      rows.push(html`<tr>${rowData}</tr>`)
+    })
+    return html`
+    <table class="references" style="width: 100%; font-size: 0.875rem; table-layout: fixed;">
+      <thead>
+        <tr>
+          <th></th>
+          ${headers}
+        </tr>
+      </thead>
+      <tbody>
+        ${rows}
+      </tbody>
+    </table>
+    `
   }
 
   renderChooseEndGame() {
@@ -423,6 +426,73 @@ export class AcquireGameActionsElement extends LitElement {
       })
     );
   }
+
+  static styles = css`
+  :host {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  button {
+    background-color: var(--colors-gray-500);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: white;
+    width: 100%;
+  }
+
+  button.primary {
+    background-color: transparent;
+    border: 1px solid var(--colors-primary);
+    color: var(--colors-primary);
+  }
+
+  button.end-game {
+    background-color: transparent;
+    border: 1px solid var(--colors-yellow-300);
+    color: var(--colors-yellow-300);
+    padding: 1rem 1rem;
+  }
+
+  button:disabled {
+    background: var(--colors-gray-800) !important;
+    color: var(--colors-gray-500);
+    cursor: not-allowed;
+  }
+
+  .actions-container {
+    flex: 1 1 0%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .actions-topbar {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .actions {
+    flex: 1 1 0%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+
+  .col-span-full {
+    grid-column: 1 / -1;
+  }
+`;
 }
 
 declare global {

@@ -86,7 +86,7 @@ describe(AcquireGameElement.name, () => {
             )
         );
 
-        expect(await actions.getChooseTileMessage()).toEqual('Select a tile on the board highlighted in green')
+        expect(await actions.getChooseTileMessage()).toEqual('Choose a tile to place')
 
         await board.clickSquare(tile('12A'));
 

@@ -59,16 +59,33 @@ export class AcquireGameBoardElement extends LitElement {
       this.renderSquare(squareState, idx)
     );
   }
-
   renderSquare(state: BoardSquareState, idx: number) {
     const styles = this.getSquareStyles(state, idx);
+    const layer1Styles = {
+      ...styles,
+      boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
+      transform: "translate(-1.5px, -1px)",
+      width: "100%",
+      height: "100%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    }
+    const layer2Styles = {
+      ...layer1Styles,
+      transform: "translate(-1px, -0.5px)",
+    }
     return html`<div
-      class="cell"
-      id="${getCellId(idx)}"
-      style="${styleMap(styles)}"
-      @click=${() => this.onClick(idx)}
+    class="cell"
+    id="${getCellId(idx)}"
+    style="${styleMap(styles)}"
+    @click=${() => this.onClick(idx)}
     >
-      ${this.getTileDisplay(state, idx)}
+      <div style="${state.type !== 'Default' ? styleMap(layer2Styles) : ''}">
+        <div style="${state.type !== 'Default' ? styleMap(layer1Styles) : ''}">
+          ${this.getTileDisplay(state, idx)}
+        </div>
+      </div>
     </div>`;
   }
 
@@ -145,14 +162,16 @@ export class AcquireGameBoardElement extends LitElement {
         return {
           backgroundColor: "var(--colors-tile)",
           borderColor: "var(--colors-tile)",
-          boxShadow: "none",
+          borderRadius: "0.2rem",
+          boxShadow: "none"
         };
       case "HasHotelChain":
         return {
           borderColor: `var(--colors-${state.hotelChainType})`,
           backgroundColor: `var(--colors-${state.hotelChainType})`,
           color: "#fff",
-          boxShadow: "none",
+          borderRadius: "0.2rem",
+          boxShadow: "none"
         };
       default:
         return {};
