@@ -7,6 +7,7 @@ import { ChooseTile } from "../../../model/available-action";
 import { IAvailableActionState } from "../../../model/available-action-state";
 import { createTileSelectEvent } from "../../events/tile-select-event";
 import { AcquireGameService } from "./acquire-game.service";
+import { createHotelSelectEvent } from "../../events/hotel-select-event";
 
 const getCellId = (idx: number) => `cell-${idx}`;
 
@@ -96,6 +97,12 @@ export class AcquireGameBoardElement extends LitElement {
   private onClick(tile: number): void {
     if (this.getTileOptions().available.includes(tile)) {
       this.dispatchEvent(createTileSelectEvent(tile));
+      return;
+    }
+    const squareState = this.boardState?.[tile]
+    if (squareState?.type === 'HasHotelChain') {
+      this.dispatchEvent(createHotelSelectEvent(squareState.hotelChainType))
+      return;
     }
   }
 

@@ -2,7 +2,7 @@ import { css, html, LitElement } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { AvailableActionsStateEngine } from "../../../engine/available-actions-state-engine/available-actions-state-engine";
 import { GameStateEngine } from "../../../engine/game-state-engine/game-state-engine";
-import { IGameState } from "../../../model";
+import { HotelChainType, IGameState } from "../../../model";
 import { PlayerAction } from "../../../model/player-action";
 import { BoardStateFactory } from "../../../test/factory/board-state.factory";
 import "./actions/acquire-game-actions.element";
@@ -18,6 +18,7 @@ import { computed, Signal, SignalWatcher } from "@lit-labs/preact-signals";
 import { gameStoreContext } from "../../context/game.store.context";
 import { GameStore } from "../../state/game/game.store";
 import "./game-alerts/game-alerts.element";
+import { HotelSelectEvent } from "../../events/hotel-select-event";
 
 @customElement("acquire-game")
 export class AcquireGameElement extends SignalWatcher(LitElement) {
@@ -44,6 +45,9 @@ export class AcquireGameElement extends SignalWatcher(LitElement) {
 
   @state()
   selectedTile: number | null = null;
+
+  @state()
+  selectedHotel: HotelChainType | null = null;
 
   constructor() {
     super();
@@ -157,6 +161,7 @@ export class AcquireGameElement extends SignalWatcher(LitElement) {
           .playerTiles="${state.tileState[playerId] ?? []}"
           .isPlayerTurn="${playerId === state.currentPlayerIdState}"
           @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
+          @hotel-select="${(e: HotelSelectEvent) => (this.selectedHotel = e.hotelType)}"
         >
         </acquire-game-board>
 
@@ -167,13 +172,15 @@ export class AcquireGameElement extends SignalWatcher(LitElement) {
           .winners="${state.winners}"
           .availableActionState="${state.availableActionsState}"
           .selectedTile="${this.selectedTile}"
+          .selectedHotel="${this.selectedHotel}"
           .previousActions="${state.previousActions}"
           @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
           @confirm-tile-place="${() => this.onConfirmTileSelect()}"
           @cancel-tile-place="${() => (this.selectedTile = null)}"
+          @close-hotel-details="${() => this.selectedHotel = null}"
           @undo-action="${() => this.onUndoAction()}"
           @action-request="${(e: CustomEvent<ActionRequestEvent>) =>
-            this.onPlayerAction(e.detail.action)}"
+        this.onPlayerAction(e.detail.action)}"
           @leave-game="${() => this.gameStore.leaveGame()}"
         ></acquire-game-actions>
       </div>`;

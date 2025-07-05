@@ -28,12 +28,16 @@ import { createLeaveGameEvent } from "../../../events/leave-game-event";
 import { PlayerActionResult } from "../../../../model/player-action-result";
 import "./previous-action-log.element";
 import "../confetti.element";
+import "../../../icon/tip-icon.element"
+import "../../../icon/reference-card-icon.element"
+import "../../../icon/back-icon.element"
 import { AcquireGameService } from "../acquire-game.service";
 import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.1/cdn/components/button/button.js';
-import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.1/cdn/components/button-group/button-group.js';
 import { SharesUtils } from "../../../../utils/shares-utils";
 import { HotelManager } from "../../../../model/hotel-manager";
 import { styleMap } from "lit/directives/style-map.js";
+import { createCloseHotelDetailsEvent } from "../../../events/close-hotel-details-event";
+import { StockBroker } from "../../../../model/stock-broker";
 
 export interface ActionRequestEvent {
   action: PlayerAction;
@@ -60,10 +64,16 @@ export class AcquireGameActionsElement extends LitElement {
   selectedTile!: number | null;
 
   @property()
+  selectedHotel!: HotelChainType | null;
+
+  @property()
   previousActions: PlayerActionResult[] = [];
 
   @state()
   confirmPreviousActions = false;
+
+  @state()
+  hasSeenHotelDetailsTip = false;
 
   @state()
   view: 'actions' | 'reference' = 'actions'
@@ -88,6 +98,9 @@ export class AcquireGameActionsElement extends LitElement {
   }
 
   render() {
+    const hotelManager = new HotelManager(this.gameState.boardState)
+    const stockBroker = new StockBroker(this.gameState.sharesState)
+
     if (this.winners) {
       let winnerMessage;
       if (this.winners.length > 1) {
@@ -124,6 +137,17 @@ export class AcquireGameActionsElement extends LitElement {
       `;
     }
 
+    if (!this.hasSeenHotelDetailsTip && hotelManager.getActiveHotels().length === 1) {
+      return this.renderHotelDetailsTip()
+    }
+
+    if (this.view === 'reference') {
+      return this.renderReference(hotelManager)
+    }
+    if (this.selectedHotel) {
+      return this.renderHotelDetails(this.selectedHotel, hotelManager, stockBroker)
+    }
+
     if (this.playerId === this.currentPlayerId) {
       if (
         this.previousActions.length &&
@@ -141,18 +165,11 @@ export class AcquireGameActionsElement extends LitElement {
 
       return html`
       <div class="actions-container">
-        <div class="actions-topbar">
-          <div>${this.renderUndoAction()}</div>
-
-          <sl-button-group label="Alignment">
-            <sl-button .variant="${this.view == 'actions' ? 'success' : 'default'}" @click="${() => this.view = 'actions'}" size="small">Action</sl-button>
-            <sl-button .variant="${this.view == 'reference' ? 'success' : 'default'}" @click="${() => this.view = 'reference'}" size="small">Reference</sl-button>
-          </sl-button-group>
-
-
-        </div>
+      <div class="actions-topbar">
+        <div>${this.renderUndoAction()}</div>
+      </div>
         <div class="actions">
-          ${this.view == 'actions' ? this.renderActions() : this.renderReference()}
+          ${this.view == 'actions' ? this.renderActions() : this.renderReference(hotelManager)}
         </div>
       </div>`;
     } else {
@@ -208,8 +225,53 @@ export class AcquireGameActionsElement extends LitElement {
     return this.availableActionState.map((action) => this.renderAction(action));
   }
 
-  private renderReference() {
-    const hotelManager = new HotelManager(this.gameState.boardState)
+  private renderHotelDetailsTip() {
+    return html`
+      <div class="actions">
+      <div style="display: flex; align-items: center; gap: 0.5rem;"><tip-icon style="color: var(--colors-yellow-300)"></tip-icon> Tip</div>
+        <div>Tap on a hotel to see more details about the hotel!</div>
+        <button class="primary" @click="${() => this.hasSeenHotelDetailsTip = true}">OK</button>
+      </div>
+    `
+  }
+
+  private renderHotelDetails(hotelType: HotelChainType, hotelManager: HotelManager, stockBroker: StockBroker) {
+    const hotel = hotelManager.getHotel(hotelType)
+
+    return html`
+    <div class="actions">
+      <div style="width: 100%; flex: 1; display: flex; flex-direction: column;">
+        <div style="flex: 1">
+          <div style="border-bottom: 1px solid var(--colors-${hotelType}); padding-bottom: 0.5rem;">
+            ${hotelType}
+          </div>
+          <div class="hotel-details">
+            <div>Size:</div>
+            <div>${hotel.getSize()}</div>
+            <div>Price:</div>
+            <div>$${hotel.getSharesCost()}</div>
+            <div>Majority Bonus:</div>
+            <div>$${hotel.getMajorityBonus()}</div>
+            <div>Minority Bonus:</div>
+            <div>$${hotel.getMinorityBonus()}</div>
+            <div>Remaining Shares:</div>
+            <div>${stockBroker.getAvailableShares(hotelType)}</div>
+            <div style="margin-top: 1rem;">
+              <button @click="${() => this.view = 'reference'}" style="display: flex; align-items: center; gap: 0.5rem;">
+                <reference-card-icon></reference-card-icon>
+                Reference Card
+              </button>
+            </div>
+          </div>
+        </div>
+        <button class="primary" @click="${() => this.dispatchEvent(createCloseHotelDetailsEvent())}">
+          Close
+        </button>
+      </div>
+    `
+  }
+
+  private renderReference(hotelManager: HotelManager) {
     const headers = ALL_HOTELS.map(h => html`
       <th style="${styleMap({
       color: "white",
@@ -241,17 +303,31 @@ export class AcquireGameActionsElement extends LitElement {
       rows.push(html`<tr>${rowData}</tr>`)
     })
     return html`
-    <table class="references" style="width: 100%; font-size: 0.875rem; table-layout: fixed;">
-      <thead>
-        <tr>
-          <th></th>
-          ${headers}
-        </tr>
-      </thead>
-      <tbody>
-        ${rows}
-      </tbody>
-    </table>
+    <div class="actions">
+      <div style="flex: 1">
+      <div style="border-bottom: 1px solid white; padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+        <button class="icon-button" @click="${() => this.view = 'actions'}">
+          <back-icon></back-icon>
+        </button>
+        Reference Card
+      </div>
+        <table class="references" style="width: 100%; font-size: 0.875rem; table-layout: fixed; margin-top: 1rem;">
+          <thead>
+            <tr>
+              <th></th>
+              ${headers}
+            </tr>
+          </thead>
+          <tbody>
+            ${rows}
+          </tbody>
+        </table>
+        <div style="margin-top: 1rem; font-size: 0.75rem; color: var(--colors-gray-200)">
+          <div>Majority bonus = share price x 10</div>
+          <div style="margin-top: 0.25rem;">Minority bonus = share price x 5</div>
+        </div>
+      </div>
+    </div>
     `
   }
 
@@ -444,6 +520,14 @@ export class AcquireGameActionsElement extends LitElement {
     width: 100%;
   }
 
+  button.icon-button {
+    border: none;
+    background-color: transparent;
+    width: auto !important; 
+    padding: 0.25rem;
+    display: flex;
+  }
+
   button.primary {
     background-color: transparent;
     border: 1px solid var(--colors-primary);
@@ -487,6 +571,15 @@ export class AcquireGameActionsElement extends LitElement {
 
   .actions button {
     width: 100%;
+  }
+
+  .hotel-details {
+    padding-top: 1rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    row-gap: 0.5rem;
+    column-gap: 2rem;
   }
 
   .col-span-full {
