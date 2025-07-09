@@ -3,7 +3,7 @@ import { customElement, property, state } from "lit/decorators.js";
 import { ALL_HOTELS, HotelChainType, IGameState } from "../../../../model";
 import { AvailableAction } from "../../../../model/available-action";
 import { IAvailableActionState } from "../../../../model/available-action-state";
-import { PlayerAction } from "../../../../model/player-action";
+import { PlayerAction, PurchaseShares } from "../../../../model/player-action";
 import { PlayerUtils } from "../../../../utils/player-utils";
 import "./choose-tile-action.element";
 import {
@@ -38,6 +38,8 @@ import { HotelManager } from "../../../../model/hotel-manager";
 import { styleMap } from "lit/directives/style-map.js";
 import { createCloseHotelDetailsEvent } from "../../../events/close-hotel-details-event";
 import { StockBroker } from "../../../../model/stock-broker";
+import { map } from "lit/directives/map.js";
+import { range } from "lit/directives/range.js";
 
 export interface ActionRequestEvent {
   action: PlayerAction;
@@ -68,6 +70,9 @@ export class AcquireGameActionsElement extends LitElement {
 
   @property()
   previousActions: PlayerActionResult[] = [];
+
+  @property()
+  turnActions: PlayerAction[] = []
 
   @state()
   confirmPreviousActions = false;
@@ -167,6 +172,7 @@ export class AcquireGameActionsElement extends LitElement {
       <div class="actions-container">
       <div class="actions-topbar">
         <div>${this.renderUndoAction()}</div>
+        <div>${this.renderPurchasedShares()}</div>
       </div>
         <div class="actions">
           ${this.view == 'actions' ? this.renderActions() : this.renderReference(hotelManager)}
@@ -193,6 +199,25 @@ export class AcquireGameActionsElement extends LitElement {
     >
       Undo
     </sl-button>`;
+  }
+
+  private renderPurchasedShares() {
+    const canPurchase = this.availableActionState?.some(action => action.type === 'ChooseShares')
+    const purchaseActions = this.turnActions.filter((action): action is PurchaseShares => action.type === 'PurchaseShares')
+    if (canPurchase || purchaseActions.length) {
+      return html`
+        <div style="display: flex; gap: 0.5rem;">
+        ${map(range(3 - purchaseActions.length), () => html`<div class="share-slot"></div>`)}
+        ${purchaseActions.map(action => {
+        return html`
+            <acquire-player-shares .numShares="${1}" .hotelChain="${action.hotelChain}"></acquire-player-shares>
+          `
+      })}
+        </div>
+      `
+    } else {
+      return html``
+    }
   }
 
   private renderActions() {
@@ -229,8 +254,10 @@ export class AcquireGameActionsElement extends LitElement {
     return html`
       <div class="actions">
       <div style="display: flex; align-items: center; gap: 0.5rem;"><tip-icon style="color: var(--colors-yellow-300)"></tip-icon> Tip</div>
-        <div>Tap on a hotel to see more details about the hotel!</div>
-        <button class="primary" @click="${() => this.hasSeenHotelDetailsTip = true}">OK</button>
+        <div>Tapping a company on the board will display extra information.</div>
+        <div>
+          <button class="primary" @click="${() => this.hasSeenHotelDetailsTip = true}">OK</button>
+        </div>
       </div>
     `
   }
@@ -584,6 +611,12 @@ export class AcquireGameActionsElement extends LitElement {
 
   .col-span-full {
     grid-column: 1 / -1;
+  }
+
+  .share-slot {
+    width: 1.25rem;
+    height: 1.25rem;
+    background: var(--colors-gray-700);
   }
 `;
 }

@@ -174,6 +174,7 @@ export class AcquireGameElement extends SignalWatcher(LitElement) {
           .selectedTile="${this.selectedTile}"
           .selectedHotel="${this.selectedHotel}"
           .previousActions="${state.previousActions}"
+          .turnActions="${this.getTurnActions(playerId)}"
           @tile-select="${(e: TileSelectEvent) => (this.selectedTile = e.tile)}"
           @confirm-tile-place="${() => this.onConfirmTileSelect()}"
           @cancel-tile-place="${() => (this.selectedTile = null)}"
@@ -192,6 +193,16 @@ export class AcquireGameElement extends SignalWatcher(LitElement) {
 
   hasGameObject(selector: keyof HTMLElementTagNameMap) {
     return !!this.shadowRoot?.querySelector(selector);
+  }
+
+  private getTurnActions(playerId: string): PlayerAction[] {
+    const result: PlayerAction[] = []
+    const actions = this.actions?.peek() ?? []
+    let idx = actions.length - 1
+    while (idx >= 0 && actions[idx].playerId === playerId) {
+      result.unshift(actions[idx--])
+    }
+    return result;
   }
 
   private getGame() {

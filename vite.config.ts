@@ -1,6 +1,5 @@
 /// <reference types="vitest" />
 import { defineConfig } from "vite";
-import { VitePWA } from "vite-plugin-pwa";
 
 // required for gun to work
 const moduleExclude = (match) => {
@@ -34,28 +33,28 @@ export default defineConfig({
   },
   plugins: [
     moduleExclude("text-encoding"),
-    VitePWA({
-      registerType: "autoUpdate",
-      injectRegister: "script",
-      includeAssets: ["favicon.svg"],
-      manifest: {
-        name: "Acquire",
-        description: "The classic real estate investing game",
-        theme_color: "#22c55e",
-        icons: [
-          {
-            src: "logo_60x60.svg",
-            sizes: "60x60",
-            purpose: "any",
-          },
-          {
-            src: "logo_144x144.svg",
-            sizes: "144x144",
-            purpose: "any",
-          },
-        ],
-      },
-    }),
+    // VitePWA({
+    //   registerType: "autoUpdate",
+    //   injectRegister: "script",
+    //   includeAssets: ["favicon.svg"],
+    //   manifest: {
+    //     name: "Acquire",
+    //     description: "The classic real estate investing game",
+    //     theme_color: "#22c55e",
+    //     icons: [
+    //       {
+    //         src: "logo_60x60.svg",
+    //         sizes: "60x60",
+    //         purpose: "any",
+    //       },
+    //       {
+    //         src: "logo_144x144.svg",
+    //         sizes: "144x144",
+    //         purpose: "any",
+    //       },
+    //     ],
+    //   },
+    // }),
   ],
   server: {
     proxy: {
